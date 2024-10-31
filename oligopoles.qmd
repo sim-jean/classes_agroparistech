@@ -1,0 +1,218 @@
+---
+title: "Concurrence Imparfaite 2 : Les oligopoles"
+
+author:
+  - name: Simon Jean
+    orcid: 0000-0002-3965-8630
+    email: simon.jean@agroparistech.fr
+    affiliations: AgroParisTech - CIRED - PSAE
+
+format: 
+  revealjs:
+    theme: "C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    slideNumber: true
+    verticalSeparator: '^#'    # Creates vertical movement between main sections
+    separator: '^##'
+    transition: fade
+    navigationMode: linear      # Allows both vertical and horizontal navigation
+
+
+    
+editor: visual
+---
+
+# Introduction
+
+## La concurrence imparfaite - rappels
+
+::: incremental
+-   Concurrence *pure et parfaite* : les producteurs sont des *preneurs de prix*, ils *réagissent au marché*, sans l'impacter, et agissent en maximisant leur profit
+-   Monopole : le producteur est *faiseur de prix*, en fonction de l'élasticité de la demande, il fixe le prix et les quantités offertes sur le marché pour maximiser son profit
+:::
+
+## Les oligopoles
+
+::: {.callout-tip title="Définition"}
+Les **oligopoles** sont des situations de *marché* où un nombre *fini* et **restreint** d'entreprises se partagent le marché.
+:::
+
+Exemples:
+
+## Pourquoi une analyse spécifique aux oligopoles?
+
+Imaginez une entreprise en situation de *monopole*, du fait d'une barrière technologique (i.e. un brevet, ou simplement, d'autres entreprises n'ont pas la technologie)
+
+::: incremental
+-   Un nouveau concurrent arrive sur le marché
+-   L'ancien monopole doit **s'adapter** et **réagir** à l'entrée du concurrent, et vice versa pour le concurrent
+-   On a ce qu'on appelle des **interactions stratégiques** i.e. une situation où le profit des agents **dépend** des actions **des autres agents**\
+:::
+
+[On se focalise aujourd'hui sur les **duopoles**, i.e. situations à 2 entreprises]{.fragment}
+
+## Différents types de duopoles en fonction des caractéristiques
+
+::: incremental
+-   *Duopoles* avec des produits et une information **homogènes** :
+    -   Même produits
+    -   Connaissance *parfaite* des coûts de production de tout le monde
+-   Dans le cadre de *jeux* (cf. théorie des jeux):
+    -   Simultanés
+    -   Séquentiels
+-   avec différents *variables stratégiques* :
+    -   Les entreprises fixent leurs **quantités**
+    -   Les entreprises fixent leurs **prix**
+-   Avec une **fonction de demande inverse** : $P(Q)= P(Q_A+Q_B)$ avec $P'(Q)<0$
+:::
+
+# I. Le duopole de Cournot
+
+## Le duopole de Cournot - théorie
+
+Deux entreprises $A$ et $B$ se font concurrence en *quantités* : elles choissent combien d'unités mettre sur le marché, pas les prix.
+
+::: incremental
+-   Intuition sur le comportement?
+    -   Plus il y a de quantités, plus le prix baisse: il y a une **interaction** par le prix $P(Q) = P(Q_1 + Q_2)$
+    -   *Plus* mon concurrent produit, plus il baisse les prix (mais augmente son volume et peut-être ses recettes totales), *mais* j'en souffre *donc* je produis moins
+    -   *Moins* mon concurrent produit, plus les prix sont hauts (mais son volume est bas, et ses recettes totales baissent peut être) *mais* j'en bénéficie *donc* je produis plus
+-   *Un intérêt commun à réduire la production*
+:::
+
+------------------------------------------------------------------------
+
+## Le duopole de Cournot - théorie
+
+::: incremental
+-   Pour chaque entreprise :
+    -   $CT_i(q_i)$ est le coût total
+    -   $Cm_i(q_i) = CT_i'(q_i)$ est le coût marginal de production
+    -   $q_j^E$ est l'anticipation relative à la production du concurrent
+    -   Le profit s'écrit : $\Pi_i(q_i; \mathbf{q_j^E}) = P(Q)q_i - CT(q_i) = P(q_i+q_j^E)q_i - CT(q_i)$
+    -   Chaque entreprise maximise son profit[^1] : $$\begin{align}
+        \Pi_i'(q_i;\mathbf{q_j^E}) &= P'(q_i+q_j^E)q_i + P(q_i+q_j^E) - Cm(q_i) = 0\\
+                                 & \Rightarrow q_i^* = q_i(q_j^E)
+        \end{align}$$
+:::
+
+[^1]: La condition du premier ordre suffit sous réserve que les conditions de second ordre tiennent
+
+## Le duopole de Cournot - théorie
+
+::: incremental
+-   Chaque entreprise aboutit à une **fonction de réaction** i.e. fonction de *meilleure réponse* conditionnellement à la production attendue de son concurrent
+    -   Quel est le signe de $q_i^{*'}(\mathbf{q_j^E})$ ?
+    -   On peut prouver que $q_i^{*'}(\mathbf{q_j^E})<0$, conformément aux intuitions
+-   Comment trouver l'équilibre?
+    -   Ici, on regarde le *long terme* : une convergence, où il n'y a plus intérêt de bouger c'est à dire [**un équilibre de Nash**]{.fragment .fade-in}
+    -   Sous la forme d'un jeu *simultané* :
+        -   On décide une bonne fois pour toute avec toute l'information
+        -   En résolvant un système d'équations simultanées
+:::
+
+## Le duopole de Cournot - Exemple
+
+:::::: columns
+::: column
+<a href="https://fr.statista.com/infographie/30834/agrochimie-oligopole-parts-de-marche-des-quatre-plus-grands-groupes-de-semences-et-pesticides/" title="Infographie: L'oligopole de l'agrochimie | Statista"><img src="https://cdn.statcdn.com/Infographic/images/normal/30834.jpeg" alt="Infographie: L&apos;oligopole de l&apos;agrochimie | Statista" width="100%" height="auto" style="width: 100%; height: auto !important; max-width:960px;-ms-interpolation-mode: bicubic;"/>
+
+</a> Vous trouverez plus d'infographie sur <a href="https://fr.statista.com/graphique-du-jour/">Statista</a>
+:::
+
+:::: column
+::: incremental
+-   On **simplifie**, on prend deux entreprises, $A$ et $B$ et:
+    -   On suppose que leur coûts totaux de production sont linéaires: $CT_i(q_i) = cq_i$
+    -   On normalize la demande inverse : $P(Q) = 1 - (q_A + q_B)$
+    -   Le profit est donc : $\Pi_i(q_i, \mathbf{q_j^E}) = q_i (1 - c - (q_i+ \mathbf{q_j^E}))$
+:::
+::::
+::::::
+
+## Le duopole de Cournot - exemple
+
+Chacun maximise son profit, en prenant les actions de son concurrent comme donnée, anticipée: $$ \begin{align}
+\Pi'(q_i) = 0 &\iff (1 - c - 2q_i - \mathbf{q_j^E})=0\\
+              &\iff q_i^* = \frac{1 - c - \mathbf{q_j^E}}{2}
+\end{align}$$
+
+La stratégie du concurrent est *connaissance commune* :
+
+::: incremental
+-   Chaque entreprise connaît la stratégie de l'autre, et peut remplacer $\mathbf{q_j^E}$ par $q_j^*$
+-   Et résout un système d'équation simultanées :
+:::
+
+## Le duopole de Cournot - exemple
+
+::::: {.columns .incremental}
+::: {.column width="30%"}
+$$\begin{align}
+q_A^* = \frac{1 - c - \mathbf{q_B^E}}{2}\\
+q_B^* = \frac{1 - c - \mathbf{q_A^E}}{2}
+\end{align}$$ Donc : $$
+q_A^* = q^*_B = \frac{1-c}{3}
+$$
+:::
+
+::: {.column width="70%"}
+```{r, echo = F}
+library(dplyr)
+library(ggplot2)
+
+
+```
+:::
+:::::
+
+## Le duopole de Cournot - exemple
+
+::::: {.columns .incremental}
+::: {.column width="30%"}
+$$\begin{align}
+q_A^* = \frac{1 - c - \mathbf{q_B^E}}{2}\\
+q_B^* = \frac{1 - c - \mathbf{q_A^E}}{2}
+\end{align}$$ Donc : $$
+q_A^* = q^*_B = \frac{1-c}{3}
+$$
+:::
+
+::: {.column width="70%"}
+```{r, echo = F}
+library(dplyr)
+library(ggplot2)
+c= .1
+data = data.frame(x = seq(0,1,.01),
+                  y = seq(0,1,.01))%>%
+  mutate(
+                  qA = (1-c -x)/2,
+                  qB = (1-c -2*x))
+data %>%
+  ggplot(aes(x = x))+
+  geom_line(aes(y = qA), color = 'firebrick', linewidth = 1)+
+  geom_line(aes(y = qB), color = 'dodgerblue', linewidth = 1)+
+  geom_hline(yintercept = (1-c)/3, linetype = 'dashed', linewidth = .5)+
+  geom_vline(xintercept = (1-c)/3, linetype = 'dashed', linewidth = .5)+
+  ylim(0,1)+
+  annotate("text", x = .1, y = .8, label = "qB", size = 4, color = "dodgerblue")+
+  annotate("text", x = .8, y = .1, label = "qA", size = 4, color = "firebrick")+
+  xlab(" ")+
+  ylab(' ')+
+  theme_minimal()
+
+```
+:::
+:::::
+
+## Le duopole de Cournot
+
+::: incremental
+-   Dans ce cas, il y a un profit réalisé, positif: $\Pi_i= \left(\frac{1-c}{3}\right)^2$
+    -   On y reviendra
+-   Dans la pratique, on peut avoir un autre type de cas, où une firme domine :
+    -   Une firme est présente depuis longtemps
+    -   L'autre arrive, et n'a pas encore toutes les capacités de production installées etc.
+-   Cela donne lieu à un jeu *séquentiel* dans le cadre du duopole de *Stackelberg*
+:::
+
+# II.  Le duopole de Stackelberg
