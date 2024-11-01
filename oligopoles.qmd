@@ -14,20 +14,35 @@ format:
     verticalSeparator: '^#'    # Creates vertical movement between main sections
     separator: '^##'
     transition: fade
-    navigationMode: linear      # Allows both vertical and horizontal navigation
-
+    navigationMode: grid      # Allows both vertical and horizontal navigation
+    controls: false
+    self-contained: true
 
     
 editor: visual
 ---
 
-# Introduction
+# Introduction {#sec-intro}
 
-## La concurrence imparfaite - rappels
+## Rappels : concurrence pure et parfaite a concurrence imparfaite - rappels
 
 ::: incremental
--   Concurrence *pure et parfaite* : les producteurs sont des *preneurs de prix*, ils *réagissent au marché*, sans l'impacter, et agissent en maximisant leur profit
--   Monopole : le producteur est *faiseur de prix*, en fonction de l'élasticité de la demande, il fixe le prix et les quantités offertes sur le marché pour maximiser son profit
+-   Concurrence *pure et parfaite*: 
+    -   Les producteurs sont des *preneurs de prix*, ils *réagissent au marché*, sans l'impacter, et agissent en maximisant leur profit
+    -   L'offre est déterminée par $p = Cm(q)$ i.e. on s'arrête de produire lorsque le coût marginal dépasse le prix, et le prix de vente reflète le coût marginal de la dernière unité produite
+    -   Cette situation maximise le **surplus collectif**, incluant celui du consommateur
+:::
+
+## Rappels : le monopole
+
+:::{.incremental}
+-   Monopole : 
+    - Le producteur est *faiseur de prix*, en fonction de l'élasticité de la demande, il fixe le prix et les quantités offertes sur le marché pour maximiser son profit
+    - Il tarifie au delà du coût marginal, le prix est tel que $p= \frac{1}{1 +\eta}Cm(q)$ où $\eta$ est la réciproque de l'elasticité de la demande, et $\frac{1}{1+ \eta}$ est le *taux de markup*
+    - Comme il tarifie au delà du coût marginal:
+        - Moins de quantités sont consommées
+        - A un plus haut prix
+        - Causant une perte de surplus collectif et une *redistribution* du surplus des consommateurs vers l'entreprise
 :::
 
 ## Les oligopoles
@@ -35,6 +50,8 @@ editor: visual
 ::: {.callout-tip title="Définition"}
 Les **oligopoles** sont des situations de *marché* où un nombre *fini* et **restreint** d'entreprises se partagent le marché.
 :::
+
+[Au milieu entre la concurrence pure et parfaite où il y'a $n \to \infty$ firmes et le monopole où il y a $n=1$ firme]{.fragment}
 
 Exemples:
 
@@ -148,8 +165,8 @@ La stratégie du concurrent est *connaissance commune* :
 ::::: {.columns .incremental}
 ::: {.column width="30%"}
 $$\begin{align}
-q_A^* = \frac{1 - c - \mathbf{q_B^E}}{2}\\
-q_B^* = \frac{1 - c - \mathbf{q_A^E}}{2}
+q_A^{*C} = \frac{1 - c - \mathbf{q_B^E}}{2}\\
+q_B^{*C} = \frac{1 - c - \mathbf{q_A^E}}{2}
 \end{align}$$ Donc : $$
 q_A^* = q^*_B = \frac{1-c}{3}
 $$
@@ -178,7 +195,48 @@ $$
 :::
 
 ::: {.column width="70%"}
-```{r, echo = F}
+
+```{r, echo = F, layout="[[-1], [1], [-1]]"}
+library(dplyr)
+library(ggplot2)
+c= .1
+data = data.frame(x = seq(0,1,.01),
+                  y = seq(0,1,.01))%>%
+  mutate(
+                  qA = (1-c -x)/2,
+                  qB = (1-c -2*x))
+data %>%
+  ggplot(aes(x = x))+
+  geom_line(aes(y = qA), color = 'firebrick', linewidth = 1)+
+  #geom_line(aes(y = qB), color = 'dodgerblue', linewidth = 1)+
+  #geom_hline(yintercept = (1-c)/3, linetype = 'dashed', linewidth = .5)+
+  #geom_vline(xintercept = (1-c)/3, linetype = 'dashed', linewidth = .5)+
+  ylim(0,1)+
+  #annotate("text", x = .1, y = .8, label = "qB", size = 4, color = "dodgerblue")+
+  annotate("text", x = .8, y = .1, label = "qA", size = 4, color = "firebrick")+
+  xlab(" ")+
+  ylab(' ')+
+  theme_minimal()
+
+```
+:::
+:::::
+
+## Le duopole de Cournot - exemple
+
+::::: {.columns .incremental}
+::: {.column width="30%"}
+$$\begin{align}
+q_A^* = \frac{1 - c - \mathbf{q_B^E}}{2}\\
+q_B^* = \frac{1 - c - \mathbf{q_A^E}}{2}
+\end{align}$$ Donc : $$
+q_A^* = q^*_B = \frac{1-c}{3}
+$$
+:::
+
+::: {.column width="70%"}
+
+```{r, echo = F, layout="[[-1], [1], [-1]]"}
 library(dplyr)
 library(ggplot2)
 c= .1
@@ -206,7 +264,7 @@ data %>%
 
 ## Le duopole de Cournot
 
-::: incremental
+:::{.incremental}
 -   Dans ce cas, il y a un profit réalisé, positif: $\Pi_i= \left(\frac{1-c}{3}\right)^2$
     -   On y reviendra
 -   Dans la pratique, on peut avoir un autre type de cas, où une firme domine :
@@ -216,3 +274,80 @@ data %>%
 :::
 
 # II.  Le duopole de Stackelberg
+
+## Théorie
+
+:::{.incremental}
+- Cadre de jeu **séquentiel** donc : 
+  - Un premier joueur choisit sa production
+  - Le second suit <br>
+  [Comment?]{.fragment}
+- On se rappelle que toute l'information est partagée:
+  - Le premier joueur connaît la *fonction de réaction* du second, et l'intègre dans sa décision
+  <br>
+  [Méchanisme **d'induction à rebours** : on remonte du dernier choix possible au premier pour résoudre le jeu]{.fragment}
+  - Le second observe la quantité produite et s'adapte
+:::  
+
+## Théorie
+
+Si on suppose que l'entreprise A est leader, elle maximise son profit $\Pi_A = p(q_A, q_B^*(q_A))q_A - CT(q_A)$
+
+[On a : $$\frac{\partial \Pi_A}{\partial q_A} = 0 \Rightarrow q_A^*$$]{.fragment}
+
+[Et *in fine* $q_B(q_A^*) = q_B^*$]{.fragment}
+
+## Exemple 
+
+On suppose maintenant que la firme A, leader, est plus efficiente à produire : 
+
+:::{.incremental}
+- $CT_A(q_A) = \frac{1}{2}q_A^2$
+- $CT_B(q_B) = 2q_B^2$
+- Etape 1 : on détermine la fonction de réaction de l'entreprise suiveuse : 
+$$
+\frac{\partial }{\partial q_B}((1 - q_A - q_B)q_B - 2q_B^2) = 1 - q_A  - 6 q_B^2 = 0 \Rightarrow q_B(q_A) = \frac{1 - q_A}{6}
+$$
+:::
+
+## Exemple 
+
+:::{.incremental}
+- Etape 2 : la firme A, leader, intègre cela dans sa décision : $\Pi_A(q_A) = \left(1 - q_A - \frac{1-q_A}{6} \right)q_A - \frac{1}{2}q_A^2$
+$$
+\Pi_A'(q_A)=0 \Rightarrow q_A^{*S} = \frac{5}{16}= 0.3125$$
+- Etape 3 : la firme B réagit effectivement et produit : $q_B = \frac{11}{96}\approx 0.1145$
+:::
+
+
+## Conclusion
+
+:::{.incremental}
+- La firme B produit moins que la firme A (double effet dans l'exemple):
+  - Avantage du premier joueur
+  - Différence de coût
+- On effectue une analyse statique et certaine ici:
+  - Dans les faits, les firmes **anticipent** les actions de leurs concurrents
+  - Ces anticipations se fondent sur des *annonces* et leur *crédibilité*
+  - Une firme leader doit correctement anticiper la réaction de la firme suiveuse, qui doit elle même faire des annonces crédibles
+  - Il est possible que ce ne soit pas le cas : si la firme suiveuse dit produire énormément sur un marché où elle vient d'entrer, pas sûr que la firme leader y croit. Cette dernière agit alors sur la base de ses propres estimations
+
+:::
+
+# III. Le duopole de Bertrand
+
+## Set-up
+
+:::{.incremental}
+- Concurrence en prix
+- Niveau concurrentiel etc
+:::
+
+# Conclusion
+
+## Qui s'applique quand?
+
+## Pourquoi s'en faire? 
+
+
+
