@@ -1,0 +1,523 @@
+---
+title: "Théorie des jeux et économie industrielle"
+author:
+  - name: Simon Jean
+    orcid: 0000-0002-3965-8630
+    email: simon.jean@agroparistech.fr
+    affiliations: AgroParisTech - CIRED - PSAE
+
+format: 
+  revealjs:
+    theme: "/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    #"C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    slideNumber: true
+    verticalSeparator: ''    # Creates vertical movement between main sections
+    #separator: '^##'
+    transition: fade
+    navigationMode: linear      # Allows both vertical and horizontal navigation
+    controls: false
+    self-contained: true
+    html-math-method: mathjax
+    always_allow_html: true
+
+    
+editor: visual
+---
+
+
+# I. Rappel des concepts importants
+
+## Rappels
+
+:::{.incremental}
+-   Jeux simultanés ou séquentiels
+    -   Représentation **normale** : pour les jeux à 2 joueurs, et un espace de stratégies finies
+    -   Représentation **extensive** : arbre de décision
+    -   Représentation en meilleures réponses : on a les fonctions qui déterminent les stratégies des joueurs
+-   Concepts d'équilibre
+    -   **Equilibre de Nash** : allocation où les joueurs n'ont pas intérêt à changer de stratégie de façon **unilatérale**
+    -   **Equilibre parfait en sous-jeu** : raffinement de l'équilibre de Nash, il implique que 
+
+:::
+
+## Rappels et outline
+
+:::{.incremental}
+-   Types de solutions : 
+    -   Fonctions de meilleure réponse
+    -   Détermination des stratégies dominantes/dominées
+    -   Induction à rebours
+    
+:::
+
+[Aujourd'hui, le programme:]{.fragment}
+
+:::{.incremental}
+
+-   Jeux simultanés : équilibre de Nash, forme normale
+-   Jeux séquentiels : 
+-   Jeux répétés :
+-   Duopoles: cas d'étude
+
+:::
+
+# I. Jeux simultanés
+
+## Entreprises polluantes et régulation
+
+
+:::{.incremental style="font-size:90%"}
+-   Deux companies, A & B, sont dans une industrie en passe d'être plus régulée. Chaque entreprise a deux choix : 
+    -   Investir dans une technologie plus verte (**I**): cela représente un coût, mais améliore la performance environnementale, l'image publique, et réduit ainsi les probabilité de régulation du secteur
+    -   Continuer avec la technologie polluante (**C**): pas de coût, mais augmente le risque de régulation
+-   Payoff : 
+    -   Si les deux investissent, réduisent bien le risque de régulation, et ce qui couvre les coûts: $(3,3)$
+    -   Si l'un des deux seulement investit, il gagne un avantage compétitif en étant identifié comme plus soutenable, mais l'autre entreprise risque gros : $(4,1)$
+    -   Si aucun des deux n'investit, les coûts ne sont pas payés, mais il y a un risque accru de régulation : $(1.5, 1.5)$
+:::
+
+## Entreprises polluantes et régulation
+
+-   Ecrivez le jeu en forme normale
+
+:::{.fragment}
+
+```{r}
+
+# Load required libraries
+library(knitr)
+library(kableExtra)
+
+# Define the payoff matrix as a data frame for display
+payoff_matrix <- data.frame(
+  "Firme 2" = c("Firme 1:Investir", "Firme 1: Continuer"),
+  "Firme 1: Investir" = c("(3,3)", "(1.5,4)"),
+  "Firme 1: Continuer" = c("(4,1.5)", "(2,2)")
+)
+
+# Display the payoff matrix with kable
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("", "Firme 2: Investir", "Firme 2: Continuer")) %>%
+  kable_styling(full_width = F, position = "center")
+
+```
+:::
+## Entreprises polluantes et régulation
+
+-   Quels sont les choix de l'entreprise B?
+
+:::{.fragment}
+
+```{r}
+
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("", "Firme 2: Investir", "Firme 2: Continuer")) %>%
+  row_spec(2, background = "#f0f0f0", color = "#d0d0d0") %>%
+  kable_styling(full_width = F, position = "center")
+
+
+```
+:::
+
+:::{.fragment}
+```{r}
+
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("", "Firme 2: Investir", "Firme 2: Continuer")) %>%
+  row_spec(1, background = "#f0f0f0", color = "#d0d0d0") %>%
+  kable_styling(full_width = F, position = "center")
+
+```
+:::
+
+[C'est donc la stratégie de ne pas investir qui est **dominante**]{.fragment}
+
+## Entreprises polluantes et régulation
+
+-   Quels sont les choix de l'entreprise A?
+
+:::{.fragment}
+
+```{r}
+
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("","Firme 2: Investir", "Firme 2: Continuer"))%>%
+  column_spec(2, background = "#f0f0f0", color = "#d0d0d0") %>%
+  kable_styling(full_width = F, position = "center")
+
+
+
+```
+:::
+
+:::{.fragment}
+```{r}
+
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("", "Firme 2: Investir", "Firme 2: Continuer"))%>%
+  column_spec(3, background = "#f0f0f0", color = "#d0d0d0") %>%
+  kable_styling(full_width = F, position = "center")
+
+```
+:::
+
+[C'est donc la stratégie de ne pas investir qui est **dominante**]{.fragment}
+
+
+## Entreprises polluantes et régulation
+
+On a donc les stratégies dominantes suivantes : 
+
+```{r}
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("","Firme 2: Investir", "Firme 2: Continuer")) %>%
+  row_spec(2, color = "black", background = "lightgreen") %>% # Highlight Player 1's dominant strategy (B)
+  column_spec(3, color = "black", background = "red") %>% # Highlight Player 2's dominant strategy (A)
+  kable_styling(full_width = F, position = "center")
+```
+
+L'équilibre de Nash est (i) unique, et (ii) sous optimal
+
+## Dumping environmental
+
+Le Brésil et l'Union Européenne essaient de former un accord bilatéral pour des standards environnementaux de production. Chacun ont deux options:
+
+:::{.incremental style="font-size:90%"}
+-   Appliquer des standards élevés : cela implique des normes environnementales coûteuses, mais qui réduisent les pollutions
+-   Applique des standards bas : les coûts demeurent bas, mais la pollution est plus importante
+-   Payoffs : 
+    -   Si les deux mettent des standards élevés, les coûts sont importants mais la pollution est limitée: $(4,4)$
+    -   Si le Brésil applique des standards élevés, mais pas l'UE, la pollution se répend, n'est pas très limitée, les coûts sont élevés $(-1,0)$
+    -   Si les deux optent pour des standards bas, pollution importante mais coûts limités: $(1,1)$
+
+:::
+
+## Dumping environmental
+
+-   Représentez le jeu en forme normale
+
+:::{.fragment}
+
+```{r}
+# Load required libraries
+library(knitr)
+library(kableExtra)
+
+# Define the payoff matrix as a data frame
+payoff_matrix <- data.frame(
+  "Brésil" = c("Standards élevés(C)", "Standards Faibles (D)"),
+  "UE: Standards élevés(C)" = c("(4,4)", "(-1,0)"),
+  "UE: Standards faibles (D)" = c("(0,-1)", "(1,1)")
+)
+
+# Display the payoff matrix with kable
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("", "Standards élevés (C)", "Standards Faibles (D)")) %>%
+  kable_styling(full_width = F, position = "center") %>%
+  add_header_above(c(" " = 1, "Stratégie du Brésil" = 2))
+
+```
+
+:::
+
+## Dumping environmental
+
+-   Où sont le(s) équilibre(s) de Nash? 
+
+:::{.fragment}
+
+```{r}
+# Highlight best responses:
+# - For UE: Highest payoff in each column (3 and 1)
+# - For Brésil: Highest payoff in each row (3 and 2
+
+payoff_matrix <- data.frame(
+  "Brésil" = c("Standards élevés (C)", "Standards faibles (D)"),
+  "UE: Standards élevés (C)" = c(
+    cell_spec("(4,4)", , background = "red"),
+    "(-1,0)"# Highlight second row, second column
+  ),
+  "UE: Standards faibles (D)" = c(
+    "(0,-1)",  # Highlight first row, third column
+     cell_spec("(1,1)", background = "red")
+  )
+)
+
+# Display the payoff matrix
+payoff_matrix %>%
+  kable("html", escape = F, col.names = c("", "Brésil: Standards élevés (C)", "Brésil: Standards faibles (D)")) %>%
+  kable_styling(full_width = F, position = "center") %>%
+  add_header_above(c(" " = 1, "Stratégies du Brésil" = 2))
+```
+
+:::
+
+:::{.incremental}
+-   Pas de stratégie dominante
+-   Mais 2 équilibres de Nash : 
+    -   On a du mal à "choisir"
+    
+:::
+
+# Jeux séquentiels
+
+## Jeux séquentiels 1
+
+Prenez deux firmes Alpha et Beta, qui enchérissent de façon récursive pour l'obtention d'une licence d'exploitation. La firme A décide en premier, et la firme B réagit. Le jeu consiste en 3 rounds:
+
+:::{.incremental style="font-size:90%"}
+- Round 1 : Alpha décide : 
+    -   Enchère basee : passer au tour suivant
+    -   Enchère haute  : A gagne d'un coup : $A,B = (4,1)$
+- Round 2 : décision de Beta si Alpha a choisi une faible enchère
+    -   Enchère basse : passer au tour suivant
+    -   Enchère haute : Beta gagne le contrat avec $A,B= (1,4)$
+- Round 3 : décision finale de Alpha, si les deux enchères d'avant étaient basses
+    -   Enchère basse : personne ne gagne et $A,B=(0,0)$
+    -   Enchère haute : Alpha gagne mais doit partager avec Beta le contrat, $A,B=(3,2)$
+
+:::
+
+## Jeux séquentiels 1
+
+Représentez ce jeu sous forme extensive:
+
+```{r}
+run_local = "Mac"
+if(run_local == "PC"){
+  library(igraph)
+
+# Define nodes and edges
+  nodes <- data.frame(
+    name = c("Alpha1", "Beta1", "Alpha2", "P1", "P2", "P3", "P4"),
+    label = c("Alpha", "Beta", "Alpha", "(4,1)", "(1,4)", "(3,2)", "(0,0)")
+  )
+
+  edges <- data.frame(
+    from = c("Alpha1", "Alpha1", "Beta1", "Beta1", "Alpha2", "Alpha2"),
+    to = c("Beta1", "P1", "Alpha2", "P2", "P3", "P4"),
+    label = c("Low (L)", "High (H)", "Low (L)", "High (H)", "High (H)", "Low (L)")
+  )
+
+# Create the graph
+  g <- graph_from_data_frame(d = edges, vertices = nodes, directed = TRUE)
+
+# Plot the extensive form game
+  plot(g,
+       vertex.shape = "none", 
+       vertex.label.color = "black", 
+       vertex.label.cex = 1.2, 
+       edge.label = edges$label,
+       edge.label.cex = 0.9,
+       edge.arrow.size = 0.5,
+       main = "Extensive Form Game for Market Entry")
+}
+
+```
+
+## Jeux séquentiels 1
+
+Quel(s) est/sont le(s) équilibre(s) de Nash? 
+
+:::{.incremental}
+-   *(Elevée)* au Round 1
+-   *(Basse, Elevée)* au Round 2
+-   *(Basse, Basse, Elevée)* au round 3
+:::
+
+
+## Jeux séquentiels 1
+
+Utilisez *l'induction à rebours* pour trouver les équilibre(s) parfait(s) en sous-jeux
+
+:::{.incremental }
+-   Au round 3 : A choisira de miser *haut*, donc le payoff est de $(3,2)$
+-   Au round 2 : B peut choisir entre $(3,2)$ (en misant bas) et $(1,4)$ <br>
+[Il choisit donc $(1,4)$ et joue (haut)]{.fragment}
+-   Au round 1 : A sait que B jouera (haut) donc il a le choix entre $(1,4)$ et $(4,1)$<br>
+[Il choisit donc (haut)]
+:::
+
+## Jeux séquentiels 2 - Les pirates
+
+On va résoudre le **jeu des pirates** :
+
+:::{.incremental style="font-size:90%"}
+-   On a 5 pirates, notés de A à E, par ordre de force
+-   Ils arrivent sur une île déserte, et y trouvent 100 pièces d'or
+-   Le plus fort des pirates propose une répartition des pièces entre les pirates : 
+    -   Si une majorité stricte est contre, on le tue <br>
+    [Le pirate suivant propose une répartition]{.fragment}
+    -   Sinon, la répartition est adoptée <br>
+    [Le jeu est terminé]{.fragment}
+-   On suppose qu'ils sont : 
+    -   **rationnels** : ils veulent maximiser leur nombre de pièces, et préfèrent être pauvres que morts
+    -   **pas gratuitement cruels** : ils ne choisissent une alternative *que* si elle leur rapporte plus de pièces
+
+:::
+
+## Jeux séquentiels 2 - Les pirates
+**A compléter**
+:::{.incremental}
+
+-   Supposez que les 3 premiers pirates sont morts : quelle est la solution adoptée et l'équilibre de Nash? <br>
+[E doit tout accepter, donc D propose (D=100, E=0)]{.fragment}
+
+-   Supposez qu'il reste 3 pirates
+    -   C sait que D va offrir 0 à E
+    -   C, pour éviter de mourir, il offrira 1>0 à E, qui valide la répartition
+    -   C propose donc (C=99,D=0,E=1)
+-   Supposez qu'il reste 4 pirates
+    -   B sait que les votes de C, D, E iront contre toute répartition qui assurfe à E au moins une pièce. Il dit donc 
+-   Donnez la solution du jeu à 5 pirates
+    
+
+:::
+
+
+
+# Duopole
+
+## Exercice de duopole
+
+On prend encore deux entreprises, A et B. La fonction de demande inverse est $P(Q) = a-bQ$. Les coûts de production sont $CT(q_i)=c_iq_i$
+
+:::{.incremental}
+-   Exprimez la fonction de profit <br>
+    [$\Pi_i(q_i, q_j) = (a - b(q_i+q_j))q_i - c_i q_i$]{.fragment}
+-   A partir de l'équation de profit, trouvez les fonctions de réaction des deux entreprises. <br>
+  
+:::{.fragment}
+  $$
+  \begin{align}
+  \frac{\partial \Pi_i}{\partial q_i}= a - 2bq_i - bq_j - c &= 0\\
+  &\Rightarrow q_i(q_j) &= \frac{a - c_i - bq_j}{2b}
+  \end{align}
+  $$
+:::
+:::
+
+## Exercice de duopole
+
+::::{.incremental style="font-size:80%"}
+-   Déterminez le point d'équilibre du duopole, ainsi que les profits des deux entreprises <br>
+    
+:::{.fragment}
+$$
+\begin{align}
+q_A &= \frac{a-c_A}{3}\\
+q_B &= \frac{a-c_A}{3}
+\end{align}
+$$
+    
+:::
+
+-   Déterminez le prix d'équilibre et le profit de chaque entreprise en supposant que $c_A = c_B = c$
+
+:::{.fragment}
+$$
+\begin{align}
+p = \frac{a+c}{3}\\
+\Pi = \frac{(a-c)^2}{9}
+\end{align}
+$$
+
+:::
+
+::::
+
+## Exercice de duopole
+
+Maintenant, supposez que l'entreprise $A$ est leader, et la firme $B$ est suiveuse. Comment trouver l'équilibre? 
+
+:::{.incremental style="font-size:60%"}
+-   Premièrement, on peut reprendre la même fonction de réaction et l'intégrer dans le profit de l'entreprise $A$:
+
+:::{.fragment}
+$$ \Pi_A = \left(a -c - b \left( q_A + \frac{a-c-bq_A}{2b }\right)\right)q_A$$
+:::
+
+-   On peut donc trouver la quantité qui maximise le profit : 
+$$
+\begin{align}
+\Pi_A' = 0 \iff \left(a -c - \left(2bq_A + b\frac{a - c - 2bq_A}{2b}\right)\right) &= 0\\
+\Rightarrow q_A &= \frac{a-c}{2b}
+\end{align}
+$$
+
+- Et en déduire la quantité produite par B
+
+:::{.fragment}
+
+$$
+q_B = \frac{a-c}{4b}
+$$
+:::
+
+:::
+
+## Exercice de duopole
+
+On peut comparer les quantités et profits avec $a= 10$, $b=1$, $c=2$
+
+```{r, echo = F}
+library(ggplot2)
+values = c() 
+a = 10
+b = 1
+c = 2
+
+# Compute values in Cournot
+qAC =(a-c)/3
+qBC = qAC
+PiAc = (a - b*(qAC + qBC))*qAC-c*qAC
+PiBc = PiAc
+# Compute values in Stackelberg
+qAS = (a-c)/(2*b)
+qBS = (a - c)/(4*b) 
+P = (a - b*(qAS + qBS))
+PiAS = (P-c)*qAS
+PiBS = (P-c)*qBS
+
+values = c(qAC, qAS, PiAc, PiAS, qBC, qBS, PiBc, PiBS)
+names = rep(c('Q Cournot', 'Q Stackelberg', "Profit Cournot", "Profit Stackelberg"),2)
+marker = c("A", "A", "A", "A", "B", "B", "B", "B")
+
+data = data.frame(values, 
+                  names, 
+                  marker)
+
+data %>%
+  ggplot(aes(x = names, y = values, fill = marker))+
+  geom_bar(stat = "identity", position = "dodge")+
+  theme_minimal()+
+  ylab(" ")+
+  xlab(" ")+
+  labs(fill = "Firm")+
+  scale_fill_manual(values = c('dodgerblue', 'firebrick'))
+
+
+
+```
+
+## Collusion
+
+Les deux firmes ont-elles intérêt à opérer une collusion? 
+
+:::{.incremental style="font-size:70%"}
+-   Si la moitié du profit de monopole est supérieur au profit de concurrence en Cournot
+-   Quel est le profit de monopole? <br>
+[$$Pi = (a-c-bQ)Q$$]{.fragment}
+-   Quelle est la production optimale? <br>
+[$$a-c-2bQ=0 \Rightarrow Q = \frac{a-c}{2b}$$]{.fragment}
+-   Quel est le niveau de profit? <br>
+[$$P=\frac{a+c}{2} \Rightarrow \Pi = \frac{(a-c)^2}{4}$$]{.fragment}
+-   Donc le profit individiuel de chaque firme est : <br>
+[$$\Pi_A = \Pi_B = \frac{(a-c)^2}{8}>\frac{(a-c)^2}{9}$$]{.fragment}
+:::
+
+
+
+
+
+

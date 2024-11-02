@@ -1,30 +1,40 @@
 ---
 title: "Externalités et biens publics"
-author: "Enseignant Chercheur - AgroParisTech - CIRED - PSAE"
-subtitle: "Simon Jean"
-format: revealjs
+author:
+  - name: Simon Jean
+    orcid: 0000-0002-3965-8630
+    email: simon.jean@agroparistech.fr
+    affiliations: AgroParisTech - CIRED - PSAE
+
+format: 
+  revealjs:
+    theme: "/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    #"C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    slideNumber: true
+    verticalSeparator: ''    # Creates vertical movement between main sections
+    #separator: '^##'
+    transition: fade
+    navigationMode: linear      # Allows both vertical and horizontal navigation
+    controls: false
+    self-contained: true
+    html-math-method: mathjax
+    always_allow_html: true
+
+    
 editor: visual
 ---
 
-## La concurrence imparfaite - rappels
+# Introduction
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
 
-## Les oligopoles : exemples réels
+# I. Les externalités
 
-## Pourquoi une analyse spécifique aux oligopoles?
 
-## 
+# II. Les biens publics
 
-When you click the **Render** button a document will be generated that includes:
+Définition
+Problème du dilemme du prisonnier
+Manières de le contrer avec la tarification incitative
 
--   Content authored with markdown
--   Output from executable code
 
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
+#

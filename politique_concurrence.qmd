@@ -1,12 +1,30 @@
 ---
 title: "Concurrence Imparfaite 3 : Politiques de la Concurrence"
-author: "Enseignant Chercheur - AgroParisTech - CIRED - PSAE"
-subtitle: "Simon Jean"
+author:
+  - name: Simon Jean
+    orcid: 0000-0002-3965-8630
+    email: simon.jean@agroparistech.fr
+    affiliations: AgroParisTech - CIRED - PSAE
+
 format: 
   revealjs:
-    transition: slide
-  
+    theme: "/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    #"C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    slideNumber: true
+    verticalSeparator: ''    # Creates vertical movement between main sections
+    #separator: '^##'
+    transition: fade
+    navigationMode: linear      # Allows both vertical and horizontal navigation
+    controls: false
+    self-contained: true
+    html-math-method: mathjax
+    always_allow_html: true
+
+    
 editor: visual
+---
+
+# Introduction {#sec-intro}
 ---
 
 ## La concurrence imparfaite - rappels
