@@ -9,8 +9,8 @@ author:
 
 format: 
   revealjs:
-    theme: "/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
-    #"C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    theme: "C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    #"/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
     slideNumber: true
     verticalSeparator: ''    # Creates vertical movement between main sections
     #separator: '^##'
@@ -47,6 +47,179 @@ editor: visual
     -   A un plus haut prix
     -   Causant une perte de surplus collectif et une *redistribution* du surplus des consommateurs vers l'entreprise
 :::
+
+## Perte sèche
+
+```{r, echo = F}
+# Load necessary library
+# Load necessary library
+library(ggplot2)
+
+# Load necessary library
+library(ggplot2)
+
+# Define demand, marginal cost, and marginal revenue functions
+demand <- function(Q) { 100 - 2 * Q }       # Demand curve
+marginal_cost <- function(Q) { 20 }         # Constant marginal cost
+marginal_revenue <- function(Q) { 100 - 4 * Q } # MR is twice as steep as Demand
+
+# Create data frame
+Q_values <- seq(0, 40, by = 0.1)
+data <- data.frame(
+  Q = Q_values,
+  Demand = demand(Q_values),
+  MarginalCost = marginal_cost(Q_values),
+  MarginalRevenue = marginal_revenue(Q_values)
+)
+
+# Equilibrium quantities and prices
+Q_competition <- 40
+P_competition <- demand(Q_competition)
+
+Q_monopoly <- 20
+P_monopoly <- demand(Q_monopoly)
+
+# Define points for deadweight loss polygon
+dwl_data <- data.frame(
+  Q = c(Q_monopoly, Q_competition, Q_competition, Q_monopoly),
+  Price = c(marginal_cost(Q_monopoly), marginal_cost(Q_competition), P_competition, P_monopoly)
+)
+
+# Plot the curves and DWL area
+ggplot(data, aes(x = Q)) +
+  geom_line(aes(y = Demand), color = "dodgerblue", size = 1.2) +              # Demand curve
+  geom_line(aes(y = MarginalCost), color = "forestgreen", linetype = "dashed", size = 1.2) + # Marginal Cost
+  #geom_line(aes(y = MarginalRevenue), color = "firebrick", linetype = "dotted", size = 1.2) + # Marginal Revenue
+  geom_vline(xintercept = Q_competition, color = "forestgreen", linetype = "dashed") +        # Q in competition
+  #geom_vline(xintercept = Q_monopoly, color = "firebrick", linetype = "dotted") +             # Q in monopoly
+  #geom_polygon(data = dwl_data, aes(x = Q, y = Price), fill = "firebrick", alpha = 0.3) +  # DWL area
+  annotate("text", x = Q_competition - 3,y = P_competition - 4, label = "Perfect Competition", color = "forestgreen") +
+  #annotate("text", x = Q_monopoly - 2, y = P_monopoly + 9, label = "Monopoly", color = "firebrick") +
+  labs(
+    title = "Deadweight Loss of a Monopoly",
+    x = "Quantity (Q)",
+    y = "Price (P)",
+    caption = "Demand, Marginal Cost, and Marginal Revenue Curves"
+  ) +
+  ylim(0,100)+
+theme_minimal() +
+  theme(
+    panel.grid = element_blank()   # Remove all grid lines
+  )
+```
+
+## Perte sèche
+
+```{r}
+# Load necessary library
+library(ggplot2)
+
+# Define demand, marginal cost, and marginal revenue functions
+demand <- function(Q) { 100 - 2 * Q }       # Demand curve
+marginal_cost <- function(Q) { 20 }         # Constant marginal cost
+marginal_revenue <- function(Q) { 100 - 4 * Q } # MR is twice as steep as Demand
+
+# Create data frame
+Q_values <- seq(0, 40, by = 0.1)
+data <- data.frame(
+  Q = Q_values,
+  Demand = demand(Q_values),
+  MarginalCost = marginal_cost(Q_values),
+  MarginalRevenue = marginal_revenue(Q_values)
+)
+
+# Equilibrium quantities and prices
+Q_competition <- 40
+P_competition <- demand(Q_competition)
+
+Q_monopoly <- 20
+P_monopoly <- demand(Q_monopoly)
+
+# Define points for deadweight loss polygon
+dwl_data <- data.frame(
+  Q = c(Q_monopoly, Q_competition, Q_competition, Q_monopoly),
+  Price = c(marginal_cost(Q_monopoly), marginal_cost(Q_competition), P_competition, P_monopoly)
+)
+
+# Plot the curves and DWL area
+ggplot(data, aes(x = Q)) +
+  geom_line(aes(y = Demand), color = "dodgerblue", size = 1.2) +              # Demand curve
+  geom_line(aes(y = MarginalCost), color = "forestgreen", linetype = "dashed", size = 1.2) + # Marginal Cost
+  geom_line(aes(y = MarginalRevenue), color = "firebrick", linetype = "dotted", size = 1.2) + # Marginal Revenue
+  geom_vline(xintercept = Q_competition, color = "forestgreen", linetype = "dashed") +        # Q in competition
+  geom_vline(xintercept = Q_monopoly, color = "firebrick", linetype = "dotted") +             # Q in monopoly
+  #geom_polygon(data = dwl_data, aes(x = Q, y = Price), fill = "firebrick", alpha = 0.3) +  # DWL area
+  annotate("text", x = Q_competition - 3, y = P_competition - 4, label = "Perfect Competition", color = "forestgreen") +
+  annotate("text", x = Q_monopoly - 2, y = P_monopoly + 9, label = "Monopoly", color = "firebrick") +
+  labs(
+    title = "Deadweight Loss of a Monopoly",
+    x = "Quantity (Q)",
+    y = "Price (P)",
+    caption = "Demand, Marginal Cost, and Marginal Revenue Curves"
+  ) +
+  ylim(0,100)+
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()   # Remove all grid lines
+  )
+```
+
+## Perte sèche
+
+```{r}
+# Load necessary library
+library(ggplot2)
+
+# Define demand, marginal cost, and marginal revenue functions
+demand <- function(Q) { 100 - 2 * Q }       # Demand curve
+marginal_cost <- function(Q) { 20 }         # Constant marginal cost
+marginal_revenue <- function(Q) { 100 - 4 * Q } # MR is twice as steep as Demand
+
+# Create data frame
+Q_values <- seq(0, 40, by = 0.1)
+data <- data.frame(
+  Q = Q_values,
+  Demand = demand(Q_values),
+  MarginalCost = marginal_cost(Q_values),
+  MarginalRevenue = marginal_revenue(Q_values)
+)
+
+# Equilibrium quantities and prices
+Q_competition <- 40
+P_competition <- demand(Q_competition)
+
+Q_monopoly <- 20
+P_monopoly <- demand(Q_monopoly)
+
+# Define points for deadweight loss polygon
+dwl_data <- data.frame(
+  Q = c(Q_monopoly, Q_competition, Q_competition, Q_monopoly),
+  Price = c(marginal_cost(Q_monopoly), marginal_cost(Q_competition), P_competition, P_monopoly)
+)
+
+# Plot the curves and DWL area
+ggplot(data, aes(x = Q)) +
+  geom_line(aes(y = Demand), color = "dodgerblue", size = 1.2) +              # Demand curve
+  geom_line(aes(y = MarginalCost), color = "forestgreen", linetype = "dashed", size = 1.2) + # Marginal Cost
+  geom_line(aes(y = MarginalRevenue), color = "firebrick", linetype = "dotted", size = 1.2) + # Marginal Revenue
+  geom_vline(xintercept = Q_competition, color = "forestgreen", linetype = "dashed") +        # Q in competition
+  geom_vline(xintercept = Q_monopoly, color = "firebrick", linetype = "dotted") +             # Q in monopoly
+  geom_polygon(data = dwl_data, aes(x = Q, y = Price), fill = "firebrick", alpha = 0.3) +  # DWL area
+  annotate("text", x = Q_competition - 3, y = P_competition - 4, label = "Perfect Competition", color = "forestgreen") +
+  annotate("text", x = Q_monopoly - 2, y = P_monopoly + 9, label = "Monopoly", color = "firebrick") +
+  labs(
+    title = "Deadweight Loss of a Monopoly",
+    x = "Quantity (Q)",
+    y = "Price (P)",
+    caption = "Demand, Marginal Cost, and Marginal Revenue Curves"
+  ) +
+  ylim(0,100)+
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()   # Remove all grid lines
+  )
+
+```
 
 ## Les oligopoles
 
@@ -419,9 +592,11 @@ En situation de duopole, si la concurrence se fait en prix, l'allocation d'équi
 
 ::: incremental
 -   En termes de politique publique, dans ce cas, l'Etat n'aurait pas besoin d'agir, de réguler les marchés
+
 -   Pour les entreprises, la guerre des prix implique pas de profit <br> [Quelles sont les marges pour en sortir?]{.fragment}
 
 -   Comment résoudre le paradoxe?
+
     -   Avec des produits différenciés
     -   Des interactions répétées
     -   De l'information imparfaite (*Paradoxe de Diamond*)
@@ -460,6 +635,7 @@ Il faut maintenir les barrières à l'entrée basses pour éviter les oligopoles
 -   C'est strictement **interdit** (modulo quelques exceptions) dans le cadre du droit de la concurrence (Articles 101,102 et 107-109 du TFUE)
 
 -   Problématiques de stabilité des collusions:
+
     -   Il peut y avoir un intérêt à dévier pour augmenter ses profits avant de se faire attraper: si tout le monde réduit la production, on bénéficie de produire plus à la marge et de dévier de la stratégie commune
     -   Il y a un intérêt à dénoncer en premier un cartel pour bénéficier du *programme de clémence*
 :::
@@ -468,10 +644,10 @@ Il faut maintenir les barrières à l'entrée basses pour éviter les oligopoles
 
 ## Définition et enjeux
 
-:::{.incremental}
+::: incremental
 -   Les produits ne sont plus homogènes : on a différentes variétés (i.e. différenciation horizontale)
 -   Par conséquent, chaque entreprise a un *pouvoir de marché* sur son segment, qui est limité, là où elle faisait face à une demande horizontale en concurrence pure et parfaite
--   La limite vient de la substituabilité avec d'autres produits proches : on utilise des fonctions de demande qui prennent en compte la variété et les substitutions imparfaites 
+-   La limite vient de la substituabilité avec d'autres produits proches : on utilise des fonctions de demande qui prennent en compte la variété et les substitutions imparfaites
 -   La différenciation explique le commerce *intrabranche* entre pays (voir les travaux de P.Krugman) (60% des échanges): la France exporte des voitures vers l'Allemagne et réciproquement
 :::
 
@@ -483,6 +659,7 @@ Il faut maintenir les barrières à l'entrée basses pour éviter les oligopoles
 -   Il est parfois difficile de savoir qui s'applique quand, quel modèle pour analyser quelle situation
 
 -   Variable clé : l'ajustabilité des capacités de production
+
     -   Si la capacité de production s'ajuste facilement, on peut s'attendre à une concurrence en prix <br> [Marchés de services]{.fragment}
     -   Si le contraire est vrai, la concurrence à la Cournot semble plus appropriée <br> [Marchés de biens]{.fragment}
 :::
