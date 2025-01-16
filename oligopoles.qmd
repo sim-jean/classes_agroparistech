@@ -56,7 +56,6 @@ editor: visual
 library(ggplot2)
 
 # Load necessary library
-library(ggplot2)
 
 # Define demand, marginal cost, and marginal revenue functions
 demand <- function(Q) { 100 - 2 * Q }       # Demand curve

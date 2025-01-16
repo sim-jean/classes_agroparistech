@@ -1,0 +1,97 @@
+---
+title: "Economie des ressources renouvelables"
+author:
+  - name: Simon Jean
+    orcid: 0000-0002-3965-8630
+    email: simon.jean@agroparistech.fr
+    affiliations: AgroParisTech - CIRED - PSAE
+
+format: 
+  revealjs:
+    theme: "C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    #"/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    slideNumber: true
+    verticalSeparator: ''    # Creates vertical movement between main sections
+    #separator: '^##'
+    transition: fade
+    navigationMode: linear      # Allows both vertical and horizontal navigation
+    controls: false
+    self-contained: true
+    html-math-method: mathjax
+    always_allow_html: true
+
+    
+editor: visual
+---
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(extrafont)
+library(here)
+
+loadfonts(device = "win") 
+
+local_family = "Arial"
+
+source(here("utilities.R"))
+```
+
+# Introduction {#sec-intro}
+
+Ce cours est repris du cours de [Vincent Martinet](https://sites.google.com/site/martinetvincent/home/teaching/eddee), directeur de recherche INRAE à Paris Saclay Applied Economics, qui l'enseigne habituellement. Il est cette année en visite académique à [l'Environmental Markets Lab (emLab)](https://emlab.ucsb.edu/). Je le remerice chaleureusement!
+
+# I. Le modèle de Gordon Schaeffer {#sec-gordon}
+
+## Un peu d'histoire
+
+Un peu d'histoire : lire et synthétiser le papier de Baptiste
+
+## Biologie du modèle
+
+Schaeffer (1954) développe les notations suivantes :
+
+-   $B_t$ dénote la biomasse de ressource
+-   $B_{sup}$ dénote la capacité de charge de l'écosystème
+-   $F(B)$ dénote la régénération de la ressource renouvelable de telle sorte que :
+    -   Pour $B<B_{sup}$, $F'(B)>0$
+    -   Pour $B>B_{sup}$, $F'(B)>0$
+    -   $F''(B)<$ : la ressource croît à un rythme décroissant, et décroît à un rythme croissant Propriété de single peak
+
+------------------------------------------------------------------------
+
+::: callout-tip
+## La fonction logistique
+
+Développée par Pierre François Verhulst (1838) dans *Notice sur la loi que la population suit dans son accroissement.*, en réaction aux théories démographiques développées par Malthus, supposant une croissance exponentielle des populations. Verhulst introduit une *rétroaction* du niveau de population : lorsque la population devient trop proche de ses limites écologiques, elle tend à réduire. Cette contribution est redécouverte au cours des années 1920-1930 pour modéliser les populations animales et végétales.
+
+$$\frac{dB_t}{dt} = rB_t \left(1 - \frac{B_t}{B_{sup}}\right)$$
+
+Où $r$ est le taux de croissance intrinsèque (quand la population est proche de 0) et mesure la rapidité de convergence vers la capacité de charge
+:::
+
+------------------------------------------------------------------------
+
+```{r, height='100%', fig.align='center'}
+
+ # For Windows, or use "pdf" or "postscript" for other devices
+
+
+logistic_growth = function(x, r_ = r, B_ = B_sup){
+  y = r_*x*(1-x/B_)
+  return(y)
+}
+
+B_sup = 100
+r = .2
+
+data = data.frame(B = seq(0,B_sup))%>%
+  mutate(Croissance = logistic_growth(B))
+
+data %>%
+  ggplot(aes(x = B, y = Croissance))+
+  geom_line(linewidth = 1.2)+
+  custom_theme()
+```
+
+------------------------------------------------------------------------
