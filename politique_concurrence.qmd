@@ -21,6 +21,8 @@ format:
     html-math-method: mathjax
     always_allow_html: true
 
+output-dir: C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/classes_agroparistech/classes_compiled
+
     
 editor: visual
 ---

@@ -1,0 +1,18 @@
+---
+title: "Economie écologique de la biodiversité"
+subtitle: "Economie Ecologique"
+---
+
+## Notes for the lecture
+
+- Limites de l'analyse coûts bénéfices
+  - Analyse multicritères
+  - mesure des services écosystémiques
+
+- Institutions et politiques de gestion des ressources:
+  - Les réserves etc
+  
+  
+- Services écosystémiques : lire le chapit de DeGroot and Braat
+
+- Gouvernance pour les PES etc, chapitre de Ring and Barton

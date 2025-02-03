@@ -25,11 +25,7 @@ format:
       data-background-position: 100% 50%
       data-background-opacity: "0.4"
 editor: visual
-
-  
 ---
-
-
 
 ```{r}
 library(showtext)
@@ -56,16 +52,12 @@ theme_slick <- function(size_) {
 
 ```
 
-
 # Introduction
-
 
 ## Les pesticides
 
-:::{.notes}
-
+::: notes
 Dessin par Steve Greenberg, illustrateur américain, qui a travaillé acvec la coalition des Californians for Pesticide Reform, créée en 1996, qui dénonce les effets sur la santé des travailleurs (et consommateurs) de l'usage des pesticides, dans l'état des US où la valeur agricole est la plus large
-
 :::
 
 ```{r}
@@ -114,89 +106,72 @@ subset(Country %in% c("Total", "France", "Germany", "Italy", "Spain", "Poland"))
   ylab('Sales (in mt)')
 
 ```
+
 [*Sources : données de vente de pesticides en Europe, Eurostat*](https://ec.europa.eu/eurostat/databrowser/view/aei_fm_salpest09/default/table?lang=en)
 
-
-:::{.notes}
-
-- Augmentation raisonnée en Europe qui masque de larges disparités
-- Mais en France, l'échec du plan Ecophyto que l'on a étudié en classe, du fait de l'augmentation de 15% des usages plutôt que réduction de 50%
-
+::: notes
+-   Augmentation raisonnée en Europe qui masque de larges disparités
+-   Mais en France, l'échec du plan Ecophyto que l'on a étudié en classe, du fait de l'augmentation de 15% des usages plutôt que réduction de 50%
 :::
 
 ## Les impacts
 
-Sur la biodiversité : 
+Sur la biodiversité :
 
-::: {.incremental}
-- Déclin des populations de pollinisateurs, surtous sauvages : abeilles, bourdons, papillons...
-  - ex : en Allemagne, déclin de 75% des populations d'insectes volants depuis 27 ans [voir Hallmann et al, 2017](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185809)
-- Qui créent de nombreux *services ecosystémiques* dont la pollinisation, qui représentent:
-    - 80% des cultures (à fleurs et céréalières) en ont besoin
-    - Valant autour de 15% de la valeur ajoutée produite par l'agriculture
-    - Dans le monde :  *"the short-term effects of a total pollinator loss lie between 1 and 2 % of global GDP"*, voir [Lippert et al, 2021](https://www.sciencedirect.com/science/article/pii/S0921800920300793#bb0030)
-    
+::: incremental
+-   Déclin des populations de pollinisateurs, surtous sauvages : abeilles, bourdons, papillons...
+    -   ex : en Allemagne, déclin de 75% des populations d'insectes volants depuis 27 ans [voir Hallmann et al, 2017](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185809)
+-   Qui créent de nombreux *services ecosystémiques* dont la pollinisation, qui représentent:
+    -   80% des cultures (à fleurs et céréalières) en ont besoin
+    -   Valant autour de 15% de la valeur ajoutée produite par l'agriculture
+    -   Dans le monde : *"the short-term effects of a total pollinator loss lie between 1 and 2 % of global GDP"*, voir [Lippert et al, 2021](https://www.sciencedirect.com/science/article/pii/S0921800920300793#bb0030)
 :::
 
 ## Les impacts
 
 La santé :
 
-::: {.incremental}
-
-- Risques accrus de **cancers** (lymphomes non hodgkiniens, leucémies).
-- Troubles **neurologiques** (Parkinson, déclin cognitif).
-- Problèmes **endocriniens** (perturbateurs hormonaux).
-- Effets sur la **reproduction** : infertilité, malformations congénitales.
-- En 2022, 11 millions de Français ont reçu **au robinet une eau dépassant** les seuils autorisés de pesticides. 
+::: incremental
+-   Risques accrus de **cancers** (lymphomes non hodgkiniens, leucémies).
+-   Troubles **neurologiques** (Parkinson, déclin cognitif).
+-   Problèmes **endocriniens** (perturbateurs hormonaux).
+-   Effets sur la **reproduction** : infertilité, malformations congénitales.
+-   En 2022, 11 millions de Français ont reçu **au robinet une eau dépassant** les seuils autorisés de pesticides.
 :::
 
-::: {.fragment}
+::: fragment
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/frank_science.jpg)
-
 :::
 
-::: {.notes}
+::: notes
 This demonstrates the substitution between a declining natural input and a human-made input—providing the first empirical validation of a fundamental theoretical prediction in environmental economics. I proceeded to document that infant mortality rates due to internal causes of death (i.e., not due to accidents or homicides) increased by 7.9%, on average, in the affected counties. This result highlights that real-world use levels of insecticides have a detrimental impact on health, even when used within regulatory limits, which highlights the difficulties of assessing the public health impacts of pesticides when regulating them individually.
-
 :::
-        
 
 # L'économie des nuisances
 
 ## Formuler le constat économique
 
-:::{.incremental style="font-size:90%"}
-
+::: {.incremental style="font-size:90%"}
 -   Des individus utilisent des produits pour augmenter leurs rendements, gagner plus d'argent :
     -   Il y a un **bénéfice privé** : l'accroissement de profit en produisant plus
     -   Et un **coût privé** : le coût des produits, et la mise en danger des agriculteur.ice.s elle.eux mêmes
-
 -   *D'autres en pâtissent*, de façon plus ou moins directes : il y a un **coût social**
     -   Coûts directs pour l'agriculture
     -   Autres coûts : santé, perte de biodiversité et valeur d'assurance de la biodiversité etc.
-
--   On a un souci : 
+-   On a un souci :
     -   La décision des individus ne fait pas se rencontrer **bénéfice privé** et **coût social**
     -   Car **coût social** et **coût privé** ne sont pas identiques.
-    
 :::
-
-
-
 
 ## Rappels : prise de décision microéconomique
 
-
 ::: callout-tip
 ## Règle de décision
+
 Un agent s'arrête de produire lorsque $p=Cm(y)$
 :::
 
-
-:::{.center}
-
-
+::: center
 ```{r}
 #| fig-width: 7
 #| fig-height: 5
@@ -219,7 +194,6 @@ data_%>%
 ```
 :::
 
-
 ## L'approche pigouvienne des nuisances: réguler un marché défaillant
 
 ::::: columns
@@ -234,7 +208,6 @@ Arthur Cecil Pigou, *The Economics of Welfare*, 1920
 :::
 :::::
 
-
 ## Définitions
 
 ::: callout-tip
@@ -245,8 +218,6 @@ Action d'un agent qui a des conséquences sur l'utilité ou le profit d'autres a
 Le coût (ou bénéfice) **social** des actions diffère du coût (ou bénéfice) **privé**
 :::
 
-
-
 ::: incremental
 -   Un problème de **justice**
     -   Les gens n'ont rien demandé et sont lésés
@@ -255,11 +226,11 @@ Le coût (ou bénéfice) **social** des actions diffère du coût (ou bénéfice
     -   Empêche le mécanisme de marché d'allouer les ressources au mieux
 :::
 
---------------------
+------------------------------------------------------------------------
 
 ## Illustration des externalités
 
-:::{.incremental style="font-size:85%"}
+::: {.incremental style="font-size:85%"}
 -   A titre d'exemple, supposons que qu'une entreprise utilise des pesticides, et vend son produit agricole, à un prix de 400 euros par unité de vente
 -   Son coût marginal de production est de $Cm(q)=20q$, soit 20 euros par tonne supplémentaire, prenant en compte la charge en pesticides
 :::
@@ -341,6 +312,7 @@ data %>%
 -   Bien montrer que $Cm+Md=Social cost$
 -   Que cela implique une réduction de la production, pour prendre en compte la pollution et le dommage qu'elle fait à l'écosystème
 :::
+
 ------------------------------------------------------------------------
 
 ::: callout-note
@@ -355,140 +327,111 @@ En présence d'information parfaite, si les droits de propriété sont propremen
     -   Mais pas sur les **conséquences** de beaucoup d'actions
     -   Le système de prix, qui guide l'allocation des ressources, ne reflète pas les bonnes informations
 -   L'efficacité du système de marché est remise en cause : il faut agir pour restaurer l'équilibre du marché, en fixant un **prix aux externalités**, c'est le principe du **pollueur payeur**
-
 :::
 
 ## Des approches concurrentes : William Kapp et l'économie écologique
 
-::::: columns
+:::::: columns
 ::: {.column width="20%"}
-![William Kapp, *The social cost of business entreprise*, 1963](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/KappPhoto (1).jpg)
+![William Kapp, *The social cost of business entreprise*, 1963](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/KappPhoto%20(1).jpg)
 :::
 
-::: {.column width="80%"}
-:::{.incremental style="font-size:90%"}
-- La mise en forme de l'activité économique et des échanges par le mécanisme de marché génère **intrinsèquement des coûts sociaux**, à la fois purement sociaux et environnementaux
-- A la différence de Pigou, les externalités ne sont pas des **défaillances exceptionnelles** mais des **caractéristiques inhérentes** aux causes **multiples, additives et qui se renforcent**
-- Plutôt que le principe du **pollueur payeur**, il faut concevoir des **institutions fortes** qui permettent de prévenir l'explosion des coûts sociaux
-- Assez **critique de l'analyse "coût-bénéfice"**, devant la difficulté d'établir proprement les coûts sociaux, et la nécessaire simplification du monde qu'ils entrainent
+:::: {.column width="80%"}
+::: {.incremental style="font-size:90%"}
+-   La mise en forme de l'activité économique et des échanges par le mécanisme de marché génère **intrinsèquement des coûts sociaux**, à la fois purement sociaux et environnementaux
+-   A la différence de Pigou, les externalités ne sont pas des **défaillances exceptionnelles** mais des **caractéristiques inhérentes** aux causes **multiples, additives et qui se renforcent**
+-   Plutôt que le principe du **pollueur payeur**, il faut concevoir des **institutions fortes** qui permettent de prévenir l'explosion des coûts sociaux
+-   Assez **critique de l'analyse "coût-bénéfice"**, devant la difficulté d'établir proprement les coûts sociaux, et la nécessaire simplification du monde qu'ils entrainent
 :::
-:::
-:::::
-
-
+::::
+::::::
 
 # III. La mesure des coûts sociaux
 
 ## Quantifier la valeur de la perte de la pollinisation sauvage
 
-:::{.incremental}
-
-- Approches **expérimentales**:
-  - Expérience entre deux champs en placant des ruches de pollinisateurs naturels et comparaison des rendements
-  - Permet une analyse fine, mais difficilement réplicable et exportable
-
-- Approche par **expertise & ratios de dependence**
-  - Pour chaque culture, on demande aux experts le taux de dépendence à la pollinisation sauvage (changement de rendement)
-  - On mesure la valeur du changement de rendement par les prix de marché
-  - On peut avoir des **méthodes réplicables, avec peu de data**, mais qui ne prennent pas en compte les **conditions locales, ni initiales** (niveau de base de pollinisateurs)
-  
+::: incremental
+-   Approches **expérimentales**:
+    -   Expérience entre deux champs en placant des ruches de pollinisateurs naturels et comparaison des rendements
+    -   Permet une analyse fine, mais difficilement réplicable et exportable
+-   Approche par **expertise & ratios de dependence**
+    -   Pour chaque culture, on demande aux experts le taux de dépendence à la pollinisation sauvage (changement de rendement)
+    -   On mesure la valeur du changement de rendement par les prix de marché
+    -   On peut avoir des **méthodes réplicables, avec peu de data**, mais qui ne prennent pas en compte les **conditions locales, ni initiales** (niveau de base de pollinisateurs)
 :::
 
---------------------
+------------------------------------------------------------------------
 
-:::{.incremental }
-
-- Approches **statistiques** : 
-  - Modèles statistique prédisant la production au vu de la quantité de pollinisateurs
-  - Nécessite beaucoup de données sur les autres intrants et une variation exogène pour attribuer une cause claire
-
-- Approches par **coût de remplacement**:
-  - Ruches domestiques ou pollinisation à la main
-
+::: incremental
+-   Approches **statistiques** :
+    -   Modèles statistique prédisant la production au vu de la quantité de pollinisateurs
+    -   Nécessite beaucoup de données sur les autres intrants et une variation exogène pour attribuer une cause claire
+-   Approches par **coût de remplacement**:
+    -   Ruches domestiques ou pollinisation à la main
 :::
 
 ## Mesurer les effets sur la santé
 
-:::{.incremental}
-- Approches **expérimentales** : on exposerait des gens à des produits pour voir s'ils développent des cancers dans le long terme
-  -   Problème **éthique**
-
-- Approches **quasi expérimentales**:
-  - Des changements relativement aléatoires dans l'environnement naturel, politique, économique etc
-  - Créent des effets sur les gens
-  - Qui sont répartis de façon *équilibrée* entre *groupe de traitement et de contrôle*
-  
+::: incremental
+-   Approches **expérimentales** : on exposerait des gens à des produits pour voir s'ils développent des cancers dans le long terme
+    -   Problème **éthique**
+-   Approches **quasi expérimentales**:
+    -   Des changements relativement aléatoires dans l'environnement naturel, politique, économique etc
+    -   Créent des effets sur les gens
+    -   Qui sont répartis de façon *équilibrée* entre *groupe de traitement et de contrôle*
 :::
 
 ## Focus : identifier l'effet des pesticides sur la santé des nourissons via la disparition de prédateurs
 
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/frank_science.jpg)
 
-:::{.fragment}
-
+::: fragment
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/science.adg0344-fa.jpg)
-
-
 :::
 
-:::{.notes}
-- Aux Etats Unis, une maladie spécifique aux chauves souris se déploie depuis 2006, menant à la quasi disparition des chauves souris
-- Suivant cette disparition, les 
-
+::: notes
+-   Aux Etats Unis, une maladie spécifique aux chauves souris se déploie depuis 2006, menant à la quasi disparition des chauves souris
+-   Suivant cette disparition, les
 :::
-
 
 ## La méthode de différence de différences
 
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/illus.jpg)
 
-:::{.fragment}
-
+::: fragment
 Quel est l'effet du traitement qui a eu lieu entre $t$ et $t+1$?
-
 :::
 
 ## La méthode de différence de différences
 
-
-::::{.columns}
-
-:::{.column width="70%"}
-
+::::::: columns
+:::: {.column width="70%"}
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/illus2.jpg)
 
-
-:::{.notes}
-- On va comparer les différences entre chaque période pour chaque groupe:
-  - Si l'on veut l'effet du traitement sur les traités, on a besoin d'une hypothèse clé: en l'absence de traitement, on aurait eu des **trajectoires parallèles**
-  - Si l'on ne compare que la différence pour le **groupe traité**: on a un effet énorme
-  - Qui est peut être du à des changements globaux
-  - On compare donc avec l'évolution temporelle du **groupe de contrôle**
-  
+::: notes
+-   On va comparer les différences entre chaque période pour chaque groupe:
+    -   Si l'on veut l'effet du traitement sur les traités, on a besoin d'une hypothèse clé: en l'absence de traitement, on aurait eu des **trajectoires parallèles**
+    -   Si l'on ne compare que la différence pour le **groupe traité**: on a un effet énorme
+    -   Qui est peut être du à des changements globaux
+    -   On compare donc avec l'évolution temporelle du **groupe de contrôle**
 :::
-:::
-
-:::{.column width="30%"}
-
-:::{.incremental sytle="font-size:70%"}
-
-- Effet du traitement = $(Y_{t+1}^T - Y_t^T) - (Y_{t+1}^C-Y_t^C)$
-
-- Dans le cas de l'étude de [E. Frank, 2024](https://www.science.org/doi/10.1126/science.adg0344), il montre que :
-    -   L'usage des pesticides augmente de 1kg (puis 2 kg après 5 ans) par $km^2$ 
-    -   Et cause un accroissement de 7.9% de la mortalité des nourissons (1,334)
-
-:::
-:::
-
 ::::
 
+:::: {.column width="30%"}
+::: {.incremental sytle="font-size:70%"}
+-   Effet du traitement = $(Y_{t+1}^T - Y_t^T) - (Y_{t+1}^C-Y_t^C)$
 
-# IV.  Les politiques publiques de réduction des externalités
+-   Dans le cas de l'étude de [E. Frank, 2024](https://www.science.org/doi/10.1126/science.adg0344), il montre que :
 
+    -   L'usage des pesticides augmente de 1kg (puis 2 kg après 5 ans) par $km^2$
+    -   Et cause un accroissement de 7.9% de la mortalité des nourissons (1,334)
+:::
+::::
+:::::::
+
+# IV. Les politiques publiques de réduction des externalités
 
 ## Solution réglementaire
-
 
 ::: fragment
 ```{r}
@@ -510,14 +453,12 @@ data %>%
 ```
 :::
 
-
 ## Les solutions monétaires
 
 ::: {.fragment style="font-size:90%"}
 -   L'approche **pigouvienne**
     -   Pollueur-payeur
     -   Taxe (ou subvention) du montant du dommage marginal
-    
 :::
 
 ::: fragment
@@ -532,7 +473,6 @@ $$\begin{align}
 -   **Double dividende** :
     -   Incitation à réduire : moins de dommage
     -   Recette fiscale
-
 :::
 
 ## Solution monétaire
@@ -613,19 +553,16 @@ data %>%
 ## Conclusion
 
 ::: {.incremental style="font-size:80%"}
-- L'analyse *coûts bénéfices* est criticable mais nécéssite l'inclusion des coûts sociaux pour mener à une allocation des ressources efficaces
--  L'ensemble des **coûts sociaux est de l'ordre de 372 millions d'euros** [(Alliot et al., 2022)](https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2022.1027583/full), prenant en compte:
-    -   Les coûts **environnementaux** à hauteur de  291.5 million d'euros 
+-   L'analyse *coûts bénéfices* est criticable mais nécéssite l'inclusion des coûts sociaux pour mener à une allocation des ressources efficaces
+-   L'ensemble des **coûts sociaux est de l'ordre de 372 millions d'euros** [(Alliot et al., 2022)](https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2022.1027583/full), prenant en compte:
+    -   Les coûts **environnementaux** à hauteur de 291.5 million d'euros
     -   Les coûts liés à la **santé** à hauteur de 48.5 million euros,
     -   En comparaison, cela représente **10% du budget total du Ministère de l'Agriculture en 2017**
-- Qu'ils soient vus comme des externalités ou des éléments caractéristiques, les politiques publiques institutionnelles et économiques sont nécessaires, accompagnées des mesures **distributionnelles et équitables**:
-  -   Les **subventions** peuvent être utilisées pour éviter l'usage de pesticides, et promouvoir d'autres modes alternatifs rentables comme le **bio** (voir Italie et Allemagne)
-  -   Dans beaucoup de cas, il est possible de réduire l'usage de pesticides sans réduire la production, et récupérer ainsi une partie des **marges du secteur pesticides** 
-  
+-   Qu'ils soient vus comme des externalités ou des éléments caractéristiques, les politiques publiques institutionnelles et économiques sont nécessaires, accompagnées des mesures **distributionnelles et équitables**:
+    -   Les **subventions** peuvent être utilisées pour éviter l'usage de pesticides, et promouvoir d'autres modes alternatifs rentables comme le **bio** (voir Italie et Allemagne)
+    -   Dans beaucoup de cas, il est possible de réduire l'usage de pesticides sans réduire la production, et récupérer ainsi une partie des **marges du secteur pesticides**
 :::
 
-:::{.notes}
-- Les prix réels des produits alimentaires à la production ont baissé de 3,3 % par an, tandis que les prix pour les consommateurs n’ont baissé que de 0,4 % par an. 
-
+::: notes
+-   Les prix réels des produits alimentaires à la production ont baissé de 3,3 % par an, tandis que les prix pour les consommateurs n’ont baissé que de 0,4 % par an.
 :::
-

@@ -3,6 +3,7 @@
 // Custom colours and variables
 
 $jet: #131516;
+$matter:#02b25d;
 $accent: #107895;
 $accent2: #9a2515;
 // $accent2: #e64173;
@@ -33,7 +34,7 @@ $presentation-heading-color: $jet !default;
 $presentation-heading-font-weight: lighter;
 //$presentation-heading-line-height: 2;
 //$presentation-block-margin: 28px;
-$presentation-font-size-root: 32px;
+$presentation-font-size-root: 24px;
 
 // colors
 //$body-bg: #f0f1eb !default;
@@ -61,22 +62,31 @@ $selection-bg: #26351c !default;
 
   .title {
     color: $body-color;
-    font-size: 1.4em;
+    font-size: 2em;
     // font-weight: 350;
-    font-weight: lighter;
+    font-weight: normal;
   }
 
   .subtitle {
     color: $accent;
     font-style: italic;
     margin-top: 0em;
+    font-size: 1.6em;
+
     font-weight: lighter;
   }
 
   .institute,
-  .quarto-title-affiliation,
+  .quarto-title-affiliation{
+    color: $body-color;
+    font-size: .8em;
+    font-weight: lighter;
+
+  }
   .quarto-title-author-email {
     font-style: italic;
+    font-size: .6em;
+
     // font-size: 80%;
     // color: #7F7F7F;
   }
@@ -84,11 +94,16 @@ $selection-bg: #26351c !default;
   .author,
   .quarto-title-author-name {
     color: $body-color;
+    font-size: 1em;
+    font-weight: lighter;
+
   }
 
   .quarto-title-authors {
     display: flex;
     justify-content: left;
+    font-size: 1.4em;
+
 
     .quarto-title-author {
       padding-left: 0em;
@@ -111,7 +126,7 @@ $selection-bg: #26351c !default;
   font-style: italic;
   // font-weight: 350;
   font-weight: lighter;
-  font-size: 0.95em;
+  font-size: 1.2em;
 }
 
 .reveal h4 {
@@ -125,14 +140,24 @@ $selection-bg: #26351c !default;
 
 .alert {
   color: $accent2;
+  font-weight: normal;
+
 }
 
 .fg {
-  color: var(--col, $jet);
+  color: $matter;
+  font-weight: normal;
 }
 
 .bg {
-  background-color: var(--col, #fff);
+  background-color: var(--col, #DD8693);
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.bg2 {
+  background-color: var(--col, #edb6be);
   padding: 0.1em;
   border-radius: 5px;
   display: inline-block;
@@ -297,33 +322,10 @@ $selection-bg: #26351c !default;
   object-fit: contain;
 }
 
-// Change the relative widths of `output-location: column`.  Usage:
-// ```{python}
-// #| echo: true
-// #| output-location: column
-// #| classes: columns3070
+.reveal .slides section .fragment.blur {
+  filter: blur(5px);
+}
 
-.reveal .columns3070 > div.column:first-child {
-  width: 30%;
+.reveal .slides section .fragment.blur.visible {
+  filter: none
 }
-.reveal .columns3070 div.column:not(:first-child) {
-  width: 70%;
-}
-.reveal .columns7030 > div.column:first-child {
-  width: 70%;
-}
-.reveal .columns7030 div.column:not(:first-child) {
-  width: 30%;
-}
-.reveal .columns4060 > div.column:first-child {
-  width: 40%;
-}
-.reveal .columns4060 div.column:not(:first-child) {
-  width: 60%;
-}      
-.reveal .columns6040 > div.column:first-child {
-  width: 60%;
-}
-.reveal .columns6040 div.column:not(:first-child) {
-  width: 40%;
-}      

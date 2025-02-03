@@ -1,0 +1,58 @@
+---
+title: "Introduction à l'économie écologique"
+subtitle: "Economie Ecologique"
+---
+
+```{r}
+
+
+renv::activate()
+#suppressMessages(renv::snapshot())
+
+library(tidyr)
+library(dplyr)
+library(extrafont)
+library(magrittr)
+library(ggplot2)
+source("utilities.R")
+
+local_family="Roboto"
+```
+
+# Présentation du cours
+
+## Programme
+
+- 5 mars - matin (9h-12h): **Introduction à l'économie écologique**
+- 5 mars - après midi (13h30-16h30): **Retour sur le travail de terrain et analyse de données**
+- 19 février (9h-12h puis 13h30-16h): **Macroéconomie écologique : matérialité, développement & décroissance**
+- 20 février - matin (9h-12h): **Economie ecologique de la biodiversité**
+- 20 février - après midi (13h30-16h30):  **Economie ecologique de la biodiversité** et **Institutions**
+- 3 mars - après midi (14h-17h): **Institutions**
+- 17 mars - après midi (14h-17h): **Evaluation**
+
+## Modalités d'évaluation
+
+- Evaluation sous la forme d'un [débat]{.bg}
+
+## Ressources 
+
+De façon générale, je vous conseille de feuilleter : 
+
+- *L'économie écologique*, d'Ali Douai et Gaël Plumecocq, La découverte
+- *An Introduction to Ecological Economics*, de Robert Costanza, John Cumbeland, Herman Daly etc
+- *Handbook of Ecological Economics*, Joan Martinez Allier et Roldan Muradian
+
+Il y aura des articles suggérés pour chaque séance
+
+# Plan de la séance
+
+- 1. Définition de l'économie écologique rapidement
+- 2. Overview historique des courants de pensée
+- 3. Points clés de l'économie écologique
+  -   Différences avec éco mainstream
+  -   Interdisciplinarité
+  -   Programme éthique et valeurs
+- 3. L'économie écologique aujourd'hui: différents courants de pensée
+  - SEE et institutions pas mal 
+  - 
