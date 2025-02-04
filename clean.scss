@@ -2,7 +2,7 @@
 
 // Custom colours and variables
 
-$jet: #131516;
+$jet: #131520;
 $matter:#02b25d;
 $accent: #107895;
 $accent2: #9a2515;
@@ -25,7 +25,7 @@ Note: This theme uses the Roboto font family, which it imports from Google
   preserving consistent font weights, you may also wish to remove "Roboto"
   from the choice set if the family is installed locally.
 */
-@import url('https://fonts.googleapis.com/css?family=Roboto:200,200i,300,300i,350,350i,400,400i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,350,350i,400,400i,500,500i&display=swap');
 
 $font-family-sans-serif: "Roboto", sans-serif !default;
 $presentation-heading-font: "Roboto", sans-serif !default;

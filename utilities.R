@@ -45,6 +45,4 @@ clean_palette <- c(
 )
 
 #
-library(extrafont)
-extrafont::font_import()  # This takes time the first time
-extrafont::loadfonts(device = "win")
+

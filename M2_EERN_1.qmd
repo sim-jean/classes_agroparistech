@@ -1,28 +1,7 @@
 ---
 title: "Economie des ressources renouvelables"
 subtitle: "Economie de l'Environnement et des Ressources Naturelles"
-author:
-  - name: Simon Jean
-    orcid: 0000-0002-3965-8630
-    email: simon.jean@agroparistech.fr
-    affiliations: AgroParisTech - CIRED - PSAE
 
-format: 
-  revealjs:
-    theme: "C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
-    #"/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
-    #"
-    slideNumber: true
-    verticalSeparator: ''    # Creates vertical movement between main sections
-    #separator: '^##'
-    transition: fade
-    navigationMode: linear      # Allows both vertical and horizontal navigation
-    controls: false
-    self-contained: true
-    html-math-method: mathjax
-    always_allow_html: true
-
-editor: visual
 ---
 
 ```{r}
@@ -233,7 +212,7 @@ Ensuite, on parle des nombreux problèmes économiques :
         -   Espèces souvent mobiles qui migrent entre différentes zones économiques exclusives
 
 
-# **Ressources renouvelables et communs : les pêcheries**
+# Ressources renouvelables et communs : les pêcheries
 
 
 
@@ -1429,6 +1408,20 @@ Ricardo s'y oppose sur la base de la **théorie de la rente différentielle** qu
 
 
 :::: columns
+:::{.column width="40%"}
+
+
+:::{.incremental style="font-size:85%"}
+
+-   Les embargos sur les ports anglais pendant les guerres napoléoniennes
+    -   Causant une mise en culture des terres moins fertiles (aux coûts les plus haut)
+    -   Accentuant la hausse des prix des céréales pour le public, et les rentes des puissants
+    -   Menant à un retard économique, car les coûts de l'industrie étaient liés aux coût du blé, nécessaire à la force de travail
+-   Les bourgeois veulent et obtiennent en 1815, les *Corn Laws* limitaient l'importation des céréales
+
+
+:::
+:::
 
 :::{.column width="60%"}
 
@@ -1448,19 +1441,9 @@ La **rente différentielle** émerge des différences de productivité entre ter
 :::
 :::
 
-:::{.column width="40%"}
 
-
-:::{.incremental style="font-size:85%"}
-
--   Les *Corn Laws* limitaient l'importation des céréales
-    -   Causant une mise en culture des terres moins fertiles (aux coûts les plus haut)
-    -   Accentuant la hausse des prix des céréales pour le public, et les rentes des puissants
-    -   Menant à un retard économique, car les coûts de l'industrie étaient liés aux coût du blé, nécessaire à la force de travail
-
-:::
-:::
 ::::
+
 
 --------------
 
