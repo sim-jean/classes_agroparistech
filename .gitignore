@@ -4,3 +4,6 @@
 .Ruserdata
 
 /.quarto/
+images/
+data/
+classes_compiled/

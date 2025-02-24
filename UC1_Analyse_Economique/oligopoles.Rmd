@@ -1,0 +1,24 @@
+---
+title: 'Concurrence Imparfaite 2: les oligopoles'
+author: "Simon Jean"
+date: "2024-10-31"
+output: 
+  xaringan::moon_reader:
+    css: ["default", "xaringan-themer.css"]
+    nature:
+      highlightStyle: "github"
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r xaringan-theme, include=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "white",   # Main accent color
+  header_font_google = google_font("Bitter"),
+  text_font_google = google_font("Roboto"),
+  code_font_google = google_font("Fira Mono"),
+  
+)
+```
+

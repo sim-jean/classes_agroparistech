@@ -1,0 +1,2969 @@
+---
+title: "Economie des ressources renouvelables"
+subtitle: "Economie de l'Environnement et des Ressources Naturelles"
+
+---
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(extrafont)
+library(here)
+library(magrittr)
+library(tidyr)
+library(gridExtra)
+library(grid)
+library(ggsci)
+library(shiny)
+library(nleqslv)
+
+
+loadfonts(device = "win") 
+
+local_family = "Roboto Light"
+
+source(here("utilities.R"))
+```
+
+=
+Ce cours est inspiré des cours de :
+
+-   [Vincent Martinet](https://sites.google.com/site/martinetvincent/home/teaching/eddee), directeur de recherche INRAE à Paris Saclay Applied Economics, qui l'enseigne habituellement. Il est cette année en visite académique à [l'Environmental Markets Lab (emLab)](https://emlab.ucsb.edu/).
+-   [Eric Tromeur](https://www.strategie.gouv.fr/membres/eric-tromeur), chef de projet à France Stratégie autour des enjeux de biodiversité et d'agriculture
+
+Pour creuser un peu plus les notions: 
+
+-  Manuels orientés modélisation : 
+    -   *Resource Economics*, Jon M. Conrad : manuel avec un bon niveau de formalisme mathématique, couvrant les généralités en termes de ressources, pêcheries et forêts. Un peu daté: tout est codé en Excel
+    -   *The Worldwide Crisis in Fisheries :Economic Models and Human Behavior*, Colin W. Clark : la référence pour la modélisation des pêcheries
+-   Manuels moins formalisés pour une approche plus narrative :
+    -   *Environmental and Natural Resource Economics*, 11e édition, Tientenberg and Lewis
+-   Des articles centraux seront discutés pendant le cours
+-   Surtout n'utilisez pas [Anna's Archive](https://annas-archive.org/)
+    
+## Plan du cours
+
+**Introduction : déclin de la biodiversité et des ressources**
+
+**Ressources renouvelables et communs : les pêcheries**
+
+  -   I. Gestion "par espèce"
+      -   A. Dynamiques des populations
+      -   B. Technologies de production
+      -   C. Equilibre bioéconomique de long terme
+      -   D. Les racines économiques de la surexploitation : équilibre bioéconomique de long terme
+      -   E. Méthodes de régulation
+  -   II. L'approche de la gestion écosystémique
+
+
+# Etat du monde : constats quantitatifs et écologiques {#sec-intro}
+
+
+## Constat quantitatif
+
+### Captures dans le temps
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capture.jpg){fig-align='center'}
+
+
+## Captures par zones 
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capture_zone.jpg){fig-align='center'}
+
+------
+
+### Captures par espèces
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capture_species.jpg){fig-align='center'}
+
+--------
+
+### Poissons et pêcheries en eaux tempérées
+
+
+![Guide des espèces, [Institut Flamand de la mer](https://www.guidedesespeces.org/fr/techniques-de-peche-et-leurs-impacts-sur-lenvironnement)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat//Techniques de pêche répartition espèces.png){position="center"}
+
+
+::: notes 
+
+Plutôt un gradient entre ces niveaux
+
+:::
+
+---- 
+
+### Espèces pélagiques : 
+
+
+:::: columns
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/anchoveta.jpeg){width="120%"}
+:::
+
+
+::: column
+
+::: incremental
+
+- [Anchoix, sardines, harengs etc]{.bg3}
+- Tonnage et valeur: 25–35 million tonnes ; USD 100–150 billion 
+- Pêchées, à la *senne* (filet coulissant) ainsi qu'au *chalut pélagique*: captures "accidentelles" importantes de mamifères marins et d'individus trop petits, ou encore au *filet maillant dérivant, interdit en Europe (thon, calmar)*
+- Tendance à pêcher trop les individus [plus âgés]{.bg3}, qui sont reproducteurs
+- Le taux de capture [varie peu]{.bg3} avec la taille du stock : on peut continuer à pêcher longtemps avant de se rendre compte que le stock s'effondre
+
+:::
+
+:::
+
+::::
+
+----
+
+### Espèces démersales
+
+
+:::: columns
+
+::: column
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cod.png)
+
+:::
+
+::: column
+
+::: incremental
+
+- Vivant plus proche du fond marin. On y retrouve, par exemple, le [cabillaud, la sole, le merlu]{.bg3}
+- Production : 35 à 45 millions de tonnes par an, de l’ordre de 150 milliards USD ou plus
+- [Chalutage de fond]{.bg3} et des techniques plus ciblées,
+- En raison de leur cycle de vie et de leurs caractéristiques de recrutement, peuvent être particulièrement vulnérables à une exploitation intensive.
+
+:::
+
+:::
+
+::::
+
+---
+
+### Captures par espèces pélagiques
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_by_pelagic_group.jpg){fig-align="center"}
+
+-----
+
+### Capture par pays
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capturers.jpg){fig-align="center"}
+
+-----
+
+### Importance économique : exports
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_exports_value.jpg){fig-align="center"}
+
+-------
+
+### Importance économique : emplois
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_aquaculture.jpg){fig-align="center"}
+
+---
+
+### Importance économique : contributions aux communautés locales
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/SSF.webp){fig-align="center"}
+
+## Etat du monde : constat écologique
+
+### Surpêche
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_trends_fisheries.jpg){fig-align="center"}
+
+---
+
+### Structures des réseaux écologiques
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/fishing_down.jpg){fig-align="center"}
+
+
+::: notes 
+- "Fishing down the food web" (Pêcher vers le bas de la chaîne alimentaire) :
+    - Le scientifique halieutique Daniel Pauly et ses collègues.
+    - Tendance selon laquelle la surpêche des prédateurs de haut niveau trophique (comme les gros poissons piscivores) conduit à une dépendance croissante à l'égard des espèces situées plus bas dans la chaîne alimentaire (comme les poissons fourrages et les invertébrés).
+    - Au fur et à mesure que les espèces de haut niveau trophique s'épuisent, la pêche se tourne de plus en plus vers des espèces occupant des positions trophiques inférieures, entraînant une diminution du niveau trophique moyen global des captures.
+
+- Résilience des écosystèmes :
+    - Un déplacement vers des espèces de bas niveau trophique pourrait indiquer un écosystème moins résilient. Les prédateurs de haut niveau trophique jouent un rôle crucial dans la régulation des populations de proies et le maintien de l'équilibre écologique, de sorte que leur réduction peut entraîner des effets en cascade dans l'ensemble de la chaîne alimentaire.
+
+- Tendances mixtes :
+    - Des études récentes ont parfois constaté que la tendance à la baisse des niveaux trophiques n'est pas uniforme dans toutes les régions ou pour toutes les pêcheries. Dans certaines zones, des améliorations dans la gestion et des changements dans les pratiques de pêche ont permis de stabiliser, voire d'inverser cette tendance.
+
+:::
+
+--------
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/big_fish.jpg){fig-align="center"}
+
+::: notes 
+
+Myer and Worms, 2003
+
+-   Déclin dramatique des grands prédateurs :
+     - L’étude a montré que dans de nombreuses zones côtières, les populations de poissons prédateurs de grande taille ont subi une réduction spectaculaire, souvent de l'ordre de 90 % de leur biomasse historique. Ce déclin est principalement attribué à la surpêche.
+
+-   Données globales et analyses comparatives :
+    - En combinant des données issues de diverses sources (données de capture, études de terrain et séries temporelles issues de différentes régions du globe), Myers et Worm ont pu démontrer que cette diminution n’est pas un phénomène localisé mais bien généralisé à l’échelle mondiale.
+
+-   Implications écosystémiques :
+    - La disparition ou la forte réduction des grands prédateurs a des répercussions en cascade sur les écosystèmes marins. Ces espèces jouent un rôle crucial dans la régulation des chaînes trophiques, et leur perte peut entraîner des déséquilibres, affectant la diversité et la résilience des communautés marines.
+
+
+:::
+
+---
+
+### Effets de structure : cascade trophique
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+
+::: notes 
+-   Perte des grands prédateurs :
+    - La surpêche ou d'autres pressions anthropiques entraînent une forte réduction ou disparition des grands prédateurs marins. Ces prédateurs jouent un rôle essentiel dans la régulation des populations de leurs proies.
+
+-   Effets en cascade :
+    - Lorsque ces prédateurs disparaissent, il n'y a plus de contrôle sur les populations de proies. Cette absence de contrôle conduit souvent à une augmentation des populations d'espèces situées juste en dessous dans la chaîne trophique. À leur tour, ces espèces surabondantes peuvent exercer une pression excessive sur les espèces ou ressources qu'elles consomment, provoquant ainsi un déséquilibre dans l'ensemble de l'écosystème.
+
+-   Impact sur la structure de l'écosystème :
+    - La cascade trophique modifie la structure et le fonctionnement de l'écosystème. Par exemple, la prolifération des proies peut entraîner l'épuisement ou la modification de leurs ressources alimentaires, affectant la biodiversité et la résilience de l'ensemble du système.
+
+:::
+
+---
+
+### Services écosystémiques 
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/tromeur_ecosystem_services.jpg){fig-align="center"}
+
+---
+
+### Déclin de la résilience
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/resilience_time.jpg){fig-align="center"}
+
+::: notes
+
+Britten et al. (2014) met en lumière que la disparition ou la réduction des populations de poissons prédateurs dans les zones côtières entraîne une perte de régulation écologique essentielle, ce qui affaiblit la capacité de ces écosystèmes à résister et à se rétablir après des perturbations
+
+:::
+
+
+---
+
+### Regime shift
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/regime_shift.jpg){fig-align="center"}
+
+::: notes
+
+Gardmark et al. (2014), montrent que la surpêche dans cette région a contribué à un changement de régime caractérisé par la disparition ou la réduction drastique de certaines espèces importantes et l’apparition ou la dominance d’autres espèces moins recherchées ou moins efficaces pour maintenir l’équilibre trophique.
+
+:::
+
+----
+
+### Conséquences évolutionistes
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cod_size.jpg){fig-align="center"}
+
+## Les ressources : cadre général
+
+Définition mathématique? 
+
+::: incremental
+
+- [Ressource naturelle]{.bg4} : production de la "Nature" qui a un impact (positif ou négatif) sur les sociétés humaines
+  - Elle n'est pas entièrement produite ni par, ni pour l'Homme
+  - Les processus naturels ne correspondent pas nécessairement aux processus humains : conflits de répartition des ressources
+  - Exemples : poissons, forêts (old growth redwoods v. commercial timber), eau (localement)...
+
+- L'impact économique est lié à [l'extraction d'un flux de ressource]{.bg4} : 
+  - Processus naturel ne devient ressource que lorsque la technologie d'extraction le rend économiquement possible
+
+- Les ressources [renouvelables]{.bg4} sont des [ressources de flux]{.bg4} : 
+  - Elles se reproduisent à un rythme commensurable avec l'expérience humaine
+  - Si l'extraction est mesurée, la ressource est potentiellement inépuisable
+
+:::
+
+-----------------------
+
+```{r}
+
+stock_ = 10
+
+
+stock_residuel = function(stock_, harvest){
+  y = stock_ - harvest
+  return(y)
+}
+
+growth = function(stock_residuel){
+  y = stock_residuel + log(1 + stock_residuel)
+  return(y)
+}
+
+
+store = data.frame()
+  
+stock_residuel1 = stock_ * .9
+stock_residuel2 = stock_ * .82
+stock_residuel3 = stock_ * .5
+  
+
+for(t in 1:100){
+  
+  stock_residuel1 = stock_residuel1 * .9
+  stock_residuel2 = stock_residuel2 * .82
+  stock_residuel3 = stock_residuel3 * .5
+  
+  data_step = data.frame(growth(max(stock_residuel1,0)),
+                growth(max(stock_residuel2,0)),
+                growth(max(stock_residuel3,0)), t)
+  colnames(data_step) = c('Faible',
+                          'Moyenne', 
+                          'Forte',
+                          "t")
+  
+  stock_residuel1 = growth(max(stock_residuel1,0))
+  stock_residuel2 = growth(max(stock_residuel2,0))
+  stock_residuel3 = growth(max(stock_residuel3,0))
+  
+  store = rbind(store, data_step)
+  
+}
+
+store %>%
+  pivot_longer(-t, 
+               values_to = "values", 
+               names_to = "Extraction")%>%
+  ggplot(aes(x = t, 
+             y = values,
+             color = Extraction))+
+  geom_line(linewidth = 1.2)+
+  theme_clean(base_family = local_family)+
+  ylab("Stock de ressource naturelle")+
+  scale_color_manual(values = clean_palette)
+
+
+```
+
+
+
+# 1. Dynamique des populations {background-image="C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/atlantic_cod2.jpg" background-opacity="0.4" background-position="right" background-size="80%"}
+
+
+
+
+## A. Définitions
+
+
+::: fragment
+
+On se place dans un cadre où l'on ne considère [qu'une seule espèce]{.bg4}, dont on modélise  la [dynamique de population]{.bg4} i.e. l'évolution de la biomasse (ou du nombre d'individus) à travers le temps peut s'écrire : 
+
+:::
+
+::: fragment
+
+$$
+X_{t+1} = F(X_t) + X_t = G(X_t)
+$$
+:::
+
+
+::: incremental 
+
+-   On nomme $F(X_t)$ la [fonction de croissance]{.bg3} de la population, par abus de langage : c'est une fonction de croissance moyenne, qui oublie les classes d'âge, le sex-ratio etc
+-   On inclue un [effet de densité]{.bg3} : la croissance de la population dépend du *niveau de la population* : on n'a pas de croissance qui soit toujours la même (linéaire par exemple)
+-   Elle peut augmenter ou réduire, en fonction du niveau de la population: on a $F'(X)>0$ puis $F'(X)<0$
+    -   Une même croissance de la population peut arriver [à deux niveaux de population]{.bg3} : bas, et haut
+
+:::
+
+--------------
+
+### Quelques exemples
+
+::: incremental
+
+- La [fonction logistique]{.bg3} (Verhulst, 1838) : 
+
+  $$F(X_t) = rX_t \left(1 - \frac{X_t}{K}\right)$$
+
+
+  Où $r$ est le *taux de croissance intrinsèque* (quand la population est proche de 0) et mesure la rapidité de convergence vers la *capacité de charge* de l'écosystème $K$
+
+- La [fonction logistique avec dépensation critique]{.bg3} : en dessous d'un seuil $K_1$, la population est vouée à l'extinction 
+
+  $$F(X_t) = rX_t \left(1 - \frac{X_t}{K_2}\right)\left( \frac{X_t}{K_1}-1\right)$$
+
+:::
+
+
+
+------------
+
+```{r, height='100%', fig.align='center'}
+#| fig-align: center
+
+
+logistic_growth = function(x, r_ = r, K_ = K){
+  y = r_*x*(1-x/K)
+  return(y)
+}
+
+critical_depensation = function(x, r_ = r, K2_ = K, K1_ = K1){
+  y = r_ * x * (1 - x/K2_) * (x/K1_ - 1)
+  return(y)
+}
+
+K = 100
+K1 = .3*K
+r = .2
+
+data = data.frame(x = seq(0,K))%>%
+  mutate(Logistique = logistic_growth(x),
+         Dépensation = critical_depensation(x))
+
+p = data %>%
+  pivot_longer(-x,
+               values_to = "value", 
+               names_to = "Croissance")%>%
+  ggplot(aes(x = x, y = value, color = Croissance))+
+  ylab('Croissance')+
+  geom_line(linewidth = 1.2)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+  
+p+
+  ylim(-2,7)+
+  geom_hline(yintercept = 2, color = clean_palette[2], linewidth = 1, linetype = "dotted")+
+  geom_segment(aes(y =2, yend = 0, x = 12, xend = 12), color = clean_palette[2], linetype = "dotted", linewidth = 1)+
+  geom_segment(aes(y =2, yend = 0, x = 88, xend = 88), color = clean_palette[2], linetype = "dotted", linewidth = 1)
+
+```
+
+-----------
+
+
+
+
+
+## B. Les équilibres biologiques
+
+
+::: fragment
+
+On parle d' [équilibre lorsque la population ne bouge pas]{.bg4} : 
+
+$$
+\begin{align*}
+X_{t+1} &= X_t = X^*\\
+\Rightarrow & X_{t+1} -X_t = F(X_t) = 0
+\end{align*}
+$$
+:::
+
+::: fragment
+
+C'est souvent un constat de [long terme, on converge vers]{.bg3} l'équilibre
+
+:::
+
+::: fragment
+
+```{r}
+#| fig-align: center
+
+p + 
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = K, linetype = "dotted",linewidth = 1)+
+  geom_vline(xintercept = 0, linetype = "dotted",linewidth = 1)+
+  #geom_vline(xintercept = K/2, linetype = "dotted",linewidth = 1, color = clean_palette[2])+
+  geom_vline(xintercept = K1, linetype = "dotted", linewidth = 1, color = clean_palette[1])
+```
+:::
+
+--------------
+
+### Stabilité de l'équilibre
+
+::: incremental
+
+-   Un équilibre est [stable]{.bg4} lorsqu'après une petite déviation de l'équilibre, le processus dynamique y retourne.
+
+-   Formellement, on a $X^*$ est un [équilibre stable]{.bg4} si et seulement si $\left| 1 + F'(X^*)\right|<1$
+
+-   Soit : 
+    -   $X^* = G(X^*)$ un point fixe (ou équilibre biologique)
+    -   $\delta X_t = X_t - X^*$ une petite déviation autour de l'équilibre
+
+-   En utilisant une [*approximation de Taylor* (d'ordre 1)](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Taylor) autour de l'équilibre, on peut faire une *approximation linéaire* de la fonction:
+
+:::
+
+::: fragment
+
+$$
+\begin{align*}
+G(X_t) &= G(X^* + \delta X_t) = G(X^*)+G'(X^*)\delta X_t + O(\delta X^2) \\
+\Rightarrow G(X_t) &\approx G(X^*)+G'(X^*)\delta X_t\\
+\end{align*}
+$$
+:::
+
+------------
+
+```{r}
+
+approximation = function(candidate_, x){
+  y = candidate_ + logistic_growth(candidate_)  + r*(1 - (2*x)/K) * (x - candidate_)
+  return(y)
+}
+
+
+data_ = data.frame(
+  x = seq(1,K)
+)
+
+data_ = data_ %>%
+  mutate(Growth = logistic_growth(x),
+         linear_0 = approximation(0,x),
+         linear_K = approximation(K,x))
+
+p = data_ %>%
+  subset(x<K/10)%>%
+  ggplot(aes(x = x))+
+  geom_line(aes(y = Growth), color = "black", linewidth = 1.1)+
+  geom_line(aes(y = linear_0), color = "firebrick", linewidth = 1.1)+
+  custom_theme(font_size = 10)+
+  ggtitle("Taylor approximation \n in small interval")
+
+p1 = data_ %>%
+  ggplot(aes(x = x))+
+  geom_line(aes(y = Growth), color = "black", linewidth = 1.1)+
+  geom_line(aes(y = linear_0), color = "firebrick", linewidth = 1.1)+
+  custom_theme(font_size = 10)+  
+  ggtitle("Full approximation")  # Center the title
+
+
+
+grid.arrange(p, p1, ncol = 2)
+
+```
+
+
+---------
+
+En utilisant cette approximation : 
+
+$$
+\begin{align*}
+\Rightarrow & X_{t+1} = G(X_t) \approx G(X^*)+G'(X^*)\delta X_t\\
+\Rightarrow & X_{t+1} \approx X^* +G'(X^*)\delta X\\
+\Rightarrow & \delta X_{t+1} \approx G'(X^*)\delta X_t\\
+\end{align*}
+$$
+
+::: {.fragment}
+
+::: {.callout-tip title="Stabilité"}
+Un équilibre est **stable** si $\lim_{t\to\infty} \delta X_{t+1} \to 0$. Il faut donc que $|G'(X^*)|<1 \iff |1 + F'(X)|<1$
+
+:::
+
+:::
+
+::: fragment
+Pour la fonction logistique, $G'(X)= 1 + r \left(1 - \frac{2X}{K}\right)$: 
+
+:::
+
+
+::: incremental
+
+-   $G'(0) = 1 + r >1$ : l'équilibre n'est pas stable
+-   $G'(K) = 1 - r$, : 
+    - Si  $|G'(K)|<1 \iff r<2$, l'équilibre est stable, toute population $X_0>0$ convergera vers $K$: en l'absence de pêche, ou de chasse, toute réintroduction mènerait à une population maximale stable. 
+    - Sinon, l'équilibre est instable, provoquant des [oscillations]{.bg3}
+
+:::
+
+----------
+    
+```{r}
+#| fig-align: center
+
+initial_stock = 1
+steps = 60
+ncol_ = 3
+
+data_ = matrix(nrow = steps, ncol = ncol_+1)
+data_[1,] = c(rep(initial_stock, ncol_), 0)
+
+for(t in 2:steps){
+  data_[t, ] = c(data_[t-1,1] + logistic_growth(data_[t-1,1]), 
+                 data_[t-1,2] + logistic_growth(data_[t-1,2], r_ = 2.1),
+                 data_[t-1,3] + logistic_growth(data_[t-1,3], r_ = 2.5),
+                 t-1)
+}
+
+data_ = as.data.frame(data_)
+colnames(data_) = c('Low', 'Large', 'Very large', 't')
+
+data_ %>%
+  pivot_longer(-t, 
+               values_to = 'Population', 
+               names_to = 'Intrinsic growth rate')%>%
+  ggplot(aes(x=t, y = Population, colour = `Intrinsic growth rate`))+
+  geom_line(linewidth = 1.1)+
+  geom_hline(yintercept = K)+
+  scale_color_manual(values = clean_palette)+
+  geom_hline(yintercept = K)+
+  custom_theme(font_size = 20)
+    
+
+```
+
+-------------
+
+Dans le cas de la [dépensation critique]{.bg3}: les candidats sont 0, $K_1$ et $K_2$
+
+::: incremental
+-   On sait que $G'(X)<0$, donc 0 est un équilibre stable
+-   On voit que pour $K_1$ : 
+    - Si on accroît un peu la population, on converge vers $K_2$
+    - Si on décroît un peu la population, on converge vers $0$
+- $K_2$ est stable
+
+:::
+
+
+
+::: fragment
+
+```{r}
+#| fig-align: center
+#| out-width: "80%"
+
+
+initial_stock = 31
+steps = 60
+ncol_ = 3
+
+data_ = matrix(nrow = steps, ncol = ncol_+1)
+data_[1,] = c(rep(initial_stock, ncol_), 0)
+
+for(t in 2:steps){
+  data_[t, ] = c(data_[t-1,1] + critical_depensation(data_[t-1,1], K1 = 5), 
+                 data_[t-1,2] + critical_depensation(data_[t-1,2]),
+                 data_[t-1,3] + critical_depensation(data_[t-1,3], r_ = .8),
+                 t-1)
+}
+
+data_ = as.data.frame(data_)
+colnames(data_) = c('Low initial stock', 'Large initial stock', 'Large initial stock and growth', 't')
+
+data_ %>%
+  pivot_longer(-t, 
+               values_to = 'Population', 
+               names_to = 'Intrinsic growth rate')%>%
+  ggplot(aes(x=t, y = Population, colour = `Intrinsic growth rate`))+
+  geom_line(linewidth = 1.1)+
+  geom_hline(yintercept = K)+
+  scale_color_manual(values = clean_palette)+
+  custom_theme(font_size = 18)+
+  guides(color = guide_legend(nrow = 2))
+
+  
+```
+:::
+
+
+
+# 2. La technologie d'extraction {background-image="C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat//commercial-fishing-hero.jpg" background-opacity="0.4"}
+
+
+
+
+
+## A. Niveau de pêche et rendement soutenable
+
+:::{.incremental style="font-size:95%"}
+-   Toujours dans un cas à  [une seule espèce - Hypothèse 1]{.bg4}
+-   Technologie d'extraction: fonction liant l'effort (de pêche) à la quantité pêchée: $$Y_t  =  h(X_t,  E_t)$$
+
+-   La quantité pêchée dépend de l'effort de pêche, et de la taille du stock de poissons
+
+-   La dynamique du stock change avec l'extraction:
+
+    $$
+    \begin{align*} 
+    X_{t+1} -  X_t &= F(X_t) - Y_t= F(X_t)-h(X_t, E_t)
+    \end{align*}
+    $$
+- On cherche le niveau de population [d'équilibre]{.bg3} où $X_{t+1}-X_t=0 \iff F(X_t) = h(X_t, E_t)$
+
+- On appelle un [niveau de pêche soutenable]{.bg4} correspondant à un [stock donné]{.bg3} le niveau de pêche égal à la croissance du stock, permettant de rester en équilibre
+    
+  - Si le niveau de pêche $Y_t>F(X_t)$, $X_{t+1}<X_t$
+  - Si le niveau de pêche $Y_t<F(X_t)$, $X_{t+1}>X_t$
+  - En équilibre, $h_t(X_t,E_t) = F(X_t)$
+
+:::
+
+
+--------------
+
+### Le rendement maximal soutenable (ou *maximal sustainable yield*, MSY)
+
+On définit le [rendement maximum durable]{.bg4} (ou [maximum sustainable yield]{.bg4}, MSY) comme
+
+::: incremental
+-   La [croissance maximale possible]{.bg4} de la population (et son niveau de population associé)
+-   En supposant que l'on est en équilibre, donc que [la pêche est strictement égale à cette croissance]{.bg4}
+
+:::
+
+
+::: fragment
+
+
+```{r}
+data = data.frame(x = seq(0,K))%>%
+  mutate(Logistique = logistic_growth(x),
+         Dépensation = critical_depensation(x))
+
+p = data %>%
+  pivot_longer(-x,
+               values_to = "value", 
+               names_to = "Croissance")%>%
+  ggplot(aes(x = x, y = value, color = Croissance))+
+  ylab('Croissance')+
+  geom_line(linewidth = 1.2)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+  
+
+p+
+  ylim(-2,7)+
+  geom_vline(xintercept = K/2, color = clean_palette[2], linetype = "dashed", linewidth = 1.1)+
+  annotate("text", x = K/2, y = 5.5, label = "MSY logi.", color = clean_palette[2])+
+  geom_vline(xintercept = 1.45*K/2, color = clean_palette[1], linetype = "dashed", linewidth = 1.1)+
+  annotate("text", x = 1.45*K/2, y = 6, label = "MSY dep.", color = clean_palette[1])
+  #geom_hline(yintercept = 2, color = clean_palette[2], linewidth = 1, linetype = "dotted")+
+  #geom_segment(aes(y =2, yend = 0, x = 12, xend = 12), color = clean_palette[2], linetype = "dotted", linewidth = 1)+
+  #geom_segment(aes(y =2, yend = 0, x = 88, xend = 88), color = clean_palette[2], linetype = "dotted", linewidth = 1)
+```
+
+:::
+
+
+## B. L'effort de pêche 
+
+
+### Techniques
+
+--------------
+
+### Mesures
+
+::: incremental 
+
+- Difficile à mesurer : il dépend de plusieurs facteurs : 
+  -   Le [type de technologie]{.bg4} de pêche à un [temps donné]{.bg3} : on parle de kilomètres tractés, ou de milliers d'heures par filets, ou par hameçons 
+  -   Le type de technologie dans le [temps et à travers les différents bateaux]{.bg3} : la distribution de la technologie n'est pas équivalent, et une heure de pêche avec ou sans sonar ne donne pas la même production
+
+- Notion de prise par [unité d'effort et de "catchability"]{.bg4} :
+  -   Distribution du ratio biomasse prélevée/unités d'efforts par bateau, en aggrégé : on a différentes unités, qui prennent en compte kg/day, kg/per kilometer towed, fish/hook, ou d'autres facteurs comme le temps de recherche ou de traitment
+  
+:::
+
+::: fragment
+
+$$T/E=qN$$
+ 
+:::
+
+::: incremental 
+-   $T$ = expected catch, $E$ = Effort, $N$ = Abundance, $q$ = catchability
+
+:::
+
+  
+      
+
+
+
+
+--------------
+
+### Le Cabillaud de l'Atlantique Nord
+
+:::: columns
+
+:::{.column width="60%" style="font-size:90%"}
+
+::: incremental
+-   Le cabillaud de l'Atlantique Nord s'est effondré dans les années 1990, après des décennies de [surpêche (et de surcapitalisation)]{.bg4} : 
+    -   Il atteint [0.1% de son niveau historique]{.bg3}
+    -   La population restante évolue: les cabillauds adultes sont sensiblement plus petits qu'avant
+    -   37,000 pêcheurs perdent leur emploi
+-   Après un [moratoire entre 1992 et 2024]{.bg4}, la pêche a recommencé, avec un quote de pêche de 18,000 tonnes, bien loin des 250,000 tonnes du passé (voir article sur [Reuters](https://www.reuters.com/world/americas/canada-reopens-cod-fishery-after-32-year-pause-replenish-stocks-2024-06-26/?utm_source=chatgpt.com)), malgré des [controverses](https://open.spotify.com/show/14O3EsEGWQ4mK3XpKzsncP#_=_)
+-   Entre autres causes, une [mauvaise évaluation du CPUE*]{.bg3} (voir [Rose et Kulka, 1999](https://people.uncw.edu/scharff/courses/458/Discussion%20articles/Rose%20and%20Kulka%201999%20-%20cod%20hyperaggregation.pdf): 
+    -   On a utilisé le CPUE comme un indicateur proportionnel de l'abondance
+    -   Mais la relation était en fait caracterisée par de [l'hyperstabilité]{.bg3}
+    
+:::
+
+:::
+
+:::{.column width="40%"}
+
+::: fragment
+
+```{r}
+#| fig-width: 5
+#| fig-height: 7
+#| fig-align: right
+data_ = data.frame(Population = seq(0,100))
+
+data_ %>%
+  mutate('Proportionel' = Population,
+         'Hyperstabilité' = 35*Population^.06)%>%
+  subset(Population < 45)%>%
+  pivot_longer(-Population, 
+               names_to = "CPUE",
+               values_to = 'values')%>%
+  ggplot(aes(x=Population, y = values, color = CPUE))+
+  geom_line(linewidth = 1.1)+
+  ylab("Catch per unit of effort")+
+  labs(color = " ")+
+  geom_segment(aes(x=0,xend=40, y=40,yend=40), linetype= "dotted", color = "black", linewidth = 1)+
+  geom_segment(aes(x=10, xend=10, y=40, yend=0), linetype = "dashed", color = clean_palette[1], linewidth = 1)+
+  geom_segment(aes(x=40, xend=40, y=40, yend=0), linetype = "dashed", color = clean_palette[2], linewidth = 1)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+```
+
+
+
+:::
+
+:::
+
+::::
+
+
+# 3.  Equilibre bioéconomique de long terme
+
+## A. Le lien entre stock, croissance et effort de pêche
+
+:::{.incremental style="font-size:95%"}
+
+-   [Modèle "bioéconomique]{.bg4} :
+    -   Mélange des dimensions économiques déterminant l'effort, et des mécanismes écologiques
+
+-   Ici : modèle statique de long terme : le plus simple pour expliquer la surexploitation des ressources halieutiques, issu des travaux de Gordon (1954) et Schaeffer (1954)
+    - Gordon, 1954, ["The Economic Theory of a Common Property Resource : the Fishery", *Journal of Political Economy*](http://www.economia.unam.mx/profesores/blopez/bienestar-ScottGordonFisheries.pdf)
+    - Schaefer, 1954, ["Some aspects of the dynamics of populations important to the managemet of the commercial marine fisheries", *Bulletin of the Inter American Tropical Tuna Commission* ](https://www.iattc.org/GetAttachment/62d510ee-13d0-40f2-847b-0fde415476b8/Vol-1-No-2-1954-SCHAEFER,-MILNER-B-_Some-aspects-of-the-dynamics-of-populations-important-to-the-management-of-the-commercial-marine-fisheries.pdf)
+    
+-   On cherche un équilibre [biologique et économique]{.bg4} : la composante clé économiquement est *l'effort de pêche* : il faut trouver le lien entre effort de pêche et population à long terme
+    -   En équilibre, le niveau de population dépend de l'effort de pêche, et des caractéristiques biologiques, prises en compte dans la fonction $F$ : 
+    $$ Y(X,E) = G(X) \Rightarrow X = F(E)$$
+    -   On a donc $Y(X,E) = Y(F(E), E) = Y(E)$ : la croissance (donc la quantité de pêche) en équilibre dépend de l'effort de pêche
+    
+:::
+
+--------------
+
+### Illustration avec un modèle de croissance logistique
+
+On prend le modèle suivant : 
+
+$$\begin{align*}
+& X_{t+1} - X_t = rX_t\left(1 - \frac{X_t}{K}\right) \\
+& Y(X_t, E_t) = q X_t E_t
+\end{align*}$$
+
+Où $q$ est le coefficient de capture, où l'on suppose ainsi que $Y/E = q X$ selon une [relation proportionnelle (Hypothèse 2)]{.bg3}
+
+::: incremental
+
+-   Trouvez la relation d'équilibre de la population
+    -   A l'équilibre : 
+
+:::
+
+::: {.fragment}
+
+$$
+\begin{align*}
+&rX^* \left(1 - \frac{X^*}{K}\right) = qX^* E\\
+\Rightarrow & X^* = \left(1- \frac{q}{r}E \right) K \\
+\Rightarrow & Y = qE\left(1- \frac{q}{r}E \right) K
+\end{align*}
+$$
+
+:::
+
+
+----
+
+```{r}
+
+# Define catchability q
+q = .04
+
+data_fin = data.frame(Effort = seq(0,5, .01))%>%
+  mutate(Croissance = q*Effort*(1 - q/r*Effort)*K)
+
+if(!file.exists(here("images", "Ressources_Nat", "effort_stock.jpg"))){
+K = 50
+
+data_ = data.frame(Stock = seq(0,K, .1))%>%
+  mutate(Croissance = logistic_growth(Stock ))
+
+p1 = data_ %>%
+  ggplot(aes(x = Stock, y = Croissance))+
+  geom_line(linewidth = 1.1)+
+  custom_theme(font_size = 18)+
+  ylab("Croissance/pêche")
+  #geom_vline(xintercept = 20, color = 'firebrick', linewidth = 1.1, linetype = "dashed")+
+  #geom_hline(yintercept = 2.2, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+  
+ggsave(here("images", "Ressources_Nat", "stock_growth.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+p2 = data.frame(Stock = seq(0,K))%>%
+  mutate(Effort = r/.04*(1-Stock/K))%>%
+  ggplot(aes(y = Effort, x = Stock))+
+  geom_line(linewidth = 1.1)+
+  custom_theme(font_size = 18)
+  #geom_vline(xintercept = 20, color = 'firebrick', linewidth = 1.1, linetype = "dashed")+
+  #geom_hline(yintercept = 3, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+ggsave(here("images", "Ressources_Nat", "effort_stock.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+p3 = data_fin%>%
+  ggplot(aes(y = Effort, x = Croissance))+
+  geom_point(linewidth = 1.1)+
+  custom_theme(font_size = 18)+
+  xlab("Croissance/pêche")
+  #geom_hline(yintercept = 3, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+ggsave(here("images", "Ressources_Nat", "effort_growth.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+
+p3b = data_fin%>%
+  ggplot(aes(x = Effort, y = Croissance))+
+  geom_point(linewidth = 1.1)+
+  custom_theme(font_size = 18)+
+  ylab("Croissance/pêche")
+
+ggsave(here("images", "Ressources_Nat", "effort_growth2.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+
+
+
+empty <- grid.rect(gp = gpar(col = NA))
+
+
+
+ggsave(here("images", "Ressources_Nat", "effort_stock.jpg"),
+       plot = grid.arrange(arrangeGrob(p1, p2, ncol = 1),
+                       arrangeGrob(empty, p3,  ncol=1), 
+                       arrangeGrob(empty, p3b, ncol = 1),
+                       ncol=3),
+       width = 30, height = 20, units = 'cm')
+
+
+data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  subset(Variable!='Croissance')%>%
+  ggplot(aes(x= Euros, y = Effort, color = Variable))+
+  geom_point()+
+  custom_theme(font_size = 18)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values= clean_palette)
+
+ggsave(here("images", "Ressources_Nat", "bioecon_basic_equilibrium.png"),
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  subset(Variable!='Croissance')%>%
+  ggplot(aes(y= Euros, x = Effort, color = Variable))+
+  geom_point()+
+  custom_theme(font_size = 18)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values= clean_palette)
+
+ggsave(here("images", "Ressources_Nat", "flipped_bioecon_basic_equilibrium.png"),
+         height = 15,
+         width = 15, 
+         units = 'cm')
+
+
+}
+
+```
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive1.JPG){width="80%"}
+
+----
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive2.JPG){width="80%"}
+
+
+-----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive3.JPG){width="80%"}
+
+-----
+    
+## B. Passer de la biomasse à une équation économique
+
+On a un lien entre quantité pêchée en équilibre (biomasse) et l'effort de pêche, on veut maintenant des quantités monétaires : 
+
+:::{.incremental style="font-size:97%"}
+
+-   On définit les revenus totaux par $RT= pY$ avec $p$ le prix de vente du poisson
+    -   [Hypothèse 3]{bg} : On suppose que le marché est [concurrentiel]{.bg4}, ce qui est le cas dans beaucoup de pêche
+    -   Néanmoins, il existe des pêcheries où il existe un [pouvoir de marché]{.bg3}, comme celle du *Totoaba Macdonaldi*
+-   On définit les coûts totaux par $CT = cE$ : 
+    -   [Hypothèse 4]{.bg4}  : On suppose que les [coûts de pêche ne dépendent pas du niveau de la population]{.bg4}
+    -   On suppose que la taille de l'effort de pêche est relativement fixe, n'a pas d'effets sur l'emploi et le prix de facteurs : [le coût marginal est égal au coût moyen]{.bg3}
+        -   Sinon, à mesure que l'effort augmente, on aurait des *coûts croissants*: il faut augmenter les salaires pour attirer des pêcheurs, l'augmentation du nombre de pêcheur aurait des effets sur le coût des bateaux etc
+
+-   On a donc le profit : $$ \Pi = RT - CE = pY - cE = pqE \left(1 - \frac{q}{r}E \right)K - cE$$
+
+:::
+
+
+
+
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive4.JPG){width="80%"}
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive5.JPG){width="80%"}
+
+
+
+
+```{r}
+if(!file.exists(here('images',
+                     'Ressources_Nat',
+                     'price_shock.png'))){
+data_fin %>% 
+  mutate(Revenues = Croissance * 10,
+         'Revenues post price change' = Croissance * 15,
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  subset(Variable!='Croissance')%>%
+  ggplot(aes(x= Euros, y = Effort, color = Variable))+
+  geom_point()+
+  custom_theme(font_size = 18)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values= clean_palette)
+ggsave(here("images", "Ressources_Nat", "price_shock.png"),
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+
+
+data_fin %>% 
+  mutate(Revenues = Croissance * 10,
+         'New cost' = Effort * 15,
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  subset(Variable!='Croissance')%>%
+  ggplot(aes(x= Euros, y = Effort, color = Variable))+
+  geom_point()+
+  custom_theme(font_size = 18)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values= clean_palette)
+ggsave(here("images", "Ressources_Nat", "cost_shock.png"),
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+### New catchability
+
+data.frame(Effort = seq(0,5, .01))%>%
+  mutate("Croissance_post" = 1.5*q*Effort*(1 - 1.5*q/r*Effort)*K,
+         "Croissance" = q*Effort*(1 - q/r*Effort)*K)%>%
+  mutate("Revenues_post" = Croissance_post*10,
+         Revenues = Croissance * 10,
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  subset(!(Variable %in% c('Croissance', 'Croissance_post')))%>%
+  ggplot(aes(x= Euros, y = Effort, color = Variable))+
+  geom_point()+
+  xlim(0,60)+
+  custom_theme(font_size = 18)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values= clean_palette)
+
+ggsave(here("images", "Ressources_Nat", "catchability_shock.png"),
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+data.frame(Stock = seq(0,K))%>%
+  mutate(Effort = r/q*(1-Stock/K), 
+         Effort_post = r/(1.5*q)*(1-Stock/K))%>%
+  ggplot(aes(x = Stock))+
+  geom_line(aes(y =Effort),linewidth = 1.1)+
+  geom_line(aes(y =Effort_post),linewidth = 1.1, color = 'firebrick')+
+
+  custom_theme(font_size = 18)
+  #geom_vline(xintercept = 20, color = 'firebrick', linewidth = 1.1, linetype = "dashed")+
+  #geom_hline(yintercept = 3, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+ggsave(here("images", "Ressources_Nat", "effort_stock_catchability.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+ data.frame(Effort = seq(0,5, .01))%>%
+  mutate(Croissance = q*Effort*(1 - q/r*Effort)*K,
+         Croissance_post = 1.5*q*Effort*(1 - 1.5*q/r*Effort)*K)%>%
+  ggplot()+
+  geom_point(aes(x = Croissance, y = Effort))+
+  geom_point(aes(x = Croissance_post, y = Effort), color ='firebrick')+
+  custom_theme(font_size = 18)+
+  xlim(0,6)+
+  xlab("Croissance/pêche")
+  #geom_hline(yintercept = 3, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+ggsave(here("images", "Ressources_Nat", "effort_growth_catchability.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+  
+}
+  
+```
+
+## C. La gestion optimale des pêcheries
+
+
+::: incremental
+
+-   Pendant longtemps, il a été préconisé de viser le [MSY]{.bg4}, c'est à dire la production maximale, comme objectif de gestion optimale. 
+
+-   Est ce raisonnable d'un point de vue économique? 
+
+-   En économie, la gestion optimale des pêcheries suppose que l'on maximise [une fonction objectif, le profit]{.bg3}
+    -   Ici, il prend en compte les coûts et revenus
+    -   Associés à la stabilité d'un niveau de population
+    -   Il ne prend pas en compte les autres effets environnementaux de la pêche : ce n'est pas dans le modèle
+
+:::
+
+::: fragment
+
+$$
+\max_E \Pi(E) =  \max_E RT(E)-CT(E) \Rightarrow \Pi'(E)=0 \iff RT'(E) = CT'(E)
+$$
+
+:::
+
+::: fragment
+
+On arrête la pêche lorsque le [revenu marginal que l'on retire de la pêche est égal au coût marginal]{.bg3}
+
+:::
+
+
+------------
+
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+e_look = 1
+p = 5
+c = 2
+
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = q * Effort * (1 - q / r * Effort) * K) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = p*q*K*(1-2*e_look*q/r)*(Effort-e_look)+p*q*K*e_look*(1-e_look*q/r))%>%
+        select(-Croissance)
+      
+data_fin %>%
+    pivot_longer(-Effort, values_to = "values", names_to = "names") %>%
+    ggplot(aes(x = Effort, y = values, color = names)) +
+    geom_line(linewidth = 1) +
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = .7, linetype = "dashed", color= "black")+
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = 0 * K
+        ), linewidth = .7, linetype = "dashed", color="black")+
+        scale_color_aaas() +
+        custom_theme(font_size = 20) +
+        ylim(0,30)+
+        labs(x = "Effort", y = "Values", color = ' ')
+
+```
+-----
+
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+e_look = 4
+p = 5
+c = 2
+
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = q * Effort * (1 - q / r * Effort) * K) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = p*q*K*(1-2*e_look*q/r)*(Effort-e_look)+p*q*K*e_look*(1-e_look*q/r))%>%
+        select(-Croissance)
+      
+data_fin %>%
+    pivot_longer(-Effort, values_to = "values", names_to = "names") %>%
+    ggplot(aes(x = Effort, y = values, color = names)) +
+    geom_line(linewidth = 1) +
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = .7, linetype = "dashed", color= "black")+
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = 0 * K
+        ), linewidth = .7, linetype = "dashed", color="black") +
+        scale_color_aaas() +
+        custom_theme(font_size = 20) +
+        ylim(0,30)+
+        labs(x = "Effort", y = "Values", color = ' ')
+
+```
+-----
+
+::: panel-tabset
+
+### Plot
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+
+p = 5
+c = 2
+
+# Define growth from effort
+Croissance = function(Effort){
+  y = q*Effort * (1 - q/r*Effort)*K
+  return(y)
+}
+
+# Define monetary functions with negative return for optimization
+profit = function(Effort, p_ = p , c_ = c){
+  y = p_*Croissance(Effort) - c_*Effort
+  return(-y)
+}
+
+marginal_revenue= function(Effort, p_ = p, c_ = c){
+  y = p*q*K*(1-2*Effort*q/r)
+  return(y)
+}
+
+# Run optimization: 
+
+solution = optimize(profit, interval = c(0,K))
+e_look = solution$minimum
+
+# Create data.frame
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = Croissance(Effort)) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = marginal_revenue(e_look) * (Effort - e_look) +
+                 p * Croissance(e_look))%>% # Tangent equation
+        select(-Croissance)
+
+# Treat data into tidy format
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") %>%
+  ggplot(aes(x = Effort, y = values, color = names)) +
+  geom_line(linewidth = 1) +
+  # Add segment for optimum
+  geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, 
+          y = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = 1, color= "firebrick")+
+  geom_segment(aes(# Add x-axis segment
+    x = e_look, xend = e_look,
+    yend = c * e_look, 
+    y = 0 * K
+    ), 
+    linewidth = .7, linetype = "dashed", color="firebrick")+
+  # Add segments for previously illustrated plots
+  geom_segment(aes(
+          x = 1, xend = 1,
+          yend = c * 1, y = p * q * 1 * (1 - q / r * 1) * K
+        ), linewidth = 1, color= "black")+
+  geom_segment(aes(
+          x = 1, xend = 1,
+          yend = c * 1, y = 0,
+        ), linewidth = .7, linetype = "dashed", color= "black")+    
+  geom_segment(aes(
+          x = 2.5, xend = 2.5,
+          yend = c*2.5,
+          y = p * q * 2.5 * (1 - q / r * 2.5) * K
+        ), linewidth = 1, color= "dodgerblue")+
+  geom_segment(aes(
+          x = 2.5, xend = 2.5,
+          yend = c*2.5,
+          y = 0
+        ), linewidth = .7, linetype = "dashed", color= "dodgerblue")+
+  geom_segment(aes(
+          x = 4, xend = 4,
+          yend = c * 4, y = p * q * 4 * (1 - q / r * 4) * K
+        ), linewidth = 1, color= "black")+
+    geom_segment(aes(
+          x = 4, xend = 4,
+          yend = c * 4, y = 0
+        ), linewidth = .7, linetype = "dashed", color= "black")+
+  annotate("text", x = 2.5, y = 29, label = "MSY", color = "dodgerblue")+
+  annotate("text", x = e_look, y = 27, label = "MEY", color = "firebrick")+
+
+  scale_color_aaas() + # Styling
+  custom_theme(font_size = 20) +
+  ylim(0,30)+
+  labs(x = "Effort", y = "Values", color = " ")
+
+```
+
+### Code
+
+```{r, echo = T}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+p = 5
+c = 2
+
+# Define growth from effort
+Croissance = function(Effort){
+  y = q*Effort * (1 - q/r*Effort)*K
+  return(y)
+}
+
+# Define monetary functions with negative return for optimization
+profit = function(Effort, p_ = p , c_ = c){
+  y = p_*Croissance(Effort) - c_*Effort
+  return(-y)
+}
+
+marginal_revenue= function(Effort, p_ = p, c_ = c){
+  y = p*q*K*(1-2*Effort*q/r)
+  return(y)
+}
+
+# Run optimization with integrated solver 
+
+solution = optimize(profit, interval = c(0,K))
+e_look = solution$minimum
+
+# Create data.frame 
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = Croissance(Effort)) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = marginal_revenue(e_look) * (Effort - e_look) +
+                 p * Croissance(e_look))%>% # Tangent equation
+        select(-Croissance)
+
+# Treat data into tidy format
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") 
+
+# Then use ggplot to plot
+
+
+```
+
+:::
+
+-----
+```{r}
+if(!(file.exists(here("images", "Ressources_Nat","MSY_MEY.jpg")))){
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") %>%
+  ggplot(aes(y = Effort, x = values, color = names)) +
+  geom_point() +
+  # Add segment for optimum
+  geom_segment(aes(
+          y = e_look, yend = e_look,
+          xend = c * e_look, 
+          x = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = 1, color= "firebrick")+
+  geom_segment(aes(# Add x-axis segment
+    y = e_look, yend = e_look,
+    xend = c * e_look, 
+    x = 0 * K
+    ), 
+    linewidth = .7, linetype = "dashed", color="firebrick")+
+  geom_segment(aes(
+          y = 2.5, yend = 2.5,
+          xend = c*2.5,
+          x = p * q * 2.5 * (1 - q / r * 2.5) * K
+        ), linewidth = 1, color= "dodgerblue")+
+  geom_segment(aes(
+          y = 2.5, yend = 2.5,
+          xend = c*2.5,
+          x = 0
+        ), linewidth = .7, linetype = "dashed", color= "dodgerblue")+
+  annotate("text", y = 2.5, x = 29, label = "MSY", color = "dodgerblue")+
+  annotate("text", y = e_look, x = 27, label = "MEY", color = "firebrick")+
+  scale_color_aaas() + # Styling
+  custom_theme(font_size = 20) +
+  labs(x = "Values", y = "Effort", color = " ")
+ggsave(here("images", "Ressources_Nat", "MSY_MEY.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+}
+
+```
+
+--------------
+
+### Comparaison des objectifs de gestion
+
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive9.JPG){width="80%"}
+
+::: {.incremental style="font-size:80%"}
+
+- Le [rendement économique maximal]{.bg4} (maximum economic yield, MEY) réconcilie économie et écologique, tel que:
+    - Le profit est maximal
+    - La population d'équilibre est [supérieure]{.bg3} à celle du MSY
+    - L'[effort de pêche est moindre]{.bg3}, la taille de la flotte optimale est plus petite
+
+:::
+
+
+
+
+## D. Comprendre les origines de la surpêche
+
+Le modèle de Gordon Schaeffer illustre la [tragédie des communs]{.bg3}, en considérant le problème de [l'accès ouvert]{.bg3} aux pêcheries en utilisant la [théorie de la rente ricardienne]{.bg3} pour expliquer la [surexploitation]{.bg3}
+
+::: fragment
+
+**Pardon, mais quoi?**
+
+:::
+
+--------------
+
+### 1. La tragédie des communs, Hardin, 1968
+
+::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/hardin.jpg)
+:::
+
+
+:::{.column width="60%"}
+
+
+::: incremental 
+
+-   [Garett Hardin (1915-2023)](https://fr.wikipedia.org/wiki/Garrett_Hardin) était un biologiste, professeur à l'Université de Californie à Santa Barbara
+-   En 1968, il rédige un article d'opinion dans Science, ["The tragedy of the Commons"](https://math.uchicago.edu/~shmuel/Modeling/Hardin,%20Tragedy%20of%20the%20Commons.pdf)
+-   Dans cet article, il pose la question de la croissance de la population dans un monde fini, qui n'admettrait pas de "solution technique" i.e. venant strictement des sciences naturelles
+-   La tragédie, dans ce texte et suivant la définition de Whitehead, c'est non pas la tristesse, mais l'inéluctabilité du processus
+-   Il raconte [l'histoire]{.bg3} d'un pré, dont les utilisateurs sont nombreux : l'avantage à court terme de chacun est de l'utiliser avant son voisin, menant à sa disparition, alors qu'il est dans l'intérêt de chacun au long terme de le conserver
+:::
+
+:::
+:::::
+
+--------------
+
+
+### 2. La théorie de la rente ricardienne
+
+[David Ricardo](https://fr.wikipedia.org/wiki/David_Ricardo#) était un économiste anglais du XVIII-XIX siècle, également philosophe, agent de change, et député. Suivant les guerres napoléoniennes, l'Angleterre instaure les *Corn Laws*, prohibant l'importation du blé lorsqu'il descend en dessous d'un prix plancher.
+
+Ricardo s'y oppose sur la base de la [théorie de la rente différentielle]{.bg4} qu'il développe :
+
+
+:::: columns
+:::{.column width="40%"}
+
+
+:::{.incremental style="font-size:85%"}
+
+-   Les embargos sur les ports anglais pendant les guerres napoléoniennes
+    -   Causant une mise en culture des terres moins fertiles (aux coûts les plus haut)
+    -   Accentuant la hausse des prix des céréales pour le public, et les rentes des puissants
+    -   Menant à un retard économique, car les coûts de l'industrie étaient liés aux coût du blé, nécessaire à la force de travail
+-   Les bourgeois veulent et obtiennent en 1815, les *Corn Laws* limitaient l'importation des céréales
+
+
+:::
+:::
+
+:::{.column width="60%"}
+
+::: {.incremental style="font-size:85%"}
+-   Les terres agricoles sont inégalement fertiles, ou ont des coûts de production hétérogènes
+-   Du fait de la croissance de la population, des terres de moins en moins fertiles sont cultivées.
+-   Les dernières à être cultivées sont les *terres marginales*, dont les produits ne couvrent que la main d'oeuvre et le capital investi. 
+    -   Si le produit du blé était inférieur aux coûts, on ne cultiverait pas, s'il était au dessus, on cultiverait d'autres terres encore moins fertiles
+    
+:::
+
+::: fragment
+
+:::{.callout-tip title="Rente différentielle"}
+La [rente différentielle]{.bg4} émerge des différences de productivité entre terres agricoles, permettant de générer des [surplus]{.bg3}, c'est à dire un écart entre revenus et coûts de production qui couvre plus que la *juste* rémunération du travail et du capital
+:::
+:::
+:::
+
+
+::::
+
+
+--------------
+
+### 3. Retour à la surpêche
+
+::: incremental
+-   Dans l'analyse de Gordon, les populations de poissons sont relativement stables dans l'espace : [pas de migration (**Hypothèse 5**)]{.bg4}
+-   Il introduit la différence fondamentale entre l'agriculture et la pêche, en prenant des zones de pêche avec des rentes différenciées : 
+    -   *We now come to the point that is of greatest theoretical importance in understanging the primary production phase of the fishing industry and in distinguising it from agriculture.* 
+    -   *In the sea fisheries **the natural resource is not private property**: hence the rent it may yield is not capable of **being appropriated by anyone**. The individual fisherman has no legal title to a section of ocean bottom. Each fisherman is more or less free to fish wherever he pleases*
+    -   *The result is a pattern of competition among fishermen which culminates in the **dissipation of the rent of the intramarginal grounds***
+
+- Les termes clés sont *l'absence d'appropriabilité, la dissipation de la rente, et les zones intramarginales*
+
+:::
+
+::: fragment
+
+:::{.callout-warning title="Biens communs et accès libre"}
+
+L'analyse de Gordon permet de différencier [communs et accès libre]{.bg1}: c'est l'absence de contrôle sur la ressource (accès libre), et l'absence de normes de gestion sur une ressource en commun qui crée la surexploitation, pas le fait que les ressources sont en commun.
+
+On en reparlera dans le cours d'économie écologique, mais vous pouvez déja aller voir les travaux d'Elinor Ostrom
+
+:::
+:::
+
+--------------
+
+### 4. Absence d'appropriabilité et rente différentielle
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+
+q = .04
+
+data_fin = data.frame(Effort = seq(0,5, .01))%>%
+  mutate(Croissance = q*Effort*(1 - q/r*Effort)*K)
+
+d1 = data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = " ")%>%
+  subset(!(Variable %in% c("Croissance")))
+
+d2= data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  mutate("Average revenue" = Revenues/Effort,
+         "Average cost" = Cost/Effort)%>%
+  mutate("Marginal revenue" = 40 - 16*Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = "Fishing ground 2")%>%
+  subset(!(Variable %in% c("Revenues", "Cost", "Croissance")))
+
+d3= data_fin %>%
+  mutate(Revenues = Croissance * 15, 
+         Cost = 5 * Effort)%>%
+  mutate("Average revenue" = Revenues/Effort,
+         "Average cost" = Cost/Effort)%>%
+  mutate("Marginal revenue" = 60 - 24*Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = "Fishing ground 1")%>%
+  subset(!(Variable %in% c("Revenues", "Cost", "Croissance")))
+
+```
+
+
+
+
+On pose le débat en de nouveaux termes :
+
+- Revenus moyens (par unité d'effort): 
+  $$RT = pY(E)/E = pq\left(1 - \frac{q}{r}E \right)K$$
+- Revenu marginal (par unité d'effort *supplémentaire*) : 
+  $$Rm = \frac{\partial pY(E)}{E} = pq\left(1 - 2E\frac{q}{r} \right)K$$
+- Coût moyen et marginal (par unité d'effort): 
+  $$CM = Cm = c$$
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+if(!(file.exists(here("images", "Ressources_Nat", "curve_to_lines_revenue.jpg")))){
+d1 = data_fin %>%
+  mutate(Revenues = Croissance * p, 
+         Cost = 2*c * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = " ")%>%
+  subset(!(Variable %in% c("Croissance")))
+
+d2= data_fin %>%
+  mutate(Revenues = Croissance * p, 
+         Cost = 2*c * Effort)%>%
+  mutate(Average_revenues = Revenues/Effort,
+         Average_cost = Cost/Effort)%>%
+  mutate(Marginal_revenues = p*q*(1 - 2*Effort*q/r)*K)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = "  ")%>%
+  subset(!(Variable %in% c("Revenues", "Cost", "Croissance")))
+
+rbind(d1,d2)%>%
+  ggplot(aes(x = Effort, y = Euros, color = Variable))+
+  geom_point()+
+  facet_wrap(~Representation, ncol=1)+
+  custom_theme(font_size = 18)+
+  #geom_vline(xintercept=4, linetype = "dotted")+
+  #geom_vline(xintercept=2, linetype = "dotted")+
+  ylim(0,30)+
+  coord_fixed(.1)+
+  labs(color = " ", nrow=2)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values = c( 'royalblue','red', 'dodgerblue', 'firebrick', 'coral'))
+ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue.jpg"), 
+       height= 20, 
+       width = 20, 
+       units = "cm")
+
+rbind(d1,d2)%>%
+  ggplot(aes(x = Effort, y = Euros, color = Variable))+
+  geom_point()+
+  facet_wrap(~Representation, ncol=1)+
+  custom_theme(font_size = 18)+
+  geom_vline(xintercept=4, linetype = "dotted")+
+  geom_vline(xintercept=2, linetype = "dotted")+
+  geom_vline(xintercept = 2.5, linetype = "dotted")+
+  annotate("text", x = 2.5, y = 27, label = "MSY")+
+  annotate("text", x = 2, y = 26, label = "MEY")+
+  annotate("text", x = 4.5, y = 21, label = "Open Access")+
+
+  ylim(0,30)+
+  coord_fixed(.1)+
+  labs(color = " ", nrow=2)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values = c( 'royalblue','red', 'dodgerblue', 'firebrick', 'coral'))
+ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_equilibria.jpg"), 
+       height= 20, 
+       width = 20, 
+       units = "cm")
+
+rbind(d1,d2)%>%
+  ggplot(aes(x = Effort, y = Euros, color = Variable))+
+  geom_point()+
+  facet_wrap(~Representation, ncol=1)+
+  custom_theme(font_size = 18)+
+  geom_vline(xintercept=4, linetype = "dotted")+
+  #geom_vline(xintercept=2, linetype = "dotted")+
+  #geom_vline(xintercept = 2.5, linetype = "dotted")+
+  #annotate("text", x = 2.5, y = 27, label = "MSY")+
+  #annotate("text", x = 2, y = 26, label = "MEY")+
+  annotate("text", x = 4.5, y = 21, label = "Open Access")+
+
+  ylim(0,30)+
+  coord_fixed(.1)+
+  labs(color = " ", nrow=2)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values = c( 'royalblue','red', 'dodgerblue', 'firebrick', 'coral'))
+ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"), 
+       height= 20, 
+       width = 20, 
+       units = "cm")
+
+}
+
+```
+
+
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top=75 left=600 width="550" height="600"}
+:::
+
+
+----
+
+### Deux zones géographiques
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){width="80%"}
+
+--------
+
+### Deux zones géographiques de pêche
+
+::: incremental
+
+- Gérées à l'optimum, on a les niveaux d'effort A et B
+- C'est ce qui compte pour un décideur public qui maximise le surplus
+- Mais pour un pêcheur? 
+  - Ce qui compte c'est le revenu moyen par unité d'effort, là où le profit est le plus large
+  - Où un pêcheur qui entre décide-t-il d'aller? 
+  
+:::
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){.absolute top=240 left=100 width="790" height="500"}
+
+:::
+--------
+
+### Deux zones géographiques de pêche
+
+::: incremental
+
+- Un nouveau pêcheur préfère aller dans la zone où le profit est élevé
+- Tant qu'à faire, les autres dans la zone moins profitable aussi
+- Jusqu'à ce qu'il n'y ait plus de gains à bouger:
+    -   La profitabilité à la marge de la zone 1 et 2 sont égales
+    -   C'est à dire un entrant *marginal* gagnerait la même chose entre 1 et 2
+
+:::
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive13.JPG){.absolute top=240 left=100 width="790" height="500"}
+
+:::
+
+--------
+
+### Deux zones géographiques de pêche
+
+::: incremental
+
+- Ce phénomène se répète pour toutes les zones de pêches qui sont plus productives que le coût d'exploitation, [la zone d'exploitation marginale]{.bg4}
+- Ces zones sont [intra marginales]{.bg4} : elles sont *avant* la zone marginale en termes de productivité
+- Le profit possible à réaliser est large dans ces zones, mais il est réduit par la possibilité de bouger entre les zones de pêche facilement, ou d'avoir un nouvel entrant dans la zone.
+
+:::
+
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive14.JPG){.absolute top=240 left=100 width="790" height="500"}
+
+:::
+
+--------
+
+### Deux zones géographiques de pêche
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive15.JPG){width="80%"}
+
+
+-----
+
+### L'équilibre de libre accès
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top=50 left=200 height="700"}
+
+
+--------------
+
+
+### 5. Comparaison entre les types d'équilibres
+
+#### Détermination analytique des équilibres
+
+::: incremental
+- Avec le modèle de Gordon Schaefer, trouvez les équilibres suivants : 
+  - Open Access
+  - MEY
+  - MSY
+:::
+
+----
+
+#### Détermination analytique des équilibres - Open access
+
+
+::: fragment
+
+$$
+\begin{align*}
+\Pi &= RT(E)-CT(E) = 0 \Rightarrow pqXE - cE = 0\\
+qXE &= rX\left(1 - \frac{X}{K} \right)\\
+\end{align*}
+$$
+
+:::
+
+::: fragment
+
+$$\begin{align*}
+\Rightarrow & X^{OA} = \frac{c}{pq}\\
+\Rightarrow & E^{OA} =  \frac{r}{q}\left(1 - \frac{c}{pqK}\right)
+\end{align*}$$
+
+:::
+
+----
+
+#### Détermination analytique des équilibres - MEY
+
+::: fragment
+
+
+$$\begin{align*}
+\max_E &(pqXE - cE)\\
+qXE &= rX\left(1 -\frac{X}{K}\right) 
+\end{align*}$$
+
+:::
+
+::: fragment
+
+$$\begin{align*}
+\Rightarrow & X = K \left(1 - \frac{q}{r}E\right) \\
+\Rightarrow& \max_E\left(pq K \left(1 - \frac{q}{r}E\right)E - cE\right)\\
+\Rightarrow & E^* = \frac{r}{2q}\left(1 - \frac{c}{pqK}\right)\\
+\Rightarrow & X^* = \frac{1}{2}\left(K + \frac{c}{pq}\right)
+\end{align*}$$
+
+:::
+
+----
+
+#### Détermination analytique des équilibres - MSY
+
+::: fragment
+
+$$
+\begin{align*}
+\max_X F(X) 
+\end{align*}
+$$
+
+
+:::
+
+::: fragment
+
+$$\begin{align*}
+\Rightarrow \max_X rX\left(1-\frac{X}{K}\right)\Rightarrow & X^{MSY}=\frac{K}{2}\\
+& E^{MSY} = \frac{r}{2q}
+\end{align*}$$
+
+:::
+
+----
+
+
+#### Comparaison graphique
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive16.JPG){width="80%"}
+
+--------
+
+### 6. Conclusion
+
+
+::: incremental
+
+- Le modèle de *Gordon Schaeffer* permet d'expliquer la racine de la [surexploitation]{.bg4} des ressources halieutiques
+
+- Le fait de pouvoir entrer librement attire toujours plus de monde, aggravé par des [subventions toujours importantes]{.bg3} [Sumaila et al, 2019](https://www.sciencedirect.com/science/article/pii/S0308597X19303677):
+  - 22 milliards de subvention pour les capacités, avec 22% de subventions sur les carburants
+  - L'Asie représente 55% (Chine 21%) des subventions, l'Europe 18%
+- Résultant en une [surcapitalisation]{.bg3} (trop de navires) et une surexploitation
+- Jusqu'à ce que les profits (par rapport au reste de l'économie) soit nuls
+
+
+
+
+- Il permet aussi d'avoir un nouvel objectif de pêche, plutôt que le MSY : le MEY
+  - Il remplace petit à petit le MSY dans les préconisations de politique publique : en *Australie* notamment
+  - Le MSY demeure un objectif de politique publique, notamment au sein de l'UE, dans le cadre de la *Common Fisheries Policy* (2013), pour rétablir les stocks selon un [principe de précaution]{.bg3}
+
+:::
+
+
+---------  
+
+### 7. Intuitions sur les choix dynamiques
+
+On a l'analyse de long terme mais pas la transition vers l'équilibre
+
+La[dimension temporelle]{.bg4} de la ressource est jusqu'ici absente : comment l'intégrer?
+
+::: incremental
+- En l'absence d'inflation, de risque de défaut, de levée d'impôts, combien seriez vous prêts à vendre, sur un marché de capitaux, *aujourd'hui* une garantie de paiement de 10,000e *dans 1 an*?
+- Ce *prix* reflète le [taux de préférence pour le présent]{.bg4} d'une société (il faut être prêt à vendre et acheter) noté $r$
+  - Par exemple si $r=0.03$, le taux de préférence pour le présent est de 3%
+  - Dans un an, si j'avais 10,000e  de demain aujourd'hui, ils vaudraient *10,000(1 + 0,03)=10,300*
+  - Si je veux savoir ce que vaut 10,000e aujourd'hui, ils valent $\frac{10,000}{1+0.03}=9708.738$
+  - On appelle  $\frac{1}{1+r}$ le [facteur d'actualisation]{.bg3}
+  
+:::
+
+----
+
+### Intuition sur l'allocation dynamique
+
+Si je ne pêche pas aujourd'hui, que se passe-t-il?
+
+::: incremental
+
+- Supposons qu'on est à l'équilibre, $X_{t+1}=X_t\Rightarrow Y_t=h(X_t,E_t)$
+- Je perds *aujourd'hui* $\frac{\partial \Pi}{\partial Y}$,  qui vaudrait $(1+r)\frac{\partial \Pi}{\partial Y}$ demain
+- Demain, je gagne : 
+  - Le produit de la pêche issu d'une population plus large  : $(1+F'(X))\frac{\partial \Pi}{\partial Y}$
+  - L'effet d'un plus grand stock de poissons sur la facilité de pêcher : $\frac{\partial \Pi}{\partial X}$
+- Je m'arrête au niveau de pêche qui équilibre les [coûts marginaux aujourd'hui et les bénéfices marginaux demain]{.bg4}:
+
+  $$
+  \begin{align*}
+  (1+r)\frac{\partial \Pi}{\partial Y_t} &= \frac{\partial \Pi}{\partial X_t}+(1+F'(X))\frac{\partial \Pi}{\partial Y_t}\\
+  \Rightarrow r  &= \frac{\frac{\partial \Pi}{\partial X_t}}{\frac{\partial \Pi}{\partial Y_t}} + F'(X)
+  \end{align*}
+  $$
+  
+  C'est la [règle d'or de l'allocation des ressources renouvelables]{.bg4}
+  
+:::
+
+
+# 4. Quelles politiques publiques pour lutter contre la surexploitation?
+
+## A. Quels buts d'une politique publique?
+
+::: incremental
+
+1. Conservation de la ressource
+2. Rentabilité économique de long terme
+3. Equité et distribution des gains et pertes
+4. Assurer la faisabilité administrative (dispositions d'application et limitation des coûts)
+5. Assurer l'acceptabilité politique
+
+:::
+
+::: fragment
+
+Deux types de mesures
+
+:::
+
+:::: columns
+
+::: column
+
+::: incremental
+
+- Basées sur [l'effort]{.bg4} : 
+  - Licences et restrictions de capacité
+  - Restrictions techniques
+  - Subventions ou taxes sur les inputs
+  - Limites sur le nombre de jiurs en mer
+
+:::
+
+:::
+
+
+::: column
+
+::: incremental 
+
+- Basées sur la [capture]{.bg4} : 
+  - Total allowable Catch
+  - Taxes sur les débarquements
+  - Critères de sélectivité
+  - Quota de pêche
+
+::: 
+
+:::
+
+::::
+
+
+
+## B. Taxes sur les inputs
+
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive6.JPG){width="80%"}
+
+:::
+
+
+## C. Réduction des profits
+
+En pratique, peu le cas, même si il existe pour [aider à l'administration]{.bg3}
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive17.JPG){width="80%"}
+
+
+## D. Réglementations techniques
+
+Quel est l'effet de l'arrivée de techniques de pêche plus performantes (motorisation des filets, sonar)?
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive8.JPG){width="80%"}
+
+:::
+
+
+
+## E. Limitation des captures
+
+
+
+$$Y = \bar{Y} = q E_t X_t$$
+
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE.JPG){width=80% fig-align="center"}
+![RÈGLEMENT (UE) 2025/219 DU CONSEIL du 30 janvier 2025](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE_jours.JPG){width=80% fig-align="center"}
+
+
+-------
+
+
+### Total Allowable Catch et/ou fixation de l'effort
+
+Fixation de la quantité de pêche totale $\bar{Y}$, mesurée au débarquement et/ou de l'effort de pêche $\bar{E}$
+
+:::: columns
+
+::: column
+
+::: incremental
+
+- Risque un phénomène de [race to fish]{.bg4} : 
+  - Il existe un quota [collectif]{.bg3}
+  - La pêche est terminée une fois le quota atteint
+  - Chaque pêcheur cherche à [maximiser]{.bg3} sa part du quota
+- Dans ce cas, risque de [surpêche]{.bg3}, notamment par la manipulation de l'efficience technique $q$
+- Axé sur la conservation, ne garantit pas les autres éléments
+- Faisabilité limitée car favorise le [débardage]{.bg3} ou la revente à des navires 'frigo'
+
+:::
+:::
+
+::: column
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halibut.png){width="80%"}
+
+:::
+
+:::
+
+::::
+
+
+---- 
+
+### En pratique : dans l'Union Européenne
+
+
+Total allowable catch [et]{.bg4} restriction de l'effort
+
+::: incremental
+- Pour une [durée de 1 an](https://oceans-and-fisheries.ec.europa.eu/fisheries/rules/fishing-quotas_en)
+- Basé sur les estimations de stocks
+- [Négociés ]{.bg3} avec les pays non européens pour les stocks partagés
+- [Partagés entre pays européens]{.bg3} (quotas nationaux) dans le cadre de la Common Fishery Policy
+- Assortis de [l'obligation de débarquement ]{.bg3}: 
+    -   Devoir de débarquer et reporter les captures sujettes à quota et restrictions de tailles
+    -   De les comptabiliser dans les quotas
+    -   Pour les valoriser dans d'autres industries que la consommation humaine
+    -   Incitation : les quotas de demain seront les captures d'aujourd'hui et [top-up]{.bg3}
+    -   Risque d'amende et de suspension sinon
+- Assure la [limitation des coûts d'administration, la rentabilité économique, et la conservation]{.bg3}
+
+:::
+
+-------
+
+## F. Rights based fisheries management
+
+::: incremental 
+
+- L'absence de droits de propriété clairement défini dissout les incitations, même dans le cas des TAC
+- L'idée est [d'allouer des quotas individuels]{.bg3} aux pêcheurs (ou des droits d'accès géographiques)
+- Afin que l'intégralité des coûts et bénéfices liés à la ressource dans le temps leur soit accru
+- Afin d'être efficaces, il faut que les droits soient [transférables]{.bg3}
+  - Les navires peu performants risquent de trop pêcher sinon
+  - Ceux très performants ne peuvent pas aller plus loin
+  - La transférabilité permet l'émergence d'un marché, où les coûts marginaux de la pêche : pas le cas en France, mais passage par les [[organisations de producteurs pour une gestion collective](https://www.comite-peches.fr/la-peche-francaise/les-organisations-de-producteurs-op/)]{.bg4}
+- Associé à moins d'effort, et plus de rentabilité économique
+
+:::
+
+::: fragment
+
+$$c'(Y) = p - \pi_y$$
+
+:::
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive18.jpg){width="80%" position="center"}
+
+
+----
+
+
+### Limites et points de vigilance 
+
+Lire [A Cautionary Note on Individual Transferable Quotas, R. Sumaila, *Ecology and Society*, 2010](https://www.jstor.org/stable/26268177?seq=1)
+
+::: incremental
+
+- Incapacité à donner des droits de propriété [complets]{.bg3}
+  - Clauses de durée finie
+  - Risquent de jeter les poissons à faible valeur (high grading), de rejeter tout simplement (discarding)
+  - Causent des coûts économiques de contrôle
+- Ne règle pas le problème du [discounting]{.bg3}
+- Risque si les propriétaires [ ne sont pas les pêcheurs]{.bg3}
+- Les gains viennent de [l'allongement de la pêche,]{.bg3} ce qui peut ne pas aller avec les besoins du secteur
+- Nécessitent de [bonnes informations sur le stock]{.bg3}: 
+  - Peuvent être meilleures avec des ITQs
+  - Seulement si le système n'encourage pas le *quota busting*
+- Problèmes de [l'allocation initiale des droits]{.bg3} : 
+  - Entraine la concentration (et en théorie, les gains à l'échange)
+  - Par catégorie de vaisseau : ils risquent de trop viser une catégorie d'âge
+  - Peut avoir des comportements de monopole, menant à des iniquités sociales et l'accroissement de pouvoir par du lobbying
+
+:::
+
+-----
+
+### Conditions de succès
+
+::: incremental
+
+- Une solide [information scientifique]{.bg3} 
+- Une stratégie de ["monitoring, control and surveillance"]{.bg3} extensive et efficace
+- La propriété ne doit [pas être séparée]{.bg3} de la pêche
+- L'utilisation de [mesures basées sur la santé de l'écosystème]{.bg3} : 
+  - Aires marines protégées
+  - Populations minimales
+- Assurer des [limites]{.bg3} aux quantités [de quotas accumulables]{.bg3}
+- Assurer une [gestion collective ou terrioriale]{.bg3}, en utilisant potentiellement des enchères
+
+:::
+
+# 5. Vers une approche écosystémique de la gestion des ressources halieutiques
+
+## A. Les limites de l'approche basée sur une seule espèce
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+
+## B. Le management ecosystémique
+
+FAO, 2003:
+
+::: fragment
+*Une approche écosystémique des pêcheries s'efforce de balancer différents objectives sociétaux, en prenant en compte la connaissance et les incertitudes à propos des composantes biotiques, abiotiques et humaines des écosystèmes ainsi que leurs interactions et en appliquant une approche intégrée des pêcheries dans des limites écologiques*
+
+:::
+
+::: incremental
+
+- Réconcilier la [demande de poissons (gestion des pêcheries) et la préservation des écosystèmes]{.bg3} (diversité et fonctions)
+- En prenant en compte la complexité écosystémique:
+  - Les paramètres biophysiques
+  - Les interactions entre espèces
+- En prenant en compte les usages et services écosystémiques différents
+
+:::
+
+
+## C. Captures dans des pêcheries multispécifiques (sans interactions trophiques)
+
+Modèle à deux espèces adapté de [Tromeur et Doyen, 2018](https://link.springer.com/article/10.1007/s10666-018-9618-2): 
+
+$$\begin{align*}
+x_{it+1} = x_{it} \left(1 + r_i - \frac{r_i}{K_i}x_{it} - q_i e_t\right)
+\end{align*}$$
+
+::: fragment 
+
+Trouvez la population d'équilibre de $x_i$
+
+:::
+
+::: fragment
+
+$$\begin{align*}
+&r_i + \frac{r_i}{K_i}x_{it} - q_ie_t = 0 \\
+\Rightarrow & x^* = \begin{cases}
+\frac{K_i(r_i - q_i e_t)}{r_i}\text{ si } e<\frac{r_i}{q_i}\\
+0 \text{ sinon }
+\end{cases}
+\end{align*}$$
+:::
+
+::: fragment
+
+Trouvez la condition d'équilibre en utilisant $x_i^{MSY} = \frac{K_i}{2}$ et $e_i^{MSY}=\frac{r_i}{2 q_i}$
+
+:::
+
+::: fragment
+
+$$x_i = \begin{cases}
+x_i^{MSY}\left(2 - \frac{e}{e_i ^{MSY}}\right) \text{si }e<2e_i^{MSY}\\
+0 \text{ sinon }
+\end{cases}$$
+
+:::
+
+-----
+
+### MSY, MEY et gestion ecosystémique
+
+::: incremental
+
+- Si $e>e_i^{MSY}$, $x_i<x_i^{MSY}$ : si le taux d'effort est supérieur au taux de MSY d'une espèce, son stock est plus faible que le MSY, elle est donc [surpêchée]{.bg3}
+
+:::
+
+::: fragment
+
+Supposons que $N=3$, et que l'on peut ordoner le ratio des [productivités biotechniques]{.bg3} $\frac{r_1}{q_1}>\frac{r_2}{q_2}>\frac{r_3}{q_3}$. On cherche le rendement maximal multispécifique : 
+
+:::
+
+::: fragment
+
+$$\max_e \sum_{i=1}^3 x_i^+(e)q_ie$$
+
+:::
+
+::: fragment
+
+Pour le trouver, notons que $\forall e, \exists j\in [1,3]$ tel que $\frac{r_{j-1}}{q_{j-1}}\leq e<\frac{r_j}{q_j}$ et $\forall i<j$, $x_i(e)=0$. Le problème est donc : 
+
+$$\max_e \sum_{i=j(e)}^3 x_i^+(e)q_ie$$
+
+:::
+
+--------
+
+::: fragment
+En fonction de $j^*$ on a donc : 
+
+$$\begin{align*}
+&\frac{\partial \sum_{i=j^*}^N \frac{K_i(r_i - q_ie)}{r_i}q_ie}{\partial e} = 0\\
+\Rightarrow & e^* = \frac{1}{2}\frac{\sum_{i=j^*}K_iq_i}{\sum_{i=j^*}q_i^2\frac{K_i}{r_i}}
+\end{align*}$$
+
+:::
+
+::: fragment
+
+On trouve maintenant le nombre d'espèces optimal $j^*$ qui maximise ce MMSY
+
+:::
+
+::: fragment
+
+On cherche maintenant le MMEY : 
+
+$$
+max_e \sum_{i=1}^N x_i^+(e)p_iq_ie - ce
+$$
+:::
+
+ 
+
+-----
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmsy.jpg){fig-align="center"}
+
+::: notes
+
+- Les deux points de référence sont pas atteignables de facon conjointe, que ce soit le MSY ou le MEY
+- Il faut donc définir des points de référence qui prennent en compte la multiplicité des espèces
+- C'est ce qu'on essaie de faire en prenant en compte le Multi Species Maximum Sustainable Yield, qui est une combinaison convexe des MSY, résultant en une surexploitation des espèces avec des productivités biotechniques basses
+
+
+:::
+
+----
+
+---
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
+
+::: notes
+
+- Dans l'étude de Tromeur et Doyen, en prenant en compte la structure des pêcheries de Guyane Française, avec 13 espèces représentant 90% des captures 
+- Ils montrent que les scénarios développés plus haut mènent à une baisse de la biodiversité (définie par l'indice de Shannon)
+
+SI = - sum u_i log(ui) avec ui = x_i/sum_i x_i
+
+- Des scénarii sacrifiant la rentabilité économique sont nécessaires pour maintenir la biodiversité
+
+- Principe de capture équilibrée, mettant en perspective coefficient de capture et taux de croissance intrinsèque, nécessaire à la survie des petites espèces
+
+
+:::
+
+## D. Capture dans des pêcheries multispécifiques avec interdépendance trophique
+
+
+:::: columns
+
+::: column 
+::: incremental
+
+- Dans une pêcherie avec des proies et des prédateurs, le MSY pour les deux [ne peut être atteint]{.bg3}
+- On peut identifier une [frontière de production]{.bg3} entre les deux
+- On peut redéfinir des [points de référence]{.bg3} en fonction de la place dans le réseau trophique
+
+:::
+:::
+
+::: column
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/fpp.jpg){fig-align="center"}
+:::
+:::
+
+::::
+
+## E. Politiques publiques : les aires marines protégées
+
+::: incremental
+
+- Protègent un stock *in situ* pendant une certaine durée de temps
+  - Spécialement à certaines étapes de [l'histoire de vie]{.bg3} : reproduction etc
+  - Limitent la zone de pêche
+- [Effet discuté]{.bg3} sur le stock in fine : 
+  - Dans la zone protégée, la pêche diminue
+  - Juste en dehors, elle peut augmenter : stocks de poissons mobiles et abondants
+- In fine, dans de nombreux cas, la [régulation de l'effort de pêche est nécessaire]{.bg3} pour avoir des résultats positifs
+- Il faut des zones de protection d['au moins 30% d'une zone pour voir des résultats]{.bg3} sur le stock
+
+:::
+
+::: fragment
+
+:::{.callout-tip title="Le GBF de Keunming Montréal"}
+
+Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politique de protection de la biodiversité, structuré autour de 4 buts à l'horizon 2050 ("Protect and Restore", "Prosper with Nature", "Share Benefits Fairly" et "Invest and Collaborate"), et de 23 objectifs cibles à l'horizon 2030, comme les fameux "30 by 30" i.e. la restoration de 30% des écosystèmes dégradés et la conservation de 30% des terres, eaux et mers d'ici 2030 (cibles 2 & 3)
+
+:::
+
+:::
+
+---
+
+### Aires marines protégées et résilience économique
+
+
+
+![Halpern et al, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halpern.jpg){fig-align="center"}
+
+::: notes
+
+- AMP dans les channel Islands
+- Permet d'entrainer une réduction de la variabilité spatiale des revenus
+- Mais avec un compromis non linéaire entre les deux
+- Selon l'article, une approche basée sur les AMP crée plus d'inégalités qu'une politique basée sur l'effort de pêche, mais permet une meilleure conservation et une plus grande prévisibilité des revenus à long terme
+- Parfois mieux d'avoir des AMP bien réparties pour minimiser la variance des revenus
+
+:::
+
+## F. Inclure des valeurs différentes
+
+
+```{r}
+data = data.frame(Effort = seq(0,5, .1))
+data = data%>%
+  mutate(Catch = Croissance(Effort))
+
+p = data %>%
+  ggplot(aes(x=Effort,y = Catch))+
+  geom_ribbon(aes(ymin=0, ymax = ifelse(Effort<=2.5, Catch, NA)), fill = "dodgerblue", alpha = .2)+
+  annotate("text", x = 1.5, y =  2, label = "Conservation", color = "dodgerblue", family = local_family)+
+  geom_line(linewidth = 1.2,)+
+  geom_segment(aes(x = 4, xend = 4, y = 0, yend = 3.2), linewidth = 1.2, linetype = "dotted", color = "firebrick")+
+  annotate("text", x = 4, y =  3.8, label = "Jobs", color = "firebrick", family = local_family)+
+  geom_segment(aes(x = 1.5, xend = 1.5, y = 0, yend = 4.2), linewidth = 1.2, linetype = "dotted", color = 'forestgreen')+
+  annotate("text", x = 1.5, y =  4.7, label = "Profits", color = "forestgreen", family = local_family)+
+  geom_segment(aes(x = 2.5, xend = 2.5, y = 0, yend = 5), linewidth = 1.2, linetype = "dotted", color = 'purple')+
+  annotate("text", x = 2.5, y =  5.5, label = "Productivity \n Food safety", color = "purple", family = local_family)+
+
+  custom_theme()
+
+
+p
+```
+
+
+----
+
+
+::: incremental
+
+- Jusqu'ici, valeur [d'usage des stocks de poissons]{.bg3} par leur valeur marchande
+- Autres valeurs d'usage : 
+  -   [Directe]{.bg4} pour la [pêche de loisir]{.bg3} : 
+    -   Représente entre 2% (maqueraux) et 43% (lieu jaune) des captures dans les stocks européens (voir [Radford et al, 2018](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0201666))
+    -   Pas inclue dans les stratégies de gestion de pêche, alors qu'ils peuvent être problématiques
+  -   [Directe]{.bg4} pour le [tourisme]{.bg3} : représente un fort enjeu
+  -   [Indirecte]{.bg4} par la [régulation écosystémique et la résilience]{.bg3} : approche de gestion écosystémique
+  
+- Quid des valeurs de [non usage]{.bg4}? 
+
+:::
+
+::: fragment
+
+:::{.callout-tip title="Resilience écologique"}
+
+C.S "Buzz" Holling, dont on reparlera, est un écologue américain, définit la résilience comme 
+
+"*une mesure de la persistance des systèmes et de leurs capacités à absorber des changements et des perturbations tout en maintenant les mêmes interactions entre populations et variables d'état*"
+
+S'affrontent alors plusieurs visions de la notion, entre stabilité d'un équilibre unique ou trajectoires entre équilibres instables
+
+:::
+
+:::
+
+----
+
+
+```{r}
+p + 
+  geom_segment(aes(x = .75, xend = .75, y = 0, yend = 2.6), linewidth = 1.2, linetype = "dotted", color = 'darkgreen')+
+  annotate("text", x = .75, y =  3.2, label = "Profit and Non use", color = "darkgreen", family = local_family)
+
+```
+
+----
+
+### Exemple : habitat, coûts de pêche et bénéfices non extractifs
+
+[Use and Non-Use Values in an Applied Bioeconomic Model of Fisheries and Habitat Connections](https://munin.uit.no/bitstream/handle/10037/19519/article.pdf?sequence=3), Armstrong et al, 2017, *Marine Ressource Economics*
+
+::: incremental
+
+- Etude à mi chemin entre la [modélisation bioéconomique et l'évaluation des biens environnementaux]{.bg4} (DCE)
+
+- En Norvège, autour des ["cold-water coral"]{.bg4} : 
+  - Vont de la surface à 2000m de profondeur
+  - Ont potentiellement des fonctions écosystémiques
+  - Aggrègent les poissons, [réduisant les coûts de pêche]{.bg3}
+  - Offrent des [ services écosystémiques culturels]{.bg3}
+  - Sont [abimés]{.bg3} par le chalutage
+- En prenant en compte les services écosystémiques culturels (protégeant l'habitat), on accroit [l'habitat de 25% ]{.bg3} et on réduit potentiellement le [stock de poissons de -7%]{.bg3}
+  - Comme il y a plus d'habitat, il est moins cher de pêcher
+  - On pêche peut être plus
+- Ouvre la voie à une [gestion plus large des océans]{.bg3} que les pêcheries
+
+:::
+
+----
+
+### Mise en pratique? 
+
+Lire [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2021/09/Leonard-et-al-Science-Policy-Forum.pdf)
+
+:::: columns
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/contract_for_nature.webp){fig-align='center'}
+:::
+
+::: column
+
+:::{.incremental style="font-size:90%"}
+
+- Si l'approche par droits permet de bien gérer les ressources
+- Les [groupes d'intérêt environnementaux]{.bg3} devraient pouvoir en acheter
+- Sans tomber sous le coup des [provisions d'usage]{.bg3}, présentes dans 45% des pays de l'OCDE
+- Permet de : 
+  - Protéger la "Nature" de façon effective
+  - Révéler l'information quant à sa valeur économique
+  - Peut être plus efficace que des politiques publiques fluctuantes
+- On pourrait imaginer une [banque de quotas de pêche]{.bg3} pour éviter la fréquentation et la pêche
+- Attention aux [effets pervers]{.bg4} : 
+  - Développement local affecté
+  - Pertes fiscales
+  - Peu déplacer l'extraction ailleurs
+  - Créer un pouvoir de monopole
+
+:::
+
+:::
+
+::::
+
+## G. Bilan sur l'EBFM
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width=80% fig-align='center'}
+
+::: notes
+
+- Although EAFM has been formally adopted widely since the 1990s, little is currently known to what extent ecosystem drivers of fish stock productivity are actually implemented in fisheries management. 
+- Based on worldwide review of
+  - more than 1200 marine fish stocks
+  - found that such ecosystem drivers were implemented in the tactical management of only 24 stocks. 
+  - Most of these cases were in the North Atlantic and north-east Pacific, where the scientific support is strong. 
+- However, the diversity of ecosystem drivers implemented, and in the approaches taken, suggests that implementation is largely a bottom-up process driven by a few dedicated experts. 
+
+:::
+
+
+----
+
+::: incremental
+
+- De [multiples gains écologiques, statiques et dynamiques]{.bg4}
+- Mais [difficile]{.bg4} à mettre en place : 
+  - [Modélisation]{.bg3} complexe des écosystèmes sujets à de la variabilité etc
+  - Variété d'[indicateurs]{.bg3} à mettre en place : pas forcément besoin de tout avoir
+    - Indicateurs climatiques
+    - Reporting des pêches totales: âge, espèce
+    - Abondance et production par espèces et niveaux trophiques
+    - Indices de pêches et de concentrations spatiales des communautés et flottes
+    - Niveaux d'emploi, revenus etc 
+    - Corrélations spatiales et temporelles de ces indicateurs
+  - Mise en place [administrative]{.bg3} coûteuse et complexe : déja un peu mise en place dans de nombreux endroits, pas si difficile d'aller plus loin selon certains
+
+:::
+  
+  
+# 6. Gestion des ressources naturelles et changement climatique
+
+----
+
+## A. Effets du changement climatique
+
+### Productivité primaire et secondaire
+
+::: incremental 
+
+- Primaire : productivité des systèmes végétaux
+- Secondaire : productivité biologique des espèces qui les consomment
+- Le changement climatique via : 
+  - L'acidification
+  - La température et les vagues de chaleur
+  - La salinité
+- A des impacts positifs et négatifs, selon les espèces et les écosystèmes
+
+:::
+
+---------
+
+### Modification des communautés
+![[Molinos et al., 2015, Nature Climate Change](https://www.nature.com/articles/nclimate2769)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/richness_biodiversity_climatechange_halpern_nature.webp){fig-align='center'}
+
+::: notes
+
+- Utilisent la vélocité du changement climatique (vitesse de changement), les tolérances thermales des espèces et les préférences de types d'habitat
+
+- Sous RCP 4.5 et 8.5
+
+- L’expansion des aires de répartition des espèces est plus fréquente que leur contraction pour les deux scénarios climatiques (RCP) jusqu’en 2100.
+- Cela entraîne une augmentation globale de la diversité locale des espèces et des changements dans la composition des communautés, principalement dus à la redistribution des espèces plutôt qu’à leur disparition.
+
+-l’invasion massive de nouvelles espèces tend à uniformiser les écosystèmes actuels à travers plusieurs régions. 
+
+- À l’échelle locale, certaines zones, comme l’Indo-Pacifique, connaîtront des taux élevés d’extinction, surtout dans le scénario climatique le plus extrême (RCP8.5). 
+
+- Resultats montrent que la stabilité millénaire des patterns de diversité marine globale vont changer rapidement
+
+:::
+
+---------
+
+
+### Changements de l'abondance 
+
+![[Bas et al. 2024, Science of the Total Environment](https://www.sciencedirect.com/science/article/pii/S0048969724049015)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/habitat_suitability_bas_et_al_total_environment.jpg){fig-align='center'}
+
+::: notes
+
+
+- Usage de Species Distribution Models
+- 10 espèces pelagique et benthoélagique sous 3 scénarios de forçage
+-  declining and southward-shifting patterns in suitable habitat areas for most species, particularly under the SSP5–8.5 scenario and for some species such as Argentine hake (Merluccius hubbsi) in South America, or snoek (Thyrsites atun) off Southern Africa
+:::
+
+
+---------
+
+
+## B. Un exemple : les changements de régime
+
+[Stockholm Resilience Center Brief, 2018](https://www.stockholmresilience.org/download/18.761fdfb217fe034b93e16e5/1662712574019/3.-SUNI-203-Brief-%E2%80%93-Regime-shifts.pdf)
+
+::: fragment
+
+*Les pressions lentes sur les écosystèmes, telles que la pollution continue, ou des chocs soudains peuvent perturber les boucles de rétroaction dominantes, de sorte qu’un autre ensemble de rétroactions devient prépondérant, entraînant un changement soudain et spectaculaire dans l’apparence et le fonctionnement du système. C’est ce qu’on appelle un [changement de régime]{.bg4}.*
+
+:::
+
+::: fragment
+
+*Par exemple, un lac d’eau douce peut absorber une certaine quantité de pollution sans sembler être affecté, mais lorsqu’un seuil critique de pollution est dépassé, il peut soudainement passer d’un état d’eau claire, qui permet la pêche, à un état dominé par les algues, avec un niveau d’oxygène insuffisant pour la vie aquatique.*
+
+:::
+
+::: fragment
+
+*Lorsqu’un système est proche d’un [point de bascule]{.bg4}, même une petite perturbation qui, en temps normal, n’aurait aucun impact significatif peut le faire basculer vers un nouveau régime. Parmi ces perturbations, on peut citer les fluctuations climatiques, les tempêtes violentes, les incendies, les espèces invasives ou encore une épidémie.*
+
+:::
+
+
+----
+
+```{r}
+#| fig-align: "center"
+#| 
+set.seed(222)  # For reproducibility
+
+# Simulating a time series for a renewable resource (e.g., fish biomass)
+time <- 1:200  # 200 time periods
+biomass <- numeric(200)
+temperature <- seq(12, 25, length.out = 200)  # Simulating a warming trend
+
+# Initial biomass level
+biomass[1] <- 70  # Starting stock level
+
+# Growth model with temperature threshold
+collapse_threshold <- 18.5  # Temperature at which collapse occurs
+carrying_capacity <- 100
+post_threshold <- 90
+
+for (t in 2:200) {
+  temperature[t] <- temperature[t] + rnorm(1, mean = .2, sd = .6)
+  K <- ifelse(temperature[t] < collapse_threshold, carrying_capacity, post_threshold)  # Adjusted carrying capacity
+  biomass[t] <- biomass[t-1] * (1 + .1 * (1 - biomass[t-1] / K))
+}
+
+# Plotting the time series with secondary axis
+library(ggplot2)
+data <- data.frame(time, biomass, temperature)
+
+ggplot(data, aes(x = time)) +
+  geom_line(aes(y = biomass, color = "Biomass"), linewidth = 1) +
+  geom_line(aes(y = (temperature - min(temperature)) / (max(temperature) - min(temperature)) * (max(biomass) - min(biomass)) + min(biomass), color = "Temperature"), linewidth = 1, linetype = "dashed") +
+  geom_vline(xintercept = which.min(abs(temperature - collapse_threshold)), linetype = "dashed", color = "firebrick") +
+  geom_segment(x=0, xend = which.min(abs(temperature - collapse_threshold)), 
+               y = carrying_capacity, yend = carrying_capacity,
+               linewidth = .8, color = "navyblue", linetype = "dotted")+
+  geom_segment(xend= 200, x = which.min(abs(temperature - collapse_threshold)), 
+               y = post_threshold, yend = post_threshold,
+               linewidth = .8, color = "navyblue", linetype = "dotted")+
+  annotate("text", x = 70, y = 90, label = "Regime shift", color = "firebrick") +
+  scale_y_continuous(name = "Biomass Stock", 
+                     sec.axis = sec_axis(~ (. - min(biomass)) / (max(biomass) - min(biomass)) * 
+                                           (max(temperature) - min(temperature)) + min(temperature), 
+                                         name = "Temperature (°C)")) +
+  scale_color_manual(values = c("dodgerblue", "forestgreen")) +
+  labs(title = "Regime Shift in Renewable Resource Biomass",
+       subtitle = "Triggered by temperature threshold and carrying capacity",
+       x = "Time", color = "Legend") +
+  custom_theme()
+```
+--------
+
+```{r}
+#| fig-align: "center"
+
+set.seed(222)  # For reproducibility
+
+# Simulating a time series for a renewable resource (e.g., fish biomass)
+time <- 1:200  # 200 time periods
+biomass <- numeric(200)
+temperature <- seq(12, 25, length.out = 200)  # Simulating a warming trend
+
+# Initial biomass level
+biomass[1] <- 70  # Starting stock level
+
+# Growth model with temperature threshold
+collapse_threshold <- 18.5  # Temperature at which collapse occurs
+carrying_capacity <- 100
+pre_threshold = .03
+post_threshold = .01
+
+for (t in 2:200) {
+  temperature[t] <- temperature[t] + rnorm(1, mean = .2, sd = .6)
+  r <- ifelse(temperature[t] < collapse_threshold, pre_threshold, post_threshold)  # Adjusted carrying capacity
+  biomass[t] <- biomass[t-1] * (1 + r * (1 - biomass[t-1] / carrying_capacity))
+}
+
+# Plotting the time series with secondary axis
+library(ggplot2)
+data <- data.frame(time, biomass, temperature)
+
+ggplot(data, aes(x = time)) +
+  geom_line(aes(y = biomass, color = "Biomass"), linewidth = 1) +
+  geom_line(aes(y = (temperature - min(temperature)) / (max(temperature) - min(temperature)) * (max(biomass) - min(biomass)) + min(biomass), color = "Temperature"), linewidth = 1, linetype = "dashed") +
+  geom_vline(xintercept = which.min(abs(temperature - collapse_threshold)), linetype = "dashed", color = "firebrick") +
+  #geom_segment(x=0, xend = which.min(abs(temperature - collapse_threshold)), 
+  #             y = carrying_capacity, yend = carrying_capacity,
+  #             linewidth = .8, color = "navyblue", linetype = "dotted")+
+  #geom_segment(xend= 200, x = which.min(abs(temperature - collapse_threshold)), 
+  #             y = post_threshold, yend = post_threshold,
+  #             linewidth = .8, color = "navyblue", linetype = "dotted")+
+  geom_hline(yintercept = carrying_capacity, linetype = "dotted")+
+  annotate("text", x = 70, y = 90, label = "Regime shift", color = "firebrick") +
+  scale_y_continuous(name = "Biomass Stock", 
+                     sec.axis = sec_axis(~ (. - min(biomass)) / (max(biomass) - min(biomass)) * 
+                                           (max(temperature) - min(temperature)) + min(temperature), 
+                                         name = "Temperature (°C)")) +
+  scale_color_manual(values = c("dodgerblue", "forestgreen")) +
+  labs(title = "Regime Shift in Renewable Resource Biomass",
+       subtitle = "Triggered by temperature threshold and growth rate",
+       x = "Time", color = "Legend") +
+  custom_theme()
+```
+--- 
+
+### Quelles conséquences économiques? 
+
+Lire [Crépin et al, IRERE, 2024](https://uu.diva-portal.org/smash/get/diva2:1906419/FULLTEXT01.pdf)
+
+::: incremental
+
+- Au vu du changement de dynamiques, les mesures de politique publique (TAC, ITQ, etc) doivent être [réadaptées]{.bg4}
+- La menace du changement de régime peut entraîner plusieurs effets : 
+  - Si le risque de changement est [endogène]{.bg4} à l'activité : 
+      - La politique optimale implique de diminuer l'extraction ([Nkuiya et Diekert, 2023](https://www.sciencedirect.com/science/article/pii/S0921800923000563#sec6))
+      - Dans un cadre décentralisé, avec de larges stocks, il est optimal de réduire la pression, sinon, d'accélérer le changement pour en retirer quelque chose ([Sakamoto, 2014](https://www.sciencedirect.com/science/article/pii/S0095069614000199?via%3Dihub))
+  - Si le risque est [exogène]{.bg4} à l'activité, deux effets : 
+      - Approche [conservatrice]{.bg3}, de façon a lisser les changements dans le temps
+      - Approche [agressive]{.bg3} : si la ressource va s'effondrer, on devrait tout prendre maintenant
+
+:::
+
+
+# 7. Un cadre analytique pour le déclin de la biodiversité
+
+## Une littérature large et fournie
+
+[Jean, Mouysset,*Bioeconomic Models for Terrestrial Social Ecological System Management*, IRERE, 2022](https://sim-jean.github.io/files/research/jean_mouysset2022.pdf)
+
+::: incremental 
+
+- On a regardé [plus de 300 articles]{.bg3}
+- Qui traitent de la biodiversité [terrestre]{.bg3}
+- Avec une approche issue de la modélisation que je vous ai présentée ici
+- Charactérisation double : 
+  - [Méthodologique]{.bg3} : lecture et classification d'articles
+    - Comment est mesurée la biodiversité? Est elle monétarisée? 
+    - A quoi ressemble la fonction objectif? 
+    - Y a t il de l'espace? De l'incertitude? Des interactions stratégiques? 
+  - [Narrative]{.bg3} : analyse de *Natural Language Processing*
+    - Avec les titres, abstracts et keywords
+    - Trouvé des thématiques : habitats, statuts des espèces, type de management, paradigmes humain-nature
+    
+:::
+
+
+
+## Une extension des paradigmes et des progrès méthodologiques
+
+:::: columns
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvestig1.jpg){fig-align='center'}
+:::
+
+::: column 
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvesting2.jpg){fig-align='center'}
+:::
+
+::::
+
+-------
+
+:::: columns
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation3.jpg){fig-align='center'}
+:::
+
+::: column 
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation4.jpg){fig-align='center'}
+:::
+
+::::
+
+# Conclusion
+
+## Conclusion 
+
+::: incremental
+
+- Les [ressources naturelles renouvelables]{.bg4} sont caractérisées:
+  - On extrait un flux issu d'un stock
+  - Par des dynamiques et se [régénèrent]{.bg3} naturellement
+  - Avec des fonctions de croissance, comme la croissance logistique
+
+- L'[analyse bioéconomique]{.bg4} permet d'analyser les racines de la surexploitation et de guider la politique publique
+  - Le modèle statique de [Gordon Schaeffer]{.bg3} lie l'effort, la croissance du stock et l'économie
+  - Montre que la surexploitation émerge de la [tragédie de l'accès libre]{.bg3} et non des communs
+    - Du fait de la [dissipation de la rente]{.bg3} des zones de pêches intramarginales
+  - Fait émerger des concepts comme le [Maximum Economic Yield]{.bg3} : 
+    - Qui maximise le profit
+    - Plutôt que le [Maximum Sustainable Yield]{.bg3}, qui maximise la croissance
+
+
+
+
+
+:::
+
+----
+
+
+::: incremental
+
+- L'analyse des ressources est intimement [dynamique]{.bg4} 
+  - La [règle d'or des ressources]{.bg3} : on s'arrête lorsque 
+      - le taux d'actualisation est égal 
+      - Au bénéfice marginal escompté d'une unité de poisson en plus demain, soit le profit marginal issu de la croissance et l'effet de stock*
+
+- Différents outils de [politique publique]{.bg4} sont utilisables 
+  - Les régulations autour des [coûts et des recettes]{.bg3} liées à l'effort ou à la capture
+  - Les régulations autour des [quantités pêchables]{.bg3} (TAC & ITQ)
+  - Avec leurs avantages et inconvénients respectifs
+  - Qu'il convient d'analyser au vu des [situations spécifiques]{.bg3}
+
+
+:::
+
+
+---
+
+::: incremental 
+
+- L'approche [monospécifique]{.bg4} détruit les écosystèmes
+  - Une approche centrée sur [l'écosystème]{.bg3} doit être mise en place
+  - Et nécessite une intégration :
+    - Des [espèces]{.bg3} nombreuses et de leur coévolution
+    - Des [valeurs]{.bg3} différentes liées aux fonctions des mers et océans
+
+- Le [changement climatique]{.bg4} va amener des changements radicaux dans les pêcheries
+  - La composition et l'abondance des espèces va changer
+  - Parfois de façon abrupte, entraînant des [changements de régime]{.bg3}
+  - L'adaptabilité des règles de gestion de la ressource (ainsi que des conflits) est nécessaire à son maintien
+  
+- L'[analyse bioéconomique]{.bg4} produit un cadre riche et adaptable à l'étude de la [biodiversité]{.bg4}
+  - Même si les limites demeurent quant à sa praticité empirique
+  - Et l'inclusion d'une dimension véritablement écosystémique
+
+
+:::

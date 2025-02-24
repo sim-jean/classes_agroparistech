@@ -1,0 +1,2821 @@
+---
+title: "Economie écologique de la biodiversité et des écosystèmes"
+subtitle: "Economie Ecologique"
+---
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(here)
+library(ggplot2)
+library(ggsci)
+
+#install.packages(c("sysfonts", "showtext"))
+library(sysfonts)
+library(showtext)
+
+#font_add_google("Roboto", "roboto")
+showtext_auto()
+
+source(here("utilities.R"))
+
+```
+
+
+
+
+## Plan du cours
+
+:::: columns
+
+::: column
+
+- [Introduction : la biodiversité]{.fg}
+- [I. Valeurs, mesures et critères de décision en économie]{.fg}
+  - A. Qu'est ce qu'une valeur? 
+  - B. Quelles valeurs mesure-t-on?
+  - C. Comment juger d'une action? 
+  - D. La notion de service écosystémique
+  - E. Des formulations différentes : les Contributions de la Nature aux Populations
+  - F. Les deux grands types d'analyse en économie de la biodiversité
+
+  
+
+:::
+
+::: column
+
+- [II. Le paradigme de l'usage raisonné en économie]{.fg}
+  - A. Population et effort de pêche
+  - B. Equilibre bioéconomique de long terme
+  - C. Quelles politiques publiques pour lutter contre la surexploitation? 
+  - D. Vers une approche écosystémique de la gestion des ressources halieutiques
+
+- [III. La conservation de la biodiversité terrestre]{.fg}
+  - A. La conservation pour elle même
+  - B. Land sharing v. land sparing
+  - C. Conservation sur des territoires agricoles par la modélisation bioéconomique
+  
+- [Conclusion]{.fg}
+
+
+:::
+
+
+::::
+
+
+
+
+
+
+
+
+# Introduction : la biodiversité
+
+
+## A. Définitions
+
+:::: columns
+
+::: column
+
+*«Variabilité des organismes vivants de toute origine y compris, entre autres, les écosystèmes terrestres, marins et autres écosystèmes aquatiques et les complexes écologiques dont ils font partie; cela comprend la diversité au sein des espèces et entre espèces ainsi que celle des écosystèmes»*	
+
+Article 2, Convention sur la Diversité Biologique, 1992
+
+::: incremental
+- Différents niveaux : génétique, taxonomique, écosystémique
+- Différentes diversités : structurelle, compositionnelle, fonctionnelle	
+
+:::
+
+:::
+
+::: column
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/biodiv_illustration.jpg)
+
+:::
+
+::::
+
+## B. Déclin anthropogénique
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
+
+# I. Valeurs, mesures et critères de décision en économie
+
+## A. Qu'est ce qu'une valeur? 
+
+::: incremental
+
+- Mesure d'un [attribut quantifiable]{.bg4} : 
+  - Diversité alpha d'un système alpin par exemple (i.e. quantité d'espèces)
+  - Quantité monétaire associée à une fonction écologique : valeur de la pollinisation par exemple
+
+- [Préférence accordée]{.bg4} par les individus à des choses, états ou entités : préférence personnelle pour un type d'écosystèmes 
+
+- [Référence à des éléments collectivement reconnus]{.bg4} qui génèrent des normes (politiques, morales, religieuses) : on les trouve dans la Déclaration des Droits de l'Homme, dna sles codes religieux
+  - "valeur intrinsèque de la diversité biologique"
+  
+- Avec la biodiversité, on parle souvent des trois, on y reviendra
+
+:::
+
+
+## B. Quelles valeurs mesure-t-on?
+
+
+::: {.incremental style="font-size:90%"}
+- Le concept de [valeur économique totale]{.bg4} émerge des travaux de John Krutilla (1967, [Conservation Reconsidered](https://media.rff.org/archive/files/sharepoint/News/Features/Documents/071003%20Krutilla-ConservationReconsidered.pdf))
+
+- Pour mesurer la valeur associée à la destruction d'une partie des écosystèmes, pas directement de la Nature, puisqu'il n'y a plus de valeurs sans elle
+-   La valeur [d'usage]{.bg4} qui peut être:
+    -   [Directe]{.bg3}: les valeurs associées à la consommation directe de ressources issues de l'environnement (poisson, bois etc), c'est à dire aux services écosystémiques de [provision]{.fg} ou de contributions de la nature aux populations [matérielles]{.fg}
+    -   [Indirecte]{.bg3}: les valeurs associées au fonctionnement des écosystèmes, qui donnent des services écosystémiques de [régulation]{.fg}, comme la séquestration du carbone, ou le filtrage de l'eau, ou de contributions de la nature aux populations [de régulation]{.fg}
+    -   [d'option]{.bg3}: la possiblité d'utiliser dans le [futur]{.fg} à la fois pour la préservation et l'exploitation économiques des écosystèmes jusque là préservés, ou non utilisés
+-   La valeur de [non usage]{.bg4} :
+    -   [de legs]{.bg3} : la valeur associée à la possibilité pour les générations [futures]{.fg} de bénéficier de la nature, au travers de contributions de la nature aux populations [matérielles et immatérielles]{.fg}
+    -   [d'altruisme]{.bg3} : la valeur qui correspond à la volonté de préserver l'environnement au sein d'une [même génération]{.fg}
+    -   [d'existence]{.bg3} : la valeur correspondant à la protection de l'environnement pour un motif intrinsèque, délié des considérations [anthropocentriques]{.fg}
+
+:::
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/typologie_valeurs_tromeur.jpg){align="center"}
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/gila_monstre.webp){fig-align="center"}
+
+----
+
+### 1. Comment arrive-t-on à ces mesures?
+
+Mesurer une valeur économique nécessite de :
+
+:::: columns
+
+:::{.column width="40%"}
+
+::: incremental
+1.  [Identifier]{.bg4} clairement les éléments affectés, par une politique publique, un accident, bref, identifier une [chaîne causale]
+2.  [Mesurer]{.bg4} la relation bio-physique entre un processus environnemental et les dommages causés aux éléments identifiés
+3.  [Estimer]{.bg4} les changements qu'opèrent les éléments affectés, pour absorber les conséquences des processus environnementaux
+4.  [Placer]{.bg4} une valeur monétaire sur les conséquences inabsorbées
+
+:::
+
+:::
+
+:::{.column width="60%"}
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
+:::
+:::
+
+::::
+
+------
+
+### 2. Toutes les mesures de valeurs se valent-elles?
+
+::: incremental
+-   Les valeurs les plus simples à mesurer sont celles [d'usage direct]{.bg4}
+    -   On a des [prix de marché]{.bg3} que l'on peut utiliser, qui font se rencontrer les préférences et la technologie : c'est le gold standard de l'évaluation
+    -   Ou encore des coûts de remplacement, plus ou moins explicites, bien qu'ils n'aient pas la partie "adaptation" dans les cas purement techniques
+        -   [*Wetlands, Flooding and the Clean Water Act*](https://media.rff.org/documents/Update_WP_21-26.pdf) de Drunkenmiller et al., 2022 : <br> En utilisant les données des programmes d'assurance, *"the average hectare of wetland lost between 2001 and 2016 cost society \$1,840 annually, and over \$8,000 in developed areas."*
+-   Les valeurs [d'usage indirectes]{.bg4} n'ont bien souvent pas de prix de marché :
+    -   Le prix d'un écosystème, par ses fonctions diverses (de production, de régulation, culturelles) est difficile à déterminer
+    -   Mais certaines propriétés d'usages [concomittants]{.bg3} peuvent nous aider à les mesurer : des coûts d'évitement, des variations communes de prix, ou encore des proxies qui nous disent les choix
+-   Les valeurs de [non usage]{.bg4} sont les plus difficiles à mesurer :
+    -   Quelle serait la valeur d'héritage, ou d'altruisme?
+    -   Comment faire pour qu'elles aient une "épaisseur", une réalité, quand elles ne donneront pas lieu à des échanges économiques?
+:::
+
+----
+
+### 3. Panorama des méthodes
+
+::: incremental
+1.  Les méthodes par [préférences (ou comportements) révélées]{.bg4}: sont basées sur les comportements des gens, sur les transactions véritablement réalisées, c'est le gold standard
+    -   Principalement utilisées pour les [valeurs d'usage]{.fg}
+2.  Les méthodes par [préférences (ou comportements) déclarées]{.bg4}: sont basées sur des comportements déclarés, où l'on pas réellement pu observer les comportements des gens
+    -   Principalement utilisées pour les [valeurs de non usage]{.fg}
+3.  La méthode des [transferts de bénéfices]{.bg4} : face à la difficulté de réaliser de nouvelles études, on utilise parfois les résultats d'études existantes dans un contexte différent pour connaître localement les valeurs
+4.  Des méthodes [composites]{.bg4} :
+    -   Utilisant des [modélisations intégrées]{.fg} des dommages bio-physiques avec des modèles de choix,
+    -   Des méthodes identifiant précisément les éléments affectés, les mécanismes biophysiques et leurs conséquences, et les changements opérés, en restant sur des métriques non-monétaires, notamment via de [l'inférence causale]{.fg}
+:::
+
+------------------------------------------------------------------------  
+  
+#### L'approche par préférences révélées
+
+::: {.incremental style="font-size:90%"}
+-   On cherche à mesurer des [valeurs d'usage]{.bg3} et l'on dispose de données [transactionnelles]{.bg3} reliées aux enjeux environnementaux
+<br>
+Les biens peuvent être soit :
+-   Des [substituts]{.bg4}
+    -   Lorsque le prix de l'un augmente, la consommation de l'autre [augmente]{.fg}
+    -   Symmétriquement, on peut augmenter sa consommation si l'autre est réduite
+    -   Où les dépenses en bien privé augmentent à mesure que la qualité environnementale [décroît]{.fg} (corrélation inverse)
+    -   On utilisera les méthodes par approche de [coût de remplacement ou d'évitement]{.bg3}
+      - Exemple : les dépenses en masques de protection contre la pollution pour estimer la valeur perdue à cause de la pollution ([Zhang et Mu, 2018](https://www.sciencedirect.com/science/article/pii/S0095069617304771))
+  
+-   Des [compléments]{.bg4} :
+    -   Lorsque le prix de l'un augmente, la consommation de l'autre [baisse]{.fg}
+    -   Symmétriquement, on consomme autant de l'un que de l'autre
+    -   On utilisera les méthodes par [coûts de transport]{.bg3}
+    -   Où les dépenses en bien privé [correspondent]{.fg} au niveau de qualité environnementale (corrélation positive)
+      - Exemple : le temps que les gens sont prêts à mettre pour aller voir des zones naturelles, et comment, par exemple, les incendies la font disparaitre ([Gellman et al, 2024](https://media.rff.org/documents/Update_WP_21-26.pdf))
+
+:::
+
+----
+
+::: incremental 
+
+-   Appréciés en tant que [paquets, en tant qu'attributs d'un bien plus grand]{.bg4}:
+    -   Cela n'a pas de lien avec la substituabilite ou la complémentarité
+    -   Mais certains biens sont faits de beaucoup de caractéristiques (voitures, maisons etc) : l'évolution d'une des caractéristiques peut entraîner des changements de valeur d'un bien marchand
+    -   On utilisera les [méthodes d'évaluation hédoniques]{.bg3} souvent appliqueées à [l'immobilier]{.bg3}
+      - Ex : Les changements de valeurs immobilières près des plages permettre d'inférer la valeur de l'érosion ([Gopalakrishnan et al, 2011](https://www.sciencedirect.com/science/article/pii/S0095069610001221))
+
+:::
+
+
+---
+
+#### Forces et faiblesses des méthodes par préférences révélées
+
+L'idée est simple : mesurer à partir d'éléments économiques reliés de façon proche, pour lesquels on a un marché
+
+::::::: columns
+:::: {.column width="40%"}
+::: incremental
+-   Basé sur de [vrais comportements économiques]{.bg4}
+    -   Donnant des données proches du monde économique
+    -   Evitant les biais d'enquêtes
+-   Des études relativement [rentables (i.e pas chères)]{.bg4}
+    -   Usage de données déja collectées
+    -   Pas de coûts d'enquête
+:::
+::::
+
+:::: {.column width="60%"}
+::: incremental
+-   Ne capturent [que les valeurs d'usage]{.bg4}
+    -   Au mieux partielle : tous les services écosystémiques n'ont pas de contrepartie clairement [identifiable]{.fg}
+    -   Ne permet pas de voir les autres valeurs, notamment de [non usage]{.fg}
+-   Se basent sur des [conditions parfois restrictives]{.bg4}
+    -   Notamment sur l'état des marchés connectés (compétition imparfaites)
+    -   ou l'absence de comportement stratégiques
+-   [Extrapolent des évaluations marginales]{.bg4} du consentement à payer
+    -   La DMATP n'est peut être pas linéaire
+    -   L'extrapolation au vu de grands changements environnementaux n'est peut être pas valide
+-   Peuvent n'évaluer que des [capacités à payer]{.bg4}
+
+:::
+::::
+:::::::
+
+
+--------
+
+#### Méthodes par préférences déclarées
+
+::: incremental
+
+-   Plusieurs techniques existent :
+    -   L'évaluation contingente
+    -   Les expériences de choix discrets
+:::
+
+
+::::::: columns
+:::: column
+::: incremental
+-   Permet d'estimer la [valeur économique totale]{.bg4}, ce qui n'est pas le cas des approches par préférences révélées
+-   Ne se repose par sur des [vrais marchés]{.bg3}:
+    -   Mais pas non plus sur la nécessité d'être des marchés [parfaits]{.bg3}
+    -   Ni sur la disponibilité des données
+    -   Applicable *ex-ante*, de façon préventive
+-   Explore les [raisons]{.bg3} derrière les préférences, utiles pour la politique
+
+:::
+::::
+
+:::: column
+::: incremental
+-   Très [cher]{.bg4} à mettre en place
+-   Pas vraiment [ancré]{.bg4} dans des comportements économiques :
+    -   Pas besoin de payer
+    -   Une tonne de biais : on les survolera, mais vous pouvez aller voir [*"Contingent Valuation: From Dubious to Hopeless"*](https://www.aeaweb.org/articles?id=10.1257/jep.26.4.43) de Jerry Hausman (2012)
+
+:::
+::::
+:::::::
+
+----
+  
+## C. Comment juger d'une action?
+
+### Exemple : la création d'un parc naturel montagneux de 50,000 ha
+
+:::: columns
+
+::: column
+
+::: fragment
+- [Situation actuelle : ]{.bg4}
+  - 20,000 ha de forêt exploitées
+  - 15,000 ha de pâturages
+  - 10,000 ha de zones naturelles peu modifiées
+  - 5,000 ha d'espaces agricoles intensifs
+  
+:::
+
+::: fragment
+
+- [Biodiversité]{.bg4} :
+  - 15 espèces menacées identifiées
+  - 3 corridors écologiques majeurs
+  - 5 zones humides d'importance
+  - 2 000 hectares d'habitats prioritaires
+
+:::
+
+:::
+
+::: column
+
+::: fragment
+- [Population et activités économiques :]{.bg4}
+  - 25 000 habitants répartis dans 15 communes
+  - 200 exploitations agricoles employant 500 personnes
+  - 50 entreprises forestières employant 300 personnes
+  - 100 entreprises touristiques employant 800 personnes
+  - Revenu moyen annuel par habitant : 25 000€
+
+:::
+
+:::
+
+::::
+
+--- 
+
+### Exemple : les données économiques du projet 
+
+:::: columns
+
+::: column
+
+::: fragment
+- [Coûts de mise en place : 50 millions €]{.bg2}
+  - Infrastructure et aménagements : 15 millions €
+  - Formation et sensibilisation : 5 millions €
+  - Compensation des restrictions d'usage : 10 millions €
+  - Coûts administratifs : 20 millions €
+
+:::
+
+::: fragment
+
+- [Pertes économiques prévues : 27 millions €]{.bg2}
+  - Réduction de la production forestière : -8 millions €
+  - Limitation de l'agriculture intensive : -7 millions €
+  - Restriction du développement immobilier : -12 millions €
+
+:::
+
+:::
+
+::: column
+
+::: fragment
+
+- [Gains économiques attendus : 70 millions €]{.bg4}
+  - Développement touristique : +30 millions €
+  - Produits labellisés : +15 millions €
+  - Subventions et aides : +25 millions €
+
+:::
+
+::: fragment
+
+- [Services écosystémiques valorisés : 70 millions €]{.bg4}
+  - Stockage de carbone : 20 millions €
+  - Protection contre les risques naturels : 25 millions €
+  - Qualité de l'eau : 15 millions €
+  - Pollinisation : 10 millions €
+
+:::
+  
+
+
+:::
+
+::::
+
+----
+
+### Ex : objectifs, contraintes et parties prenantes
+
+:::: columns
+
+::: column
+
+::: fragment
+
+- [Impacts sociaux : ]{.bg4}
+  - Création de 200 emplois directs
+  - Maintien de 300 emplois agricoles menacés
+  - Formation de 500 personnes aux nouveaux métiers
+  - Développement de 20 projets d'écotourisme
+  
+:::
+
+::: fragment 
+
+- [Objectifs possibles :]{.bg4}
+  - Protection de la biodiversité
+  - Développement économique durable
+  - Maintien des activités traditionnelles
+  - Adaptation au changement climatique
+
+:::
+
+:::
+
+::: column
+
+::: fragment
+
+
+- [Contraintes :]{.bg2}
+  - Nécessité de maintenir l'emploi local
+  - Respect des engagements climatiques
+  - Préservation des usages traditionnels
+
+:::
+
+::: fragment
+
+- [Parties prenantes identifiées :]{.bg4}
+  - Collectivités locales
+  - Agriculteurs et forestiers
+  - Associations environnementales
+  - Entreprises touristiques
+  - Habitants
+  - Scientifiques et experts
+
+:::
+
+:::
+
+::::
+
+------
+
+#### Analyse coûts bénéfices
+
+::: incremental 
+
+- Tous les coûts et bénéfices sont monétisés
+- Et mesurés dans le temps puis actualisés
+- On entreprend une action si $B>C$
+- Permet de comparer des projets de nature différente
+- Mais laisse une impression de réversibilité, ou prise en compte limitée de l'irréversibilité
+
+:::
+
+::: columns
+
+::: column
+
+::: fragment
+```{r}
+data <- data.frame(
+  Type = rep(c("Coûts", "Bénéfices"), each = 2),
+  Category = c("Coûts de mise en place", "Pertes économiques",
+               "Gains économiques directs", "Services écosystémiques"),
+  Value = c(50, 27, 70, 70)
+)
+
+# Create the stacked bar chart
+ggplot(data, aes(x = Type, y = Value, fill = Category)) +
+  geom_bar(stat = "identity") +
+  labs(
+    x = "Catégorie",
+    y = "Millions d'euros"
+  ) +
+  theme_minimal() +
+  scale_fill_brewer(palette = "Set2")+
+  custom_theme(font_size = 30)
+```
+
+:::
+
+::: 
+
+::: column
+
+::: fragment
+
+$$B/C = 1.82$$
+
+Chaque euro investi rapporte 1.82€, le projet est rentable
+
+:::
+
+:::
+
+::::
+
+-----
+
+#### Analyse coût efficacité
+
+::: incremental 
+- On peut comparer les options sans monétiser
+- Permet de juger entre les options, mais pas l'option en elle même
+- Ex: coût/hectare conservé
+
+:::
+
+::: fragment
+
+- Coût total : 77 millions
+- Bénéfices : 15 espèces protégées, 2000 ha, 500 emplois créés
+
+:::
+
+:::: columns
+
+::: column
+
+::: fragment
+
+- Coût par espèce protégée : 5.13 millions €
+- Coût par hectare : 38 500 €
+- Coût par emploi : 154 000 €
+
+:::
+
+:::
+
+::: column
+
+::: fragment
+
+```{r}
+library(ggplot2)
+library(scales)  # for formatting the labels
+
+# Create a data frame with the metrics
+data_metrics <- data.frame(
+  Metric = c("Coût par espèce protégée", "Coût par hectare", "Coût par emploi"),
+  Value = c(5.13e6, 38500, 154000)
+)
+
+# Create the bar chart with a logarithmic y-scale
+ggplot(data_metrics, aes(x = Metric, y = Value, fill = Metric)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  scale_y_log10(labels = dollar_format(prefix = "€", big.mark = " ", accuracy = 1)) +
+  labs(
+    title = "Coûts par unité",
+    x = "",
+    y = "Coût (échelle logarithmique)"
+  ) +
+  theme_minimal() +
+  geom_text(aes(label = dollar(Value, prefix = "€", big.mark = " ")),
+            position = position_dodge(width = 0.9),
+            vjust = -0.5,
+            size = 4)+
+
+  scale_fill_brewer(palette = "Set2")+
+  custom_theme(font_size = 30)
+
+```
+
+:::
+
+:::
+
+::::
+
+----
+
+#### Analyse multicritères
+
+
+:::: columns
+
+::: column
+
+::: incremental
+
+- Plusieurs métriques 
+- Permet d'éviter l'applatissement
+- Mais intègre une subjectivité dans le choix de pondération
+
+:::
+
+::: 
+
+::: column
+
+::: fragment
+Définissons quatre critères principaux avec leur pondération :
+
+- Protection de la biodiversité (35%)
+- Développement économique (25%)
+- Cohésion sociale (25%)
+- Adaptation climatique (15%)
+
+:::
+
+:::
+
+::::
+
+
+:::: columns
+
+::: column
+
+::: fragment
+
+- [Protection biodiversité (8/10) ]{.bg3}:
+  - Préservation de 15 espèces menacées
+  - Protection de 2 000 ha d'habitats prioritaires
+  - Maintien de 3 corridors écologiques
+  
+:::
+
+::: fragment
+
+- [Développement économique (7/10)]{.bg3} :
+  - Création nette d'emplois
+  - Développement touristique
+  - Labellisation des produits
+
+:::
+
+
+:::
+
+::: column
+
+::: fragment
+
+- [Cohésion sociale (8/10) ]{.bg3}:
+  - Maintien des activités traditionnelles
+  - Formation de 500 personnes
+  - Développement de projets collectifs
+  
+:::
+
+::: fragment
+
+- [Adaptation climatique (7/10) ]{.bg3}:
+  - Stockage de carbone
+  - Protection contre les risques naturels
+  - Préservation des zones humides
+
+:::
+:::
+
+::::
+
+::: fragment
+
+[Score pondéré = (8×0,35) + (7×0,25) + (8×0,25) + (7×0,15) = 7,6/10]{.bg4}
+
+:::
+
+-----
+
+#### Méthode délibérative 
+
+::: incremental
+  - Intègre les perspectives des parties prenantes pour prendre en compte les aspects distributifs. 
+  - Et permet la négociation des intérêts
+
+:::
+
+:::: columns
+
+::: column
+
+:::{.incremental style="font-size:90%"}
+
+- [Phase 1 - Consultation initiale ]{.bg4}:
+  - Réunions dans chaque commune
+  - Questionnaire aux habitants
+  - Entretiens avec les acteurs économiques
+  - Résultats : [identification des préoccupations principales]{.bg4} (maintien de l'emploi, accès aux ressources, préservation des traditions)
+
+- [Phase 2 - Groupes de travail thématiques :]{.bg4}
+  - Agriculture et foresterie
+  -Tourisme et développement économique
+  - Biodiversité et environnement
+  - Vie locale et culture
+  - Résultats : [propositions d'ajustements]{.bg4} (zones de transition, calendrier progressif, gouvernance participative)
+
+:::
+
+:::
+
+::: column
+
+:::{.incremental style="font-size:90%"}
+
+- [Phase 3 - Ateliers de co-construction :]{.bg4}
+  - Cartographie participative des usages
+  - Définition collective des règles
+  - Élaboration des projets communs
+  - Résultats : [émergence de solutions innovantes]{.bg4} (circuits courts, éco-tourisme communautaire, surveillance participative)
+
+- [Phase 4 - Validation et engagement :]{.bg4}
+  - Présentation publique du projet final
+  - Signature d'une charte d'engagement
+  - Création d'un comité de suivi
+  - Résultats : [large adhésion au projet ]{.bg4}[(80% de soutien)]{.bg4} avec des adaptations significatives du plan initial
+
+:::
+
+:::
+::::
+
+---
+
+### Bilan des méthodes 
+
+| Méthode                          | Forces                                                                                      | Faiblesses                                                                                                        |
+|----------------------------------|---------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| **Analyse Coûts-Bénéfices (ACB)**  | - Permet de comparer de façon objective les coûts et les bénéfices en termes monétaires.<br>- Favorise la transparence des choix par une approche quantitative. | - Difficulté à monétiser certains coûts/bénéfices (environnementaux, sociaux).<br>- Sensible aux hypothèses de valorisation et aux incertitudes. |
+| **Analyse Coût-Efficacité (ACE)**  | - Idéale pour comparer des interventions produisant un même type de résultat.<br>- Plus simple à mettre en œuvre quand la mesure d'efficacité est claire et homogène.    | - Ne prend pas en compte l'ensemble des bénéfices si ceux-ci sont multiples ou de nature différente.<br>- Ne traduit pas toujours la valeur sociale globale d'une intervention.  |
+| **Analyse Multicritère (AMC)**     | - Intègre de multiples dimensions (quantitatives et qualitatives).<br>- Permet la prise en compte de critères variés et de points de vue divers.                   | - La pondération des critères peut être subjective.<br>- Complexité d'agrégation des résultats et interprétation parfois difficile.       |
+| **Analyse Délibérative (AD)**      | - Favorise l'inclusion et la participation des parties prenantes.<br>- Encourage la discussion, la transparence et la légitimité des décisions.                | - Processus long et potentiellement coûteux en temps.<br>- Moins systématique et difficile à reproduire ou à quantifier objectivement.  |
+
+
+## D. La notion de service écosystémique
+
+### 1. Histoire et formulation écologique
+
+#### Première référence en 1983
+
+:::: columns
+
+::: column
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/biosciences.jpg){fig-align="left"}
+
+:::
+
+::: column
+
+::: incremental
+- Ehrlich and Mooney, 1983 (BioScience): *«Extinction, substitution and ecosystem services»*
+
+:::
+
+:::
+
+::::
+
+::: notes 
+
+- La biodiversité n'est pas seulement une question de nombre d'espèces, 
+- Elle soutient des fonctions écologiques essentielles (cycle des nutriments, pollinisation, purification de l'eau, etc.) qui bénéficient directement aux sociétés humaines.
+
+- 'extinction d'espèces entraîne souvent une perte irréversible de ces fonctions écologiques. 
+- Chaque espèce peut jouer un rôle unique dans le fonctionnement des écosystèmes, et sa disparition peut déséquilibrer des processus cruciaux.
+- Possibilités limitées de substitution
+
+:::
+
+------
+
+#### David Pearce (1941 - 2005) : économiste de l'environnement et écologique
+
+:::: columns
+
+::: column
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/pearce.jpg){fig-align="left"}
+
+:::
+
+
+::: column
+
+::: incremental
+
+- Regard critique sur les approches des économistes ayant répondu au Rapport Meadows
+- Nombreuses publications dans les années 1980 qui soulignent: 
+  - Il faut prendre en compte le [capital naturel]{.bg3} présent dans le capital productif 
+  - On connaît très mal la productivité du [capital naturel]{.bg3} alors que c’est nécessaire pour comparer les productivités relatives des différents capitaux
+  - Le [capital naturel]{.bg3} a pour avantage de produire plusieurs B&S en même temps
+- A l’origine de la notion de SE
+
+:::
+
+:::
+
+::::
+
+-----
+
+#### La notion de service écosystémique en écologie
+
+Voir l'article de [Gomez Baggethun et al. 2009, *Ecological Economics*](http://blogs.ubc.ca/apfnet04/files/2015/08/SUFES_05_Module-II_History-of-Ecosystem-Service-EconomicTheory-and-Practice.pdf)
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/ecologie_fonctionnelle.jpg){fig-align="center"}
+
+:::{.fragment style="font-size:50%"}
+Tilman D., Downing J.A. (1994), Biodiversity and Stability in Grasslands, *Nature* 367: 363-365
+
+:::
+
+::: fragment
+
+Ensemble des processus d'un système écologique, qu'ils servent aux humains ou pas (Loreau et al., 2002; Hector et al., 2007)
+
+:::
+
+::: notes 
+
+-  Relient la biodiversité aux processus écologiques. Bien que le terme « services écosystémiques » n’était pas encore couramment utilisé, cette période a préparé le terrain en montrant que la diversité et les traits fonctionnels des organismes déterminaient en grande partie la capacité des écosystèmes à fournir des fonctions essentielles.
+
+:::
+
+-----
+
+#### Le capital naturel 
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/capital_naturel.jpg){fig-align="left"}
+
+::: notes
+
+- Contributions :
+- Auteur de l’article fondateur « The value of the world’s ecosystem services and natural capital » (1997), Costanza a popularisé la quantification monétaire des services écosystémiques.
+- Proposé des estimations de la valeur globale des services rendus par les écosystèmes, illustrant ainsi leur importance économique.
+- En mettant en valeur économiquement les services écologiques (pollinisation, régulation du climat, purification de l’eau, etc.), il a permis de mieux intégrer ces services dans les décisions politiques et économiques.
+
+:::
+
+-----
+
+#### Histoire et définition 
+
+::: incremental
+- Dans les années 1970, le [vocabulaire économique]{.bg3} est de plus en plus utilisé, pour mettre en avant la dépendance des sociétés aux écosystèmes naturels
+  - [Formulation utilitariste mais sans valeur d'échange]{.bg4}, c'est la valeur d'usage qui prime
+- L'idée est [d'abord pédagogique]{.bg4} : on illustre l'impact de la disparition de la biodiversité pour les humains
+- Dans les années 1990, le Beijer Institute lance un programme sur la question 
+- En 1997, [le papier de Costanza et al. dans *Nature*]{.bg4} est une petite bombe
+
+- Dans les années 1990, le concept prend dans l'arène politique : 
+  - Approche écosystémique du [UNEP]{.bg3}
+  - [Millenium Ecosystem Assessment]{.bg3} (2003) met le concept à l'agenda politique 
+    - Framework anthropocentré, qui place ceci dit la dépendance des sociétés humaines
+  - Création de [l'IPBES en 2012]{.bg3}
+- Il acquiert une [valeur monétisée]{.bg4}, qui va mener à son appropriation et à son échange
+
+:::
+
+--------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/MA_conceptual_framework.png){fig-align="center"}
+
+--------
+
+#### Les paiements pour services écosystémiques
+
+::: incremental 
+- Avec une valorisation monétaire croissante, il y a un intérêt pour [l'utilisation de la notion]{.bg4} de paiements pour services écosystémiques, afin [d'inciter à la conservation]{.bg4}
+  - Transactions [conditionnelles et volontaires]{.bg3} à propos de [services écosystémiques]{.bg3} clairement définis, entre un utilisateur et un usager
+  - Ex : séquestration, habitat, protection des paysages
+- Premier du type au [Costa Rica]{.bg4} (1997) avec le *Pago Por Servicios Ambientales* à l'échelle nationale pour calmer la déforestation
+- Au début des années 2000, il y en a plein en Amérique Latine
+
+:::
+
+----
+
+### 3. Quelles valeurs aujourd'hui?
+
+::: incremental
+-   [Costanza et al, 1997 dans Nature](https://www.nature.com/articles/387253a0), chiffrent le capital naturel et la valeur des services écosystémiques à plus de 30 trillions de dollars, plus large que le PIB mondial aujourd'hui
+-   Plus récemment, le programme [Efese]{.fg} lancé en 2012 a tenté d'évaluer une partie des services écosystémiques en France, aboutissant à une mesure de [50 milliards par an]{.fg}, soit 1.8% du PIB de 2023
+-   Le [Joint Reseach Committee]{.fg} de l'Union Européenne, en évaluant 8 services écosystémiques, aboutit à un chiffre plus modeste, autour de [18 milliards d'euros]{.fg}, soit 0.6% du PIB
+    -   Tout deux évaluent la pollinisation, les usages récréatigs, la séquestration du carbone etc, à différentes échelles spatiales
+- Dans le monde, les PES représentent 36-42 milliards de dollars de transactions par an autour de l’eau, la forêt, la biodiversité
+
+:::
+
+------------
+
+### 4. Critiques conceptuelles du concept de service écosystémique 
+
+::: incremental 
+
+- lire :
+  - [*De la Nature aux services écosystémiques : une commodification de la nature*](https://shs.cairn.info/revue-ecorev-2011-3-page-19?lang=fr), de Virginie Maris, 2011
+  - [*Misconceptions about the valuaton of ecosystem services*](https://www.sciencedirect.com/science/article/pii/S2212041624000743), Robert Costanza, 2024
+
+:::
+
+::: incremental 
+
+- La valeur comme [mesure n'est pas indépendante]{.bg4}: 
+  - des valeurs comme préférence : évaluation contingente
+  - Elles mêmes liées aux valeurs comme normes
+  - On est loin des quantités claires physiques
+
+:::
+
+-----
+
+:::{.incremental style="font-size:90%"}
+  
+- La monétisation est le [premier pas vers la commodication,]{.bg4} par l'appropriation des services écosystémiques
+  - emprunté à Marx: [transformation de biens en objets quantifiables et échangeables]{.bg3}
+  - L'objet doit être [réductible]{.bg3} : on peut le délimiter, on peut découper les services écosystémiques
+    - Les écosystèmes sont complexes et difficilement réductibles
+  - [Appropriable]{.bg3} : on doit pouvoir identifier les propriétaires des biens fournis par les écosystèmes
+    - Postulat anthropocentrique
+    - Appropriation difficile à la Locke si pas de travail, ni d'investissement
+  - [Substituable]{.bg4} : on doit pouvoir le substituer pour trouver une valeur d'échange
+    - Compenser c'est risqué
+    - L'histoire écologique est clé, et difficilement reproductible
+    - Avec du capital matériel
+
+- Dans la [pratique]{.bg4}: 
+  - [Valorisation]{.bg3}
+  - [Assetization]{.bg3} : l’assetization qui est de considérer le capital naturel comme un actif ce qui constitue dès lors une forme de commodification
+    - en enregistrant le capital au passif, on reconnait une obligation envers des entités non-humaines
+  - [Appropriation & privatisation]{.bg3}
+  - [Echange]{.bg3}
+
+
+:::
+
+----
+
+#### Synthèse de Costanza et al., 2024
+
+:::{.incremental style="font-size:90%"}
+
+- [Les services écosystémiques sont un concept anthropocentrés]{.bg4}
+  - Définis comme des caractéristiques, procédés et fonctions écologiques
+  - Contribuant aux hommes, si les écosystèmes fonctionnent de façon intact
+  - Usage du concept de [Nature Contribution to People]{.bg3} pour avoir moins d'idée sémantique de [servitude]{.bg3} et reconnaître la dépendance humaine aux écosystèmes
+  - Défense d'une [interdépendance]{.bg3}, pas une approche anthropocentrique, entre espèces
+  
+- [L'économie est simplement le marché]{.bg4}
+  - Pas de demande directe pour la plupart des services
+  - L'économie dépasse le marché: c'est une forme particulière institutionnelle pour les échanges
+  - L'évaluation des services écosystémiques nécessite de prendre en compte la soutenabilité, et la justice
+  
+- [L'évaluation est une commodication ou une privatisation]{.bg4}
+  - Mettre une valeur monétaire serait équivalent à mettre un prix, et créer une marchandise échangeable
+  - Mais les caractéristiques de plein de SE l'empêchent, en employant l'idée de bien commun (rivalité et exclusion)
+  - Les marchés de carbone ne reflètent pas la valeur de la séquestration
+  - Les PES n'utilisent [pas une valeur de marché]{.bg3} pour fixer les paiements : on prend le [coût d'opportunité]{.bg3} plutôt que la valeur des ES, reflétant le côté bien public
+  
+:::
+
+----
+
+::: incremental
+  
+- [L'expression de valeurs monétaires est fondée sur le marché]{.bg4}
+  - Des méthodes basées sur les dommages évités ou le coût de remplacement n'utilisent pas les marchés
+  - Plusieurs méthodes pas basées sur des transactions réalisées
+  - Cela utilise toujours des prix de marché...
+- [Dans un monde d'arbitrages, évaluer n'est pas un choix, cela arrive implicitement]{.bg4}
+  - L'existence reconnue des ES implique leur valorisation dans des arbitrage
+  - Il faut des valeurs claires pour faire des choix explicites
+- [Les valeurs intrinsèques sont à propos des droits, pas de la valorisation]{.bg4}
+  - Les mauvaises définitions de la valeur: la valeur mesure, et la valeur concept
+  - La valeur relative pour l'achèvement de fins, des valeurs instrumentales
+- [Les évaluations et les approches basées sur les droits sont mutuellement exclusifs]{.bg4}
+  - Les approches doivent être en fait complémentaires, car on ne parle pas des mêmes choses : on peut reconnaître une valeur mesure et une valeur norme
+  - On doit éviter la commodification et la privatisation, pas l'évaluation
+
+:::
+
+-----
+
+#### La critique de [Norgaard, 2011](https://www.uvm.edu/~jfarley/EEseminar/readings/ES%20metaphor.pdf)
+
+::: incremental
+
+- Le modèle [stock-flux]{.bg4} ne capture pas toutes les [richesses et complexités]{.bg3} écosystémiques
+- Elle ignore également les [boucles co-évolutives]{.bg4}, menant à de potentielles erreurs de gestion, à propos de la [résilience ou des points de retournement]{.bg3}
+- La gestion par PES suppose une approche fine qui génère des [coûts de transaction élevés]{.bg4}, qui rend [difficile l'ajustment]{.bg3} aux conditions écologiques
+- Mobilise une analyse en [équilibre partiel]{.bg4} : 
+  - Conduisant à une [sous estimation]{.bg3} des services écosystémiques, 
+  - La perspective [intertemporelle]{.bg3} est mal prise en compte, ainsi que la [nécessité de la transition]{.bg3}
+  - Il faut une analyse générale et intertemporelle
+- Il faut [refonder le concept]{.bg4} : 
+  - Pour éviter de se baser sur le [marché]{.bg3}, insuffisante, car [pas globalement efficient]{.bg3}
+  - Pour intégrer la [pluralité des méthodes en écologie]{.bg3}, pour mieux prendre en compte le phénomène
+  - Et transitionner vers une [gouvernance mondiale équitable]{.bg3}, où l'on admet la surexploitation des pays du Nord de ces services 
+
+:::
+
+
+-----
+
+
+### 5. Critiques opérationnelle des PES
+
+#### L'additionalité
+
+::: incremental
+
+- Désigne le fait que les bénéfices écologiques ou sociaux obtenus grâce à un projet ou à une politique de PES seraient: 
+  - [supplémentaires]{.bg4} 
+  - par rapport à ce qui se serait produit en [l'absence de l’intervention. ]{.bg4}
+  <br>
+  Autrement dit, il s'agit de vérifier que :
+  - Le [changement]{.bg4} observé est [directement attribuable]{.bg4} à la mise en œuvre du mécanisme de PES, et [non à des tendances ]{.bg3} ou politiques préexistantes.
+  - Les [investissements]{.bg4} ou les actions financés par le PES induisent des [effets]{.bg4} positifs qui [n’auraient pas eu lieu]{.bg4} dans un scénario de référence (« business-as-usual »).
+
+
+:::
+
+------
+
+::: incremental 
+
+- Le cas [Vera]{.bg4} : 
+  - Verra, entreprise de crédits carbone : 2 milliards de dollars
+  - Les entreprises achètent à Verra des crédits carbone
+  - Pour offset leur empreinte
+  - En payant des gens pour replanter ou sauvegarderdes forêts
+  - Sur les 95 millions de tonnes de carbone vendues,[ seules 5 seraient effectivement valides]{.bg4}
+- Comment évaluer? 
+  - Le mécanisme repose sur la notion de [contrefactuel]{.bg4} : que se passerait-il sans les paiements?
+  - [Problème fondamental de l’inférence causale]{.bg4} : on ne l’observe pas
+  - On peut essayer d’avoir des [groupes contrôles ou témoins]{.bg3}, mais il y a beaucoup de spécificités locales
+- La méthode : [évaluation quasi expérimentale par contrôles synthétiques]{.bg3} : 
+  - On construit un contrôle pour chaque site
+  - A partir de plein de sites similaires
+  - Pour répliquer les tendances observées dans le passé
+
+:::
+
+
+--------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/synthetic control.jpg){fig-align="center"}
+
+::: notes
+
+- En orange, les hypothèses prises par le projet
+- En bleu, le scénario selon le contrefactuel établi
+- En pointillés, les tendances observées
+- La différence entre orange et bleu : la surestimation
+
+:::
+
+--------
+
+#### Le crowding out
+
+::: incremental 
+
+- Le paiement risque de [changer les motivations des gens]{.bg4}: 
+  - de [intrinsèques]{.bg3}, elles deviendraient [extrinsèques]{.bg3} : le rapport à la nature change, et diminue l'effort fourni pour préserver la nature 
+    - Par exemple, [Chervier et al. 2019](https://www.sciencedirect.com/science/article/pii/S0921800916302919), au Cambodge, montrent que post traitement, une part significative des traités arrêteraient la conservation
+  - [Ce n'est pas toujours le cas]{.bg4} : parfois, la reconnaissance des capacités des gens, de leurs techniques etc, les pousse à préserver encore mieux
+    - [Moros et al, 2023](https://www.sciencedirect.com/science/article/pii/S0921800922003135) montrent dans le cadre d'une expérience que le "crowding out" n'est pas présent, et il y aurat même du "crowding in", car l'effet de l'intervention dure après sa fin. 
+  - Les [conditions de mise en oeuvre]{.bg4} des PES et du contexte sont [clés]{.bg4} : *"communication and verbal rewards, inclusive and participatory decision-making, and monitoring and sanctioning procedures might harm or enhance intrinsic motivations"* ([Ezzine-de-Blas et al., 2019](https://www.sciencedirect.com/science/article/pii/S092180091831019X#s0015))
+
+
+:::
+
+
+---
+
+  
+## E. Des formulations différentes : les Contributions de la Nature aux Populations
+
+Voir [Diaz et al, 2015, *Science*](https://www.science.org/doi/10.1126/science.aap8826)
+
+::: incremental 
+- [Au-delà des « services »]{.bg4} : 
+  - Intègre également des aspects [culturels, spirituels et relationnels.]{.bg3}
+  - Permet de saisir des [valeurs souvent difficiles à quantifier]{.bg3}, comme le [lien culturel]{.bg3} entre une communauté et son environnement.
+  - Remet en question les [méthodes traditionnelles]{.bg3} d’évaluation économique et incite à développer des outils pour mieux appréhender les valeurs non marchandes, notamment par les [approches délibératives]{.bg3} impliquant les populations locales
+- Contributions [positives et négatives ]{.bg4}
+  - Contributions [matérielles]{.bg3} : Ressources naturelles telles que la nourriture, l’eau, les fibres, etc.
+  - Contributions [régulatrices]{.bg3} : Services tels que la régulation du climat, la purification de l’eau et la pollinisation.
+  - Contributions [non matérielles]{.bg3} : Valeurs culturelles, récréatives, spirituelles et éducatives.
+
+:::
+
+---
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/NCPs2.jpg){fig-align="center"}
+
+---
+
+## Conclusion
+
+::: incremental 
+
+- La diversité des valeurs pose des difficultés dans la mesure
+- Et dans la manière dont on peut ou doit décider
+- La monétarisation risque de mener à la commodification
+- Mais différentes illustrations, utilisant monétarisation et analyse coûts bénéfices v. pas de monétarisation et analyse coûts efficacité mènent à différentes situations
+
+:::
+
+## F. Les deux grands types d'analyse en économie de la biodiversité
+
+:::: columns
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvestig1.jpg){fig-align='center'}
+:::
+
+::: column 
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvesting2.jpg){fig-align='center'}
+:::
+
+::::
+
+-------
+
+:::: columns
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation3.jpg){fig-align='center'}
+:::
+
+::: column 
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation4.jpg){fig-align='center'}
+:::
+
+::::  
+
+-------
+  
+# II. Le paradigme de l'usage raisonné
+
+## A. Population et effort de pêche
+
+### 1. Dynamique de la population
+
+
+::: fragment
+
+On se place dans un cadre où l'on ne considère [qu'une seule espèce]{.bg4}, dont on modélise  la [dynamique de population]{.bg4} i.e. l'évolution de la biomasse (ou du nombre d'individus) à travers le temps peut s'écrire : 
+
+:::
+
+::: fragment
+
+$$
+X_{t+1} = F(X_t) + X_t = G(X_t)
+$$
+:::
+
+
+::: incremental 
+
+-   On nomme $F(X_t)$ la [fonction de croissance]{.bg3} de la population, par abus de langage : c'est une fonction de croissance moyenne, qui oublie les classes d'âge, le sex-ratio etc
+-   On inclue un [effet de densité]{.bg3} : la croissance de la population dépend du *niveau de la population* : on n'a pas de croissance qui soit toujours la même (linéaire par exemple)
+-   Elle peut augmenter ou réduire, en fonction du niveau de la population: on a $F'(X)>0$ puis $F'(X)<0$
+    -   Une même croissance de la population peut arriver [à deux niveaux de population]{.bg3} : bas, et haut
+
+:::
+
+----
+
+### 2. Niveau de pêche et rendement soutenable
+
+:::{.incremental style="font-size:95%"}
+-   Toujours dans un cas à  [une seule espèce - Hypothèse 1]{.bg4}
+-   Technologie d'extraction: fonction liant l'effort (de pêche) à la quantité pêchée: $$Y_t  =  h(X_t,  E_t)$$
+
+-   La quantité pêchée dépend de l'effort de pêche, et de la taille du stock de poissons
+
+-   La dynamique du stock change avec l'extraction:
+
+    $$
+    \begin{align*} 
+    X_{t+1} -  X_t &= F(X_t) - Y_t= F(X_t)-h(X_t, E_t)
+    \end{align*}
+    $$
+- On cherche le niveau de population [d'équilibre]{.bg3} où $X_{t+1}-X_t=0 \iff F(X_t) = h(X_t, E_t)$
+
+- On appelle un [niveau de pêche soutenable]{.bg4} correspondant à un [stock donné]{.bg3} le niveau de pêche égal à la croissance du stock, permettant de rester en équilibre
+    
+  - Si le niveau de pêche $Y_t>F(X_t)$, $X_{t+1}<X_t$
+  - Si le niveau de pêche $Y_t<F(X_t)$, $X_{t+1}>X_t$
+  - En équilibre, $h_t(X_t,E_t) = F(X_t)$
+
+:::
+
+
+--------------
+
+### 3. Le rendement maximal soutenable (ou *maximal sustainable yield*, MSY)
+
+On définit le [rendement maximum durable]{.bg4} (ou [maximum sustainable yield]{.bg4}, MSY) comme
+
+::: incremental
+-   La [croissance maximale possible]{.bg4} de la population (et son niveau de population associé)
+-   En supposant que l'on est en équilibre, donc que [la pêche est strictement égale à cette croissance]{.bg4}
+
+:::
+
+
+::: fragment
+
+
+```{r}
+#| fig-align: center
+
+K = 100
+r = .2
+
+
+logistic_growth = function(x, r_ = r, K_ = K){
+  y = r_*x*(1-x/K)
+  return(y)
+}
+
+
+data = data.frame(x = seq(0,K))%>%
+  mutate(Logistique = logistic_growth(x)
+         )
+
+p = data %>%
+  pivot_longer(-x,
+               values_to = "value", 
+               names_to = "Croissance")%>%
+  ggplot(aes(x = x, y = value, color = Croissance))+
+  ylab('Croissance')+
+  geom_line(linewidth = 1.2)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+  
+
+p+
+  ylim(-2,7)+
+  geom_vline(xintercept = K/2, color = clean_palette[2], linetype = "dashed", linewidth = 1.1)+
+  annotate("text", x = K/2, y = 5.5, label = "MSY logi.", color = clean_palette[2])+
+  geom_vline(xintercept = 1.45*K/2, color = clean_palette[1], linetype = "dashed", linewidth = 1.1)+
+  annotate("text", x = 1.45*K/2, y = 6, label = "MSY dep.", color = clean_palette[1])
+  #geom_hline(yintercept = 2, color = clean_palette[2], linewidth = 1, linetype = "dotted")+
+  #geom_segment(aes(y =2, yend = 0, x = 12, xend = 12), color = clean_palette[2], linetype = "dotted", linewidth = 1)+
+  #geom_segment(aes(y =2, yend = 0, x = 88, xend = 88), color = clean_palette[2], linetype = "dotted", linewidth = 1)
+```
+
+:::
+
+---- 
+
+### 4. L'effort de pêche 
+
+::: incremental 
+
+- Difficile à mesurer : il dépend de plusieurs facteurs : 
+  -   Le [type de technologie]{.bg4} de pêche à un [temps donné]{.bg3} : on parle de kilomètres tractés, ou de milliers d'heures par filets, ou par hameçons 
+  -   Le type de technologie dans le [temps et à travers les différents bateaux]{.bg3} : la distribution de la technologie n'est pas équivalent, et une heure de pêche avec ou sans sonar ne donne pas la même production
+
+- Notion de prise par [unité d'effort et de "catchability"]{.bg4} :
+  -   Distribution du ratio biomasse prélevée/unités d'efforts par bateau, en aggrégé : on a différentes unités, qui prennent en compte kg/day, kg/per kilometer towed, fish/hook, ou d'autres facteurs comme le temps de recherche ou de traitment
+  
+:::
+
+::: fragment
+
+$$T/E=qN$$
+ 
+:::
+
+::: incremental 
+-   $T$ = expected catch, $E$ = Effort, $N$ = Abundance, $q$ = catchability
+
+:::
+
+
+--------------
+
+#### Le Cabillaud de l'Atlantique Nord
+
+:::: columns
+
+:::{.column width="60%" style="font-size:90%"}
+
+::: incremental
+-   Le cabillaud de l'Atlantique Nord s'est effondré dans les années 1990, après des décennies de [surpêche (et de surcapitalisation)]{.bg4} : 
+    -   Il atteint [0.1% de son niveau historique]{.bg3}
+    -   La population restante évolue: les cabillauds adultes sont sensiblement plus petits qu'avant
+    -   37,000 pêcheurs perdent leur emploi
+-   Après un [moratoire entre 1992 et 2024]{.bg4}, la pêche a recommencé, avec un quote de pêche de 18,000 tonnes, bien loin des 250,000 tonnes du passé (voir article sur [Reuters](https://www.reuters.com/world/americas/canada-reopens-cod-fishery-after-32-year-pause-replenish-stocks-2024-06-26/?utm_source=chatgpt.com)), malgré des [controverses](https://open.spotify.com/show/14O3EsEGWQ4mK3XpKzsncP#_=_)
+-   Entre autres causes, une [mauvaise évaluation du CPUE*]{.bg3} (voir [Rose et Kulka, 1999](https://people.uncw.edu/scharff/courses/458/Discussion%20articles/Rose%20and%20Kulka%201999%20-%20cod%20hyperaggregation.pdf): 
+    -   On a utilisé le CPUE comme un indicateur proportionnel de l'abondance
+    -   Mais la relation était en fait caracterisée par de [l'hyperstabilité]{.bg3}
+    
+:::
+
+:::
+
+:::{.column width="40%"}
+
+::: fragment
+
+```{r}
+#| fig-width: 5
+#| fig-height: 7
+#| fig-align: right
+data_ = data.frame(Population = seq(0,100))
+
+data_ %>%
+  mutate('Proportionel' = Population,
+         'Hyperstabilité' = 35*Population^.06)%>%
+  subset(Population < 45)%>%
+  pivot_longer(-Population, 
+               names_to = "CPUE",
+               values_to = 'values')%>%
+  ggplot(aes(x=Population, y = values, color = CPUE))+
+  geom_line(linewidth = 1.1)+
+  ylab("Catch per unit of effort")+
+  labs(color = " ")+
+  geom_segment(aes(x=0,xend=40, y=40,yend=40), linetype= "dotted", color = "black", linewidth = 1)+
+  geom_segment(aes(x=10, xend=10, y=40, yend=0), linetype = "dashed", color = clean_palette[1], linewidth = 1)+
+  geom_segment(aes(x=40, xend=40, y=40, yend=0), linetype = "dashed", color = clean_palette[2], linewidth = 1)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+```
+
+
+
+:::
+
+:::
+
+::::
+
+
+## B.  Equilibre bioéconomique de long terme
+
+### 1. Le lien entre stock, croissance et effort de pêche
+
+:::{.incremental style="font-size:95%"}
+
+-   [Modèle "bioéconomique]{.bg4} :
+    -   Mélange des dimensions économiques déterminant l'effort, et des mécanismes écologiques
+
+-   Ici : modèle statique de long terme : le plus simple pour expliquer la surexploitation des ressources halieutiques, issu des travaux de Gordon (1954) et Schaeffer (1954)
+    - Gordon, 1954, ["The Economic Theory of a Common Property Resource : the Fishery", *Journal of Political Economy*](http://www.economia.unam.mx/profesores/blopez/bienestar-ScottGordonFisheries.pdf)
+    - Schaefer, 1954, ["Some aspects of the dynamics of populations important to the managemet of the commercial marine fisheries", *Bulletin of the Inter American Tropical Tuna Commission* ](https://www.iattc.org/GetAttachment/62d510ee-13d0-40f2-847b-0fde415476b8/Vol-1-No-2-1954-SCHAEFER,-MILNER-B-_Some-aspects-of-the-dynamics-of-populations-important-to-the-management-of-the-commercial-marine-fisheries.pdf)
+    
+-   On cherche un équilibre [biologique et économique]{.bg4} : la composante clé économiquement est *l'effort de pêche* : il faut trouver le lien entre effort de pêche et population à long terme
+    -   En équilibre, le niveau de population dépend de l'effort de pêche, et des caractéristiques biologiques, prises en compte dans la fonction $F$ : 
+    $$ Y(X,E) = G(X) \Rightarrow X = F(E)$$
+    -   On a donc $Y(X,E) = Y(F(E), E) = Y(E)$ : la croissance (donc la quantité de pêche) en équilibre dépend de l'effort de pêche
+    
+:::
+
+--------------
+
+### Illustration avec un modèle de croissance logistique
+
+On prend le modèle suivant : 
+
+$$\begin{align*}
+& X_{t+1} - X_t = rX_t\left(1 - \frac{X_t}{K}\right) \\
+& Y(X_t, E_t) = q X_t E_t
+\end{align*}$$
+
+Où $q$ est le coefficient de capture, où l'on suppose ainsi que $Y/E = q X$ selon une [relation proportionnelle (Hypothèse 2)]{.bg3}
+
+::: incremental
+
+-   Trouvez la relation d'équilibre de la population
+    -   A l'équilibre : 
+
+:::
+
+::: {.fragment}
+
+$$
+\begin{align*}
+&rX^* \left(1 - \frac{X^*}{K}\right) = qX^* E\\
+\Rightarrow & X^* = \left(1- \frac{q}{r}E \right) K \\
+\Rightarrow & Y = qE\left(1- \frac{q}{r}E \right) K
+\end{align*}
+$$
+
+:::
+
+
+----
+
+```{r}
+
+# Define catchability q
+q = .04
+
+data_fin = data.frame(Effort = seq(0,5, .01))%>%
+  mutate(Croissance = q*Effort*(1 - q/r*Effort)*K)
+
+if(!file.exists(here("images", "Ressources_Nat", "effort_stock.jpg"))){
+K = 50
+
+data_ = data.frame(Stock = seq(0,K, .1))%>%
+  mutate(Croissance = logistic_growth(Stock ))
+
+p1 = data_ %>%
+  ggplot(aes(x = Stock, y = Croissance))+
+  geom_line(linewidth = 1.1)+
+  custom_theme(font_size = 18)+
+  ylab("Croissance/pêche")
+  #geom_vline(xintercept = 20, color = 'firebrick', linewidth = 1.1, linetype = "dashed")+
+  #geom_hline(yintercept = 2.2, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+  
+ggsave(here("images", "Ressources_Nat", "stock_growth.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+p2 = data.frame(Stock = seq(0,K))%>%
+  mutate(Effort = r/.04*(1-Stock/K))%>%
+  ggplot(aes(y = Effort, x = Stock))+
+  geom_line(linewidth = 1.1)+
+  custom_theme(font_size = 18)
+  #geom_vline(xintercept = 20, color = 'firebrick', linewidth = 1.1, linetype = "dashed")+
+  #geom_hline(yintercept = 3, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+ggsave(here("images", "Ressources_Nat", "effort_stock.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+p3 = data_fin%>%
+  ggplot(aes(y = Effort, x = Croissance))+
+  geom_point(linewidth = 1.1)+
+  custom_theme(font_size = 18)+
+  xlab("Croissance/pêche")
+  #geom_hline(yintercept = 3, color = 'firebrick', linewidth = 1.1, linetype = "dashed")
+ggsave(here("images", "Ressources_Nat", "effort_growth.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+
+p3b = data_fin%>%
+  ggplot(aes(x = Effort, y = Croissance))+
+  geom_point(linewidth = 1.1)+
+  custom_theme(font_size = 18)+
+  ylab("Croissance/pêche")
+
+ggsave(here("images", "Ressources_Nat", "effort_growth2.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+
+
+
+empty <- grid.rect(gp = gpar(col = NA))
+
+
+
+ggsave(here("images", "Ressources_Nat", "effort_stock.jpg"),
+       plot = grid.arrange(arrangeGrob(p1, p2, ncol = 1),
+                       arrangeGrob(empty, p3,  ncol=1), 
+                       arrangeGrob(empty, p3b, ncol = 1),
+                       ncol=3),
+       width = 30, height = 20, units = 'cm')
+
+
+data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  subset(Variable!='Croissance')%>%
+  ggplot(aes(x= Euros, y = Effort, color = Variable))+
+  geom_point()+
+  custom_theme(font_size = 18)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values= clean_palette)
+
+ggsave(here("images", "Ressources_Nat", "bioecon_basic_equilibrium.png"),
+         height = 12,
+         width = 12, 
+         units = 'cm')
+
+data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  subset(Variable!='Croissance')%>%
+  ggplot(aes(y= Euros, x = Effort, color = Variable))+
+  geom_point()+
+  custom_theme(font_size = 18)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values= clean_palette)
+
+ggsave(here("images", "Ressources_Nat", "flipped_bioecon_basic_equilibrium.png"),
+         height = 15,
+         width = 15, 
+         units = 'cm')
+
+
+}
+
+```
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive1.JPG){width="80%"}
+
+----
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive2.JPG){width="80%"}
+
+
+-----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive3.JPG){width="80%"}
+
+-----
+    
+### 2. Passer de la biomasse à une équation économique
+
+On a un lien entre quantité pêchée en équilibre (biomasse) et l'effort de pêche, on veut maintenant des quantités monétaires : 
+
+:::{.incremental style="font-size:97%"}
+
+-   On définit les revenus totaux par $RT= pY$ avec $p$ le prix de vente du poisson
+    -   [Hypothèse 3]{bg} : On suppose que le marché est [concurrentiel]{.bg4}, ce qui est le cas dans beaucoup de pêche
+    -   Néanmoins, il existe des pêcheries où il existe un [pouvoir de marché]{.bg3}, comme celle du *Totoaba Macdonaldi*
+-   On définit les coûts totaux par $CT = cE$ : 
+    -   [Hypothèse 4]{.bg4}  : On suppose que les [coûts de pêche ne dépendent pas du niveau de la population]{.bg4}
+    -   On suppose que la taille de l'effort de pêche est relativement fixe, n'a pas d'effets sur l'emploi et le prix de facteurs : [le coût marginal est égal au coût moyen]{.bg3}
+        -   Sinon, à mesure que l'effort augmente, on aurait des *coûts croissants*: il faut augmenter les salaires pour attirer des pêcheurs, l'augmentation du nombre de pêcheur aurait des effets sur le coût des bateaux etc
+
+-   On a donc le profit : $$ \Pi = RT - CE = pY - cE = pqE \left(1 - \frac{q}{r}E \right)K - cE$$
+
+:::
+
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive4.JPG){width="80%"}
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive5.JPG){width="80%"}
+
+----
+
+### 3. La gestion optimale des pêcheries
+
+
+::: incremental
+
+-   Pendant longtemps, il a été préconisé de viser le [MSY]{.bg4}, c'est à dire la production maximale, comme objectif de gestion optimale. 
+
+-   Est ce raisonnable d'un point de vue économique? 
+
+-   En économie, la gestion optimale des pêcheries suppose que l'on maximise [une fonction objectif, le profit]{.bg3}
+    -   Ici, il prend en compte les coûts et revenus
+    -   Associés à la stabilité d'un niveau de population
+    -   Il ne prend pas en compte les autres effets environnementaux de la pêche : ce n'est pas dans le modèle
+
+:::
+
+::: fragment
+
+$$
+\max_E \Pi(E) =  \max_E RT(E)-CT(E) \Rightarrow \Pi'(E)=0 \iff RT'(E) = CT'(E)
+$$
+
+:::
+
+::: fragment
+
+On arrête la pêche lorsque le [revenu marginal que l'on retire de la pêche est égal au coût marginal]{.bg3}
+
+:::
+
+
+------------
+
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+e_look = 1
+p = 5
+c = 2
+
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = q * Effort * (1 - q / r * Effort) * K) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = p*q*K*(1-2*e_look*q/r)*(Effort-e_look)+p*q*K*e_look*(1-e_look*q/r))%>%
+        select(-Croissance)
+      
+data_fin %>%
+    pivot_longer(-Effort, values_to = "values", names_to = "names") %>%
+    ggplot(aes(x = Effort, y = values, color = names)) +
+    geom_line(linewidth = 1) +
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = .7, linetype = "dashed", color= "black")+
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = 0 * K
+        ), linewidth = .7, linetype = "dashed", color="black")+
+        scale_color_aaas() +
+        custom_theme(font_size = 20) +
+        ylim(0,30)+
+        labs(x = "Effort", y = "Values", color = ' ')
+
+```
+-----
+
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+e_look = 4
+p = 5
+c = 2
+
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = q * Effort * (1 - q / r * Effort) * K) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = p*q*K*(1-2*e_look*q/r)*(Effort-e_look)+p*q*K*e_look*(1-e_look*q/r))%>%
+        select(-Croissance)
+      
+data_fin %>%
+    pivot_longer(-Effort, values_to = "values", names_to = "names") %>%
+    ggplot(aes(x = Effort, y = values, color = names)) +
+    geom_line(linewidth = 1) +
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = .7, linetype = "dashed", color= "black")+
+    geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, y = 0 * K
+        ), linewidth = .7, linetype = "dashed", color="black") +
+        scale_color_aaas() +
+        custom_theme(font_size = 20) +
+        ylim(0,30)+
+        labs(x = "Effort", y = "Values", color = ' ')
+
+```
+-----
+
+::: panel-tabset
+
+### Plot
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+
+p = 5
+c = 2
+
+# Define growth from effort
+Croissance = function(Effort){
+  y = q*Effort * (1 - q/r*Effort)*K
+  return(y)
+}
+
+# Define monetary functions with negative return for optimization
+profit = function(Effort, p_ = p , c_ = c){
+  y = p_*Croissance(Effort) - c_*Effort
+  return(-y)
+}
+
+marginal_revenue= function(Effort, p_ = p, c_ = c){
+  y = p*q*K*(1-2*Effort*q/r)
+  return(y)
+}
+
+# Run optimization: 
+
+solution = optimize(profit, interval = c(0,K))
+e_look = solution$minimum
+
+# Create data.frame
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = Croissance(Effort)) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = marginal_revenue(e_look) * (Effort - e_look) +
+                 p * Croissance(e_look))%>% # Tangent equation
+        select(-Croissance)
+
+# Treat data into tidy format
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") %>%
+  ggplot(aes(x = Effort, y = values, color = names)) +
+  geom_line(linewidth = 1) +
+  # Add segment for optimum
+  geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, 
+          y = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = 1, color= "firebrick")+
+  geom_segment(aes(# Add x-axis segment
+    x = e_look, xend = e_look,
+    yend = c * e_look, 
+    y = 0 * K
+    ), 
+    linewidth = .7, linetype = "dashed", color="firebrick")+
+  # Add segments for previously illustrated plots
+  geom_segment(aes(
+          x = 1, xend = 1,
+          yend = c * 1, y = p * q * 1 * (1 - q / r * 1) * K
+        ), linewidth = 1, color= "black")+
+  geom_segment(aes(
+          x = 1, xend = 1,
+          yend = c * 1, y = 0,
+        ), linewidth = .7, linetype = "dashed", color= "black")+    
+  geom_segment(aes(
+          x = 2.5, xend = 2.5,
+          yend = c*2.5,
+          y = p * q * 2.5 * (1 - q / r * 2.5) * K
+        ), linewidth = 1, color= "dodgerblue")+
+  geom_segment(aes(
+          x = 2.5, xend = 2.5,
+          yend = c*2.5,
+          y = 0
+        ), linewidth = .7, linetype = "dashed", color= "dodgerblue")+
+  geom_segment(aes(
+          x = 4, xend = 4,
+          yend = c * 4, y = p * q * 4 * (1 - q / r * 4) * K
+        ), linewidth = 1, color= "black")+
+    geom_segment(aes(
+          x = 4, xend = 4,
+          yend = c * 4, y = 0
+        ), linewidth = .7, linetype = "dashed", color= "black")+
+  annotate("text", x = 2.5, y = 29, label = "MSY", color = "dodgerblue")+
+  annotate("text", x = e_look, y = 27, label = "MEY", color = "firebrick")+
+
+  scale_color_aaas() + # Styling
+  custom_theme(font_size = 20) +
+  ylim(0,30)+
+  labs(x = "Effort", y = "Values", color = " ")
+
+```
+
+### Code
+
+```{r, echo = T}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+p = 5
+c = 2
+
+# Define growth from effort
+Croissance = function(Effort){
+  y = q*Effort * (1 - q/r*Effort)*K
+  return(y)
+}
+
+# Define monetary functions with negative return for optimization
+profit = function(Effort, p_ = p , c_ = c){
+  y = p_*Croissance(Effort) - c_*Effort
+  return(-y)
+}
+
+marginal_revenue= function(Effort, p_ = p, c_ = c){
+  y = p*q*K*(1-2*Effort*q/r)
+  return(y)
+}
+
+# Run optimization with integrated solver 
+
+solution = optimize(profit, interval = c(0,K))
+e_look = solution$minimum
+
+# Create data.frame 
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = Croissance(Effort)) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = marginal_revenue(e_look) * (Effort - e_look) +
+                 p * Croissance(e_look))%>% # Tangent equation
+        select(-Croissance)
+
+# Treat data into tidy format
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") 
+
+# Then use ggplot to plot
+
+
+```
+
+:::
+
+-----
+```{r}
+if(!(file.exists(here("images", "Ressources_Nat","MSY_MEY.jpg")))){
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") %>%
+  ggplot(aes(y = Effort, x = values, color = names)) +
+  geom_point() +
+  # Add segment for optimum
+  geom_segment(aes(
+          y = e_look, yend = e_look,
+          xend = c * e_look, 
+          x = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = 1, color= "firebrick")+
+  geom_segment(aes(# Add x-axis segment
+    y = e_look, yend = e_look,
+    xend = c * e_look, 
+    x = 0 * K
+    ), 
+    linewidth = .7, linetype = "dashed", color="firebrick")+
+  geom_segment(aes(
+          y = 2.5, yend = 2.5,
+          xend = c*2.5,
+          x = p * q * 2.5 * (1 - q / r * 2.5) * K
+        ), linewidth = 1, color= "dodgerblue")+
+  geom_segment(aes(
+          y = 2.5, yend = 2.5,
+          xend = c*2.5,
+          x = 0
+        ), linewidth = .7, linetype = "dashed", color= "dodgerblue")+
+  annotate("text", y = 2.5, x = 29, label = "MSY", color = "dodgerblue")+
+  annotate("text", y = e_look, x = 27, label = "MEY", color = "firebrick")+
+  scale_color_aaas() + # Styling
+  custom_theme(font_size = 20) +
+  labs(x = "Values", y = "Effort", color = " ")
+ggsave(here("images", "Ressources_Nat", "MSY_MEY.png"), 
+         height = 12,
+         width = 12, 
+         units = 'cm')
+}
+
+```
+
+--------------
+
+#### Comparaison des objectifs de gestion
+
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive9.JPG){width="80%"}
+
+::: {.incremental style="font-size:80%"}
+
+- Le [rendement économique maximal]{.bg4} (maximum economic yield, MEY) réconcilie économie et écologique, tel que:
+    - Le profit est maximal
+    - La population d'équilibre est [supérieure]{.bg3} à celle du MSY
+    - L'[effort de pêche est moindre]{.bg3}, la taille de la flotte optimale est plus petite
+
+:::
+
+-----
+
+
+### 4. Comprendre les origines de la surpêche
+
+Le modèle de Gordon Schaeffer illustre la [tragédie des communs]{.bg3}, en considérant le problème de [l'accès ouvert]{.bg3} aux pêcheries en utilisant la [théorie de la rente ricardienne]{.bg3} pour expliquer la [surexploitation]{.bg3}
+
+::: fragment
+
+**Pardon, mais quoi?**
+
+:::
+
+--------------
+
+#### a. La tragédie des communs, Hardin, 1968
+
+::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/hardin.jpg)
+:::
+
+
+:::{.column width="60%"}
+
+
+::: incremental 
+
+-   [Garett Hardin (1915-2023)](https://fr.wikipedia.org/wiki/Garrett_Hardin) était un biologiste, professeur à l'Université de Californie à Santa Barbara
+-   En 1968, il rédige un article d'opinion dans Science, ["The tragedy of the Commons"](https://math.uchicago.edu/~shmuel/Modeling/Hardin,%20Tragedy%20of%20the%20Commons.pdf)
+-   Dans cet article, il pose la question de la croissance de la population dans un monde fini, qui n'admettrait pas de "solution technique" i.e. venant strictement des sciences naturelles
+-   La tragédie, dans ce texte et suivant la définition de Whitehead, c'est non pas la tristesse, mais l'inéluctabilité du processus
+-   Il raconte [l'histoire]{.bg3} d'un pré, dont les utilisateurs sont nombreux : l'avantage à court terme de chacun est de l'utiliser avant son voisin, menant à sa disparition, alors qu'il est dans l'intérêt de chacun au long terme de le conserver
+:::
+
+:::
+:::::
+
+-------
+
+#### b. Retour à la surpêche
+
+::: incremental
+-   Dans l'analyse de Gordon, les populations de poissons sont relativement stables dans l'espace : [pas de migration (**Hypothèse 5**)]{.bg4}
+-   Il introduit la différence fondamentale entre l'agriculture et la pêche, en prenant des zones de pêche avec des rentes différenciées : 
+    -   *We now come to the point that is of greatest theoretical importance in understanging the primary production phase of the fishing industry and in distinguising it from agriculture.* 
+    -   *In the sea fisheries **the natural resource is not private property**: hence the rent it may yield is not capable of **being appropriated by anyone**. The individual fisherman has no legal title to a section of ocean bottom. Each fisherman is more or less free to fish wherever he pleases*
+    -   *The result is a pattern of competition among fishermen which culminates in the **dissipation of the rent of the intramarginal grounds***
+
+- Les termes clés sont *l'absence d'appropriabilité, la dissipation de la rente, et les zones intramarginales*
+
+:::
+
+::: fragment
+
+:::{.callout-warning title="Biens communs et accès libre"}
+
+L'analyse de Gordon permet de différencier [communs et accès libre]{.bg1}: c'est l'absence de contrôle sur la ressource (accès libre), et l'absence de normes de gestion sur une ressource en commun qui crée la surexploitation, pas le fait que les ressources sont en commun.
+
+On en reparlera dans le cours d'économie écologique, mais vous pouvez déja aller voir les travaux d'Elinor Ostrom
+
+:::
+:::
+
+--------------
+
+#### c. Absence d'appropriabilité et rente différentielle
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+
+q = .04
+
+data_fin = data.frame(Effort = seq(0,5, .01))%>%
+  mutate(Croissance = q*Effort*(1 - q/r*Effort)*K)
+
+d1 = data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = " ")%>%
+  subset(!(Variable %in% c("Croissance")))
+
+d2= data_fin %>%
+  mutate(Revenues = Croissance * 10, 
+         Cost = 5 * Effort)%>%
+  mutate("Average revenue" = Revenues/Effort,
+         "Average cost" = Cost/Effort)%>%
+  mutate("Marginal revenue" = 40 - 16*Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = "Fishing ground 2")%>%
+  subset(!(Variable %in% c("Revenues", "Cost", "Croissance")))
+
+d3= data_fin %>%
+  mutate(Revenues = Croissance * 15, 
+         Cost = 5 * Effort)%>%
+  mutate("Average revenue" = Revenues/Effort,
+         "Average cost" = Cost/Effort)%>%
+  mutate("Marginal revenue" = 60 - 24*Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = "Fishing ground 1")%>%
+  subset(!(Variable %in% c("Revenues", "Cost", "Croissance")))
+
+```
+
+
+
+
+On pose le débat en de nouveaux termes :
+
+- Revenus moyens (par unité d'effort): 
+  $$RT = pY(E)/E = pq\left(1 - \frac{q}{r}E \right)K$$
+- Revenu marginal (par unité d'effort *supplémentaire*) : 
+  $$Rm = \frac{\partial pY(E)}{E} = pq\left(1 - 2E\frac{q}{r} \right)K$$
+- Coût moyen et marginal (par unité d'effort): 
+  $$CM = Cm = c$$
+
+```{r}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+if(!(file.exists(here("images", "Ressources_Nat", "curve_to_lines_revenue.jpg")))){
+d1 = data_fin %>%
+  mutate(Revenues = Croissance * p, 
+         Cost = 2*c * Effort)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = " ")%>%
+  subset(!(Variable %in% c("Croissance")))
+
+d2= data_fin %>%
+  mutate(Revenues = Croissance * p, 
+         Cost = 2*c * Effort)%>%
+  mutate(Average_revenues = Revenues/Effort,
+         Average_cost = Cost/Effort)%>%
+  mutate(Marginal_revenues = p*q*(1 - 2*Effort*q/r)*K)%>%
+  pivot_longer(-Effort,
+               names_to = 'Variable', 
+               values_to = 'Euros')%>%
+  mutate(Representation = "  ")%>%
+  subset(!(Variable %in% c("Revenues", "Cost", "Croissance")))
+
+rbind(d1,d2)%>%
+  ggplot(aes(x = Effort, y = Euros, color = Variable))+
+  geom_point()+
+  facet_wrap(~Representation, ncol=1)+
+  custom_theme(font_size = 18)+
+  #geom_vline(xintercept=4, linetype = "dotted")+
+  #geom_vline(xintercept=2, linetype = "dotted")+
+  ylim(0,30)+
+  coord_fixed(.1)+
+  labs(color = " ", nrow=2)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values = c( 'royalblue','red', 'dodgerblue', 'firebrick', 'coral'))
+ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue.jpg"), 
+       height= 20, 
+       width = 20, 
+       units = "cm")
+
+rbind(d1,d2)%>%
+  ggplot(aes(x = Effort, y = Euros, color = Variable))+
+  geom_point()+
+  facet_wrap(~Representation, ncol=1)+
+  custom_theme(font_size = 18)+
+  geom_vline(xintercept=4, linetype = "dotted")+
+  geom_vline(xintercept=2, linetype = "dotted")+
+  geom_vline(xintercept = 2.5, linetype = "dotted")+
+  annotate("text", x = 2.5, y = 27, label = "MSY")+
+  annotate("text", x = 2, y = 26, label = "MEY")+
+  annotate("text", x = 4.5, y = 21, label = "Open Access")+
+
+  ylim(0,30)+
+  coord_fixed(.1)+
+  labs(color = " ", nrow=2)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values = c( 'royalblue','red', 'dodgerblue', 'firebrick', 'coral'))
+ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_equilibria.jpg"), 
+       height= 20, 
+       width = 20, 
+       units = "cm")
+
+rbind(d1,d2)%>%
+  ggplot(aes(x = Effort, y = Euros, color = Variable))+
+  geom_point()+
+  facet_wrap(~Representation, ncol=1)+
+  custom_theme(font_size = 18)+
+  geom_vline(xintercept=4, linetype = "dotted")+
+  #geom_vline(xintercept=2, linetype = "dotted")+
+  #geom_vline(xintercept = 2.5, linetype = "dotted")+
+  #annotate("text", x = 2.5, y = 27, label = "MSY")+
+  #annotate("text", x = 2, y = 26, label = "MEY")+
+  annotate("text", x = 4.5, y = 21, label = "Open Access")+
+
+  ylim(0,30)+
+  coord_fixed(.1)+
+  labs(color = " ", nrow=2)+
+  #ggtitle("Equilibre de long terme")+
+  scale_color_manual(values = c( 'royalblue','red', 'dodgerblue', 'firebrick', 'coral'))
+ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"), 
+       height= 20, 
+       width = 20, 
+       units = "cm")
+
+}
+
+```
+
+
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top=75 left=600 width="550" height="600"}
+:::
+
+
+----
+
+#### Deux zones géographiques
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){width="80%"}
+
+--------
+
+::: incremental
+
+- Gérées à l'optimum, on a les niveaux d'effort A et B
+- C'est ce qui compte pour un décideur public qui maximise le surplus
+- Mais pour un pêcheur? 
+  - Ce qui compte c'est le revenu moyen par unité d'effort, là où le profit est le plus large
+  - Où un pêcheur qui entre décide-t-il d'aller? 
+  
+:::
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){.absolute top=240 left=100 width="790" height="500"}
+
+:::
+
+--------
+
+::: incremental
+
+- Un nouveau pêcheur préfère aller dans la zone où le profit est élevé
+- Tant qu'à faire, les autres dans la zone moins profitable aussi
+- Jusqu'à ce qu'il n'y ait plus de gains à bouger:
+    -   La profitabilité à la marge de la zone 1 et 2 sont égales
+    -   C'est à dire un entrant *marginal* gagnerait la même chose entre 1 et 2
+
+:::
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive13.JPG){.absolute top=240 left=100 width="790" height="500"}
+
+:::
+
+--------
+
+::: incremental
+
+- Ce phénomène se répète pour toutes les zones de pêches qui sont plus productives que le coût d'exploitation, [la zone d'exploitation marginale]{.bg4}
+- Ces zones sont [intra marginales]{.bg4} : elles sont *avant* la zone marginale en termes de productivité
+- Le profit possible à réaliser est large dans ces zones, mais il est réduit par la possibilité de bouger entre les zones de pêche facilement, ou d'avoir un nouvel entrant dans la zone.
+
+:::
+
+
+::: fragment
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive14.JPG){.absolute top=240 left=100 width="790" height="500"}
+
+:::
+
+--------
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive15.JPG){width="80%"}
+
+
+-----
+
+#### d. L'équilibre de libre accès
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top=50 left=200 height="700"}
+
+
+--------------
+
+## C. Quelles politiques publiques pour lutter contre la surexploitation?
+
+### 1. Quels buts d'une politique publique?
+
+::: incremental
+
+1. Conservation de la ressource
+2. Rentabilité économique de long terme
+3. Equité et distribution des gains et pertes
+4. Assurer la faisabilité administrative (dispositions d'application et limitation des coûts)
+5. Assurer l'acceptabilité politique
+
+:::
+
+::: fragment
+
+Deux types de mesures
+
+:::
+
+:::: columns
+
+::: column
+
+::: incremental
+
+- Basées sur [l'effort]{.bg4} : 
+  - Licences et restrictions de capacité
+  - Restrictions techniques
+  - Subventions ou taxes sur les inputs
+  - Limites sur le nombre de jiurs en mer
+
+:::
+
+:::
+
+
+::: column
+
+::: incremental 
+
+- Basées sur la [capture]{.bg4} : 
+  - Total allowable Catch
+  - Taxes sur les débarquements
+  - Critères de sélectivité
+  - Quota de pêche
+
+::: 
+
+:::
+
+::::
+
+-----
+
+### 2. Manipuler le modèle
+
+Voici quelques idées d'exercices pour approfondir l'analyse de ce modèle en utilisant l'application shiny suivante : `https://simon-jean.shinyapps.io/gordon_schaeffer/`
+
+1.  **Point d'extinction :**
+    -   **Question :** Pour quelles valeurs de l'effort (e) (ou selon différentes combinaisons de ($q$) et ($r$)) le stock d'équilibre tombe-t-il à zéro ?\
+    -   *Astuce :* Identifier les seuils critiques à partir desquels le stock s'effondre et discuter de la robustesse du système face à une pêche excessive.
+
+2.  **Optimisation économique et durabilité :**
+    -   **Question :** En tenant compte des coûts et des revenus, quel est l'effort optimal pour maximiser le profit net ? Comment cet effort se situe-t-il par rapport à ($e_\text{MSY}$) ?\
+    -   **Exercice :** Rechercher l'effort qui maximise le profit (revenus moins coûts) et discuter des compromis entre exploitation économique et préservation du stock.    
+    
+3.  **Lien entre MEY et MSY :**
+    -   **Question :** Comment se comparent l'effort candidat (souvent associé au MEY, rendement économique maximum) et l'effort au MSY (yield maximum) ?\
+    -   *Astuce :* Varier les paramètres (comme ($c$) et ($p$)) pour observer comment les positions de ($e_{\text{look}}$) et ($e_{\text{MSY}}$) évoluent et analyser l'écart entre rentabilité économique et rendement maximal.
+
+--------------
+    
+4.  **Impact des politiques publiques – Taxation :**
+    -   **Question :** Quel est l'effet d'une taxe sur l'effort de pêche sur les revenus, les coûts et le profit net ?\
+    -   *Astuce:* Intégrer dans le modèle une variable de taxe qui augmente les coûts (par exemple, ($\text{Coût total} = (c+t) e$) et comparer les résultats en termes de point de rentabilité et d'effort optimal.
+
+5.  **Impact des politiques publiques – Modification du coefficient de capture :**
+    -   **Question :** Comment une modification du coefficient de capture ($q$) (due à des mesures de durabilité, des innovations technologiques ou des restrictions) affecte-t-elle le stock d'équilibre et les revenus ?\
+    -   *Astuce:* Simuler une baisse (ou une hausse) de ($q$) et observer l'impact sur l'effort maximal, les points d'extinction et les performances économiques (revenus, profits).
+
+
+
+## D. Vers une approche écosystémique de la gestion des ressources halieutiques
+
+### 1. Les limites de l'approche basée sur une seule espèce
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+
+### 2. Le management ecosystémique
+
+FAO, 2003:
+
+::: fragment
+*Une approche écosystémique des pêcheries s'efforce de balancer différents objectives sociétaux, en prenant en compte la connaissance et les incertitudes à propos des composantes biotiques, abiotiques et humaines des écosystèmes ainsi que leurs interactions et en appliquant une approche intégrée des pêcheries dans des limites écologiques*
+
+:::
+
+::: incremental
+
+- Réconcilier la [demande de poissons (gestion des pêcheries) et la préservation des écosystèmes]{.bg3} (diversité et fonctions)
+- En prenant en compte la complexité écosystémique:
+  - Les paramètres biophysiques
+  - Les interactions entre espèces
+- En prenant en compte les usages et services écosystémiques différents
+- La [gestion de la biodiversité n'est pas qu'une somme d'espèces]{.bg4}
+
+:::
+
+--------
+
+### 3. Captures dans des pêcheries multispécifiques (sans interactions trophiques)
+
+Modèle à deux espèces adapté de [Tromeur et Doyen, 2018](https://link.springer.com/article/10.1007/s10666-018-9618-2)
+ 
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmsy.jpg){fig-align="center"}
+
+::: notes
+
+- Les deux points de référence sont pas atteignables de facon conjointe, que ce soit le MSY ou le MEY
+- Il faut donc définir des points de référence qui prennent en compte la multiplicité des espèces
+- C'est ce qu'on essaie de faire en prenant en compte le Multi Species Maximum Sustainable Yield, qui est une combinaison convexe des MSY, résultant en une surexploitation des espèces avec des productivités biotechniques basses
+
+
+:::
+
+
+---
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
+
+::: notes
+
+- Dans l'étude de Tromeur et Doyen, en prenant en compte la structure des pêcheries de Guyane Française, avec 13 espèces représentant 90% des captures 
+- Ils montrent que les scénarios développés plus haut mènent à une baisse de la biodiversité (définie par l'indice de Shannon)
+
+SI = - sum u_i log(ui) avec ui = x_i/sum_i x_i
+
+- Des scénarii sacrifiant la rentabilité économique sont nécessaires pour maintenir la biodiversité
+
+- Principe de capture équilibrée, mettant en perspective coefficient de capture et taux de croissance intrinsèque, nécessaire à la survie des petites espèces
+
+
+:::
+
+-----------
+
+### 4. Capture dans des pêcheries multispécifiques avec interdépendance trophique
+
+
+:::: columns
+
+::: column 
+::: incremental
+
+- Dans une pêcherie avec des proies et des prédateurs, le MSY pour les deux [ne peut être atteint]{.bg3}
+- On peut identifier une [frontière de production]{.bg3} entre les deux
+- On peut redéfinir des [points de référence]{.bg3} en fonction de la place dans le réseau trophique
+
+:::
+:::
+
+::: column
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/fpp.jpg){fig-align="center"}
+:::
+:::
+
+::::
+
+### 5. Inclure des valeurs différentes
+
+
+```{r}
+data = data.frame(Effort = seq(0,5, .1))
+data = data%>%
+  mutate(Catch = Croissance(Effort))
+
+p = data %>%
+  ggplot(aes(x=Effort,y = Catch))+
+  geom_ribbon(aes(ymin=0, ymax = ifelse(Effort<=2.5, Catch, NA)), fill = "dodgerblue", alpha = .2)+
+  annotate("text", x = 1.5, y =  2, label = "Conservation", color = "dodgerblue", family = local_family)+
+  geom_line(linewidth = 1.2,)+
+  geom_segment(aes(x = 4, xend = 4, y = 0, yend = 3.2), linewidth = 1.2, linetype = "dotted", color = "firebrick")+
+  annotate("text", x = 4, y =  3.8, label = "Jobs", color = "firebrick", family = local_family)+
+  geom_segment(aes(x = 1.5, xend = 1.5, y = 0, yend = 4.2), linewidth = 1.2, linetype = "dotted", color = 'forestgreen')+
+  annotate("text", x = 1.5, y =  4.7, label = "Profits", color = "forestgreen", family = local_family)+
+  geom_segment(aes(x = 2.5, xend = 2.5, y = 0, yend = 5), linewidth = 1.2, linetype = "dotted", color = 'purple')+
+  annotate("text", x = 2.5, y =  5.5, label = "Productivity \n Food safety", color = "purple", family = local_family)+
+
+  custom_theme()
+
+
+p
+```
+
+
+----
+
+
+::: incremental
+
+- Jusqu'ici, valeur [d'usage des stocks de poissons]{.bg3} par leur valeur marchande
+- Autres valeurs d'usage : 
+  -   [Directe]{.bg4} pour la [pêche de loisir]{.bg3} : 
+    -   Représente entre 2% (maqueraux) et 43% (lieu jaune) des captures dans les stocks européens (voir [Radford et al, 2018](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0201666))
+    -   Pas inclue dans les stratégies de gestion de pêche, alors qu'ils peuvent être problématiques
+  -   [Directe]{.bg4} pour le [tourisme]{.bg3} : représente un fort enjeu
+  -   [Indirecte]{.bg4} par la [régulation écosystémique et la résilience]{.bg3} : approche de gestion écosystémique
+  
+- Quid des valeurs de [non usage]{.bg4}? 
+
+:::
+
+::: fragment
+
+:::{.callout-tip title="Resilience écologique"}
+
+C.S "Buzz" Holling, dont on reparlera, est un écologue américain, définit la résilience comme 
+
+"*une mesure de la persistance des systèmes et de leurs capacités à absorber des changements et des perturbations tout en maintenant les mêmes interactions entre populations et variables d'état*"
+
+S'affrontent alors plusieurs visions de la notion, entre stabilité d'un équilibre unique ou trajectoires entre équilibres instables
+
+:::
+
+:::
+
+----
+
+
+```{r}
+p + 
+  geom_segment(aes(x = .75, xend = .75, y = 0, yend = 2.6), linewidth = 1.2, linetype = "dotted", color = 'darkgreen')+
+  annotate("text", x = .75, y =  3.2, label = "Profit and Non use", color = "darkgreen", family = local_family)
+
+```
+
+----
+
+### Exemple : habitat, coûts de pêche et bénéfices non extractifs
+
+[Use and Non-Use Values in an Applied Bioeconomic Model of Fisheries and Habitat Connections](https://munin.uit.no/bitstream/handle/10037/19519/article.pdf?sequence=3), Armstrong et al, 2017, *Marine Ressource Economics*
+
+::: incremental
+
+- Etude à mi chemin entre la [modélisation bioéconomique et l'évaluation des biens environnementaux]{.bg4} (DCE)
+
+- En Norvège, autour des ["cold-water coral"]{.bg4} : 
+  - Vont de la surface à 2000m de profondeur
+  - Ont potentiellement des fonctions écosystémiques
+  - Aggrègent les poissons, [réduisant les coûts de pêche]{.bg3}
+  - Offrent des [ services écosystémiques culturels]{.bg3}
+  - Sont [abimés]{.bg3} par le chalutage
+- En prenant en compte les services écosystémiques culturels (protégeant l'habitat), on accroit [l'habitat de 25% ]{.bg3} et on réduit potentiellement le [stock de poissons de -7%]{.bg3}
+  - Comme il y a plus d'habitat, il est moins cher de pêcher
+  - On pêche peut être plus
+- Ouvre la voie à une [gestion plus large des océans]{.bg3} que les pêcheries
+
+:::
+
+----
+
+
+### 6. Politiques publiques : les aires marines protégées
+
+::: incremental
+
+- Protègent un stock *in situ* pendant une certaine durée de temps
+  - Spécialement à certaines étapes de [l'histoire de vie]{.bg3} : reproduction etc
+  - Limitent la zone de pêche
+- [Effet discuté]{.bg3} sur le stock in fine : 
+  - Dans la zone protégée, la pêche diminue
+  - Juste en dehors, elle peut augmenter : stocks de poissons mobiles et abondants
+- In fine, dans de nombreux cas, la [régulation de l'effort de pêche est nécessaire]{.bg3} pour avoir des résultats positifs
+- Il faut des zones de protection d['au moins 30% d'une zone pour voir des résultats]{.bg3} sur le stock
+
+:::
+
+::: fragment
+
+:::{.callout-tip title="Le GBF de Keunming Montréal"}
+
+Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politique de protection de la biodiversité, structuré autour de 4 buts à l'horizon 2050 ("Protect and Restore", "Prosper with Nature", "Share Benefits Fairly" et "Invest and Collaborate"), et de 23 objectifs cibles à l'horizon 2030, comme les fameux "30 by 30" i.e. la restoration de 30% des écosystèmes dégradés et la conservation de 30% des terres, eaux et mers d'ici 2030 (cibles 2 & 3)
+
+:::
+
+:::
+
+---
+
+#### Aires marines protégées et résilience économique
+
+
+
+![Halpern et al, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halpern.jpg){fig-align="center"}
+
+::: notes
+
+- AMP dans les channel Islands
+- Permet d'entrainer une réduction de la variabilité spatiale des revenus
+- Mais avec un compromis non linéaire entre les deux
+- Selon l'article, une approche basée sur les AMP crée plus d'inégalités qu'une politique basée sur l'effort de pêche, mais permet une meilleure conservation et une plus grande prévisibilité des revenus à long terme
+- Parfois mieux d'avoir des AMP bien réparties pour minimiser la variance des revenus
+
+:::
+
+-------
+
+### 7. Bilan sur l'EBFM
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width=80% fig-align='center'}
+
+::: notes
+
+- Although EAFM has been formally adopted widely since the 1990s, little is currently known to what extent ecosystem drivers of fish stock productivity are actually implemented in fisheries management. 
+- Based on worldwide review of
+  - more than 1200 marine fish stocks
+  - found that such ecosystem drivers were implemented in the tactical management of only 24 stocks. 
+  - Most of these cases were in the North Atlantic and north-east Pacific, where the scientific support is strong. 
+- However, the diversity of ecosystem drivers implemented, and in the approaches taken, suggests that implementation is largely a bottom-up process driven by a few dedicated experts. 
+
+:::
+
+
+----
+
+::: incremental
+
+- De [multiples gains écologiques, statiques et dynamiques]{.bg4}
+- Mais [difficile]{.bg4} à mettre en place : 
+  - [Modélisation]{.bg3} complexe des écosystèmes sujets à de la variabilité etc
+  - Variété d'[indicateurs]{.bg3} à mettre en place : pas forcément besoin de tout avoir
+    - Indicateurs climatiques
+    - Reporting des pêches totales: âge, espèce
+    - Abondance et production par espèces et niveaux trophiques
+    - Indices de pêches et de concentrations spatiales des communautés et flottes
+    - Niveaux d'emploi, revenus etc 
+    - Corrélations spatiales et temporelles de ces indicateurs
+  - Mise en place [administrative]{.bg3} coûteuse et complexe : déja un peu mise en place dans de nombreux endroits, pas si difficile d'aller plus loin selon certains
+
+:::
+
+
+# III. La conservation de la biodiversité terrestre
+
+
+
+
+## A. La conservation pour elle même
+
+
+### 1. Les biodiversity hotspots
+
+::: incremental 
+
+- Introduit par Norman Myers en 1988, le concept visait à identifier les régions 
+  - présentant une [richesse exceptionnelle en espèces endémiques]{.bg4}
+  - tout en étant [fortement menacées]{.bg4} par la dégradation des habitat (70% de perte)
+- Priorisation de la conservation : 
+  - focus les ressources sur des zones critiques 
+  - la stratégie des hotspots permet [d'optimiser les investissements]{.bg4} en 
+- Approche pourrait 
+  - [négliger d'autres écosystèmes]{.bg4} tout aussi importants, en concentrant excessivement l'attention et les financements sur un nombre restreint de zones.
+  -  intègre parfois insuffisamment les [savoirs, besoins et droits des communautés locales]{.bg4}, ce qui peut entraîner des conflits d'usage et réduire l'efficacité durable des stratégies de conservation.
+
+:::
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/global_hotspots.jpg)
+
+----
+
+
+### 2. La conservation par aires protégées
+
+::: incremental 
+
+- On veut remplir [«l’Arche de Noé»]{.bg4} ([Weitzman, 1998](https://scholar.harvard.edu/files/weitzman/files/noahs_ark_problem.pdf)): comment faire?
+  - Il faut trouver les espèces qui [«rapportent» le plus]{.bg3} en termes de [sauvetage]{.bg3} : diversité spécifique, philogénétique etc
+
+- Utilisation de [l'incidence des espèces]{.bg4}, ainsi que des données de [prix sur les zones de conservation]{.bg4} (lire [Ando et al., Science, 1998](https://www.science.org/doi/full/10.1126/science.279.5359.2126))
+    - Différentes approches: 
+    - *Set coverage problem (SCP)* : minimiser une fonction de perte (nombre ou coût des réserves) sous contrainte de couverture des espèces
+    - *Maximal coverage problem (MCP)*: maximiser la couverture sous contrainte de budget
+
+- Pour le design de réserves optimales, avec le meilleur *bang for buck*
+
+:::
+
+
+----
+
+
+
+### 3. La critique institutionelle des modes de gouvernance de la conservation
+
+::: incremental
+
+- La [conservation]{.bg4} : 
+  - Les aires protégées se diffusent depuis les années 1970, avec le tourisme de masse
+  - Depuis les années 1980, différentes [modalités]{.bg3} se développent : du parc national aux aires "à gestion durable", intégrant les populations locales
+- La [priorisation doit encore faire ses preuves]{.bg4} (période 1995-2005):
+  - Pour répondre aux limites de l'extension pure des surfaces
+  - La majeure partie des zones dans les hotspots date d'avant la désignation en hotspots
+- [Face politique]{.bg4} : 
+  - Méthodes employées par des ONG puissantes qui canalisent les financements (Nature Conservancy, WWF et Global 200)
+  - Qui leur donne une [place centrale]{.bg3}
+  - Et crée une [concurrence]{.bg3} entre ONG, freinant la coordination efficace des projets
+  - Approche globalisée qui [affaiblit les gouvernements]{.bg3} nationaux et locaux
+
+:::
+
+
+## B. Land sharing v. land sparing
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/land_sharing_land_sparing.jpg)
+
+::: notes
+- Une agriculture extensive, qui respecte mieux la biodiversité sur les terres cultivées ?
+
+- Une agriculture intensive, qui laisse plus de place pour desd’espaces naturels riches en biodiversité ?
+
+:::
+
+---------
+
+#### Rendements et biodiversité
+
+::: incremental 
+
+- [Green et al. (2005), *Science*. Farming and the fate of wild nature.](https://www.science.org/doi/10.1126/science.1106049)
+
+- Pour produire une quantité donnée, deux options: 
+  - On fait de l'agriculture intensive : gros rendement sur petite surface
+  - On fait de l'agriculture extensive : petits rendements sur grande surface
+
+- Quand on étend la surface agricole, on baisse le rendement, mais on augmente la biodiversité
+  - La question: la relation est elle linéaire, concave ou convexe?
+
+:::
+
+-----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive1.jpg)
+
+-----
+
+### Le cas du sparing
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive2.jpg)
+
+-----
+
+#### Le cas du sharing
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive3.jpg)
+
+----
+
+#### Controverse
+
+:::{.incremental style:"font-size=90%"}
+
+- Green et al. (2005), Phalan et al. (2011) : données empiriques disponibles : montrent une (relation convexe biodiversité /rendement){.bg4} : en faveur d’une stratégie [de land sparing]{.bg4}
+
+- Fischer et al. (2011), *Science.* & Tscharntke et al. (2012), *Biological Conservation.*
+  - [Difficultés à protéger]{.bg4} les espaces non cultivés.
+  - Effets négatifs sur l’environnement de l’agriculture intensive avec [produits agrochimiques]{.bg4} ; services écosystémiques associés à la biodiversité agricole
+  - Il peut y avoir [biodiversité et rendement élevés]{.bg4} (agroécologie)
+
+- Le débat bio/intensif pour nourrir l'humanité v. préserver la biodiv
+
+- [Sparing mieux que sharing]{.bg4} : 
+  - En particulier pour les [oiseaux et les insectes]{.bg3}, 
+  - tant dans les régions [tropicales]{.bg3} (Choco-Andes colombien, Ouganda) que dans les zones [tempérées]{.bg3} (Angleterre, Pologne).
+  - Résultats parfois différenciés en fonction des [espèces]{.bg3} (animaux larges préfèrent le *sparing*, les plus petit plutôt le *sharing*)
+  - Les approches [agroécologiques]{.bg4} et mélangeant les deux sont souvent mieux
+  - Tout cela dépend du [contexte local]{.bg3} : espèce, type de culture etc
+  - Voir: 
+    - [Edwards et al, *Current Biology*, 2021](https://www.sciencedirect.com/science/article/pii/S0960982220318820) pour la Colombie
+    - [Feniuk et al, *Proceedings of the Royal Academy of Britain*, 2019](https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2019.1483) pour l'Europe 
+
+:::
+
+-----
+
+
+
+##  C. Conservation sur des territoires agricoles par la modélisation bioéconomique
+
+#### 1. Définition
+
+:::: columns
+
+::: column
+
+::: incremental 
+
+- [Définition d'un modèle]{.bg4} : 
+  - [Mécaniste]{.bg3}, basé sur des équations avec des variables identifiées
+  - Pour comprendre le lien entre scénarios et conséquences socio éconologiques
+  - Exclut les méthodes statistiques simplement corrélatives
+- [Une dynamique de population]{.bg4}
+  - D'une population [sauvage]{.bg3} ou faiblement anthropisée
+  - Exclut : l'agrobiodiversité, certaines forêts, et la pollution atmosphérique et des sols
+
+  
+:::
+
+:::
+
+::: column
+
+:::{.incremental style="font-size:90%"}
+
+- Un [processus de décision]{.bg4} émergent de la théorie économique 
+  - Module de décision clairement exprimé et modélisable
+  - Admet plusieurs formulations :  une utilité, une fonction de profit ou des consensus d'agents différents par simulation
+
+- Un [lien entre les deux systèmes]{.bg4} : 
+  - l'économie influe la biodiversité
+  - Qui contraint ou influe sur l'économie
+- Permettent [d'intégrer différentes valeurs]{.bg4} : 
+  - D'usage 
+  - Mais également de participer à la délibération dans le cas de décisions liées aux valeurs de non usage (voir [Lopes & Atallah, REEP, 2021](https://link.springer.com/article/10.1007/s10640-020-00416-1) ainsi que [Armstrong et al, MRE, 2017](https://munin.uit.no/bitstream/handle/10037/19519/article.pdf?sequence=3), Armstrong et al, 2017,
+- [Tradition européenne riche]{.bg3}, beaucoup appliquée à l'agriculture européenne
+
+:::
+
+:::
+
+::::
+
+
+-----
+
+### 2. Un exemple contemporain : les réseaux écologiques
+
+[V. Cocco et al. 2023, Relaxing the production-conservation trade-off: Biodiversity spillover in the bioeconomic performance of ecological networks, *Ecological Economics*](https://www.sciencedirect.com/science/article/pii/S092180092300229X)
+
+::: incremental 
+
+
+
+
+:::
+
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/model_structure_cocco2023.jpg){fig-align="center"}
+
+
+------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/spatial_framework_cocco2023.jpg){fig-align="center"}
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/results_performance_cocco2023.jpg){fig-align="center"}
+
+------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/performances_within_outside_cocco2023.jpg){fig-align="center"}
+
+
+# Conclusion
+
+## Conclusion
+
+::: incremental 
+
+- Les [valeurs sont multiples et difficiles à mesurer]{.bg4}
+  - Valeurs d'usage et de non usage
+- La [prise de décision]{.bg4} dépend des contextes et des objectifs de décision
+  - Qu'il faut ouvrir à d'autres mesures que la monnaie
+  - Et d'autres méthodes que les coûts bénéfices
+  - Pour un co-développement fécond
+
+- L'usage du concept de [service écosystémique]{.bg4}, d'abord fécond, est critiqué
+  - Commodification
+  - Simplification écologique
+  - Simplification économique et analyse en équilibre partiel
+  - Au détriment d'une approche fondée sur les droits
+- La [modélisation]{.bg4} conserve une part importante, prenant des dimensions issues de [l'écologie scientifique]{.bg4} : 
+  - Dynamique des populations simples
+  - Puis écologie des paysages
+
+:::
+  
+-------  
+  
+::: incremental  
+  
+- Permettant [d'analyser les causes]{.bg4} du déclin de la biodiversité : 
+  - La surexploitation et la tragédie de l'accès ouvert
+  - La disparition de l'habitat
+- Et d'offrir des [pistes pour la conservation]{.bg4} des espèces:
+  - Dans des espaces soumis à différents usages
+  - Notamment l'agriculture
+  - Avec des approches complémentaires de l'approche coûts bénéfices classique
+- Qui [galvaude une certaine distinction]{.bg3} "nouvelle économie des ressources", "environnementalisme pragmatique" et "socioéconomie"
+
+:::

@@ -145,7 +145,7 @@ $selection-bg: #26351c !default;
 }
 
 .fg {
-  color: $matter;
+  color: $accent;
   font-weight: normal;
 }
 
@@ -162,6 +162,22 @@ $selection-bg: #26351c !default;
   border-radius: 5px;
   display: inline-block;
 }
+
+
+.bg4 {
+  background-color: var(--col, #b3ebf2);
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.bg3 {
+  background-color: var(--col, #d6f7ff);
+  padding: 0.1em;
+  border-radius: 5px;
+  display: inline-block;
+}
+
 
 // lists
 
@@ -182,6 +198,19 @@ $selection-bg: #26351c !default;
 
   li:before {
     content: $right-arrow;
+    color: mix($accent, white, 60%);
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    margin-right: 0.5em;
+  }
+}
+
+.reveal ul ul ul {
+  list-style: none;
+
+  li:before {
+    content: "\25E6"; // Unicode for a hollow bullet
     color: mix($accent, white, 60%);
     display: inline-block;
     width: 1em;

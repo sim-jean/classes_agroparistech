@@ -1,0 +1,282 @@
+---
+title: "Concurrence Imparfaite 3 : Politiques de la Concurrence"
+subtitle: "UC1 Analyse Economique"
+
+---
+
+# Introduction {#sec-intro}
+
+-----
+
+::: {.incremental style="font-size:80%"}
+-   En cas de *concurrence imparfaite*, il y a ce qu'on apelle des *défaillances de marché*
+-   Ces défaillances appellent à une action de l'Etat, pour "restaurer" l'efficacité des marchés
+:::
+
+:::: fragment
+::: callout-tip
+## Efficacité, efficience
+
+L' **efficacité** désigne l'utilisation optimale des ressources, la maximisation du bien être. L'**efficience** mesure le niveau de performance sous contrainte de ressources
+:::
+::::
+
+::: {.incremental style="font-size:80%"}
+-   Cette action est coordonnée par le droit **européen** et **national**, au travers de l'action concertée entre
+    -   Les *Autorités de la Concurrence* nationales
+    -   La *Commission européenne* (via la *Direction générale de la concurrence*)
+    -   Au sein du *réseau européen de la concurrence* (REC)
+:::
+
+# I. La politique de la concurrence: définitions et cadre
+
+## Définition
+
+::: callout-tip
+## Politique de la concurrence
+
+Ensemble des mesures et des lois visant à s'assurer que la concurrence sur un marché ne soit pas limitée d'une manière qui réduise le bien être social <br>
+:::
+
+::: incremental
+-   On l'a vu précédemment, en situation de concurrence imparfaite, on risque une *perte sèche* de surplus <br> [En effet, si $p>>Cm$, $Q<Q^*$, et on a une perte ainsi qu'un transfert du surplus vers les producteurs]{.fragment}
+
+-   En pratique, des économistes et juristes qui travaillent ensemble à la qualification d'entraves (ou) non à la concurrence
+:::
+
+## Historique - USA
+
+::: incremental
+-   Aux Etats Unis à la fin du XIXe siècle, le train est achevé et connecte un immense marché
+-   Les *trusts* aux Etats Unis à la fin du XIXe siècle:
+    -   Monopoles **naturels** : larges coûts fixes qui confèrent un monopole <br> [Dans des secteurs comme le chemin de fer, ou le pétrole]{.fragment}
+    -   Permet de dégager des marges importantes
+    -   Et d'opérer des fusions
+    -   Au détriment des consommateurs et des plus petits producteurs
+:::
+
+## Historique - USA
+
+::: fragment
+![John D. Rockefeller](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/portrait_rockefeller.jpg){width="10cm"}
+:::
+
+## Historique - USA
+
+::: incremental
+-   **Sherman Act** (1890): loi fédérale, interdisant les entetnes, la monopolisation et ses tentatives sous peine de prison
+    -   Mise en pratique un peu longue car limites juridiques floues: ententes vs. monopoles
+    -   *TransMissouri Freight Association* : association de compagnies de chemin de fer qui s'entendaient sur le prix du fret <br> [1897 : verdict de la Cour Suprême, qui rend ceci illégal]{.fragment}
+    -   *Standard Oil*: trust (i.e ensemble de fiduciaires) démantelée en 1911 en une trentaine d'entreprise indépendantes.
+-   **Clayton Act** (1914):
+    -   Interdiction de la discrimination par les prix
+    -   Limitation des fusions et acquisitions
+:::
+
+## Historique - France et UE
+
+::: incremental
+-   France, 1953 : création de la **Commission technique des ententes**
+-   Union Européenne, 1957 : signature du **traité de Rome**, qui pose les bases européennes du droit de la concurrence
+-   France, 1986 :
+    -   *Ordonnance sur la liberté des prix et la concurrence* qui crée le *Conseil de la concurrence*, et le dote d'une capacité de sanction
+-   Union Européenne, 2004 : obligation de l'application du droit communautaire, et création du réseau européen de concurrence
+-   France, 2009 : création de l'Autorité de la concurrence:
+    -   Elargissement des prérogatives : contrôle des opérations de concentration
+:::
+
+## Les autorités de la concurrence en France
+
+Mandat de l'Autorité de la concurrence en France :
+
+::: incremental
+-   Maintien d'un terrain de jeu concurrentiel équitable et durable :
+    -   Régulation des monopoles naturels
+    -   Maintien de standards de qualité parfois
+-   Sanctionne la constitution :
+    -   D' *ententes* ex. le [*cartel du vin*](https://www.autoritedelaconcurrence.fr/fr/communiques-de-presse/vins-dalsace-lautorite-de-la-concurrence-sanctionne-3-organisations)
+    -   Les *abus de position dominante*
+-   Contrôle en amont de la réalisation, des opérations de concentrations : autorisation conditionnelle etc
+-   Préconise des évolutions législatives et réglementaires aux pouvoirs publics
+:::
+
+::: fragment
+Et autorités sectorielles (ARCEP, ARCOM, RTE)
+:::
+
+# II. Le droit de la concurrence en Europe
+
+## Article 101
+
+::: {.incremental style="font-size:80%"}
+-   Le *Traité de Fonctionnement de l'Union Européenne* (consolide Rome et Maastricht) de 2007 pose les règles du jeu :
+    -   **Article 101**: ententes et cartels sont prohibés et peuvent donner lieu à des sanctions allant jusqu'à 10% du chiffre d'affaires
+:::
+
+::::::: columns
+:::: {.column width="60%"}
+::: fragment
+![Le cartel des camions, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/cartel_camions.jpeg)
+:::
+::::
+
+:::: {.column width="40%"}
+::: {.incremental style="font-size:70%"}
+-   Amende de 2.93 milliards d'euros en 2016
+-   Marques : MAN, Daimler, Iveco, DAF, Scania, Volvo - 95% du marché
+    -   Provision des sous depuis 2014, pour payer l'amende
+    -   Sauf pour MAN, exempt, car ils ont coopéré (procédure de clémence)
+-   Début d'enquête en 2011, à la suite d'inspections surprises
+-   Entente entre 1997 et 2011 pour retarder l'introduction de technologie de réduction des émissions de CO2
+:::
+::::
+:::::::
+
+## La procédure de clémence
+
+::: incremental
+-   La *procédure de clémence* apparaît dans les années 1970 aux Etats Unis
+-   Puis en Europe en 1996 (révisions au début des années 2000), depuis 2001 en France, pour en renforcer l'efficacité et la possibilité
+    -   D'abord **totale, puis partielle, en fonction de l'ordre d'arrivée**
+-   Décisions :
+    -   Si je dénonce, je perds tout
+    -   Mais si je dénonce en premier, je ne perds rien
+    -   Si je dénonce en deuxième, je perds la moitié <br> [On voit que ça incite à **accélérer** la délation]{.fragment}
+-   Permet de découvrir les infractions plus facilement
+:::
+
+## Article 101
+
+::::::: columns
+:::: {.column width="60%"}
+::: fragment
+![Le cartel du change, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/cartel_banques.jpg)
+:::
+::::
+
+:::: {.column width="40%"}
+::: {.incremental style="font-size:70%"}
+-   Barclays, Citigroup, RBS, JP Morgan, Bank of Tokyo Mitsubishi en 2019
+-   Entente sur les cours de changes de 11 monnaies
+-   Pénalité de 1,07 milliards pour deux ententes entre 2007 et 2013
+-   UBS a révélé l'existence et a échappé à 285 millions d'euros d'amende (procédure de clémence)
+:::
+::::
+:::::::
+
+::: incremental
+-   Controverse ceci dit : on peut avoir des mutualisations dans le cadre d'entreprises de réseaux, qui sont bénéfiques au consommateur : mutualisation des services de livraison de boissons en ville
+:::
+
+## Article 102
+
+**Article 102**: une entreprise disposant d'une *position dominante* sur un marché ne doit pas en abuser, en imposant des prix ou conditions commerciales inéquitables
+
+::::::: columns
+:::: {.column width="50%"}
+::: fragment
+![Google](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/Google_hq.jpg)
+:::
+::::
+
+:::: {.column width="50%"}
+::: {.incremental style="font-size:70%"}
+-   Amende de 4,1 milliards d'euros en 2018
+    -   Abus de position dominante du système d'exploitation Android (80% des machines)
+    -   Préinstallation de Chrome\
+-   Amende 1,9 milliard d'euros en 2019
+    -   Abus de position dominante de la régie publicitaire de Google, *AdSense for search* entre 2006 et 2016 : imposition de contrat avec des sites partenaires, puis pratiques déloyales (réserver les meilleurs emplacements etc)
+:::
+::::
+:::::::
+
+## Articles 107-109
+
+**Articles 107-109** : les aides d'Etat sont généralement prohibées (hormis pour l'intérêt commun, la promotion de la culturelle)
+
+::::::: columns
+:::: {.column width="50%"}
+::: fragment
+![Fiat](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/fiat.jpg)
+:::
+::::
+
+:::: {.column width="50%"}
+::: {.incremental style="font-size:70%"}
+-   Au Luxembourg, une succursale financière de Fiat a bénéficié d'une aide au fonctionnement sous la forme d'un crédit d'impôts
+-   Différence entre prix de transfert et de marché :
+    -   Prix de transfert entre les sociétés du groupe Fiat (ou prêts) \< Prix de marché
+    -   Cela permet d'être beaucoup moins taxé
+-   Effectivement réclammé par la Commission *in fine*, entre 20 et 30 millions d'euros
+-   La Cour de Justice de l'UE a finalement rendu un arrêt en 2022 annulant cette décision
+:::
+::::
+:::::::
+
+## Fusions & acquisitions
+
+Le **réglement n°139/2004** : donne le pouvoir à la commission d'examiner les grandes fusions et acquisitions.
+
+::::::: columns
+:::: {.column width="40%"}
+::: fragment
+![Alstom/Siemens](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/train.jpg)
+:::
+::::
+
+:::: {.column width="60%"}
+::: {.incremental style="font-size:70%"}
+-   Projet de fusion entre Alstom et Siemens pour un géant européen du train et de la signalisation, pour "lutter contre la concurrence chinoise"
+-   L'autorité européenne l'a refusée en estimant que :
+    -   La place des deux firmes, déja leaders, serait trop importante sur le marché des trains à grande vitesse et la signalisation
+    -   Mettant en péril les intérêts des plus petits concurrents, des opérateurs ferroviaires et l'innovation dans ces secteurs
+-   A laissé la place à des modifications de l'accord:
+    -   Transferts de propriété complexes, séparation des activités de prodcution etc
+    -   Céder des licences de train à grande vitesse d'Alstom
+-   Rejeté car insatisfaisant : **controverse**
+:::
+::::
+:::::::
+
+# II. Comment mesurer : les munitions de la politique de la concurrence
+
+## Marché pertinent, prix et indices de concentration
+
+:::: fragment
+::: callout-tip
+## Marché
+
+Ensemble de produits présentant entre eux une forte substituabilité du point de vue de la demande et de l'offre
+:::
+::::
+
+:::: fragment
+::: callout-tip
+## Marché pertinent
+
+Produit de référence, auxquels on ajoute les produits aisément substitutables (qualité, localisation etc) avec des caractéristiques d'offre et de demande similaires.
+
+Ensemble des produits pour lesquels une hausse de prix de 5% à 10% maximiserait le profit des offreurs
+:::
+::::
+
+::: incremental
+-   Comment l'identifier?
+    -   On identifie la demande
+    -   On simule l'effet d'une augmentation modérée du prix
+    -   Si on peut augmenter les profits de façon *durable*, on a un marché pertinent pour l'analyse de la politique de la concurrence
+:::
+
+## Les indices de concentration
+
+::: {.incremental style="font-size:90%"}
+-   La part de marché cumulée des $n$ premiers : $CR_n = \sum_{i=1}^n\frac{q_i}{Q}$
+    -   Ne tient pas compte de la dispersion
+-   Indice de Herdfindhal Hirschman : $IHH = \sum_{i=1}^n\left(\frac{q_i}{Q}\right)^2$
+    -   Si les firmes sont identiques $IHH = 1/n$, sinon il est plus élevé et tend vers 1
+    -   Peut être exprimé en % et varie entre 0 et 10,000 : peu de chance d'avoir d'avoir un problème si $IHH<1000$ après une fusion
+-   L'indice de Lerner : $L = \frac{p-Cm}{p}$
+    -   Si L est large (proche de 1), il y a beaucoup de pouvoir de marché, car le prix est bien au dessus du coût marginal : attention
+    -   Si L est bas, pas trop de souci
+    -   Nécessite la connaissance des coûts
+:::
