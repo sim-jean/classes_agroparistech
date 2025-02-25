@@ -12,13 +12,16 @@ copy_files = function(folder_origin, folder_destination){
 }
 
 
+# Teaching first year
 copy_files(here("classes_compiled", "1e_année"), 
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/1A")
 
+# Teaching second year
 copy_files(here("classes_compiled", "UC1_Analyse_Economique"), 
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/2A")
 copy_files(here("classes_compiled", "EERN"), 
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/2A")
 
+# Teaching master
 copy_files(here("classes_compiled", "ecol_econ_eeet"), 
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/EEET")
