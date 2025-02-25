@@ -1,0 +1,884 @@
+---
+title: "L'évaluation économique des biens environnementaux"
+subtitle: "Economie de l'Environnement et des Ressources Naturelles"
+---
+
+```{r}
+
+
+#renv::activate()
+#suppressMessages(renv::snapshot())
+
+library(tidyr)
+library(dplyr)
+library(extrafont)
+library(magrittr)
+library(ggplot2)
+library(here)
+source(here("utilities.R"))
+
+local_family="Roboto"
+```
+
+# Introduction
+
+## Valeur monétaire de l'environnement ?
+
+Pourquoi chercher à donner une évaluation monétaire au vivant?
+
+::: fragment
+*Il ne s'agit pas de créer un marché de la biodiversité \[...\], il s'agit de définit des valeurs de référence pour que, dans toutes les décisions publiques, soit désormais prise en compte la valeur économique de la biodiversité*
+
+Chantal Jouanno, 2009 - Secrétaire d'état à l'écologie
+:::
+
+::: fragment
+*In the age of number crunchers, however, there is a danger that the more precisely expressible values will dominate the less precisely expressible values simply because their numerical chatacter makes them easier to fit into models*
+
+Costanza and Daly, 1987, ["Towards and Ecological Economics"](https://www.uvm.edu/~jdericks/EE/Costanza-Toward_an_EE.pdf), *Ecological Modelling*
+:::
+
+::: incremental
+-   Il s'agit d'intégrer la protection de l'environnement et de la biodiversitédans l'ordre d'un [calcul coûts bénéfices]{.bg4} pour guider [l'action publique]{.bg4}
+    -   Idée de [we protect what we value]{.bg3}
+-   Il s'agit aussi d'évaluer les [responsabilités juridiques]{.bg4} dans le cas des destructions environnementales
+:::
+
+## Le préjudice écologique
+
+::: incremental
+-   Né de la loi de 2016 pour "la reconquête de la biodiversité, de la nature et des paysages", le [préjudice écologique]{.bg4} (Article 1246).
+
+    -   Il instaure l'obligation, pour les responsables, de réparer ce préjudice aux écosystèmes et services écosystémiques, notamment après les directives européennes de 2004 sur le sujet.
+    -   Il devient nécessaire de [réparer l'environnement]{.bg4} en tant que tel, pas simplement pour les préjudices indirects que l'homme perçoit.
+
+-   En 1999, le tanker *Erika* fait naufrage dans le golfe de Gascogne
+
+    -   déversant des dizaines de milliers de tonnes de fioul lourd, atteignant les côtes bretonnes.
+    -   Des communes se constituent alors [parties civiles,]{.bg3} pour être dédommagées du préjudice subi, et seront finalement reconnues dans leur droit par un arrêt de la [Cour de Cassation en 2012](https://www.sciencespo.fr/ecole-droit/fr/actualites/le-prejudice-ecologique-en-france/)
+    -   Une amende de 200 millions d'euros de réparations à payer par ... Total.
+
+-   La réparation doit être [intégrale]{.bg4} après un chiffrage des dégâts, tout en visant une [restauration en nature.]{.bg4}
+
+-   Voir l'explication [vidéo du préjudice écologique en France des étudiants de Sciences Po Paris](https://www.sciencespo.fr/ecole-droit/fr/actualites/le-prejudice-ecologique-en-france/)
+:::
+
+## Quelles valeurs mesure-t-on?
+
+En économie, le concept de [valeur économique totale]{.bg4} émerge des travaux de John Krutilla (1967, [Conservation Reconsidered](https://media.rff.org/archive/files/sharepoint/News/Features/Documents/071003%20Krutilla-ConservationReconsidered.pdf)):
+
+::: {.incremental style="font-size:90%"}
+-   La valeur [d'usage]{.bg4} qui peut être:
+    -   [Directe]{.bg3}: les valeurs associées à la consommation directe de ressources issues de l'environnement (poisson, bois etc), c'est à dire aux services écosystémiques de [provision]{.fg} ou de contributions de la nature aux populations [matérielles]{.fg}
+    -   [Indirecte]{.bg3}: les valeurs associées au fonctionnement des écosystèmes, qui donnent des services écosystémiques de [régulation]{.fg}, comme la séquestration du carbone, ou le filtrage de l'eau, ou de contributions de la nature aux populations [de régulation]{.fg}
+    -   [d'option]{.bg3}: la possiblité d'utiliser dans le [futur]{.fg} à la fois pour la préservation et l'exploitation économiques des écosystèmes jusque là préservés, ou non utilisés
+-   La valeur de [non usage]{.bg4} :
+    -   [de legs]{.bg3} : la valeur associée à la possibilité pour les générations [futures]{.fg} de bénéficier de la nature, au travers de contributions de la nature aux populations [matérielles et immatérielles]{.fg}
+    -   [d'altruisme]{.bg3} : la valeur qui correspond à la volonté de préserver l'environnement au sein d'une [même génération]{.fg}
+    -   [d'existence]{.bg3} : la valeur correspondant à la protection de l'environnement pour un motif intrinsèque, délié des considérations [anthropocentriques]{.fg}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/typologie_valeurs_tromeur.jpg){align="center"}
+
+## Quelles valeurs aujourd'hui?
+
+::: incremental
+-   [Costanza et al, 1997 dans Nature](https://www.nature.com/articles/387253a0), chiffrent le capital naturel et la valeur des services écosystémiques à plus de 30 trillions de dollars, plus large que le PIB mondial aujourd'hui
+-   Plus récemment, le programme [Efese]{.fg} lancé en 2012 a tenté d'évaluer une partie des services écosystémiques en France, aboutissant à une mesure de [50 milliards par an]{.fg}, soit 1.8% du PIB de 2023
+-   Le [Joint Reseach Committee]{.fg} de l'Union Européenne, en évaluant 8 services écosystémiques, aboutit à un chiffre plus modeste, autour de [18 milliards d'euros]{.fg}, soit 0.6% du PIB
+    -   Tout deux évaluent la pollinisation, les usages récréatigs, la séquestration du carbone etc, à différentes échelles spatiales
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/evaluation_JRC_France_2018.jpg){.absolute top="10" right="300" width="600" height="700"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/valeurs_de_référence_tromeur.jpg)
+
+------------------------------------------------------------------------
+
+## Comment arrive-t-on à ces mesures?
+
+Mesurer une valeur économique nécessite de :
+
+::: incremental
+1.  [Identifier]{.bg4} clairement les éléments affectés, par une politique publique, un accident, bref, identifier une [chaîne causale]{.fg}
+2.  [Mesurer]{.bg4} la relation bio-physique entre un processus environnemental et les dommages causés aux éléments identifiés
+3.  [Estimer]{.bg4} les changements qu'opèrent les éléments affectés, pour absorber les conséquences des processus environnementaux
+4.  [Placer]{.bg4} une valeur monétaire sur les conséquences inabsorbées
+:::
+
+## Toutes les mesures de valeurs se valent-elles?
+
+::: incremental
+-   Les valeurs les plus simples à mesurer sont celles [d'usage direct]{.bg4}
+    -   On a des [prix de marché]{.bg3} que l'on peut utiliser, qui font se rencontrer les préférences et la technologie : c'est le gold standard de l'évaluation
+    -   Ou encore des coûts de remplacement, plus ou moins explicites, bien qu'ils n'aient pas la partie "adaptation" dans les cas purement techniques
+        -   [*Wetlands, Flooding and the Clean Water Act*](https://media.rff.org/documents/Update_WP_21-26.pdf) de Drunkenmiller et al., 2022 : <br> En utilisant les données des programmes d'assurance, *"the average hectare of wetland lost between 2001 and 2016 cost society \$1,840 annually, and over \$8,000 in developed areas."*
+-   Les valeurs [d'usage indirectes]{.bg4} n'ont bien souvent pas de prix de marché :
+    -   Le prix d'un écosystème, par ses fonctions diverses (de production, de régulation, culturelles) est difficile à déterminer
+    -   Mais certaines propriétés d'usages [concomittants]{.bg3} peuvent nous aider à les mesurer : des coûts d'évitement, des variations communes de prix, ou encore des proxies qui nous disent les choix
+-   Les valeurs de [non usage]{.bg4} sont les plus difficiles à mesurer :
+    -   Quelle serait la valeur d'héritage, ou d'altruisme?
+    -   Comment faire pour qu'elles aient une "épaisseur", une réalité, quand elles ne donneront pas lieu à des échanges économiques?
+:::
+
+## Panorama des méthodes
+
+::: incremental
+1.  Les méthodes par [préférences (ou comportements) révélées]{.bg4}: sont basées sur les comportements des gens, sur les transactions véritablement réalisées, c'est le gold standard
+    -   Principalement utilisées pour les [valeurs d'usage]{.fg}
+2.  Les méthodes par [préférences (ou comportements) déclarées]{.bg4}: sont basées sur des comportements déclarés, où l'on pas réellement pu observer les comportements des gens
+    -   Principalement utilisées pour les [valeurs de non usage]{.fg}
+3.  La méthode des [transferts de bénéfices]{.bg4} : face à la difficulté de réaliser de nouvelles études, on utilise parfois les résultats d'études existantes dans un contexte différent pour connaître localement les valeurs
+4.  Des méthodes [composites]{.bg4} :
+    -   Utilisant des [modélisations intégrées]{.fg} des dommages bio-physiques avec des modèles de choix,
+    -   Des méthodes identifiant précisément les éléments affectés, les mécanismes biophysiques et leurs conséquences, et les changements opérés, en restant sur des métriques non-monétaires, notamment via de [l'inférence causale]{.fg}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/méthodes_utilisées_monétaires_efese.jpg)
+
+# Que cherche-t-on à mesurer?
+
+## Bénéfices, consentement à payer et dommages
+
+```{r}
+
+data_ = data.frame(q = seq(1:100))%>%
+  mutate(Demande = 100-q,
+         Offre = q)%>%
+  pivot_longer(-q)
+
+```
+
+::: incremental
+-   Pour avoir la valeur des biens, on voudrait avoir la mesure du [surplus]{.bg4} associé à un bien.
+-   Ceci dit, il n'y a pas de marché pour l'environnement dans la majeure partie des cas
+    -   On ne peut pas directement utiliser les prix et les quantités échangées
+-   On va se focaliser sur la [demande]{.bg4} plutôt que sur l'offre dans la plupart des cas
+    -   On veut comprendre la valeur que placent les consommateurs sur les biens environnementaux
+    -   On verra comment prendre en compte les côtés liés à [l'offre]{.fg}, pour avoir une [disposition marginale à payer nette]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Exemple : on veut mesurer les [bénéfices totaux]{.bg4} de la réduction de la pollution, c'est à dire la réduction des [dommages totaux]{.bg4} liés à la pollution
+-   Pour faire cela, on veut mesurer l'intégralité des [bénéfices marginaux]{.bg3} liés à la réduction de la pollution
+    -   Le [bénéfice marginal]{.bg3} est l'opposé du [dommage marginal]{.bg3} d'une tonne de pollution
+    -   La [disposition marginale à payer]{.bg3} est le [bénéfice marginal]{.bg3} lié à la réduction d'une tonne de pollution
+:::
+
+::: fragment
+```{r}
+#| fig-align: center
+#| fig-width: 8
+#| fig-height: 4
+
+data.frame(Pollution = seq(0, 10))%>%
+  mutate("Dommage marginal" = Pollution, 
+         "Diposition marginale à payer" = -Pollution)%>%
+  ggplot(aes(x=Pollution))+
+  geom_line(aes(x=Pollution, y = `Dommage marginal`, color = "Dommage marginal"))+
+    geom_line(aes(x=Pollution, y = `Diposition marginale à payer`, 
+                  color = "Disposition marginale à payer"))+
+  geom_ribbon(aes(ymin = 0, ymax = `Dommage marginal`), alpha = .4, fill = "dodgerblue")+
+  geom_ribbon(aes(ymin = 0, ymax = `Diposition marginale à payer`), alpha = .4, fill = "firebrick")+
+  custom_theme()+
+  ylab("$/unité")
+
+
+```
+:::
+
+## Mesurer des dispositions marginales à payer par des approches révélées
+
+::: incremental
+-   L'idée de fond est de reconstruire cette courbe de disposition marginale à payer en utilisant des biens connexes
+-   Rappel de micro :
+    -   Les agents maximisent leur utilité $U(\mathbf{x})$ où $\mathbf{x}\in \mathbb{R}^N$ est un panier de biens, sous contrainte de revenu
+    -   On en déduit des fonctions de demande $\mathbf{x}^*(\mathbf{p}, R)$ où $\mathbf{p}\in \mathbb{R}^N$ est le vecteur des prix
+    -   Supposons que l'on a $x$ un bien de consommation et $q$ un bien environnemental
+    -   Dans le cas des biens environnementaux, on n'aura pas de prix!
+-   On pourra [observer]{.fg} ceci dit une relation $x(p_x, q)$ c'est à dire une quantité de bien de consommation consommée en fonction de son prix et de la qualité environnementale, que l'on nomme [demande restreinte]{.bg3}
+    -   On pourrait ensuite mesurer la [variation de la disposition à payer]{.bg3} rapportée
+    -   A la variation d'une quantité de bien environnemetal $$
+        \Delta DAP / \Delta q = f(p_x, q) = DMAP
+        $$
+:::
+
+------------------------------------------------------------------------
+
+```{r}
+data.frame(q = seq(0,12))%>%
+  mutate("Demande avec q" = 10-.7*q,
+         "Demande avec q+eq" = 10-0.5*q)%>%
+  ggplot(aes(x=q))+
+  geom_line(aes(y=`Demande avec q`, color = "Demande avec q"), linewidth=1)+
+  geom_line(aes(y=`Demande avec q+eq`, color = "Demande avec q+eq"), linewidth=1)+
+  geom_ribbon(aes(ymin = `Demande avec q`, ymax = `Demande avec q+eq`), alpha=.2)+
+  geom_hline(yintercept = 5)+
+  annotate('text', x=1, y = 5.5, label= "Prix de marché", family=local_family)+
+  annotate('text', x=7, y = 6, label = 'DMAP', family=local_family)+
+  custom_theme()+
+  labs(color=' ')
+```
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/question_methode.jpg)
+
+------------------------------------------------------------------------
+
+## Consentement marginal à payer et consentement marginal à accepter
+
+On a dans les faits deux mesures:
+
+::: incremental
+-   [Disposition marginale à payer]{.bg4} :
+    -   A combien j'évalue quelque chose que je n'ai pas
+    -   Combien je suis prêt *au maximum* à payer pour l'avoir
+    -   Notion de variation équivalente
+-   [Disposition marginale à accepter une compensation]{.bg4}:
+    -   A combien j'évalue quelque chose que j'ai
+    -   Combien je suis prêt *au minimum* à gagner pour le perdre
+    -   Notion de variation compensatrice
+-   Pas exactement pareil, mais pour des changements [marginaux]{.bg3}, devraient être presque égale
+:::
+
+------------------------------------------------------------------------
+
+# L'approche par préférences révélées
+
+On cherche à mesurer des [valeurs d'usage]{.bg3} et l'on dispose de données [transactionnelles]{.bg3} reliées aux enjeux environnementaux
+
+## Différentes approches pour différents types de biens
+
+Les biens peuvent être soit :
+
+::: {.incremental style="font-size:85%"}
+-   Des [substituts]{.bg4}
+    -   Lorsque le prix de l'un augmente, la consommation de l'autre [augmente]{.fg}
+    -   Symmétriquement, on peut augmenter sa consommation si l'autre est réduite
+    -   On utilisera les méthodes par approche de [coût de remplacement ou d'évitement]{.bg3}
+    -   Où les dépenses en bien privé augmentent à mesure que la qualité environnementale [décroît]{.fg} (corrélation inverse)
+-   Des [compléments]{.bg4} :
+    -   Lorsque le prix de l'un augmente, la consommation de l'autre [baisse]{.fg}
+    -   Symmétriquement, on consomme autant de l'un que de l'autre
+    -   On utilisera les méthodes par [coûts de transport]{.bg3}
+    -   Où les dépenses en bien privé [correspondent]{.fg} au niveau de qualité environnementale (corrélation positive)
+-   Appréciés en tant que [paquets, en tant qu'attributs d'un bien plus grand]{.bg4}:
+    -   Cela n'a pas de lien avec la substituabilite ou la complémentarité
+    -   Mais certains biens sont faits de beaucoup de caractéristiques (voitures, maisons etc) : l'évolution d'une des caractéristiques peut entraîner des changements de valeur d'un bien marchand
+    -   On utilisera les [méthodes d'évaluation hédoniques]{.bg3} souvent appliqueées à [l'immobilier]{.bg3}
+:::
+
+## Forces et faiblesses des méthodes par préférences révélées
+
+L'idée est simple : mesurer à partir d'éléments économiques reliés de façon proche, pour lesquels on a un marché
+
+::::::: columns
+:::: {.column width="40%"}
+::: incremental
+-   Basé sur de [vrais comportements économiques]{.bg4}
+    -   Donnant des données proches du monde économique
+    -   Evitant les biais d'enquêtes
+-   Des études relativement [rentables (i.e pas chères)]{.bg4}
+    -   Usage de données déja collectées
+    -   Pas de coûts d'enquête
+:::
+::::
+
+:::: {.column width="60%"}
+::: incremental
+-   Ne capturent [que les valeurs d'usage]{.bg4}
+    -   Au mieux partielle : tous les services écosystémiques n'ont pas de contrepartie clairement [identifiable]{.fg}
+    -   Ne permet pas de voir les autres valeurs, notamment de [non usage]{.fg}
+-   Se basent sur des [conditions parfois restrictives]{.bg4}
+    -   Notamment sur l'état des marchés connectés (compétition imparfaites)
+    -   ou l'absence de comportement stratégiques
+-   [Extrapolent des évaluations marginales]{.bg4} du consentement à payer
+    -   La DMATP n'est peut être pas linéaire
+    -   L'extrapolation au vu de grands changements environnementaux n'est peut être pas valide
+-   Peuvent n'évaluer que des [capacités à payer]{.bg4}
+:::
+::::
+:::::::
+
+## Coûts évités
+
+### Dépenses de défense
+
+::: incremental
+-   On peut inférer la fourchette basse du dommage par les [coûts que les individus sont prêts à payer pour le]{.bg3} [réduire]{.bg3} ([Bartik, 1986](https://ui.adsabs.harvard.edu/abs/1988JEEM...15..111B/abstract)):
+    -   Exemple : bruit urbain et double vitrage; maladies et port des masques etc
+    -   Fourchette basse : il n'y a pas de continuum de prix-quantité
+-   Applicables à :
+    -   La santé
+    -   La morbidité
+:::
+
+------------------------------------------------------------------------
+
+### Idée générale
+
+Zhang et Mu, [*Air Pollution and defensive expenditures: Evidence from particulate-filtering facemasks*](https://www.sciencedirect.com/science/article/pii/S0095069617304771), Journal of Environmental Economics and Management, 2018
+
+:::::: columns
+::: column
+![PM2 in 2014, October 10](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/china_pm2.png){align="left"})
+:::
+
+:::: column
+::: incremental
+-   Idée :
+    -   Mesurer le lien entre demande de masques filtrants les PM et la pollution de l'air
+    -   en Chine (190 villes) au niveau journalier entre Janvier 2013 et Avril 2014
+-   Data :
+    -   Index des ventes par le groupe Alibaba
+    -   Données météorologiques (confondeurs) du National Oceaninc Atmospheric Administration (NOAA, US)
+    -   Qualité de l'air au niveau de la station de relevé du Ministère de l'Environnement chinois
+:::
+::::
+::::::
+
+## Méthode : modèle d'utilité aléatoire {#sec_random_utility_main}
+
+::: fragment
+L'utilité associée à la consommation d'un bien $j$ est $$u_{ijt}= v(\mathbf{x}_{ijt}'\theta) + \epsilon_{ijt}$$ où $\mathbf{x}_{ijt}$ sont des caractéristiques observables déterminant l'achat (pollution, attributs des masques, caractéristiques individuelles) et une partie inobservable, $\epsilon_{ijt}$
+:::
+
+::: incremental
+-   On modélise les évènements suivants :
+    -   Achat du bien $j$ par l'individu $i$ à date $t$
+    -   Puis l'aggrégation à l'échelle d'une ville $d$
+-   En utilisant les hypothèses suivantes:
+    -   La partie inobservée suit une loi de [Gumbel]{.bg3} :
+        -   Qui caractérise les valeurs extrêmes: les individus maximisent leur utilité
+        -   Et permet le calcul des différences d'utilités
+    -   L'achat est un évènement [rare]{.bg3} :
+        -   La somme des achats suit une loi binomiale
+        -   Le fait que ces achats soient rares permet une approximation par loi de Poisson
+:::
+
+------------------------------------------------------------------------
+
+On aboutit à un modèle où :
+
+::: fragment
+$$ \log E(y|\mathbf{x}) =\mathbf{x}'\theta $$
+
+-   Pour les détails [[Utilité aléatoire](#sec-random_utility)]{.button}
+:::
+
+::: fragment
+*Estimation & identification:*
+:::
+
+::: incremental
+-   On peut estimer la moyenne des achats de masque de façon [conditionnelle aux variables observées]{.bg3} comme un modèle [linéaire]{.bg3}
+    -   En utilisant des [effets fixes]{.bg4} qui capture les éléments invariants dans le temps ou l'espace
+-   Problème d'[identification]{.bg3} : difficultés d'identifier de manière unique les paramètres avec les données
+    -   On n'observe pas les [prix]{.bg3} des masques : ils sont uniformes par jour, on utilise des [effets fixes]{.bg3} quotidiens
+    -   Pas d'[informations spécifiques]{.bg3} sur les masques spécifiques: analyse par [sous groupe]{.bg3} disponibles
+    -   Les [caractéristiques]{.bg3} des consommateurs [agrégées]{.bg3} à l'échelle d'une ville sont inconnues : effets [fixes]{.bg3} sur la ville
+    -   Autres comportements de défense (ne pas sortir etc) : on identifie ici l'effet résiduel, une fois les autres options incluses
+:::
+
+------------------------------------------------------------------------
+
+::: fragment
+### Résultats
+:::
+
+::: incremental
+-   Un accroissement de 100 points de l'indice de qualité de l'air cause :
+    -   Un accroissement de la consommation de masques de 54.5% pour tous les masques
+    -   De 75% pour les masques anti PM 2.5
+-   Si 10% des jours pollués étaient éliminés, cela résulterait en [187 millions de USD\$ en Chine]{.bg3} économisés
+:::
+
+::: fragment
+### Critique de la méthode
+:::
+
+::: incremental
+-   Estimation de la fourchette basse : problème pour l'analyse coûts-bénéfices :
+    -   Conditions de marché
+    -   Substitution par des biens publics
+:::
+
+## Méthode des coûts de transport
+
+:::::: columns
+::: {.column width="50%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/grand_canyon.jpg){align="left" width="80%"}
+:::
+
+:::: {.column width="50%"}
+::: incremental
+-   On cherche à mesurer la disposition à payer pour des attributs environnementaux
+
+-   Une manière de le faire : combien sont ils prêts à payer pour aller [voir]{.bg3}?
+
+-   Approche par la [valeur récréative des sites naturels]{.bg4}
+
+-   Approche qui dates de la fin des années 1940
+
+    -   suivant une lettre d'Harold Hotelling
+    -   Suggérant cette manière d'évaluer les bénéfices des parcs nationaux aux Américains, destinée au directeur du US National Park Service
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+Plusieurs méthodes :
+
+::: incremental
+-   Méthode au [nombre de trajets]{.bg4} sur un [même site]{.bg4} :
+    -   Modèle classique d'utilité
+    -   On trouve une demande pour le voyage
+    -   On trouve le prix du voyage avec une estimation des coûts
+    -   On mesure le surplus
+-   Méthode avec les caractéristiques des [sites alternatifs]{.bg4} :
+    -   Modèle d'utilité aléatoire
+    -   Les [caractéristiques]{.bg4} des sites diffèrent
+    -   Mais on garde la distance de trajet et ses coûts comme variable clé
+:::
+
+------------------------------------------------------------------------
+
+### Exemple : les effets économiques des feux de forêt
+
+Gellman, Walls and Wibbenmeyer, [*Welfare Losses from Wildfire Smoke : Evidence from Daily Outdoor Recreation Data*](https://media.rff.org/documents/Update_WP_21-26.pdf), 2024 Journal of Environmental Economics and Management (R&R)
+
+::: incremental
+-   Idée générale:
+    -   Mesurer l'impact de l'exposition (ou de l'anticipation de celle ci) à la [fumée]{.bg3} issue des incendies sur le [tourisme]{.bg3}
+    -   En utilisant les visites de sites de [camping dans les parcs]{.bg3} américains
+-   Data :
+    -   Toutes les réservations pour les sites de camping fédéraux (plus larges que National Parks) sur [`Recreation.gov`](https://www.recreation.gov/): 16 nmillions de transaction, pour près de 1000 sites
+    -   Données satellites de feux (`MODIS`)
+    -   Données de pollution aux PM2.5
+    -   Distances entre les campgrounds, les adresses renseignées, et coûts de l'essence
+:::
+
+------------------------------------------------------------------------
+
+### Méthode
+
+::: incremental
+-   Modèle [d'utilité aléatoire]{.bg3} :
+    -   Les gens réservent des sites de camping en fonction de leurs caractéristiques, de celles de l'endroit visité et du coût de transport
+    -   Ils prennent une décision de [réservation]{.bg3} ou non, et paient: on a une estimation du surplus
+    -   Une fois que la fumée arrive, certains [décident d'annuler]{.bg3}, d'autres non
+    -   On peut avoir l'effet de la fumée sur les annulations
+-   [Menaces sur l'identification]{.bg4}: [biais de sélection]{.bg4} <br> On ne mesure que les gens qui ont réservé : c'est ceux pour qui la valeur est large <br> Approche par simulation du comportement d'annulation de ceux qui n'ont pas réservé
+:::
+
+::: fragment
+### Résultats
+:::
+
+::: incremental
+-   Le consentement marginal à payer pour éviter une [journée d'exposition à la fumée est de 38\$]{.bg3} (107\$ par voyage, en moyenne 2.9 jours)
+-   La perte aggrégée économique due aux feux, liée à la récréation en extérieur est de l'ordre de [2.3 milliards de dollars par an]{.bg3}
+-   Commensurable avec la dépense annuelle du gouvernement de 2.8 milliards en efforts de suppression et de 900 millions pour la Californie
+:::
+
+------------------------------------------------------------------------
+
+### Critique de la méthode
+
+::: incremental
+-   Ceux qui habitent [le plus proche]{.bg3}, donc potentiellement ceux qui visitent le plus, ont la [plus faible contribution]{.bg3}
+-   Les voyages peuvent être à [multiples enjeux]{.bg3}, c'est pas simplement le fait de voir une chose qui cause des pertes
+-   [Coûts d'opportunité du temps]{.bg3} :
+    -   On estime le temps passé au niveau de salaire : il y a d'autres choses dans la vie
+    -   On suppose que chaque heure à la même valeur
+    -   Tous les gens n'ont peut être pas le même coût d'opportunité
+-   Possibilité de [substituer]{.bg4} : on surestime peut être
+:::
+
+## Méthode hédonique
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/green_spaces.png){align="left" width="80%"}
+:::
+
+:::: column
+::: {.instrumental style="font-size:90%"}
+-   Vient de l'idée de [Lancaster, 1966]() et [Rosen, 1974](https://www.jstor.org/stable/1830899) que les biens peuvent être vus comme des [collections d'attributs]{.bg4}
+
+-   Et que le prix d'un bien reflète en fait la [combinaison des prix]{.bg4} de ces attributs
+
+-   Utilisé beaucoup :
+
+    -   En [environnement]{.bg3}, avec l'analyse des biens immobiliers
+    -   Dans d'autres cas, comme l'analyse de la [valeur statistique de la vie]{.bg4}
+
+-   Idée : une maison, c'est une [combinaison]{.bg3} de mètres carrés, du nombre de pièces, de fenêtres, d'isolation, mais aussi de la proximité à des écoles, ou encore à des espaces verts
+
+    -   Si on arrive à trouver des maisons très similaires mais [qui ne varient que]{.bg3} par leur proximité à l'environnement : on trouve la valeur des attributs environnementaux
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Démarche :
+    -   On trouve la valeur d'un changement marginal (si possible plusieurs)
+    -   On estime la [fonction de demande]{.bg3} à partir de là
+    -   Et on trouve la valeur totale locale des biens environnementaux
+-   Hypothèses :
+    -   Le marché immobilier est [parfaitement compétitif]{.bg3} (forces de marché et information): autrement les prix ne reflètent pas les caractéristiques
+    -   Le marché immobilier est [fixe]{.bg3} : nécessite une certaine analyse de court terme, pas d'anticipations non plus
+:::
+
+## Example
+
+Gopalakrishnan et al, [*The value of disappearing beaches: A hedonic pricing model with endogenous beach width*](https://www.sciencedirect.com/science/article/pii/S0095069610001221), Journal of Environmental Economics and Management, 2011
+
+::: incremental
+-   Les maisons changent de valeur en fonction de la [qualité des plages]{.bg3}
+-   Celle ci est [dynamique]{.bg3}, il y a un lien entre fréquentation et évolution des plages dans le temps
+-   Utilisent des données de vente immobilière, de situation des plages, ainsi que les opérations de \["réparation" des plages\]{.bg3}
+-   Montrent que ces opérations sont prises en compte dans les prix
+-   Dans le cadre du changement climatique, si :
+    -   l'érosion augmente significativement (facteur 3)
+    -   Les coûts de réparation augmentent
+    -   Les valeurs résidentielles peuvent \[chuter jusqu'à -52%\].{bg2}
+:::
+
+## Forces et limites {#sec_limits_hedonics}
+
+::: incremental
+-   Forces :
+    -   [Data]{.bg3} sur les marchés immobiliers bien disponibles
+    -   Les marchés d'actifs immobiliers s'adaptent plutôt bien, ils [répondent aux changements]{.bg3}
+-   Faiblesses :
+    -   [Limité]{.bg3} aux maisons ou aux terres
+    -   Nécessité de se projeter de façon correcte
+    -   Nécessité de prendre en compte [l'équilibre général]{.bg3} ([modèle de Rosen-Roback](https://economics.mit.edu/sites/default/files/inline-files/rosen-roback-spatial.pdf)) : les salaires affectent les prix des maisons, la réciproque est vraie
+-   Utilisé pour la [[valeur statistique d la vie](#sec_vsl)]{.button}
+:::
+
+# Les préférences déclarées
+
+## Introduction et contexte
+
+::: incremental
+-   Marée noire de [l'Exxon Valdez]{.bg3}, cause des dégats terribles aux écosystèmes locaux
+-   Quels sont les dommages? Comment évaluer les dommages au delà des coûts de restauration?
+-   Plusieurs techniques existent :
+    -   L'évaluation contingente
+    -   Les expériences de choix discrets
+:::
+
+## Forces et faiblesses
+
+::::::: columns
+:::: column
+::: incremental
+-   Permet d'estimer la [valeur économique totale]{.bg4}, ce qui n'est pas le cas des approches par préférences révélées
+-   Ne se repose par sur des [vrais marchés]{.bg3}:
+    -   Mais pas non plus sur la nécessité d'être des marchés [parfaits]{.bg3}
+    -   Ni sur la disponibilité des données
+    -   Applicable *ex-ante*, de façon préventive
+-   Explore les [raisons]{.bg3} derrière les préférences, utiles pour la politique
+:::
+::::
+
+:::: column
+::: incremental
+-   Très [cher]{.bg4} à mettre en place
+-   Pas vraiment [ancré]{.bg4} dans des comportements économiques :
+    -   Pas besoin de payer
+    -   Une tonne de biais : on les survolera, mais vous pouvez aller voir [*"Contingent Valuation: From Dubious to Hopeless"*](https://www.aeaweb.org/articles?id=10.1257/jep.26.4.43) de Jerry Hausman (2012)
+:::
+::::
+:::::::
+
+## L'évaluation contingente
+
+::: incremental
+-   Questions posées sur la valeur déclarée par les gens notamment autour de la vie des animaux, ou de la restauration des écosystèmes : [combien paieriez vous pour ce bien?]{.bg4}
+:::
+
+::::::: columns
+:::: column
+::: incremental
+-   Différentes étapes :
+    -   Quels usages pour un bien?
+    -   Quelles attitudes?
+    -   Proposition d'un scénario :
+        -   Réalisme et pas trop de *captatio benevolentiae*
+    -   Elicitation des valeurs
+    -   Follow up
+    -   Variables démographiques
+:::
+::::
+
+:::: column
+::: incremental
+-   Impact des [méthodes de paiement]{.bg3} suggérées :
+    -   Taxes
+    -   Factures augmentées
+    -   Frais de parking ou d'entrée
+    -   Une fois ou répété?
+-   La valeur peut dépendre de la [manière dont on pose la question]{.bg3}:
+    -   "Open ended"
+    -   Echelle de paiement : cochez les montants que vous êtes surs de payer
+    -   Choix dichotomique : la politique proposée va couter X euros par foyer, la supporteriez vous?
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+```{r}
+
+paiements_ = matrix(nrow = 10, ncol = 5)
+
+paiements_[,1] = seq(10,100,10)
+paiements_[,2] = c( rep("Oui",2), rep("NSP",1), rep("Non",7))
+paiements_[,3]= c( rep("Oui",8), rep("NSP",0), rep("Non",2))
+paiements_[,4]= c( rep("Oui",1), rep("NSP",1), rep("Non",8))
+paiements_[,5]= c( rep("Oui",4), rep("NSP",0), rep("Non",6))
+#paiements_[,6]= c( rep("Oui",5), rep("NSP",0), rep("Non",5))
+#paiements_[,7]= c( rep("Oui",1), rep("NSP",1), rep("Non",8))
+#paiements_[,8]= c( rep("Oui",6), rep("NSP",1), rep("Non",3))
+
+
+```
+
+```{r}
+library(kableExtra)
+paiements_ = as.data.frame(paiements_)
+kableExtra::kable(paiements_, caption = "Cartes de paiements (hypothétiques) aggrégées")
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(tidyr)
+library(ggplot2)
+library(magrittr)
+
+paiements_$V1 = as.numeric(paiements_$V1)
+
+paiements_$V2 = factor(paiements_$V2, 
+                       levels = c("Oui", "NSP", "Non"))
+paiements_$V3 = factor(paiements_$V3, 
+                       levels = c("Oui", "NSP", "Non"))
+paiements_$V4 = factor(paiements_$V4, 
+                       levels = c("Oui", "NSP", "Non"))
+paiements_$V5 = factor(paiements_$V5, 
+                       levels = c("Oui", "NSP", "Non"))
+#paiements_$V6 = factor(paiements_$V6, 
+#                       levels = c("Oui", "NSP", "Non"))
+#paiements_$V7 = factor(paiements_$V7, 
+#                       levels = c("Oui", "NSP", "Non"))
+#paiements_$V8 = factor(paiements_$V8, 
+#                       levels = c("Oui", "NSP", "Non"))
+
+colnames(paiements_) = c('Montant', paste0('ID', seq(1,4)))
+
+paiements_ %>%
+  pivot_longer(-Montant, 
+               values_to= "Values", 
+               names_to = "ID")%>%
+  ggplot(aes(x = Montant, y = Values, color = ID))+
+  geom_point(size = 2)+
+  facet_grid(~ID)+
+  custom_theme()
+```
+
+```{r}
+#| fig-align: "center"
+# Création du dataframe
+WTP = c()
+for(x in 1:4){
+  WTP = c(WTP, 
+               paiements_[["Montant"]][last(which(paiements_[[paste0("ID", x)]]=="Oui"))])
+}
+
+print(paste("Consentement marginal moyen à payer est ", mean(WTP), " euros"))
+
+```
+
+------------------------------------------------------------------------
+
+### Validité et biais
+
+::: incremental
+-   Problèmes de [robustesse]{.bg3} envers la théorie :
+    -   Pas forcément décroissante
+    -   Chute pas forcément avec la distance au projet etc
+-   Critiques majeures:
+    -   [Pas d'engagement économique]{.bg3}, on risque une réponse hypothétique
+    -   Plein de biais :
+        -   [Protestation]{.bg3} ; la nature n'est pas à vendre, je mets 0
+        -   Différence entre disposition à accepter et à payer : ne devrait pas arriver
+        -   Biais [stratégique]{.bg3} : les gens ont peut être peur qu'on se serve des résultats pour les taxer
+        -   [Partie - total]{.bg3} : le prix à payer pour 1 ou 100 espèces n'est pas linéaire
+        -   Information insuffisante
+-   Difficile de bien faire : mais ça existe
+-   Demeure un outil clé
+:::
+
+## Expériences de choix discrets
+
+::: incremental
+-   Date des années 1980 en transports
+-   Compare des [choix plus difficiles]{.bg3}
+:::
+
+::: fragment
+### Exemple
+
+Chloé Beaudet (doctorante à PSAE) et al. [*Are citizens willing to accept changes in public lighting for biodiversity conservation?*](https://www.sciencedirect.com/science/article/pii/S0921800922001896), Ecological Economics, 2022
+:::
+
+::: incremental
+-   La luminosité est nocive à la biodiversité : perturbe jour/nuit, piège écologique pour les insectes, destruction d'habitat pour les chauves souris
+-   Que faudrait-il pour un soutien public à une réduction de l'éclairage public nocture?
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/dce_beaudet.JPG){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Résultats
+
+```{r}
+
+
+# Création du tableau des résultats
+resultats <- data.frame(
+  Attribut = c("Réduction de l’intensité (-75%)", 
+               "Extinction 1h-5h", 
+               "Extinction 23h-6h", 
+               "Changement de couleur (orange)", 
+               "Rester dans le status quo"),
+  `Anti-changement (€)` = c("-12", "-8.58", "-76.95", "Non significatif", "-21"),
+  `Pro-changement (€)` = c("11.25", "10.91", "6.30", "2.92", "-89.78")
+)
+
+# Création du tableau kableExtra
+resultats %>%
+  kable(format = "html", caption = "Estimation de la WTP/WTA par classe") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), 
+                full_width = F) %>%
+  column_spec(1, bold = T) %>%
+  column_spec(2, color = "firebrick") %>%
+  column_spec(3, color = "navyblue")
+
+```
+
+## Critique de la méthode
+
+::::::: columns
+:::: column
+Mieux que la CV car :
+
+::: incremental
+-   On a le consentement à payer pour des [attributs]{.bg4} :
+    -   Permet d'orienter et renseigner un [changement multidimensionnel]{.bg3}
+    -   Permet d'inférer des [projets nouveaux]{.bg3}, on a rien demandé
+-   Le WTP est implicite, on a [moins de protestations]{.bg3}
+-   Plus familier, plus proche du marché
+:::
+::::
+
+:::: column
+Moins bien ?
+
+::: incremental
+-   Peut avoir une [difficulté cognitive supplémentaire]{.bg3}
+    -   Processus de [satisficing]{.bg3} : on s'arrête quand un attribut est ok
+-   Peut être difficile à analyser
+-   En [plus d'être cher]{.bg3}, comme la CV
+:::
+::::
+:::::::
+
+# Conclusion
+
+::: incremental
+-   Les techniques [traditionelles d'évaluation monétaire]{.bg4} en économie reposent sur
+    -   La théorie du consommateur
+    -   Des [approches partielles]{.bg3} de la valeur économique : non usage ou usage indirect
+    -   Qui souffrent chacune de [limitations, réciproques]{.bg3}.
+-   Elles permettent néanmoins de nourir le débat si incluses dans [l'analyse coûts bénéfices]{.bg3}, mais c'est une course difficile à suivre
+-   Quand il est difficile de mesurer dans un contexte, on fait du [transfert de bénéfices]{.bg3} (on utilise d'autres valeurs)
+-   De plus en plus d'[approches intégrées]{.bg3} pour l'évaluation des services écosystémiques, qui n'utilisent pas forcément la monnaie :
+    -   Evaluation biophysique
+    -   Evaluation socioculturelle
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/harrison_et_al_2018.jpg)
+
+# Annexes
+
+## Bonus : modèle d'utilité aléatoire {#sec-random_utility}
+
+::: {.incremental style="font-size:90%"}
+-   L'évènement "achat de $j$ par $i$ à $t$" a la probabilité suivante : $$
+    Pr(d_{ijt}=1) = E_{\epsilon}\mathbf{1}(u_{ijt}>u_{ikt}, \forall k)
+    $$
+
+-   En spécifiant la distribution de $\epsilon_{ijt}$ on peut définir la probabilité d'un choix. Par exemple, si $\epsilon_{ijt}$ suit une loi extrême de type-I (Gumbel), le modèle **multinomial logit**: $$
+    Pr(d_{ijt}=1) = \frac{\exp(u_{ijt})}{\sum_k \exp(u_{ikt})}
+    $$
+
+-   En agrégeant les achats à l'échelle d'une ville, on a $y_d = \sum_d y_{ijt}$, qui suit une loi binomiale donc $E(y|\mathbf{x}) = Np(x)$
+
+-   Loi des évènements rares : Si $N$ est large, $p(x)$ petit, et $Np(x)$ de taille modérée, alors $y$ suit une loi de Poisson de paramètre $\lambda = Np(x)$
+
+-   Si $1+\exp(x'\theta)\approx 1$ (évènements rares) alors on a $p(x)\approx \exp(x'\theta)$
+
+-   On a donc $\lambda \approx N \exp(x'\theta)$, après reparamétrisation de $\theta$, on a \lambda \approx \exp(x'\theta\^\*)\$
+
+-   Et in fine :
+:::
+
+::: fragment
+$$
+E(y|\mathbf{x}) = \exp(\mathbf{x}'\theta^*)
+$$
+
+[[Retour au cours](#sec_random_utility_main)]{.button}
+:::
+
+## Bonus : méthodes hédoniques et la valeur statistique de la vie {#sec_vsl}
+
+::: incremental
+-   Valeur statistique de la vie :
+    -   Valeur [tutélaire]{.bg3} de la vie pour l'analyse [coût bénéfice]{.bg3}, en matière environnementale, de santé publique, ou de transports
+    -   En France, autour de 3,200,000 euros
+    -   Aux Etats Unis, entre 1.3 et 20 millions USD\$
+    -   En Inde, autour de 665,000 USD\$
+-   Déterminée, entre autres, par [évaluation hédonique des salaires]{.bg4}:
+    -   A caractéristiques équivalentes,
+    -   Quel est l'accroissement de salaire que les travailleurs acceptent
+    -   Pour une augmentation de leur risque de mortalité?
+:::
+
+[[Retour au cours](#sec_limits_hedonics)]{.button}

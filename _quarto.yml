@@ -1,0 +1,27 @@
+author:
+  - name: Simon Jean
+    orcid: 0000-0002-3965-8630
+    email: simon.jean@agroparistech.fr
+    affiliations: AgroParisTech - CIRED - PSAE
+
+project: 
+  output-dir: 'classes_compiled'
+
+
+format: 
+  revealjs:
+    theme: [clean.scss]
+    #"/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
+    #"
+    slideNumber: true
+    verticalSeparator: ''    # Creates vertical movement between main sections
+    #separator: '^##'
+    transition: fade
+    navigationMode: linear      # Allows both vertical and horizontal navigation
+    controls: false
+    self-contained: true
+    html-math-method: mathjax
+    always_allow_html: true
+    width: 1200
+
+editor: visual

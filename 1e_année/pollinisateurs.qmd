@@ -1,0 +1,559 @@
+---
+title: "Les effets économiques négatifs des pesticides"
+subtitle: "UE Economie des politiques agricoles, alimentaires et environnementales"
+
+---
+
+```{r}
+library(showtext)
+
+# Add Roboto Condensed font
+font_add_google("Roboto Condensed", "roboto_condensed")
+showtext_auto()
+
+# Define the custom theme function
+theme_slick <- function(size_) {
+  theme_light(base_family = "roboto_condensed") +
+    theme(
+      panel.background = element_rect(fill = "white", color = NA), # Clean white background
+      panel.grid.major = element_line(color = "gray90", size = 0.3), # Light major grid lines
+      panel.grid.minor = element_line(color = "gray95", size = 0.2), # Very light minor grid lines
+      axis.text = element_text(size = size_),  # Axis text styling
+      axis.title = element_text(size = size_*1.15), # Axis titles styling
+      plot.title = element_text(hjust = 0.5, size = size_*1.3, face = "bold"), # Centered plot title
+      panel.border = element_rect(color = "gray80", fill = NA, size = 0.5), # Light border for the plot area
+      legend.text = element_text(size = size_),  # Legend text size
+      legend.title = element_text(size = size_ + 2)
+    )
+}
+
+```
+
+# Introduction
+
+## Les pesticides
+
+::: notes
+Dessin par Steve Greenberg, illustrateur américain, qui a travaillé acvec la coalition des Californians for Pesticide Reform, créée en 1996, qui dénonce les effets sur la santé des travailleurs (et consommateurs) de l'usage des pesticides, dans l'état des US où la valeur agricole est la plus large
+:::
+
+```{r}
+#| fig-align: "center"
+
+
+library(here)
+library(tidyr)
+library(dplyr)
+library(openxlsx)
+library(ggplot2)
+
+filename_ = grep("aei_fm", list.files(here('data')))
+data_ = read.xlsx(here("data", list.files(here("data"))[1]), sheet = "Sheet 1")
+data_ = data_[6:nrow(data_),]
+data_ = data_%>%
+  select(-c(paste0("X", seq(3,21,2))))
+
+names__ = c("Country", data_[1,2:length(data_)])
+names(data_) = names__
+data_ = data_[3:35, ]
+
+data_ = data_ %>%
+  mutate(across(-Country, ~ as.numeric(.)))
+
+data_ = data_%>%
+  pivot_longer(-Country, 
+                     names_to = "Year",
+                     values_to = 'Sales')
+data_total= data_ %>%
+  mutate(Year = as.numeric(Year),
+         Sales = as.numeric(Sales))%>%
+  group_by(Year)%>%
+  summarize(Sales = sum(Sales, na.rm = TRUE))%>%
+  mutate(Country = "Total")
+
+rbind(data_, 
+      data_total)%>%
+  mutate(Sales = as.numeric(Sales),
+         Year = as.numeric(Year))%>%
+  subset(Year<2023)%>%
+subset(Country %in% c("Total", "France", "Germany", "Italy", "Spain", "Poland"))%>%
+  ggplot(aes(x = Year, y = Sales, color = Country))+
+  geom_line()+
+  theme_slick(size_=24)+
+  ylab('Sales (in mt)')
+
+```
+
+[*Sources : données de vente de pesticides en Europe, Eurostat*](https://ec.europa.eu/eurostat/databrowser/view/aei_fm_salpest09/default/table?lang=en)
+
+::: notes
+-   Augmentation raisonnée en Europe qui masque de larges disparités
+-   Mais en France, l'échec du plan Ecophyto que l'on a étudié en classe, du fait de l'augmentation de 15% des usages plutôt que réduction de 50%
+:::
+
+## Les impacts
+
+Sur la biodiversité :
+
+::: incremental
+-   Déclin des populations de pollinisateurs, surtous sauvages : abeilles, bourdons, papillons...
+    -   ex : en Allemagne, déclin de 75% des populations d'insectes volants depuis 27 ans [voir Hallmann et al, 2017](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0185809)
+-   Qui créent de nombreux *services ecosystémiques* dont la pollinisation, qui représentent:
+    -   80% des cultures (à fleurs et céréalières) en ont besoin
+    -   Valant autour de 15% de la valeur ajoutée produite par l'agriculture
+    -   Dans le monde : *"the short-term effects of a total pollinator loss lie between 1 and 2 % of global GDP"*, voir [Lippert et al, 2021](https://www.sciencedirect.com/science/article/pii/S0921800920300793#bb0030)
+:::
+
+## Les impacts
+
+La santé :
+
+::: incremental
+-   Risques accrus de **cancers** (lymphomes non hodgkiniens, leucémies).
+-   Troubles **neurologiques** (Parkinson, déclin cognitif).
+-   Problèmes **endocriniens** (perturbateurs hormonaux).
+-   Effets sur la **reproduction** : infertilité, malformations congénitales.
+-   En 2022, 11 millions de Français ont reçu **au robinet une eau dépassant** les seuils autorisés de pesticides.
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/frank_science.jpg)
+:::
+
+::: notes
+This demonstrates the substitution between a declining natural input and a human-made input—providing the first empirical validation of a fundamental theoretical prediction in environmental economics. I proceeded to document that infant mortality rates due to internal causes of death (i.e., not due to accidents or homicides) increased by 7.9%, on average, in the affected counties. This result highlights that real-world use levels of insecticides have a detrimental impact on health, even when used within regulatory limits, which highlights the difficulties of assessing the public health impacts of pesticides when regulating them individually.
+:::
+
+# L'économie des nuisances
+
+## Formuler le constat économique
+
+::: {.incremental style="font-size:90%"}
+-   Des individus utilisent des produits pour augmenter leurs rendements, gagner plus d'argent :
+    -   Il y a un **bénéfice privé** : l'accroissement de profit en produisant plus
+    -   Et un **coût privé** : le coût des produits, et la mise en danger des agriculteur.ice.s elle.eux mêmes
+-   *D'autres en pâtissent*, de façon plus ou moins directes : il y a un **coût social**
+    -   Coûts directs pour l'agriculture
+    -   Autres coûts : santé, perte de biodiversité et valeur d'assurance de la biodiversité etc.
+-   On a un souci :
+    -   La décision des individus ne fait pas se rencontrer **bénéfice privé** et **coût social**
+    -   Car **coût social** et **coût privé** ne sont pas identiques.
+:::
+
+## Rappels : prise de décision microéconomique
+
+::: callout-tip
+## Règle de décision
+
+Un agent s'arrête de produire lorsque $p=Cm(y)$
+:::
+
+::: center
+```{r}
+#| fig-width: 7
+#| fig-height: 5
+#| fig-align: "center"
+
+data_ = data.frame(y = seq(0,100),
+                   p = 100)%>%
+  mutate("Cm(y)" = 0.05*y^2)%>%
+  pivot_longer(-y, 
+               values_to = 'value',
+               names_to = 'names')
+
+
+data_%>%
+  ggplot(aes(x=y, y=value, color = names))+
+  geom_line(linewidth = .8)+
+  theme_slick(20)+
+  labs(color=" ")
+
+```
+:::
+
+## L'approche pigouvienne des nuisances: réguler un marché défaillant
+
+::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/pigou.png)
+:::
+
+::: {.column width="60%"}
+*"\[...\] one person A, in the course of rendering some service, for which payment is made, to a second person B, incidentally also renders services or disservices to other persons (not producers of like services), of such a sort that payment cannot be exacted from the benefited parties or compensation enforced on behalf of the injured parties"*
+
+Arthur Cecil Pigou, *The Economics of Welfare*, 1920
+:::
+:::::
+
+## Définitions
+
+::: callout-tip
+## Les externalités
+
+Action d'un agent qui a des conséquences sur l'utilité ou le profit d'autres agents sans compensation monétaire
+
+Le coût (ou bénéfice) **social** des actions diffère du coût (ou bénéfice) **privé**
+:::
+
+::: incremental
+-   Un problème de **justice**
+    -   Les gens n'ont rien demandé et sont lésés
+-   Un problème d'**efficacité** :
+    -   Nuit aux efforts que les gens font pour maximiser leur bien être
+    -   Empêche le mécanisme de marché d'allouer les ressources au mieux
+:::
+
+------------------------------------------------------------------------
+
+## Illustration des externalités
+
+::: {.incremental style="font-size:85%"}
+-   A titre d'exemple, supposons que qu'une entreprise utilise des pesticides, et vend son produit agricole, à un prix de 400 euros par unité de vente
+-   Son coût marginal de production est de $Cm(q)=20q$, soit 20 euros par tonne supplémentaire, prenant en compte la charge en pesticides
+:::
+
+::: fragment
+```{r}
+
+#| fig-align: "center"
+
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+# Data set up
+costs = c(200, 300, 400, 500, 600)
+qty = c(10, 15, 20, 25, 30)
+md = c(100, 100, 100, 100, 100)
+mb = c(400, 400, 400, 400, 400)
+
+data = data.frame(qty, costs, md, mb)
+
+data$social_cost = data$costs + data$md
+data$after_price = data$mb - data$md
+colnames(data) = c('Production', 
+                   'Coût marginal', 
+                   'Dommage margial', 
+                   'Bénéfice marginal',
+                   'Coût marginal social',
+                   'Prix post-taxe')
+
+
+data %>%
+  pivot_longer( - Production,
+                names_to = 'names',
+                values_to = 'values')%>%
+  subset(names %in% c('Coût marginal', 'Bénéfice marginal'))%>%
+  ggplot(aes(x = Production, y = values, color = names))+
+  geom_line(linewidth = 1.5)+
+  geom_vline(xintercept = 20, linetype = 'dotted')+
+  scale_color_manual(values = c('forestgreen','firebrick'))+
+  theme_bw()+
+  labs(color = ' ')+
+  ylab(' ')+
+  theme_slick(size_=24)
+```
+:::
+
+------------------------------------------------------------------------
+
+::: {.incremental style="font-size:90%"}
+-   A chaque unité produite, elle cause des nuisances agricoles et sanitaires
+-   Ces nuisances agricoles et sanitaires ont des effets économiques *quantifiables* et *quantifiés* (on reviendra dessus dans l'heure suivante)
+-   De sorte que le dommage marginal causé par les productions est $Md(q) = 100$
+:::
+
+::: fragment
+```{r}
+# Data set up
+data %>%
+  pivot_longer( - Production,
+                names_to = 'names',
+                values_to = 'values')%>%
+  subset(names %in% c('Coût marginal', 'Coût marginal social', 'Bénéfice marginal'))%>%
+  ggplot(aes(x = Production, y = values, color = names))+
+  geom_line(linewidth = 1.5)+
+  geom_vline(xintercept = 15, linetype = 'dotted')+
+  geom_vline(xintercept = 20, linetype = 'dotted')+
+  scale_color_manual(values = c('forestgreen','firebrick', 'dodgerblue' ))+
+  theme_bw()+
+  labs(color = ' ')+
+  ylab(' ')+
+  theme_slick(size_=24)
+
+
+
+```
+:::
+
+::: notes
+-   Bien montrer que $Cm+Md=Social cost$
+-   Que cela implique une réduction de la production, pour prendre en compte la pollution et le dommage qu'elle fait à l'écosystème
+:::
+
+------------------------------------------------------------------------
+
+::: callout-note
+## Le premier théorème de l'économie du bien-être
+
+En présence d'information parfaite, si les droits de propriété sont proprement définis, l'équilibre de marché est optimal i.e. l'équilibre de marché mène à une allocation efficace, où l'on ne peut améliorer le bien être des uns sans détériorer celui des autres
+:::
+
+::: incremental
+-   En présence d'externalités, les droits de propriétés sont mal définis:
+    -   Il y a des droits sur les biens
+    -   Mais pas sur les **conséquences** de beaucoup d'actions
+    -   Le système de prix, qui guide l'allocation des ressources, ne reflète pas les bonnes informations
+-   L'efficacité du système de marché est remise en cause : il faut agir pour restaurer l'équilibre du marché, en fixant un **prix aux externalités**, c'est le principe du **pollueur payeur**
+:::
+
+## Des approches concurrentes : William Kapp et l'économie écologique
+
+:::::: columns
+::: {.column width="20%"}
+![William Kapp, *The social cost of business entreprise*, 1963](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/KappPhoto.jpg)
+:::
+
+:::: {.column width="80%"}
+::: {.incremental style="font-size:90%"}
+-   La mise en forme de l'activité économique et des échanges par le mécanisme de marché génère **intrinsèquement des coûts sociaux**, à la fois purement sociaux et environnementaux
+-   A la différence de Pigou, les externalités ne sont pas des **défaillances exceptionnelles** mais des **caractéristiques inhérentes** aux causes **multiples, additives et qui se renforcent**
+-   Plutôt que le principe du **pollueur payeur**, il faut concevoir des **institutions fortes** qui permettent de prévenir l'explosion des coûts sociaux
+-   Assez **critique de l'analyse "coût-bénéfice"**, devant la difficulté d'établir proprement les coûts sociaux, et la nécessaire simplification du monde qu'ils entrainent
+:::
+::::
+::::::
+
+# III. La mesure des coûts sociaux
+
+## Quantifier la valeur de la perte de la pollinisation sauvage
+
+::: incremental
+-   Approches **expérimentales**:
+    -   Expérience entre deux champs en placant des ruches de pollinisateurs naturels et comparaison des rendements
+    -   Permet une analyse fine, mais difficilement réplicable et exportable
+-   Approche par **expertise & ratios de dependence**
+    -   Pour chaque culture, on demande aux experts le taux de dépendence à la pollinisation sauvage (changement de rendement)
+    -   On mesure la valeur du changement de rendement par les prix de marché
+    -   On peut avoir des **méthodes réplicables, avec peu de data**, mais qui ne prennent pas en compte les **conditions locales, ni initiales** (niveau de base de pollinisateurs)
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Approches **statistiques** :
+    -   Modèles statistique prédisant la production au vu de la quantité de pollinisateurs
+    -   Nécessite beaucoup de données sur les autres intrants et une variation exogène pour attribuer une cause claire
+-   Approches par **coût de remplacement**:
+    -   Ruches domestiques ou pollinisation à la main
+:::
+
+## Mesurer les effets sur la santé
+
+::: incremental
+-   Approches **expérimentales** : on exposerait des gens à des produits pour voir s'ils développent des cancers dans le long terme
+    -   Problème **éthique**
+-   Approches **quasi expérimentales**:
+    -   Des changements relativement aléatoires dans l'environnement naturel, politique, économique etc
+    -   Créent des effets sur les gens
+    -   Qui sont répartis de façon *équilibrée* entre *groupe de traitement et de contrôle*
+:::
+
+## Focus : identifier l'effet des pesticides sur la santé des nourissons via la disparition de prédateurs
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/frank_science.jpg)
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/science.adg0344-fa.jpg)
+:::
+
+::: notes
+-   Aux Etats Unis, une maladie spécifique aux chauves souris se déploie depuis 2006, menant à la quasi disparition des chauves souris
+-   Suivant cette disparition, les
+:::
+
+## La méthode de différence de différences
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/illus.jpg)
+
+::: fragment
+Quel est l'effet du traitement qui a eu lieu entre $t$ et $t+1$?
+:::
+
+## La méthode de différence de différences
+
+::::::: columns
+:::: {.column width="70%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/illus2.jpg)
+
+::: notes
+-   On va comparer les différences entre chaque période pour chaque groupe:
+    -   Si l'on veut l'effet du traitement sur les traités, on a besoin d'une hypothèse clé: en l'absence de traitement, on aurait eu des **trajectoires parallèles**
+    -   Si l'on ne compare que la différence pour le **groupe traité**: on a un effet énorme
+    -   Qui est peut être du à des changements globaux
+    -   On compare donc avec l'évolution temporelle du **groupe de contrôle**
+:::
+::::
+
+:::: {.column width="30%"}
+::: {.incremental sytle="font-size:70%"}
+-   Effet du traitement = $(Y_{t+1}^T - Y_t^T) - (Y_{t+1}^C-Y_t^C)$
+
+-   Dans le cas de l'étude de [E. Frank, 2024](https://www.science.org/doi/10.1126/science.adg0344), il montre que :
+
+    -   L'usage des pesticides augmente de 1kg (puis 2 kg après 5 ans) par $km^2$
+    -   Et cause un accroissement de 7.9% de la mortalité des nourissons (1,334)
+:::
+::::
+:::::::
+
+# IV. Les politiques publiques de réduction des externalités
+
+## Solution réglementaire
+
+::: fragment
+```{r}
+#| fig-align: "center"
+
+
+data %>%
+  pivot_longer( - Production,
+                names_to = 'names',
+                values_to = 'values')%>%
+  subset(names %in% c('Coût marginal', 'Coût marginal social', 'Bénéfice marginal'))%>%
+  ggplot(aes(x = Production, y = values, color = names))+
+  geom_line(linewidth = 1.5)+
+  geom_vline(xintercept = 20, linetype = 'dotted')+
+  geom_vline(xintercept = 15, linewidth = 1.5, color = 'purple')+
+  scale_color_manual(values = c('forestgreen','firebrick', 'dodgerblue' ))+
+  theme_bw()+
+  labs(color = ' ')+
+  ylab(' ')+
+  theme_slick(40)
+
+```
+:::
+
+## Les solutions monétaires
+
+::: {.fragment style="font-size:90%"}
+-   L'approche **pigouvienne**
+    -   Pollueur-payeur
+    -   Taxe (ou subvention) du montant du dommage marginal
+:::
+
+::: fragment
+$$\begin{align}
+\Pi &= (p-t)q-c(q)\\
+    & (p-t) = Cm(q)\\
+    & p = Cm(q)+Md(q)
+\end{align}$$
+:::
+
+::: {.incremental style="font-size:90%"}
+-   **Double dividende** :
+    -   Incitation à réduire : moins de dommage
+    -   Recette fiscale
+:::
+
+## Solution monétaire
+
+:::::: r-stack
+::: fragment
+```{r}
+
+#| fig-align: "center"
+
+
+data %>%
+  pivot_longer( - Production,
+                names_to = 'names',
+                values_to = 'values')%>%
+  subset(names %in% c('Coût marginal',
+                      'Coût marginal social', 
+                      'Bénéfice marginal'))%>%
+  ggplot(aes(x = Production, y = values, color = names))+
+  geom_line(linewidth = 1.5)+
+  geom_vline(xintercept = 15, linetype = 'dotted')+
+  geom_vline(xintercept = 20, linetype = 'dotted')+
+  scale_color_manual(values = c('forestgreen','firebrick', 'dodgerblue'))+
+  theme_bw()+
+  labs(color = ' ')+
+  ylab(' ')+
+  theme_slick(40)
+
+```
+:::
+
+::: fragment
+```{r}
+
+#| fig-align: "center"
+
+
+data %>%
+  pivot_longer( - Production,
+                names_to = 'names',
+                values_to = 'values')%>%
+  subset(names %in% c('Coût marginal',
+                      'Coût marginal social', 
+                      'Bénéfice marginal',
+                      'Prix post-taxe'))%>%
+  ggplot(aes(x = Production, y = values, color = names))+
+  geom_line(linewidth = 1.5)+
+  geom_vline(xintercept = 15, linetype = 'dotted')+
+  geom_vline(xintercept = 20, linetype = 'dotted')+
+  scale_color_manual(values = c('forestgreen','firebrick', 'dodgerblue', 'purple'))+
+  theme_bw()+
+  labs(color = ' ')+
+  ylab(' ')+
+  theme_slick(40)
+
+```
+:::
+
+::: fragment
+```{r}
+
+#| fig-align: "center"
+
+
+data %>%
+  pivot_longer( - Production,
+                names_to = 'names',
+                values_to = 'values')%>%
+  subset(names %in% c('Coût marginal',
+                      'Coût marginal social', 
+                      'Bénéfice marginal',
+                      'Prix post-taxe'))%>%
+  ggplot(aes(x = Production, y = values, color = names))+
+  geom_line(linewidth = 1.5)+
+  geom_vline(xintercept = 15, linetype = 'dotted')+
+  geom_vline(xintercept = 20, linetype = 'dotted')+
+  scale_color_manual(values = c('forestgreen','firebrick', 'dodgerblue', 'purple'))+
+  theme_bw()+
+  labs(color = ' ')+
+  ylab(' ')+
+  annotate("rect", xmin = 10, xmax = 15, ymin = 300, ymax = 400,
+              alpha = .8,fill = "grey")+
+  theme_slick(40)
+
+```
+:::
+::::::
+
+## Conclusion
+
+::: {.incremental style="font-size:80%"}
+-   L'analyse *coûts bénéfices* est criticable mais nécéssite l'inclusion des coûts sociaux pour mener à une allocation des ressources efficaces
+-   L'ensemble des **coûts sociaux est de l'ordre de 372 millions d'euros** [(Alliot et al., 2022)](https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2022.1027583/full), prenant en compte:
+    -   Les coûts **environnementaux** à hauteur de 291.5 million d'euros
+    -   Les coûts liés à la **santé** à hauteur de 48.5 million euros,
+    -   En comparaison, cela représente **10% du budget total du Ministère de l'Agriculture en 2017**
+-   Qu'ils soient vus comme des externalités ou des éléments caractéristiques, les politiques publiques institutionnelles et économiques sont nécessaires, accompagnées des mesures **distributionnelles et équitables**:
+    -   Les **subventions** peuvent être utilisées pour éviter l'usage de pesticides, et promouvoir d'autres modes alternatifs rentables comme le **bio** (voir Italie et Allemagne)
+    -   Dans beaucoup de cas, il est possible de réduire l'usage de pesticides sans réduire la production, et récupérer ainsi une partie des **marges du secteur pesticides**
+:::
+
+::: notes
+-   Les prix réels des produits alimentaires à la production ont baissé de 3,3 % par an, tandis que les prix pour les consommateurs n’ont baissé que de 0,4 % par an.
+:::

@@ -1,0 +1,2197 @@
+---
+title: "Macroéconomie écologique"
+subtitle: "Economie Ecologique"
+---
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(here)
+library(extrafont)
+library(reshape2)
+
+#install.packages(c("sysfonts", "showtext"))
+library(sysfonts)
+library(showtext)
+
+#font_add_google("Roboto", "roboto")
+showtext_auto()
+
+source(here("utilities.R"))
+
+local_family = "Roboto Light"
+             
+
+```
+
+# Introduction
+
+## Le problème
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/cma-cgm-container-ship.jpg){fig-align="center"}
+
+::: notes
+-   L'idée de l'économie traditionelle, c'est d'organiser l'allocation des ressources dans un grand bateau, de plus en plus grand
+-   Que se passe-t-il lorsque le bateau coule?
+:::
+
+## Plan
+
+:::::::: columns
+::::: column
+::: incremental
+1.  [Indicateurs de soutenabilité]{.fg}
+    i)  Limites planétaires
+    ii) Découplage et croissance verte
+    iii) L'empreinte écologique
+    iv) L'HANPP
+:::
+
+::: incremental
+2.  [Métabolisme social : mesures et concepts aux]{.fg} [fondements de la macroéconomie écologique]{.fg}
+    i)  Retour sur l'histoire du métabolisme
+    ii) Métabolisme social contemporain
+    iii) Les limites métaboliques à la croissance
+:::
+:::::
+
+:::: column
+::: incremental
+3.  [Vers une macroéconomie écologique]{.fg}
+    i)  Le travail du Club de Rome et le rapport Meadows
+    ii) La controverse néoclassique
+    iii) Exercice de modélisation macroéconomique sur `R`
+    iv) Courants modernes
+4.  [Par delà la croissance: technocritique, décroissance]{.fg} [et coévolution]{.fg}
+    i)  L'analyse de la décroissance: de l'écologie politique et la bioéconomie à la postgrowth
+    ii) Le codéveloppement: évolution des systèmes et relations homme nature
+    iii) L'approche par les besoins fondamentaux
+    iv) L'environnementalisme des pauvres de J. Martinez Allier
+:::
+::::
+::::::::
+
+# 1. Indicateurs de soutenabilité
+
+## Les limites planétaires
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/planetary_bounds.jpg){fig-align="center"}
+
+::: notes
+-   Développé par Rockström et son équipe en 2009 (co-directeur du PIK)
+-   Limites de paramètres sur un nombre fini d'éléments qui permettent à l'humanité de rester dans la zone dans laquelle elle a historiquement évolué
+-   Concept des "limites planétaires"
+:::
+
+## Le découplage et la promesse d'une croissance verte
+
+### L'hypothèse d'une courbe de Kuznets environnementale
+
+:::::: columns
+::: column
+```{r}
+#| fig-align: left
+#| fig-height: 8
+#| fig-width: 8
+
+
+
+data_ = data.frame("GDP/tête" = seq(0,100))
+data_ %>%
+  mutate(Impacts = .2*`GDP.tête`*(1 - `GDP.tête`/100))%>%
+  ggplot(aes(x=GDP.tête, y  = Impacts))+
+  geom_line(linewidth=1, color = "navyblue")+
+  custom_theme(font_size=28)
+
+```
+:::
+
+:::: column
+::: incremental
+-   Inspiré des travaux de [Simon Kuznets]{.bg4} sur les inégalités
+-   Idée que l'impact environnemental augmente au début du processus économique, puis baisse:
+    -   Le passage à une économie [tertiaire]{.bg3}
+    -   Le [changement]{.bg3} des goûts et pratiques à mesure que le niveau de richesse augmente
+    -   Meilleure [technologie]{.bg3}
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### La notion de découplage
+
+Voir la métanalyse de [Haberl et al., 2020](https://iopscience.iop.org/article/10.1088/1748-9326/ab842a#erlab842as3)
+
+::: incremental
+-   Découplage [absolu]{.bg4} : le niveau de perturbation environnementale [baisse]{.bg3} dans l'absolu
+    -   UE : Baisse des émissions de 9% malgré la croissance de 0.7% en 2022 (IAE)
+-   Découplage [relatif]{.bg4} : le niveau de perturbation environnementale augmente [moins vite]{.bg3} que la croissance
+    -   Plutôt le cas pour de nombreuses métriques
+    -   Quelques analyses de la courbe de Kuznets environnementale pour le C02 (Stern, 2017)
+    -   Mais plutôt le rôle de l'offshoring des émissions et du changement structurel (Wood et al, 2019)
+    -   La relation IPAT :
+:::
+
+::: fragment
+$$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intensity}$$
+:::
+
+## L'empreinte écologique
+
+::: incremental
+-   Notion définie par [Wackernagel]{.bg3} (thèse en 1992)
+-   Mesure chaque année :
+    -   La surface totale (terrestre et maritime) qu'il faut à un groupe d'individus
+    -   Pour atteindre un niveau de consommation
+    -   Sans dégrader son environnement
+-   [Biocapacité]{.bg3} :
+    -   Evalue le volume de production de matière organique
+    -   Capable de satisfaire les besoins des sociétés humaines
+    -   Dans les différents espaces utiles
+    -   Exprimée en hectares globaux
+-   La différence entre les deux, c'est le [dépassement écologique]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_World.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_North_America.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Europe.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Africa.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/total_ecological_footprint.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/footprint_per_person.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/biocapacity_global.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/ecological_deficit_reserve_global.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_france.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_algeria.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_guyana.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_belgium.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_US.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_russia.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_brazil.jpg){fig-align="center"}
+
+## HANPP
+
+::: incremental
+-   [Human Appropriation of Net Primary Product]{.bg3}
+-   Produit primaire net :
+    -   Quantité d'énergie
+    -   Qui reste après avoir retranché la respiration des producteurs primaires (plantes)
+    -   de la quantité totale d'énergie (solaire) fixée biologiquement
+    -   Mesurée en carbone, énergie ou masse sèche
+-   HANPP élevée dans les économies dépendantes de la biomasse et stabilisation avec industrialisation
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/hanpp_jrc.jpg){fig-align="center"}
+
+# 2. Métabolisme social : mesures et concepts au fondement de la macroéconomie écologique
+
+## Présentation
+
+::: incremental
+-   Un courant d'analyse de long terme
+    -   qui mêle les approches [énergéticienne et matérielle]{.bg3}
+    -   par une approche [systémique et interdisciplinaire]{.bg3}
+    -   rejettant le [dualisme nature/société]{.bg3}, intégrant les économies dans les écosystèmes
+-   Qui analyse les [flux de matière et d'énergie]{.bg4} :
+    -   [Quantitatif]{.bg4} : par le développement d'une méthode [comptable]{.bg3} précise et large
+    -   [Qualitatif]{.bg4} : en utilisant l'économie, l'histoire, la science politique, et l'analyse institutionnelle
+-   Pour comprendre :
+    -   La manière dont les [modes d'organisation]{.bg3} sociale et politique influencent les [flux]{.bg3} de matière et d'énergie
+    -   Le rôle des [relations de pouvoir]{.bg3} dans l'accès et la distribution des ressources
+    -   La [transformation]{.bg3} des métabolismes par les [transitions]{.bg3} socio-écologiques
+    -   Les [limites]{.bg3} des systèmes socioéconomiques
+:::
+
+## A. Retour sur l'histoire et la définition du métabolisme
+
+### Métabolisme : définitions
+
+::: {.incremental style="font-size:88%"}
+-   En [biologie]{.bg3} :
+    -   Processus chimique de [transformation]{.bg3} de la nourriture en briques énergétiques
+    -   Par lequel les tissus et cellules sont créés
+    -   Et l'ensemble des mécanismes qui régulent ces systèmes
+    -   Transformation énergétique [endosomatique]{.bg3}
+-   [Social]{.bg3} :
+    -   Manière avec laquelle les sociétés humaines organisent leurs [échanges]{.bg3} croissants de [matière et d'énergie]{.bg3} avec l'environnement
+    -   Comptabilité et caractérisation des [throughputs]{.bg3} qui transitent entre composants du système :
+        -   Stocks et flux biophysiques
+        -   Processus de recyclages
+        -   Production de déchets
+        -   Emissions de polluants
+    -   Transformation énergétique [exosomatique]{.bg3}
+    -   Le niveau de production dépend des quantités de matériaux et d'énergie consommée, selon des [modalités]{.bg3} différentes
+    -   Importance de la [modélisation]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+### Une tradition de long terme portée sur l'énergie
+
+::: incremental
+-   Tradition de long terme : des physiocrates à Podolinsky, puis les théoriciens de l'énergie comme [les frères Odum, Ayres et Kneese ou encore Nicolas Georgescu Roegen]{.bg4}
+
+-   [Liebig]{.bg4}, *La chimie agricole*, 1840:
+
+    -   [«Loi de reconstitution»]{.bg3} : les produits de la terre doivent y retourner pour maintenir la fertilité des sols (idée de cycle des nutriments)
+    -   [Rupture métabolique]{.bg3} avec les égouts (rupture du cycle : les nutriments vont dans l'eau)
+
+-   [Marx]{.bg4} :
+
+    -   Rupture entre ville et campagne
+    -   [Au sein des pays]{.bg3} :
+        -   Une division sociale du travail
+        -   Qui repose sur la concentration de la classe ouvrière dans les grandes villes
+        -   Et la nécessité émergente de transporter constamment sa nourriture depuis la campagne.
+    -   Entre pays : ["échange écologiquement inégal"]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+### Les frères Odum et l'*energetics*
+
+::: incremental
+-   Howard T. Odum (1924-2002) et Eugene Odum, 1913-2002
+-   Eugene Odum est un des pères de l'écologie moderne avec *Fundamentals of Ecology*, 1953:
+    -   L'écologie comme une [science des écosystèmes]{.bg3} plutôt qu'une collection de faits sur les organismes : la [totalité est plus grande que la somme]{.bg4} des parties
+-   Howard développe le concept de ["émergie"]{.bg4} (*Ecological and General Systems: An Introduction to Systems Ecology*, 1994) :
+    -   La quantité d'énergie qui a mené à un élément, pas simplement le flux qu'il reçoit
+    -   Développe un langage formel de dynamique des systèmes pour l'énergie
+-   Les sociétés deviennent [plus complexes à mesure qu'elles capturent plus d'énergie]{.bg4}, mais cette complexité est coûteuse
+    -   Les sociétés modernes industrielles semblent plus efficaces
+    -   Mais requièrent souvent plus d'énergie totale par unité de production
+:::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="30%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/signs_odum_1967.jpg){fig-align="center"}
+:::
+
+::: {.column width="70%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/systems_odum_1967.jpg){fig-align="center"}
+:::
+:::::
+
+::: notes
+-   La nature hiérarchique des flux d'énergie (du soleil aux producteurs et aux consommateurs)
+-   La dégradation de l'énergie à chaque étape (illustrée par des symboles de perte de chaleur)
+-   L'importance du stockage (réservoir de biomasse)
+-   Boucles de rétroaction dans le maintien de la stabilité du système (recyclage des nutriments)
+:::
+
+------------------------------------------------------------------------
+
+### Ayres, Kneese et l'écologie industrielle
+
+[Ayres and Kneese, Production, Consumption, and Externalities, *American Economic Review*, 1969](https://www.jstor.org/stable/pdf/1808958.pdf?casa_token=ske4LWPyg4wAAAAA:Ij17nI4OHvMrYIJuXTx-L_ypRdZdgNCnL1TElBLFlT3zhqOeJ6DyDcMWpkQldMNofRfdUzKAluy9iXlvxbwkxA8cl-1T-06tK1PdsKN6w9cSwhFaxjo)
+
+::: incremental
+-   Utilisent les lois de la thermodynamique et de la [conservation des matériaux]{.bg4}, années 1960
+
+-   Analyse des procédés de production en prenant en compte les [déchets]{.bg4} : émergence de la notion de ["balance matérielle"]{.bg3} pour les systèmes économiques
+
+-   Cela a des conséquences importantes sur la pensée de [régulation]{.bg4} :
+
+    -   Les externalités sont intrinsèques
+    -   L'intervention publique doit prendre en compte la dynamique systématique et la redistribution des pollutions
+    -   L'ensemble des prix doit refléter les coûts des déchets également
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/ayres_kneese_1969.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## B. Métabolisme social contemporain
+
+### La méthodologie Material and Energy Flow Accounting
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolism_fischer_kowalski_handbook_2015.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### La comptabilité mondiale et européenne
+
+::: incremental
+-   Premières tentatives dans les [années 1990]{.bg3} :
+    -   Japon
+    -   Autriche
+    -   Allemagne
+    -   Puis Eurostat
+-   L'Union Européenne :
+    -   1992 : Le Système Statistique Européen commense ses travaux sur *L'Intégration des Systèmes d'Information Economiques et Environnementaux* (1994)
+        -   Les flux matériaux sont au coeur du travail
+        -   A l'époque, peu d'instituts statistiques les collectent
+        -   Et ils sont faiblement comparables du fait de différences méthodologiques
+    -   2000 : un référentiel méthodologique est développé pour mesurer ces flux à l'échelle des pays
+    -   2002 : premières études pour l'UE 15, avec des données produites par des agences internationales (FAO, IEA, Eurostat, USGS)
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   2007 : Première campagne de collecte des données sur la base du volontariat
+
+-   2011 : Regulation (EU) No. 691/2011 créant une [obligation légale de reporting]{.bg3} de ces données à Eurostat pour chaque état membre
+
+-   Elle mesure :
+:::
+
+::: fragment
+*in thousand tonnes per year, material flows into and out of an economy. They cover solid, gaseous, and liquid materials, except for bulk flows of water and air*
+:::
+
+::: incremental
+-   Elles sont accessibles sur Eurostat, sous le nom [`env_ac_mfa`](https://doi.org/10.2908/ENV_AC_MFA)
+:::
+
+------------------------------------------------------------------------
+
+### Tendances européennes
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_extraction_trade_UE2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_EU2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_EU2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_country_2023EU.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Tendances mondiales
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/imports_exports_globaux_2010.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/taux_métaboliques_kowalski.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Par delà la description : explications métaboliques dans le temps long
+
+[Krausmann & Fischer Kowalski (2013)]{.bg4} reprennent les analyses de Seferle et identifient [trois phases métaboliques]{.bg4} à l'échelle globale:
+
+::: incremental
+1.  Le métabolisme des sociétés de chasseurs cueilleurs
+2.  Le métabolisme des sociétés agraires
+3.  Le métabolisme des sociétés industrielles
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolic_rates_regimes_fischer_kowalski_hadbook_2015.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+#### Métabolisme des sociétés de chasseurs cueilleurs
+
+::: incremental
+-   Extraction de ressources pour leur fonctionnement sur un [principe de survie]{.bg3} - un individu ne survit que s'il apporte plus d'énergie pour une activité donnéeque nécessaire pour sa mise en oeuvre
+    -   Vivent des [produits de la photosythèse]{.bg3} récente
+-   Colonisation des écosystèmes : de façon spatiale
+-   Changement écosystémiques liés à l'homme : [extinction des grands mamifères]{.bg3}
+-   Enjeu de durabilité : [extinction des proies]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+#### Métabolisme des sociétés agraires (Néolithique)
+
+::: incremental
+-   Extraction de ressources :
+    -   Transformation d'[énergie solaire en énergie d'origine biologique]{.bg3} : déforestation etc pour maximiser la photosynthèse
+    -   Permettant de nourrir hommes et animaux
+    -   Les capacités d'utilisation des énergies (faibles) rendent le système excédentaire
+    -   Le contrôle des ressources est clé et mène à des [conflits]{.bg3}
+-   Colonisation des écosystèmes :
+    -   [Déforestation]{.bg3}
+    -   [Domestication]{.bg3} animale et végétale
+-   Enjeux de durabilité : équilibre entre population et efficacité de l'usage des sols (Malthus etc)
+:::
+
+------------------------------------------------------------------------
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/moulin.jpg){.absolute left="-100" top="100" width="600" height="450"}
+:::
+
+:::: {.column width="60%"}
+[Sources énergétiques]{.bg3}
+
+::: incremental
+-   Estimation de [production d’énergie au Moyen-Âge]{.bg3}
+    -   1-2% de l’énergie produite par les moulins
+    -   25% fourrage
+    -   50% bois de chauffe
+    -   25% alimentation
+-   [Moulins]{.bg3} créés à l’Antiquité puis diffusé en milieu rural à partir du 9ème siècle
+    -   Permettent de libérer entre ¼ et 1/3 des la force de travail
+    -   L’équipement des rivières est achevé vers 1250
+        -   400 ans de tâtonnements et d’apprentissage pour en arriver là (fin en 1250) avec des évolutions techniques et institutionnelles
+        -   [Système, une fois stabilisé, très résilient]{.bg3}: le nombre et le positionnement de moulins sur certaines zones d’Ile de France n’a pas bougé entre 900 et 1800.
+:::
+::::
+::::::
+
+::: notes
+Un cheval = 735 watt Un bœuf = 0,75 cheval Vache = 0,4 cheval Ane = 0,7 cheval
+
+Des ailes et des roues. La place des moulins dans le système énergétique parisien médiéval (XIIIe-XVIe siècle) - Pierre Marchandin, archiviste paléographe (prom. 2018)
+
+-   Moulin à eau : pas idéal si débit instable
+
+-   Moulin sur bateau :pas top, mais utile pendant le siège de Rome par exemple
+
+-   Moulin pendant : permet de s'adapter aux fluctuations et d'actionner de grosses meules, mais encombre les arches des ponts, seule une des 14 arches du Pont au Change est vouée à la navigation
+
+-   Moulins à vent : Normandie au XIe et arrivent à Paris en complément à la fin du XIIIe
+:::
+
+------------------------------------------------------------------------
+
+#### Métabolisme des sociétés industrielles (XVIe siècle)
+
+::: incremental
+-   Ressources extraites:
+    -   Utilisation conséquente des[sources d'énergie fossiles]{.bg3}, stockés sur terre de façon concentrée
+    -   [Innovations technologiques]{.bg3} permettant l'utilisation des énergies nouvelles et ouvrant des possibilités d'usage (transport lointain, massif; grands travaux)
+    -   Créent l'illusion que le développement social s'émancipe des contraintes naturelles
+-   [Colonisation]{.bg3} des écosystèmes [intense]{.bg3} à [plusieurs niveaux]{.bg3} d'organisation, allant du [gène au climat]{.bg3}
+-   [Changements écosystémiques globaux]{.bg3} des cycles biogéochimiques et climatiques, erosion des sols et déclin de la biodiversités
+-   Risques: raréfaction des ressources et impacts des changements écosystémiques globaux
+:::
+
+------------------------------------------------------------------------
+
+### Analyse de long terme du sociométabolisme français
+
+Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328136) : dépasser le MFA avec une analyse sociométabolique
+
+:::::: columns
+:::: {.column width="30%"}
+::: incremental
+-   $DE$: extraction domestique
+-   $PTB= Imports - Exports$ : la balance commerciale physique
+-   $DMC = DE+PTB$ : consommation matérielle domestique
+:::
+::::
+
+::: {.column width="70%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/material_flows_megalhes.jpg){fig-align="right"}
+:::
+::::::
+
+------------------------------------------------------------------------
+
+#### Transitions sociométaboliques {#sec_transition_magalhaes}
+
+::: incremental
+1.  [Croissances]{.bg3} massives de [l'extraction domestique]{.bg3} et de la [consommation]{.bg3} matérielle domestique (comme dans le reste des pays industrialisés): passage d'une économie organique à minérale
+2.  [Déficit matériel]{.bg3} constant depuis 1850
+3.  [Importations]{.bg3} massives de produits [fossiles]{.bg3}
+:::
+
+::: fragment
+-   Voir la table [[Table](#appendix_table_metabolism)]{.button}
+:::
+
+------------------------------------------------------------------------
+
+#### 1830-1860 : une industrialisation lente dans une économie mondialisée, basée sur une empreinte matière extérieure
+
+::: incremental
+-   La France demeure une [économie biotique]{.bg3}, basée sur un métabolisme agraire
+-   L'extraction domestique croît lentement
+-   Le [charbon remplace le bois]{.bg3} comme source majeure d'énergie en 1860, qu'elle importe en masse (PTB) (40% de sa consommation, à 60% depuis la Belgique)
+-   Plutôt orientée vers la [ruralité]{.bg3}, avec le "putting out système", et une croissance de la population
+-   Les [fibres textiles]{.bg3} étaient aussi largement importées (50% en 1860) : il aurait fallu jusqu'à 30% de la surface utile du pays
+:::
+
+------------------------------------------------------------------------
+
+#### 1860-1930 : Charbon, empire et métabolisme industriel
+
+::: incremental
+-   [Extraction domestique s'accroît, notamment de charbon]{.bg3} - 9Mt en 1860 à 55Mt en 1930
+    -   Représente 70% de la consommation énergétique en 1930
+-   La [globalisation est lente]{.bg3} ente 1870 et 1900, du fait des politiques protectionnistes à l'issue de la crise entre 1873 et 1897
+    -   La balance physique se stabilise
+-   La [balance physique s'accroit]{.bg3} avec:
+    -   L'import de textiles redevient dynamique après la première guerre
+    -   Les échanges avec l'Empire (principalement l'Algéire) en minerais et bétail
+:::
+
+------------------------------------------------------------------------
+
+#### 1945-1973 : La Grande Accélération : pétrole, décolonisation, *Pax Americana* et la construction européenne
+
+::: incremental
+-   [Croissance rapide de la DMC]{.bg3} : 7.8t/tête en 1948 à 17.3t/tête en 1973
+-   Conduit par une [croissance rapide des fossiles, au profit du pétrole]{.bg3}, surtout post 1960
+-   Raisons :
+    -   Subventions au pétrole du Plan Marshall
+    -   Politique [d'exploitation des ressources nationales]{.bg3} pour réduire le déficit : le bassin pétrolier parisien produit 1/2 million de tonnes en 1959 (peu ds l'ensemble)
+    -   [Stratégie gaulliste]{.bg3} pour l'expansion industrielle et agricole bon marché dans le cadre européen
+    -   Déport des sources d'approvisionnement américaines vers l'Algérie jusque 1971
+-   Le pétrole bon marché permet des [gains de productivité, une croissance économique]{.bg3} dans le cadre de la [relation de salaire fordiste]{.bg3}
+    -   La France devient un [exportateur net de biomasse]{.bg3} grace au pétrole dans les années 1960 : 2nd exportateur après les US en 1974
+    -   [Bétonisation]{.bg3} de la France :
+        -   Extraction de minerais non métaliques passe de 1.2t/tête en 1948 à 8t/tête en 1973
+        -   Grands projets, expansion urbaine (villes nouvelles), mitage
+        -   Croissance importante de la [voiture individuelle]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+#### 1980 - 2015 : la consolidation post industrielle après les chocs pétroliers (financiarisation et mode de vie néo impérial)
+
+::: incremental
+-   [Frein à l'augmentation de l'import de produits énergétiques]{.bg3}, qui demeurent larges (171 Mt 1973 - 176Mt 2010) et le plus gros poste d'importations
+    -   Remplacement par le [nucléaire]{.bg3}, extrait d'Afrique
+-   Stabilisation puis [léger déclin du DCE]{.bg3} : 17.5t/tête en 1980 à 15.5t/tête en 2000 et 12.5t/tête en 2014
+-   [Meilleure efficience]{.bg3} peut être mais aussi :
+    -   [Saturation]{.bg3} de la demande matérielle
+    -   Intégration dans une chaîne écologique qui renvoie les activités polluantes et intensives en Asie : [échange écologique inégal]{.bg3} avec le Sud Global (Muradian et al. 2012)
+    -   Régime d'accumulation [financier]{.bg3}
+-   Nouveau mode de vie ["impérialiste"]{.bg3} (Brand and Wissen, 2012):
+    -   Régime d'accumulation fordiste
+    -   Ancré dans l'appropriation ilimité de ressources, espace et temps d'autres territoires
+:::
+
+## C. Les limites métaboliques à la croissance
+
+### Les leçons de l'analyse métabolique
+
+::: incremental
+-   [Améliorer l'efficience]{.bg3} des ressources :
+
+    -   Meilleur usage primaire
+    -   Meilleur recyclage dans le cadre de l'économie circulaire
+
+-   Mais il reste le problème de l'[entropie]{.bg3}
+
+-   Ainsi que le [déclin tendanciel du EROI]{.bg3}
+
+-   Et [l'effet rebond]{.bg3}
+
+-   Des réductions métaboliques ne sont [pas tant à chercher du coté de la technologie]{.bg3} dans les sociétés industrielles "matures" (Fischer Kowalski & Haberl, 2015):
+
+    -   Partie [démographique]{.bg3} : une population moins fertile et agée requiert de plus faibles flux matériaux
+    -   [Moins de nourriture carnée]{.bg3} peut être un changement systémique important (1/3 des ressources potentiellement)
+    -   Pas besoin de construire plus
+    -   [Moins de combustibles fossiles]{.bg3}
+
+-   Notion de [point de retournement]{.bg3} critique
+:::
+
+------------------------------------------------------------------------
+
+### Entropie et recyclage
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/chapelle_darblay.jpeg){.absolute top="100" left="-100" width="700" height="500"}
+:::
+
+:::: column
+::: {.incremental style="font-size:90%"}
+-   Le recyclage permet de [lutter contre l'entropie]{.bg3} :
+
+    -   Recycle 1 tonne de PET :
+        -   0,61 tonnes de pétrole brut, 0,2 tonnes de gaz naturel, 10,96MWh d’énergie
+        -   soit 2,9 tonnes d’équivalent CO2 évitée
+
+-   Le recyclage des matériaux [complets]{.bg3} serait possible si la quantité d'énergie était infinie
+
+-   Au delà des difficultés de l'[opérationalité]{.bg3} du recyclage :
+
+    -   [Chapelle Darblay]{.bg3} en France :
+        -   Capacité de tris de papiers de 24 millions d'habitants (428 000 tonnes)
+        -   Faillite en 2020, reprise en 2024 mais pas encore finalisé car manque de soutiens financiers
+    -   [Taux de recyclage]{.bg3}(Citeo, 2022): f
+        -   Papier : 63%
+        -   Emballages ménagers : 67%
+        -   Plastiques : 27%
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### Déclin tendanciel du EROI
+
+#### Définitions et enjeux
+
+::: incremental
+-   Energy Return On Investment (EROI ou TRE en français)
+-   [TRE = énergie produite / énergie dépensée]{.bg3} pour la produire
+-   Il faut que le [ratio soit supérieur à 1]{.bg3} pour participer à l’accumulation du capital
+-   Généralement, une société privilégiera les sources d'énergie [bénéficiant du plus fort TRE]{.bg3}possible car cela signifie qu’elles fournissent un maximum d'énergie pour un minimum d'efforts
+-   Problème: [jusqu'où faut-il prendre en compte la chaîne d'opérations intervenant dans l'exploitation]{.bg3} d'une source d'énergie (même problème pour les analyses de cycle de vie)
+-   Permet d’évaluer [l’efficacité du régime économique et sa durabilité]{.bg3}
+-   Le TRE permettrait ainsi [d’expliquer en partie l'expansion et le déclin des civilisations]{.bg3} (Homer-Dixon, 2007)
+:::
+
+------------------------------------------------------------------------
+
+#### Exemple : l'Empire Romain
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/pluie_alexandrie.jpg){.absolute top="100" left="-100" width="500" height="400"}
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   L'extension maximale de l'Empire Romain à lieu autour de l’an 100:
+    -   88 millions d'habitants dont 1,5 à Rome
+    -   TRE autour de 12/1 par ha. pour le blé et de 27/1 pour la luzerne
+    -   Consommation alimentaire autour de 2500 calories/jour/hab.
+-   Au début du premier millénaire, [l’ensemble de la surface agricole]{.bg3} disponible au sein de l’Empire romain est consacrée à [l'alimentation des citoyens]{.bg3}
+-   Un [changement climatique et la déforestation]{.bg3} conduisent à la baisse de la fertilité des sols
+    -   en particulier dans le Sud de l'Espagne, le Sud de l'Italie et l'Afrique du Nord, et les crues du Nil
+    -   à partir du IIe siècle
+-   Début de [l’effondrement de l’empire,]{.bg3} qui voit un déclin de population large
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+#### Aujourd'hui
+
+Pose toujours des problèmes de définition des limites du systèmes mais aux USA :
+
+::: incremental
+-   [Pétrole importé]{.bg3} aux US : De 100:1 (in 1930) to 12:1 (in 2007)
+-   Charbon : de 80:1 (in 1930) à 30:1 (in 1970);
+-   Pétroles bitumineux : 5:1
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/mean_eroi_hall_2014_energy_policy.jpg){fig-align="center" width="50%"}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/hall_2014_energypolicy.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### L'effet rebond
+
+#### Définitions
+
+Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
+
+::: incremental
+-   Différence entre la [réduction escomptée et réalisée de consommation d'énergie]{.bg3} suite à un changement :
+    -   Un climatiseur qui sauve 10kWh/an technologiquement
+    -   Si la réduction d'usage n'est que de 9 kWh, alors 1 kWh aura été dédié à plus de consommation
+    -   L'effet rebond est $\frac{\text{Technique - Usage réel}}{\text{Technique}}=10%$
+-   Echelle [microéconomique]{.bg3} : changement de l'efficacité énergétique sans coût :
+    -   Effet de [substitution]{.bg3}
+        -   Vers des produits plus efficaces
+        -   Depuis des biens plus chers
+    -   Effet de [revenu]{.bg3} :
+        -   Pouvoir d'achat accru : accroissement de la consommation du produit efficace
+        -   Pouvoir d'achat accru : accroissement de la consommation de tous les autres biens
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [Effet de rebond direct]{.bg3} : souvent défini comme
+    -   Le changement issu des effets de substitution et de revenu
+    -   Sur la demande du produit considéré
+    -   Oubliant tous les autres effets
+-   Echelle [macroéconomique]{.bg3} :
+    -   Accroissement dans l'usage énergétique après un changement dans l'efficacité énergiétique
+    -   Une fois pris en compte les [ajustements]{.bg3} de marché
+    -   et l'[innovation]{.bg3}
+    -   Exemples :
+        -   [Effet prix]{.bg3}: meilleure extraction aux US baisse les prix dans le monde, dépend des élasticités
+        -   [Effet croissance]{.bg3}: ressemble à celui de Jevons, un accroissement de l'efficacité énergétique peut déclencher de la croissance par une réallocation des inputs ou un accroissement du TFP
+:::
+
+------------------------------------------------------------------------
+
+#### Synthèse (un peu datée) des estimations de l'effet rebond direct
+
+![Sorell et al, 2009, Energy Policy](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_effect_aggregate_sorell_et_al_2009_energy_policy.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+#### Un exemple : effet rebond et alimentation
+
+*Rebound effects could offset more than half of avoided food loss and waste*, Hegwood et al, 2023, Nature Food
+
+::: incremental
+-   La réduction des pertes implique:
+
+    -   une augmentation de l'offre
+    -   Une réduction de la demande
+
+-   Si on réduit la perte de $\Delta L$ et les déchets réduisent de $\Delta W$, on évite : $\Delta L + \Delta W$
+
+-   [Sans rebond]{.bg3} : on perd $\Delta T  = -\Delta W$, car la demande est plus basse, mais la baisse des prix n'implique pas plus de consommation -Avec un [rebond]{.bg3}, on a $\Delta T \neq - \Delta W$
+
+-   La mesure du rebond dépendra des [élasticités]{.bg3}
+
+-   En tout, le [rebond pourrait réduire de 51-73% la réduction des pertes alimentaires]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/image_rebond_marché_hegwood_NatureFood_2023.webp){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_by_type_hegwood_NatureFood_2023.webp){fig-align="center"}
+
+# 3. Vers une macroéconomie écologique
+
+## A. Le travail du Club de Rome et le rapport Meadows
+
+#### Le Club de Rome
+
+:::::: columns
+::: {.column width="30%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/meadows_forrester.png){fig-align="left" height="500"}
+:::
+
+:::: {.column width="70%"}
+::: incremental
+-   La [taille optimale]{.bg4} de l'entreprise est l'objet de la microéconomie, mais celle de l'économie est absente de la macroéconomie
+-   [Jay Forrester (1928-2016) et Denis Meadows (né en 1942)]{.bg4} développent des modèles informatiques de [dynamique des systèmes]{.bg4} dans les années 60
+-   D'autre part, en 1968, se crée le [Club de Rome]{.bg4} :
+    -   Fondé à l'Académie des Lyncéens à Rome
+    -   Par des hauts fonctionnaires issues de l'OCDE
+    -   Pour réfléchir à la crise planétaire naissante
+    -   Forrester y adhère et est commandé le rapport *Limits to Growth*, rédigé par Meadows et son équipe
+-   Pour cela Meadows et son équipe se basent sur les travaux en dynamique des systèmes de Forrester (modèle `World2`) et développent `World3`
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth_systems.jpg){height="700" fig-align="center"}
+
+::: notes
+-   Niveaux et quantités physiques mesurables par les rectanlges
+-   Les flux qui influences ces niveaux par des valves
+-   Les variables auxiliaires qui influence les équations de flux sont en cercles
+-   Les délais temporels sont indiqués par des rectangles avec des sections
+-   Les flux réels par des flèches solides
+-   Les relations causales par des flèches pointillées
+-   Les nuages représentent des sources ou éviers qui ne sont pas clés dans le comportement du système
+:::
+
+------------------------------------------------------------------------
+
+#### `World3` et *Limits to Growth*
+
+::: incremental
+-   Modèle en [sous sytèmes dyamiques]{.bg4}:
+    -   Nourriture : agriculture et production alimentaire
+        -   La nourriture requiert de la terre finie et des intrants
+        -   La finitude de la terre et le rythme de la croissance de la demande provoquent un effondrement de la nourriture
+    -   Système industriel
+    -   Système de population
+    -   Système des ressources non renouvelables:
+        -   Le coût de l'effort augmente à mesure que le stock diminue
+    -   Système pollution
+-   Fonctionnant par [analyse de scénarios]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/dynamics_world_3_small.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth_results.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## B. La controverse néoclassique
+
+::: incremental
+-   Quelques [hypothèses]{.bg4} clés, qui seront vivement critiquées :
+    -   La pollution, la population et la capital croissent à un rythme [exponentiel]{.bg3} mais pas les autres variables
+    -   [Estimations]{.bg3} des ressources non renouvelables un peu datées et [conservatrices]{.bg3} (ni des possibilités futures : sols océaniques etc)
+    -   [Pollution proportionnelle]{.bg3} à l'usage du capital, qui croît avec l'extraction.
+    -   Pas ou peu de [substitution]{.bg3} entre les facteurs : pas de possibilité de dépolluer, ou encore d'arrêter l'usage si trop cher
+    -   Pas de mécanisme d'allocation par les prix
+-   [Solow, en 1973](https://web.archive.org/web/20191116122343/https://www.minneapolisfed.org/publications/the-region/interview-with-robert-solow) :
+:::
+
+::: fragment
+*the one thing that really annoys me is amateurs making absurd statements about economics, and I thought that the Club of Rome was nonsense. Not because natural resources or environmental necessities might not at some time pose a limit, not on growth, but on the level of economic activity—I didn't think that was a nonsensical idea—but because the Club of Rome was doing amateur dynamics without a license, without a proper qualification. And they were doing it badly, so I got steamed up about that*
+:::
+
+------------------------------------------------------------------------
+
+### Controverse néoclassique
+
+::: incremental
+-   Dans un numéro spécial de la *Review of Economic Studies* (1974) Robert Solow, Joseph Stiglitz, Geoffrey Heal et Partha Dasgupta intègrent la [problématique des ressources à la macroéconomie néoclassique]{.bg4}:
+    -   Intégration des ressources à l'[équilibre général]{.bg3}
+    -   [Croissance]{.bg3} optimale avec ces ressources
+-   Elements phares :
+    -   Les capitaux sont [indéfiniment susbstituables]{.bg3}, permettant un niveau de consommation par tête constant si le capital physique suit
+    -   Les [générations futures]{.bg3} n'ont d'abord que peu de poids dans l'analyse
+:::
+
+------------------------------------------------------------------------
+
+### Vers le développement soutenable
+
+-   Dans les années 1980, la définition de [soutenabilité]{.bg4} active les débats : les volets sociaux, environnementaux et économiques sont développés
+
+:::: fragment
+::: {.callout-tip title="Notre Avenir à Tous, 1987"}
+En 1987, la publication du [rapport Brundtland]{.bg4} (WCED, 1987) a donné une définition large du développement durable :
+
+*Par essence, le développement durable est un [processus de changement]{.bg3} dans lequel l’exploitation des ressources, la direction des investissements, l’orientation du développement technologique et les changements institutionnels sont tous en harmonie et améliorent le potentiel actuel et [futur]{.bg4} de satisfaction des [besoins]{.bg3} et des aspirations de l’humanité*
+:::
+::::
+
+::: incremental
+-   Définitions différentes :
+    -   Règle d'[Hartwick Solow (1977, 1986)]{.bg4} et la [soutenabilité "faible"]{.bg4} : dans une économie avec des ressources non renouvelables, la [rente]{.bg3} dégagée de l'exploitation des ressources est le niveau d'investissement [requis pour maintenir une consommation constante]{.bg4} dans le temps
+        -   Suppose que la [technologie]{.bg4} croîtra et les [ressources]{.bg4} sont substituables
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   L'approche de [Daly (1990) et la soutenabilité forte]{.bg4}:
+    -   L'[extraction]{.bg3} devrait être égale aux taux de [régénération]{.bg3}
+    -   Les [émissions]{.bg3} de polluants doivent être égales aux capacités d'[absorbtion]{.bg3} des écosystèmes
+    -   Les [ressources non renouvelables]{.bg3} doivent être exploitées au rythme de [découverte de substituts]{.bg3}
+    -   Les capitaux naturels et physiques doivent [demeurer intacts et sont complémentaires]{.bg4}, avec un rôle faible pour la technologie
+        -   A long terme, [loi d'entropie et conservation]{.bg3} de la matière (Georgescu Roegen)
+        -   Mais substituabilité est quand même une question [empirique]{.bg3}
+    -   [Notions d'état stable]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+## C. Exerice de modélisation
+
+Le but de cette partie est de construire un modèle simple :
+
+::: incremental
+-   Dans un cadre de [dynamique des systèmes]{.bg4}
+    -   Avec un nombre restreint de [variables d'état]{.bg3} : variables que l'on suit dans le temps et qui décrivent l'économie-monde
+-   Mettant en exergue la [dynamique couplée]{.bg4} du système monde
+    -   Qui inclue des [limites biophysiques]{.bg3} de la terre
+    -   Ainsi que des [mécanismes économiques]{.bg3}, comme la production ou la répartition des richesses
+    -   Et réplique des tendances observées
+-   Pour [analyser la trajectoire]{.bg4} du système
+    -   Dans un scénario *business as usual*
+    -   Dans un scénario de changement de politique publique
+        -   Prix du carbone
+        -   Réduction du temps de travail
+-   En utilisant un [formalisme mathématique et informatique simple]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+#### a. Les ingrédients et principes
+
+::: {.incremental style="font-size:90%"}
+-   4 variables d'état :
+    -   $N_t$ : la population en temps $t$
+    -   $K_t$ : le capital en temps $t$
+    -   $R_t$ : les ressources non renouvelables en temps $t$
+    -   $B_t$: Les ressources renouvelables en temps t
+-   Les principes suivants :
+    -   Les [ressources non renouvelables $R$]{.bg4} varient dans le temps :
+        -   sont épuisables
+        -   et ne se recyclent pas
+    -   Les [ressources renouvelables $B$]{.bg4} :
+        -   Se renouvellent
+        -   Mais sont limitées par l'interaction avec les ressources abiotiques
+    -   La [production $Y$]{.bg4} :
+        -   émerge de la combinaison entre du travail, du capital et des ressources naturelles de façon [peu substituable]{.bg4}
+        -   est allouée entre consommation et investissement dans un stock de capital selon une règle fixe
+        -   La productivité augmente de façon régulière, grâce à des innovations
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Le [capital $K$]{.bg4} varie dans le temps:
+    -   Avec la dépréciation du capital
+    -   Et l'investissement
+-   La [population $N$]{.bg4} varie dans le temps:
+    -   Tant qu'un minimum de consommation par habitant est assuré, la population croît.
+    -   Autrement, elle décroit
+:::
+
+::: fragment
+#### b. Modéliser
+
+[Les ressources non renouvelables]{.bg4}
+:::
+
+::: incremental
+-   On part d'un stock initial $R_0$
+-   On extrait un flux $r_1$ de ressource, et le taux de recyclage de la matière est nul, donc pas d'apport
+-   A l'issue de la période 1, il reste $R_0 - r_1$
+-   La dynamique de la ressource est donc simplement :
+:::
+
+::: fragment
+$$ R_{t+1} = R_t - r_t $$
+:::
+
+------------------------------------------------------------------------
+
+[Les ressources renouvelables]{.bg4}
+
+::: {.callout-tip title="Croissance logistique et loi de Verhulst"}
+La fonction de croissance logistique, introduite par Pierre-François Verhulst au milieu du 19ᵉ siècle, est un modèle mathématique essentiel pour décrire la croissance d'une population en tenant compte des contraintes environnementales. Initialement, lorsqu'une population est faible, la croissance peut sembler exponentielle. Cependant, à mesure que la population augmente, les ressources disponibles deviennent limitées, ce qui freine cette croissance rapide. Le modèle de Verhulst traduit ce phénomène par une phase de décélération de la croissance qui aboutit à une stabilisation au niveau de la capacité de charge $K$, c'est-à-dire la population maximale que l'environnement peut supporter.
+:::
+
+$$
+B_{t+1} = \max\left(B_t + g_r\, B_t \left(1 - \frac{B_t}{K_{\text{ren}}}\right) - r_{\text{ren}},\, 0\right)
+$$
+
+::: fragment
+Où $r$ est le *taux de croissance intrinsèque* (quand la population est proche de 0) et mesure la rapidité de convergence vers la *capacité de charge* de l'écosystème $K$
+:::
+
+------------------------------------------------------------------------
+
+```{r, height='100%', fig.align='center'}
+#| fig-align: "center"
+
+
+logistic_growth = function(x, r_ = r, K_ = K){
+  y = r_*x*(1-x/K)
+  return(y)
+}
+
+critical_depensation = function(x, r_ = r, K2_ = K, K1_ = K1){
+  y = r_ * x * (1 - x/K2_) * (x/K1_ - 1)
+  return(y)
+}
+
+K = 100
+K1 = .3*K
+r = .2
+
+data = data.frame(x = seq(0,K))%>%
+  mutate(Logistique = logistic_growth(x))
+
+p = data %>%
+  pivot_longer(-x,
+               values_to = "value", 
+               names_to = "Croissance")%>%
+  ggplot(aes(x = x, y = value, color = Croissance))+
+  ylab('Croissance')+
+  geom_line(linewidth = 1.2)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+  
+p+
+  ylim(-2,7)+
+  #geom_hline(yintercept = 2, color = clean_palette[2], linewidth = 1, linetype = "dotted")+
+  geom_vline(xintercept=K/2, linetype= "dashed", linewidht = 1)+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = K, linetype = "dotted",linewidth = 1)+
+  geom_vline(xintercept = 0, linetype = "dotted",linewidth = 1)
+
+```
+
+------------------------------------------------------------------------
+
+::::::::::: columns
+:::: column
+[La production : aspect technique]{.bg4}
+
+::: incremental
+-   La production utilise le travail $L$, le capital $K$ et la ressource $r$
+    -   On suppose qu'il y a du plein emploi $L_t=N_t$
+    -   On obtient donc : $Y_t = F(K_t, L_t, r_t)$
+-   Mais à quoi elle ressemble?
+:::
+::::
+
+:::::::: column
+::::::: fragment
+[Fonctions CES]{.bg4}
+
+:::::: panel-tabset
+### Description
+
+::: incremental
+-   Fonction de production telle que l'élasticité de substitution entre les inputs est fixe
+    -   Peu importe le niveau des inputs
+-   Soit $x,y$ deux inputs :
+:::
+
+::: fragment
+$$F(x,y)=\left(\alpha x^\rho + (1-\alpha)y^\rho\right)^{\frac{1}{\rho}}$$
+:::
+
+::: incremental
+-   $\alpha$ représente un paramètre de part relative dans le processus productif
+-   $\rho$ est un paramètre mesurant la facilité de substitution entre les inputs
+-   $\sigma = \frac{1}{1 - \rho}$ est l'élasticité de substitution
+:::
+
+### Illustration
+
+```{r}
+
+
+CES = function(x,y, rho){
+  z = (x^rho + y^rho)^(1/rho)
+  return(z)
+}
+
+CES_isoquant = function(Y, x, rho){
+  z = (Y^rho - x^rho)^(1/rho)
+  return(z)
+}
+
+
+data = data.frame(x = seq(0,15,.1))
+data = data %>%
+  mutate(Substituable = CES_isoquant(20, x, 1),
+         Cobb_Douglas = CES_isoquant(20, x, 0.5),
+         Leontieff = CES_isoquant(20, x, .01))
+
+
+data %>%
+  pivot_longer(-x, 
+               names_to = 'names',
+               values_to = 'values') %>%
+  ggplot(aes(x = x, y = values, color = names))+
+  geom_line(linewidth = 1)+
+  custom_theme(font_size=30)+
+  labs(color = " ")+
+  ylab("y")
+
+```
+::::::
+:::::::
+::::::::
+:::::::::::
+
+------------------------------------------------------------------------
+
+[La production, la productivité]{.bg4}
+
+::: incremental
+-   On va supposer que la production $Y$ est une CES avec une faible élasticité de substitution, avec une dépendance $\alpha_r$ aux ressources qui sont [elles parfaitement substituables]{.bg4}
+-   La productivité se note $A_t$
+    -   On a dit qu'elle croissait de façon exogène, en partant de $A_0$
+    -   Donc $A_{t+1}=(1+g)A_t$
+-   On a donc la production totale :
+:::
+
+::: fragment
+$$ Y_t = A_t\left(\alpha_r (r_t+r_{ren})^\rho + \alpha N_t^\rho + \alpha K_t^\rho \right)^{\frac{1}{\rho}}$$
+:::
+
+------------------------------------------------------------------------
+
+[Le capital]{.bg4}
+
+::: incremental
+-   La production est allouée entre consommation et investissement
+-   On a dit que [l'allocation]{.bg3} se faisait de telle sorte que $\frac{C_t}{Y_t}= \beta$
+-   A chaque période, on perd $\delta$ du capital qui se [déprécie]{.bg3} (ou se brise)
+-   Et il reste $(1 -\beta )Y_t$ à investir (on passe sur les [difficultés de ne pas avoir de monnaie]{.bg3})
+-   On a donc :
+:::
+
+::: fragment
+$$  K_{t+1} = (1-\delta)K_t + I_t = (1-\delta)K_t + (1-\beta)Y_t$$
+:::
+
+------------------------------------------------------------------------
+
+[La population]{.bg4}
+
+::: incremental
+-   Augmente tant qu'un [minimum de consommation]{.bg3} $c_{min}$ est garanti par habitant
+    -   Si $C_t > c_{min} N_t$, la population augmente
+    -   Diminue sinon
+-   On peut donc avoir une [mécanique logistique]{.bg3}
+    -   Où le taux de reproduction est $r_{\text{pop}}$
+    -   Et la capacité de charge dépend des ressources naturelles et du minimum de consommation
+    -   Par exemple : $K_{\text{eff}} = \frac{R_t + Rr_t}{c_{\min}}$
+:::
+
+::: fragment
+$$
+N_{t+1} = N_t + r_{\text{pop}}\, N_t \left(1 - \frac{N_t}{K_{\text{eff}}}\right)
+$$
+:::
+
+------------------------------------------------------------------------
+
+### Synthèse du modèle
+
+On a donc les équations suivantes :
+
+::: incremental
+-   La dynamique de ressources non renouvelable : $R_{t+1} = R_t - r_t$
+-   La dynamique de ressource renouvelable : $B_{t+1} = \max\left(B_t + g_r\, B_t \left(1 - \frac{B_t}{K_{\text{ren}}}\right) - r_{\text{ren}},\, 0\right)$
+-   La dynamique de la productivité : $A_{t+1} = (1+g)A_t$
+-   La production : $Y_t = A_t\left(\alpha_r (r_t+r_{ren})^\rho + \alpha N_t^\rho + \alpha K_t^\rho \right)^{\frac{1}{\rho}}$
+-   La dynamique du capital: $K_{t+1} = (1-\delta)K_t + I_t = (1-\delta)K_t + (1-\beta)Y_t$
+-   La dynamique de la population: $N_{t+1} = N_t + r_{\text{pop}}\, N_t \left(1 - \frac{N_t}{K_{\text{eff}}}\right)$
+:::
+
+::: fragment
+So what? Qu'est qu'on fait?
+:::
+
+::: incremental
+-   Plutôt qu'une approche de l'allocation optimale par le marché et l'optimisation d'un bien être intertemporel
+-   On adopte une approche par [analyse de système dynamique]{.bg4}
+    -   On va regarder l'évolution du système avec différentes variables de contrôle
+    -   On fait une analyse de scénarios
+:::
+
+------------------------------------------------------------------------
+
+### Simuler un modèle
+
+#### Paramétrisation et architecture de données
+
+```{r, echo = T}
+
+Time = 500
+
+# Paramètres généraux
+g       <- 0.00010      # taux de croissance de la productivité A
+rho     <- 0.1          # paramètre de la fonction CES
+delta   <- 0.1          # taux de dépréciation du capital
+beta    <- 0.5          # part de la production allouée à la consommation
+c_min   <- 0.5          # consommation minimale par habitant
+
+# Paramètres liés aux ressources dans la production
+alpha_nr <- 0.3     # coefficient pour la ressource non renouvelable
+alpha    <- (1 - (alpha_nr)) / 2  # coefficient pour le travail (population) et le capital
+
+# Paramètres pour la ressource non renouvelable
+r0      <- 3      # extraction fixe de la ressource non renouvelable par période
+
+# Paramètres pour la ressource renouvelable
+r0_ren <- 4       # extraction fixe de la ressource renouvelable par période
+g_r    <- 0.05    # taux de croissance intrinsèque de la ressource renouvelable
+K_ren  <- 1000    # capacité de charge (stock maximal) de la ressource renouvelable
+
+# Paramètres pour la population
+r_pop = 0.05
+
+# Conditions initiales
+R0  <- 1000   # stock initial de ressource non renouvelable
+Rr0 <- 500    # stock initial de ressource renouvelable
+A0  <- 1      # productivité initiale
+K0  <- 10     # capital initial
+N0  <- 5      # population initiale
+
+# Pré-allocation des vecteurs (Time+1 pour les stocks, Time pour les flux)
+R   <- numeric(Time + 1)   # Stock de ressource non renouvelable
+Rr  <- numeric(Time + 1)   # Stock de ressource renouvelable
+A   <- numeric(Time + 1)   # Productivité
+K   <- numeric(Time + 1)   # Capital
+N   <- numeric(Time + 1)   # Population
+  
+Y       <- numeric(Time)   # Production
+r_vec   <- numeric(Time)   # Extraction non renouvelable effective
+r_ren_vec <- numeric(Time) # Extraction renouvelable effective
+  
+  # Affectation des conditions initiales
+R[1]   <- R0
+Rr[1]  <- Rr0
+A[1]   <- A0
+K[1]   <- K0
+N[1]   <- N0
+
+```
+
+------------------------------------------------------------------------
+
+#### Faire les boucles de simulation
+
+```{r}
+
+# Boucle de simulation
+for (t in 1:Time) {
+    
+# Extraction : on extrait r0 si le stock le permet (pour la ressource non renouvelable)
+  r_vec[t] <- ifelse((R[t] - r0) > 0, r0, 0)
+    
+# Même logique pour la ressource renouvelable
+  r_ren_vec[t] <- ifelse((Rr[t] - r0_ren) > 0, r0_ren, 0)
+    
+# Fonction de production CES à 4 inputs (ressource totale, travail, capital)
+  Y[t] <- A[t] * ( alpha_nr * (r_vec[t] + r_ren_vec[t])^rho +
+                     alpha   * (N[t])^rho +
+                     alpha   * (K[t])^rho )^(1/rho)
+    
+# Mise à jour du stock de ressource non renouvelable
+  R[t + 1] <- max(R[t] - r_vec[t], 0)
+    
+# Mise à jour du stock de ressource renouvelable par croissance logistique
+  Rr[t + 1] <- Rr[t] + g_r * Rr[t] * (1 - Rr[t] / K_ren) - r_ren_vec[t]
+  Rr[t + 1] <- max(Rr[t + 1], 0)
+    
+# Mise à jour de la productivité (croissance constante)
+  A[t + 1] <- (1 + g) * A[t]
+    
+# Mise à jour du capital : capital déprécié + investissement issu de (1 - beta)*Y[t]
+  K[t + 1] <- (1 - delta) * K[t] + (1 - beta) * Y[t]
+    
+  # Dynamique de la population (croissance logistique)
+  # La capacité de charge effective est liée à la somme des ressources disponibles.
+  K_eff <- (R[t] + Rr[t]) / c_min  
+  N[t + 1] <- N[t] + r_pop * N[t] * (1 - N[t] / K_eff)
+}
+```
+
+```{r}
+
+#| fig-align: "center"
+f <- data.frame(
+    Time = 0:Time,
+    Resource_NonRenewable = R,
+    Resource_Renewable    = Rr,
+    Productivity          = A,
+    Capital               = K,
+    Population            = N,
+    Production            = c(0, Y)  # production commence à t = 1
+  )
+# Reshape the data frame to long format
+df_long = f %>%
+  pivot_longer(-Time, 
+               names_to = 'Variable', 
+               values_to = "Value")
+
+# Create a ggplot output with facets for each variable
+
+ggplot(df_long, aes(x = Time, y = Value)) +
+  geom_line(color = "navy", size = 1) +
+  facet_wrap(~ Variable, scales = "free_y", ncol = 2) +
+  theme_minimal() +
+  labs(title = "Dynamique du système", 
+       x = "Time", 
+       y = "Value")
+
+```
+
+------------------------------------------------------------------------
+
+### Exercice :
+
+::: instrumental
+-   Allez sur `https://simon-jean.shinyapps.io/limited_growth/`
+-   Essayez de changer un peu les paramètres, pour vous familiariser avec le fonctionnement du modèle
+-   Que se passe-t-il si :
+    -   Le taux d'extration des ressources augmente?
+    -   Le minimum de consommation baisse?
+    -   La capacité de charge de la ressource renouvelable chute?
+    -   Le taux de croissance intrinsèque de la ressource renouvelable chute?
+    -   La productivité croît plus vite?
+:::
+
+## D. Courants modernes
+
+::: incremental
+-   Peut on avoir un état stationnaire dans une économie capitaliste?
+
+-   Le système capitaliste ne contient pas de capacité autonome pour limiter les impacts environnementaux
+
+-   Comment changer le système capitaliste, et faire évoluer ses [formes]{.bg4} : c'est la théorie de la régultation
+:::
+
+::: fragment
+### L'analyse régulationiste
+:::
+
+::: incremental
+-   [Institutionalisme]{.bg4} : courant d'analyse qui pose la nécessité de penser le rôle des médiations entre structures sociales et comportements individuels
+    -   [Institutionnalisme historique ou régulationniste]{.bg3} : les acteurs agissent selon leurs intérêts politiques mais sont équipés de visions du mondes diverses selon les contextes sociaux
+    -   Les institutions émergent comme :
+        -   une forme de [régulation des conflits]{.bg3} inhérents aux intérêts divergents et pouvoirs différents
+        -   Permettant sa [reproduction]{.bg3} cohérente
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Le capitalisme a connu plusieurs formes, et les [formes institutionnelles]{.bg4} constituent des [modes de régulation]{.bg4} spécifiques :
+    -   [Régime monétaire]{.bg3} : basé sur la confiance, permet aux agents de régler des dettes, utiliser les marchés et lier productions de marché et de non marché
+    -   [Régime salaire travail]{.bg3} : ensemble des conditions légales et institutionnelles qui gouvernent l’utilisation du salariat comme mode d’existence des travailleurs
+    -   [La concurrence]{.bg3} : ensemble des règles des marchés et des chaines de valeurs (toutes les conventions qui forment les relations d’affaires entre producteurs)
+    -   [L’état]{.bg3}
+    -   L’insertion dans le [régime international]{.bg3} : règles organisant la cohabitation des états nations et des monnaies dans un système géopolitique mondial, avec le commerce international et les réseaux de flux de capitaux.
+    -   Pas de [dimension environnementale]{.bg3} au début
+:::
+
+------------------------------------------------------------------------
+
+#### L. Cahen-Fourot, Contemporary capitalisms and their social relation to the environment, 2020, *Ecological Economics*
+
+::: incremental
+-   Analyse les groupes de pays que l'on peut voir au sein de l'OCDE et des BRICS, en prenant plein de données en compte pour mesurer ces formes :
+    -   Forme environnementale:
+        -   Intensité du PIB en GES, matériaux et énergie
+        -   Matérialité offshore
+        -   Distribution des émissions par quantiles (Piketty & Chancel, 2015)
+        -   Conflits environnementaux : adhérents à des ONG environnementales
+-   Dresse des typologies
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/typologie_cahen_fourot_2020.jpg)
+
+------------------------------------------------------------------------
+
+|   | Pays d'Europe du Nord | Europe Centrale du Sud | Pays du Anglosaxons et du Pacifique | Pays émergents | Deux géants |
+|----|----|----|----|----|----|
+| Relation sociale à l'environnement | Matériellement offshore, distribution des actifs environnementaux la moins inégale et orientation politique prône à l'écologie | Matériellement offshore | Matériellement onshore pour l'énergie et le GHG, diversité des opinions politiques | Orientation socio politique adverse à l'écologie | Matériellement onshore, distribution des actifs environnementaux la plus inégale et anti écologie |
+
+::: incremental
+-   Correspondance entre :
+    -   Ceux qui ont des attitudes socio-politiques propices à l'environnement
+    -   Une intensité d'usage des ressources naturelles faible
+    -   Des relations capital travail orientées vers le travail
+    -   Des politiques publiques orientées vers l'état social
+    -   Une ouverture aux importations
+-   Mais les pays qui sont le plus ouverts à l'écologie sont aussi ceux qui ont le plus [déplacé leur impact]{.bg3} environnemental
+    -   Explique aussi la [force relative]{.bg3} des politiques locales mais [l'absence de politique globale]{.bg3}, au sein d'une relation [complémentaire et exclusive]{.bg4} avec le capitalisme global
+    -   Le capitalisme global ne peut [pas être un système écologique viable]{.bg4}
+-   La notion de [relation sociale à l'environnement]{.bg4} se rapproche du métabolisme social
+:::
+
+------------------------------------------------------------------------
+
+#### Quelles formes désirables?
+
+::: incremental
+-   Dietz et ONeill, 2013: cherchent les [formes nécessaires à une croissance nulle]{.bg3}
+-   Focus sur le [régime monétaire]{.bg3} :
+    -   La monnaie en circulation est [créée]{.bg4} par des banques commerciales
+    -   Pour répondre aux besoins de financement des agents économiques, via des [crédits]{.bg4}
+    -   Ces crédits viennent avec un [taux d'intérêt]{.bg4} : remboursements plus larges que le principal
+    -   Il faut donc de la [croissance pour rembourser]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+### L'analyse post-keynésienne : finance et environnement
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/stable_econ_Victor2008.jpg)
+:::
+
+:::: column
+::: {.incremental style="font-size:90%"}
+-   Renversement du problème:
+    -   Respecter les objectifs de préservation
+    -   Sous contrainte de réalisation d'un état stationnaire: les travaux de Tim Jackson et de Peter Victor
+-   Les résultats du modèle `LowGrow`au Canada : hypothèses d'un modèle de macroéconomie et dynamique des systèmes
+    -   Croissance plus lente des dépenses publiques, de l’investissement net et de la productivité
+    -   Un faible déclin de la balance commerciale nette,
+    -   Une croissance démographique nulle
+    -   Une réduction du temps de travail hebdomadaire
+    -   de l’instauration d’une taxe carbone à effet neutre et
+    -   Une augmentation des dépenses publique dans les domaines de l’alphabétisation des adultes, des soins de santé ou encore de la lutte contre la pauvreté.
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Pourquoi une autre macroéconomie: reprise des travaux de [Keynes relatifs à l'incertitude, la monnaie et la demande]{.bg4} couplée à la dynamique des systèmes
+    -   L'[incertitude]{.bg4} n'est pas prise en compte correctement :
+        -   Les marchés financiers n'arrivent pas à comprendre leur propre futur (2007-2008)
+        -   Ils ne [refléteront pas les coûts et dommages]{.bg3} environnementaux, car les prix émergent de relations sociales
+        -   Il faut des [règles communes de gestion de l'incertitude]{.bg3}, car les autres outils, comme la monnaie, ne seront pas suffisants (si le changement climatique affecte tout, il n'y a plus d'actif sans risque)
+    -   L'économie est conduite par la [demande effective ; ensemble des dépenses prévues]{.bg4}
+        -   Décisions prises dans un contexte d'incertitude fondamentale
+        -   Qui guident les décisions des producteurs
+        -   Il n'y a pas de mécanismes de prix, ou autres, qui vont permettre de réguler
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [La monnaie n'est pas un voile d'échange, elle est endogène]{.bg4}:
+    -   Elle ne vient pas de l'égalité $I=S$
+    -   La monnaie est créée par demande de monnaie, ex nihilo
+    -   La politique monétaire va donc influer sur la demande effective
+    -   Etude des banques, de la finance et de la monnaie
+-   [Pas de notion d'équilibre]{.bg4}, mais simulation de dynamiques :
+    -   Formation dynamique des salaires, demandes etc
+    -   Modèles SFC : suivi des stocks et des flux dans l'économie
+-   [Inclusion des balances de matériaux et scénarios climatiques]{.bg4}, et des implications du changement climatique pour :
+    -   Comprendre comment le [changement climatique peut causer de l'instabilité financière]{.bg3} et réciproquement
+    -   Voir commment réguler la finance pour [accroître les investissements verts]{.bg3}, ou [stabiliser]{.bg3} les impacts du changement climatique : ratios de réserve, forward guidance, conditions de refinancement, green quantitative easing, climate bad bank
+    -   Voir Campiglio, Dafermos, Daumas
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/financial_physical_risk_dafermos2024.jpg)
+
+::: notes
+-   Issu des derniers travaux de Dafermos, voici un diagramme des chaines causales que l'on pourriat observer avec le changement climatique, dans le cadre des risques physiques réels.
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/financial_transition_risk_dafermos2024.jpg)
+
+::: notes
+-   Issu des derniers travaux de Dafermos, voici un diagramme des chaines causales que l'on pourriat observer avec le changement climatique, dans le cadre des risques de transitions réels
+-   Les risques et conséquences économiques ne sont pas les mêmes
+:::
+
+## Conclusion
+
+::: incremental
+-   La [macroéconomie écologique]{.bg4} intègre:
+    -   [Différents courants]{.bg3} : socio métabolisme, post keynésianisme, institutionalisme
+    -   [Différentes méthodes]{.bg3} : modélisation systémique, comptabilité, approche qualitatives
+-   Avec l'idée fondamentale de la [finitude des ressources]{.bg4} (énergie et matériaux), limitant la possibilité d'une croissance
+    -   Via l'analyse des [flux]{.bg3} de matières et d'énergie [dans l'économie]{.bg3}
+    -   et différents [indicateurs composites]{.bg3} : ecological footprint par exemple
+    -   Prenant en compte des [boucles comportementales]{.bg3} : consommation, effet rebod etc
+-   Pour analyser les [trajectoires de l'économie]{.bg4} sujette à la dégradation environnementale
+    -   Sur les plans [réels et financiers]{.bg3} : post keynénianisme
+    -   Et i[nstitutionnels et politiques]{.bg3} : approche régulationniste
+-   Graduellement, les questions relatives à la nécessité d'un [monde sans croissance]{.bg4} pour rester dans les limites planétaires s'actualisent, en ouvrant les études de post-croissance
+:::
+
+# 4. Par delà la croissance: technocritique, décroissance et coévolution
+
+## A. L'analyse de la décroissance : de l'écologie politique et la bioéconomié à la postgrowth
+
+### 1. Aux racines de la décroissance : thermodynamique, technocritique et écologie politique
+
+#### Jacques Ellul (1912-1994)
+
+:::::: columns
+:::: column
+::: {.incremental style="font-size:90%"}
+-   Professeur d'histoire du droit et penseur de la technique
+-   La société moderne a une tendance aux [concentrations]{.bg4} :
+    -   Production : usine et travail parcellisé
+    -   de l'Etat
+    -   des populations en villes
+    -   du capital
+-   Ceci est rendu possible par la [technique]{.bg4} comme :
+    -   Comme recherche du moyen le plus efficace dans tous les domaines
+    -   Comme procédé général, comme "milieu environnant" qui remplace la nature dans les structures morales, dans l'Etat
+:::
+::::
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ellul.jpg){fig-align="center"}
+:::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   La technique est à la racine de la prépondérance de l'économie
+-   Travail dans une [optique révolutionnaire]{.bg4} :changer la société. P
+    -   Pour cela, il faut ["être" révolutionnaire]{.bg3} et chercher une [désaliénation de la technique]{.bg3} :
+    -   Refuser l'idéologie technicienne : tout ce qui peut se faire doit être fait
+    -   [Vivre en accordance avec moins]{.bg3}, comme principe de bonheur :
+:::
+
+::: fragment
+*« Car ce sera une satisfaction parfaitement positive que de manger des aliments sains, d’avoir moins de bruit, d’être dans un environnement équilibré, de ne plus subir de contraintes de circulation, etc. »*
+
+*Entretiens avec Jacques Ellul*, Patrick Chastenet, 1994
+:::
+
+------------------------------------------------------------------------
+
+#### André Gorz (1923 - 2007)
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/gorz.png){fig-align="center"}
+:::
+
+:::: column
+::: incremental
+-   Philosophe, écrivain, journaliste, proche des existentialistes
+-   La nécessité d'une [société du temps libéré]{.bg4}, pour permettre aux individus de se libérer du travail contraint, pour penser et construire ensemble le monde
+-   [Critique croissantiste]{.bg4} :
+    -   Elle maintient les travailleurs sous emprise pour en faire des consommateurs avides
+    -   Le capitalisme poursuivra sa prédation des ressources et des milieux de vie
+    -   Lecture marxiste de la domination, tout en refusant la religion du travail
+-   L'écologie politique comme [moyen de résister]{.bg4} à la machine capitaliste
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+#### Ivan Illitch (1926-2002)
+
+:::::: columns
+:::: column
+::: {.incremental style="font-size:85%"}
+-   Philosophe allemand
+-   La technique est aussi au coeur de la pensée : [l'outil]{.bg4}
+    -   L'outil est un [moyen pour une fin]{.bg3}
+    -   Mais risque de nous rendre [hétéronome]{.bg3} : les besoins sont convertis en désirs, les outils nous aliènent
+    -   Par exemple, certaines institutions et outils deviennent ["contre productifs"]{.bg3}: au delà des effets polluants qu'il considère, ils font perdre plus qu'ils font gagner:
+:::
+::::
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/illich.jpg){fig-align="center" width="30%"}
+:::
+::::::
+
+::: {.fragment style="font-size:90%"}
+*L'Américain-type consacre plus de 1 500 heures par an à sa voiture : il y est assis, en marche ou à l'arrêt, il travaille pour la payer, pour payer l'essence les pneus, les péages, l'assurance les contraventions et les impôts. Il consacre quatre heures par jour à sa voiture, qu'il s'en serve, s'en occupe ou travaille pour elle Et encore, ici ne sont pas prises en compte toutes ses activités orientées par le transport : le temps passé à l'hôpital, au tribunal ou au garage, le temps passé à regarder à la télévision la publicité automobile, le temps passé à gagner de l'argent pour voyager pendant les vacances, etc. A cet Américain, il faut donc 1 500 heures pour faire 10 000 kilomètres de route, 6 kilomètres lui prennent une heure. Dans les pays privés d'industrie du transport, les gens atteignent exactement cette vitesse, et l'orientent vers n'importe quelle destination, par l'usage de la marche : ils consacrent à cet effet de 3 à 8 % du temps social. Ce qui différencie la circulation dans les pays riches et dans les pays très pauvres n'est donc pas une plus grande efficacité mais l'obligation de consommer à hautes doses l'énergie conditionnée par l'industrie du transport.*
+
+[Ivan Illitch, *Le Monde*, 1973](https://www.lemonde.fr/archives/article/1973/06/05/i-une-illusion-fatale_2550948_1819218.html)
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Un état social fondé sur la [notion d'équité]{.bg3} et un niveau toujours plus élevé de [croissance]{.bg3} n'est possible qu'aussi longtemps que la consommation d'énergie par tête reste en [deça]{.bg3} d'un certain seuil
+    -   Sinon, il y a [plus de contrôle social]{.bg3} : les éducateurs, psychiatres, médecins, planificateurs, police et armée
+    -   [Le refus de la croissance est global]{.bg3} : ce n'est pas seulement du fait des effets à priori négatifs, car beaucoup de ce qu'est la croissance est en fait négatif
+-   Développe la ["convivialité"]{.bg4} (La convivialité, 1973):
+    -   Société dans laquelle les technologies modernes servent des [individus politiquement interdépendants, et non des gestionaires]{.bg3}
+    -   Inverse de la productivité industrielle
+    -   Un [outil convivial]{.bg3} doit donc selon lui répondre à trois exigences :
+        -   il doit être générateur d'efficience sans dégrader l'autonomie personnelle;
+        -   il ne doit susciter ni esclave ni maître;
+        -   il doit élargir le rayon d'action personnelle.
+        -   Exemples: la bicyclette, les moteurs, le téléphone ...
+:::
+
+------------------------------------------------------------------------
+
+#### Georgescu Roegen (1906-1994) et la bioéconomie
+
+::: incremental
+-   Travaux en 1971 (*The Entropy Law and the Economic Process*) traduit en 1979
+-   Programme [bioéconomique]{.bg3} basée sur la thermodynamique
+-   Critique qui n'est pas issue d'une philosophie sociale mais bien d'une nature technique: l'entropie implique de repenser la croissance avec l'homme en son coeur
+:::
+
+::: fragment
+*« Le produit réel du processus économique (ou même, sous cet angle \[celui de l’entropie\], de tout processus vivant) n’est pas le flux matériel de déchets, mais le flux immatériel toujours mystérieux de la joie de vivre »*
+:::
+
+::: incremental
+-   Partisan d'une [aide internationale]{.bg4} basée sur [l'interdiction de la guerre]{.bg3} et des armes et du transfert d'argent à ce titre
+-   Prône une [certaine sobriété]{.bg4} :
+    -   [Démographique]{.bg3} : limiter la population à celle qui peut être nourrie par l'agriculture biologique
+    -   Changer les [modes de consommation]{.bg3} vers ce qui est durable et réparable
+    -   Plus de [loisir]{.bg3}:
+:::
+
+::: fragment
+*« toute existence digne d’être vécue a comme préalable indispensable un temps suffisant de loisir utilisé de manière intelligente »*
+:::
+
+------------------------------------------------------------------------
+
+#### Arne Naess (1912-2009) et la *Deep Ecology*
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/arne_naess.jpg){fig-align="right" width="200%"}
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   Une vision [biocentrique]{.bg4} plutôt qu'anthropocentrique : toutes les formes de vie ont une valeur intrinsèque, indépendamment de leur utilité pour l'humain.
+-   L'[égalitarisme biosphérique]{.bg4} : l'idée que les humains ne sont pas supérieurs aux autres espèces mais font partie intégrante de la biosphère au même titre que les autres êtres vivants.
+-   La [remise en question de la société industrielle]{.bg4} et consumériste, considérée comme destructrice pour l'environnement, en étant très technocritique
+-   La nécessité d'un [changement profond]{.bg4} dans nos structures sociales et nos modes de vie pour vivre en harmonie avec la nature.
+-   Ceux qui souscrivent aux points précédents s’engagent à essayer de [mettre en application directement]{.bg4} ou indirectement les changements nécessaires.
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+#### Conclusion
+
+::: incremental
+-   Mouvement [technocritique]{.bg4}, voyant dans l'essor de la technologie comme système la [cause de la destruction de l'environnement]{.bg4}
+-   Mais aussi de la [liberté humaine]{.bg4}, et du [bonheur]{.bg4} individuel : la croissance ne serait pas synonyme
+:::
+
+------------------------------------------------------------------------
+
+### 2. La déconnexion entre bonheur et croissance
+
+:::::: columns
+:::: column
+::: incremental
+-   [Indice de bien-être soutenable]{.bg4} (Index of Sustainable Welfare), Daly et Cobb, 1989
+-   [Indicateur de progrès véritable]{.bg4} (Genuine Progress Index), Cobb et al, 1995
+-   Indicateur macroéconomique corrigé :
+    -   Prise en compte du PIB
+    -   La valeur monétaire des contributions positives au bien être : faibles inégalités par exemple
+    -   La valeur marchande des des dépenses défensives liées à la maîtrise d'un risque, ou à la réparation des dommages environementaux
+-   Version faible de la soutenabilité, car ces grandeurs s'additionnent et se substituent
+-   Les valeurs calculées montrent presque toutes [un effet de stabilisation]{.bg4}
+:::
+::::
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/Kubiszewski_GPI_capita_2013.jpg){fig-align="center"}
+
+[[Fig. 4.](https://www.sciencedirect.com/science/article/pii/S0921800913001584#f0020) GPI/capita. The GPI/capita for all 17 countries used in this. Estimates are from various sources noted in the text. All data are in 2005 US\$.]{style="font-size:50%"}
+:::
+::::::
+
+------------------------------------------------------------------------
+
+### 3. Le mouvement postgrowth : pluralismes et perspectives {#sec_postgrowth}
+
+Voir [Kallis et al, *The Lancet Planteray Health*, 2025](http://sciencedirect.com/science/article/pii/S2542519624003103) pour une synthèse du [post growth]{.bg4} [degrowth]{.bg4}, [doughnut economics]{.bg4} etc [[illustration](#sec_appendix_eurogreen)]{.button}
+
+::: incremental
+-   [Planification désirée et démocratique vers un état stationnaire]{.bg4}
+-   Dans la mouvance [métabolique]{.bg4} et [d'écologie politique]{.bg4}
+-   Approche pluridisciplinaire ouverte en sciences sociales pour mettre en place la décroissance
+    -   Approches [bottom-up]{.bg3} du fait des réticences des groupes d'intérêt
+    -   Regroupe l'approche [doughnut]{.bg3}, l'économie de l'état [stationaire]{.bg3} (propositions dans le système existant)
+    -   Et l'approche [décroissantiste]{.bg3}, selon laquelle la mécanique capitaliste rend impossible la mise en place d'une structure égalitaire
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Motivations :
+    -   Les limites que l'on a vues, [biophysiques]{.bg4}
+    -   La [croissance est peut être finie]{.bg4} dans les pays à haut niveau de PIB :
+        -   Productivité décroissante des investissements, même dans la croissance endogène
+    -   L'idée selon laquelle, au delà d'un certain niveau, [la croissance ne permet plus l'accroissement du bonheur]{.bg4}:
+        -   On s'adapte à plus de richesses
+        -   On se compare plus (Easterlin, 1974)
+        -   Les gains sont nuls i.e. les coûts sociaux de la croissance explosent (Mishan, 1967)
+        -   La présence d'un système de sécurité sociale, de lutte contre le chômage et des services publics gratuits accroît la satisfaction des gens (Radcliff, 2013)
+    -   Les gens mettent peut être [plus de valeur à la santé qu'à la consommation]{.bg4} et à la croissance (Jones, JPE, 2016)
+:::
+
+------------------------------------------------------------------------
+
+::: {.incremental style="font-size:85%"}
+-   Thèmes de recherche en : "post growth", "degrowth", "doughnut economics" :
+    -   Comment éviter la [montée de l'instabilité financière, du chômage]{.bg4} etc?
+        -   Analyse par des [modèles macroéconomiques]{.bg3} comme ceux que l'on a entrevus, comme [LowGrowth SFC et Eurogreen]{.bg3} pour la France([D'Alessandro et al, 2020](https://www.nature.com/articles/s41893-020-0484-y)) [[illustration](#sec_appendix_doughnut)]{.button} : reduction des émissions, du temps de travail, transferts pour réduire les inégalités, taxes carbones et ressources
+        -   Types de politiques :
+            -   Revenu universel, réduction du temps de travail, salaire maximal
+            -   Guarantie de services universels : transport, santé etc; guarantie d'emploi
+            -   Création monétaire, Green New Deal, Taxes carbones et associées
+    -   Comment [éviter la montée des inégalités?]{.bg4}
+        -   Piketty : si la croissance est plus faible que les taux de retours sur investissements, les inégalités s'accroissent
+        -   Etude de politiques comme:
+            -   Equilibrage du ratio capital travail
+            -   Rôle des syndicats
+    -   [A quoi ressemble la post growth:]{.bg4} travaux en planification urbaine, en mode, en loisirs.
+    -   [Quelles dynamiques Nord Sud?]{.bg4}
+        -   Les pays moins développés doivent pouvoir continuer à croître
+        -   Comment adapter la structure économique pour respecter les limites?
+        -   Utilisation des données input output : on renverse l'appropriation des matériaux du Sud vers le Nord, notamment via les transitions et politiques de réduction de la demande
+:::
+
+## B. Le codéveloppement: évolution des systèmes et relations hommes-nature
+
+### 1. Le développement trahi
+
+::: incremental
+-   Idée développée par Norgaard, 1994, *The coevolutionary process*
+-   Le [développement occidental]{.bg4}, proné, est un [traître]{.bg4} :
+    -   Notion construite sur l'idée de progrès scientifique et technique
+    -   Qui se traduit en organisation sociale
+    -   Se traduisant par une production matérielle abondante et une maîtrise de la nature
+    -   Sans que l'on en soit plus heureux
+-   La perspective du "développement" est, selon lui :
+    -   Trop [mécaniste]{.bg3} : un lien direct entre politique et effets sociaux
+    -   [Réductionniste]{.bg3} : reposant sur la simplification de la complexité des socioécosystèmes
+    -   [Hiérarchique]{.bg3} : pas de fonctionnement si linéaire
+    -   [Technocratique]{.bg3}
+    -   Dépendant de la technique
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Le progrès social est [trahi par l'idéal de modernité]{.bg4} occidental : on néglige le lien entre les conséquences sociales, environnementales et politiques des choix de développement :
+    -   [Trahison scientifique et technique]{.bg3} : le progrès s'est accompagné de la destruction de la nature, malgré l'ambition de la contôler
+    -   [Politique]{.bg3} : les efforts politiques sont sans commune mesure avec les problématiques réelles du développement
+    -   [Culturelle]{.bg3} : les stratégies de développement ont conduit à perdre de la diversité culturelle
+    -   [Morale]{.bg3} : la distribution des impacts du développement est inéquitable
+:::
+
+------------------------------------------------------------------------
+
+### 2. Le développement coévolutif
+
+:::::::: columns
+::::: column
+::: incremental
+-   [Coévolutif]{.bg4} :
+    -   Vient de la biologie (Ehrlich et Raven, 1964), pour décrire les interrelations réciproques entre espèces, causant des mutations génétiques réciproques
+    -   Appliqué aux relations entre systèmes sociotechniques, institutions sociales et à la nature
+:::
+
+::: fragment
+*"Les systèmes sociaux et environnementaux co-évoluent de telle manière que les système environnementaux reflètent les caractéristiques des systèmes sociaux (leur connaissance, valeurs, organisation sociale et technologique) et les systèmes sociaux reflètent celles des systèmes environnementaux (diversité d’espèces, taux de productivité, variations spatio temporelles et résilience)"*
+
+Norgaard, 1994
+:::
+:::::
+
+:::: column
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_norgaard.jpg){fig-align="center"}
+:::
+::::
+::::::::
+
+------------------------------------------------------------------------
+
+#### Le rôle des connaissances
+
+::: incremental
+-   Doivent être [encastrées]{.bg4} dans le contexte socioculturel de production
+-   Car elles déterminent ce qu'il est acceptable de tenir comme discours politique, de collecter comme faits ou de prendre comme décision
+:::
+
+::: fragment
+| Mode occidental | Mode souhaitable |
+|----|----|
+| Atomisme | Holisme méthodologique (prévalence du tout sur les parties) |
+| Mécanisme (prédictibilité) | Concept de système (accent sur l'imprévisibilité) |
+| Universalisme (tout, partout tout le temps, peut être expliqué par un nombre restreint de lois) | Contextualisme (les faits ne sont vrais que dans un certain contexte) |
+| Monisme (les manières de voir le monde doivent converger) | Pluralisme conceptuel (nécessité de prendre en compte plusieurs vues) |
+| Positivisme (séparation des faits des valeurs) | subjectivisme (lien fort entre faits et valeurs) |
+:::
+
+::: incremental
+-   Questionner ainsi le développement occidental
+-   En posant la [collectivité territoriale]{.bg4} comme base pertinente pour la délibération et l'expérimentation de la coévolution
+:::
+
+------------------------------------------------------------------------
+
+### 3. Comme cadre d'analyse des rapports société nature
+
+Différentes applications :
+
+::: {.incremental style="font-size:85%"}
+-   La [coévolution sociale]{.bg4} : lorsque deux systèmes sociaux s’autoinfluencent
+-   La [coévolution gènes culture]{.bg4} : des pratiques culturelles donnent lieu à des évolutions génétiques ou l’inverse par exemple le lien ente industrie laitière et intolérance au lactose, ou encore : drépanocytose et deforestation
+    -   La [déforestation millénaire]{.bg3} en Agrique de l'Ouest et Centrale crée les conditions pour la [reproduction des moustiques]{.bg3}, qui donnent la [malaria]{.bg3}
+    -   Créant une [grande pression]{.bg3} sur la population
+    -   Les porteurs du [gêne de la drépanocytose]{.bg3}, maladie du sang, limitant le stockage de l'oxygène, sont [immunisés]{.bg3}
+    -   [Renforçant la prévalence du gêne]{.bg3} de la drépanocytose dans la population
+-   [Coévolutions biosociales]{.bg4} : changement sociaux et évolutions biologiques s’influencent réciproquement (virus et découvertes médicales)
+-   [Coévolutions socioécologiques]{.bg4}; l'évolution des composantes écologiques change les dynamiques sociales qui changent à leur tour les modalités écosystémiques
+-   Permet de dépasser les débats entre :
+    -   [Milieu et hérédité]{.bg3} (évolution des caractéristiques en fonction des évolutions environnementales qui elles même évoluent)
+    -   [Déterminisme et liberté d’action]{.bg3} (les structures sociales prescrivent des comportements mais il est possible de les renverser etc)
+    -   [Nature/culture]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+#### Kallis, [Coevolution in water resource development: The vicious cycle of water supply and demand in Athens, Greece](https://www.sciencedirect.com/science/article/pii/S0921800908003467?ref=pdf_download&fr=RR-2&rr=913eb275cb2c049c), *Ecological Economics*, 2010
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/acropole.webp){fig-align="center"}
+:::
+
+:::: column
+::: incremental
+-   Analyse du développement du [système de gestion de l'eau à Athènes]{.bg4} depuis 1830
+-   Remise en question de l'idée du progrès où
+    -   des ingénieurs héroïques satisfont une demande exogène toujours croissante
+    -   Le progrès technique peremt d'avoir de plus en plus d'eau
+    -   Idée que la [dynamique n'est pas si linéaire]{.bg4}, et est plutôt [co-évolutive]{.bg4} :
+        -   à travers la [variation]{.bg3} (innovation v. selection ) institutionnelle
+        -   D'éléments [interconnectés]{.bg3} : culture, environnement, société, politique
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::::::: columns
+:::: column
+::: incremental
+-   Essayer de trouver un [narratif]{.bg4} aux faits, qui reprennent les 3 grands mouvements de l'histoire moderne des eaux urbaines:
+    1.  Période de [contrôle privé et d'accès domestique limité]{.bg3}, avec des solutions technologiques de petite échelles (jusqu'à la fin du XIXe)
+    2.  Période de [contrôle public]{.bg3}, avec des larges travaux et l'universalisation de [l'eau courante]{.bg3} (un paradigme hydrolique - fin du XIXe - 1970s)
+    3.  Passage contemporain à des [instruments de marché]{.bg3} et une gestion intégrée
+:::
+::::
+
+:::: column
+::: incremental
+-   Deux systèmes reliés :
+    -   [Population]{.bg4} avec des attributs et des comportements différents vis à vis de l'eau
+        -   La variation s'accroit à mesure que des innovations pour l'eau arrivent
+        -   Les modalités de la variation dépendent des [interactions]{.bg3} dans la population, et avec l'environnement (economique, idéologique, construit et biophysique)
+        -   Les usages tendent à se répendre
+    -   Un [système de politiques publiques]{.bg4} de l'eau concurrentes
+        -   Ponctuées par des crises (sécheresse) et des enjeux politiques
+        -   Sélection qui s'opèrent par des coûts et bénéfices (monétaires et non monétaires) et leur distribution, dépendant des technologies, de l'environnement hydrologique etc
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_kaalis2011.jpg){fig-align="center"}
+:::
+
+:::: column
+::: incremental
+-   Le système politique produit des [offres]{.bg4}, celui des ménages de la [demande]{.bg4}
+    -   Les politiques affectent la sélection chez les ménages
+    -   La structure des ménages affecte la sélection des politiques
+-   Interaction dépendant de [l'environnement biophysique]{.bg4} et de ses attributs, comme la nature primaire ou secondaire (barrage) et ses mouvements
+-   Imposent des [contraintes, mouvantes,]{.bg4} auxquelles les propositions technologiques et politiques répondent
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Le premier stade (1834-1890):
+    -   Approvisionnement basé sur des [sources locales]{.bg4} (puits, fontaines) et restauration d’un [aqueduc]{.bg4} romain.
+    -   Introduction progressive des [technologies modernes]{.bg4} (appareils sanitaires) dans certains foyers, en particulier chez les [élites.]{.bg4}
+    -   [Concurrence]{.bg4} entre l’État, la municipalité et des acteurs privés pour le contrôle et la gestion de l’eau, créant une dynamique où l’amélioration de l’offre génère de nouvelles aspirations et pratiques de [consommation]{.bg4} (notamment via la promotion de l'[hygiénisme]{.bg3})
+-   La période hydraulique (1890-1979)
+    -   Pénuries récurrentes et croissance démographique incitant à la mise en place de [grandes infrastructures.]{.bg4}
+    -   Débats intenses sur le [choix des sources]{.bg4} d’approvisionnement (transferts nord vs sud) et projets majeurs (ex. : barrage de Marathon).
+    -   Mise en œuvre de [partenariats public-privé]{.bg4} et transformation radicale du paysage urbain,
+    -   Notamment pendant la [junte]{.bg4}, au mépris de l'accord démocratique et des conséquences sociales et environnementales de la construction de nouveaux barrages (barrage de Mornos, 1968)
+    -   Renforçant le modèle d’urbanisation et d'immobilier basé sur une [offre d’eau abondante]{.bg4} (eau courante, toilettes, douches, machines à laver)
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   La période contemporaine (1980 à aujourd'hui)
+    -   Poursuite du cycle d’expansion malgré la présence d’infrastructures majeures (Mornos, Evinos, transferts lacustres)
+    -   Politiques favorisant[l’expansion de la capacité de distribution]{.bg4} et des tarifs incitatifs pour stimuler la consommation.
+    -   [Rigidité]{.bg4} des pratiques de consommation instaurée par une offre abondante, même face aux défis environnementaux et économiques.
+-   Conclusion :
+    -   Identification d’un [cercle vicieux]{.bg4} où chaque nouvelle infrastructure renforce des habitudes de consommation élevées.
+    -   [Proposition]{.bg4} de deux axes pour rompre ce cycle :
+        -   [Cesser l’expansion]{.bg3} continue de l’offre pour éviter de verrouiller des pratiques de consommation excessives.
+        -   Expérimenter des stratégies de [« conservation dirigée par le fournisseur »]{.bg3}, avec des investissements publics majeurs (réutilisation des eaux usées, rénovation des appareils domestiques, collecte des eaux de pluie, etc.).
+:::
+
+::: notes
+-   Jusque 1850 : Pas d'eau courante
+-   Autour de 1850, les riches athéniens ramènent d'Europe de l'Ouest les maisons modernes, incluants les W.C., rendant la propreté un marqueur de classe
+-   Les sécheresses et l'état du réseau issu de la guerre causent des pénuries et des épidémies, à mesure que les classes moyennes veulent imiter les riches
+-   Sélection des systèmes qui apportent plus d'eau, mais concurrence entre ces systèmes: qui l'opère et en récupère les bénéfices?
+    -   Municipalité v. Etat central
+    -   Droits de propriété sur l'eau viennent de la terre: achat de terres fous
+    -   Choix technologiques complexes : puiser dans la nappe ou restaurer l'aqueduc romain (pas cher et efficace)
+-   La restauration des aqueducs permit la multiplication par 6 de l'eau disponible
+    -   Les classes moyennes et riches s'offrent le luxe aquatique
+    -   L'Etat éduque les pauvres à l'usage de l'eau
+-   Le besoin en eau augmente, et bientôt la restauration ne suffit plus
+
+1890-1979: - Réapparition des pénuries, symbole de sous développement - Débats sur les sources d'approvisionnement entre l'Etat et la municipalité, qui requièrent tous les deux 200km de canal (600 fois le budget annuel de l'eau) - PRéférence pour l'ouverture de marchés périphériques avec les transports - Pause dans les débats avec la crise des années 1890 et les premières guerres des Balkans - Développement industriel fait d'Athènes une ville très peuplée, où les réfugiés d'Asie mineure affluent également, créant des tensions autour du manque d'eau - Nouvelles technologies: le barrage, réalisé en 1925 - D'abord refusé, car pas assez sécurisé - Il devient choisi, car plus économique, permettant plus d'eau - Et grâce au développement d'instruments financiers comme les bonds, et l'afflux de capitaux du reste de l'Europe - Changement des coûts et bénéfices - Changement politique : les libéraux sont au pouvoir, et veulent assoir la possibilité pour l'Etat de faire des grands travaux, plutôt que laisser les propriétaires terriens maîtres - Monopole d'exploitation à une firme américaine qui le construit et l'opère - La consommation d'eau triple entre 1928 et 1940, forçant à encore augmenter l'eau
+:::
+
+------------------------------------------------------------------------
+
+## C. L'approche par les besoins fondamentaux et les capabilités
+
+### Limites biophysiques et besoins
+
+::: incremental
+-   Faire entrer les besoins de l'humanité dans les limites suppose que l'on hiérarchise ces ["besoins fondamentaux"]{.bg4}, suivant la formulation de [Max-Neef (1992)]{.bg4}
+-   Pas une hiérarchie dans l'absolu, mais quand même un peu
+:::
+
+::::::: columns
+:::: column
+::: fragment
+-   9 [catégories]{.bg3} axiologiques:
+    -   Subsistance
+    -   Protection
+    -   Affection
+    -   Compréhension
+    -   Participation
+    -   Loisir
+    -   Création
+    -   Identité
+    -   Liberté
+:::
+::::
+
+:::: column
+::: fragment
+-   4 [modalités]{.bg3} axiologiques de satisfaction:
+    -   L'être : qualités propres aux individus
+    -   L'avoir : dispositifs (matériels ou non) permettant de satisfaire
+    -   Manières de faire
+    -   Manières d'interagir
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+| Besoins | Être (qualités) | Avoir (choses) | Faire (actions) | Interagir (environnement) |
+|----|----|----|----|----|
+| **Subsistance** | santé physique et mentale | nourriture, logement, travail | se nourrir, se vêtir, se reposer, travailler | environnement du lieu de vie, conditions sociales |
+| **Protection** | soin, adaptabilité, autonomie | sécurité sociale, systèmes de santé, travail | coopérer, faire des projets, prendre soin d'autrui, aider | environnement social, logement |
+| **Affection** | respect, sens de l'humour, générosité, sensualité | amitiés, famille, animaux de compagnie, relations avec la nature | partager, prendre soin d'autrui, exprimer des émotions | intimité, espaces intimes d'unité |
+| **Compréhension** | esprit critique, curiosité, intuition | littérature, enseignants, politiques, éducation | analyser, étudier, méditer, investiguer | écoles, familles, universités, communautés |
+| **Participation** | réceptivité, dévouement, sens de l'humour | responsabilités, devoirs, travail, droits | coopérer, s'opposer, exprimer des opinions | associations, partis, églises, relations de voisinage |
+| **Loisirs** | imagination, tranquillité, spontanéité | jeux, fêtes, paix intérieure | pouvoir rêver, se souvenir, se détendre, s'amuser | paysages, espaces d'intimité, lieux où l'on peut être seul |
+| **Création** | imagination, audace, inventivité, curiosité | aptitudes, qualifications, travail, techniques | inventer, construire, concevoir, travailler, composer, jouer | espaces d'expression, ateliers, publics |
+| **Identité** | sentiment d'appartenance, estime de soi, cohérence | langue, religions, travail, coutumes, valeurs, normes | apprendre à se connaître soi-même, grandir, s'engager | lieux d'appartenance, cadre quotidien |
+| **Liberté** | autonomie, passion, estime de soi, ouverture d'esprit | égalité de droits | s'opposer, choisir, prendre des risques, développer une prise de conscience | n'importe où |
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Met en avant une [dimension collective]{.bg4} du développement :
+    -   Besoins au niveau individuel certes
+    -   mais lien avec les [structures institutionnelles]{.bg3} qui permettent de les satisfaire (interactions, réciprocité etc)
+-   [Dimension coévolutive,]{.bg3} entre individu et société, du développement
+-   Dans le [temps, dans l'espace et avec le non-humain]{.bg4}, les capabilités (Sen, 1993) renvoient à la capacité d'accomplir la satisfaction de ces besoins
+    -   Caractéristiques individuelles
+    -   Et sociales : le vélo est un outil de travail en Asie, un loisir en Europe en plus
+-   Les modalités de satisfaction des besoins typiques du [modèle occidental sont l'avoir et le faire]{.bg4}, favorisant une approche [individualiste]{.bg4}
+-   Mise en avant d'autres capabilités relevant de [l'être et de l'interagir]{.bg4}
+    -   Pour élaborer des rapports à la nature différents
+    -   Et parvenir à une meilleure satisfaction des besoins dans le temps
+:::
+
+------------------------------------------------------------------------
+
+### [Jolibert et al, 2011](https://onlinelibrary.wiley.com/doi/full/10.1002/eet.578), les besoins fondamentaux dans l'opposition nature économie
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/loutre.webp){fig-align="center"}
+:::
+
+:::: column
+::: incremental
+-   Cartographie des [intérêts divergents]{.bg4} dans l'estuaire du Sado au Portugal en [intégrant les non humains]{.bg4}
+-   Opposition entre
+    -   [Intérêts économiques]{.bg3} : développement de la pisciculture
+    -   [Préservation de la biodiversité]{.bg3} : les loutres habitent la rivière et mangent du poisson
+-   Caractérisation des [besoins]{.bg4} (moyens de les satisfaire et conflits):
+    -   Presque tous les besoins sont insatisfaits - sauf les loutres, à l'exception de loisir et création
+    -   Pour les besoin humains, [les conflits]{.bg3} [relèvent]{.bg3} [des manières]{.bg3} de les satisfaire plutôt que les besoins eux mêmes
+-   Permet de trouver des pistes pour la [résolution des conflits]{.bg4}
+:::
+::::
+::::::
+
+## D. L'environnementalisme des pauvres, J. Martinez-Allier
+
+:::::: columns
+::: {.column width="30%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecologismo_pobres.jpg){fig-align="center"}
+:::
+
+:::: {.column width="70%"}
+::: {.incremental style="font-size:90%"}
+-   Emanation des mouvements politiques d'Amérique Latine, entre militatisme et revendications d'accès au progrès et théorisation
+-   3 types de militantisme :
+    -   [Culte de la nature sauvage]{.bg4} :
+        -   Défense spirituelle de la nature, qui doit rester inchangée
+        -   Rapproché de la *Deep Ecology* ou défense des droits des animaux
+    -   [Evangile de l'éco-efficience]{.bg4}, comme standard de la défense de l'usage des ressources:
+        -   Modernisation écologique, écotaxe, innovations environnementales, développement soutenable
+        -   Néglige les impacts de l'industrialisation rapide
+    -   [Environnementalisme des pauvres]{.bg4} : lien entre pauvreté et environnement
+        -   Renverse le discours du MWTP faible chez les pauvres (voir [Jack & Greenstone, 2015](https://ucsb.app.box.com/v/Greenstone-EnvDev-JEL))
+        -   Les pauvres, car ils dépendent de la terre et des écosystèmes, en sont de meilleurs gestionnaires que les pays occidentaux
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### Vers le concept de dette écologique
+
+Lire [La dette écologique, un concept monayable?](La%20dette%20écologique,%20un%20concept%20monnayable%20?)
+
+::: incremental
+-   Compensation sur les [dommages]{.bg4} environnementaux et sociaux causés par les [exports de matières premières]{.bg4}
+    -   Prise dans un échange inégal
+-   Usage [disproportionné]{.bg4} des pays développés des [espaces et services environnementaux]{.bg4} sans en subir les coûts
+    -   Par exemple l'usage des [puits et stocks de carbone]{.bg3}
+    -   Et ne reconnaissent pas les [droits des communautés]{.bg3}
+-   Le développement est remis sous un [angle distributif]{.bg4} : la croissance des pays riches s'est bâtie en grande partie sur l'exploitation écologique des pays en développement
+-   Pas forcément de [compensation monétaire]{.bg4} appelée :
+    -   Prise en compte de la diversité des langages d'évaluation : monnaie et terre
+    -   Impossible d'apaiser les conflits tant que les problématiques liées à cette dette seront actuelles
+    -   Le conflit comme mode de gestion de l'environnement
+:::
+
+## Conclusion
+
+::: incremental
+-   La pensée [technocritique]{.bg4}, issue de l'écologie politique, et les arguments [thermodynamiques]{.bg4} irriguent une pensée par delà la croissance et le progrès
+-   Les différentes approches [(postgrowth, coévolution ou environnementalisme des pauvres)]{.bg4} émergent également d'une remise à l'agenda de l'équité et de la distribution:
+    -   Une certaine équité dans la [distribution]{.bg3} des ressources
+    -   Une [critique de la science]{.bg3} et de l'évolution de celle ci à travers la coévolution
+    -   Et des [réparations]{.bg3} pour la dynamique économique inégalitaire
+-   Ces problématiques s'étendent à [l'analyse du vivant]{.bg4} et de la biodiversité
+:::
+
+# Annexes
+
+## Taux de croissance moyens pour l'analyse de la France {#appendix_table_metabolism}
+
+|                              | 1830–1860 | 1860–1939 | 1948–1973 | 1980–2015    |
+|------------------------------|-----------|-----------|-----------|--------------|
+| **Population ag**            | 0.44      | 0.16      | 0.94      | 0.51         |
+| **GDP ag**                   | 1.74      | 1.41      | 5.47      | 1.52         |
+| **TPES ag**                  | 1.39      | 1.77      | 3.75      | 0.20 (2008)  |
+| **TPES/cap ag**              | 0.94      | 1.61      | 2.79      | −0.31 (2008) |
+| **DMC ag**                   | 1.51      | 1.52      | 4.21      | −0.56        |
+| **DE ag**                    | 1.38      | 1.49      | 3.91      | −0.63        |
+| **DMC biotics/cap ag**       | 0.51      | 0.69      | 0.35      | −0.53        |
+| **DMC abiotics/cap ag**      | 5.35      | 2.61      | 5.41      | −1.29        |
+| **DMC fossil/cap ag**        | 5.81      | 2.49      | 3.23      | −1.63        |
+| **DMC biotics/DMC abiotics** | 7.61      | 2.29      | 0.74      | 0.43         |
+| **I fossil/DMC fossil**      | 0.33      | 0.37      | 0.58      | 1.15         |
+| **(E+I)/DE**                 | 0.04      | 0.15      | 0.31      | 0.66         |
+| **I/DMC**                    | 0.03      | 0.10      | 0.17      | 0.36         |
+
+[[Retour au cours](#sec_transition_magalhaes)]{.button}
+
+## Doughnut economics {#sec_appendix_doughnut}
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/doughnut_image.png){fig-align="center"}
+
+[[Retour au cours](#sec_postgrowth)]{.button}
+
+## Eurogreen structure {#sec_appendix_eurogreen}
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eurogreen_structure.webp){fig-align="center"}
+
+Main causal relationships between heterogeneous household groups, industries, resources and assets in our model. Solid (dashed) arrows represent monetary (non-monetary) flows. Household consumption includes electricity and other energy products. The rest of the world (RoW) is included because the aggregate flows from (to) it are included as imports (exports), although the foreign sector is not defined in the model. HH, households; TPES, total primary energy supply.
+
+[[Retour au cours](#sec_postgrowth)]{.button}
+
+## Plan
+
+::::: columns
+::: column
+I. Indicateurs de soutenabilité A. Limites planétaires B. Découplae et croissance verte Courbe de Kuznets Découplages : absolu et relatifs C. L'empreinte écologique D. L'HANPP II. Métabolisme social : mesures et concepts aux fondements de la macroéconomie écologique A. Retour sur l'histoire du métabolisme Définitions Tradition énergétique Les frères Odum Ayres, Kneese et l'écologie industrielle B. Métabolisme social contemporain MFA Compitabilités et tendances Explications métaboliques das le temps long Transitions métaboliques en France C. Les limites métaboliques à la croissance Entropie et reyclage Déclin tendanciel du EROI Définition, Empire Romain, aujourd'hui L'effet rebond Définitions, synthèse, et exemple récent Nature Food
+:::
+
+::: column
+III. Vers une macroéconomie écologique A. Le travail du Club de Rome et le rapport Meadows Le Club de Rome World3 et Limits to Growth B. La controverse néoclassique Vers le développement soutenable C. Exercice de modélisation Ingrédients, principes, blocs et simulation D. Courants modernes Analyse régulationiste: les travaux de L. Cahen Fourot Analyse post-keynésienne Conclusion
+IV. Par delà la croissance: technocritique, décroissance et coévolution A. L'analyse de la décroissance: de l'écologie politique et la bioéconomie à la postgrowth
+    1.  Aux racines de la décroissance Ellul, Gorz, Illitch, Georgescu Roegen, Naess
+    2.  La déconnexion entre bonheur et croissance
+    3.  Le mouvement post-growth: pluralismes et perspectives B. Le codéveloppement: évolution des systèmes et relations homme nature
+    4.  Le développement trahi
+    5.  Le développement coévolutif
+    6.  Comme cadre d'analyse des rapports société nature C. L'approche par les besoins fondamentaux D. L'environnementalisme des pauvres de J. Martinez Allier
+:::
+:::::

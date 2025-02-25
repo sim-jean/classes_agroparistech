@@ -1,0 +1,17 @@
+/* Custom CSS for Quarto presentation */
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+li {
+    margin-bottom: 0.2em;
+}
+
+.small-text {
+    font-size: 0.8em;
+}
+
+.compact-list li {
+    margin-bottom: 0.2em; /* Adjust for closer spacing */
+}
