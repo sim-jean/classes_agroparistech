@@ -44,6 +44,6 @@ clean_palette <- c(
   "#E69F00"  # Goldenrod
 )
 
-#
+
 local_family = "Roboto Light"
 

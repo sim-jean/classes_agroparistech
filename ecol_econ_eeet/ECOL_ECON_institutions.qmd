@@ -1,0 +1,323 @@
+---
+title: "Institutions : s'échapper des dilemmes sociaux"
+subtitle : "Economie ecologique"
+---
+
+# Introduction à l'analyse institutionnelle
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Les [institutions]{.bg4} sont un concept clé en sciences sociales
+-   On peut les définir comme :
+    -   "l'ensemble des règles en place qui sont utilisée pour déterminer qui est éligible à prendre des décisions dans des arènes données" (Ostrom, 1990)
+    -   Ensemble des arrangements contractuels ou organisationnels, dispositifs législatifs ou règlementaires, normes sociales, habitudes
+-   L'analyse institutionnaliste vise à comprendre :
+    -   Comment construire la relation entre [institution et comportements individuels]{.bg4}?
+    -   Comment expliquer le processus par lequel les [institutions naissent et se modifient]{.bg4}?
+:::
+
+## Permanence stratégique v. culturelle
+
+::: incremental
+-   [Stratégique]{.bg4}
+    -   Les comportements humains sont orientés par des [choix stratégiques, calculateurs]{.bg3}
+    -   Les institutions émergent comme [équilibre de Nash]{.bg3}, plus une institution permet de résoudre à des dilemmes et procurer des gains, plus elle sera robuste
+-   [Culturelle]{.bg4}:
+    -   Le comportement n'est jamais entièrement stratégique, mais [limité par la vision du monde de l'individu]{.bg3}
+    -   Malgré la place de la rationnalité et l'instrumentalité, des [structures]{.bg3} (mode de comportement par exemple) [externes guident les décisions]{.bg3} (idée de *satisficer* plutôt que d'optimisateur)
+    -   Certaines institutions sont si conventionnelles qu'elles ne sont pas remises en cause et [continuent d'exister]{.bg3}
+:::
+
+## L'institutionnalisme historique
+
+Voir "La science politique et les trois néo-institutionnalismes", *Revue française de science politique*, 1997
+
+::: fragment
+Comme la [théorie de la régulation]{.bg3}
+:::
+
+::: incremental
+-   Le [conflit entre groupes sociaux]{.bg4} pour l'appropriation de ressources rares est central à la vie politique
+-   L'organisation institutionnelle de la communauté politique est le [principal facteur structurant du comportement collectif]{.bg4}
+-   Le comportement est stratégique et culturel
+-   En s'intéressant à la [distribution inégale du pouvoir et des ressources]{.bg4}, médiée par les institutions (liberté v. contrainte institutionnelle)
+-   Le [développement des institutions]{.bg4} dépend du trajet parcouru : le [contexte local est important]{.bg4} et il est difficile de dire mêmes causes, mêmes conséquences
+-   Les [idées]{.bg4} jouent une place dans les trajectoires historiques, pas simplement leur permanence et détermination matérielle.
+:::
+
+## Institutionnalisme des choix rationnels
+
+::: incremental
+-   Plutôt comme chez [Ostrom, Williamson et North]{.bg4}
+-   Les individus, [rationnels, aux préférences hétérogènes,]{.bg4} devraient défaire ce que les précédents ont fait au Congrès : les institutions expliquent cela
+-   Les institutions abaissent les [coûts de transaction liés à la conclusion d'accords]{.bg4}, permettant de tirer des bénéfices de l'échange politique et d'avoir des lois stables
+-   Issu de la [perspective stratégique]{.bg4} et de la [nouvelle économie de l'organisation]{.bg4} (Olivier Williamson, qui partage le Prix Nobel avec Ostrom, Douglas North)
+-   Les institutions forment les [cadres de décision]{.bg4} (information, mécanismes d'accord, sanctions, [attentes sur les actions]{.bg3} que les autres feront)
+-   La vie politique est une série de [dilemmes sociaux]{.bg4}
+-   L'institution émerge en [vertu des coûts et bénéfices de ses attributs]{.bg3}
+:::
+
+## Institutionnalisme sociologique
+
+::: incremental
+-   Issu du cadre de la [théorie des organisations]{.bg3} (Crozier, Friedberg etc)
+-   Beaucoup de formes institutionnelles n'émergent pas de leur rationalité inhérente, mais tiennent g[râce aux mythes et cérémonies associées]{.bg4} (perspective plus culturaliste)
+-   Les [conceptions culturellement données]{.bg4} de certains rôles de l'Etat, par exemple, déterminent communément des politiques publiques (Dobbin et le train)
+-   Les institutions sont [définies plus globalement]{.bg4} (symboles, systèmes moraux, schémas cognitifs)
+-   Les institutions influencent le comportement en fournissant des [schémas cognitifs]{.bg4} qui sont indispensables à l'action (ce qu'il faut faire et imaginer faire)
+:::
+
+# I. Gestion des communs et néoinstitutionalisme rationnel : l'analyse d'Ostrom
+
+------------------------------------------------------------------------
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/ostrom.jpeg){width="70%"}
+:::
+
+:::: column
+::: incremental
+-   Née en 1933 à Los Angeles, morte en 2012 à Bloomington
+-   Politiste à l'Université de l'Indiana
+-   Commence sa carrière en étudiant la gestion de l'eau et des services de police dans les métropoles américaines
+-   Pionnière de l'analyse des communs
+-   Avec une analyse méthodologique :
+    -   basée sur l'individualisme méthodologique
+    -   l'analyse empirique (laboratoire et étude de cas)
+    -   En prenant en compte les structures institutionnelles comme cadre d'analyse
+    -   Via des cadres conceptuels forts comme le [Institutional Analysis and Development Framework]{.bg3} ou les [Social Ecological Systems]{.bg3}
+-   Première femme prix Nobel d'Economie en 2009
+-   A lire ou voir:
+    -   La [conférence de presse](https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/lecture/) du prix Nobel
+    -   L'[article](https://wtf.tw/ref/ostrom_2010.pdf) dans l'American Economic Review qui retrace ses contributions
+    -   [*Governing the Commons*, 1990](https://www.actu-environnement.com/media/pdf/ostrom_1990.pdf)
+:::
+::::
+::::::
+
+## A. Les biens communs : régimes et ressources
+
+::: incremental
+-   Pendant longtemps, on parlait de ["common property resources"]{.bg4}, ce qui faisait une confusion entre
+    -   Le [type]{.bg3} de bien
+    -   Le [régime]{.bg3} de propriété
+-   [Common Pool Resource (bien commun)]{.bg4} : peut être possédé selon différents régimes de propriété, comme la propriété commune, mais est caractérisé par
+    -   Une [soustractabilité]{.bg3} des unités de ressources (redéfinition de la non rivalité)
+    -   Une [excludabilité]{.bg3} limitée
+-   Donnant lieu à une redéfinition de la matrice de Samuelson
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/goods_ostrom.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Les droits de propriété comme bouquet
+
+::: incremental
+-   La confusion émerge de l'idée que [droit de propriété = droit d'aliénation]{.bg4} (droit de vente)
+-   Ostrom identifie plusieurs composantes du droit de propriété :
+    -   Le droit d'accès
+    -   Le droit de retrait
+    -   Le droit de gestion
+    -   Le droit d'exclusion
+    -   Le droit d'aliénation
+-   Ainsi, les droits de propriété peuvent être définis à la fois collectivement et individuellement
+:::
+
+------------------------------------------------------------------------
+
+## B. Contre la tragédie du dilemme social
+
+### La tragédie des communs
+
+::: incremental
+-   [Aristote]{.bg4} : "Ce qui est commun au plus grand nombre reçoit le moins de soin. Tout le monde pense à soi en premier, et presque jamais au bien commun" (*Politique*, Livre II, Ch. 3)
+-   [Hobbes]{.bg4} : dans l'état de nature, les hommes cherchent leur propre bien et finissent par se battre et s'entretuer : "homo homini lupus" (*Le Léviathan*)
+-   [Gordon]{.bg4} :
+    -   *"Il semble qu'il y ait de la vérité dans le dicton conservateur selon lequel la propriété de tous n'est la propriété de personne. De la richesse gratuite pour tous n'est valorisée par personne, parce que celui qui est assez téméraire pour attendre son moment d'usage raisonnable ne trouvera que le vide laissé par l'usage d'un autre. Les poissons dans la mer sont sans valeur pour le pêcheur, parce qu'il n'a aucune assurance qu'ils seront là demain s'il les laisse aujourd'hui"*
+-   [Hardin]{.bg4} et sa "tragédie des communs"
+:::
+
+------------------------------------------------------------------------
+
+### Le dilemme du prisonnier
+
+::: incremental
+-   Illustre la paradoxe : des [individus rationnels mènent collectivement à des résultats irrationnels]{.bg3}, mettant en cause l'idée fondamentale que des individus rationnels peuvent aboutir à des résultats collectivement rationnels
+-   Si la [communication]{.bg3} est possible, des [accords verbaux]{.bg3} entre les joueurs sont supposés [non contraignants]{.bg3}, à moins que des contrats soient signés
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/hardin_game.jpg){fig-align="center"}
+:::
+
+------------------------------------------------------------------------
+
+### Le paradoxe de l'action collective
+
+::: incremental
+-   *The Logic of Collective Action*, Mancur Olson, 1965
+-   *“Unless the number of individuals is quite small, or unless there is coercion or some other special device to make individuals act in their common interest, rational, self interested individuals will not act to achive their common or group interests”*
+-   Idée de [free rider]{.bg4}: quelqu'un qui ne peut pas être exclu de la consommation des bénéfices issus de la production d'un bien collectif n'a plus beaucoup d'incitations à contribuer volontairement à l'effort
+:::
+
+------------------------------------------------------------------------
+
+### Métaphores scientifiques et politiques
+
+::: incremental
+-   Ces modèles sont des [métaphores scientifiques]{.bg4} intéressantes :
+    -   Permettent d'isoler des aspects importants
+    -   Qui se retrouvent autour du monde
+    -   En posant un certain nombre de contraintes et d'hypothèses [implicites]{.bg3}
+-   Mais des [métaphores politiques]{.bg4} dangereuses :
+    -   Les hypothèses conceptuelles n'ont pas toujours de contrepartie empirique
+    -   Les résultats issus de l'usage de telles préconisations sont souvent faibles
+    -   Et aboutissent à une vision [tragique]{.bg3}, où les individus sont par essence coincés dans des [dilemmes sociaux]{.bg3}
+:::
+
+## C. entre Léviathan et main invisible
+
+::: incremental
+-   [Léviathan]{.bg4} : idée de la nécessité d'une force coercitive
+    -   [Hardin]{.bg3} : "si la ruine peut être évitée dans un monde bondé, la population doit être réactive à une force coercitive en dehors de leurs psychées individuelles, un Léviathan, pour utiliser les termes d'Hobbes)"
+    -   Mène à la recommendation d'un contrôle par le gouvernement des ressources communes, surtout suivi dans le tiers monde
+    -   Avec l'idée qu'une [agence publique]{.bg4} trouvera l'[information scientifique parfaite]{.bg3} pour déterminer une [stratégie d'usage "optimale"]{.bg3} :
+        -   Qui a droit à l'usage
+        -   Quand on peut utiliser une ressources
+        -   Avec combien d'animaux etc
+    -   Si [l'information est imparfaite]{.bg4}, notamment sur les usages individuels, il faut [punir beaucoup]{.bg3} : cela peut mener à une situation délétère [d'effondrement]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [Privatisation]{.bg4} :
+    -   Les gens vont maintenant [investir]{.bg4} pour diviser la propriété, ainsi que la [surveiller et sanctionner]{.bg4} l'abus
+    -   Si la qualité du bien commun [varie dans le temps et dans l'espace]{.bg3}, cela risque d'appauvrir la communauté, et mener à des [surexploitations]{.bg4} particulières
+    -   Il faudrait des [assurances]{.bg3} etc, dont les coûts (installation, prix etc) sont [chers]{.bg3}
+    -   Il vaut peut être mieux continuer à [partager]{.bg4} les bénéfices et les risques
+-   Il ne faut [pas imposer de solution et s'adapter]{.bg4} au contexte pour assurer le succès
+-   Il peut y avoir :
+    -   Des [arrangements institutionnels volontaires]{.bg4}
+    -   Qui utilisent l'[information disponible]{.bg4} (meilleure que celle centralisée)
+    -   Avec de la [surveillance et du contrôle]{.bg4} endogène pour résoudre les conflits
+    -   Aboutissant à une [meilleure gestion]{.bg4} de l'environnement
+:::
+
+------------------------------------------------------------------------
+
+### Le Institutional Design and Analysis Framework
+
+::: incremental
+-   L'idée est de trouver un cadre d'analyse empirique (statistique)
+-   Qui puisse prendre en compte les différents composantes des situations sociales
+-   Ainsi que les règles qui contraignent l'exercice des droits de propriété
+-   Pour comprendre comment et pourquoi, au sein de cas différents, des arrangements institutionnels de long terme fonctionnent bien, sous diverses métriques
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/rules_in_action_situation.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/institutional_analysis_Ostrom_NP_lecture.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## D. A l'oeuvre dans le "vrai" monde
+
+### La gestion des communs forestiers en Suisse, au Japon, et dans le monde
+
+::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/torbel.jpg){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   Etude centrée sur la période allant de 1224 au XIXe siècle
+-   Village dans le canton de Valois de 600 personnes
+-   Possédant un peu de terre plantée avec des cultures privées
+-   La répartition des produits des alpages (notamment le nombre de vaches et la distribution des fromages) et des forêts est régulé depuis 1224
+-   L'accès aux communs était strictement limité par la citoyenneté et certaines règles dont [l'hivernage]{.bg4}, à partir de 1517 : *"aucun citoyzn ne peut envoyer plus de vaches dans l'alpâge que celles qu'il peut nourrir en hiver"*
+-   Les vaches sont comptées immédiatement et déterminent la quanité de fromage que l'on reçoit
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::: {.incremental style="font-size:90%"}
+-   Les statuts
+    -   sont [votés par les citoyens]{.bg4} (ceux qui ont du bétail)\
+    -   donnent l'autorité légale pour la gestion, qui inclut:
+        -   l'embauche de bergers
+        -   la distribution du fumier
+        -   l'organisation du travail collectif
+        -   en [limitant les coûts de transaction]{.bg3}
+-   Les jours de travail pour les alpâges dépendaient du [nombre de vaches]{.bg3} possédées
+-   Dans le cas du bois :
+    -   Le forestier du village détermine les arbres à couper
+    -   Les foyers éligibles au bois forment des équipes de travail et [divisent le travail également]{.bg3} entre coupe, trajets, empilage pour former des tas équivalents
+    -   L'allocation finale se fait par [lotterie]{.bg3}
+    -   Les jours de travail sont associés à des fêtes
+-   La [croissance de la population]{.bg3} est demeurée faible jusqu'au XIXe siècle :
+    -   Marriages tardifs
+    -   Taux de célibat élevés
+    -   Espacement des naissances
+    -   Emigration
+:::
+
+------------------------------------------------------------------------
+
+### Nagaike, Hirano et Yamanoka au Japon
+
+::: incremental
+-   Larges communs dans des villages de zones montagnardes entre 1600 et 1867
+-   Produisent du bois de construction, de chauffage, de toiture etc, de la nourriture pour le bétail
+-   Chaque village était gouverné par une assemblée, composée des chefs de famille
+-   Un foyer ne pouvait pas se subdiviser sans la permission du conseil et les droits d'accès aux communs dépendaient du foyer et non des personnes
+-   Chaque foyer avait un devoir de contribution aux travaux communs
+-   Les codes pour chaque village impliquaient des sanctions graduées en cas de manquement : on embauchait un détective des communs, qui recevait pour son compte (au moins partiellement) saké et cash comme amende, de façon tout à fait acceptée
+:::
+
+------------------------------------------------------------------------
+
+### Analyse répétées
+
+::: incremental
+-   Analyses répétées de cas historiographiques pour la forêt et l'eau
+-   Puis, dans les années 1992, établissement de l'International Forestry and Ressource Institute
+    -   qui déploie une méthodologie unifiée pour étudier les forêts
+    -   Dans de nombreux pays d'Afrique, Amérique Latine et Asie
+-   Ainsi que des analyses répétées des systèmes d'irrigation contemporains au Népal
+:::
+
+## E. Les principes de design des institutions de long terme
+
+Pour des CPR de petite taille avec [un seul pays]{.bg3} et [50 à 15,000]{.bg3} personnes qui [dépendent]{.bg3} de la ressource, les principes sont :
+
+::: incremental
+-   [1A. Frontières des utilisateurs]{.bg4} : des limites claires et localement comprises entre les utilisateurs légitimes et les non-utilisateurs sont présentes
+-   [1B. Frontières de la ressource]{.bg4} : des limites nettes qui séparent une ressource commune spécifique d’un système socio-écologique plus large sont présentes
+-   [2A. Congruence avec les conditions locales]{.bg4} : les règles d’appropriation et de fourniture sont en adéquation avec les conditions sociales et environnementales locales
+-   [2B. Appropriation et fourniture]{.bg4} : la répartition des coûts est proportionnelle à la répartition des bénéfices
+-   [3. Dispositifs de choix collectif]{.bg4} : la plupart des personnes concernées par un régime de ressources sont autorisées à participer à l’élaboration et à la modification de ses règles
+-   [4A. Surveillance des utilisateurs]{.bg4} : les individus responsables ou les utilisateurs surveillent les niveaux d’appropriation et de fourniture chez les utilisateurs
+-   [4B. Surveillance de la ressource]{.bg4} : les individus responsables ou les utilisateurs surveillent l’état de la ressource
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [5. Sanctions graduées]{.bg4} : elles commencent faibles, mais se renforcent en cas d’infractions répétées
+-   [6. Mécanismes de résolution des conflits]{.bg4} : des espaces locaux rapides et à faible coût existent pour résoudre les conflits entre utilisateurs ou avec les autorités
+-   [7. Reconnaissance minimale des droits]{.bg4} : les droits des utilisateurs locaux à établir leurs propres règles sont reconnus par le gouvernement
+-   [8. Entreprises imbriquées]{.bg4} : lorsque une ressource commune est étroitement liée à un SES plus vaste, les activités de gouvernance sont organisées en plusieurs niveaux imbriqués
+:::
+
+## Le passage à plus grande échelle : polycentrisme et changement climatique

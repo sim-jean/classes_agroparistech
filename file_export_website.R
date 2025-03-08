@@ -25,3 +25,7 @@ copy_files(here("classes_compiled", "EERN"),
 # Teaching master
 copy_files(here("classes_compiled", "ecol_econ_eeet"), 
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/EEET")
+
+# Teaching others
+copy_files(here('classes_compiled',"Cours externes" ),
+           "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/other")

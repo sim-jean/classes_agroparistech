@@ -1,0 +1,1403 @@
+---
+title: "Biodiversity Conservation"
+subtitle: "Université Paris 1 Panthéon Sorbonne - M1 Economie Internationale - Topics in Environment"
+---
+
+# Lecture plan
+
+1.  Biodiversity: concept, measures and decline
+2.  Rationales for biodiversity conservation
+3.  How to conserve biodiversity?
+
+# Introduction
+
+## COP 16 and biodiversity conservation
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/COP%2016%20Rome.png){fig-align="center"}
+
+::: notes
+-   COP16 in Cali Colombia : meant to bridge the finance gap for biodiversity conservation in the Conference of Parties to the Convention on Biological Diversity
+-   Failed to do so in Cali, because of major disagreements
+-   Reconvened lately in Rome : agreed to a strategy to raise 200bn per year to finance the international policy goals regarding biodiversity conservation
+:::
+
+## Multilateral policy for biodiversity
+
+[Keunming-Montreal Global Biodiversity Framework]{.bg4}:
+
+::: {.incremental style="font-size:90%"}
+-   Follows the failure of the [Aichi]{.bg3} targets to halt biodiversity loss
+-   Structured around 4 goals by 2050 :
+:::
+
+::::::: columns
+:::: column
+::: {.incremental style="font-size:90%"}
+1.  ["Protect and Restore"]{.bg3} : enhance ecosystem health, halt human induced extinction, genetic diversity is maintained
+2.  ["Propsper with Nature"]{.bg3} : biodiversity is sustainably used
+:::
+::::
+
+:::: column
+::: {.incremental style="font-size:90%"}
+3.  ["Share Benefits Fairly"]{.bg3}: monetary and non monetary benefits from various uses of biodiversity are shared, including indigenous communities
+4.  ["Invest and Collaborate"]{.bg3}: means of implementation are accessible, especially to developping countries
+:::
+::::
+:::::::
+
+::: {.incremental style="font-size:90%"}
+-   And 23 targets by 2030 , such as the fammous ["30 by 30" (targets 2 and 3)]{.bg3}
+-   With associated metrics and reporting
+:::
+
+::: fragment
+With scientific support from [IPBEs]{.bg4}
+:::
+
+::: {.incremental style="font-size:90%"}
+-   [Interdisciplinary Panel on Biodiversity and Ecosystem Services]{.bg4}
+-   Founded in 2012, under the UNEP
+-   Gathers scientific information about the state of biodiversity, and ecosystem services
+-   Basically the equivalent of IPCC for living world
+:::
+
+# 1. Biodiversity : concepts, measures and decline
+
+## A. Definition
+
+::::::: columns
+::::: column
+-   From [conservation biology]{.bg4}, a subfield of biology created to halt the decline of biological diversity (M. Soulé)
+
+::: fragment
+*"Biological diversity "means the variability among living organisms from all sources including, inter alia, terrestrial, marine and other aquatic ecosystems and the ecological complexes of which they are part; this includes diversity within species, between species and of ecosystems*
+
+Article 2, Convention on Biological Diversity, 1992
+:::
+
+::: incremental
+-   Different [levels]{.bg3} : within an ecosystem, between ecosystems etc
+-   Different [diversities]{.bg3} : structural, functional, genetic
+:::
+:::::
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/biodiv_illustration.jpg)
+:::
+:::::::
+
+## B. Different types of measures
+
+For an overview of measures used, see Marcon, 2018 [^1]
+
+[^1]: [Eric Marcon, *Mesures de la Biodiversité*, 2018](https://ericmarcon.github.io/MesuresBioDiv2/index.html)
+
+#### Species neutral diversity
+
+::::::: columns
+:::: column
+::: fragment
+-   [Richnesss]{.bg4} : number of classes in a given area <br> ex : number of species of trees in a forest
+    -   $\alpha$ diversity for community level
+    -   $\gamma$ diversity for meta community level
+:::
+::::
+
+:::: column
+::: fragment
+-   [Evenness]{.bg4} : similarity of abudances of each species in an environment <br> ex : a forest with 99% spruce & 1% oak v. a forest with 50% spruce and 50% oak
+:::
+::::
+:::::::
+
+::::::: columns
+:::: column
+::: incremental
+-   [Shannon]{.bg3} index :
+    -   Mean measure of surprise that a sample population gives : individual with low probability of occurence gives more information
+    -   with $p_i=\frac{N_i}{N}$ and $S$ species richness
+    -   $H = -\sum_{i=1}^S p_i \log_2(p_i)$
+:::
+::::
+
+:::: column
+::: incremental
+-   [Simpson]{.bg3} index :
+    -   probability that two individuals randomly drawn belong to the same species
+    -   $S' = \sum_{i=1}^S p_i^2$
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+#### Non neutral diversity measures
+
+::: incremental
+-   [Dissimilarity]{.bg4} : take into account the distance between members of a class or a species (DNA, branches of a phylogenetic tree)
+:::
+
+::: fragment
+#### Take home
+:::
+
+::: incremental
+-   Biodiversity measures are different but highlight the fact that [the sum is more than its parts]{.bg4}
+-   As we'll see, depending on what you choose, definitions yield different [conservation strategies]{.bg4}
+:::
+
+## C. A worldwide decline
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
+
+# 2. Rationales for biodiversity conservation
+
+## A. The concept of Total Economic Value
+
+The concept of [total economic value]{.bg4} emerges from John Krutilla's work (1967, [Conservation Reconsidered](https://media.rff.org/archive/files/sharepoint/News/Features/Documents/071003%20Krutilla-ConservationReconsidered.pdf)):
+
+::: incremental
+-   [Use values]{.bg4} can be :
+    -   [Direct]{.bg3} : associated with the direct use of ressources from the environment through consumption (fish, timber etc)
+    -   [Indirect]{.bg3} : values associated with indirect contributions from ecosystems, such as flood protection, or as inputs in productive activities (pollination)
+    -   [Option]{.bg3} : the possibility of using a resource, either for preservation or exploitation, in the future, when technical progress makes it useful
+-   [Non use values]{.bg4} :
+    -   [Bequest]{.bg3} Value: The value placed on preserving ecosystems for future generations.
+    -   [Existence]{.bg3} Value: The benefit derived from simply knowing that an ecosystem or species exists, even if one never directly interacts with it.
+:::
+
+## B. Linking Nature to its Values
+
+### Ecosystem services
+
+::: incremental
+-   Ecosystem services emerged as a pedagogical metaphor to highlight the [crucial dependence of humans on ecosystems]{.bg3}
+-   Became a way to [measure the values]{.bg4} of ecosystems in the 1990s
+-   Different types of ecosystem services :
+    -   Provision
+    -   Regulation
+    -   Cultural and Recreation
+-   Who provides these services?
+    -   [Individual species]{.bg3} for direct use values
+    -   [Ecosystems]{.bg3} overall for indirect use values such as water filtration etc
+-   Does [species diversity]{.bg4} lead to more ecosystem services?
+    -   [Sampling]{.bg3} effect : larger diversity ensures more productive species are present
+    -   [Niche differentiation]{.bg3} effect : more species will use resources more efficiently
+    -   [Insurance]{.bg3} effect : greater diversity is linked to lower variance of services
+-   Results are supported across a wide range of ecosystems
+:::
+
+------------------------------------------------------------------------
+
+### Towards Nature Contributions to People
+
+::: incremental
+-   With criticism surrounding the [commodification]{.bg3} of Nature and to [include non instrumental]{.bg3} values, IPBES recently moved towards the [Nature Contributions to People]{.bg4} framework
+    -   Emphasizes the [multifaceted relationships]{.bg4} between people and nature, capturing both [tangible/intangible]{.bg3}, [positive/negative]{.bg3} contributions
+    -   Recognizes the importance of [indigenous and local knowledge]{.bg3}, cultural heritage, and ethical considerations in understanding human–nature connections.
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/NCPs2.jpg){fig-align="center"}
+
+## C. Evaluating Ecosystem Services
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/costanza_1997.jpg){fig-align="center"}
+:::
+
+:::: column
+::: incremental
+-   Costanza et al, The value of the world's ecosystem services and natural capital, 1997, *Nature*
+-   Find that the natural capital and associated ecosystem services is worth [\$33 trillions]{.bg4}
+    -   Still larger than today's GDP
+    -   But [lower than the potential infinity]{.bg3} of its value if disappeared
+-   [How]{.bg3} would you value ecosystem services? What do you need to know?
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### A recent example : biological pest control
+
+Eyal Frank, The economic impacts of ecosystem disruptions: Costs from substituting biological pest control, *Science*, 2024
+
+Causal study of the impact of the [onset of white nose syndrom in the US]{.bg4} using [staggered difference in difference]{.bg4} on pesticide use and infant health
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/science.adg0344-fa.jpg)
+:::
+
+::: incremental
+-   After the onset of bat die-offs, farmers in the county [increase their insecticide use by 31.1%]{.bg4}, on average
+-   Substitution between a declining natural input and a human-made input
+-   [Infant mortality rates]{.bg4} due to internal causes of death (i.e., not due to accidents or homicides) [increased by 7.9%,]{.bg4} on average, in the affected counties
+:::
+
+# 3. How to conserve biodiversity?
+
+::: notes
+-   Rationales for conservation established
+-   How can we do?
+    -   [Halt overexploitation]{.bg3} with rules for reasonable use
+    -   Incentivize [habitat]{.bg3} based measured for conservation
+    -   Set up protected areas
+:::
+
+## A. Promoting reasonable use of resources and ecosystem based management?
+
+### 1. Bioeconomic analysis of fishery
+
+::: incremental
+-   Gordon, 1954, ["The Economic Theory of a Common Property Resource : the Fishery", *Journal of Political Economy*](http://www.economia.unam.mx/profesores/blopez/bienestar-ScottGordonFisheries.pdf)
+-   Schaefer, 1954, ["Some aspects of the dynamics of populations important to the managemet of the commercial marine fisheries", *Bulletin of the Inter American Tropical Tuna Commission*](https://www.iattc.org/GetAttachment/62d510ee-13d0-40f2-847b-0fde415476b8/Vol-1-No-2-1954-SCHAEFER,-MILNER-B-_Some-aspects-of-the-dynamics-of-populations-important-to-the-management-of-the-commercial-marine-fisheries.pdf)
+:::
+
+::::::: columns
+:::: column
+::: incremental
+-   Defining a [model]{.bg4} :
+    -   [Mechanistic]{.bg3} : based on equations with identified variables
+    -   To understand the link between a scenario and social ecological consequences
+    -   Thus excluding strictly correlative methods
+-   Featuring [population dynamics]{.bg4}
+    -   Of a (set of) weakly managed or wild species
+:::
+::::
+
+:::: column
+::: incremental
+-   A [decision process]{.bg4} emerging from economic theory:
+    -   Rules for decision making
+    -   Can be optimisation as well as agent based etc
+-   A [link between subsystems:]{.bg4}
+    -   Economics impact biodiversity
+    -   Biodiversity impacts the economy
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+#### Population dynamics
+
+::: incremental
+-   Only [one species]{.bg4} is considered
+-   Track the evolution of biomass (in tons) through time
+:::
+
+::: fragment
+$$
+X_{t+1} = F(X_t) + X_t = G(X_t)
+$$
+:::
+
+::: incremental
+-   $F(X_t)$ is the [growth function]{.bg3} of the population (abuse of language : mean growth function)
+-   It includes a [density effect]{.bg3} : growth level depends on the population (or stock level) :
+    -   It can be large for low levels of population
+    -   And low for large levels of population (saturation effect)
+    -   A same growth level can happen at two population levels
+-   Main example : [logistic growth (Verhulst, 1838)]{.bg3}
+:::
+
+::: fragment
+$$F(X_t) = rX_t \left(1 - \frac{X_t}{K}\right)$$
+
+with $r$ the [intrinsic growth rate]{.bg3} (for low population levels) and $K$ the [carrying capacity]{.bg3} of the ecosystem (in tons)
+:::
+
+------------------------------------------------------------------------
+
+```{r, height='100%', fig.align='center'}
+#| fig-align: center
+
+rm(list=ls())
+
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(ggplot2)
+library(here)
+
+library(sysfonts)
+library(showtext)
+library(gridExtra)
+library(ggsci)
+#font_add_google("Roboto", "roboto")
+
+showtext_auto()
+
+source(here("utilities.R"))
+
+logistic_growth = function(x, r_ = r, K_ = K){
+  y = r_*x*(1-x/K)
+  return(y)
+}
+
+critical_depensation = function(x, r_ = r, K2_ = K, K1_ = K1){
+  y = r_ * x * (1 - x/K2_) * (x/K1_ - 1)
+  return(y)
+}
+
+K = 100
+K1 = .3*K
+r = .2
+
+data = data.frame(x = seq(0,K))%>%
+  mutate(Logistic = logistic_growth(x))
+p = data %>%
+  pivot_longer(-x,
+               values_to = "value", 
+               names_to = "Croissance")%>%
+  ggplot(aes(x = x, y = value, color = Croissance))+
+  ylab('Growth')+
+  geom_line(linewidth = 1.2)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+p
+  
+
+
+```
+
+------------------------------------------------------------------------
+
+#### Biological equilibria
+
+We have an [equilibrium]{.bg4} when the [population is not changing]{.bg4} through time :
+
+::: fragment
+$$
+\begin{align*}
+X_{t+1} &= X_t = X^*\\
+\Rightarrow & X_{t+1} -X_t = F(X_t) = 0
+\end{align*}
+$$
+:::
+
+::: fragment
+We're looking at a [convergence]{.bg4}, a [long term case]{.bg4}, where things are no longer changing as determined by fixed external factors
+:::
+
+::: fragment
+#### Extraction technology and sustainable yield
+:::
+
+::: incremental
+-   Extraction technology : links harvesting effort to harvested quantity such that $$Y_t = h(X_t, E_t)$$
+-   Population dynamics change with extraction :
+:::
+
+::: fragment
+$$\begin{align*} 
+    X_{t+1} -  X_t &= F(X_t) - Y_t= F(X_t)-h(X_t, E_t)
+\end{align*}$$
+:::
+
+::: incremental
+-   Equilibrium population is such that fishing exactly equals growth: $X_{t+1}-X_t=0 \iff F(X_t) = h(X_t, E_t)$
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   An [equilibrium fishing level, with the associated stock level]{.bg3} is called [sustainable yield]{.bg4} if the fish growth is equal to the fish harvest
+
+-   If $Y_t>F(X_t)$, $X_{t+1}<X_t$
+
+-   If $Y_t<F(X_t)$, $X_{t+1}>X_t$
+
+-   In equilibrium, $h_t(X_t,E_t) = F(X_t)$
+
+-   The [maximum sustainable yield]{.bg4} is the maximal fishing level sustainable in the long term
+:::
+
+::: fragment
+#### Measurements
+:::
+
+::: incremental
+-   Effort is [difficult to measure]{.bg3}, as it depends on the technology : km of lines trawled, hooks/km/day etc
+-   [Catchability]{.bg3} is difficult to measure and to rely on : here we assume a fixed rate, but it can change! $$Y=q(X)XE$$
+:::
+
+------------------------------------------------------------------------
+
+::::::: columns
+:::: {.column width="60%" style="font-size:100%"}
+::: incremental
+-   [North Atlantic Cod]{.bg4} collapsed in the 1990s after decades of overfishing and overcapitalization to [0.1% of its historical level]{.bg4}
+-   A [moratorium]{.bg3} was declared in [1992]{.bg3}, causing 37,000 fishermen to lose their job (Canada's single largest layoff in history), that has started to be lifted in 2024
+-   Among the reasons for its collapse was a wrong evaluation of the[link between catch per unit of effort]{.bg3} ($Y/E$), [catchability and stock]{.bg3} ($qX$) (see [Rose et Kulka, 1999](https://people.uncw.edu/scharff/courses/458/Discussion%20articles/Rose%20and%20Kulka%201999%20-%20cod%20hyperaggregation.pdf):
+-   CPUE was used as an [indicator for abundance]{.bg3}, while the stock actually displayed [hyperstability]{.bg4}!
+:::
+::::
+
+:::: {.column width="40%"}
+::: fragment
+```{r}
+#| fig-width: 5
+#| fig-height: 7
+#| fig-align: right
+data_ = data.frame(Population = seq(0,100))
+
+data_ %>%
+  mutate('Proportional' = Population,
+         'Hyperstable' = 35*Population^.06)%>%
+  subset(Population < 45)%>%
+  pivot_longer(-Population, 
+               names_to = "CPUE",
+               values_to = 'values')%>%
+  ggplot(aes(x=Population, y = values, color = CPUE))+
+  geom_line(linewidth = 1.1)+
+  ylab("Catch per unit of effort")+
+  labs(color = " ")+
+  geom_segment(aes(x=0,xend=40, y=40,yend=40), linetype= "dotted", color = "black", linewidth = 1)+
+  geom_segment(aes(x=10, xend=10, y=40, yend=0), linetype = "dashed", color = clean_palette[1], linewidth = 1)+
+  geom_segment(aes(x=40, xend=40, y=40, yend=0), linetype = "dashed", color = clean_palette[2], linewidth = 1)+
+  custom_theme(font_size = 20)+
+  scale_color_manual(values = clean_palette)
+```
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+#### Plugging the economics
+
+::: incremental
+-   How do we go from effort to population to dollars?
+-   First, recognize that the equilibrium relationship implies that : $$
+    \begin{align*}
+    &rX^* \left(1 - \frac{X^*}{K}\right) = qX^* E\\
+    \Rightarrow & X^* = \left(1- \frac{q}{r}E \right) K \\
+    \Rightarrow & Y = qE\left(1- \frac{q}{r}E \right) K
+    \end{align*}
+    $$
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive2.JPG){width="80%"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive3.JPG){width="80%"}
+
+------------------------------------------------------------------------
+
+::: incremental
+-   All that's left to do is bring in some economics around effort
+-   Define [total revenue]{.bg4} by $RT= pY$ with $p$ the price of the resource
+    -   Assume a [competitive output market]{.bg3} (most of the time, but not always the case)
+-   Define [total costs]{.bg4} as $CT = cE$ :
+    -   Assume total costs do [not depend on the population of fish]{.bg3}
+    -   And long term perspective, where entry is at its largest and costs depend on effort proportionally (no need to drag additional people)
+    -   Hence, [average cost is marginal cost]{.bg3}
+-   [Profit]{.bg4} is thus : $$ \Pi = RT - CE = pY - cE = pqE \left(1 - \frac{q}{r}E \right)K - cE$$
+:::
+
+------------------------------------------------------------------------
+
+#### Explaining overfishing
+
+::: incremental
+-   Gordon introduces the fundamental difference between agriculture and fishing, through the analysis of [differentiated rents]{.bg4} (i.e. economic returns above the "normal" profit level due to varying productivities)
+    -   *We now come to the point that is of greatest theoretical importance in understanding the primary production phase of the fishing industry and in distinguishing it from agriculture.*
+    -   *In the sea fisheries the natural resource is [not private property]{.bg4} : hence the rent it may yield is not capable of being [appropriated]{.bg4} by anyone. The individual fisherman has no legal title to a section of ocean bottom. Each fisherman is more or less free to fish wherever he pleases*
+    -   *The result is a pattern of competition among fishermen which culminates in the [dissipation of the rent of the intramarginal grounds]{.bg4}*
+-   Key ideas and concepts are [intramarginal grounds, heterogeneous rents, and lack of property]{.bg4} (i.e. open access)
+:::
+
+------------------------------------------------------------------------
+
+Let :
+
+-   Average revenue (per unit of effort) be: $$RT = pY(E)/E = pq\left(1 - \frac{q}{r}E \right)K$$
+-   Marginal revenue : $$Rm = \frac{\partial pY(E)}{E} = pq\left(1 - 2E\frac{q}{r} \right)K$$
+-   Average and marginal cost : $$CM = Cm = c$$
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top="75" left="600" width="550" height="600"}
+:::
+
+------------------------------------------------------------------------
+
+#### Two fishing grounds
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){width="80%"}
+
+------------------------------------------------------------------------
+
+::: incremental
+-   When both grounds are optimally managed, effort levels are A and B. Why?
+-   That's what matters for a social planner
+-   But what would [you]{.bg4} do, as a fisherman? Where would you go?
+    -   What matters is not the marginal profit, on aggregate
+    -   But as a person, it is the [mean profit]{.bg4}: where will you earn the most?
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){.absolute top="240" left="100" width="790" height="500"}
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Fishers will [redispatch until profits are equalized]{.bg4} accross zones
+-   To this end, profit levels are equal : spatial arbitrage opportunities are exhausted
+-   A marginal fisherman would earn the same thing anywhere
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive13.JPG){.absolute top="240" left="100" width="790" height="500"}
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   This phenomenon is repeated for every fishing ground that is [at least more productive than the marginal cost of harvesting,]{.bg3} until the last ground, [the marginal ground]{.bg4}
+-   All zones with higher productivity (or profit) are called [intra marginal grounds]{.bg4}
+-   Profits get dissipated because of lack of clear property rights
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive14.JPG){.absolute top="240" left="100" width="790" height="500"}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive15.JPG){width="80%"}
+
+------------------------------------------------------------------------
+
+#### Open access equilibrium
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top="50" left="200" height="700"}
+
+------------------------------------------------------------------------
+
+#### Comparing policy recommendations
+
+::: incremental
+-   We now know that open access is likely to yield to [overharvesting and overcapitalization]{.bg4} of the fisheries
+-   What should be implemented?
+-   [Maximum sustainable yield]{.bg4} was recommended as the basis for policy
+    -   It sill is recommended in the European Union, under the [*Common Fisheries Policy* (2013)]{.bg3} according to a precautionary principle
+-   Gordon suggested to aim for the [maximum economic yield]{.bg4}, i.e. the effort level that maximizes profits, thus taking economics into account, implemented in [Australia]{.bg3} for example
+:::
+
+------------------------------------------------------------------------
+
+::: panel-tabset
+### Plot
+
+```{r}
+#| fig-width: 8
+#| fig-height: 6
+#| fig-align: center
+
+p = 5
+c = 2
+q = .04
+
+# Define growth from effort
+Croissance = function(Effort){
+  y = q*Effort * (1 - q/r*Effort)*K
+  return(y)
+}
+
+# Define monetary functions with negative return for optimization
+profit = function(Effort, p_ = p , c_ = c){
+  y = p_*Croissance(Effort) - c_*Effort
+  return(-y)
+}
+
+marginal_revenue= function(Effort, p_ = p, c_ = c){
+  y = p*q*K*(1-2*Effort*q/r)
+  return(y)
+}
+
+# Run optimization: 
+
+solution = optimize(profit, interval = c(0,K))
+e_look = solution$minimum
+
+# Create data.frame
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = Croissance(Effort)) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = marginal_revenue(e_look) * (Effort - e_look) +
+                 p * Croissance(e_look))%>% # Tangent equation
+        select(-Croissance)
+
+# Treat data into tidy format
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") %>%
+  ggplot(aes(x = Effort, y = values, color = names)) +
+  geom_line(linewidth = 1) +
+  # Add segment for optimum
+  geom_segment(aes(
+          x = e_look, xend = e_look,
+          yend = c * e_look, 
+          y = p * q * e_look * (1 - q / r * e_look) * K
+        ), linewidth = 1, color= "firebrick")+
+  geom_segment(aes(# Add x-axis segment
+    x = e_look, xend = e_look,
+    yend = c * e_look, 
+    y = 0 * K
+    ), 
+    linewidth = .7, linetype = "dashed", color="firebrick")+
+  # Add segments for previously illustrated plots
+  geom_segment(aes(
+          x = 1, xend = 1,
+          yend = c * 1, y = p * q * 1 * (1 - q / r * 1) * K
+        ), linewidth = 1, color= "black")+
+  geom_segment(aes(
+          x = 1, xend = 1,
+          yend = c * 1, y = 0,
+        ), linewidth = .7, linetype = "dashed", color= "black")+    
+  geom_segment(aes(
+          x = 2.5, xend = 2.5,
+          yend = c*2.5,
+          y = p * q * 2.5 * (1 - q / r * 2.5) * K
+        ), linewidth = 1, color= "dodgerblue")+
+  geom_segment(aes(
+          x = 2.5, xend = 2.5,
+          yend = c*2.5,
+          y = 0
+        ), linewidth = .7, linetype = "dashed", color= "dodgerblue")+
+  geom_segment(aes(
+          x = 4, xend = 4,
+          yend = c * 4, y = p * q * 4 * (1 - q / r * 4) * K
+        ), linewidth = 1, color= "black")+
+    geom_segment(aes(
+          x = 4, xend = 4,
+          yend = c * 4, y = 0
+        ), linewidth = .7, linetype = "dashed", color= "black")+
+  annotate("text", x = 2.5, y = 29, label = "MSY", color = "dodgerblue", size = 10)+
+  annotate("text", x = e_look, y = 27, label = "MEY", color = "firebrick", size = 10)+
+
+  scale_color_aaas() + # Styling
+  custom_theme(font_size = 20) +
+  ylim(0,30)+
+  labs(x = "Effort", y = "Values", color = " ")
+
+```
+
+### Code
+
+```{r, echo = T}
+#| fig-width: 10
+#| fig-height: 8
+#| fig-align: center
+
+p = 5
+c = 2
+
+# Define growth from effort
+Croissance = function(Effort){
+  y = q*Effort * (1 - q/r*Effort)*K
+  return(y)
+}
+
+# Define monetary functions with negative return for optimization
+profit = function(Effort, p_ = p , c_ = c){
+  y = p_*Croissance(Effort) - c_*Effort
+  return(-y)
+}
+
+marginal_revenue= function(Effort, p_ = p, c_ = c){
+  y = p*q*K*(1-2*Effort*q/r)
+  return(y)
+}
+
+# Run optimization with integrated solver 
+
+solution = optimize(profit, interval = c(0,K))
+e_look = solution$minimum
+
+# Create data.frame 
+data_fin <- data.frame(Effort = seq(0, 5, 0.01)) %>%
+        mutate(Croissance = Croissance(Effort)) %>%
+        mutate(Revenue = p * Croissance, 
+               Cost = c * Effort) %>%
+        mutate("Marginal Revenue" = marginal_revenue(e_look) * (Effort - e_look) +
+                 p * Croissance(e_look))%>% # Tangent equation
+        select(-Croissance)
+
+# Treat data into tidy format
+data_fin %>%
+  pivot_longer(-Effort, #Pivot to long format
+               values_to = "values", 
+               names_to = "names") 
+
+# Then use ggplot to plot
+
+
+```
+:::
+
+------------------------------------------------------------------------
+
+#### And promote reasoned use
+
+::::::: columns
+:::: column
+::: incremental
+-   How can one do to steer OA towards the policy reference point?
+-   Work on drivers of [fishing effort]{.bg3} :
+    -   Taxing inputs
+    -   Limit days at sea on aggregate
+    -   Include technical regulations
+-   Work on [catch]{.bg3}:
+    -   Landing tax
+    -   Set limits to catch on aggregate : can cause race to fish situations
+-   To explore the different policy levers within the Gordon Schaeffer framework, you can use the following app : `https://simon-jean.shinyapps.io/gordon_schaeffer/`
+:::
+::::
+
+:::: column
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halibut.png){width="80%"}
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/shiny_ex.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+#### In practice in the EU
+
+::: incremental
+-   In practice, need to [combine approaches due to monitoring and implementation difficulties]{.bg3}
+-   For [a year](https://oceans-and-fisheries.ec.europa.eu/fisheries/rules/fishing-quotas_en)
+-   Based on stock assessments
+-   Negociated with non EU countries for shared stocks
+-   [Shared between EU members]{.bg3} with nationally determined quotas within the Common Fishery Policy
+-   Assorted with [mandatory landing]{.bg4} :
+    -   Have to land everything that is caught, and count it wrt quota (even bycatch, or too small fish)
+    -   To value them in other industries (fish flour etc)
+    -   Incentive : today's catch is tomorrow's quotas, hence there will be a top-up of quotas
+    -   But can help respect the system and have better scientific information\
+    -   Otherwise, risk of fine and licence suspension
+-   Allow the [limitation of administrative costs, economic profitability and conservation]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE.JPG){width="80%" fig-align="center"} ![RÈGLEMENT (UE) 2025/219 DU CONSEIL du 30 janvier 2025](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE_jours.JPG){width="80%" fig-align="center"}
+
+------------------------------------------------------------------------
+
+#### (Individual) rights based fisheries management
+
+::: incremental
+-   The [absence of clearly defined (bundels of) property rights]{.bg3} in open access setting may dissolve incentives for conservation
+-   Idea is to [allocate individual quotas]{.bg4} to fishermen, or geographic access rights
+-   So that the integral flow of benefits and costs accrue to fishermen through time
+-   Rights ought to be [transferable for efficiency]{.bg4} :
+    -   Low productivity fishing may overfish
+    -   High productivity fishing may underfish
+    -   [Transferability can create a market]{.bg4} where rights are traded such that marginal costs are equated $c'(Y) = p - \pi_y$
+-   Could argue for [conservation banks]{.bg4} where people buy fishing rights to for conservation (See [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2021/09/Leonard-et-al-Science-Policy-Forum.pdf))
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive18.jpg){width="80%" position="center"}
+
+------------------------------------------------------------------------
+
+#### Limites and vigilance points
+
+Lire [A Cautionary Note on Individual Transferable Quotas, R. Sumaila, *Ecology and Society*, 2010](https://www.jstor.org/stable/26268177?seq=1)
+
+::: incremental
+-   [Property rights thus defined are not full]{.bg3}
+    -   Finite duration
+    -   Risk discarding low value fish (low grading) and discard overall
+    -   Require monitoring and enforcement
+-   Does not solve the [discounting issue about fisheries]{.bg3} : if the reproduction rate of the resource is low, and discount rate is high, may not be worth conserving
+-   Gains come from [reduced fishing intensity]{.bg3} (so increased duration, or lower employment) which may conflict with the sector needs
+-   Requires [good scientific information]{.bg3}
+-   [Initial allocation issue]{.bg3} :
+    -   May face concentration due to gains from trade
+    -   Can trigger monopoly behavior, social inequalities, and lobbying
+:::
+
+------------------------------------------------------------------------
+
+#### Design principles for common property resources
+
+In real life, when [resources can be held in common]{.bg4} (implies low cost of exclusion - alpine meadows, some inland fisheries (Turkey)), other management schemes can be used to foster good resource use, as shown by [Elinor Ostrom]{.bg4}
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/alanya-fushery.jpg){width="80%" position="center"}
+:::
+
+:::: column
+::: {.incremental style="font-size:90%"}
+-   [1A. User Boundaries]{.bg4} : Clear and locally understood limits between legitimate users and non-users are in place
+-   [1B. Resource Boundaries]{.bg4} : Clear-cut boundaries that separate a specific common resource from a broader socio-ecological system are in place
+-   [2A. Alignment with Local Conditions]{.bg4} : The rules for appropriation and provision are in line with local social and environmental conditions
+-   [2B. Appropriation and Provision]{.bg4} : The distribution of costs is proportional to the distribution of benefits
+-   [3. Collective Choice Mechanisms]{.bg4} : Most individuals affected by a resource regime are allowed to participate in the formulation and modification of its rules
+:::
+::::
+::::::
+
+::: notes
+• Each September, a list of eligible fishers is prepared. consisting of all licensed fishers in Alanya, regardless of co-op membership. • Within the area normally used by Alanya fishers, all usable fishinglocations are named and listed. - These sites are spaced so that the nets set in one site will not blo::k the fish that should be available at the adjacent sites. • These named (ishing IOC.ltiOns and their i1S5ignments are in effect from September to t-.1ay. • In September, the eligible fishers draw lots and are a55igned to the named fishing locations. • From September to January, each day each fisher moves east to the next location. - After January, the fishers move west. This gives the fishers equal opponuniries at the !Otocks thal lIIigrilte from eost tn west between September and January and reverse their migration through the area (rom January to May (Berkes 1 986b. pp. 73-4).
+
+-   Fishing grounds are optimized
+-   everyone has access to the opportunity to fish the good fish
+-   Resources are not wasted searching or fighting over a spot
+-   Monitoring and enforcing is done by fishermen themselves
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [4A. User Monitoring]{.bg4} : Responsible individuals or users monitor the levels of appropriation and provision among users
+-   [4B. Resource Monitoring]{.bg4} : Responsible individuals or users monitor the state of the resource
+-   [5. Graduated Sanctions]{.bg4} : They start mild, but become more severe in the case of repeated infractions
+-   [6. Conflict Resolution Mechanisms]{.bg4} : Fast and low-cost local venues exist to resolve conflicts between users or with the authorities
+-   [7. Minimum Recognition of Rights]{.bg4} : The rights of local users to establish their own rules are recognized by the government
+-   [8. Nested Enterprises]{.bg4} : When a common resource is closely linked to a larger socio-ecological system, governance activities are organized at multiple nested levels
+:::
+
+------------------------------------------------------------------------
+
+### 2. Towards ecosystem based managmeent
+
+#### Limits of single species approaches
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+#### Ecosystem based management
+
+FAO, 2003:
+
+::: fragment
+*An ecosystem-based fisheries approach strives to balance different societal objectives, taking into account both the knowledge and uncertainties about the biotic, abiotic, and human components of ecosystems and their interactions, and applying an integrated fisheries approach within ecological limits.*
+:::
+
+------------------------------------------------------------------------
+
+#### Captures in multispecies fisheries
+
+[Tromeur et Doyen, 2018](https://link.springer.com/article/10.1007/s10666-018-9618-2)
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmsy.jpg){fig-align="center"}
+
+::: notes
+-   Les deux points de référence sont pas atteignables de facon conjointe, que ce soit le MSY ou le MEY
+-   Il faut donc définir des points de référence qui prennent en compte la multiplicité des espèces
+-   C'est ce qu'on essaie de faire en prenant en compte le Multi Species Maximum Sustainable Yield, qui est une combinaison convexe des MSY, résultant en une surexploitation des espèces avec des productivités biotechniques basses
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
+
+::: notes
+-   Dans l'étude de Tromeur et Doyen, en prenant en compte la structure des pêcheries de Guyane Française, avec 13 espèces représentant 90% des captures
+-   Ils montrent que les scénarios développés plus haut mènent à une baisse de la biodiversité (définie par l'indice de Shannon)
+
+SI = - sum u_i log(ui) avec ui = x_i/sum_i x_i
+
+-   Des scénarii sacrifiant la rentabilité économique sont nécessaires pour maintenir la biodiversité
+
+-   Principe de capture équilibrée, mettant en perspective coefficient de capture et taux de croissance intrinsèque, nécessaire à la survie des petites espèces
+:::
+
+------------------------------------------------------------------------
+
+#### Including different values
+
+```{r}
+data = data.frame(Effort = seq(0,5, .1))
+data = data%>%
+  mutate(Catch = Croissance(Effort))
+
+p = data %>%
+  ggplot(aes(x=Effort,y = Catch))+
+  geom_ribbon(aes(ymin=0, ymax = ifelse(Effort<=2.5, Catch, NA)), fill = "dodgerblue", alpha = .2)+
+  annotate("text", x = 1.5, y =  2, label = "Conservation", color = "dodgerblue", family = local_family, size=10)+
+  geom_line(linewidth = 1.2,)+
+  geom_segment(aes(x = 4, xend = 4, y = 0, yend = 3.2), linewidth = 1.2, linetype = "dotted", color = "firebrick")+
+  annotate("text", x = 4, y =  3.8, label = "Jobs", color = "firebrick", family = local_family, size = 10)+
+  geom_segment(aes(x = 1.5, xend = 1.5, y = 0, yend = 4.2), linewidth = 1.2, linetype = "dotted", color = 'forestgreen')+
+  annotate("text", x = 1.5, y =  4.7, label = "Profits", color = "forestgreen", family = local_family, size = 10)+
+  geom_segment(aes(x = 2.5, xend = 2.5, y = 0, yend = 5), linewidth = 1.2, linetype = "dotted", color = 'purple')+
+  annotate("text", x = 2.5, y =  5.5, label = "Productivity \n Food safety", color = "purple", family = local_family, size = 10)+
+  custom_theme(font_size=20)
+
+
+p + 
+  geom_segment(aes(x = .75, xend = .75, y = 0, yend = 2.6), linewidth = 1.2, linetype = "dotted", color = 'darkgreen')+
+  annotate("text", x = .75, y =  3.2, label = "Profit and Non use", color = "darkgreen", family = local_family, size = 10)
+
+```
+
+------------------------------------------------------------------------
+
+#### EBFM today in world's fisheries
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width="80%" fig-align="center"}
+
+::: notes
+-   Although EAFM has been formally adopted widely since the 1990s, little is currently known to what extent ecosystem drivers of fish stock productivity are actually implemented in fisheries management.
+-   Based on worldwide review of
+    -   more than 1200 marine fish stocks
+    -   found that such ecosystem drivers were implemented in the tactical management of only 24 stocks.
+    -   Most of these cases were in the North Atlantic and north-east Pacific, where the scientific support is strong.
+-   However, the diversity of ecosystem drivers implemented, and in the approaches taken, suggests that implementation is largely a bottom-up process driven by a few dedicated experts.
+:::
+
+## B. Conservation in agricultural settings
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/sciadv.abm9982-f2.jpg)
+:::
+
+:::: column
+::: incremental
+-   On land, land use change threatens species the most
+-   Moreover, contracting with landowners may prove a more satisfactory option in a variable, dynamic context (as long as transaction costs are moderate)
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### 1. The land sharing v. land sparing debate
+
+::: incremental
+-   Land use change, and agricultural land, are threats to biodiveristy
+-   However, need to feed an ever growing population
+-   [Green et al. (2005), *Science*. Farming and the fate of wild nature.](https://www.science.org/doi/10.1126/science.1106049)
+:::
+
+::::::::: columns
+::::: column
+::: fragment
+Is it better to have a [more intensive]{.bg4} (with high yields) agricultural system and set [more land aside?]{.bg4}
+:::
+
+::: fragment
+That's [land sparing]{.bg4}
+:::
+:::::
+
+::::: column
+::: fragment
+Or to have an [less intensive]{.bg4} (i.e extensive, with lower yield) agricultural system with [less land aside?]{.bg4}
+:::
+
+::: fragment
+That's [land sharing]{.bg4}
+:::
+:::::
+:::::::::
+
+::: fragment
+That all depends on the relationship between land, yield and biodiversity :
+:::
+
+::: incremental
+-   Knowing that increasing land yields to lower yield
+-   But less land cultivated increases biodiversity
+-   What should you do if the relationship between yield and biodiversity is :
+    -   Linear
+    -   Convex
+    -   Concave
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive1.jpg)
+
+------------------------------------------------------------------------
+
+#### Sparing
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive2.jpg)
+
+::: notes
+-   If increasing land yields drops yield
+-   But only for a moderate increase in biodiveristy
+-   Then keep land cultivated low
+-   And set land aside to spare land
+:::
+
+------------------------------------------------------------------------
+
+#### Sharing
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive3.jpg)
+
+::: notes
+-   If increasing land yields drops yield
+-   But for a large increase in biodiveristy
+-   Then make land cultivated large
+-   And share land with biodiversity
+:::
+
+------------------------------------------------------------------------
+
+#### Controversy
+
+::: incremental
+-   Green et al. (2005), Phalan et al. (2011) : use empirical data that the relationship tends to be convex, promoting [land sparing]{.bg4}
+
+-   [Sparing]{.bg4} tends to be favored in several ecosystems :
+
+    -   Especially in the case of [specialist species]{.bg4} (birds etc)
+    -   And in many regions (whether tropical or temperate - see [Edwards et al, *Current Biology*, 2021](https://www.sciencedirect.com/science/article/pii/S0960982220318820) and [Feniuk et al, *Proceedings of the Royal Academy of Britain*, 2019](https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2019.1483)) including Europe
+
+-   However :
+
+    -   [All biological diversities may not be impacted alike]{.bg3} : soil v. floral and animal biodiversity
+    -   Not all impacts (especially dynamic) are factored in with intensive agriculture [(pesticide use, local pollution, nutrient runoff)]{.bg3}
+    -   The tradeoff can be potentially solved : how?
+
+-   Using [agroecology]{.bg4} :
+
+    -   To leverage biodiversity
+    -   Into producing larger yields
+    -   Such as in India etc
+:::
+
+------------------------------------------------------------------------
+
+### 2. Leveraging models to guide policy : bioeconomic modeling
+
+::: incremental
+-   Use the framework originated by Clark see [Jean and Mouysset, *IRERE*, 2022](https://sim-jean.github.io/files/research/jean_mouysset2022.pdf)
+-   But broaden the scope to include:
+    -   A definition of biodiversity with [multiple species]{.bg3}
+    -   Where land use choices are defined by economic principles
+    -   And affect species dynamics
+-   To evaluate [how a policy maker can build policies to improve biodiversity]{.bg3} outcomes
+:::
+
+------------------------------------------------------------------------
+
+[V. Cocco et al. 2023, Relaxing the production-conservation trade-off: Biodiversity spillover in the bioeconomic performance of ecological networks, *Ecological Economics*](https://www.sciencedirect.com/science/article/pii/S092180092300229X)
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/model_structure_cocco2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/spatial_framework_cocco2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/results_performance_cocco2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/performances_within_outside_cocco2023.jpg){fig-align="center"}
+
+::: notes
+Look at various costs and losses (in the form of lost profit) of imposing land use types
+:::
+
+------------------------------------------------------------------------
+
+### 3. Using PES for incentive based conservation
+
+::: incremental
+-   Idea is to [leverage incentives]{.bg4} to promote biodiversity enhancing policies
+-   In the form of [Payment for Ecosystem Services]{.bg4} : habitat provision etc
+-   Farmers are being paid by a third party to change their agricultural practices, land use type (fallow etc)
+-   Sometimes, this can be leveraged into a [compensation, or offset]{.bg4}, market:
+    -   Either through a government policy, i.e. need to pay for the offsetting of a residual impact : 81,000 km$^2$ in 2018
+-   Which rests upon 2 assumptions :
+    -   [Comparability]{.bg4} : aim for "like for like" compensation, within the same geographical region
+    -   [Additionality]{.bg4} : offsets are officially achieved, and in the absence of a payment, there would not have been offsets
+-   In practice :
+    -   [Biodiversity assessment is simplified]{.bg3} and not thorough, as well not ambitious enough to achieve Not Net Loss
+    -   [Additionality is overestimated]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+#### A cautionary tale : the Verra case
+
+::::::: columns
+:::: column
+::: incremental
+-   World leading [carbon offset standard]{.bg3}
+-   Claimed to provide standards that could guarantee the [additionality of carbon sequestration]{.bg3} to provide offsets
+    -   In a [counterfactual]{.bg3} scenario, some share of land would have been deforestated
+    -   In the actual scenario, because of the PES, it's not
+-   The main question is : how [robust]{.bg3} is the counterfactual scenario?
+    -   That's the [main question of causal inference]{.bg3}
+-   Turns out : [most of the credits where not additional]{.bg4}
+:::
+::::
+
+:::: column
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/vera_score.jpg){fig-align="center"}
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Question is : how do you estimate additionality of certified carbon sequestration projects?
+-   Several issues :
+    -   [No observation of counterfactual]{.bg3}
+    -   Have [several projects with very specific characteristics]{.bg3} : not easy to design a control/treated group study
+    -   [Not a lot of statistical units]{.bg3}
+-   Use the [synthetic control method]{.bg4} (See [Abadie, *Journal of Economic Literature*, 2021](https://pubs.aeaweb.org/doi/pdfplus/10.1257/jel.20191450)
+    -   Solve the issue of small number of units in observational studies
+    -   By using a synthetic control i.e. :
+        -   Find weights that [combine similar units]{.bg3}
+        -   To [replicate existing trends]{.bg3} in the treated unit prior treatment
+        -   And use weight to [simulate counterfactual post treatment]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+T. West et al., Action needed to make carbon offsets from forest conservation work for climate change mitigation, *Science*, 2023
+
+::::::: columns
+:::: column
+::: incremental
+-   Evaluate [26 REDD+ programs across 6 countries]{.bg3}
+    -   [Reducing Emissions from Deforestation and Forest Degradation]{.bg3} : framework developped under UN Framework Convention on Climate Change launched in 2008
+    -   Aims to provide incentives in voluntary schemes to reduce deforestation
+    -   The "+" integrates conservation, sustainable management and enhanced carbon stocks
+-   Using the synthetic control method
+:::
+::::
+
+:::: column
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/synthetic%20control.jpg){fig-align="center"}
+:::
+::::
+:::::::
+
+::: notes
+-   In orange, assumed counterfactual of cumulative deforestation
+-   In blue, synthetic control counterfactual
+-   In red actual trends
+-   Most of the assumptions overestimate the counterfactual
+-   Resulting in less additionality
+:::
+
+------------------------------------------------------------------------
+
+## C. Protected areas
+
+The seminal idea is basically : [how would you fill Noah's Ark?]{.bg4}
+
+:::::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/library_weitzman.jpg){fig-align="center"}
+:::
+
+:::::: {.column width="60%"}
+::: {.incremental style="font-size:90%"}
+-   That's Martin [Weitzman's]{.bg3} approach in [The Noah's Ark Problem, *Econometrica*, 1998](https://scholar.harvard.edu/files/weitzman/files/noahs_ark_problem.pdf)
+-   Using a [philogenetic tree]{.bg3} as the basis for diversity :
+    -   Value of a collection
+    -   Is the value of different features (set is union of all features)
+-   Assuming no interactions among species, or that we value the collection as the sum of its parts
+:::
+
+::: fragment
+$$ R_i = (D_i + U_i)\frac{\Delta P_i}{C_i}$$
+:::
+
+::: {.incremental style="font-size:80%"}
+-   Conserving unit $i$ stands for conserving a species $i$
+-   Project $i$ increases the probability of survival of a species $i$ by $\Delta P_i$ at a cost of $C_i$
+-   With $U_i$ the value we place on species $i$'s existence
+-   $D_i$ is the distance from the closest resembling species
+-   $R_i$ is the ranking : "expectde marginal distinctiveness plus utility per dollar"
+:::
+::::::
+::::::::
+
+::: notes
+-   In this library, the value is E1 + E2 + J + E3
+-   If a branch is snapped, you loose Ei
+-   But you may lose more if you snap a whole branch
+:::
+
+------------------------------------------------------------------------
+
+### 1. But in practice?
+
+Ando et al, Species Distributions, Land Values, and Efficient Conservation, *Science*, 1998
+
+Use [cost-effective analysis to guide conservation endeavors]{.bg3}
+
+::: incremental
+-   [Need to buy land that can support various species, with differentiated land prices?]{.bg4}
+:::
+
+::::::: columns
+:::: column
+::: fragment
+-   How can I spend the minimal amount while protecting all species : [the Set Coverage Problem]{.bg3}
+
+$$\begin{align*}
+\min \sum_{j \in J}c_jx_j\\
+\text{such that}\\
+\sum_{j\in N_i}x_j\geq 1 \forall i \in I
+\end{align*}$$ With $J$ the index set of reserve sites, $I$ index set of species to be covered, $N_i$ the subset of $J$ containing $i$ and $x_{j}=1(j \text{ is selected})$
+:::
+::::
+
+:::: column
+::: fragment
+-   How can I protect the maximal number of species while on a budget :[the Maximal Coverage Problem]{.bg3}
+
+$$\begin{align*}
+\max \sum_{i \in I}y_i &\\
+\text{such that } \\
+\sum_{j \in N_i}x_j\geq y_i \forall i \in I \\
+\text{ and } \sum_{j \in J}c_jx_j\leq b
+\end{align*}$$
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### 2. Biodiversity hotspots
+
+::: incremental
+-   Introduced by Norman Myers in 1988, the concept aims to identify regions such that :
+    -   Spots present an [exceptional endemic species richness]{.bg3}
+    -   While being [overly threatened by habitat degradation]{.bg3} (70% of loss of primary vegetation)
+-   Allows to [prioritize conservation]{.bg4}:
+    -   Focus resources on critical areas
+    -   With people benefiting from those
+    -   To optimize conservation investments : maximize bang for buck
+    -   For NGOs such as [Conservation International]{.bg3} (one of world's largest NGOs, \$ 9bn in assets)
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/global_hotspots.jpg)
+
+------------------------------------------------------------------------
+
+### 3. Efficiency of protected areas
+
+::: incremental
+-   Within the protected areas, [species richness and abundance tend to recover]{.bg3}, both on land and at sea
+-   Not always the case : [places protected need to be of high ecological value]{.bg4}
+    -   Recent results ([Grupp et al, 2024]{.fg}) with the European Union, which protects 26% of land, close to the 30 by 30 target, especially through Natura 2000
+    -   Use [staggered difference in difference]{.bg3} (Callaway & Sant'Anna, 2021)
+    -   Show that the [results on vegetation cover and nightlight pollution are close to 0]{.bg4}, irrespective of the time of conservation
+:::
+
+::::: fragment
+:::: {.callout-tip title="Callaway & Sant'Anna, 2021"}
+Two way fixed effects (TWFE) have been showed to be biased in the case of [staggered treatment]{.bg3}, because the standard estimator compares treated units to already treated units
+
+TWFE : $y_{it} = \mu  +\alpha_i + \lambda_t + \delta D_{it} + \beta x_{it} + \epsilon_{it}$
+
+With $\alpha_i$ a unit-specific fixed effect (capturing time-invariant differences across units) and $\lambda_t$ a time-specific fixed effect (capturing shocks common to all units at a given time).
+
+Their approach
+
+::: incremental
+-   Finds an [group time Average Treatement effect on the Treated]{.bg3}
+-   Comparing each cohort $g$ (treatment starts in $g$) to not yet treated units at time $t$
+-   And aggregates them over time to reflect the composition of the treated across time to find the ATE
+:::
+::::
+:::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   For [marine protected areas]{.bg4} :
+    -   When [monitoring and sanctioning are well enforced, see less harvest in protected areas]{.bg3} and promote recovery (See [Sala and Giakoumi, 2018](https://academic.oup.com/icesjms/article/75/3/1166/4098821?login=false))
+    -   Otherwise, results are more debated
+-   Besides efficiency, the [political economy of MPAs matter]{.bg3} : the [Blue (or Green) Paradox]{.bg4}
+    -   Announcing a policy that will force harvesters to reduce their harvest in the futures pulls it back in time, resulting in increased pressure until implementation
+    -   [McDermott, Meng et al.,]() 2018, study the Phoenix Islands Protected Areas (Pacific Ocean), one of the world's largest
+    -   Find that fishers doubled their effort once area was earmarked for protected status
+    -   Amounting to an empoverished starting point equivalent to 1.5y of banned fishing
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/blue_paradow.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### 4. Issues with protected areas
+
+::: incremental
+-   Approach relies on a [interspecies comparison]{.bg4}
+    -   without encompassing [species interactions]{.bg3}
+    -   [Different biodiversity metrics]{.bg3} lead different conservation schemes ([Courtois et al., *Ecological Economics*, 2019](https://www.sciencedirect.com/science/article/abs/pii/S0921800918304956?via%3Dihub)), : which should you chose?
+-   Subject to [more than 1 period constraint]{.bg3} :
+    -   Dynamic problem of land allocation
+    -   Especially with climate change
+    -   And exogenously shifting location-specific probabilities for survival
+    -   Integer programming problem becomes more difficult to solve
+-   May fail to integrate as such the drivers of biodiversity loss and [forgets what people do]{.bg4}
+    -   Political economy
+    -   Local populations not always associated
+-   May be [beneficial]{.bg4} if strong monitoring and [transfer of changed values]{.bg4} (e.g. tourism etc) to local communities
+:::
+
+# Conclusion
+
+------------------------------------------------------------------------
+
+::: {.incremental style="font-size:95%"}
+-   Biodiversity underpins the functioning of essential ecosystem services
+-   [And is dramatically threatened by anthropogenic impacts :]{.bg3}
+    -   Overexploitation
+    -   Habitat loss
+-   [Solving overexploitation of species]{.bg3}
+    -   Implies regulating fisheries to promote sustainable use
+    -   But also feature larger ecosystem based goals to avoid dire ecological consequences
+-   [Adopting a more comprehensive approach is thus necessary]{.bg3}
+-   [On land, policies aim at protecting habitat]{.bg3}
+    -   Either through vertical policies : CAP incentives
+    -   Or more horizontal policies through voluntary PES
+    -   In more or less anthropized landscapes
+-   [The efficiency of policies is encouraging but can be improved]{.bg3} with
+    -   More monitoring & communities empowerment
+    -   Better targeting, especially in Europe
+    -   Better forecasting for PES and favoring in kind compensation
+    -   Less red tape to avoid green paradox
+    -   and renewed commitment and effort for policy evaluation with causal methods
+:::

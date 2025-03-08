@@ -14,7 +14,7 @@ library(ggsci)
 library(sysfonts)
 library(showtext)
 
-#font_add_google("Roboto", "roboto")
+font_add_google("Roboto", "roboto")
 showtext_auto()
 
 source(here("utilities.R"))
@@ -2301,6 +2301,8 @@ Voici quelques idées d'exercices pour approfondir l'analyse de ce modèle en ut
 
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
 
+------ 
+
 ### 2. Le management ecosystémique
 
 FAO, 2003:
@@ -2383,6 +2385,9 @@ SI = - sum u_i log(ui) avec ui = x_i/sum_i x_i
 
 ::::
 
+
+--------
+
 ### 5. Inclure des valeurs différentes
 
 
@@ -2394,16 +2399,15 @@ data = data%>%
 p = data %>%
   ggplot(aes(x=Effort,y = Catch))+
   geom_ribbon(aes(ymin=0, ymax = ifelse(Effort<=2.5, Catch, NA)), fill = "dodgerblue", alpha = .2)+
-  annotate("text", x = 1.5, y =  2, label = "Conservation", color = "dodgerblue", family = local_family)+
+  annotate("text", x = 1.5, y =  2, label = "Conservation", color = "dodgerblue", family = local_family, size = 10)+
   geom_line(linewidth = 1.2,)+
   geom_segment(aes(x = 4, xend = 4, y = 0, yend = 3.2), linewidth = 1.2, linetype = "dotted", color = "firebrick")+
-  annotate("text", x = 4, y =  3.8, label = "Jobs", color = "firebrick", family = local_family)+
+  annotate("text", x = 4, y =  3.8, label = "Jobs", color = "firebrick", family = local_family, size = 10)+
   geom_segment(aes(x = 1.5, xend = 1.5, y = 0, yend = 4.2), linewidth = 1.2, linetype = "dotted", color = 'forestgreen')+
-  annotate("text", x = 1.5, y =  4.7, label = "Profits", color = "forestgreen", family = local_family)+
+  annotate("text", x = 1.5, y =  4.7, label = "Profits", color = "forestgreen", family = local_family, size = 10)+
   geom_segment(aes(x = 2.5, xend = 2.5, y = 0, yend = 5), linewidth = 1.2, linetype = "dotted", color = 'purple')+
-  annotate("text", x = 2.5, y =  5.5, label = "Productivity \n Food safety", color = "purple", family = local_family)+
-
-  custom_theme()
+  annotate("text", x = 2.5, y =  5.5, label = "Productivity \n Food safety", color = "purple", family = local_family , size = 10)+
+  custom_theme(font_size = 30)
 
 
 p
@@ -2447,7 +2451,7 @@ S'affrontent alors plusieurs visions de la notion, entre stabilité d'un équili
 ```{r}
 p + 
   geom_segment(aes(x = .75, xend = .75, y = 0, yend = 2.6), linewidth = 1.2, linetype = "dotted", color = 'darkgreen')+
-  annotate("text", x = .75, y =  3.2, label = "Profit and Non use", color = "darkgreen", family = local_family)
+  annotate("text", x = .75, y =  3.2, label = "Profit and Non use", color = "darkgreen", family = local_family, size = 10)
 
 ```
 
@@ -2662,7 +2666,7 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 -----
 
-### Le cas du sparing
+#### Le cas du sparing
 
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive2.jpg)
 
@@ -2676,16 +2680,23 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 #### Controverse
 
-:::{.incremental style:"font-size=90%"}
+::: incremental
 
-- Green et al. (2005), Phalan et al. (2011) : données empiriques disponibles : montrent une (relation convexe biodiversité /rendement){.bg4} : en faveur d’une stratégie [de land sparing]{.bg4}
+- Le débat [bio/intensif pour nourrir l'humanité v. préserver la biodiv]{.bg4}
+
+
+- Green et al. (2005), Phalan et al. (2011) : données empiriques disponibles : montrent une [relation convexe biodiversité /rendement]{.bg4} : en faveur d’une stratégie [de land sparing]{.bg4}
 
 - Fischer et al. (2011), *Science.* & Tscharntke et al. (2012), *Biological Conservation.*
   - [Difficultés à protéger]{.bg4} les espaces non cultivés.
   - Effets négatifs sur l’environnement de l’agriculture intensive avec [produits agrochimiques]{.bg4} ; services écosystémiques associés à la biodiversité agricole
   - Il peut y avoir [biodiversité et rendement élevés]{.bg4} (agroécologie)
 
-- Le débat bio/intensif pour nourrir l'humanité v. préserver la biodiv
+:::
+
+-----
+
+::: incremental
 
 - [Sparing mieux que sharing]{.bg4} : 
   - En particulier pour les [oiseaux et les insectes]{.bg3}, 
