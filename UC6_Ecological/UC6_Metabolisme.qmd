@@ -363,28 +363,26 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-::: incremental 
-
-- Extraction Intérieure (Domestic Extraction, DE) :
-  - Quantité totale de matières premières extraites du territoire national pour être utilisées dans l'économie. 
-  - Inclut les minéraux, la biomasse, les combustibles fossiles, etc.
-- Entrées Directes de Matières (Direct Material Input, DMI) :
-  - Somme de l'extraction intérieure et des importations.   - Mesure la quantité totale de matières entrant physiquement dans l'économie pour utilisation.
-- Consommation Intérieure de Matières (Domestic Material Consumption, DMC) :
-  - DMI moins les exportations. Représente la quantité totale de matières consommées dans le pays.
-- Consommation Matérielle Totale (Total Material Consumption, TMC) :
-  - Inclut la DMC plus les flux cachés associés aux importations et à l'extraction intérieure.
-  - Mesure plus complète car prend en compte les "sacs à dos écologiques".
-- Besoin Total en Matières (Total Material Requirement, TMR) :
-  - Somme des entrées directes de matières et des flux cachés associés (domestiques et importés).
-  - Indicateur le plus complet des besoins en ressources.
-- Balance Commerciale Physique (Physical Trade Balance, PTB) :
-  - Différence entre les importations et les exportations en termes physiques. 
-  - Positive lorsque les importations dépassent les exportations.
-
+::: incremental
+-   Extraction Intérieure (Domestic Extraction, DE) :
+    -   Quantité totale de matières premières extraites du territoire national pour être utilisées dans l'économie.
+    -   Inclut les minéraux, la biomasse, les combustibles fossiles, etc.
+-   Entrées Directes de Matières (Direct Material Input, DMI) :
+    -   Somme de l'extraction intérieure et des importations. - Mesure la quantité totale de matières entrant physiquement dans l'économie pour utilisation.
+-   Consommation Intérieure de Matières (Domestic Material Consumption, DMC) :
+    -   DMI moins les exportations. Représente la quantité totale de matières consommées dans le pays.
+-   Consommation Matérielle Totale (Total Material Consumption, TMC) :
+    -   Inclut la DMC plus les flux cachés associés aux importations et à l'extraction intérieure.
+    -   Mesure plus complète car prend en compte les "sacs à dos écologiques".
+-   Besoin Total en Matières (Total Material Requirement, TMR) :
+    -   Somme des entrées directes de matières et des flux cachés associés (domestiques et importés).
+    -   Indicateur le plus complet des besoins en ressources.
+-   Balance Commerciale Physique (Physical Trade Balance, PTB) :
+    -   Différence entre les importations et les exportations en termes physiques.
+    -   Positive lorsque les importations dépassent les exportations.
 :::
 
------------------
+------------------------------------------------------------------------
 
 ### La comptabilité mondiale et européenne
 
@@ -552,19 +550,11 @@ Des ailes et des roues. La place des moulins dans le système énergétique pari
 
 Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328136) : dépasser le MFA avec une analyse sociométabolique
 
-:::::: columns
-:::: {.column width="30%"}
-::: incremental
--   $DE$: extraction domestique
--   $PTB= Imports - Exports$ : la balance commerciale physique
--   $DMC = DE+PTB$ : consommation matérielle domestique
-:::
-::::
 
-::: {.column width="70%"}
+
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/material_flows_megalhes.jpg){fig-align="right"}
-:::
-::::::
+
+
 
 ------------------------------------------------------------------------
 
@@ -834,13 +824,12 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 ![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_by_type_hegwood_NatureFood_2023.webp){fig-align="center"}
 
-
 # Annexes
 
 ## Taux de croissance moyens pour l'analyse de la France {#appendix_table_metabolism}
 
 |                              | 1830–1860 | 1860–1939 | 1948–1973 | 1980–2015    |
-|------------------------------|-----------|-----------|-----------|--------------|
+|----------------------|-------------|-------------|-------------|-------------|
 | **Population ag**            | 0.44      | 0.16      | 0.94      | 0.51         |
 | **GDP ag**                   | 1.74      | 1.41      | 5.47      | 1.52         |
 | **TPES ag**                  | 1.39      | 1.77      | 3.75      | 0.20 (2008)  |
@@ -873,14 +862,9 @@ Main causal relationships between heterogeneous household groups, industries, re
 
 ## Plan
 
-I. Indicateurs de soutenabilité 
-A. Limites planétaires 
-B. Découplage et croissance verte Courbe de Kuznets Découplages : absolu et relatifs 
-C. L'empreinte écologique 
-D. L'HANPP 
+I. Indicateurs de soutenabilité A. Limites planétaires B. Découplage et croissance verte Courbe de Kuznets Découplages : absolu et relatifs C. L'empreinte écologique D. L'HANPP
 
-II. Métabolisme social : mesures et concepts aux fondements de la macroéconomie écologique A. Retour sur l'histoire du métabolisme Définitions Tradition énergétique Les frères Odum Ayres, Kneese et l'écologie industrielle B. Métabolisme social contemporain MFA Compitabilités et tendances Explications métaboliques das le temps long Transitions métaboliques en France C. Les limites métaboliques à la croissance Entropie et reyclage Déclin tendanciel du EROI Définition, Empire Romain, aujourd'hui L'effet rebond Définitions, synthèse, et exemple récent Nature Food
-:::
+II. Métabolisme social : mesures et concepts aux fondements de la macroéconomie écologique A. Retour sur l'histoire du métabolisme Définitions Tradition énergétique Les frères Odum Ayres, Kneese et l'écologie industrielle B. Métabolisme social contemporain MFA Compitabilités et tendances Explications métaboliques das le temps long Transitions métaboliques en France C. Les limites métaboliques à la croissance Entropie et reyclage Déclin tendanciel du EROI Définition, Empire Romain, aujourd'hui L'effet rebond Définitions, synthèse, et exemple récent Nature Food :::
 
 ::: column
 III. Vers une macroéconomie écologique A. Le travail du Club de Rome et le rapport Meadows Le Club de Rome World3 et Limits to Growth B. La controverse néoclassique Vers le développement soutenable C. Exercice de modélisation Ingrédients, principes, blocs et simulation D. Courants modernes Analyse régulationiste: les travaux de L. Cahen Fourot Analyse post-keynésienne Conclusion
@@ -892,4 +876,5 @@ IV. Par delà la croissance: technocritique, décroissance et coévolution A. L'
     5.  Le développement coévolutif
     6.  Comme cadre d'analyse des rapports société nature C. L'approche par les besoins fondamentaux D. L'environnementalisme des pauvres de J. Martinez Allier
 :::
+
 :::::
