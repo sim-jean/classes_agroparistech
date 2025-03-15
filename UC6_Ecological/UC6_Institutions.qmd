@@ -1,0 +1,695 @@
+---
+title: "Institutions : s'échapper des dilemmes sociaux"
+subtitle : "Economie ecologique"
+---
+
+# Introduction à l'analyse institutionnelle
+
+----
+
+### Définir les institutions
+
+::: incremental
+-   Les [institutions]{.bg4} sont un concept clé en sciences sociales
+-   On peut les définir comme :
+    -   "l'ensemble des règles en place qui sont utilisée pour déterminer qui est éligible à prendre des décisions dans des arènes données" (Ostrom, 1990)
+    -   Ensemble des arrangements contractuels ou organisationnels, dispositifs législatifs ou règlementaires, normes sociales, habitudes
+-   L'analyse institutionnaliste vise à comprendre :
+    -   Comment construire la relation entre [institution et comportements individuels]{.bg4}?
+    -   Comment expliquer le processus par lequel les [institutions naissent et se modifient]{.bg4}?
+:::
+
+## Permanence stratégique v. culturelle
+
+::: incremental
+-   [Stratégique]{.bg4}
+    -   Les comportements humains sont orientés par des [choix stratégiques, calculateurs]{.bg3}
+    -   Les institutions émergent comme [équilibre de Nash]{.bg3}, plus une institution permet de résoudre à des dilemmes et procurer des gains, plus elle sera robuste
+-   [Culturelle]{.bg4}:
+    -   Le comportement n'est jamais entièrement stratégique, mais [limité par la vision du monde de l'individu]{.bg3}
+    -   Malgré la place de la rationnalité et l'instrumentalité, des [structures]{.bg3} (mode de comportement par exemple) [externes guident les décisions]{.bg3} (idée de *satisficer* plutôt que d'optimisateur)
+    -   Certaines institutions sont si conventionnelles qu'elles ne sont pas remises en cause et [continuent d'exister]{.bg3}
+:::
+
+## L'institutionnalisme historique
+
+Voir "La science politique et les trois néo-institutionnalismes", *Revue française de science politique*, 1997
+
+::: fragment
+Comme la [théorie de la régulation]{.bg3}
+:::
+
+::: incremental
+-   Le [conflit entre groupes sociaux]{.bg4} pour l'appropriation de ressources rares est central à la vie politique
+-   L'organisation institutionnelle de la communauté politique est le [principal facteur structurant du comportement collectif]{.bg4}
+-   Le comportement est stratégique et culturel
+-   En s'intéressant à la [distribution inégale du pouvoir et des ressources]{.bg4}, médiée par les institutions (liberté v. contrainte institutionnelle)
+-   Le [développement des institutions]{.bg4} dépend du trajet parcouru : le [contexte local est important]{.bg4} et il est difficile de dire mêmes causes, mêmes conséquences
+-   Les [idées]{.bg4} jouent une place dans les trajectoires historiques, pas simplement leur permanence et détermination matérielle.
+:::
+
+## Institutionnalisme des choix rationnels
+
+::: incremental
+-   Plutôt comme chez [Ostrom, Williamson et North]{.bg4}
+-   Les individus, [rationnels, aux préférences hétérogènes,]{.bg4} devraient défaire ce que les précédents ont fait au Congrès : les institutions expliquent cela
+-   Les institutions abaissent les [coûts de transaction liés à la conclusion d'accords]{.bg4}, permettant de tirer des bénéfices de l'échange politique et d'avoir des lois stables
+-   Issu de la [perspective stratégique]{.bg4} et de la [nouvelle économie de l'organisation]{.bg4} (Olivier Williamson, qui partage le Prix Nobel avec Ostrom, Douglas North)
+-   Les institutions forment les [cadres de décision]{.bg4} (information, mécanismes d'accord, sanctions, [attentes sur les actions]{.bg3} que les autres feront)
+-   La vie politique est une série de [dilemmes sociaux]{.bg4}
+-   L'institution émerge en [vertu des coûts et bénéfices de ses attributs]{.bg3}
+:::
+
+## Institutionnalisme sociologique
+
+::: incremental
+-   Issu du cadre de la [théorie des organisations]{.bg3} (Crozier, Friedberg etc)
+-   Beaucoup de formes institutionnelles n'émergent pas de leur rationalité inhérente, mais tiennent g[râce aux mythes et cérémonies associées]{.bg4} (perspective plus culturaliste)
+-   Les [conceptions culturellement données]{.bg4} de certains rôles de l'Etat, par exemple, déterminent communément des politiques publiques (Dobbin et le train)
+-   Les institutions sont [définies plus globalement]{.bg4} (symboles, systèmes moraux, schémas cognitifs)
+-   Les institutions influencent le comportement en fournissant des [schémas cognitifs]{.bg4} qui sont indispensables à l'action (ce qu'il faut faire et imaginer faire)
+:::
+
+## A. Le jeu de l'eau
+
+::: incremental 
+
+- Vous êtes tous usagers d'une petite nappe phréatique de vallée, dans laquelle vous puisez de l'eau irriguer vos cultures
+- Depuis quelques années, vous vous êtes rendus compte que le niveau de la nappe est assez bas
+- La question se pose ainsi : comment allez vous gérer la nappe? 
+
+:::
+
+----------
+
+### Set up : 
+
+::: incremental 
+
+- Formez (maximum) 15 groupes, qui seront l'unité de décision de la ressource en eau
+- Munissez vous d'un papier, sur lequel vous écrirez le nom de votre ferme
+- La quantité d'eau que vous utilisez vous permet d'avoir des gains agricoles, mesurés par la fonction suivante : 
+
+:::
+
+::: fragment 
+
+$$U_i = 13W_i - 0.5W_i^2$$
+
+::: 
+
+::: incremental 
+- Pour gagner le jeu, il faut maximiser la production de sa ferme dans le temps
+- Ensuite, la nappe phréatique se régénère au taux de 30% par période
+
+:::
+
+
+--- 
+
+### Gestion individualisée de la nappe
+
+::: incremental 
+- Dans cette première partie du jeu, c'est chacun pour sa peau : 
+  - Vous cherchez à maximiser vos rendements
+  - Et ne parlez pas à vos voisins
+- A chaque tour : 
+  - Vous écrivez votre pompage d'eau sur votre fiche *ferme*
+  - Je les collecte
+- L'allocation d'eau se fait : 
+  - Selon les demandes de pompage si le stock le permet
+  - A la façon proportionnelle aux demandes, si le stock restant ne permet pas de satisfaire toutes les tentatives de pompage
+    - S'il reste 10 unités, pour 5, 7 et 10 demandées, il y aura $\frac{5}{10 + 7 + 5}*10$ unités versées etc
+  - Le jeu s'arrête s'il n'y a plus d'eau
+- En fonction de l'allocation, vous réalisez vos gains
+- La ressource se régénère au taux de 30%
+- On joue 3 rounds
+- Si la nappe atteint 0, le jeu est fini
+
+:::
+
+------
+
+### Gestion collective de la nappe
+
+::: incremental
+
+- On va maintenant essayer de trouver les formes d'organisation collective qui permettent de conserver la ressource
+- Des mécanismes vont être votés (majorité simple)
+
+- Option 1: introduction de quotas individuels
+  - Sans surveillance
+- Option 2 : mise en place d'un système de surveillance de la ressource : on a les relevés hydrographiques clairs
+- Option 3 : mise en place d'un système de surveillance (2 joueurs) des joueurs
+  - Vérifient les extractions : si infraction, ils la dénoncent
+  - Les accusés peuvent contester 
+  - Dans ce cas, la communauté vote : si la majorité n'est pas atteinte, simple avertissement
+
+- Option 4 : introduction d'un système d'amendes
+  - Introduction d'un système d'amendes : amende au carré du nombre d'infractions
+
+:::
+
+
+
+# I. Gestion des communs et néoinstitutionalisme rationnel : l'analyse d'Ostrom
+
+-----
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/ostrom.jpeg){width="70%"}
+:::
+
+:::: column
+::: incremental
+-   Née en 1933 à Los Angeles, morte en 2012 à Bloomington
+-   Politiste à l'Université de l'Indiana
+-   Commence sa carrière en étudiant la gestion de l'eau et des services de police dans les métropoles américaines
+-   Pionnière de l'analyse des communs
+-   Avec une analyse méthodologique :
+    -   basée sur l'individualisme méthodologique
+    -   l'analyse empirique (laboratoire et étude de cas)
+    -   En prenant en compte les structures institutionnelles comme cadre d'analyse
+    -   Via des cadres conceptuels forts comme le [Institutional Analysis and Development Framework]{.bg3} ou les [Social Ecological Systems]{.bg3}
+-   Première femme prix Nobel d'Economie en 2009
+-   A lire ou voir:
+    -   La [conférence de presse](https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/lecture/) du prix Nobel
+    -   L'[article](https://wtf.tw/ref/ostrom_2010.pdf) dans l'American Economic Review qui retrace ses contributions
+    -   [*Governing the Commons*, 1990](https://www.actu-environnement.com/media/pdf/ostrom_1990.pdf)
+:::
+::::
+::::::
+
+## A. Les biens communs : régimes et ressources
+
+::: incremental
+-   Pendant longtemps, on parlait de ["common property resources"]{.bg4}, ce qui faisait une confusion entre
+    -   Le [type]{.bg3} de bien
+    -   Le [régime]{.bg3} de propriété
+-   [Common Pool Resource (bien commun)]{.bg4} : peut être possédé selon différents régimes de propriété, comme la propriété commune, mais est caractérisé par
+    -   Une [soustractabilité]{.bg3} des unités de ressources (redéfinition de la non rivalité)
+    -   Une [excludabilité]{.bg3} limitée
+-   Donnant lieu à une redéfinition de la matrice de Samuelson
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/goods_ostrom.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Les droits de propriété comme bouquet
+
+::: incremental
+-   La confusion émerge de l'idée que [droit de propriété = droit d'aliénation]{.bg4} (droit de vente)
+-   Ostrom identifie plusieurs composantes du droit de propriété :
+    -   Le droit d'accès
+    -   Le droit de retrait
+    -   Le droit de gestion
+    -   Le droit d'exclusion
+    -   Le droit d'aliénation
+-   Ainsi, les droits de propriété peuvent être définis à la fois collectivement et individuellement
+:::
+
+------------------------------------------------------------------------
+
+## B. Contre la tragédie du dilemme social
+
+### La tragédie des communs
+
+::: incremental
+-   [Aristote]{.bg4} : "Ce qui est commun au plus grand nombre reçoit le moins de soin. Tout le monde pense à soi en premier, et presque jamais au bien commun" (*Politique*, Livre II, Ch. 3)
+-   [Hobbes]{.bg4} : dans l'état de nature, les hommes cherchent leur propre bien et finissent par se battre et s'entretuer : "homo homini lupus" (*Le Léviathan*)
+-   [Gordon]{.bg4} :
+    -   *"Il semble qu'il y ait de la vérité dans le dicton conservateur selon lequel la propriété de tous n'est la propriété de personne. De la richesse gratuite pour tous n'est valorisée par personne, parce que celui qui est assez téméraire pour attendre son moment d'usage raisonnable ne trouvera que le vide laissé par l'usage d'un autre. Les poissons dans la mer sont sans valeur pour le pêcheur, parce qu'il n'a aucune assurance qu'ils seront là demain s'il les laisse aujourd'hui"*
+-   [Hardin]{.bg4} et sa "tragédie des communs"
+:::
+
+------------------------------------------------------------------------
+
+### Le dilemme du prisonnier
+
+::: incremental
+-   Illustre la paradoxe : des [individus rationnels mènent collectivement à des résultats irrationnels]{.bg3}, mettant en cause l'idée fondamentale que des individus rationnels peuvent aboutir à des résultats collectivement rationnels
+-   Si la [communication]{.bg3} est possible, des [accords verbaux]{.bg3} entre les joueurs sont supposés [non contraignants]{.bg3}, à moins que des contrats soient signés
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/hardin_game.jpg){fig-align="center"}
+:::
+
+------------------------------------------------------------------------
+
+### Le paradoxe de l'action collective
+
+::: incremental
+-   *The Logic of Collective Action*, Mancur Olson, 1965
+-   *“Unless the number of individuals is quite small, or unless there is coercion or some other special device to make individuals act in their common interest, rational, self interested individuals will not act to achive their common or group interests”*
+-   Idée de [free rider]{.bg4}: quelqu'un qui ne peut pas être exclu de la consommation des bénéfices issus de la production d'un bien collectif n'a plus beaucoup d'incitations à contribuer volontairement à l'effort
+:::
+
+------------------------------------------------------------------------
+
+### Métaphores scientifiques et politiques
+
+::: incremental
+-   Ces modèles sont des [métaphores scientifiques]{.bg4} intéressantes :
+    -   Permettent d'isoler des aspects importants
+    -   Qui se retrouvent autour du monde
+    -   En posant un certain nombre de contraintes et d'hypothèses [implicites]{.bg3}
+-   Mais des [métaphores politiques]{.bg4} dangereuses :
+    -   Les hypothèses conceptuelles n'ont pas toujours de contrepartie empirique
+    -   Les résultats issus de l'usage de telles préconisations sont souvent faibles
+    -   Et aboutissent à une vision [tragique]{.bg3}, où les individus sont par essence coincés dans des [dilemmes sociaux]{.bg3}
+:::
+
+## C. entre Léviathan et main invisible
+
+::: incremental
+-   [Léviathan]{.bg4} : idée de la nécessité d'une force coercitive
+    -   [Hardin]{.bg3} : "si la ruine peut être évitée dans un monde bondé, la population doit être réactive à une force coercitive en dehors de leurs psychées individuelles, un Léviathan, pour utiliser les termes d'Hobbes)"
+    -   Mène à la recommendation d'un contrôle par le gouvernement des ressources communes, surtout suivi dans le tiers monde
+    -   Avec l'idée qu'une [agence publique]{.bg4} trouvera l'[information scientifique parfaite]{.bg3} pour déterminer une [stratégie d'usage "optimale"]{.bg3} :
+        -   Qui a droit à l'usage
+        -   Quand on peut utiliser une ressources
+        -   Avec combien d'animaux etc
+    -   Si [l'information est imparfaite]{.bg4}, notamment sur les usages individuels, il faut [punir beaucoup]{.bg3} : cela peut mener à une situation délétère [d'effondrement]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [Privatisation]{.bg4} :
+    -   Les gens vont maintenant [investir]{.bg4} pour diviser la propriété, ainsi que la [surveiller et sanctionner]{.bg4} l'abus
+    -   Si la qualité du bien commun [varie dans le temps et dans l'espace]{.bg3}, cela risque d'appauvrir la communauté, et mener à des [surexploitations]{.bg4} particulières
+    -   Il faudrait des [assurances]{.bg3} etc, dont les coûts (installation, prix etc) sont [chers]{.bg3}
+    -   Il vaut peut être mieux continuer à [partager]{.bg4} les bénéfices et les risques
+-   Il ne faut [pas imposer de solution et s'adapter]{.bg4} au contexte pour assurer le succès
+-   Il peut y avoir :
+    -   Des [arrangements institutionnels volontaires]{.bg4}
+    -   Qui utilisent l'[information disponible]{.bg4} (meilleure que celle centralisée)
+    -   Avec de la [surveillance et du contrôle]{.bg4} endogène pour résoudre les conflits
+    -   Aboutissant à une [meilleure gestion]{.bg4} de l'environnement
+:::
+
+------------------------------------------------------------------------
+
+### Le Institutional Design and Analysis Framework
+
+::: incremental
+-   L'idée est de trouver un cadre d'analyse empirique (statistique)
+-   Qui puisse prendre en compte les différents composantes des situations sociales
+-   Ainsi que les règles qui contraignent l'exercice des droits de propriété
+-   Pour comprendre comment et pourquoi, au sein de cas différents, des arrangements institutionnels de long terme fonctionnent bien, sous diverses métriques
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/rules_in_action_situation.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/institutional_analysis_Ostrom_NP_lecture.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## D. A l'oeuvre dans le "vrai" monde
+
+### La gestion des communs forestiers en Suisse, au Japon, et dans le monde
+
+::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/torbel.jpg){fig-align="left"}
+:::
+
+::: {.column width="60%"}
+-   Etude centrée sur la période allant de 1224 au XIXe siècle
+-   Village dans le canton de Valois de 600 personnes
+-   Possédant un peu de terre plantée avec des cultures privées
+-   La répartition des produits des alpages (notamment le nombre de vaches et la distribution des fromages) et des forêts est régulé depuis 1224
+-   L'accès aux communs était strictement limité par la citoyenneté et certaines règles dont [l'hivernage]{.bg4}, à partir de 1517 : *"aucun citoyzn ne peut envoyer plus de vaches dans l'alpâge que celles qu'il peut nourrir en hiver"*
+-   Les vaches sont comptées immédiatement et déterminent la quanité de fromage que l'on reçoit
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::: {.incremental style="font-size:90%"}
+-   Les statuts
+    -   sont [votés par les citoyens]{.bg4} (ceux qui ont du bétail)\
+    -   donnent l'autorité légale pour la gestion, qui inclut:
+        -   l'embauche de bergers
+        -   la distribution du fumier
+        -   l'organisation du travail collectif
+        -   en [limitant les coûts de transaction]{.bg3}
+-   Les jours de travail pour les alpâges dépendaient du [nombre de vaches]{.bg3} possédées
+-   Dans le cas du bois :
+    -   Le forestier du village détermine les arbres à couper
+    -   Les foyers éligibles au bois forment des équipes de travail et [divisent le travail également]{.bg3} entre coupe, trajets, empilage pour former des tas équivalents
+    -   L'allocation finale se fait par [lotterie]{.bg3}
+    -   Les jours de travail sont associés à des fêtes
+-   La [croissance de la population]{.bg3} est demeurée faible jusqu'au XIXe siècle :
+    -   Marriages tardifs
+    -   Taux de célibat élevés
+    -   Espacement des naissances
+    -   Emigration
+:::
+
+------------------------------------------------------------------------
+
+### Nagaike, Hirano et Yamanoka au Japon
+
+::: incremental
+-   Larges communs dans des villages de zones montagnardes entre 1600 et 1867
+-   Produisent du bois de construction, de chauffage, de toiture etc, de la nourriture pour le bétail
+-   Chaque village était gouverné par une assemblée, composée des chefs de famille
+-   Un foyer ne pouvait pas se subdiviser sans la permission du conseil et les droits d'accès aux communs dépendaient du foyer et non des personnes
+-   Chaque foyer avait un devoir de contribution aux travaux communs
+-   Les codes pour chaque village impliquaient des sanctions graduées en cas de manquement : on embauchait un détective des communs, qui recevait pour son compte (au moins partiellement) saké et cash comme amende, de façon tout à fait acceptée
+:::
+
+------------------------------------------------------------------------
+
+### Analyse répétées
+
+::: incremental
+-   Analyses répétées de cas historiographiques pour la forêt et l'eau
+-   Puis, dans les années 1992, établissement de l'International Forestry and Ressource Institute
+    -   qui déploie une méthodologie unifiée pour étudier les forêts
+    -   Dans de nombreux pays d'Afrique, Amérique Latine et Asie
+-   Ainsi que des analyses répétées des systèmes d'irrigation contemporains au Népal
+:::
+
+## E. Les principes de design des institutions de long terme
+
+Pour des CPR de petite taille avec [un seul pays]{.bg3} et [50 à 15,000]{.bg3} personnes qui [dépendent]{.bg3} de la ressource, les principes sont :
+
+::: incremental
+-   [1A. Frontières des utilisateurs]{.bg4} : des limites claires et localement comprises entre les utilisateurs légitimes et les non-utilisateurs sont présentes
+-   [1B. Frontières de la ressource]{.bg4} : des limites nettes qui séparent une ressource commune spécifique d’un système socio-écologique plus large sont présentes
+-   [2A. Congruence avec les conditions locales]{.bg4} : les règles d’appropriation et de fourniture sont en adéquation avec les conditions sociales et environnementales locales
+-   [2B. Appropriation et fourniture]{.bg4} : la répartition des coûts est proportionnelle à la répartition des bénéfices
+-   [3. Dispositifs de choix collectif]{.bg4} : la plupart des personnes concernées par un régime de ressources sont autorisées à participer à l’élaboration et à la modification de ses règles
+-   [4A. Surveillance des utilisateurs]{.bg4} : les individus responsables ou les utilisateurs surveillent les niveaux d’appropriation et de fourniture chez les utilisateurs
+-   [4B. Surveillance de la ressource]{.bg4} : les individus responsables ou les utilisateurs surveillent l’état de la ressource
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [5. Sanctions graduées]{.bg4} : elles commencent faibles, mais se renforcent en cas d’infractions répétées
+-   [6. Mécanismes de résolution des conflits]{.bg4} : des espaces locaux rapides et à faible coût existent pour résoudre les conflits entre utilisateurs ou avec les autorités
+-   [7. Reconnaissance minimale des droits]{.bg4} : les droits des utilisateurs locaux à établir leurs propres règles sont reconnus par le gouvernement
+-   [8. Entreprises imbriquées]{.bg4} : lorsque une ressource commune est étroitement liée à un SES plus vaste, les activités de gouvernance sont organisées en plusieurs niveaux imbriqués
+:::
+
+## Le passage à plus grande échelle : polycentrisme et changement climatique
+
+# II. Le codéveloppement: évolution des systèmes et relations hommes-nature
+
+## 1. Le développement trahi
+
+::: incremental
+-   Idée développée par Norgaard, 1994, *The coevolutionary process*
+-   Le [développement occidental]{.bg4}, proné, est un [traître]{.bg4} :
+    -   Notion construite sur l'idée de progrès scientifique et technique
+    -   Qui se traduit en organisation sociale
+    -   Se traduisant par une production matérielle abondante et une maîtrise de la nature
+    -   Sans que l'on en soit plus heureux
+-   La perspective du "développement" est, selon lui :
+    -   Trop [mécaniste]{.bg3} : un lien direct entre politique et effets sociaux
+    -   [Réductionniste]{.bg3} : reposant sur la simplification de la complexité des socioécosystèmes
+    -   [Hiérarchique]{.bg3} : pas de fonctionnement si linéaire
+    -   [Technocratique]{.bg3}
+    -   Dépendant de la technique
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Le progrès social est [trahi par l'idéal de modernité]{.bg4} occidental : on néglige le lien entre les conséquences sociales, environnementales et politiques des choix de développement :
+    -   [Trahison scientifique et technique]{.bg3} : le progrès s'est accompagné de la destruction de la nature, malgré l'ambition de la contôler
+    -   [Politique]{.bg3} : les efforts politiques sont sans commune mesure avec les problématiques réelles du développement
+    -   [Culturelle]{.bg3} : les stratégies de développement ont conduit à perdre de la diversité culturelle
+    -   [Morale]{.bg3} : la distribution des impacts du développement est inéquitable
+:::
+
+------------------------------------------------------------------------
+
+## 2. Le développement coévolutif
+
+:::::::: columns
+::::: column
+::: incremental
+-   [Coévolutif]{.bg4} :
+    -   Vient de la biologie (Ehrlich et Raven, 1964), pour décrire les interrelations réciproques entre espèces, causant des mutations génétiques réciproques
+    -   Appliqué aux relations entre systèmes sociotechniques, institutions sociales et à la nature
+:::
+
+::: fragment
+*"Les systèmes sociaux et environnementaux co-évoluent de telle manière que les système environnementaux reflètent les caractéristiques des systèmes sociaux (leur connaissance, valeurs, organisation sociale et technologique) et les systèmes sociaux reflètent celles des systèmes environnementaux (diversité d’espèces, taux de productivité, variations spatio temporelles et résilience)"*
+
+Norgaard, 1994
+:::
+:::::
+
+:::: column
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_norgaard.jpg){fig-align="center"}
+:::
+::::
+::::::::
+
+------------------------------------------------------------------------
+
+### Le rôle des connaissances
+
+::: incremental
+-   Doivent être [encastrées]{.bg4} dans le contexte socioculturel de production
+-   Car elles déterminent ce qu'il est acceptable de tenir comme discours politique, de collecter comme faits ou de prendre comme décision
+:::
+
+::: fragment
+| Mode occidental | Mode souhaitable |
+|----|----|
+| Atomisme | Holisme méthodologique (prévalence du tout sur les parties) |
+| Mécanisme (prédictibilité) | Concept de système (accent sur l'imprévisibilité) |
+| Universalisme (tout, partout tout le temps, peut être expliqué par un nombre restreint de lois) | Contextualisme (les faits ne sont vrais que dans un certain contexte) |
+| Monisme (les manières de voir le monde doivent converger) | Pluralisme conceptuel (nécessité de prendre en compte plusieurs vues) |
+| Positivisme (séparation des faits des valeurs) | subjectivisme (lien fort entre faits et valeurs) |
+:::
+
+::: incremental
+-   Questionner ainsi le développement occidental
+-   En posant la [collectivité territoriale]{.bg4} comme base pertinente pour la délibération et l'expérimentation de la coévolution
+:::
+
+------------------------------------------------------------------------
+
+## 3. Comme cadre d'analyse des rapports société nature
+
+Différentes applications :
+
+::: {.incremental style="font-size:85%"}
+-   La [coévolution sociale]{.bg4} : lorsque deux systèmes sociaux s’autoinfluencent
+-   La [coévolution gènes culture]{.bg4} : des pratiques culturelles donnent lieu à des évolutions génétiques ou l’inverse par exemple le lien ente industrie laitière et intolérance au lactose, ou encore : drépanocytose et deforestation
+    -   La [déforestation millénaire]{.bg3} en Agrique de l'Ouest et Centrale crée les conditions pour la [reproduction des moustiques]{.bg3}, qui donnent la [malaria]{.bg3}
+    -   Créant une [grande pression]{.bg3} sur la population
+    -   Les porteurs du [gêne de la drépanocytose]{.bg3}, maladie du sang, limitant le stockage de l'oxygène, sont [immunisés]{.bg3}
+    -   [Renforçant la prévalence du gêne]{.bg3} de la drépanocytose dans la population
+-   [Coévolutions biosociales]{.bg4} : changement sociaux et évolutions biologiques s’influencent réciproquement (virus et découvertes médicales)
+-   [Coévolutions socioécologiques]{.bg4}; l'évolution des composantes écologiques change les dynamiques sociales qui changent à leur tour les modalités écosystémiques
+-   Permet de dépasser les débats entre :
+    -   [Milieu et hérédité]{.bg3} (évolution des caractéristiques en fonction des évolutions environnementales qui elles même évoluent)
+    -   [Déterminisme et liberté d’action]{.bg3} (les structures sociales prescrivent des comportements mais il est possible de les renverser etc)
+    -   [Nature/culture]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+### Kallis, [Coevolution in water resource development: The vicious cycle of water supply and demand in Athens, Greece](https://www.sciencedirect.com/science/article/pii/S0921800908003467?ref=pdf_download&fr=RR-2&rr=913eb275cb2c049c), *Ecological Economics*, 2010
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/acropole.webp){fig-align="center"}
+:::
+
+:::: column
+::: incremental
+-   Analyse du développement du [système de gestion de l'eau à Athènes]{.bg4} depuis 1830
+-   Remise en question de l'idée du progrès où
+    -   des ingénieurs héroïques satisfont une demande exogène toujours croissante
+    -   Le progrès technique peremt d'avoir de plus en plus d'eau
+    -   Idée que la [dynamique n'est pas si linéaire]{.bg4}, et est plutôt [co-évolutive]{.bg4} :
+        -   à travers la [variation]{.bg3} (innovation v. selection ) institutionnelle
+        -   D'éléments [interconnectés]{.bg3} : culture, environnement, société, politique
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::::::: columns
+:::: column
+::: incremental
+-   Essayer de trouver un [narratif]{.bg4} aux faits, qui reprennent les 3 grands mouvements de l'histoire moderne des eaux urbaines:
+    1.  Période de [contrôle privé et d'accès domestique limité]{.bg3}, avec des solutions technologiques de petite échelles (jusqu'à la fin du XIXe)
+    2.  Période de [contrôle public]{.bg3}, avec des larges travaux et l'universalisation de [l'eau courante]{.bg3} (un paradigme hydrolique - fin du XIXe - 1970s)
+    3.  Passage contemporain à des [instruments de marché]{.bg3} et une gestion intégrée
+:::
+::::
+
+:::: column
+::: incremental
+-   Deux systèmes reliés :
+    -   [Population]{.bg4} avec des attributs et des comportements différents vis à vis de l'eau
+        -   La variation s'accroit à mesure que des innovations pour l'eau arrivent
+        -   Les modalités de la variation dépendent des [interactions]{.bg3} dans la population, et avec l'environnement (economique, idéologique, construit et biophysique)
+        -   Les usages tendent à se répendre
+    -   Un [système de politiques publiques]{.bg4} de l'eau concurrentes
+        -   Ponctuées par des crises (sécheresse) et des enjeux politiques
+        -   Sélection qui s'opèrent par des coûts et bénéfices (monétaires et non monétaires) et leur distribution, dépendant des technologies, de l'environnement hydrologique etc
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_kaalis2011.jpg){fig-align="center"}
+:::
+
+:::: column
+::: incremental
+-   Le système politique produit des [offres]{.bg4}, celui des ménages de la [demande]{.bg4}
+    -   Les politiques affectent la sélection chez les ménages
+    -   La structure des ménages affecte la sélection des politiques
+-   Interaction dépendant de [l'environnement biophysique]{.bg4} et de ses attributs, comme la nature primaire ou secondaire (barrage) et ses mouvements
+-   Imposent des [contraintes, mouvantes,]{.bg4} auxquelles les propositions technologiques et politiques répondent
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Le premier stade (1834-1890):
+    -   Approvisionnement basé sur des [sources locales]{.bg4} (puits, fontaines) et restauration d’un [aqueduc]{.bg4} romain.
+    -   Introduction progressive des [technologies modernes]{.bg4} (appareils sanitaires) dans certains foyers, en particulier chez les [élites.]{.bg4}
+    -   [Concurrence]{.bg4} entre l’État, la municipalité et des acteurs privés pour le contrôle et la gestion de l’eau, créant une dynamique où l’amélioration de l’offre génère de nouvelles aspirations et pratiques de [consommation]{.bg4} (notamment via la promotion de l'[hygiénisme]{.bg3})
+-   La période hydraulique (1890-1979)
+    -   Pénuries récurrentes et croissance démographique incitant à la mise en place de [grandes infrastructures.]{.bg4}
+    -   Débats intenses sur le [choix des sources]{.bg4} d’approvisionnement (transferts nord vs sud) et projets majeurs (ex. : barrage de Marathon).
+    -   Mise en œuvre de [partenariats public-privé]{.bg4} et transformation radicale du paysage urbain,
+    -   Notamment pendant la [junte]{.bg4}, au mépris de l'accord démocratique et des conséquences sociales et environnementales de la construction de nouveaux barrages (barrage de Mornos, 1968)
+    -   Renforçant le modèle d’urbanisation et d'immobilier basé sur une [offre d’eau abondante]{.bg4} (eau courante, toilettes, douches, machines à laver)
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   La période contemporaine (1980 à aujourd'hui)
+    -   Poursuite du cycle d’expansion malgré la présence d’infrastructures majeures (Mornos, Evinos, transferts lacustres)
+    -   Politiques favorisant[l’expansion de la capacité de distribution]{.bg4} et des tarifs incitatifs pour stimuler la consommation.
+    -   [Rigidité]{.bg4} des pratiques de consommation instaurée par une offre abondante, même face aux défis environnementaux et économiques.
+-   Conclusion :
+    -   Identification d’un [cercle vicieux]{.bg4} où chaque nouvelle infrastructure renforce des habitudes de consommation élevées.
+    -   [Proposition]{.bg4} de deux axes pour rompre ce cycle :
+        -   [Cesser l’expansion]{.bg3} continue de l’offre pour éviter de verrouiller des pratiques de consommation excessives.
+        -   Expérimenter des stratégies de [« conservation dirigée par le fournisseur »]{.bg3}, avec des investissements publics majeurs (réutilisation des eaux usées, rénovation des appareils domestiques, collecte des eaux de pluie, etc.).
+:::
+
+::: notes
+-   Jusque 1850 : Pas d'eau courante
+-   Autour de 1850, les riches athéniens ramènent d'Europe de l'Ouest les maisons modernes, incluants les W.C., rendant la propreté un marqueur de classe
+-   Les sécheresses et l'état du réseau issu de la guerre causent des pénuries et des épidémies, à mesure que les classes moyennes veulent imiter les riches
+-   Sélection des systèmes qui apportent plus d'eau, mais concurrence entre ces systèmes: qui l'opère et en récupère les bénéfices?
+    -   Municipalité v. Etat central
+    -   Droits de propriété sur l'eau viennent de la terre: achat de terres fous
+    -   Choix technologiques complexes : puiser dans la nappe ou restaurer l'aqueduc romain (pas cher et efficace)
+-   La restauration des aqueducs permit la multiplication par 6 de l'eau disponible
+    -   Les classes moyennes et riches s'offrent le luxe aquatique
+    -   L'Etat éduque les pauvres à l'usage de l'eau
+-   Le besoin en eau augmente, et bientôt la restauration ne suffit plus
+
+1890-1979: - Réapparition des pénuries, symbole de sous développement - Débats sur les sources d'approvisionnement entre l'Etat et la municipalité, qui requièrent tous les deux 200km de canal (600 fois le budget annuel de l'eau) - PRéférence pour l'ouverture de marchés périphériques avec les transports - Pause dans les débats avec la crise des années 1890 et les premières guerres des Balkans - Développement industriel fait d'Athènes une ville très peuplée, où les réfugiés d'Asie mineure affluent également, créant des tensions autour du manque d'eau - Nouvelles technologies: le barrage, réalisé en 1925 - D'abord refusé, car pas assez sécurisé - Il devient choisi, car plus économique, permettant plus d'eau - Et grâce au développement d'instruments financiers comme les bonds, et l'afflux de capitaux du reste de l'Europe - Changement des coûts et bénéfices - Changement politique : les libéraux sont au pouvoir, et veulent assoir la possibilité pour l'Etat de faire des grands travaux, plutôt que laisser les propriétaires terriens maîtres - Monopole d'exploitation à une firme américaine qui le construit et l'opère - La consommation d'eau triple entre 1928 et 1940, forçant à encore augmenter l'eau
+:::
+
+------------------------------------------------------------------------
+
+# III. Institutions dans le long terme et rapports de force : la théorie de la régulation
+
+## A. Comprendre la théorie de la régulation
+
+::: incremental
+-   [Institutionalisme]{.bg4} : courant d'analyse qui pose la nécessité de penser le rôle des médiations entre structures sociales et comportements individuels
+    -   [Institutionnalisme historique ou régulationniste]{.bg3} : les acteurs agissent selon leurs intérêts politiques mais sont équipés de visions du mondes diverses selon les contextes sociaux
+    -   Les institutions émergent comme :
+        -   une forme de [régulation des conflits]{.bg3} inhérents aux intérêts divergents et pouvoirs différents
+        -   Permettant sa [reproduction]{.bg3} cohérente
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Le capitalisme a connu plusieurs formes, et les [formes institutionnelles]{.bg4} constituent des [modes de régulation]{.bg4} spécifiques :
+    -   [Régime monétaire]{.bg3} : basé sur la confiance, permet aux agents de régler des dettes, utiliser les marchés et lier productions de marché et de non marché
+    -   [Régime salaire travail]{.bg3} : ensemble des conditions légales et institutionnelles qui gouvernent l’utilisation du salariat comme mode d’existence des travailleurs
+    -   [La concurrence]{.bg3} : ensemble des règles des marchés et des chaines de valeurs (toutes les conventions qui forment les relations d’affaires entre producteurs)
+    -   [L’état]{.bg3}
+    -   L’insertion dans le [régime international]{.bg3} : règles organisant la cohabitation des états nations et des monnaies dans un système géopolitique mondial, avec le commerce international et les réseaux de flux de capitaux.
+    -   Pas de [dimension environnementale]{.bg3} au début
+:::
+
+## B. L'avènement d'une relation sociale à l'environnement 
+#### L. Cahen-Fourot, Contemporary capitalisms and their social relation to the environment, 2020, *Ecological Economics*
+
+::: incremental
+-   Analyse les groupes de pays que l'on peut voir au sein de l'OCDE et des BRICS, en prenant plein de données en compte pour mesurer ces formes :
+    -   Forme environnementale:
+        -   Intensité du PIB en GES, matériaux et énergie
+        -   Matérialité offshore
+        -   Distribution des émissions par quantiles (Piketty & Chancel, 2015)
+        -   Conflits environnementaux : adhérents à des ONG environnementales
+-   Dresse des typologies
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/typologie_cahen_fourot_2020.jpg)
+
+------------------------------------------------------------------------
+
+|   | Pays d'Europe du Nord | Europe Centrale du Sud | Pays du Anglosaxons et du Pacifique | Pays émergents | Deux géants |
+|----|----|----|----|----|----|
+| Relation sociale à l'environnement | Matériellement offshore, distribution des actifs environnementaux la moins inégale et orientation politique prône à l'écologie | Matériellement offshore | Matériellement onshore pour l'énergie et le GHG, diversité des opinions politiques | Orientation socio politique adverse à l'écologie | Matériellement onshore, distribution des actifs environnementaux la plus inégale et anti écologie |
+
+::: incremental
+-   Correspondance entre :
+    -   Ceux qui ont des attitudes socio-politiques propices à l'environnement
+    -   Une intensité d'usage des ressources naturelles faible
+    -   Des relations capital travail orientées vers le travail
+    -   Des politiques publiques orientées vers l'état social
+    -   Une ouverture aux importations
+-   Mais les pays qui sont le plus ouverts à l'écologie sont aussi ceux qui ont le plus [déplacé leur impact]{.bg3} environnemental
+    -   Explique aussi la [force relative]{.bg3} des politiques locales mais [l'absence de politique globale]{.bg3}, au sein d'une relation [complémentaire et exclusive]{.bg4} avec le capitalisme global
+    -   Le capitalisme global ne peut [pas être un système écologique viable]{.bg4}
+-   La notion de [relation sociale à l'environnement]{.bg4} se rapproche du métabolisme social
+:::
+
+------------------------------------------------------------------------
+
+#### Quelles formes désirables?
+
+::: incremental
+-   Dietz et ONeill, 2013: cherchent les [formes nécessaires à une croissance nulle]{.bg3}
+-   Focus sur le [régime monétaire]{.bg3} :
+    -   La monnaie en circulation est [créée]{.bg4} par des banques commerciales
+    -   Pour répondre aux besoins de financement des agents économiques, via des [crédits]{.bg4}
+    -   Ces crédits viennent avec un [taux d'intérêt]{.bg4} : remboursements plus larges que le principal
+    -   Il faut donc de la [croissance pour rembourser]{.bg4}
+:::
+
+------------------------------------------------------------------------

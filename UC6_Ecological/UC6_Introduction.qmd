@@ -1,0 +1,1007 @@
+---
+title: "Introduction à l'économie écologique"
+subtitle: "Economie Ecologique"
+---
+
+```{r}
+
+
+renv::autoload()
+#suppressMessages(renv::snapshot())
+
+library(tidyr)
+library(dplyr)
+library(extrafont)
+library(magrittr)
+library(ggplot2)
+library(here)
+source(here("utilities.R"))
+
+library(extrafont)
+#extrafont::font_import()  # This takes time the first time
+extrafont::loadfonts(device = "win")
+
+local_family="Roboto"
+
+```
+
+# Présentation du cours
+
+
+## Programme détaillé
+
+::: columns
+::: column
+### 18 mars
+
+- **08h30-12h30 :** Introduction à l'économie écologique : histoire du champ  
+- **13h30-17h :** Analyse métabolique des sociétés  
+- **17h-18h30 :** Vers une macroéconomie écologique
+:::
+
+::: column
+### 19 mars
+
+- **08h30-10h30 :** Vers une macroéconomie écologique (fin)  
+- **10h30-12h30 :** Analyse critique des services écosystémiques  
+- **13h30-15h :** Analyse critique des services écosystémiques (fin)  
+- **15h-16h30 :** Approches institutionnelles  
+- **16h30-18h30 :** Travail en groupes
+:::
+
+::: column
+### 21 mars
+
+- **08h30-11h30 :** Fin des approches institutionalistes  
+- **11h30-12h30 :** Perspectives contemporaines (féminisme, décolonialisme)  
+- **13h30-14h30 :** Perspectives contemporaines (fin) et conclusion générale
+- **14h30-18h30 :** Évaluation
+:::
+:::
+
+
+
+## Ressources
+
+De façon générale, je vous conseille de feuilleter :
+
+-   *L'économie écologique*, d'Ali Douai et Gaël Plumecocq, La découverte
+-   *An Introduction to Ecological Economics*, de Robert Costanza, John Cumbeland, Herman Daly etc
+-   *Handbook of Ecological Economics*, Joan Martinez Allier et Roldan Muradian
+
+Il y aura des articles suggérés pour chaque séance, à lire en avance ou pour approfondir les sujets traités
+
+Je me suis inspiré des travaux de beaucoup de collègues, que je remercie:
+
+-   [Quentin Couix, MC à l'UPEC](https://scholar.google.com/citations?user=1U-2fJMAAAAJ&hl=en)
+-   [Luc Elie, chercheur au CIRED](https://scholar.google.fr/citations?user=FqctPIMAAAAJ&hl=fr)
+-   [Charles Claron, doctorant au CIRED](https://www.researchgate.net/profile/Charles-Claron-2)
+-   [Harold Levrel, professeur au MNHN](https://www.researchgate.net/profile/Harold-Levrel)
+
+## Modalités d'évaluation
+
+Evaluation sous la forme d'un [débat]{.bg} durant la dernière séance (on devra surement déborder un peu), sur la base de
+
+::: incremental
+-   [L'oral]{.bg2} : en fonction de la qualité du débat, des arguments etc
+-   Un [rendu écrit]{.bg2} avec les recherches préliminaires et un argumentaire critique sur le sujet choisi de 2-3 pages, comprenant:
+    -   Une introduction théorique et historique: dans quel contexte se pose la question?
+    -   Une liste d'arguments structurés, mobilisant apports théoriques et empiriques
+    -   Une conclusion définitive quant à votre argument
+:::
+
+::: fragment
+Structuration par [groupes de 5]{.bg2}
+:::
+
+::: incremental
+-   Deux POUR/deux CONTRE
+-   Un.e. *chair person*, dont le rôle sera :
+    -   D'introduire les éléments factuels du débat
+    -   Organiser le vote
+    -   Animer le débat : distribution du temps de parole, interventions si informations fausses, recadrage etc
+:::
+
+------------------------------------------------------------------------
+
+Avant et après le débat, il y aura un vote, pour voir si les avis ont changé.
+
+::: incremental
+-   Chaque débat durera environ 35 minutes:
+    -   4 minutes d'introduction par la chair person
+    -   28 minutes alternance d'intervention entre les deux équipes (maximum 14 minutes par équipe)
+    -   3 minutes d'ajustement par le.a chair et vote final
+-   Une liste de sujets sera proposée d'ici la semaine prochaine (vous pouvez en suggérer), comme par exemple :
+    -   Pour ou contre la compensation écologique?
+    -   Pour ou contre la monétarisation du vivant?
+    -   Pour ou contre la décroissance?
+    -   Pour ou contre l'interdiction du Glyphosate?
+    -   Approches bottom up ou top down?
+    -   Pour ou contre une taxe carbone aux frontières?
+-   Je vous partagerai des ressources si vous le souhaitez
+:::
+
+# Plan de la séance
+
+1.  [Introduction](#sec-introduction)
+2.  [Overview historique des courants de pensée](#sec-histoire)
+3.  [Points clés de l'économie écologique](#sec-champ)
+4.  [L'économie écologique aujourd'hui: différents courants de pensée](#sec-ajd)
+
+# Introduction {#sec-introduction}
+
+## Contexte
+
+::: incremental
+-   Au début des années 1970, la [question environnementale]{.bg} prend de l'ampleur
+
+    -   Par les dégradations observées
+    -   La prise de conscience publique
+    -   Et intellectuelle : de nombreux penseur.e.s parlent de notre lien à la nature
+
+-   L'économie [mainstream]{.bg} semble incapable de penser la [finitude des ressources]{.bg} et les questions qu'elle pose
+
+-   Une nouvelle branche [transdisciplinaire]{.bg} émerge à la croisée des chemins entre sciences naturelles et économie pour y réfléchir
+:::
+
+## (Première) définition
+
+C'est un champ de recherche
+
+::: incremental
+-   [interdisciplinaire]{.bg}
+    -   Qui travaille à l'intersection des disciplines : écologie (scientifique, industrielle, énergétique etc) et économie
+-   et [transdisciplinaire]{.bg}
+    -   Qui dépasse les liens académiques et vise à oeuvrer sur la société
+-   qui étudie [l'interdépendance et la coévolution]{.bg}
+-   des [écosystèmes et économies humaines]{.bg}
+-   dans l'espace et le temps
+:::
+
+::: fragment
+L'élément principal qui caractérise ce champ est le refus de la [substituabilité des différentes formes de capitaux]{.bg}
+:::
+
+------------------------------------------------------------------------
+
+```{r}
+
+library(ggplot2)
+
+data.frame(x = seq(0,10))%>%
+  mutate(y=10-x)%>%
+  ggplot(aes(x=x,y=y))+
+  geom_line(linewidth = 1, color = "firebrick")+
+  custom_theme(family_ = local_family)+
+  ylab("Capital physique")+
+  xlab("Capital naturel")+
+  geom_segment(xend = 5, x = 10, y = 5, yend = 5, color = "royalblue", linewidth = 1)+
+  geom_segment(xend = 5, x = 5, y = 5, yend = 10, color = "royalblue", linewidth = 1)+
+
+  geom_segment(xend = 2, x = 10, y = 2, yend = 2, color = "navyblue", linewidth = 1)+
+  geom_segment(xend = 2, x = 2, y = 2, yend = 10, color = "navyblue", linewidth = 1)+
+  geom_segment(x = 0, y = 4, xend=4, yend=0, color = 'red', linewidth=1)+
+  annotate('text', x = 4, y=7,  
+           label="Substituables", color="firebrick", family = local_family)+
+  annotate('text', x = 3.2, y= 2.8,  
+           label="Complémentaires", color="navyblue", family = local_family )
+
+
+
+```
+
+------------------------------------------------------------------------
+
+# Une brève histoire de la pensée en économie écologique {#sec-histoire}
+
+## Approches biophysiques et allocative
+
+:::::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/aristote.jpg)
+:::
+
+:::::: {.column width="60%"}
+Principes de pensée suivant la :
+
+::: incremental
+-   [chrématistique]{.bg} : l’art de l’acquisition des richesses
+-   [l'oikonomia]{.bg}: bien administrer les ressources d’un foyer (oikos, "maison") en vue du bien-vivre
+:::
+
+::: fragment
+Que l'on retrouve dans l'histoire de la pensée économique :
+:::
+
+::: incremental
+-   Tradition [biophysique]{.bg} : Une vision [matérialiste]{.bg2} des processus économiques comme des flux et des [stocks d'énergie et de matière]{.bg2}, soumis aux lois de l'entropie et aux sources de subsistance.
+
+-   Tradition [allocative]{.bg} : étudie une relation de cause à effet avec les prix du marché, envisagée en termes de défaillances de marché, d’allocation efficace et d’un concept de l’utilité marginale orienté par la demande, [sans lien avec]{.bg2} [le monde physique]{.bg2}
+:::
+::::::
+::::::::
+
+## A. Précurseurs : ressources naturelles et contraintes sur la croissance économique
+
+::: incremental
+-   La [terre est à la source de la valeur]{.alert} dans les théories économiques du XVIIIe siècle, qu'elle soit d'*usage ou d'échange*
+-   Le [secteur agricole]{.alert}, prédominant à l'époque, est au coeur des préoccupations : les disettes peuvent encore arriver
+-   Le rapport à la nature de l'économie se fait sous l'angle de la terre, ancrant une [tradition biophysique]{.bg}
+:::
+
+::: fragment
+[Dans quelle mesure la terre, ses produits et leur répartition peut être un frein ou moteur à la croissance?]{.bg}
+:::
+
+------------------------------------------------------------------------
+
+### Les physiocrates et François Quesnay (1694-1774)
+
+Ecole de pensée juridique, politique et économique, France, milieu du XVIIIe siècle
+
+::: incremental
+-   Etymologie : ["gouvernement par la nature"]{.bg2} : théorie de la richesse et de sa distribution à destination du roi
+    -   Une livre de grains plantés en donne 5, créant un [produit net]{.bg} une fois la survie des agriculteurs actée
+    -   Toute la richesse vient de la terre *ergo* la seule classe productive est celle des agriculteurs
+    -   C'est ce produit net qui guide la richesse
+-   Les autres activtés, industrielles ou artisanales, transforment mais ne créent pas de valeur en soi, ils sont ["improductifs", ou "stériles"]{.bg2}
+-   Au milieu, les propriétaires (clergé, noblesse), perçoivent le produit net de l'agriculture
+:::
+
+::: incremental
+-   Conception synthétisée par le Tableau Economique de [Quesnay (1758)]{.bg}, chef de file des physiocrates et médecin
+    -   Issu de nombreux flux, en analogie avec la circulation du sang dans le corps humain
+    -   Peu clair, il illustre néanmoins la [circulation des flux dans l'économie basés sur la matière]{.bg2}
+    -   Il inspirera toutes les entreprises de comptabilité économiques basées sur la matière, comme Leontieff
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/Tableau_economique.jpg){.absolute left="350"}
+
+------------------------------------------------------------------------
+
+### Adam Smith (1723-1790) et la croissance
+
+*Essai sur la Nature et les Causes de la Richesse des Nations*, 1776
+
+:::::: columns
+:::: column
+::: incremental
+-   L'industrialisation est non pas stérile, comme chez Quesnay, mais à la [source de l'augmentation de la productivité]{.bg2}, donc du développement économique
+-   La terre peut être mieux cultivée, si l'on y apporte du capital : la productivité augmente
+-   On [peut produire autant avec moins de monde]{.bg2}, ce qui accroît la puissance de l'industrie
+    -   Ou produire plus
+-   Cela permet de [dégager un développement économique et absorber une croissance de la population]{.bg2} dans de bonnes conditions
+:::
+::::
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/Adam_Smith.jpg){width="70%" fig-align="right"}
+:::
+::::::
+
+::: notes
+Ecossais, il est formé en philosophie morale à Glasgow, et fait partie des lumières écossais
+:::
+
+------------------------------------------------------------------------
+
+### Robert Malthus (1766-1834) et la croissance démographique
+
+:::::: columns
+::: {.column width="40%"}
+*Essai sur le principe de population*, 1798
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/Thomas_malthus.jpg){width="70%"}
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   L'[augmentation de la population]{.bg} [s'accompagne d'une grande pauvreté]{.bg} :
+    -   L'exode rural des activités productives (l'industrie et activités artisanales) rend la prise en charge des nécessiteux dans les milieux ruraux plus difficile, accentuant l'exode rural
+    -   L'oeuvre de Malthus doit se comprendre dans le cadre des *"poor laws"*, qui selon lui permettent une [croissance démographique insoutenable]{.bg2}
+-   En utilisant les données d'Amérique du Nord, il argue d'une [croissance géométrique de la population]{.bg}
+-   Du fait des rendements décroissants et de la fixité de l'offre de terre agricole, la production agricole ne pourrait croître que de [façon arithmétique]{.bg}
+    -   Il convient de la possibilité d'ouvrir de nouveaux territoires, mais à long terme
+    -   La loi des rendements décroissants n'est pas encore etayée empiriquement
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Il y aura donc des [contrôles de la population par pénurie alimentaire]{.bg}
+    -   Ce serait bien d'éviter cet ajustement brutal
+    -   Méthodes "positives" (guerre, famine et peste) ou "préventives" (contraception, avortement, retenue morale)
+    -   L'amélioration de la médecine et des conditions sanitaires aggravent le problème
+    -   Aider les [pauvres est improductif est même nocif]{.bg2}, offrant une justification pour les conservateurs, pour ne rien faire.
+-   A posteriori, [d'importants gains de productivité]{.bg} ont été réalisés en Grande Bretagne, et une [transition démographique]{.bg}
+-   La question de la limitation des ressources et les conclusions dressées par Malthus
+    -   Donnent lieu au Malthusianisme, pronant le contrôle démographique actif, et négativement connoté
+    -   Utilisée parfois pour dénigrer les travaux mettant en exergue les limites
+:::
+
+------------------------------------------------------------------------
+
+### David Ricardo (1772-1823) : ressources, rareté, croissance
+
+*Principes d'économie politique et de l'impôt* (1817)
+
+::::::: columns
+:::: {.column width="40%"}
+::: {.incremental style="font-size:95%"}
+-   Les [embargos]{.bg} sur les ports anglais pendant les guerres napoléoniennes
+    -   Causent une mise en culture des terres [moins fertiles]{.bg2} (aux coûts les plus haut)
+    -   Accentuent la hausse des prix des céréales pour le public, et les rentes des puissants
+    -   Mennent à un [retard économique]{.bg2}, car les coûts de l'industrie étaient liés aux coût du blé (salaires), nécessaire à la force de travail
+-   Les bourgeois veulent et obtiennent en 1815, les *Corn Laws* [limitaient l'importation des céréales]{.bg2} en dessous d'un prix plancher.
+:::
+::::
+
+:::: {.column width="60%"}
+::: {.incremental style="font-size:95%"}
+-   Ricardo s'y oppose :
+-   Les terres agricoles sont inégalement fertiles, ou ont des coûts de production hétérogènes
+-   Du fait de la croissance de la population, des terres de moins en moins fertiles sont cultivées.
+-   Les dernières à être cultivées sont les [terres marginales]{.bg2}, dont les produits ne couvrent que la main d'oeuvre et le capital investi.
+    -   Si le produit du blé était inférieur aux coûts, on ne cultiverait pas, s'il était au dessus, on cultiverait d'autres terres encore moins fertiles
+-   Deux conclusions émergent:
+    -   A la limite, un [état stationnaire]{.bg} risque d'émerger où les terres limitent non plus seulement la population mais l'expansion économique
+    -   Il [faut permettre l'importation]{.bg2} du blé pour éviter que le capital afflue vers des terres pas très productives, laissons cela aux autres
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### Jeremy Bentham : l'essor de la communauté morale (1748-1832)
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/bentham.jpg){width="70%"}
+:::
+
+:::: column
+::: incremental
+-   Il développe le [paradigme utilitariste]{.bg}:
+    -   Doctrine philosophique et mode de raisonnement
+    -   Le but est d'atteindre le [maximum des plaisirs et le minimum des peines du plus grand nombre]{.bg2}, dans le temps également
+-   Dans l'utilitarisme, le [vivant au sens large]{.bg} a une grande place :
+    -   Ils sont inclus dans la communauté morale via une approche antispéciste
+    -   La question n'est pas peuvent ils raisonner, mais peuvent ils souffrir?
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### John Stuart Mill (1806-1873)
+
+*Principes d'économie politique*, 1848
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/mill.jpg){width="70%"}
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   Dans la nature, la [croissance n'est pas un processus infini]{.bg}
+-   C'est pareil en économie, elle doit aboutir à un [équilibre durable]{.bg}
+-   Dans son analyse, cette croissance n'est [pas souhaitable]{.bg}:
+    -   Un monde surpeuplé et surexploité n'est pas enviable
+    -   Il espère que l'humanité se régulera
+    -   L'[état stationnaire comme état désiré,]{.bg2} librement choisi, avant qu'il soit imposé par la nature
+-   Passé un certain moment, [l'accroissement des richesses ne répond plus]{.bg2} [aux problèmes les plus importants de la société]{.bg2}
+    -   Le vrai problème, dans les pays riches, c'est la répartition
+:::
+::::
+::::::
+
+## B. Le tournant du XIXe siècle
+
+### Les révolutions en sciences naturelles : la thermodynamique, Sadi Carnot (1796-1832)
+
+La [thermodynamique: "physique de la chaleur"]{.bg}, bases des moteurs etc, notamment grâce au physicien Sadi Carnot
+
+::::::: columns
+:::: {.column width="60%"}
+::: incremental
+-   [1ere loi, la conservation de l'énergie]{.bg} : pour toute quantité d'énergie transformée, la quantité demeure constante
+-   [2e loi : toutes les énergies ne se transforment pas]{.bg} [de la même manière]{.bg}
+    -   Par exemple, l'énergie thermique se change mal en énergie mécanique
+    -   Il en résulte que [irréversiblement]{.bg2}, la qualité de l'énergie disponible décroît
+    -   Beaucoup de phénomènes physiques sont donc [irréversibles]{.bg}
+:::
+::::
+
+:::: {.column width="40%"}
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/deuxieme_thermo.webp){width="70%"}
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### Les révolutions en sciences naturelles : l'évolution, Charles Darwin, 1809-1892
+
+Darwin, *L’Origine des espèces (1859)*, explique
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/evolution.webp)
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   Les organismes évoluent par [sélection naturelle]{.bg}:
+    -   Seuls les traits favorables à la survie et à la reproduction se perpétuent
+    -   L’économie comme un [système dynamique]{.bg} dans lequel les [innovations, les institutions et les pratiques]{.bg2} économiques subissent elles aussi des processus de « sélection » (économique, technologique, sociale).
+    -   L’économie est ainsi perçue comme un [ensemble d’agents et de structures qui s’adaptent aux contraintes]{.bg2} – notamment celles imposées par l’environnement – et aux ressources limitées.
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### Les révolutions en sciences naturelles : l'écologie systématique, Haeckel, 1834-1919
+
+::::: columns
+::: {.column width="50%"}
+-   Pose le terme [d'écologie]{.bg}: perspective [holistique]{.bg}, qui considère les êtres vivants comme [parties intégrantes d’un réseau complexe]{.bg2}
+-   Idée que la nature fonctionnait comme un [tout unifié]{.bg2}, où chaque élément—qu’il soit vivant ou non—[interagit avec les autres.]{.bg2}
+-   [Interactions réciproques]{.bg}entre les espèces et leur environnement :
+    -   Haeckel a anticipé les [principes de co-évolution et d’interdépendance]{.bg1}
+    -   que l’on retrouve dans l’économie écologique contemporaine.
+:::
+
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/haeckel.jpg){fig-align="right"}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### William Stanly Jevons (1835-1882) et le problème du charbon, un marginaliste biophysique
+
+:::::: columns
+::: {.column width="60%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/coal.png){fig-align="left"}
+:::
+
+:::: {.column width="40%"}
+::: incremental
+-   Avec l'essor industriel, le [charbon]{.bg} devient une question :
+    -   [Principale source d'énergie]{.bg2} dans les pays qui s'industrialisent, remplaçant le bois dont les usages étaient [rivaux]{.bg2} et mettait en danger les forêts
+    -   Les ressources deviennent disponibles en [quantité finie]{.bg2}
+    -   Entre le XVI et le XIX siècle : la consommation de charbon par habitant a augmenté [d'un multiple d'environ 45]{.bg2} au cours de ces trois siècles
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   S'intéresse à [tout autour du charbon]{.bg} : évolution des prix, coûts d'extraction, réserves etc
+-   C'est la [principale source de compétitivité anglaise]{.bg} selon lui
+    -   Cela permet une [chaine d'innovations]{.bg2}: sans charbon pas cher, les premières machines à vapeur, inefficaces, n'auraient pas été utilisées et raffinées
+-   La [rareté relative]{.bg2} du charbon est à la source de sa croissance :
+    -   Si le prix augmente, on freine la croissance
+    -   Si les autres pays découvrent de meilleurs gisements, on perd [l'avantage comparatif]{.bg2}
+-   La [rareté absolue]{.bg2} joue aussi :
+    -   Le charbon remplace la terre chez Ricardo, sauf que la quantité de charbon va décroitre : on risque non un état stationnaire, mais un état de régression
+    -   Il pourrait y avoir une amélioration technique, mais suivie d'un [effet rebond]{.bg} (qu'il est le premier à suggérer)
+-   Un des fondateurs de la [révolution marginaliste]{.bg}, mais assez proche des classiques sur la question du charbon
+:::
+
+------------------------------------------------------------------------
+
+### Podolinsky (1850-1891) et l'énergétisme social
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/podolynski.jpg){fig-align="left"}
+:::
+
+:::: {.column width="60%"}
+::: {.incremental style="font-size:95%"}
+-   Médecin, économiste et militant ukrainien, redécouvert dans les années 1980
+-   *Le Socialisme et l'Unité des Forces de la Physique*, 1880 porte sur [l'importance de l'énergie pour l'économie]{.bg}
+    -   Une harmonisation de la[théorie économique marxiste et des sciences naturelles]{.bg2}
+    -   Etudie la capacité du travail humain à accumuler, dans ses produits une plus grande quantité d'énergie que celle qui a du être dépensée pour la production de la [force des travailleurs]{.bg2}
+    -   Description de la répartition générale de l'énergie sous forme utile à l'homme etde la capacité de travail humain à augmenter[l'accumulation de l'énergie solaire sur terre]{.bg}
+-   Enonce les[principes de la thermodynamique]{.bg}:
+    -   Les plantes ont la capacité de transformer l'énergie solaiere
+    -   Les animaux en transforment une partie en travail mécanique et dissipe en énergie thermique le reste
+    -   Il faut [gérer les cycles, notamment bien gérer l'agriculture]{.bg}
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Podolinsky étudie la [capacité du travail humain appliqué à l'agriculture à accroître la]{.bg} [quantité d'énergie solaire accumulée sur Terre]{.bg}e par les plantes
+    -   s'appuie sur des statistiques agricoles françaises pour différentes culture
+    -   Il évalue la quantité d'énergie accumulée annuellement par hectare pour chacune de ces cultures, estime le gain dû au travail animal et humain,
+    -   pour finir par évaluer le[nombre de calories supplémentaires accumulées grâce à une calorie de travail.]{.bg2}
+-   Il aboutit à une estimation selon laquelle le travail humain et animal permet une [accumulation de calories supplémentaires]{.bg2} égale à 40 fois l'énergie dépensée pour une prairie artificielle, et 20 fois pour du blé
+-   Fonde une approche qualifiée [d'"énergétisme social",]{.bg2} tenante d'une vision essentiellement biophysique des rapports entre économie et environnement
+:::
+
+------------------------------------------------------------------------
+
+### Transition marginaliste et l'économie des ressources
+
+:::::: columns
+::: {.column width="50%"}
+```{r}
+#| fig-align: "center"
+#| fig-height: 6
+#| fig-width: 5
+
+
+data.frame(Bien=seq(1,10))%>%
+  mutate(`Utilité`= 3*log(Bien))%>%
+  ggplot(aes(x=Bien,y=`Utilité`))+
+  geom_line()+
+  custom_theme()
+```
+:::
+
+:::: {.column width="50%"}
+::: {.incremental style="font-size:90%"}
+-   William Stanley Jevons, Carl Menger et Léon Walras sont au coeur de ce qu'on appelle
+-   [Révolution marginaliste]{.bg} : la valeur vient de la satisfaction des besoins, de [l'utilité.]{.bg}
+    -   Les échanges et les prix sont plus importants que les processus productifs
+-   La question des ressources devient plutôt marginale :
+    -   L'aspect[psychologique]{.bg2} de la théorie de la valeur s'occupe peu de [rareté absolue]{.bg2},
+    -   Mais s'inquiète de la [meilleure allocation]{.bg2} de la richesse collective
+    -   La croissance est un peu oubliée jusqu'aux années 1950
+-   Il faut [cependant gérer les ressources naturelles]{.bg2}, les allouer proprement (efficacité allocative) et perdent leur statut nécessaire dans les flux biophysiques
+:::
+::::
+::::::
+
+## C. Le tournant du début du XXe siècle : marginalité de la matière
+
+### Veblen (1857-1929)
+
+:::::: columns
+:::: {.column width="60%"}
+::: incremental
+-   Représentant d'un courant clé de la pensée américaine : [l'institutionalisme]{.bg}
+    -   Ensemble des [règles formelles]{.bg2} (lois, régulations) et [informelles]{.b2} (normes, coutumes, conventions sociales)
+    -   Dans la structuration des comportements économiques et la configuration des interactions sociales
+    -   Qui façonnent [plus que la rationalité l'économie]{.bg2}
+-   Les [institutions]{.bg} sont
+    -   des [entités évolutives]{.bg2}, qui changent au gré des transformations technolgoiques, culturelles et sociales
+    -   Mettant en avant un processus évolutif de l'économie et des institutions [de façon conjointe]{.bg2}
+:::
+::::
+
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/veblen.jpg){fig-align="right"}
+:::
+::::::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   *The theory of leisure class* (1899):
+    -   Parle le premier de[consommation ostentatoire]{.bg} : consommation d'une classe aisée et oisive, de façon visible et excessive pour montrer leur situation sociale
+    -   Le [loisir]{.bg2}, en outre de la consommation, est valorisé bien que apparemment dénué d'utilité economiquen, comme [indicateur de statut]{.bg2}
+    -   C'est inefficace, et l'accumulation avec ces motifs n'est pas souhaitable
+    -   De façon parallèle, crée des [conditions pour plus de croissance]{.bg2} : le désir de consommation est toujours lié à celui de la classe au dessus
+    -   Plus le prix d'un bien est élevé, plus on en veut dans une certaine classe
+    -   Forme les prémisses d'une [étude des liens entre consommation et bonheur]{.bg2}
+:::
+
+------------------------------------------------------------------------
+
+### Conservationisme
+
+:::::: columns
+::: {.column width="40%"}
+![Giford Pinchot](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/pinchot.jpg){fig-align="left"}
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   [Conservationnisme]{.bg} : courant de pensée visant à l'usage [raisonnés]{.bg2} des [ressources naturelles]{.bg2}
+    -   la rareté est une réalité inflexible ; elle peut se révéler comme une disponibilité physique limitée au niveau régional voire mondial, à un instant donné ou dans le temps
+    -   sans une intervention publique suffisante les forces du marché libre intensifieraient la rareté et créeraient de grands monopoles dominant la propriété des ressources naturelles
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### Harold Hotelling (1875-1973) et l'analyse marginaliste des ressources
+
+"L'économie des ressources épuisables", *Journal of Political Economy*, 1931
+
+:::::::: columns
+:::: {.column width="50%"}
+::: incremental
+-   Modèle [mathématique]{.bg} de l'exploitation des ressources
+    -   Vision allocative : trouver le prix qui permet une allocation optimale des ressources dans le temps
+    -   Il s'agit de savoir quels enjeux particuliers le secteur de [l'extraction minière]{.bg2} présente du point de vue d'un [producteur rationnel]{.bg2} cherchant à maximiser son profit.
+    -   Les préoccupations des classiques ou des institutionnalistes envers les réalités techniques de la production et de la croissance sont mises de côté.
+:::
+::::
+
+::::: {.column width="50%"}
+::: incremental
+-   [Règle de Hotelling]{.bg} :
+    -   Le prix de la ressource doit nécessairement évoluer de la sorte pour que les [volontés de report et de]{.bg2} [précipitation de l'extraction s'équilibrent]{.bg2}
+    -   via le [calcul des variations]{.bg} :minimisation d'une forme fonctionnelle, on cherche la fonction et pas $x$ pour le faire, base du Lagrangien et Hamiltonien
+:::
+
+::: fragment
+$$\frac{\dot{P}_t}{P_t} = r$$
+:::
+:::::
+::::::::
+
+::: notes
+Keep the resource in the ground and hope for a better price the next year, or extract and sell it and invest the proceeds in an interest-bearing security.
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Introduit des dimensions clé :
+    -   [Actualisation]{.bg} et allocation des ressources dans le temps
+    -   Démonstration que l'exploitation par un [régime concurrentiel donne une allocation optimale]{.bg}
+-   Le problème n’est plus [macroéconomique]{.bg2}
+    -   Il ne porte plus sur la dynamique du système économique, sur les mutations structurelles de l’économie.
+    -   Savoir comment capter un maximum de valeur à partir d’une ressource donnée de façon mathématique
+:::
+
+------------------------------------------------------------------------
+
+### Karl Polanyi (1886-1964) et l'encastrement
+
+*The Great Transformation*, 1944
+
+::: {.incremental style="font-size:90%"}
+-   Idée d'un [encastrement des mondes]{.bg} : le monde économique est inclus dans le social, lui même dans la nature
+-   Le libéralisme économique vise au [désencastrement]{.bg} de la sphère économique et technique de la sphère sociale et politique :
+    -   L'économique devient traité comme un système autonome au règles arbitraires
+    -   Ce désencastrement produit des [effets terribles]{.bg2}, socialement, économiquement et environnementalement
+-   La [marchandisation des éléments fondamentaux]{.bg}, qui ne devrait pas être possible "normalement" car pas produites
+    -   La [terre]{.bg2} (ou la nature) ne peut être considérée uniquement comme une marchandise sans conséquences écologiques et sociales.
+    -   Le [travail]{.bg2}, c’est-à-dire l’activité humaine, est soumis aux logiques de profit plutôt qu’à son rôle social et créatif.
+    -   La [monnaie]{.bg2} est transformée en un instrument purement spéculatif, déconnecté de sa fonction d’échange social.
+-   Auquel répond la sphère sociale dans un [double mouvement]{.bg} :
+    -   Tension entre [dérégulation]{.bg2} : le marché, laissé à lui-même, peut engendrer des inégalités extrêmes et des instabilités qui nécessitent des interventions pour préserver la cohésion sociale; il ne s'autorégule pas
+    -   et [protection accrue]{.bg2}, parfois l'émergence de régimes totalitaires
+:::
+
+::: notes
+25 octobre 1886 en Autriche-Hongrie, à Vienne, mort le 23 avril 1964 au Canada à Pickering, au bord du Lac Ontario, est un économiste austro-hongrois, généralement considéré comme étant d'obédience politique socialiste ou marxiste occidentale chrétienne (marxiste hétérodoxe), chercheur à l'université Columbia à New York, naturalisé américain et canadien, spécialiste d'histoire et d'anthropologie économiques.
+:::
+
+------------------------------------------------------------------------
+
+### William Kapp (1910-1976) et les coûts sociaux
+
+:::::: columns
+::: {.column width="40%"}
+*The social costs of private enterprise* (1950)
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/kapp.jpg){fig-align="center"}
+:::
+
+:::: {.column width="60%"}
+::: {.incremental style="font-size:85%"}
+-   Les [coûts sociaux sont inhérents]{.bg} au régime de marché expansif et pas des externalités
+    -   L’entreprise privée, en se concentrant exclusivement sur la [maximisation]{.bg2} du profit
+    -   Néglige une large gamme de coûts supportés par la société.
+    -   Et cherche même à les [transférer]{.bg2} sur la société du fait du capitalisme
+    -   Ils ne sont inclus dans [l'analyse coût bénéfice]{.bg}, ce qui ne permet pas une bonne allocation des ressources
+-   Prône une approche par les [institutions]{.bg}, pour anticiper les coûts sociaux plutôt que de courir après
+-   Rejet des approches de [consentement à payer]{.bg}
+    -   Fondées sur les [«capacités à payer»]{.bg2} des individus
+    -   Disent donc rien sur les dynamiques socio-écologiques et les [risques cumulatifs]{.bg2}
+-   Economie [évolutionniste et développementaliste]{.bg2} fondée sur une diversité d’indicateurs :
+    -   Balance économie/écologie avec objectif les besoins humains élémentaires pour tous
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### Nicolas Georgescu Roegen (1906-1994) et le retour de la thermodynamique
+
+*The Entropy Law and the economic process* (1971)
+
+::: incremental
+-   Les phénomènes de production sont :
+
+    -   compris comme des processus de [transformation et de dégradation de l’énergie]{.bg2}
+    -   mais également de fragmentation et dissémination de la [matière]{.bg2}
+
+-   Met en avant le [caractère irréversible des actions humaines]{.bg}:
+
+    -   et des processus écologiques, du fait de l’impossibilité de [réutiliser la matière et l’énergie.]{.bg2}
+    -   les matériaux ne pouvaient être recyclés infiniments, de ce fait, même une [économie en non croissance]{.bg2} est insoutenable : retour d'un ["état stationnaire"]{.bg2}
+    -   La limite basse serait un point où l’apport énergétique est assuré par le soleil
+
+-   Le phénomène d’[entropie]{.bg} est accru par l’usage de nos [«organes exosomatiques»]{.bg} (voitures, avions, tracteurs, etc.)
+
+-   Georgescu Roegen n’aimait pas la théorie de la [valeur basée sur l’énergie]{.bg}, en mettant l’accent sur la [matière]{.bg2} en refus d’un dogme purement énergétique.
+:::
+
+------------------------------------------------------------------------
+
+### K.E. Boulding (1910-1993) et l'analyse générale des systèmes
+
+*The Economics of the Coming Spaceship Earth*, 1966
+
+::: incremental
+-   L’économie des années 1960 comme [l’économie « cow boy »]{.bg}:
+    -   Conquérant de nouveaux espaces, de nouvelles terres et de nouvelles ressources
+    -   Il faut passer à une [économie du vaisseau spatial terre]{.bg}
+    -   Du fait des lois de la [thermodynamique]{.bg2} : énergie, eau, matière, présentes en quantités limitées, doivent être gérées raisonnablement.
+    -   Préconise de valoriser les [actifs immatériels]{.bg2} également, comme les connaissances
+-   A sa suite, [Ayres et Knees]{.bg} :
+    -   développent le premier modèle économique fondé sur la [comptabilité matérielle]{.bg2}, qui aura une grande influence sur les premiers économistes écologiques
+    -   Montrent également que les « externalités » sont en fait [nécessaires]{.bg2} c’est à dire non pas [contingentes]{.bg2} mais normales dans le régime d’exploitation, résultant des lois de la physique
+:::
+
+------------------------------------------------------------------------
+
+### Eugene Odum (1913-2002) et Buzz Holling (1930-2019) : l'écologie comme système
+
+::: incremental
+-   Pionniers de l'analyse des [écosystèmes]{.bg}
+    -   Insistent sur la [dimension systémique]{.bg2} des interrelations entre les organismes au sein d’une même espèce, entre les espèces, et plus largement, avec l’ensemble des éléments qui constituent l’écosystème
+    -   Les échanges entre [biotiques]{.bg2} et [abiotique]{.bg2} sont caractérisés comme des flux matériels et énergétiques
+-   Odum est pionnier d'une [approche écoénergétique]{.bg}
+    -   Qui caractérise les flux d’énergie qui s’échangent entre composants d’un système, en les comptabilisant (énergie libérée et incorporée)
+-   Holling laisse de fameux concepts comme celui de [résilience et de cycle adaptif]{.bg}
+    -   "Mesure de la capacité des systèmes à absorber des changements dans ses variables d’état, ses variables actives et ses paramètres, et à perdurer"
+    -   Le système économique encastré dans le système social et lui même inclus dans la biosphère, de façon dynamique avec la notion de [cycle adaptif]{.bg2}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/adaptive_cycle.png){fig-align="center"}
+
+::: notes
+**1. Phase d'Exploitation (r)** Description : Après une perturbation majeure (comme un incendie ou une coupe rase), la forêt se retrouve dans un état "ouvert". Dans cette phase, l'environnement est favorable à la colonisation rapide par des espèces pionnières qui profitent de l'absence de concurrence et de la richesse en nutriments issus de la décomposition des matériaux brûlés.
+
+Exemple Concret : Après un incendie, des herbacées et des arbustes à croissance rapide colonisent le terrain. Ces espèces pionnières se multiplient rapidement, établissant une nouvelle base de végétation.
+
+**2. Phase de Conservation (K)** Description : Au fil du temps, les espèces pionnières sont remplacées par des espèces plus compétitives qui construisent des structures plus complexes (arbres, sous-bois dense). Le système devient alors plus stable et structuré. Cependant, cette stabilité s'accompagne d'une rigidité accrue : les interactions et les ressources se concentrent autour des espèces dominantes, ce qui réduit la flexibilité du système face aux perturbations.
+
+Exemple Concret : La forêt se densifie et les arbres à croissance plus lente mais à longévité élevée prennent le dessus. Le sous-bois devient moins diversifié et les ressources (lumière, eau, nutriments) sont utilisées de manière très efficace mais concentrée, rendant le système moins apte à absorber un choc important.
+
+**3. Phase de Libération (Ω)** Description : En raison de la rigidité accumulée durant la phase de conservation, le système devient vulnérable à des perturbations. Un événement brusque – souvent un nouvel incendie ou une autre forme de stress environnemental – peut provoquer l'effondrement rapide de la structure établie, libérant ainsi les ressources et la dynamique qui étaient confinées dans le système stable.
+
+Exemple Concret : Un incendie de forêt se déclare, détruisant une grande partie des arbres matures. Cet événement « libère » l'énergie accumulée dans le système et remet en cause l'ordre établi, créant un nouveau terrain d'opportunités pour des espèces nouvelles ou pionnières.
+
+**4. Phase de Réorganisation (α)** Description : Suite à la perturbation, le système entre dans une phase de réorganisation. Les ressources libérées (nutriments, espace, lumière) permettent à de nouvelles espèces de s'installer et d'expérimenter différentes configurations. Ce n'est pas simplement un retour à l'état précédent, mais l'émergence d'une nouvelle dynamique qui peut, à terme, améliorer la résilience du système face aux futures perturbations.
+
+Exemple Concret : Après l'incendie, la forêt se reforme. De nouvelles espèces pionnières colonisent d'abord le terrain, mais cette fois, la composition des espèces et la structure de la forêt peuvent être légèrement différentes, intégrant par exemple des espèces qui étaient auparavant en marge. La diversité peut s'accroître, et le système peut gagner en résilience pour mieux faire face à de futures perturbations.
+:::
+
+------------------------------------------------------------------------
+
+## Le constat des années 1970
+
+::: incremental
+-   Après une [mise à l'agenda]{.bg2} dans les 1960 :
+    -   *Silent Spring* de Rachel Carson qui dénonce l'impact des pesticides sur les oiseaux
+    -   Mouvements contestataires en Europe (1968) et aux Etats Unis
+-   Retour de la [question environnementale]{.bg2} dans les années 1970 :
+    -   1971 : Création du ministère de l'Environnement en France
+    -   1972 : Conférence des Nations Unies sur l'environnement à Stockholm, premier sommet mondial sur l'environnement
+    -   1973 : Premier choc pétrolier qui soulève la question de la dépendance aux énergies fossiles
+    -   Travaux du Club de Rome (dont le fameux rapport Meadows)
+:::
+
+:::: fragment
+::: {.callout-tip title="The Limits to Growth, 1972"}
+Sous la houlette de [Dennis Meadows]{.bg}, un rapport utilisant un modèle de simulation (`World3`) identifie l'industrialisation, la démographie, l'épuisement des ressources et la dégradation de l'environnement et prédit un effondrement du système mondial au XXIe siècle si la trajectoire de croissance reste inchangée. Les préconisations principales sont la transition vers un état d'équilibre ("steady state") via le contrôle volontaire de la croissance démographique et économique, l'amélioration des techniques de production et la réduction de l'exploitation des ressources naturelles.
+:::
+::::
+
+## Des pionniers de l'économie écologique
+
+### Herman Daly (né en 1938)
+
+*Steady State Economics (1977)*
+
+::: incremental
+-   Proche des idées de Stuart Mills : état stationnaire peut être [désirable]{.bg2}
+-   Trois conditions pour le respect du principe de \[durabilité forte\]{.bg\]}:
+    -   Le rythme de la [consommation des ressources renouvelables]{.bg2} ne doit pas dépasser celui du [renouvellement]{.bg} de ces dernières (exemple des stocks de pêche ou de bois)
+    -   Le rythme de [consommation des ressources non renouvelables]{.bg2} ne doit pas dépasser celui des [innovations]{.bg2} permettant de trouver des substituts renouvelables;
+    -   Le rythme [d’émission de pollution]{.bg2} ne doit pas excéder les [capacité des écosystèmes à absorber]{.bg2} ces derniers.
+:::
+
+------------------------------------------------------------------------
+
+### René Passet et la hiérarchie des systèmes de Passet (1926-)
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/passet.png){fig-align="center"}
+
+::: notes
+La spécificité de René Passet réside dans sa capacité à transformer des critiques théoriques en propositions concrètes et mesurables, en intégrant de manière systématique et quantifiable les contraintes écologiques dans l’analyse économique et dans les politiques publiques. Il a ainsi comblé le fossé entre la réflexion conceptuelle sur les limites planétaires et la mise en œuvre pratique d’un développement véritablement durable.
+:::
+
+------------------------------------------------------------------------
+
+### Igancy Sachs (1927-2023) et l'éco développement v. le développement durable
+
+*L’éco-développement* (1981)
+
+::: incremental
+-   Pas d’objectif normatif généralisable
+-   Objectif de co-viabilité est contexte-dépendant
+-   Rôle clé d’instances de [planification décentralisées et participatives]{.bg}
+-   Permettant la [délibération]{.bg} entre citoyens-consommateurs-producteurs
+-   Doivent permettre l’adoption de décisions collectives adaptées aux besoins et au contexte écologique et social
+-   Faible succès car pas de programme assez «idéologique» mais une approche pragmatique
+:::
+
+# La création du sous-champ {#sec-champ}
+
+Le *"champ scientifique comme système des relations objectives entre les positions acquises (dans les luttes antérieures) est le lieu (c'est-à-dire l'espace de jeu) d'une lutte de concurrence qui a pour enjeu spécifique le monopole de l'autorité scientifique"* (P. Bourdieu, 1976)
+
+## La critique et les principes clés
+
+*Towards an ecological economics*, Costanza & Daly, 1987
+
+::: incremental
+-   Petit à petit, une opposition se crée à la réponse des économistes, qui prônent la [substituabilité des capitaux naturels et physiques]{.bg}
+-   Pas de [système économique]{.bg} qui puisse vraiment prendre en compte les [ressources naturelles]{.bg} :
+    -   Partisans du marché : les externalités ne sont pas importantes et le système peut être amélioré avec plus de main invisible
+    -   Les marxistes pensent qu’une meilleure planification et éducation politique va résoudre les problèmes
+-   L’écologie scientifique ignore [l’aspect humain culturel]{.bg}:
+    -   On regarde l’impact des hommes sur les écosystèmes
+    -   Mais pas la « compréhension et prédiction » des comportements humains dans le contexte des écosystèmes naturels
+:::
+
+## La critique et les principes clés
+
+::: incremental
+-   La [soutenabilité]{.bg} :
+    -   Comment les systèmes économiques n’arrivent pas à le prendre en compte, et comment d’autres attributs du système comme la justice sont nécessaires
+    -   Il faut [modérer la place des humains par rapport aux autres espèces]{.bg2}, en intégrant leur valeur in « maintaining life support systems » et ignore la valeur intrinsèques des autres espèces
+    -   La question de la distribution des richesses et de la ["suffisiency"]{.bg}, de la justice est clé pour faire la soutenabilité à l’intérieur de notre espèce
+    -   [Sceptimisme technologique]{.bg}
+-   La [distribution des ressource]{.bg} intra et inter espèces :
+    -   Avec les humains, mais aussi avec les animaux : ils ont un niveau uniforme de revenu per capita, des dominances spatiales etc, mais pas de division en [classes sociales.]{.bg2}
+    -   Chez les humains, il y a des différents usages des ressources:
+        -   Par classes sociales
+        -   Dans le temps,
+    -   La limitation de la population n’est pas le seul levier, il y a la [distribution des richesses]{.bg2}
+:::
+
+## La critique et les principes clés
+
+::: incremental
+-   Un [pluralimse méthodologique et épistémologique]{.bg2}
+    -   Ex: pas forcément de valorisation monétaire, ouverture aux mathématiques, aux sciences sociales, à l'écologie, aux expériences. Valeurs non monétaires et le piège de la quantification partielle
+    -   Chercher une métrique commune, car toute décision d’arbitrage entre pricé et non pricé implique un prix implicite. Ceci dit, ce n’est pas parce qu’ex post, on peut identifier ce trade off, que avant on a un moyen de calculer des prix
+:::
+
+## La critique et les principes clés
+
+[Pensée en système plutôt que par réductionnisme]{.bg2}:
+
+::: incremental
+-   Réductionnisme de la complexité à des composantes élémentaires, adaptée à :
+-   L’étude de systèmes stables
+-   Constitués de nombres limités d’éléments
+-   En interaction linéaire (décrite par des lois mathématiques proportionnelles, additives etc)
+-   Passé un certain niveau de complexité :
+-   Systèmes non stables
+-   Avec un grand nombre d’éléments ou de non linéarités
+-   D’incertitudes
+-   De possibilités de propriétés émergentes etc)
+-   Au delà de l’analyse des états stables, il convient d’analyser les trajectoires dynamiques via différents principes
+    -   Identifier la structure du système et les principes internes qui le constituent et le délimitent (structuralisme)
+    -   Identifier la qualité (ce qu’il y a, notamment l’information) dans les échanges
+    -   Analyser les rapports entre tous les niveaux d’organisation du système, comme en biologie, passer de l’individu à la biodiversité par exemple; une logique ou des logiques globales de fonctionnement
+:::
+
+## Emergence de l'économie écologique comme champ
+
+::: incremental
+-   Dans les années 80 des économistes et des écologues échangent autour des questions de durabilité [International Society for Ecological Economics]{.bg2} (ISEE) créée en 1987 à Barcelone
+-   Le journal *Ecological Economics* est créé en 1989
+-   Objectif réunir des scientifiques issus de l’écologie et de l’économie et ouvrir les méthodes d’analyse transdisciplinaire et interdisciplinaire / durabilité
+-   Des membres importants :
+    -   Robert Costanza (écologue)
+    -   Richard Norgaard (économiste)
+    -   Carl Folke (écologue)
+    -   Herman Daly (économiste),
+    -   AnnMari Jansson (écologue)
+    -   Joan Martinez-Alier (économiste)
+    -   David Pearce (économiste)
+:::
+
+## Des cadres théoriques complémentaires
+
+::: incremental
+-   Economie institutionnaliste
+    -   Changement vient des institutions (croyances, valeurs, marchés, monnaies, concurrence, Etats)
+    -   Structures sociales et rapports de forces collectifs sont la clé du changement
+    -   Point faible: pas d’autonomie individuelle, ce sont les institutions sociales qui font tout
+-   Economie néo-institutionnaliste et conventionnaliste
+    -   Changement vient des structures de gouvernance (hiérarchiques, marchandes, communautaires)
+    -   La bonne coordination et les coûts de transaction sont la clé du changement
+    -   Point faible: la coordination ne dit pas grand chose sur la transition à proprement parler
+-   Economie systémique, interactionniste et co-évolutionniste
+    -   Changement vient des interactions entre acteurs, institutions, techniques, connaissances
+    -   Les innovations systémiques, ayant une cohérence d’ensemble, sont la clé du changement
+    -   Défaut: complexe à analyser, comprendre, et faire évoluer, notamment car concernent des évolutions multi-échelles
+:::
+
+# 35 ans plus tard, où en est on? {#sec-ajd}
+
+3 grandes tendances : - La nouvelle économie des ressources - L'approche du pragmatisme environnementaliste - La socioéconomie écologique
+
+Voir les travaux de Spash (Chapitre 2 - Handbook), et [Ropke (2005)](https://www.uvm.edu/~jfarley/EEseminar/readings/ropke%20trends.pdf)
+
+## La nouvelle économie des ressources
+
+::: incremental
+-   Branche qui a pris à bras le corps l'écologie scientifique et approfondit sa prise en compte
+-   Dans des contextes spécifiques, s'attache à complexifier l'analyse des marchés en liens avec les écosystèmes locaux
+-   Ne porte pas en elle le même critique originelle parfois, vue comme un \[rejeton de l'économie néoclassique\] :
+    -   Individualisme méthodologique souvent
+    -   Relative indépendance des structures
+-   La modélisation bioéconomique par exemple (voir [Lauriane Mouysset](https://laurianemouysset.wordpress.com/)), constitue un langage commun pour revivifier et permet d’élaborer des nouvelles perspectives politiques.
+:::
+
+## L'approche environnementaliste pragmatique
+
+::: incremental
+-   Le but de cette approche, c'est de parler aux décideurs publics devant l'urgence
+-   Pour faire cela, elle investit le champ scientifique, politique et financier de notions écologiques monétarisées
+-   "We protect what we value":
+    -   Services écoystémiques
+    -   Capital naturel
+-   Les travaux de Robert Costanza sont très connus, notamment sur l'évaluation économique de la Nature
+:::
+
+## La socioéconomie de l'environnement
+
+::: incremental
+-   Volonté de se détacher des monétarisations, de l'approche pragmatique
+    -   Les méthodes scientifiques participent d'une confrontations entre ce que M. Foucault appelle des ["savoirs-pouvoirs"]{.bg2}
+    -   Il existe plein de manière de se représenter la "nature" ou l'environnement et autant de manière d'en produire des évaluations: 'imaginaire et les valeurs de l'environnement sont des champs de bataille
+    -   Ex : C'est pas pareil de regarder un troupeau de bovin avec des lunettes productiviste (combien de kg de viande, et prix de marché) ou avec une éthique bio (santé animale, bien-être, etc.)
+    -   Ex2 : On peut regarder des jardins populaires urbains comme un lieu de sociabilité et de relations avec le vivant, ou comme une "friche" susceptible d'accueillir de nouveaux logements ((caricatural exprès))
+    -   Les rapports de force en vigueur dans une société engendrent des formes de [valorisation dominante]{.bg2}, et donc des [régimes de rapport]{.bg2} à l'environnement
+    -   Il y a un lien entre la production et la mise en circulation des [connaissances (savoirs) et la manière dont]{.bg2} on [agit sur l'environnement (pouvoirs)]{.bg2}.
+-   Volonté de s'approcher d'une analyse des institutions, des systèmes producteurs d'équité
+-   Se veut faire une économie non pas dépolitisée, mais la critique des dynamiques institutionnelles dans le cadre de la transition
+:::
+
+------------------------------------------------------------------------
+
+### Bonus : le lien entre savoir et pouvoir chez Michel Foucault
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/intro/michel_foucault.png){fig-align="center"}
+
+# notes pour l'épistémologie
+
+Méthode hypothético-déductive 
+Hypothèse => vérification expérimentale => Lois généralisables
+Initialement en science physique puis en sciences humaines
+Dominante en science depuis le 19ème siècle
+La démarche empirico-inductive 
+Question => terrain => hypothèses => retour sur le terrain => théorie situées temporellement et spatialement
+Admet une diversité de méthodes pour répondre à la question
+Utile pour les questions complexes et multi-factorielles
+Pluralisme disciplinaire

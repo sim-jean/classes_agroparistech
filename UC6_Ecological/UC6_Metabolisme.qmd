@@ -1,0 +1,895 @@
+---
+title: "L'analyse métabolique"
+subtitle: "UC6 - Economie Ecologique"
+---
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(here)
+library(extrafont)
+library(reshape2)
+
+#install.packages(c("sysfonts", "showtext"))
+library(sysfonts)
+library(showtext)
+
+#font_add_google("Roboto", "roboto")
+showtext_auto()
+
+source(here("utilities.R"))
+
+local_family = "Roboto Light"
+             
+
+```
+
+# Introduction
+
+## Le problème
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/cma-cgm-container-ship.jpg){fig-align="center"}
+
+::: notes
+-   L'idée de l'économie traditionelle, c'est d'organiser l'allocation des ressources dans un grand bateau, de plus en plus grand
+-   Que se passe-t-il lorsque le bateau coule?
+:::
+
+## Plan
+
+:::::::: columns
+::::: column
+::: incremental
+1.  [Indicateurs de soutenabilité]{.fg}
+    i)  Limites planétaires
+    ii) Découplage et croissance verte
+    iii) L'empreinte écologique
+    iv) L'HANPP
+:::
+
+::: incremental
+2.  [Métabolisme social : mesures et concepts aux]{.fg} [fondements de la macroéconomie écologique]{.fg}
+    i)  Retour sur l'histoire du métabolisme
+    ii) Métabolisme social contemporain
+    iii) Les limites métaboliques à la croissance
+:::
+:::::
+
+:::: column
+::: incremental
+3.  [Vers une macroéconomie écologique]{.fg}
+    i)  Le travail du Club de Rome et le rapport Meadows
+    ii) La controverse néoclassique
+    iii) Exercice de modélisation macroéconomique sur `R`
+    iv) Courants modernes
+4.  [Par delà la croissance: technocritique, décroissance]{.fg} [et coévolution]{.fg}
+    i)  L'analyse de la décroissance: de l'écologie politique et la bioéconomie à la postgrowth
+    ii) Le codéveloppement: évolution des systèmes et relations homme nature
+    iii) L'approche par les besoins fondamentaux
+    iv) L'environnementalisme des pauvres de J. Martinez Allier
+:::
+::::
+::::::::
+
+# 1. Indicateurs de soutenabilité
+
+## Les limites planétaires
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/planetary_bounds.jpg){fig-align="center"}
+
+::: notes
+-   Développé par Rockström et son équipe en 2009 (co-directeur du PIK)
+-   Limites de paramètres sur un nombre fini d'éléments qui permettent à l'humanité de rester dans la zone dans laquelle elle a historiquement évolué
+-   Concept des "limites planétaires"
+:::
+
+## Le découplage et la promesse d'une croissance verte
+
+### L'hypothèse d'une courbe de Kuznets environnementale
+
+:::::: columns
+::: column
+```{r}
+#| fig-align: left
+#| fig-height: 8
+#| fig-width: 8
+
+
+
+data_ = data.frame("GDP/tête" = seq(0,100))
+data_ %>%
+  mutate(Impacts = .2*`GDP.tête`*(1 - `GDP.tête`/100))%>%
+  ggplot(aes(x=GDP.tête, y  = Impacts))+
+  geom_line(linewidth=1, color = "navyblue")+
+  custom_theme(font_size=28)
+
+```
+:::
+
+:::: column
+::: incremental
+-   Inspiré des travaux de [Simon Kuznets]{.bg4} sur les inégalités
+-   Idée que l'impact environnemental augmente au début du processus économique, puis baisse:
+    -   Le passage à une économie [tertiaire]{.bg3}
+    -   Le [changement]{.bg3} des goûts et pratiques à mesure que le niveau de richesse augmente
+    -   Meilleure [technologie]{.bg3}
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### La notion de découplage
+
+Voir la métanalyse de [Haberl et al., 2020](https://iopscience.iop.org/article/10.1088/1748-9326/ab842a#erlab842as3)
+
+::: incremental
+-   Découplage [absolu]{.bg4} : le niveau de perturbation environnementale [baisse]{.bg3} dans l'absolu
+    -   UE : Baisse des émissions de 9% malgré la croissance de 0.7% en 2022 (IAE)
+-   Découplage [relatif]{.bg4} : le niveau de perturbation environnementale augmente [moins vite]{.bg3} que la croissance
+    -   Plutôt le cas pour de nombreuses métriques
+    -   Quelques analyses de la courbe de Kuznets environnementale pour le C02 (Stern, 2017)
+    -   Mais plutôt le rôle de l'offshoring des émissions et du changement structurel (Wood et al, 2019)
+    -   La relation IPAT :
+:::
+
+::: fragment
+$$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intensity}$$
+:::
+
+## L'empreinte écologique
+
+::: incremental
+-   Notion définie par [Wackernagel]{.bg3} (thèse en 1992)
+-   Mesure chaque année :
+    -   La surface totale (terrestre et maritime) qu'il faut à un groupe d'individus
+    -   Pour atteindre un niveau de consommation
+    -   Sans dégrader son environnement
+-   [Biocapacité]{.bg3} :
+    -   Evalue le volume de production de matière organique
+    -   Capable de satisfaire les besoins des sociétés humaines
+    -   Dans les différents espaces utiles
+    -   Exprimée en hectares globaux
+-   La différence entre les deux, c'est le [dépassement écologique]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_World.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_North_America.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Europe.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Africa.jpeg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/total_ecological_footprint.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/footprint_per_person.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/biocapacity_global.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/ecological_deficit_reserve_global.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_france.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_algeria.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_guyana.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_belgium.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_US.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_russia.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_brazil.jpg){fig-align="center"}
+
+## HANPP
+
+::: incremental
+-   [Human Appropriation of Net Primary Product]{.bg3}
+-   Produit primaire net :
+    -   Quantité d'énergie
+    -   Qui reste après avoir retranché la respiration des producteurs primaires (plantes)
+    -   de la quantité totale d'énergie (solaire) fixée biologiquement
+    -   Mesurée en carbone, énergie ou masse sèche
+-   HANPP élevée dans les économies dépendantes de la biomasse et stabilisation avec industrialisation
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/hanpp_jrc.jpg){fig-align="center"}
+
+# 2. Métabolisme social : mesures et concepts au fondement de la macroéconomie écologique
+
+## Présentation
+
+::: incremental
+-   Un courant d'analyse de long terme
+    -   qui mêle les approches [énergéticienne et matérielle]{.bg3}
+    -   par une approche [systémique et interdisciplinaire]{.bg3}
+    -   rejettant le [dualisme nature/société]{.bg3}, intégrant les économies dans les écosystèmes
+-   Qui analyse les [flux de matière et d'énergie]{.bg4} :
+    -   [Quantitatif]{.bg4} : par le développement d'une méthode [comptable]{.bg3} précise et large
+    -   [Qualitatif]{.bg4} : en utilisant l'économie, l'histoire, la science politique, et l'analyse institutionnelle
+-   Pour comprendre :
+    -   La manière dont les [modes d'organisation]{.bg3} sociale et politique influencent les [flux]{.bg3} de matière et d'énergie
+    -   Le rôle des [relations de pouvoir]{.bg3} dans l'accès et la distribution des ressources
+    -   La [transformation]{.bg3} des métabolismes par les [transitions]{.bg3} socio-écologiques
+    -   Les [limites]{.bg3} des systèmes socioéconomiques
+:::
+
+## A. Retour sur l'histoire et la définition du métabolisme
+
+### Métabolisme : définitions
+
+::: {.incremental style="font-size:88%"}
+-   En [biologie]{.bg3} :
+    -   Processus chimique de [transformation]{.bg3} de la nourriture en briques énergétiques
+    -   Par lequel les tissus et cellules sont créés
+    -   Et l'ensemble des mécanismes qui régulent ces systèmes
+    -   Transformation énergétique [endosomatique]{.bg3}
+-   [Social]{.bg3} :
+    -   Manière avec laquelle les sociétés humaines organisent leurs [échanges]{.bg3} croissants de [matière et d'énergie]{.bg3} avec l'environnement
+    -   Comptabilité et caractérisation des [throughputs]{.bg3} qui transitent entre composants du système :
+        -   Stocks et flux biophysiques
+        -   Processus de recyclages
+        -   Production de déchets
+        -   Emissions de polluants
+    -   Transformation énergétique [exosomatique]{.bg3}
+    -   Le niveau de production dépend des quantités de matériaux et d'énergie consommée, selon des [modalités]{.bg3} différentes
+    -   Importance de la [modélisation]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+### Une tradition de long terme portée sur l'énergie
+
+::: incremental
+-   Tradition de long terme : des physiocrates à Podolinsky, puis les théoriciens de l'énergie comme [les frères Odum, Ayres et Kneese ou encore Nicolas Georgescu Roegen]{.bg4}
+
+-   [Liebig]{.bg4}, *La chimie agricole*, 1840:
+
+    -   [«Loi de reconstitution»]{.bg3} : les produits de la terre doivent y retourner pour maintenir la fertilité des sols (idée de cycle des nutriments)
+    -   [Rupture métabolique]{.bg3} avec les égouts (rupture du cycle : les nutriments vont dans l'eau)
+
+-   [Marx]{.bg4} :
+
+    -   Rupture entre ville et campagne
+    -   [Au sein des pays]{.bg3} :
+        -   Une division sociale du travail
+        -   Qui repose sur la concentration de la classe ouvrière dans les grandes villes
+        -   Et la nécessité émergente de transporter constamment sa nourriture depuis la campagne.
+    -   Entre pays : ["échange écologiquement inégal"]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+### Les frères Odum et l'*energetics*
+
+::: incremental
+-   Howard T. Odum (1924-2002) et Eugene Odum, 1913-2002
+-   Eugene Odum est un des pères de l'écologie moderne avec *Fundamentals of Ecology*, 1953:
+    -   L'écologie comme une [science des écosystèmes]{.bg3} plutôt qu'une collection de faits sur les organismes : la [totalité est plus grande que la somme]{.bg4} des parties
+-   Howard développe le concept de ["émergie"]{.bg4} (*Ecological and General Systems: An Introduction to Systems Ecology*, 1994) :
+    -   La quantité d'énergie qui a mené à un élément, pas simplement le flux qu'il reçoit
+    -   Développe un langage formel de dynamique des systèmes pour l'énergie
+-   Les sociétés deviennent [plus complexes à mesure qu'elles capturent plus d'énergie]{.bg4}, mais cette complexité est coûteuse
+    -   Les sociétés modernes industrielles semblent plus efficaces
+    -   Mais requièrent souvent plus d'énergie totale par unité de production
+:::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="30%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/signs_odum_1967.jpg){fig-align="center"}
+:::
+
+::: {.column width="70%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/systems_odum_1967.jpg){fig-align="center"}
+:::
+:::::
+
+::: notes
+-   La nature hiérarchique des flux d'énergie (du soleil aux producteurs et aux consommateurs)
+-   La dégradation de l'énergie à chaque étape (illustrée par des symboles de perte de chaleur)
+-   L'importance du stockage (réservoir de biomasse)
+-   Boucles de rétroaction dans le maintien de la stabilité du système (recyclage des nutriments)
+:::
+
+------------------------------------------------------------------------
+
+### Ayres, Kneese et l'écologie industrielle
+
+[Ayres and Kneese, Production, Consumption, and Externalities, *American Economic Review*, 1969](https://www.jstor.org/stable/pdf/1808958.pdf?casa_token=ske4LWPyg4wAAAAA:Ij17nI4OHvMrYIJuXTx-L_ypRdZdgNCnL1TElBLFlT3zhqOeJ6DyDcMWpkQldMNofRfdUzKAluy9iXlvxbwkxA8cl-1T-06tK1PdsKN6w9cSwhFaxjo)
+
+::: incremental
+-   Utilisent les lois de la thermodynamique et de la [conservation des matériaux]{.bg4}, années 1960
+
+-   Analyse des procédés de production en prenant en compte les [déchets]{.bg4} : émergence de la notion de ["balance matérielle"]{.bg3} pour les systèmes économiques
+
+-   Cela a des conséquences importantes sur la pensée de [régulation]{.bg4} :
+
+    -   Les externalités sont intrinsèques
+    -   L'intervention publique doit prendre en compte la dynamique systématique et la redistribution des pollutions
+    -   L'ensemble des prix doit refléter les coûts des déchets également
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/ayres_kneese_1969.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+## B. Métabolisme social contemporain
+
+### La méthodologie Material and Energy Flow Accounting
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolism_fischer_kowalski_handbook_2015.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+::: incremental 
+
+- Extraction Intérieure (Domestic Extraction, DE) :
+  - Quantité totale de matières premières extraites du territoire national pour être utilisées dans l'économie. 
+  - Inclut les minéraux, la biomasse, les combustibles fossiles, etc.
+- Entrées Directes de Matières (Direct Material Input, DMI) :
+  - Somme de l'extraction intérieure et des importations.   - Mesure la quantité totale de matières entrant physiquement dans l'économie pour utilisation.
+- Consommation Intérieure de Matières (Domestic Material Consumption, DMC) :
+  - DMI moins les exportations. Représente la quantité totale de matières consommées dans le pays.
+- Consommation Matérielle Totale (Total Material Consumption, TMC) :
+  - Inclut la DMC plus les flux cachés associés aux importations et à l'extraction intérieure.
+  - Mesure plus complète car prend en compte les "sacs à dos écologiques".
+- Besoin Total en Matières (Total Material Requirement, TMR) :
+  - Somme des entrées directes de matières et des flux cachés associés (domestiques et importés).
+  - Indicateur le plus complet des besoins en ressources.
+- Balance Commerciale Physique (Physical Trade Balance, PTB) :
+  - Différence entre les importations et les exportations en termes physiques. 
+  - Positive lorsque les importations dépassent les exportations.
+
+:::
+
+-----------------
+
+### La comptabilité mondiale et européenne
+
+::: incremental
+-   Premières tentatives dans les [années 1990]{.bg3} :
+    -   Japon
+    -   Autriche
+    -   Allemagne
+    -   Puis Eurostat
+-   L'Union Européenne :
+    -   1992 : Le Système Statistique Européen commense ses travaux sur *L'Intégration des Systèmes d'Information Economiques et Environnementaux* (1994)
+        -   Les flux matériaux sont au coeur du travail
+        -   A l'époque, peu d'instituts statistiques les collectent
+        -   Et ils sont faiblement comparables du fait de différences méthodologiques
+    -   2000 : un référentiel méthodologique est développé pour mesurer ces flux à l'échelle des pays
+    -   2002 : premières études pour l'UE 15, avec des données produites par des agences internationales (FAO, IEA, Eurostat, USGS)
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   2007 : Première campagne de collecte des données sur la base du volontariat
+
+-   2011 : Regulation (EU) No. 691/2011 créant une [obligation légale de reporting]{.bg3} de ces données à Eurostat pour chaque état membre
+
+-   Elle mesure :
+:::
+
+::: fragment
+*in thousand tonnes per year, material flows into and out of an economy. They cover solid, gaseous, and liquid materials, except for bulk flows of water and air*
+:::
+
+::: incremental
+-   Elles sont accessibles sur Eurostat, sous le nom [`env_ac_mfa`](https://doi.org/10.2908/ENV_AC_MFA)
+:::
+
+------------------------------------------------------------------------
+
+### Tendances européennes
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_extraction_trade_UE2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_EU2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_EU2023.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_country_2023EU.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Tendances mondiales
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/imports_exports_globaux_2010.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/taux_métaboliques_kowalski.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Par delà la description : explications métaboliques dans le temps long
+
+[Krausmann & Fischer Kowalski (2013)]{.bg4} reprennent les analyses de Seferle et identifient [trois phases métaboliques]{.bg4} à l'échelle globale:
+
+::: incremental
+1.  Le métabolisme des sociétés de chasseurs cueilleurs
+2.  Le métabolisme des sociétés agraires
+3.  Le métabolisme des sociétés industrielles
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolic_rates_regimes_fischer_kowalski_hadbook_2015.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+#### Métabolisme des sociétés de chasseurs cueilleurs
+
+::: incremental
+-   Extraction de ressources pour leur fonctionnement sur un [principe de survie]{.bg3} - un individu ne survit que s'il apporte plus d'énergie pour une activité donnéeque nécessaire pour sa mise en oeuvre
+    -   Vivent des [produits de la photosythèse]{.bg3} récente
+-   Colonisation des écosystèmes : de façon spatiale
+-   Changement écosystémiques liés à l'homme : [extinction des grands mamifères]{.bg3}
+-   Enjeu de durabilité : [extinction des proies]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+#### Métabolisme des sociétés agraires (Néolithique)
+
+::: incremental
+-   Extraction de ressources :
+    -   Transformation d'[énergie solaire en énergie d'origine biologique]{.bg3} : déforestation etc pour maximiser la photosynthèse
+    -   Permettant de nourrir hommes et animaux
+    -   Les capacités d'utilisation des énergies (faibles) rendent le système excédentaire
+    -   Le contrôle des ressources est clé et mène à des [conflits]{.bg3}
+-   Colonisation des écosystèmes :
+    -   [Déforestation]{.bg3}
+    -   [Domestication]{.bg3} animale et végétale
+-   Enjeux de durabilité : équilibre entre population et efficacité de l'usage des sols (Malthus etc)
+:::
+
+------------------------------------------------------------------------
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/moulin.jpg){.absolute left="-100" top="100" width="600" height="450"}
+:::
+
+:::: {.column width="60%"}
+[Sources énergétiques]{.bg3}
+
+::: incremental
+-   Estimation de [production d’énergie au Moyen-Âge]{.bg3}
+    -   1-2% de l’énergie produite par les moulins
+    -   25% fourrage
+    -   50% bois de chauffe
+    -   25% alimentation
+-   [Moulins]{.bg3} créés à l’Antiquité puis diffusé en milieu rural à partir du 9ème siècle
+    -   Permettent de libérer entre ¼ et 1/3 des la force de travail
+    -   L’équipement des rivières est achevé vers 1250
+        -   400 ans de tâtonnements et d’apprentissage pour en arriver là (fin en 1250) avec des évolutions techniques et institutionnelles
+        -   [Système, une fois stabilisé, très résilient]{.bg3}: le nombre et le positionnement de moulins sur certaines zones d’Ile de France n’a pas bougé entre 900 et 1800.
+:::
+::::
+::::::
+
+::: notes
+Un cheval = 735 watt Un bœuf = 0,75 cheval Vache = 0,4 cheval Ane = 0,7 cheval
+
+Des ailes et des roues. La place des moulins dans le système énergétique parisien médiéval (XIIIe-XVIe siècle) - Pierre Marchandin, archiviste paléographe (prom. 2018)
+
+-   Moulin à eau : pas idéal si débit instable
+
+-   Moulin sur bateau :pas top, mais utile pendant le siège de Rome par exemple
+
+-   Moulin pendant : permet de s'adapter aux fluctuations et d'actionner de grosses meules, mais encombre les arches des ponts, seule une des 14 arches du Pont au Change est vouée à la navigation
+
+-   Moulins à vent : Normandie au XIe et arrivent à Paris en complément à la fin du XIIIe
+:::
+
+------------------------------------------------------------------------
+
+#### Métabolisme des sociétés industrielles (XVIe siècle)
+
+::: incremental
+-   Ressources extraites:
+    -   Utilisation conséquente des[sources d'énergie fossiles]{.bg3}, stockés sur terre de façon concentrée
+    -   [Innovations technologiques]{.bg3} permettant l'utilisation des énergies nouvelles et ouvrant des possibilités d'usage (transport lointain, massif; grands travaux)
+    -   Créent l'illusion que le développement social s'émancipe des contraintes naturelles
+-   [Colonisation]{.bg3} des écosystèmes [intense]{.bg3} à [plusieurs niveaux]{.bg3} d'organisation, allant du [gène au climat]{.bg3}
+-   [Changements écosystémiques globaux]{.bg3} des cycles biogéochimiques et climatiques, erosion des sols et déclin de la biodiversités
+-   Risques: raréfaction des ressources et impacts des changements écosystémiques globaux
+:::
+
+------------------------------------------------------------------------
+
+### Analyse de long terme du sociométabolisme français
+
+Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328136) : dépasser le MFA avec une analyse sociométabolique
+
+:::::: columns
+:::: {.column width="30%"}
+::: incremental
+-   $DE$: extraction domestique
+-   $PTB= Imports - Exports$ : la balance commerciale physique
+-   $DMC = DE+PTB$ : consommation matérielle domestique
+:::
+::::
+
+::: {.column width="70%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/material_flows_megalhes.jpg){fig-align="right"}
+:::
+::::::
+
+------------------------------------------------------------------------
+
+#### Transitions sociométaboliques {#sec_transition_magalhaes}
+
+::: incremental
+1.  [Croissances]{.bg3} massives de [l'extraction domestique]{.bg3} et de la [consommation]{.bg3} matérielle domestique (comme dans le reste des pays industrialisés): passage d'une économie organique à minérale
+2.  [Déficit matériel]{.bg3} constant depuis 1850
+3.  [Importations]{.bg3} massives de produits [fossiles]{.bg3}
+:::
+
+::: fragment
+-   Voir la table [[Table](#appendix_table_metabolism)]{.button}
+:::
+
+------------------------------------------------------------------------
+
+#### 1830-1860 : une industrialisation lente dans une économie mondialisée, basée sur une empreinte matière extérieure
+
+::: incremental
+-   La France demeure une [économie biotique]{.bg3}, basée sur un métabolisme agraire
+-   L'extraction domestique croît lentement
+-   Le [charbon remplace le bois]{.bg3} comme source majeure d'énergie en 1860, qu'elle importe en masse (PTB) (40% de sa consommation, à 60% depuis la Belgique)
+-   Plutôt orientée vers la [ruralité]{.bg3}, avec le "putting out système", et une croissance de la population
+-   Les [fibres textiles]{.bg3} étaient aussi largement importées (50% en 1860) : il aurait fallu jusqu'à 30% de la surface utile du pays
+:::
+
+------------------------------------------------------------------------
+
+#### 1860-1930 : Charbon, empire et métabolisme industriel
+
+::: incremental
+-   [Extraction domestique s'accroît, notamment de charbon]{.bg3} - 9Mt en 1860 à 55Mt en 1930
+    -   Représente 70% de la consommation énergétique en 1930
+-   La [globalisation est lente]{.bg3} ente 1870 et 1900, du fait des politiques protectionnistes à l'issue de la crise entre 1873 et 1897
+    -   La balance physique se stabilise
+-   La [balance physique s'accroit]{.bg3} avec:
+    -   L'import de textiles redevient dynamique après la première guerre
+    -   Les échanges avec l'Empire (principalement l'Algéire) en minerais et bétail
+:::
+
+------------------------------------------------------------------------
+
+#### 1945-1973 : La Grande Accélération : pétrole, décolonisation, *Pax Americana* et la construction européenne
+
+::: incremental
+-   [Croissance rapide de la DMC]{.bg3} : 7.8t/tête en 1948 à 17.3t/tête en 1973
+-   Conduit par une [croissance rapide des fossiles, au profit du pétrole]{.bg3}, surtout post 1960
+-   Raisons :
+    -   Subventions au pétrole du Plan Marshall
+    -   Politique [d'exploitation des ressources nationales]{.bg3} pour réduire le déficit : le bassin pétrolier parisien produit 1/2 million de tonnes en 1959 (peu ds l'ensemble)
+    -   [Stratégie gaulliste]{.bg3} pour l'expansion industrielle et agricole bon marché dans le cadre européen
+    -   Déport des sources d'approvisionnement américaines vers l'Algérie jusque 1971
+-   Le pétrole bon marché permet des [gains de productivité, une croissance économique]{.bg3} dans le cadre de la [relation de salaire fordiste]{.bg3}
+    -   La France devient un [exportateur net de biomasse]{.bg3} grace au pétrole dans les années 1960 : 2nd exportateur après les US en 1974
+    -   [Bétonisation]{.bg3} de la France :
+        -   Extraction de minerais non métaliques passe de 1.2t/tête en 1948 à 8t/tête en 1973
+        -   Grands projets, expansion urbaine (villes nouvelles), mitage
+        -   Croissance importante de la [voiture individuelle]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+#### 1980 - 2015 : la consolidation post industrielle après les chocs pétroliers (financiarisation et mode de vie néo impérial)
+
+::: incremental
+-   [Frein à l'augmentation de l'import de produits énergétiques]{.bg3}, qui demeurent larges (171 Mt 1973 - 176Mt 2010) et le plus gros poste d'importations
+    -   Remplacement par le [nucléaire]{.bg3}, extrait d'Afrique
+-   Stabilisation puis [léger déclin du DCE]{.bg3} : 17.5t/tête en 1980 à 15.5t/tête en 2000 et 12.5t/tête en 2014
+-   [Meilleure efficience]{.bg3} peut être mais aussi :
+    -   [Saturation]{.bg3} de la demande matérielle
+    -   Intégration dans une chaîne écologique qui renvoie les activités polluantes et intensives en Asie : [échange écologique inégal]{.bg3} avec le Sud Global (Muradian et al. 2012)
+    -   Régime d'accumulation [financier]{.bg3}
+-   Nouveau mode de vie ["impérialiste"]{.bg3} (Brand and Wissen, 2012):
+    -   Régime d'accumulation fordiste
+    -   Ancré dans l'appropriation ilimité de ressources, espace et temps d'autres territoires
+:::
+
+## C. Les limites métaboliques à la croissance
+
+### Les leçons de l'analyse métabolique
+
+::: incremental
+-   [Améliorer l'efficience]{.bg3} des ressources :
+
+    -   Meilleur usage primaire
+    -   Meilleur recyclage dans le cadre de l'économie circulaire
+
+-   Mais il reste le problème de l'[entropie]{.bg3}
+
+-   Ainsi que le [déclin tendanciel du EROI]{.bg3}
+
+-   Et [l'effet rebond]{.bg3}
+
+-   Des réductions métaboliques ne sont [pas tant à chercher du coté de la technologie]{.bg3} dans les sociétés industrielles "matures" (Fischer Kowalski & Haberl, 2015):
+
+    -   Partie [démographique]{.bg3} : une population moins fertile et agée requiert de plus faibles flux matériaux
+    -   [Moins de nourriture carnée]{.bg3} peut être un changement systémique important (1/3 des ressources potentiellement)
+    -   Pas besoin de construire plus
+    -   [Moins de combustibles fossiles]{.bg3}
+
+-   Notion de [point de retournement]{.bg3} critique
+:::
+
+------------------------------------------------------------------------
+
+### Entropie et recyclage
+
+:::::: columns
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/chapelle_darblay.jpeg){.absolute top="100" left="-100" width="700" height="500"}
+:::
+
+:::: column
+::: {.incremental style="font-size:90%"}
+-   Le recyclage permet de [lutter contre l'entropie]{.bg3} :
+
+    -   Recycle 1 tonne de PET :
+        -   0,61 tonnes de pétrole brut, 0,2 tonnes de gaz naturel, 10,96MWh d’énergie
+        -   soit 2,9 tonnes d’équivalent CO2 évitée
+
+-   Le recyclage des matériaux [complets]{.bg3} serait possible si la quantité d'énergie était infinie
+
+-   Au delà des difficultés de l'[opérationalité]{.bg3} du recyclage :
+
+    -   [Chapelle Darblay]{.bg3} en France :
+        -   Capacité de tris de papiers de 24 millions d'habitants (428 000 tonnes)
+        -   Faillite en 2020, reprise en 2024 mais pas encore finalisé car manque de soutiens financiers
+    -   [Taux de recyclage]{.bg3}(Citeo, 2022): f
+        -   Papier : 63%
+        -   Emballages ménagers : 67%
+        -   Plastiques : 27%
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### Déclin tendanciel du EROI
+
+#### Définitions et enjeux
+
+::: incremental
+-   Energy Return On Investment (EROI ou TRE en français)
+-   [TRE = énergie produite / énergie dépensée]{.bg3} pour la produire
+-   Il faut que le [ratio soit supérieur à 1]{.bg3} pour participer à l’accumulation du capital
+-   Généralement, une société privilégiera les sources d'énergie [bénéficiant du plus fort TRE]{.bg3}possible car cela signifie qu’elles fournissent un maximum d'énergie pour un minimum d'efforts
+-   Problème: [jusqu'où faut-il prendre en compte la chaîne d'opérations intervenant dans l'exploitation]{.bg3} d'une source d'énergie (même problème pour les analyses de cycle de vie)
+-   Permet d’évaluer [l’efficacité du régime économique et sa durabilité]{.bg3}
+-   Le TRE permettrait ainsi [d’expliquer en partie l'expansion et le déclin des civilisations]{.bg3} (Homer-Dixon, 2007)
+:::
+
+------------------------------------------------------------------------
+
+#### Exemple : l'Empire Romain
+
+:::::: columns
+::: {.column width="40%"}
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/pluie_alexandrie.jpg){.absolute top="100" left="-100" width="500" height="400"}
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   L'extension maximale de l'Empire Romain à lieu autour de l’an 100:
+    -   88 millions d'habitants dont 1,5 à Rome
+    -   TRE autour de 12/1 par ha. pour le blé et de 27/1 pour la luzerne
+    -   Consommation alimentaire autour de 2500 calories/jour/hab.
+-   Au début du premier millénaire, [l’ensemble de la surface agricole]{.bg3} disponible au sein de l’Empire romain est consacrée à [l'alimentation des citoyens]{.bg3}
+-   Un [changement climatique et la déforestation]{.bg3} conduisent à la baisse de la fertilité des sols
+    -   en particulier dans le Sud de l'Espagne, le Sud de l'Italie et l'Afrique du Nord, et les crues du Nil
+    -   à partir du IIe siècle
+-   Début de [l’effondrement de l’empire,]{.bg3} qui voit un déclin de population large
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+#### Aujourd'hui
+
+Pose toujours des problèmes de définition des limites du systèmes mais aux USA :
+
+::: incremental
+-   [Pétrole importé]{.bg3} aux US : De 100:1 (in 1930) to 12:1 (in 2007)
+-   Charbon : de 80:1 (in 1930) à 30:1 (in 1970);
+-   Pétroles bitumineux : 5:1
+:::
+
+::: fragment
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/mean_eroi_hall_2014_energy_policy.jpg){fig-align="center" width="50%"}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/hall_2014_energypolicy.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### L'effet rebond
+
+#### Définitions
+
+Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
+
+::: incremental
+-   Différence entre la [réduction escomptée et réalisée de consommation d'énergie]{.bg3} suite à un changement :
+    -   Un climatiseur qui sauve 10kWh/an technologiquement
+    -   Si la réduction d'usage n'est que de 9 kWh, alors 1 kWh aura été dédié à plus de consommation
+    -   L'effet rebond est $\frac{\text{Technique - Usage réel}}{\text{Technique}}=10%$
+-   Echelle [microéconomique]{.bg3} : changement de l'efficacité énergétique sans coût :
+    -   Effet de [substitution]{.bg3}
+        -   Vers des produits plus efficaces
+        -   Depuis des biens plus chers
+    -   Effet de [revenu]{.bg3} :
+        -   Pouvoir d'achat accru : accroissement de la consommation du produit efficace
+        -   Pouvoir d'achat accru : accroissement de la consommation de tous les autres biens
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   [Effet de rebond direct]{.bg3} : souvent défini comme
+    -   Le changement issu des effets de substitution et de revenu
+    -   Sur la demande du produit considéré
+    -   Oubliant tous les autres effets
+-   Echelle [macroéconomique]{.bg3} :
+    -   Accroissement dans l'usage énergétique après un changement dans l'efficacité énergiétique
+    -   Une fois pris en compte les [ajustements]{.bg3} de marché
+    -   et l'[innovation]{.bg3}
+    -   Exemples :
+        -   [Effet prix]{.bg3}: meilleure extraction aux US baisse les prix dans le monde, dépend des élasticités
+        -   [Effet croissance]{.bg3}: ressemble à celui de Jevons, un accroissement de l'efficacité énergétique peut déclencher de la croissance par une réallocation des inputs ou un accroissement du TFP
+:::
+
+------------------------------------------------------------------------
+
+#### Synthèse (un peu datée) des estimations de l'effet rebond direct
+
+![Sorell et al, 2009, Energy Policy](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_effect_aggregate_sorell_et_al_2009_energy_policy.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+#### Un exemple : effet rebond et alimentation
+
+*Rebound effects could offset more than half of avoided food loss and waste*, Hegwood et al, 2023, Nature Food
+
+::: incremental
+-   La réduction des pertes implique:
+
+    -   une augmentation de l'offre
+    -   Une réduction de la demande
+
+-   Si on réduit la perte de $\Delta L$ et les déchets réduisent de $\Delta W$, on évite : $\Delta L + \Delta W$
+
+-   [Sans rebond]{.bg3} : on perd $\Delta T  = -\Delta W$, car la demande est plus basse, mais la baisse des prix n'implique pas plus de consommation -Avec un [rebond]{.bg3}, on a $\Delta T \neq - \Delta W$
+
+-   La mesure du rebond dépendra des [élasticités]{.bg3}
+
+-   En tout, le [rebond pourrait réduire de 51-73% la réduction des pertes alimentaires]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/image_rebond_marché_hegwood_NatureFood_2023.webp){fig-align="center"}
+
+------------------------------------------------------------------------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_by_type_hegwood_NatureFood_2023.webp){fig-align="center"}
+
+
+# Annexes
+
+## Taux de croissance moyens pour l'analyse de la France {#appendix_table_metabolism}
+
+|                              | 1830–1860 | 1860–1939 | 1948–1973 | 1980–2015    |
+|------------------------------|-----------|-----------|-----------|--------------|
+| **Population ag**            | 0.44      | 0.16      | 0.94      | 0.51         |
+| **GDP ag**                   | 1.74      | 1.41      | 5.47      | 1.52         |
+| **TPES ag**                  | 1.39      | 1.77      | 3.75      | 0.20 (2008)  |
+| **TPES/cap ag**              | 0.94      | 1.61      | 2.79      | −0.31 (2008) |
+| **DMC ag**                   | 1.51      | 1.52      | 4.21      | −0.56        |
+| **DE ag**                    | 1.38      | 1.49      | 3.91      | −0.63        |
+| **DMC biotics/cap ag**       | 0.51      | 0.69      | 0.35      | −0.53        |
+| **DMC abiotics/cap ag**      | 5.35      | 2.61      | 5.41      | −1.29        |
+| **DMC fossil/cap ag**        | 5.81      | 2.49      | 3.23      | −1.63        |
+| **DMC biotics/DMC abiotics** | 7.61      | 2.29      | 0.74      | 0.43         |
+| **I fossil/DMC fossil**      | 0.33      | 0.37      | 0.58      | 1.15         |
+| **(E+I)/DE**                 | 0.04      | 0.15      | 0.31      | 0.66         |
+| **I/DMC**                    | 0.03      | 0.10      | 0.17      | 0.36         |
+
+[[Retour au cours](#sec_transition_magalhaes)]{.button}
+
+## Doughnut economics {#sec_appendix_doughnut}
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/doughnut_image.png){fig-align="center"}
+
+[[Retour au cours](#sec_postgrowth)]{.button}
+
+## Eurogreen structure {#sec_appendix_eurogreen}
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eurogreen_structure.webp){fig-align="center"}
+
+Main causal relationships between heterogeneous household groups, industries, resources and assets in our model. Solid (dashed) arrows represent monetary (non-monetary) flows. Household consumption includes electricity and other energy products. The rest of the world (RoW) is included because the aggregate flows from (to) it are included as imports (exports), although the foreign sector is not defined in the model. HH, households; TPES, total primary energy supply.
+
+[[Retour au cours](#sec_postgrowth)]{.button}
+
+## Plan
+
+I. Indicateurs de soutenabilité 
+A. Limites planétaires 
+B. Découplage et croissance verte Courbe de Kuznets Découplages : absolu et relatifs 
+C. L'empreinte écologique 
+D. L'HANPP 
+
+II. Métabolisme social : mesures et concepts aux fondements de la macroéconomie écologique A. Retour sur l'histoire du métabolisme Définitions Tradition énergétique Les frères Odum Ayres, Kneese et l'écologie industrielle B. Métabolisme social contemporain MFA Compitabilités et tendances Explications métaboliques das le temps long Transitions métaboliques en France C. Les limites métaboliques à la croissance Entropie et reyclage Déclin tendanciel du EROI Définition, Empire Romain, aujourd'hui L'effet rebond Définitions, synthèse, et exemple récent Nature Food
+:::
+
+::: column
+III. Vers une macroéconomie écologique A. Le travail du Club de Rome et le rapport Meadows Le Club de Rome World3 et Limits to Growth B. La controverse néoclassique Vers le développement soutenable C. Exercice de modélisation Ingrédients, principes, blocs et simulation D. Courants modernes Analyse régulationiste: les travaux de L. Cahen Fourot Analyse post-keynésienne Conclusion
+IV. Par delà la croissance: technocritique, décroissance et coévolution A. L'analyse de la décroissance: de l'écologie politique et la bioéconomie à la postgrowth
+    1.  Aux racines de la décroissance Ellul, Gorz, Illitch, Georgescu Roegen, Naess
+    2.  La déconnexion entre bonheur et croissance
+    3.  Le mouvement post-growth: pluralismes et perspectives B. Le codéveloppement: évolution des systèmes et relations homme nature
+    4.  Le développement trahi
+    5.  Le développement coévolutif
+    6.  Comme cadre d'analyse des rapports société nature C. L'approche par les besoins fondamentaux D. L'environnementalisme des pauvres de J. Martinez Allier
+:::
+:::::

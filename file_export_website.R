@@ -21,7 +21,8 @@ copy_files(here("classes_compiled", "UC1_Analyse_Economique"),
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/2A")
 copy_files(here("classes_compiled", "EERN"), 
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/2A")
-
+copy_files(here("classes_compiled", 'UC5_Macroeconomics'), 
+           "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/2A")
 # Teaching master
 copy_files(here("classes_compiled", "ecol_econ_eeet"), 
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/EEET")

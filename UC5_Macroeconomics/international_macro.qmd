@@ -1,0 +1,2637 @@
+---
+title: "Macroéconomie internationale"
+subtitle: "UC5 - Macroéconomie"
+
+---
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(sysfonts)
+library(here)
+library(showtext)
+#font_add_google("Roboto", "roboto")
+library(extrafont)
+source(here("utilities.R"))
+
+```
+
+  
+# Introduction : l'économie ouverte à court terme
+
+Ce cours est basé sur le manuel *Macroéconomie*, 7e édition, d'Olivier Blanchard et Daniel Cohen
+
+## A. Court, moyen, long terme
+
+Comment expliquer l'évolution des [aggrégats macroéconomiques]{.bg3}?
+
+::: incremental 
+
+- A [court terme]{.bg3} (quelques années) : variations de la demande, de la confiance, d'autres facteurs conjoncturels
+- [Moyen terme]{.bg3} (une décennie) : l'économie tend à revenir vers le niveau déterminé par les facteurs d'offre : stock de capital, niveau technologique, taille de la main d'oeuvre
+- [Long terme]{.bg3} : comment s'acroissent les facteurs d'offre : la place des institutions, du taux d'épargne, du gouvernement
+
+:::
+
+## A. Ouverture des marchés de biens et services
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/trade-as-share-of-gdp.png){width="70%" fig-align="center"}
+
+---------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/globalization-over-5-centuries.png){width="70%" fig-align="center"}
+
+
+::: notes
+
+- Cela n'épuise pas les effets des ouvertures économiques : le commerce transforme les structures, on ne voit ic que les biens et services qui sont échangés, pas ceux qui sont adaptés du fait de la concurrence
+
+- Cela va avoir des conséquences sur la macroéconomie : les économies sont ouvertes, on est content quand les partenaires commerciaux ont des regains de croissance : pourquoi? 
+
+:::
+
+-------
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/trade_war.jpg){width="70%" fig-align="center" }
+
+----
+
+## B. Ouverture des marchés financiers
+
+::: incremental 
+
+- Possibilité pour les investisseurs financiers de [choisir entre des actifs financiers nationaux ou étrangers]{.bg3}
+- Levée graduelle des contrôles de capitaux dans le temps (et de change, on le verra)
+- [Indice de Chinn Ito]{.bg3} : mesure de l'ouverture des mouvements de capitaux sur une base juridique
+
+:::
+
+----
+
+![Capital Controls: Theory and Evidence, Erten et al, 2021](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/chinn_ito.jpg){fig-align="center" fig-cap=""}
+
+---
+
+## C. Ouverture des marchés de facteurs de production
+
+::: incremental 
+- La possibilité pour les entreprises de [choisir où localiser leur production]{.bg3}, et pour les [travailleurs de choisir dans quel pays travailler.]{.bg3}
+- Multinationales et usines dans de nombreux pays
+:::
+
+![INSEE,2022](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/délocalisations_insee.png){width="70%" fig-align="center"}
+
+------
+
+::: incremental 
+
+- Les questions posées par la macroéconomie, dans un monde ouvert : 
+  -	[Le chômage ]{.bg4}: comment l’expliquer dans les économies, surtout celles ouvertes au commerce international
+  -	[L’épargne]{.bg4} : affecte le niveau d’emploi, la richesse de la nation, et dans les économies ouvertes, du niveau de croissance mondial
+  -	[Les déséquilibres de commerce international]{.bg4} : on n’exporte rarement ce qu’on importe. Les déséquilibres de la balance commerciale provoquent des redistributions de flux financiers entre pays du monde
+  -	[La monnaie et le niveau des prix ]{.bg4}: la quantité de monnaie dans une économie peut influencer la production et l’emploi. Les taux de change et les politiques monétaires d’un pays peuvent en impacter d’autres
+  
+::::
+
+--------
+
+
+::: incremental
+
+- La différence entre court et long terme: 
+  - La [demande est la source des variations de court terme du PIB]{.bg4}
+  - A plus long terme, l'offre est traditionnellement vue comme le déterminant du PIB : les différences de long terme en PIB/tête viennent de la taille de la force de travail, du stock de capital, de la productivité
+- On va tacher de s'occuper ici des [fluctuations macroéconomique de court terme dans une économie ouverte]{.bg4}
+  - En utilisant le modèle IS-LM-BP 
+  - Qui bien que daté peut être utile
+  
+:::
+
+
+
+
+# I. L'analyse de court terme en économie fermée: le rappel d'IS-LM
+
+## A. La demande agrégée
+
+Dans une économie fermée, on a : 
+
+$$ D \equiv C + I + G$$
+
+où:
+
+::: incremental
+- $C$ est la [consommation finale des ménages]{.bg3}
+- $D$ est [l'investissement des entreprises (nouveau capital) et des ménages ]{.bg3} (investissement résidentiel)
+- $G$ est la [consommation finale de l'Etat]{.bg3}: 
+  - Prend en compte la demande finale de biens et services
+  - Pas les transferts : bien que ce soient des dépenses publiques, ce ne sont pas des demandes finales
+  
+:::
+
+----
+
+### 1. La consommation 
+
+::: incremental
+
+- A l'échelle agrégée, la consommation dépend du revenu disponible : $C = C(Y-T)$
+- On suppose que $C = c_0 + c_1 Y$ : 
+  - $c_1 \leq 1$ est la propension marginale à consommer
+  - $c_0$ est ce que l'on consommerait sans revenus : on doit manger
+    - Mais comment? En désépargnant
+
+:::
+    
+::: fragment
+
+```{r}
+#| fig-align: "center"
+
+consumption = function(Income, Tax, c0, c1){
+  return( c0 + c1 *(Income - Tax))
+}
+
+data_ = data.frame(Income =seq(10, 40))%>%
+  mutate(Consommation = consumption(Income, 10, 13, .8))
+
+data_ %>%
+  ggplot(aes(x = Income, y = Consommation))+
+  geom_line(color = "blue", linewidth = 1.2)+
+  ylim(0,max(data_$Consommation))+
+  custom_theme(font_size=15)
+
+```
+:::
+
+----
+
+#### Simplifications
+
+
+:::: columns
+
+:::{.column width="30%"}
+:::{.incremental}
+
+- Si on fixe l'investissement à $\bar{I}$
+- Et la dépense publique, exogène $G$
+- On obtient un équilibre sur le marché des biens et des services (sans stocks de biens) que la production annuelle doit être égale à la demande annuelle : $Y = c_0 + c_1(Y-T)+\bar{I}+G$
+- Put it differently : 
+  $Y = \frac{1}{1-c_1}(c_0 + \bar{I}+G - c_1T)$
+- De façon graphique, on a : 
+
+:::
+:::
+
+:::{.column width="70%"}
+::: fragment
+```{r}
+#| fig-align: "center"
+data_ = data_ %>%
+  mutate(Production = Income)
+
+data_%>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Consommation), color = "blue", linewidth = 1.2)+
+  geom_line(aes(y = Production), color = "black", linewidth = 1.2, linetype = "dashed")+
+  ylab('Demande/Production')+
+  custom_theme(font_size = 10, family_ = "Roboto Light")
+
+```
+:::
+:::
+
+::::
+
+-----
+
+#### Effets d'une expansion
+
+- Si $c_0$ augmente d'un coup : [on a une plus haute demande]{.bg3}
+  - Qui se traduit par une augmentation de la production
+  - Qui se traduit par plus d'offre, jusqu'au nouvel équilibre
+
+
+
+```{r}
+#| fig-align: "center"
+data_%>%
+  mutate(Demande = consumption(Income, 10, 15, .8))%>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Consommation), color = "blue", linewidth = 1.2)+
+  geom_line(aes(y = Demande), color = "dodgerblue", linewidth = 1.2)+
+  geom_line(aes(y = Production), color = "black", linetype = "dashed", linewidth = 1.2)+
+  ylab('Demande/Production')+
+  custom_theme(font_size=20)
+```
+
+-----
+
+#### Le paradoxe de l'épargne
+
+En économie de la croissance, [il faut plus d'épargne pour investir, c'est bon pour la production aggrégée]{.bg4}
+
+::: incremental 
+
+- Supposons que les consommateurs épargnent plus tout le temps: $c_0$ baisse
+  - Le [niveau de production d'équilibre baisse]{.bg3}, ce qui fait baisser le revenu donc ce qui fait baisser l'épargne
+  - A court terme, [le revenu baissera du niveau de l'épargne]{.bg3} : on n'aura pas de gain à épargner
+  - C'est parce que l'on est sur du court terme : évidemment, trop d'épargne à court terme déprime l'économie
+  - On en aura [les bénéfices demain]{.bg4}
+
+:::
+
+---- 
+
+### 2. Repenser l'investissement
+
+::: incremental
+
+- L'épargne est notée : $S = (Y-T) - C$
+- Un équilibre sur le marché des biens et services est tel que $Y = C+I+G$
+- de façon équivalente $Y - C - T = I + G - T$
+- Donc : $S = I + G-T \iff I = S + T-G$
+- L'investissment est l'épargne des ménages et le solde budgétaire du gouvernement : [c'est ce qu'on appelle la relation IS]{.bg4}
+  - Bien que ce ne soit pas le produit des mêmes décisions (entreprises v. ménages et état)
+  - Pour avoir un équilibre entre production et consommation, il faut que cela tienne
+  - Si le taux d'intérêt augmente, l'investissement chute
+  - Causant une baisse du produit plus que proportionelle (multiplicateur)
+  - [Donnant une relation décroissante entre $i$ et $Y$]{.bg4}
+
+:::
+
+--- 
+
+### 3. La courbe IS (dans un modèle linéaire)
+
+```{r}
+c0 = 2
+d0 = 1
+c1 = .6
+d1 = .2
+tax = 10
+G = 10
+d2 = 3
+
+IS  = function(c0, d0, c1, tax, d2, G, i){
+  y= (c0 + d0 + G - c1*tax - d2*i)/(1-c1 - d1)
+  return(y)
+}
+
+data_is = data.frame(i = seq(0,2, .01))%>%
+  mutate(IS = IS(c0, d0, c1, tax, d2, G, i))
+data_is %>%
+  ggplot(aes(x=IS, y = i))+
+  geom_line(linewidth = 1.2)+
+  custom_theme(font_size = 15)+
+  ylab("Taux d'intérêt")+
+  xlab("Production")
+
+```
+
+
+-----
+
+#### Hausse des impots/ des dépenses publiques
+
+```{r}
+data_is = data.frame(i = seq(0,2, .01))%>%
+  mutate(IS = IS(c0, d0, c1, tax, d2, G, i), 
+         IS2 = IS(c0, d0, c1, tax+1, d2, G, i),
+         IS3 = IS(c0, d0, c1, tax, d2, G+5, i))
+
+data_is %>%
+  ggplot(aes(y = i))+
+  geom_line(aes(x=IS),linewidth = 1.2)+
+  geom_line(aes(x=IS2),linewidth = 1.2, linetype = "dotted")+
+  geom_line(aes(x=IS3), 
+            color = "grey66", linewidth = 1.2, 
+            linetype = "dotted")+
+  geom_segment(x = 0, xend = 45, y = 1, 
+               yend =1, linetype = "dashed")+
+  geom_segment(x = 17, xend = 17, y = 0,
+               yend =1, linetype = "dashed")+
+  geom_segment(x = 20, xend = 20, y = 0, 
+               yend =1, linetype = "dashed")+
+  geom_segment(x = 45, xend = 45, y = 0, 
+               yend =1, linetype = "dashed")+
+  custom_theme(font_size = 15)+
+  ylab("Taux d'intérêt")+
+  xlab("Production")
+```
+
+
+
+## B. Marchés financiers 
+
+### 1. Demande de monnaie et d'obligations
+
+
+::: incremental 
+- Les ménages ont le choix de détenir leur richesse entre deux types d'actifs, au rendement et à la liquidité différents : [monnaie et obligations]{.bg4}
+- La [demande de monnaie]{.bg4} (motif de transaction) dans une économie dépend : 
+  - De l'activité économique et du revenu associé $\text{\$}Y$
+  - Du taux d'intérêt, par une fonction décroissante du taux d'intérêt (on préfère détenir des obligations)
+- La [demande d'obligation est résiduelle:]{.bg4} les actifs non détenus en monnaie le sont en obligations
+- In fine, la demande de monnaie réelle est 
+
+:::
+
+[$$\frac{M}{P}= YL(i)$$]{.fragment}
+
+-----
+
+
+
+::: incremental
+
+- Il faut choisir [ce qui détermine quoi : le taux d'intérêt l'offre de monnaie ou l'inverse? ]{.bg3}
+- [Vision 1 - traditionnelle: la BC fixe une quantité de monnaie $M$ ]{.bg4} et laisse le taux d'intérêt s'ajuster
+  - Si $Y$ monte, il faut plus de monnaie pour les transaction
+  - Dès lors, le taux d'intérêt doit s'accroître pour que l'on accepte de conserver ses obligations, plutôt qu'en monnaie ou réciproquement, pour juguler la demande de monnaie
+  - Une hausse du revenu entraine une hausse du taux d'intérêt
+- [Vision 2 - vision moderne : la banque vise davantage le taux d'intérêt]{.bg4}
+  - La banque choisit une cible de taux et met autant de monnaie que besoin
+  - Effectue une [opération d' "open-market"]{.bg3}, c'est à dire racheter des obligations pour accroître le stock de monnaie en circulation, la quantité de monnaie en circulation augmente
+:::
+
+-----
+
+La fixation du taux d'intérêt des obligations est centrale : 
+
+::: incremental
+
+- Supposons des obligations sur l'Etat qui à 1 an garantissent 100$
+- Leur prix est $P_B$
+- Si j'achète les obligations aujourd'hui, j'ai un taux de rendement de $\frac{100 - P_B}{P_B}$ : c'est le taux d'intérêt
+- De façon équivalente, si je connais le taux d'intérêt, je connais le prix de vente : $P_B = \frac{100}{1+i}$
+
+:::
+
+[Dès lors :]{.fragment} 
+
+::: incremental 
+
+- si la banque centrale veut [augmenter la quantité de monnaie en circulation]{.bg3}, elle 
+  - Achète des obligations
+  - Leurs prix augmente
+  - Ce qui implique que le taux d'intérêt chute
+- Si elle mène une [politique de contraction monétaire]{.bg3} : 
+  - Elle vend des obligations
+  - Leur prix baisse
+  - Ce qui implique que les taux d'intérêt remontent
+  
+:::
+
+------
+
+### 2. La courbe LM
+
+```{r}
+
+data_lm = data.frame(Y = seq(0,100))%>%
+  mutate(i = seq(0,100))
+data_lm %>%
+  ggplot(aes(x=Y, y = i))+
+  geom_hline(yintercept = .2, linewidth = 1.1, color = "deeppink3")+
+  custom_theme(font_size = 15)+
+  ylab("Taux d'intérêt")+
+  xlab("Production (revenu)")+
+  ylim(0,1)
+
+```
+
+
+
+----------
+
+## C. Equilibre IS-LM
+
+::: incremental 
+
+- Vieux modèle, qui se veut une [mise en évidence des contributions de Keynes]{.bg3}
+- Permet quand même d'avoir des éléments importants à court terme, sans variation des prix, pas d'inflation
+- [L'équilibre est constitué des équilibres de biens et services, et de monnaie]{.bg4}
+- Pour comprendre la [pertinence de la politique monétaire et budgétaire à court terme]{.bg4}, dans un cadre [rigide]{.bg4}, et comprendre les [transmissions]{.bg3}
+  - Expansion/contraction budgétaire
+  - Expansion/contraction monétaire
+- Mode de raisonnement : 
+  - Déplacement sur/de la courbe IS ou LM? 
+  - Caractériser l'effet du déplacement
+  - Décrire ce qu'il se passe en français
+  
+:::
+
+------
+
+### 1. Hausse des impôts
+
+```{r}
+data_is %>%
+  ggplot(aes(y = i))+
+  geom_line(aes(x=IS),linewidth = 1.2)+
+  geom_line(aes(x=IS2),linewidth = 1.2, color = "grey")+
+  geom_hline(yintercept = 1.5,linewidth = 1.1, color = "deeppink3")+
+  custom_theme(font_size=15)+
+  ylab("Interest")+
+  xlab("Production")
+```
+
+----
+
+::: incremental
+
+- La courbe IS a bougé, pour un nouvel équilibre
+- La contraction de la dépense publique diminue le revenu disponible des ménages, qui par [multiplicateur]{.bg3}, cause une baisse du produit d'équilibre
+
+:::
+
+--- 
+
+### 2. Politique monétaire : baisse du taux d'intérêt
+
+```{r}
+data_is %>%
+  ggplot(aes(y = i))+
+  geom_line(aes(x=IS),linewidth = 1.2)+
+  #geom_line(aes(x=IS2),linewidth = 1.2, color = "grey")+
+  geom_hline(yintercept = 1.5,linewidth = 1.1, color = "deeppink3")+
+  geom_hline(yintercept = 1,linewidth = 1.1, color = "deeppink4")+
+
+  custom_theme(font_size=15)+
+  ylab("Interest")+
+  xlab("Production")
+```
+
+## D. Policy mix
+
+::: incremental 
+- [Usage commun des deux leviers]{.bg3}
+- Les deux peuvent être employées pour un objectif commun: la relance
+  - Baisse des taux d'intérêts
+  - Expansion budgétaire
+- On choisit les deux plutôt qu'un seul car : 
+  - Pour [limiter le creusement du déficit public]{.bg3} (ou la perte de l'excédent)
+  - La [baisse des taux peut être limitée]{.bg3} quand on est proche de 0 : la politique budgétaire est nécessaire 
+  - Pas les mêmes [effets compositionnels]{.bg3} : budget/consommation; intérêt/investissement
+  - Pas d'effet garanti : on se prémunit de l'inefficacité de l'une
+
+:::
+
+------
+
+### 1. La relance
+
+```{r}
+data_is %>%
+  ggplot(aes(y = i))+
+  geom_line(aes(x=IS),linewidth = 1.2)+
+  geom_line(aes(x=IS2),linewidth = 1.2, color = "grey")+
+  geom_hline(yintercept = 1.5,linewidth = 1.1, color = "deeppink3")+
+  geom_hline(yintercept = 1,linewidth = 1.1, color = "deeppink4")+
+  annotate("text", x= 9, y = 1.4, label = "A", color = "deeppink3", size = 10, family = local_family)+
+  annotate("text", x= 21, y = 1.2, label = "A'", color = "deeppink4", size = 10, family = local_family)+
+  custom_theme(font_size=15)+
+  ylab("Interest")+
+  xlab("Production")
+```
+
+
+----------
+
+### 2. Clinton et Greenspan dans les années 1990
+
+```{r}
+data_is %>%
+  ggplot(aes(y = i))+
+  geom_line(aes(x=IS+5),linewidth = 1.2)+
+  geom_line(aes(x=IS2-4),linewidth = 1.2, color = "grey")+
+  geom_hline(yintercept = 1.5,linewidth = 1.1, color = "deeppink3")+
+  geom_hline(yintercept = .6,linewidth = 1.1, color = "deeppink4")+
+  annotate("text", x= 19, y = 1.7, label = "A", color = "deeppink3", size = 10, family = local_family)+
+  annotate("text", x= 6, y = 1.7, label = "A'", color = "deeppink3", size = 10, family = local_family)+
+
+  annotate("text", x= 18, y = .4, label = "A''", color = "deeppink4", size = 10, family = local_family)+
+  custom_theme(font_size=15)+
+  ylab("Interest")+
+  xlab("Production")
+```
+
+
+
+## E. Conclusions et limites d'IS-LM
+
+::: incremental 
+- [Pas de dynamique]{.bg4}, si ce n'est notre raisonnement séquentiel
+  - Les décisions/ajustements sont [instantanés]{.bg3} : en fait dans l'année/les deux ans
+  - [Prévoit bien les effets qualitatifs]{.bg3} de certains mécanismes, comme la contraction monétaire
+  - L'avenir long n'existe pas
+- Les [prix sont fixes]{.bg4}
+  - [A court terme, cela marche à peu près]{.bg3}
+  - Mais après, il y a des effets inflationnistes
+- La [monnaie ne fonctionne pas comme ça]{.bg4} : 
+  - Les [banques commerciales créent de la monnaie]{.bg3}, puis essaient de se refinancer entre elles, ou auprès de la banque centrale
+  - Elles ne sont [pas simplement des intermédiaires]{.bg3}, qui relaient la quantité de monnaie de la BC vers l'économie réelle
+  - Mais plutôt dans l'autre sens
+  - Cela a des implications importantes sur la manière dont il faut mener des politiques monétaires, et sur la place des banques dans l'économie
+  - Allez voir la [critique post keynésienne de la monnaie endogène]{.bg3}
+:::
+
+# II. Economie ouverte : marchés de biens et de capitaux
+
+## A. Taux de change et marchés de biens
+
+::: fragment
+*Average daily volume in total over-the-counter (OTC) foreign exchange instruments (including spot, outright forward, foreign exchange swap, and option transactions) was $1,196.4 billion in October 2024. The average daily volume during the October 2024 survey period was 2.7 percent higher than in the April 2024 survey period, and volumes increased by 17.2 percent when compared to the prior year.*
+[NY Fed; FX Volume Survey October 2024](https://www.newyorkfed.org/fxc/fx-volume-survey)
+
+:::
+
+
+::: incremental 
+
+- On définit le [taux de change nominal]{.bg4} entre des devises comme le prix relatif des devises sur le marché des changes : 
+  - ["au certain"]{.bg4} : combien il faut de dollars pour acheter un euro 
+    - 1€ = certain $\text{\$}$ - noté $E_{\text{€/\$}}$ ou $E^*$
+  - [Incertain]{.bg4} : combien il faut d'euros pour acheter un dollar
+    - 1$\text{\$}$ = incertain € noté $E_{\text{\$/€}}$ ou $E$
+- Lorsque [l'euro s'apprécie, $E$ baisse et réciproquement, $E^*$ augmente]{.bg4}
+
+:::
+
+---
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/euro_dollar.jpg){width="70%" fig-align="center"}
+
+::: notes 
+- Comment expliquer ces fluctuations? 
+- A quels autres marchés sont elles reliées? Aux marchés de bien et aux marchés financiers, c'est ce qu'on va voir ensemble
+- De large fluctuations, avec un all time low depuis 2002 en 2022
+
+:::
+
+------
+
+::: incremental 
+
+- Il faut aller un peu plus loin et parler de [taux de change réel]{.bg4}
+- On cherche la [conversion entre biens et services]{.bg4}
+- On simplifie : les Etats Unis ne produisent que des Cadillac, l'Europe que des BMW
+  - Une BMW coûte 80,000€
+  - Une Cadillace coûte 70,000$
+  - En Europe, elle coûte aujourd'hui 70,000$\text{\$}$ $E^*$ = 70,000/1.08 = 64,814€
+  - Elle vaut donc 64,814/80,000 = 0.81 BMW
+- Si on retourne dans le monde réel, et que l'on prend des [indices généraux de prix (ou déflateurs de PIB)]{.bg4}
+  - On a le taux de change réel c'est à dire
+    - Le prix des biens US en équivalent euros : 
+    - Ou dit différemment : le prix relatif des biens étrangers en biens nationaux
+
+:::
+
+[$$\epsilon = \frac{E^*P^*}{P}$$]{.fragment}
+
+
+
+
+-----
+
+::: incremental 
+
+- Pour prendre en compte clairement ce que vaut la monnaie, il faut [étendre l'analyse à tous les partenaires commerciaux]{.bg4} de la zone euro
+- Pour construire un [taux de change réel effectif]{.bg4}, en prenant en compte une moyenne des évolutions de change pondérée par les partenaires commerciaux
+
+:::
+
+::: fragment
+
+:::: columns
+
+::: column
+![[Eurostat](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=International_trade_in_goods#Highest_share_for_intra-EU_trade_in_goods_in_Czechia.2C_Slovakia.2C_Estonia_and_Luxembourg)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Main_trading_partners_for_exports_of_goods,_EU,_2023.png){width="70%" fig-align="center"}
+
+:::
+
+::: column
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Main_trading_partners_for_imports_of_goods,_EU,_2023.png){width="70%" fig-align="center"}
+:::
+
+::::
+
+
+:::
+
+
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/fredgraph.png){width="70%" fig-align="center"}
+
+
+
+
+
+## B. Ouverture financière : balance des paiements et choix des actifs
+
+::: incremental 
+
+- Dans un pays, la richesse totale crée au cours d'une année (somme des valeurs ajoutées, somme des consommations finales) est le [produit intérieur brut]{.bg4}
+  - Définition [géographique]{.bg3}
+  - Ne corrige pas la production réalisée par des entreprises étrangères de la production française : Amazon rapatrie ses profits
+- [Pour les ressortissants d'un pays,]{.bg4} la richesse totale créée sur une année est le [Produit National Brut]{.bg4} (utilisé par les USA pour mesurer la richesse jusque 1991)
+- Dans une économie ouverte, on a : 
+
+:::
+
+::: fragment
+
+$$Y = C+G+I+EX-IM$$
+:::
+
+---
+
+### 1. Balance des paiements
+
+::: incremental 
+
+- La [balance des commerciale des biens et services]{.bg4} est $EX - IM$ : 
+  - Si la balance commerciale est excédentaire, on vend plus que ce que l'on achète
+- Cela va impliquer plusieurs choses : 
+  - Des [flux financiers]{.bg4} (pour compenser la dette ou l'excédent) impliquant le [marché des fonds]{.bg4}
+  - Des [flux monétaires]{.bg4} (un afflux ou une contraction) impliquant les [marchés de changes]{.bg4}
+  
+
+- C'est une partie de la [balance des paiements]{.bg4} : document comptable qui regroupe l'ensemble des transactions économiques et financières entre un pays (et ses résidents) et le reste du monde
+  - Etablie par la Banque de France (depuis la fin des années 1980) sur des bases de données commerciales des douanes
+  - Comptabilité en [partie double]{.bg4} : toutes les transactions internationales entrent deux fois : au débit et au crédit, entre différents comptes (transactions et financier)
+        
+:::  
+  
+----
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/crédit_débit.jpg){width="70%" fig-align="center"}
+
+----
+
+
+#### Compte des transactions courantes et de capital
+
+:::: columns
+
+:::{.column width="60%" style="font-size:80%"}
+
+[La balance des transactions courantes : ]{.bg4}
+
+::: incremental
+- [Balance commerciale]{.bg3}
+  - Solde de la balance des biens
+  - Solde de la balance des services
+- [Solde de la balance des revenus :]{.bg3} 
+  - Transferts des salaires et des revenus du capital (primaire) 
+    - Un travailleur en Suisse qui vit en France verra son revenu comme un flux entrant primaire
+    - Revenus des IDE
+  - Revenus secondaires : aides, engagements européens etc
+  
+:::
+
+::: fragment
+
+[Le compte de capital ]{.bg4}
+
+:::
+
+::: incremental
+
+- Transferts en capital (remises de dettes aux pays émergents etc)
+- Achat et vente d'actifs non financiers (brevets)
+
+:::
+
+::: fragment
+
+Font la [capacité ou besoin de financement]{.bg4}
+
+:::
+
+:::
+
+
+:::{.column width="40%"}
+
+::: fragment
+| Principaux postes                             | Solde 2022 (en milliards d’€) |
+|-----------------------------------------------|-------------------------------|
+| 1. Compte des transactions courantes          | -28,1                         |
+| 1.1. Biens                                    | -76,1                         |
+| 1.2. Services                                 | +35,5                         |
+| 1.3. Revenus primaires et secondaires         | +12,5                         |
+| 2. Compte de capital                          | 7,3   
+
+:::
+
+:::
+
+::::
+
+----- 
+
+#### Compte financier
+
+:::: columns
+
+::: column
+Toute transaction permettant [d’avoir un droit monétaire]{.bg4} sur un pays étranger est créditée ou débitée
+
+::: fragment
+Un américain dépose 10,000$ à la banque à Londres : 
+- Sortie sur le comte financier des US (débit)
+- Entrée sur le comte financier du RU (crédit)
+
+:::
+::: incremental
+- Investissements directs étrangers : achat de titres qui visent le contrôle de plus de 10% d'une entreprise
+- investissements de portefeuille : achat de titres pour profits futurs (dividendes, obligations)
+- Instruments financiers dérivés
+- Autres investissements : prêts emprunts avec le reste du monde
+- Réserves de change : entrée ou sortie de devise (positif = diminution des réserves)
+
+:::
+
+
+:::
+
+::: column
+::: fragment
+| Principaux postes                                    | Solde 2022 (en milliards d’€) |
+|------------------------------------------------------|-------------------------------|
+| 3. Compte financier                                  | -35,7                         |
+| 3.1. Investissements directs                         | +28,0                         |
+| 3.2. Investissements de portefeuille                 | -138,9                        |
+| 3.3. Instruments financiers dérivés                  | -16,7                         |
+| 3.4. Autres investissements (prêts et emprunts)      | +111,8                        |
+| 3.5. Avoirs de réserve (réserves de change)            | -20,1                         |
+| 4. Erreurs et omissions nettes                       | -14                           |
+   
+:::
+:::
+
+::::
+
+
+
+
+-----
+
+### 2. Exemple : illustrer le principe de la comptabilité en double entrée
+
+:::{.incremental style="font-size:90%"}
+
+- [Actif/passif]{.bg4} à la base de la comptabilité en partie double
+  - [Actif]{.bg4} : ce que [possède]{.bg3} un agent économique ou [ce qu'on lui doit]{.bg3. Dans le contexte de la balance des paiements, l'actif comprend les créances sur l'étranger, les exportations de biens et services, et les entrées de capitaux financiers.
+  - [Passif]{.bg4} : ce que [doit un agent économique]{.bg4}. Dans la balance des paiements, le passif comprend les dettes envers l'étranger, les importations de biens et services, et les sorties de capitaux financiers.
+- Transaction initiale : une entreprise française exporte 100M€ vers une entreprise américaine
+- Il faut appurer la dette par un transfert de fonds ou de dette : la banque de l'entreprise va nous envoyer un titre de dette (chèque)
+- Qui peut donner lieu à des mouvements financiers souvent des bons du trésor (liquides, fiables etc) 
+
+:::
+
+:::: columns
+
+:::{.column style="font-size:90%"}
+
+::: incremental
+
+- [Explication pour la France :]{.bg3}
+  - Balance Courante : L'exportation génère une créance de 100 € (actif).
+  - Compte Financier : le réglement de l'achat se fait par un chèque, dont l'entreprise française entre en possession dans la banque américaine, agissant comme un débit (-100M)
+  - Globalement : +100 € + (–100 €) = 0, assurant ainsi l'équilibre.
+
+:::
+
+:::
+
+:::{.column style="font-size:90%"}
+
+::: incremental 
+- [Explication pour les États-Unis :]{.bg3}
+  - Balance Courante : L'importation crée une dette de 100M€ (passif/débit).
+  - Compte Financier : Le règlement de cette dette se fait par un chèque de 100M€ (actif/crédit).
+  - Globalement : -100 € + 100 € = 0, garantissant ainsi l'équilibre.
+
+:::
+
+:::
+
+::::
+      
+--------------
+
+**Pour la France**:
+
+| Compte             | Actif                                                    | Passif                                                    | Solde                      |
+|---------------------|----------------------------------------------------------|-----------------------------------------------------------|----------------------------|
+| Balance Courante    | +100 € : Créance sur l'importateur (exportation de biens) | 0                                                         | +100 €                    |
+| Compte Financier    | 0                                                        | -100 € : Règlement de la créance (investissement financier) | -100 €                   |
+| **Total Global**    |                                                          |                                                           | +100 € + (–100 €) = 0 €    |
+
+
+
+
+::: fragment
+**Pour les USA**
+
+
+| Compte              | Actif                                                    | Passif                                                     | Solde                      |
+|---------------------|----------------------------------------------------------|------------------------------------------------------------|----------------------------|
+| Balance Courante    | 0                                                        | -100 € : Dette envers l'exportateur (importation de biens)   | -100 €                   |
+| Compte Financier    | +100 € : Règlement de la dette (émission d'un titre financier) | 0                                                      | +100 €                   |
+| **Total Global**    |                                                          |                                                            | -100 € + 100 € = 0 €       |
+
+:::
+
+---
+
+### 3. Mouvements monétaires
+
+::: incremental
+
+- Le [règlement par un titre de dette]{.bg3} (chèque, ou bon du trésor etc) entre les banques se fait [dans une certaine devise]{.bg3}
+- Ici, en dollars
+- En fonction de la devise, il y aura ou non une [conversion]{.bg3} envers d'autres devises : 
+  - Une grande partie du commerce se fait en dollars, alors tout n'est pas changé
+- Si l'on doit payer dans la devise des importations, [un déficit commercial peut s'accompagner]{.bg4} : 
+  - D'une vente massive de monnaie nationale
+  - Afin de régler les importations
+  - Et une chute du taux de change
+-	Interventions de [foreign exchange]{.bg3} officielles par la Banque de France (avant la BCE):
+  - L'entreprise a besoin d'euros, la BdF de dollars
+  - Changement du compte financier vers un mouvement dans les réserves officielles, mais équivalent
+  
+:::
+
+
+----
+
+### Diagnostic économique et balance des paiements
+
+
+::: incremental 
+- Outil de diagnostic économique pour comprendre des évolutions futures de l'économie d'un pays
+- [Un déficit de la balance courante : ]{.bg4}
+  - Indique une potentielle [faible compétitivité]{.bg3} du commerce international domestique, ou une [dépendance aux importations]{.bg3}
+  - Ou encore une [dépendance très importante des capitaux productifs étrangers]{.bg3} (transferts de revenu)
+- [Un excédent financier]{.bg4} : 
+  - Montre l'[attractivité]{.bg3} d'un territoire (IDE)
+  - Ou plutôt sa [vulnérabilité]{.bg3} si les capitaux sont [placés à court terme]{.bg3}
+- Attention aux [réserves de change]{.bg4} :
+   - Si elles fondent vite, cela veut dire qu'on s'attend à ce que les choses empirent
+- Montre un fait important en économie internationale : 
+  - L'épargne domestique se note $S= Y - C - G$ donc dans une économie fermée $Y - G - C = I \Rightarrow S=I$
+    - Le seul débouché de l'épargne c'est l'investissement
+  - Dans une économie ouverte : $Y-C-G = I + EX - IM = S$
+    - Dans une économie ouverte, [l'investissement peut venir de l'épargne ou]{.bg4} [des flux financiers liés au commerce international]{.bg4}
+    
+:::
+
+--------
+
+### 4. Choix des actifs financiers
+
+::: incremental 
+- L'ouverture (relative) des marchés financiers implique que [l'on peut choisir où placer ses sous]{.bg4}
+- L'allocation des masses monétaires se fait sous 2 formes : 
+  - Monnaie : pour régler des transactions
+  - Titres : pour épargner
+- On va plutôt regarder les [titres, des obligations à 1 an, ]{.bg3} avec le scénario suivant : j'ai 1M€ à placer
+  - En Europe, il me rapportera $(1+i_t)$ M€ l'an prochain
+  - Aux US : 
+    - J'achète des dollars à $E^*_t = 1/E_t$
+    - Qui me ramèneront $(1+i_t^*)$
+    - Qu'il faudra changer au taux de $E^e_{t+1}$
+    - Au final : $\frac{E^e_{t+1}}{E_t}(1+i_t^*)$€
+
+:::
+
+----
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/arbitrage_actifs.jpg){width="70%" fig-align="center"}
+
+--------
+
+
+### 5. Parité (non couverte) des taux d'intérêts
+
+::: incremental 
+- Supposons que l'on ne souhaite détenir que [les actifs au plus haut taux de rendement ]{.bg3}
+- Si les titres français et américains sont détenus, il faut qu'il y ait une [parité non couverte des taux d'intérêts]{.bg4}
+
+:::
+
+::: fragment
+
+$$(1+ i_t) = \frac{E_{t+1}^e}{E_t}(1+i^*_{t}) $$
+
+:::
+
+::: incremental
+
+- [Non couverte]{.bg3} : on ne suppose pas qu'il existe un mécanisme de contrat à terme qui permette de couvrir le risque
+- L'hypothèse de détention des actifs à [plus haut rendement est fragile]{.bg4} :
+  - Coûts de transaction
+  - Risque
+- Néanmoins, des [variations de taux d'intérêts peuvent avoir de larges conséquences sur les taux de change]{.bg3}
+
+:::
+
+-----
+
+- On peut réécrire : 
+
+::: fragment
+
+$$i_t \approx i_{t+1}+\left(\frac{E_{t+1}^e - E_t}{E_t} \right) $$
+
+:::
+
+::: incremental 
+
+- Si $E$ (prix d'une unité de dollars en euros) augmente, c'est une dépréciation
+- Donc le second terme est le [taux de dépréciation anticipé]{.bg4}
+- [L'équilibre sur le marché des fonds]{.bg4} implique que :  
+    - [Absence d'opportunité d'arbitrage]{.bg4} implique que 
+    - Le taux d'intérêt domestique soit à peu près égal au taux d'intérêt étranger plus le taux de dépréciation anticipé
+- [L'équilibre dépendra des taux et des anticipations d'évolution des taux de change]{.bg3} : 
+  - Avec des taux observés, par exemple 1.5 pp moindre en Europe
+  - La détention de titres européens nous indique que les [investisseurs anticipent une baisse du taux de change]{.bg3}
+- Les [taux ont de fortes chances d'être liés]{.bg3} : 
+  - Si des états maintiennent une parité fixe (ou au moins un corridor)
+  - Sans anticipations trop éloignées des marchés financiers
+  - Les taux resteront proches 
+  
+:::
+
+## Conclusion
+
+::: incremental 
+- L'ouverture des marchés de biens et services permet des [choix entre les biens, dont les variables sont, à l'échelle agrégée, le taux de change réel]{.bg4}
+- L'ouverture des marchés financiers permet un [choix entre les actifs, qui dépend des taux de rendement et sont liés aux évolutions du marché monétaire]{.bg4}
+- Ces 3 grandeurs sont liées, on le voit avec la [balance des paiements]{.bg4} : 
+  - Les déficits commerciaux sont accompagnés d'excédents financiers
+  - Sous la forme de titres de dettes, ou parfois, de mouvements sur les marchés des changes
+
+:::
+
+
+## Quiz
+
+::: incremental 
+- La parité non couverte des taux d'intérêt implique que les taux d'intérêt sont identiques dans le monde
+<br>
+[Non, seulement ceux qui ont des changes fixes]{.fragment}
+- Si le taux de change à l'incertain entre l'euro et le dollar est de 0.90, cela veut dire que 1€ = 0.90$
+<br>
+[1$\text{\$}$ = incertain € donc 1$\text{\$}$=0.9€]{.fragment}
+- Une appréciation réelle signifie que les biens domestiques deviennent moins chers par rapport aux biens étrangers?
+<br>
+[La monnaie nationale s'apprécie, donc on a plus de pouvoir d'achat, les biens étrangers deviennent moins chers pour les consommateurs **nationaux**, et les biens domestiques deviennent plus chers pour les **autres pays**]{.fragment}
+- Les pays recevant des flux nets de capitaux doivent avoir un déficit de compte courant? 
+<br>
+[Oui]{.fragment}
+
+:::
+
+::: notes
+
+- 1€ = certain $\text{\$}$ - noté $E_{\text{€/\$}}$ ou $E^*$
+- 1$ = incertain € noté E
+
+:::
+
+# III. Le marché des biens dans une économie ouverte
+
+## A. La relation IS en économie ouverte
+
+::: incremental
+
+- On doit établir une distinction entre [demande de biens nationaux et demande intérieure]{.bg4}
+  - Une partie de la demande de biens nationaux vient de l'étranger
+  - Une partie de la demande intérieure est satisfaite avec des biens étrangers
+- Pour établir la [courbe IS en économie ouverte]{.bg4}, c'est à dire 
+  - la courbe d'équilibre sur le marché des biens et services dans une économie ouverte
+  - Non pas dans le repère prix quantité, mais dans le repère production-intérêt
+  - Pour comprendre les effets des politiques budgétaires (fiscalité, dépense publique) et 
+
+:::  
+  
+----
+
+### 1. La demande de biens nationaux
+
+$$ Z = C + I + G - \epsilon M + X $$
+
+Avec : 
+
+:::{.incremental style="font-size:80%"} 
+
+- $C+I+G$ : la [demande intérieure de biens]{.bg4}
+  - Vont dépendre du revenu national
+  - Mais pas de raison qu'ils dépendent en aggrégé du taux d'intérêt (impact sur la composition à la limte)
+  - On continue de garder les dépenses gouvernementales comme exogènes
+  - $C(\underbrace{Y-T}_{+}) + I(\underbrace{Y}_{+}, \underbrace{r}_{-})+G$
+- $-\epsilon M$ : les [imports]{.bg4} (en volume, via le taux de change réel $\epsilon$ et pas en valeur)
+  - Dépendent de la demande domestique et du revenu national
+  - Dépendent du taux de change réel
+  - $M = M(\underbrace{Y}_{+}, \underbrace{\epsilon}_{-})$
+- $X$ les [exports]{.bg4}, demandés par les autres pays
+  - Vont dépendre des revenus des autres pays : on aime quand les Etats Unis sont en forme
+  - Et du taux de change relatif : si celui ci augmente, le prix relatif des biens étrangers en termes de biens nationaux baisse, on en bénéficie
+  - $X= X(\underbrace{Y^*}_{+}, \underbrace{\epsilon}_{+})$
+
+:::
+
+-----
+
+- Comme d'habitude, on a [la courbe $DD$ la demande domestique]{.bg4}, qui augmente (moins que proportionnellement au revenu)
+
+```{r}
+#|fig-align: "center"
+
+tax = 10
+c0 = 8
+c1 = .4
+
+d0 = 0
+d1 = .2
+d2 = 10
+
+investment= function(Income, r, d0, d1, d2){
+  return( d0 + d1*Income - d2*r)
+}
+
+data_ = data.frame(Income = seq(0,100))%>%
+  mutate(DD = consumption(Income, tax, c0, c1) +
+           investment(Income, .2, d0, d1, d2) + tax)
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = DD), color = "red", linewidth=1.2)+
+  annotate("text", x= 90, y = 90, label = 'DD', color = "red", size =10)+
+  custom_theme(font_size = 20)+
+  ylim(0,100)
+
+```
+
+----
+
+- On obtient la [courbe $AA$ ]{.bg4} en [soustrayant les importations]{.bg4} : moins pentue car la demande intérieure de biens nationaux augmente moins vite que la demande intérieure
+
+
+```{r}
+#|fig-align: "center"
+
+
+import = function(Income, m1=.2, epsilon=1){
+  return(m1*Income*epsilon)
+}
+
+
+data_ = data_ %>%
+  mutate(Import = import(Income))%>%
+  mutate(AA = DD - Import)
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = DD), color = "red", linewidth=1.2)+
+  annotate("text", x= 90, y = 90, label = 'DD', color = "red", size =10)+
+  geom_line(aes(y = AA), color = 'firebrick', linewidth=1.2)+
+  annotate("text", x= 90, y = 30, label = 'AA', color = "firebrick", size =10)+
+  ylim(0,90)+
+  custom_theme(font_size = 20)
+
+```
+
+----
+
+- Il faut simplement ajouter les [exportations]{.bg4}, qui ne dépendent pas de $Y$, on a donc la [nouvelle droite $ZZ$]{.bg4} parallèle à $AA$
+
+```{r}
+export = function(Income_abroad=100, e1=.1, epsilon=1){
+  return(e1*Income_abroad/epsilon)
+}
+
+data_ = data_ %>%
+  mutate(ZZ = AA + export())
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = DD), color = "red", linewidth=1.2)+
+  annotate("text", x= 90, y = 90, label = 'DD', color = "red", size =10)+
+  geom_line(aes(y = AA), color = 'firebrick', linewidth=1.2)+
+  annotate("text", x= 90, y = 30, label = 'AA', color = "firebrick", size =10)+
+  ylim(0,90)+
+  geom_line(aes(y = ZZ), color ="coral", linewidth=1.2)+
+    annotate("text", x= 92, y = 50, label = 'ZZ', color = "coral", size =10)+
+  ylim(0,100)+
+  ylab('Demandes')+
+  custom_theme(font_size = 20)
+
+
+
+```
+
+-------
+
+```{r}
+data_ = data_ %>% 
+  mutate(Net1 = ZZ - DD,
+         y_= 0)
+
+DD_ZZ = data_%>%
+  subset(Net1^2 < .005)%>%
+  select(Income)%>%
+  pull()
+
+data_shade = data_ %>% 
+  subset(Income<=DD_ZZ)
+data_shade2 = data_ %>% 
+  subset(Income>=DD_ZZ)
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = DD), color = "red", linewidth=1.2)+
+  ylim(0,90)+
+  geom_line(aes(y = ZZ), color ="coral", linewidth=1.2)+
+  ylim(0,90)+
+  geom_ribbon(data = data_shade, aes(ymin = DD, ymax = ZZ), fill = "forestgreen", alpha = 0.5) +
+  geom_ribbon(data = data_shade2, aes(ymin = DD, ymax = ZZ), fill = "red", alpha = 0.5)+
+  custom_theme(font_size = 20)
+
+
+```
+
+----
+```{r}
+
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Net1))+
+  geom_hline(yintercept = 0)+
+ geom_ribbon(data = data_shade, aes(ymin = y_, ymax = Net1), fill = "forestgreen", alpha = 0.5) +
+  geom_ribbon(data = data_shade2, aes(ymin = y_, ymax = Net1), fill = "red", alpha = 0.5)+
+    custom_theme(font_size = 20)+
+  ylab("Exportations nettes")
+
+
+```
+
+## B. Produit d'équilibre et balance commerciale
+### 1. Détermination de l'équilibre
+
+[Demande de biens nationaux = production domestique]{.bg4}
+
+Donc : 
+
+::: fragment
+
+$$Y = C(Y-T)+I(Y,r)+G - \epsilon M(Y, \epsilon) + X(Y^*, \epsilon)$$
+
+:::
+
+[On aura donc deux points importants]{.fragment}
+
+::: incremental 
+- [L'équilibre sur le marché des biens à court terme]{.bg4}, par $ZZ=Y$ qui détermine le niveau $Y$ d'équilibre
+
+- Le [solde de la balance commerciale (biens et services)]{.bg4}, calculé par $DD-ZZ$, associé au point d'équilibre
+
+:::
+
+----
+
+#### Exercice 
+
+Soient : 
+
+- La consommation : $c(Y-T) = c_0 + c_1 (Y-T)$
+- L'investissement : $I(Y,r) = d_0 +d_1 Y - d_2 r$
+- La dépense publique : $G$
+- Les imports : $M(Y, \epsilon) = m_1 Y/\epsilon$
+- Les exports : $X(Y^*, \epsilon)  = e_1 Y^*/\epsilon$
+
+::: incremental 
+
+1. Trouvez la demande de biens nationaux (on prendra $\epsilon=1$)
+2. Trouvez le point d'équilibre sur le marché des biens à court terme
+3. Trouvez le solde de la balance commerciale
+
+:::
+
+----
+
+::: fragment 
+1. La demande de biens nationaux est : 
+
+$$ ZZ = d_0 + d_1Y - d_2 r + G - m_1 Y + e_1 Y^* + c_0 + c_1 (Y-T) $$
+
+:::
+
+::: fragment
+
+2. Pour trouver l'équilibre, on résoud $Y=ZZ$, donc : 
+$$
+Y = \frac{1}{1 + m_1 - c_1 - d_1}(G + d_0 + c_0 + e_1 Y^* - d_2 r - c_1 T)
+$$
+
+:::
+
+
+::: fragment
+
+3. On a les exportations nettes données par $X - M = e_1 Y^* - m_1 Y$
+
+Donc : 
+
+$$ NX = e_1 Y^* - \frac{m_1}{1 + m_1 - c_1 - d_1}(G + d_0 + c_0 + e_1 Y^* - d_2 r - c_1 T) $$
+
+:::
+
+----
+
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+
+y_equilibrium = data_%>%
+  mutate(Net2 = ZZ - Income)%>%
+  mutate(Net2_ = Net2^2)%>%
+  subset(Net2_ <= .1)%>%
+  select(Income)%>%
+  pull()
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Income), linewidth=1.2)+
+  geom_line(aes(y = ZZ), color ="coral", linewidth=1.2)+
+  geom_line(aes(y=DD), color ="red", linewidth=1.2)+
+  geom_vline(xintercept = y_equilibrium, color = "coral", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = DD_ZZ, color ="red", linetype="dotted", linewidth=1)+
+  custom_theme(font_size = 20)
+
+```
+
+
+:::{.fragment}
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+data_ = data_ %>%
+  mutate(Net= ZZ - DD)
+
+if(DD_ZZ< y_equilibrium){
+  shading_ = "red"
+  data_shade = data_ %>%
+    subset(Income <= DD_ZZ & Income >= y_equilibrium)
+}else{
+  shading_ = "forestgreen"
+  data_shade = data_ %>%
+    subset(Income <= DD_ZZ & Income >= y_equilibrium)
+}
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Net), linewidth=1.2)+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = y_equilibrium, color = "coral", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = DD_ZZ, color ="red", linetype="dotted", linewidth=1)+
+  geom_ribbon(data = data_shade, aes(ymin = y_, ymax = Net), fill = shading_, alpha = 0.5)+
+    custom_theme(font_size = 20)+
+  custom_theme(font_size = 20)
+
+```
+
+:::
+
+
+
+---
+
+## C. Variations de la demande 
+### 1. Variations de la demande intérieure
+
+Supposons que le gouvernement [augmente ses dépenses de $\Delta G$]{.bg4}
+
+- Quel est l'effet sur l'activité?
+
+::: fragment
+On sait que: 
+$$Y = \frac{1}{1 + m_1 - c_1-d_1}(G + d_0 + c_0 + e_1 Y^* - d_2 r - c_1 T)$$
+Donc : 
+
+:::
+
+::: fragment
+
+$$\Delta Y = \frac{\Delta G}{1 + m_1 - c_1 - d_1}$$
+
+:::
+
+-----
+
+::: incremental
+- [Acroissement de l'activité ]{.bg3}
+  - Plus que proportionnel si $c_1 + d_1 >m_1$ : effet du multiplicateur
+  - Proportionnel si $m_1 = c_1 + d_1$
+  - Potentiellement inférieur à 1 (mais n'arrive pas)
+  - Plus faible que dans une économie fermée car $m_1>0$
+
+:::
+
+---
+
+::: incremental
+
+- [Modification des exportations]{.bg3} : 
+  - Modification des exportations : $\Delta X = 0$
+  - Modification des importations : Oui!
+  - Donc modification des exportations nettes :
+
+:::
+
+::: fragment
+
+$$ \Delta NX = - \frac{m_1}{1 + m_1 - c_1 - d_1}(\Delta G) $$
+:::
+
+-----
+
+$$ \Delta NX = - \frac{m_1}{1 + m_1 - c_1 - d_1}(\Delta G) $$
+
+
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+
+data_ = data_%>%
+  mutate(DD2 = investment(Income, .2, d0, d1, d2) +
+           consumption(Income, (tax), c0, c1) + 
+           (tax+10))%>%
+  mutate(ZZ2 = DD2 - 
+           import(Income) + 
+           export())
+
+y_balance = data_%>%
+  mutate(Net= ZZ2 - DD2)%>%
+  subset(Net==0)%>%
+  select(Income)%>%
+  pull()
+
+y_equilibrium2 = data_%>%
+  mutate(Net2 = ZZ2 - Income)%>%
+  mutate(Net2_ = Net2^2)%>%
+  subset(Net2_<= .1)%>%
+  select(Income)%>%
+  pull()
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Income), linewidth=1.2)+
+  geom_line(aes(y = ZZ2), color ="coral", linewidth=1.2)+
+  geom_line(aes(y = DD), color ="grey",linewidth=1)+
+  geom_line(aes(y = ZZ), color = "grey40", linewidth=1)+
+  geom_line(aes(y=DD2), color ="red", linewidth=1.2)+
+  geom_vline(xintercept = y_equilibrium2, color = "coral", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_equilibrium, color = "grey40", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_balance, color ="red", linetype="dotted", linewidth=1)+
+  custom_theme(font_size = 20)
+```
+
+
+:::{.fragment}
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+data_ = data_ %>%
+  mutate(Net= ZZ2 - DD2)
+
+
+if(y_balance< y_equilibrium2){
+  shading_ = "red"
+  data_shade = data_ %>%
+    subset(Income >= y_balance & Income <= y_equilibrium2)
+}else{
+  shading_ = "forestgreen"
+  data_shade = data_ %>%
+    subset(Income <= y_balance & Income >= y_equilibrium2)
+}
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Net), linewidth=1.2)+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = y_equilibrium, color = "grey", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_balance, color ="red", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_equilibrium2, color ="coral", linetype="dotted", linewidth=1)+
+  geom_ribbon(data = data_shade, aes(ymin = y_, ymax = Net), fill = shading_, alpha = 0.5)+
+  custom_theme(font_size = 20)
+
+```
+
+:::
+
+---
+
+### Exercice : la politique budgétaire dans des économies ouvertes de taille hétérogène
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/merchandise-imports-gdp-cepii.png){fig-align="center" width="80%"}
+
+
+---
+
+Prenons le cas de la Belgique et des Etats Unis, et regardons les effets d'expansions budgétaires : 
+
+::: incremental 
+- Le taux d'importations de la Belgique est bien plus large en Belgique qu'aux Etats Unis (prenons $m_1^B = .4$ et $m_1^{US}=.1$)
+- Si l'on accepte que la propension marginale à consommer et investir est la même dans les deux pays ($c_1 + d_1$=0.6), quels seront les effets d'une relance? 
+
+:::
+
+::: fragment
+
+$$\Delta Y_{US} = \frac{\Delta G}{1 + 0.1  - 0.6}=2\Delta G$$
+et 
+
+$$\Delta Y_{B} = \frac{\Delta G}{1 + 0.4  - 0.6}=1.25\Delta G$$
+
+:::
+
+----
+
+Pour la balance commerciale : 
+
+$$\Delta NX = - \frac{m_1}{1 + m_1 - c_1 - d_1}(\Delta G)$$ 
+
+Donc :
+
+::: incremental 
+
+- $\Delta NX_{US} = -0.1\Delta Y = -0.2\Delta G$
+- $\Delta NX_{B}  = -0.4\Delta Y = - 0.5 \Delta G$
+
+:::
+
+::: incremental 
+
+- L'effet d'une [augmentation des dépenses publiques est fort sur le produit]{.bg4} dans les grandes économies, avec un [effet faible sur la balance commerciale]{.bg4}
+- L'inverse se produit dans les plus petites économies
+:::
+
+----
+
+### 2. L'augmentation de la demande étrangère
+
+::: incremental 
+- [Augmentation de la demande de biens nationaux]{.bg3}
+  - Augmentation des exportations 
+  - Augmentation de l'activité dans le pays domestique
+- Cela donne [potentiellement une augmentation des importations]{.bg3}
+  - La courbe de demande intérieure ne se déplace pas
+  - On bouge le long de cette courbe, mais les importations changent aussi le long de cette courbe
+  
+:::
+
+---
+
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+
+data_ = data_%>%
+  mutate(DD2 = investment(Income, .2, d0, d1, d2) +
+           consumption(Income, (tax), c0, c1) + 
+           (tax+10))%>%
+  mutate(ZZ2 = DD - 
+           import(Income) + 
+           export(150))
+
+y_balance = data_%>%
+  mutate(Net= ZZ2 - DD)%>%
+  subset(Net^2<=0.005)%>%
+  select(Income)%>%
+  pull()
+
+y_equilibrium2 = data_%>%
+  mutate(Net2 = ZZ2 - Income)%>%
+  mutate(Net2_ = Net2^2)%>%
+  subset(Net2_<= .005)%>%
+  select(Income)%>%
+  pull()
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Income), linewidth=1.2)+
+  geom_line(aes(y = ZZ2), color ="coral", linewidth=1.2)+
+  geom_line(aes(y = DD), color ="red",linewidth=1)+
+  geom_line(aes(y = ZZ-4), color = "grey40", linewidth=1)+
+  #geom_line(aes(y=DD2), color ="red", linewidth=1.2)+
+  geom_vline(xintercept = y_equilibrium2, color = "coral", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_equilibrium-7, color = "grey40", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_balance, color ="red", linetype="dotted", linewidth=1)+
+  custom_theme(font_size = 20)
+```
+
+
+:::{.fragment}
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+data_ = data_ %>%
+  mutate(Net1= ZZ2 - DD,
+         Net = ZZ - 4 -  DD)
+
+
+if(y_balance< y_equilibrium2){
+  shading_ = "red"
+  data_shade = data_ %>%
+    subset(Income >= y_balance & Income <= y_equilibrium2)
+}else{
+  shading_ = "forestgreen"
+  data_shade = data_ %>%
+    subset(Income <= y_balance & Income >= y_equilibrium2)
+}
+
+data_shade2 = data_ %>%
+  subset(Income >= y_equilibrium - 7 & Income <= y_equilibrium2)
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Net1), linewidth=1.2)+
+    geom_line(aes(y = Net), linewidth=1, linetype="dashed")+
+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = y_equilibrium-7, color = "grey", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_balance, color ="red", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_equilibrium2, color ="coral", linetype="dotted", linewidth=1)+
+  geom_ribbon(data = data_shade, aes(ymin = y_, ymax = Net1), fill = shading_, alpha = 0.5)+
+  custom_theme(font_size = 20)
+
+```
+
+:::
+
+---
+
+### 3. Rééxaminer la politique budgétaire 
+
+::: incremental 
+- Une augmentation de la [demande intérieure]{.bg4} cause une [hausse du produit et des importations]{.bg3} (déficit commercial)
+- Une augmentation de la [demande extérieure]{.bg4} cause une [hausse du produit et des exportations]{.bg3} (surplus commercial)
+:::
+
+[Cause des [interactions stratégiques entre états]{.bg4} pour la détermination de la politique économique]{.fragment}
+
+::: incremental 
+- Les pays [n'aiment pas les déficits commerciaux, qui alimentent le stock de dette]{.bg4} (et ses intérêts) détenus par l'étranger
+  - Dans une situation de récession, avec des balances équilibrées, aucun pays ne voudra jouer de la relance.
+  - C'est le cas de la [relance française des années 1981-1983]{.bg4}
+- Après les tentatives sous Giscard et Chirac (1974-1975) de relance avortées
+
+:::
+
+-----
+
+::: incremental
+
+- En 1981, avec Mitterand, est mis en place le [plan Mauroy]{.bg4} dans un contexte d'inflation et de chômage
+  - Embauche massive de fonctionnaires : 55,000
+  - Relèvement de 10% du SMIC
+  - Mesures sociales
+  - En tout, 1% du PIB pour atteindre le plein emploi
+
+- Conséquences :
+  - [Plus de croissance]{.bg3}, certes (1.25% en 1982 contre 0.40% en Europe)
+  - Les [déficits commerciaux se creusent]{.bg3}, du fait de l'importation massive de produits japonais et allemands
+  - L'[inflation galope]{.bg3}
+  - [Trois dévaluations]{.bg3} sont nécessaires pour maintenir le taux de change (on y reviendra)
+- La relance est abandonnée en 1983 pour une politique d'austérité
+
+
+:::
+
+----
+
+
+#### Une augmentation des dépenses coordonnée pourrait causer de l'expansion sans ruiner la balance commerciale
+
+::: incremental 
+- Difficile car 
+  - Certains peuvent [refuser de payer la relance]{.bg3} (déficit budgétaire excessif) 
+  - [Refuser d'accroître leur déficit commercial]{.bg3} pour aider les voisins
+
+- Le cas du [G20 durant la crise de 2009]{.bg4}
+  - G20 : 20 états (chef de gouvernement, ministres de l'économie et des finances) se rencontrent annuellement pour la politique économique
+
+- Après réunions d'urgence, plaidoyer pour des [stimuli additionnels de l'ordre de 2% du PIB]{.bg3}
+- Avec des contributions différenciées (plus pour ceux qui ont des marges de manoeuvre importante)
+- A [permis d'endiguer la chute]{.bg3} (malgré une croissance négative en 2009 - le contrefactuel eut été pire) globale avant la rigueur trop brutale
+- Est temporellement liée à la hausse des dettes publiques, qui viennent davantage de la [baisse des recettes fiscales]{.bg3} [(effet ciseau)]{.bg4} 
+  
+
+:::
+
+---
+
+## D. Dévaluations et dépréciations
+
+Supposons qu'un gouvernement peut faire varier son taux de change avec $E$ le prix de la monnaie étrangère en termes de monnaie nationale (1$ = E euros): 
+
+$$ \epsilon = \frac{EP^*}{P}$$
+
+::: incremental 
+- Une dépréciation du dollar voudrait dire que $E$ [baisse]{.fragment .bg4}
+  - $1\text{\$}$ = 0.95 € $\Rightarrow 1 \text{\$}$ = .5 €
+  - Les biens américains deviennent moins chers par rapport aux biens européens
+- [A prix donné, une dépréciation nominale est une dépréciation réelle]{.bg4}
+
+:::
+
+-----
+
+### A. La condition de Marshall Lerner
+
+On a : 
+
+$$ NX = X(Y,E^*) - \epsilon M(Y, \epsilon)$$
+[Avec une dépréciation, du point de vue des [Etats Unis]{.bg4}]{.fragment}
+
+:::{.incremental style="font-size:90%"} 
+- [$X$ augmente]{.bg4}: les prix des biens américains que l'on exporte deviennent moins chers que les biens européens
+- [$M$ diminue]{.bg4} : le prix des biens importés augmente, la demande est satisfaite par les biens américains
+- $\epsilon$ : le prix des importations européennes augmente, renforçant l'addition sur les importations restantes (pouvant mener à des contestations)
+
+:::
+
+[Supposons que le point de départ est une balance équilibrée : $X=\epsilon M$]{.fragment}
+
+::: fragment
+$$\Delta NX = \Delta X - \epsilon \Delta M - \Delta \epsilon M \Rightarrow \frac{\Delta NX}{X} = \frac{\Delta X}{X}- \frac{M\Delta \epsilon }{X} - \frac{\epsilon \Delta M }{X}$$
+:::
+
+::: fragment
+$$\Rightarrow \frac{\Delta NX}{X} = \frac{\Delta X}{X}- \frac{\Delta M }{M} - \frac{ \Delta \epsilon }{\epsilon}\Rightarrow \frac{\Delta NX}{X} >0 \iff \frac{\Delta X}{X}- \frac{\Delta M }{M} > \frac{ \Delta \epsilon }{\epsilon}$$
+:::
+
+
+
+[Tend à être vérifié dans la réalité]{.fragment .bg4}
+
+---
+
+### Quel effet de la dévaluation?
+
+::: incremental
+- Par Marshall Lerner, les exportations nettes augmentent
+- De ce fait, la courbe de demande de biens nationaux augmente également
+- Ainsi, [le produit d'équilibre augmente]{.bg4}
+
+:::
+
+----
+
+
+
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+epsilon_prime = .85
+
+data_ = data_%>%
+  mutate(DD2 = investment(Income, .2, d0, d1, d2) +
+           consumption(Income, (tax), c0, c1) + 
+           (tax))%>%
+  mutate(ZZ2 = DD - 
+           epsilon_prime*import(Income,epsilon= epsilon_prime) + 
+           export( epsilon = epsilon_prime))%>%
+  mutate(AA2 = DD -
+           epsilon_prime*import(Income, epsilon= epsilon_prime),
+         AA = DD - import(Income))
+
+y_balance = data_%>%
+  mutate(Net= ZZ2 - DD)%>%
+  subset(Net^2<=0.005)%>%
+  select(Income)%>%
+  pull()
+
+y_equilibrium = data_%>%
+  mutate(Net2 = ZZ - Income)%>%
+  mutate(Net2_ = Net2^2)%>%
+  subset(Net2_<= .05)%>%
+  select(Income)%>%
+  pull()
+
+y_equilibrium2 = data_%>%
+  mutate(Net2 = ZZ2 - Income)%>%
+  mutate(Net2_ = Net2^2)%>%
+  subset(Net2_<= .05)%>%
+  select(Income)%>%
+  pull()
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Income), linewidth=1)+
+  geom_line(aes(y = ZZ2), color ="coral", linewidth=1)+
+  geom_line(aes(y = DD), color ="red",linewidth=1)+
+  #geom_line(aes(y = AA), color ="grey70",linewidth=1)+
+  #geom_line(aes(y = AA2), color ="firebrick",linewidth=1)+
+
+  geom_line(aes(y = ZZ), color = 40, linewidth=1)+
+  #geom_line(aes(y=DD2), color ="red", linewidth=1.2)+
+  geom_vline(xintercept = y_equilibrium2, color = "coral", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_equilibrium, color = "grey40", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_balance, color ="red", linetype="dotted", linewidth=1)+
+  custom_theme(font_size = 20)
+```
+
+
+:::{.fragment}
+```{r, fig.height=3.5}
+#| fig-align: "center"
+
+data_ = data_ %>%
+  mutate(Net1= ZZ2 - DD,
+         Net = ZZ -  DD)
+
+
+if(y_balance< y_equilibrium2){
+  shading_ = "red"
+  data_shade = data_ %>%
+    subset(Income >= y_balance & Income <= y_equilibrium2)
+}else{
+  shading_ = "forestgreen"
+  data_shade = data_ %>%
+    subset(Income <= y_balance & Income >= y_equilibrium2)
+}
+
+data_shade2 = data_ %>%
+  subset(Income >= y_equilibrium)%>%
+  subset(Net >=0)
+
+
+data_ %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Net1), linewidth=1.2)+
+    geom_line(aes(y = Net), linewidth=1, linetype="dashed")+
+
+  geom_hline(yintercept = 0)+
+  geom_vline(xintercept = y_equilibrium, color = "grey", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_balance, color ="red", linetype="dotted", linewidth=1)+
+  geom_vline(xintercept = y_equilibrium2, color ="coral", linetype="dotted", linewidth=1)+
+  geom_ribbon(data = data_shade, aes(ymin = y_, ymax = Net1), fill = shading_, alpha = 0.5)+
+  geom_ribbon(data = data_shade2, aes(ymin = y_, ymax = Net), fill = "limegreen", alpha = 0.5)+
+
+  custom_theme(font_size = 20)
+
+```
+:::
+
+---
+
+### Quel policy mix? 
+
+::: incremental 
+- On voit que la[ politique budgétaire et la politique de change peuvent être toutes deux utilisées]{.bg4}
+- Comment concilier des [objectifs différents sur la production et le déficit commercial?]{.bg4} 
+  - Une dévaluation résorbe le déficit et augmente la production
+  - Une expansion budgétaire creuse le déficit et augmente la production
+- Que faire si l'on veut stabiliser le déficit sans bouger la production?
+
+:::
+
+----
+
+::: notes
+
+:::
+
+---
+
+Autres exemples :
+
+::: incremental 
+
+- Si la [production est trop basse (donc trop de chômage) et que l'on a un déficit commercial ]{.bg3}
+  - La dépréciation est utile sur les deux fronts
+  - Mais n'est pas garantie d'aboutir : il faudra une correction budgétaire
+- A l'inverse, si [le niveau de production est élevé et la déficit commercial est important :]{.bg3} 
+  - La dépréciation permettra de réduire le déficit
+  - Mais les dépenses publiques/l'activité économique se réduit de façon concommitente seront devront être réduites pour réduire l'activité
+
+:::
+
+--- 
+
+#### La fin de déficits courants 
+
+![OCDE](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/oecd_current_deficit_greece_italy_spain.png){fig-align="center"}
+
+::: notes
+Bleu foncé : l'Espagne
+Bleu mer : Italie
+Bleu clair : Grèce
+
+Les pays européens n'ont pas pu jouer sur leurs taux de change. 
+Le seul moyen de réduire la voilure et le déficit commercial a été de sabrer dans les dépenses. 
+La disparition du déficit courant ne fut pas une très bonne nouvelle. 
+
+:::
+
+------
+
+### La courbe en J
+
+::: incremental 
+
+- Une [dépréciation induit]{.bg4}, en statique, une [amélioration de la balance commerciale]{.bg4}
+- Quid de l'aspect dynamique? 
+- Dépréciation de 10%
+  - [D'abord, on verra cela sur les prix, plutôt que sur les quantités]{.bg4}, qui s'ajusteront moins vite
+  - Celui des importations augmente, celui des exportations baisse
+  - Il est vraisemblable de [voir d'abord un creusement ($\epsilon$ bouge, mais pas $M$ ni $X$)]{.bg4}
+- [A mesure que le temps passe]{.bg4}, si la condition de Marshall Lerner est vérifiée (effet volume plus grand que l'effet prix)
+  - [Amélioration]{.bg4} de la balance commerciale
+
+:::
+
+------
+
+```{r}
+#| fig-align: "center"
+
+lower_asymptote <- -10  # starting value
+upper_asymptote <- 0     # convergence value
+k <- 1                 # growth rate
+x0 <- 5                # midpoint of the curve
+
+# Logistic function definition
+logistic_func <- function(x) {
+  lower_asymptote + (upper_asymptote - lower_asymptote) / (1 + exp(-k * (x - x0)))
+}
+
+# Generate a sequence of x values
+x_values <- seq(0, 10, length.out = 200)
+y_values <- logistic_func(x_values)
+
+# Combine into a data frame
+data <- data.frame(x = x_values, y = y_values)
+
+# Plot the logistic curve using ggplot2
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "blue", linewidth = 1.2) +
+  geom_segment(x = 0, xend=0, y=-10, yend=-5,color = "blue", linewidth = 1.2)+
+  labs(
+       x = "Temps",
+       y = "Balance Nette") +
+  ylim(-10,5)+
+  geom_hline(yintercept=-5, linewidth=.5, linetype="dotted")+
+custom_theme()
+
+```
+
+------
+
+### Epargne, investissement et balance commerciale : les déficits jumeau
+
+En économie ouverte : 
+
+$$Y = C + I + G + X - \epsilon M$$
+
+::: fragment
+
+$$\Rightarrow Y-C-T = S = I + G - T - \epsilon M +X$$
+$$ \Rightarrow NX = S + (T-G) - I$$
+
+:::
+
+:::{.incremental style="font-size:80%"}
+- Un [surplus commercial implique une créance nette]{.bg3} (et vice versa)
+- Si un pays investit plus qu'il n'épargne, il doit avoir un déficit commercial 
+- Une [augmentation de l'investissement]{.bg3} : 
+  - Doit être compensée par [l'épargne privée ou une déterioriation de la balance commerciale]{.bg3}
+- Une [augmentation du déficit budgétaire]{.bg3} : 
+  - Doit être compensée par [l'épargne ou une déterioration de la balance commerciale]{.bg3}
+- Une [déterioration du déficit budgétaire]{.bg3} : 
+  - Doit être compensée par [une baisse de l'investissement, une hausse de l'épargne]{.bg3}, ou [un creusement de la balance commerciale]{.bg3}
+  - L'idée des déficits jumeaux : [Le retour des déficits jumeaux américains, Dupuy, Lacueille, *Revue d'Economie Financière*, 2020](https://shs.cairn.info/revue-d-economie-financiere-2020-1-page-339?lang=fr)
+  
+:::
+
+# IV. L'équilibre macroéconomique : production, intérêt, taux de change 
+
+Vers [IS-LM-BP, le modèle de Mundell et Flemming]{.bg4}
+
+## Idées clés
+
+::: incremental
+
+- On a eu l'impression que le [taux de change était une variable de choix]{.bg4} de la politique économique
+- Il est quand même [déterminé par des marchés]{.bg3}, dont le volume est colossal
+- Comment est ce qu'il est fixé? Comment l'influencer? 
+
+:::
+
+[Lire [l'article d'A. Leparmentier, *Le Monde*, "Le dollar à plus de 1 euro : pourquoi le billet vert triomphe"](https://sim-jean.github.io/files/teaching/agro/2A/leparmentier_dollar.pdf)]{.fragment}
+
+::: incremental
+- Quels sont les [principaux mécanismes de fixation du taux de change? ]{.bg4}
+  - Taux (publics et privés)
+  - Sécurité
+  - Prédominance dans les échanges
+  - Flambée des cours énergétiques
+  
+:::
+
+## A. L'équilibre sur le marché des biens
+
+$$Y = C(Y-T) + I(Y,r) + G - \epsilon M(Y,\epsilon) + X(Y^*, \epsilon)$$
+
+::: incremental 
+
+- Si $r$ augmente : l'investissement décroit, menant, via le multiplicateur à une baisse du produit d'équilibre
+- Une [augmentation du taux de change réel - dépréciation réelle]{.bg4} : 
+  - Déplace la demande totale vers les biens nationaux
+  - Causant une hausse des exportations nettes
+- Deux hypothèses simplificatrices : 
+  - Les prix sont fixés, donc le taux de change peut être remplacé par le change nominal
+  - Le taux d'intérêt réel par le taux d'intérêt nominal
+  
+:::
+
+## B. L'équilibre sur les marchés financiers
+
+::: incremental 
+
+- On suppose toujours que tout le monde veut [les actifs aux rendements les plus élevés : on s'abstrait du risque et de la liquidité]{.bg3}
+  - Parfois, le [risque est le premier driver, pas les taux]{.bg4}
+  - Si une situation macroéconomique est perçue comme risquée, il peut y avoir des [retours des investissements (surtout depuis les pays émergents)]{.bg4}
+  - Causant des [dépréciations importantes malgré des taux stables]{.bg4} (Amérique Latine, Asie)
+  - Ou une [appréciation du dollar du fait de l'acquisition de valeurs refuges]{.bg4} - les bons du Trésor
+- Les actifs échangés doivent donc avoir le [même taux de rendement en équilibre]{.bg4}
+  - Avec des anticipations fixées et en enlevant les indices temporels 
+
+:::
+
+[$$ i = i^* + \frac{\bar{E}^e - E}{E}$$]{.fragment}
+
+::: fragment
+
+Donc
+$$ E = \frac{\bar{E}^e}{1+i-i^*}$$
+:::
+
+------
+
+::: incremental 
+- Si $i=i^*$, le taux est égal à son taux espéré
+- Si $i$ augmente [(du fait d'une contraction de la masse monétaire européenne)]{.bg3} : 
+  - Les [bons européens deviennent intéressants]{.bg3}
+  - Les investisseurs américains essaient de se [procurer des euros]'.bg3 (vente de titre en dollar, puis de dollars contre des euros)
+  - [L'euro s'apprécie par rapport au dollar]{.bg3}
+  - Le montant de l'appréciation dépend de l'anticipation: [les investisseurs fixent $\bar{E}^e = E$]{.bg3}
+  - L'anticipation de dépréciation doit être telle que [l'appréciation soit compensée, pour rendre indifférents entre les titres]{.bg4}
+- Supposons, que de $i=i^*=4%$ et $i$ pase à 10%
+  - L'euro s'apprécie de $6%$ du fait des échanges de monnaie
+  - Les marchés anticipent que [le dollar s'apprécie de $6%$ d'ici un an,]{.bg4} de sorte à ce que les actifs détenus dans les deux devises [soient également rentables]{.bg4}
+  
+:::
+
+---
+
+```{r}
+#| fig-align: "center"
+i_star = 15
+e_exp = 1.1
+data_lm = data.frame(E = seq(0,2, 0.01))%>%
+  mutate(i = 1*(i_star + (e_exp - E)/E))
+data_lm %>%
+  subset(E>0.3)%>%
+  ggplot(aes(x = E, y = i))+
+  geom_segment(x = e_exp, xend = e_exp, y = 0, yend = i_star, linetype ="dotted", linewidth=.8)+
+  geom_segment(x = 0, xend = e_exp, y = i_star, yend = i_star, linetype ="dotted", linewidth=.8)+
+  geom_line(linewidth=1.2)+
+  ylab("Taux d'intérêt intérieur")+
+  xlab("Taux de change")+
+  custom_theme(font_size = 15)
+```
+
+
+
+## C. L'interaction des marchés des biens et des marchés financiers
+
+L'[équilibre macroéconomique, et ses fluctuations]{.bg3} dépendent donc : 
+
+::: incremental 
+- De l'équilibre sur le marché des biens
+- Du taux d'intérêt fixé par la banque centrale
+- De la parité des taux d'intérêt
+
+:::
+
+[1. [La courbe IS]{.bg4} : quel est l'effet d'une augmentation du taux d'intérêt?]{.fragment}
+
+::: incremental 
+- [Effet direct sur l'investissement négatif]{.bg4}, menant à une baisse du produit
+- [Effet à travers le taux de change spécifique]{.bg4} au modèle ouvert : 
+  - Appréciation de la monnaie
+  - Les biens nationaux deviennent moins chers les biens étrangers
+  - Baisse des exports et baisse du produit
+
+:::
+
+[2. [La courbe LM]{.bg4} est une droite horizontale du fait de la fixation de la banque centrale]{.fragment}
+
+[3. L'équilibre et le taux d'intérêt d'équilibre s'infèrent de [l'équilibre IS-LM-BP]{.bg4}]{.fragment}
+
+---------
+
+:::: columns
+
+::: column
+```{r}
+#| fig-align: "center"
+
+data_loc = data.frame(Income = seq(0,100))%>%
+  mutate(Intérêt = 2 - 12/100*Income^.6)
+
+data_loc %>%
+  ggplot(aes(x = Income, y = Intérêt))+
+  geom_line(linewidth=1.2)+
+  geom_hline(yintercept = 1.2, color = "deeppink4", linewidth=1.2)+
+  custom_theme(font_size = 15)+
+  ylim(0,2)
+
+```
+
+
+:::
+
+
+::: column
+
+```{r}
+#| fig-align: "center"
+i_star = .5
+e_exp = 1.1
+data_lm = data.frame(E = seq(0,2, 0.01))%>%
+  mutate(i = 1*(i_star + (e_exp - E)/E))
+data_lm %>%
+  subset(E>0.3)%>%
+  ggplot(aes(x = E, y = i))+
+  #geom_segment(x = e_exp, xend = e_exp, y = 0, yend = i_star, linetype ="dotted", linewidth=.8)+
+  #geom_segment(x = 0, xend = e_exp, y = i_star, yend = i_star, linetype ="dotted", linewidth=.8)+
+  geom_hline(yintercept = 1.2, linetype = "dotted", linewidth = .9)+
+  geom_line(linewidth=1.2)+
+  ylab("Taux d'intérêt intérieur")+
+  xlab("Taux de change")+
+  ylim(0,2)+
+  custom_theme(font_size = 15)
+
+
+```
+
+:::
+
+::::
+
+## D. Les effets des politiques macroéconomiques en économie ouverte
+
+### Les effets de la politique monétaire 
+
+:::: columns
+
+::: column
+```{r}
+#| fig-align: "center"
+
+data_loc = data.frame(Income = seq(0,100))%>%
+  mutate(Intérêt = 2 - 12/100*Income^.6)
+
+data_loc %>%
+  ggplot(aes(x = Income, y = Intérêt))+
+  geom_line(linewidth=1.2)+
+  geom_hline(yintercept = 1.2, color = "deeppink4", linewidth=1.2)+
+  geom_hline(yintercept = 1.4, color = "deeppink2", linewidth=1.2)+
+
+  custom_theme(font_size = 15)+
+  ylim(0,2)
+
+```
+
+
+:::
+
+
+::: column
+
+```{r}
+#| fig-align: "center"
+i_star = .5
+e_exp = 1.1
+data_lm = data.frame(E = seq(0,2, 0.01))%>%
+  mutate(i = 1*(i_star + (e_exp - E)/E))
+data_lm %>%
+  subset(E>0.3)%>%
+  ggplot(aes(x = E, y = i))+
+  #geom_segment(x = e_exp, xend = e_exp, y = 0, yend = i_star, linetype ="dotted", linewidth=.8)+
+  #geom_segment(x = 0, xend = e_exp, y = i_star, yend = i_star, linetype ="dotted", linewidth=.8)+
+  geom_hline(yintercept = 1.2, linetype = "dotted", linewidth = .9, color = "deeppink4")+  
+  geom_hline(yintercept = 1.4, color = "deeppink2")+
+  geom_line(linewidth=1.2)+
+  ylab("Taux d'intérêt intérieur")+
+  xlab("Taux de change")+
+  ylim(0,2)+
+  custom_theme(font_size = 15)
+
+
+```
+
+:::
+
+::::
+
+::: notes
+- Affecte le produit via 2 canaux : 
+- Taux d'intérêt sur l'investissement
+- Effet sur le change : 
+  - Appréciation : les importations deviennent moins chères
+  - Les exportations plus chères
+  - Il y a moins de demande
+  - Ce qui contracte l'activité par multiplicateur
+
+:::
+
+--------
+
+### Les effets des politiques budgétaires en économie ouverte
+
+:::: columns
+
+::: column
+```{r}
+#| fig-align: "center"
+
+data_loc = data.frame(Income = seq(0,100))%>%
+  mutate(Intérêt = 2 - 12/100*Income^.6)%>%
+  mutate(Intérêt2 = 2*Intérêt)
+
+data_loc %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Intérêt),linewidth=1.2)+
+  geom_line(aes(y = Intérêt2),linewidth=1.2, color = "grey40")+
+  geom_hline(yintercept = 1.2, color = "deeppink4", linewidth=1.2)+
+  #geom_hline(yintercept = 1.4, color = "deeppink2", linewidth=1.2)+
+
+  custom_theme(font_size = 15)+
+  ylim(0,2)
+
+```
+
+
+:::
+
+
+::: column
+
+```{r}
+#| fig-align: "center"
+i_star = .5
+e_exp = 1.1
+data_lm = data.frame(E = seq(0,2, 0.01))%>%
+  mutate(i = 1*(i_star + (e_exp - E)/E))
+data_lm %>%
+  subset(E>0.3)%>%
+  ggplot(aes(x = E, y = i))+
+  #geom_segment(x = e_exp, xend = e_exp, y = 0, yend = i_star, linetype ="dotted", linewidth=.8)+
+  #geom_segment(x = 0, xend = e_exp, y = i_star, yend = i_star, linetype ="dotted", linewidth=.8)+
+  geom_hline(yintercept = 1.2, linetype = "dotted", linewidth = .9, color = "deeppink4")+  
+  #geom_hline(yintercept = 1.4, color = "deeppink2")+
+  geom_line(linewidth=1.2)+
+  ylab("Taux d'intérêt intérieur")+
+  xlab("Taux de change")+
+  ylim(0,2)+
+  custom_theme(font_size = 15)
+
+
+```
+
+:::
+
+::::
+
+::: notes
+- Si la banque centrale ne change pas son taux (inflation)
+- L'augmentation des dépenses donne une hausse du produit
+- Sans changer le taux de change car les taux ne bougent pas
+- La conso augmente
+- L'investissement augmente du fait de Y
+- NX : 
+  - Y^* ne bouge pas
+  - Augmentation de M
+  - Déterioration de la BC
+  - Multiplicateur sur le produit
+
+:::
+
+----
+
+### Policy mix : inquiétudes inflationnistes et expansion
+
+:::: columns
+
+::: column
+```{r}
+#| fig-align: "center"
+
+data_loc = data.frame(Income = seq(0,100))%>%
+  mutate(Intérêt = 2 - 12/100*Income^.6)%>%
+  mutate(Intérêt2 = 2*Intérêt)
+
+data_loc %>%
+  ggplot(aes(x = Income))+
+  geom_line(aes(y = Intérêt),linewidth=1.2)+
+  geom_line(aes(y = Intérêt2),linewidth=1.2, color = "grey40")+
+  geom_hline(yintercept = 1.2, color = "deeppink4", linewidth=1.2)+
+  geom_hline(yintercept = 1.4, color = "deeppink2", linewidth=1.2)+
+  annotate("text", x= 24, y = 1.3, label = "A", color = "deeppink4", family = local_family, size = 10)+
+  annotate("text", x= 62, y = 1.3, label = "A'", color = "deeppink4", family = local_family, size = 10)+
+  annotate("text", x= 52, y = 1.6, label = "A''", color = "deeppink2", family = local_family, size = 10)+
+
+  custom_theme(font_size = 15)+
+  ylim(0,2)
+
+```
+
+
+:::
+
+
+::: column
+
+```{r}
+#| fig-align: "center"
+i_star = .5
+e_exp = 1.1
+data_lm = data.frame(E = seq(0,2, 0.01))%>%
+  mutate(i = 1*(i_star + (e_exp - E)/E))
+data_lm %>%
+  subset(E>0.3)%>%
+  ggplot(aes(x = E, y = i))+
+  #geom_segment(x = e_exp, xend = e_exp, y = 0, yend = i_star, linetype ="dotted", linewidth=.8)+
+  #geom_segment(x = 0, xend = e_exp, y = i_star, yend = i_star, linetype ="dotted", linewidth=.8)+
+  geom_hline(yintercept = 1.2, color = "deeppink4", linewidth=1.2)+
+  geom_hline(yintercept = 1.4, color = "deeppink2", linewidth=1.2)+
+  annotate("text", x= 0.6, y = 1.1, label = "A", color = "deeppink4", family = local_family, size = 10)+
+  annotate("text", x= 0.5, y = 1.5, label = "A''", color = "deeppink2", family = local_family, size = 10)+
+
+  geom_line(linewidth=1.2)+
+  ylab("Taux d'intérêt intérieur")+
+  xlab("Taux de change")+
+  ylim(0,2)+
+  custom_theme(font_size = 15)
+
+
+```
+
+:::
+
+::::
+
+::: incremental 
+- Consommation et dépenses publiques [augmentent]{.bg3}
+- Investissement [ambigu]{.bg3} : produit v. intérêt
+- Exportations nettes [diminuent]{.bg3} : accroissement du produit intérieur et importations + appréciation de la monnaie 
+
+:::
+
+---
+
+### Les Etats Unis au début des années 1980
+
+::: incremental 
+- Paul Volcker, gouverneur de la Fed, lutte inlassablement contre l'inflation avec des [taux énormes]{.bg3}
+- Reagan est élu en 1980, et promulgue l'*Economic Recovery Act* : [baisse drastique des impôts]{.bg3} sur les personnes (23pp en 3 ans) sans contrepartie de dépense publique (le déficit augmente à 5,6% PIB 1983)
+  - Pour aider les riches - faire une [politique de l'offre]{.bg3}
+  - Contraindre l'évolution des dépenses publiques : difficile de les augmenter
+- In fine, de 1980 à 1982: 
+  - L'augmentation des taux cause une [appréciation de la monnaie]{.bg3}
+  - Et une [récession]{.bg3}
+  - Avec un effet presque [nul sur la balance commerciale]{.bg3}
+- A partir de 1982 : 
+  - L'expansion se fait sentir : croissance de la production, taux d'intérêt élevés et appréciation du dollar (par rapport à 1980)
+  - Creusant le déficit commercial : [les déficits jumeaux]{.bg3}
+
+:::
+
+
+## E. Les régimes de changes : entre flottants et fixes
+
+::: incremental 
+
+- [Change flottant]{.bg4} : commerce relativement libre (et parfois intervention)
+  - USA, Japon etc
+- [Ancrage]{.bg4} : ajustement des fluctuations de monnaie dans un certain range, qui peut être très restrictif
+  - Franc CFA et UEMOA & "eco" (reste parité fixe avec l'euro mais réserves de change rapatriées)
+  - Réévaluations pas très régulières
+  - P[arité glissante]{.bg3} : change ajusté pour une inflation trop importante, donc on laisse filer 
+  - [Système monétaire européen]{.bg3} : bandes de fluctuations respectives des monnaies européennes
+- [Absence de contrôle]{.bg4} : pas de monnaie propre, ou taux fixé avec une autre autorité monétaire sans banque centrale
+  - Salvador, Panama, Monaco, Hong Kong, Bulgarie
+
+:::
+
+
+-----
+
+![Nils Tycho - 2022](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Exchange_rate_arrangements_map.svg){fig-align="center"}
+
+------
+
+### La politique monétaire en régime de change fixe
+
+::: incremental 
+- Change fixe : très bien, mais comment? 
+- Si les capitaux sont [parfaitement mobiles]{.bg3} : il faut maintenir la parité des taux
+- Si les taux sont fixés dans le temps, on doit avoir :
+
+:::
+
+::: fragment
+
+$$ i_t = i_t^* + \frac{\bar{E}' - \bar{E}}{\bar{E}}$$
+:::
+
+::: incremental 
+- Si $\bar{E}=\bar{E}'$, les anticipations des investisseurs sont telles que le [taux de change ne bougera pas]{.bg3} : 
+  - Le taux d'intérêt doit être le même que le taux étranger
+  - Avec une [mobilité des capitaux parfaite]{.bg3}, le change fixe fait perdre l'autonomie de la politique monétaire
+
+:::
+
+-------
+
+### La politique budgétaire en régime de change fixe
+
+::: incremental 
+- En change fixe, nous avons les mêmes effets que vu précédemment en l'absence d'intervention de la banque centrale
+- La banque centrale ne peut [pas contrecarrer les poussées inflationnistes]{.bg4} créées par des politiques budgétaires expansionnistes
+
+:::
+
+----------
+
+### Pourquoi favoriser un change fixe? 
+
+::: incremental 
+1. On [abandonne potentiellement la politique monétaire]{.bg4}, ou la manipulation de la balance des paiements
+2. On doit [suivre les évolutions de taux de l'étranger]{.bg4}] : suite à la réunification, la poussée inflationniste allemande a mené l'ensemble des pays du SME à bouger leurs taux, causant une crise importante (à suivre)
+3. Avec la politique budgétaire uniquement, on n'a [pas assez d'instruments pour certaines politiques publiques]{.bg4} : certes on sortirait d'une récession, au prix d'un accroissement du déficit commercial
+4. [Pourquoi créer l'euro?]{.bg4} [On verra cela si on a le temps, mais la réponse se situe à plus long terme]{.fragment}
+
+:::
+
+------
+
+### Relever l'hypothèse de liberté de mouvements des capitaux? 
+
+::: incremental 
+- La liberté de mouvements des capitaux est supposée, car elle est véritable dans les économies avancées
+- Si l'on enlève, les [investisseurs ne peuvent plus déplacer]{.bg4} leurs avoirs vers des titres étrangers
+- La banque centrale peut dans ce cas [diminuer le taux d'intérêt et fixer le taux de change]{.bg4}
+
+:::
+
+--------
+
+:::: columns
+
+::: column
+
+[Mobilité parfaite et open market]{.fragment .bg4}
+
+::: incremental 
+- Achat d'obligations donc accroissement de la base monétaire
+- Causant une baisse du taux d'intérêt domestique
+- Les investisseurs préfèrent des titres étrangers
+- Achètent de la monnaie étrangère
+- La banque centrale vend des devises, pour éviter que la monnaie nationale ne dévisse
+- Elle le fait tant que le taux national n'est pas égal au taux étranger
+- Simplement : achat d'obligation mais vente de devises, avec simplement une modification du bilan de la banque en composition
+:::
+
+:::
+
+::: column
+
+[Mobilité imparfaite et open market]{.fragment .bg4}
+
+::: incremental 
+- Il faut du temps pour s'adapter aux taux d'intérêt différent (peut être infini)
+- Donc la banque peut accroître la base monétaire via des opérations d'open market
+- La même mécanique est à l'oeuvre, mais plus lente : la banque centrale a moins besoin de jouer sur la vente de devises
+- Résultat : la banque centrale peut, au moins à court terme, jouer sur le taux d'intérêt
+:::
+
+:::
+::::
+
+----
+
+### Le triangle d'incompatibilité de Mundell
+
+![Wikipedia](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Triangle_d'incompatibilité.svg){fig-align="center"}
+
+::: notes
+- Si l'on a de la mobilité des capitaux et un change fixe, alors on perd la politique monétaire comme levier, du fait de la parité des taux
+- Si l'on a de la mobilité des capitaux et la politique monétaire, on doit laisser le change s'ajuster
+- Si l'on la politique monétaire et la liberté des taux, alors il faut restreindre le mouvement des capitaux
+:::
+
+---
+
+
+### Crises de change fixe
+
+::: incremental 
+- De nombreuses [attaques spéculatives]{.bg3} sur les monnaies qui étaient dans l'ancrage glissant qu'était le SME, provoquant des crises de change
+- Les investisseurs estiment que la [monnaie est surévaluée]{.bg4}: trop d'inflation par rapport au pays où l'on s'ancre (donc monnaie réelle trop élevée)
+  - Impliquant une détérioration progressive du solde commercial
+  - Il faudra réévaluer le taux de change
+- Si les [acteurs financiers anticipent une dévaluation]{.bg4} :
+  - Le taux de dépréciation de la monnaie augmente : on croit que la monnaie va se dévaluer
+  - Il faut donc offrir un taux élevé pour que les investisseurs restent
+  
+:::
+
+::: fragment
+
+$$i_t = i_t^* + \frac{E^e_{t+1} - E_t}{E_t} $$
+
+:::
+
+----
+
+Que faire ? 
+
+::: incremental 
+- [Essayer de convaincre qu'il n'y aura pas besoin de dévaluer]{.bg4} : communiqués de presse etc
+- Augmenter les taux d'intérêt, mais pas autant que ce qu'il faudrait
+  - Toujours une sortie de capitaux
+  - Et une fonte des réserves de change pour maintenir les taux
+- Après quelque temps, [il faudra donc dévaluer,]{.bg4} à moins de risquer des taux prohibitifs, risqués macroéconomiquement
+
+:::
+
+::: fragment
+
+Les [anticipations de dévaluations créent la dévaluation]{.bg4} : on peut attaquer une monnaie en faisant les anticipations, car le coût du maintien est trop grand
+
+:::
+
+
+
+----
+
+### Crise du SME
+
+![Blanchard et Cohen](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/crise_sem1.jpg){fig-align="center" width=50%}
+
+-----
+
+
+![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/crise_sme2.jpg){fig-align="center"}
+
+
+----
+
+### Pourquoi l'euro ? 
+
+::: incremental 
+- Malgré les [coûts importants du régime de change fixe]{.bg3}
+- Idée de [zone monétaire optimale ]{.bg4}: adopter une politique monétaire commune en réaction aux fluctuations
+  - Il faut être soumis aux même chocs
+  - Et dans le cas des chocs asymétriques, avoir une mobilité forte des facteurs de production à l'intérieur, pour ne pas avoir à changer le taux de change
+- [Cas des Etats Unis]{.bg3} : 
+  - Chocs asymétriques certes
+  - Mais grande mobilité du travail
+
+:::
+
+----
+
+::: incremental 
+- [Création de la zone euro]{.bg4} : 
+  - Abolition des contrôles de change en 1990
+  - Fixation de parités en 1994
+  - Adoption d'une monnaie unique en 1995
+- En parallèle : 
+  - [Traité de Maastricht, 1992]{.bg3} : posant les conditions pour rejoindre la zone (inflation faible, déficit en dessous de 3% et dette/PIB < 60%)
+  - 11 pays en 1998 : l’Allemagne, l’Autriche, la Belgique, la
+Finlande, la France, l’Espagne, I'Italie, l’Irlande, le Luxembourg, les Pays-Bas et le Portugal.
+  - 1999 : fixation irrévocable des taux de change
+  - Introduction en 2002 de la monnaie fiducière
+  - La BCE est en charge de la politique monétaire commune
+
+:::
+
+----
+
+### Exercice : Les effets des variations des variables étrangères
+
+Reprenons : 
+
+::: incremental 
+
+1. $Y = C(Y-T) + I(Y,i) + G + NX(Y, Y^*, E)$
+2. $i = \bar{i}$
+3. $E = \frac{\bar{E}^e}{1+i_i^*+i}$
+
+:::
+
+::: incremental 
+1. Montrez les effets d'une baisse du produit étranger $Y^*$ sur $Y$ et expliquez les canaux de transmission
+2. Montrez les effets d'une augmentation de $i^*$ sur $Y$
+3. Une contraction monétaire à l'étranger a des chances de conduire à une récession dans notre pays : qu'en pensez vous? 
+
+:::
+
+
+
+
+# Annexes 
+
+-----
+
+```{r}
+#| fig-align: "center"
+
+data_fin = data.frame(Monnaie = seq(0,50))%>%
+  mutate(Demande = 1/(Monnaie^.4))
+data_fin %>%
+  ggplot(aes(x = Monnaie, y = Demande))+
+  geom_line(color="deeppink4", linewidth=1.1)+
+  ylab("Intérêt")+
+  custom_theme(font_size=20)
+
+```
+
+----
+
+### Equation LM : intérêt et monnaie
+
+- La quantité de monnaie dans l'économie est fixée par $M$
+- Pour avoir un équilibre sur le marché monétaire, le taux d'intérêt doit se fixer de telle sorte que : 
+  $M = \text{\$}Y L(i)$
+
+```{r}
+#| fig-align: "center"
+
+data_fin %>%
+  ggplot(aes(x = Monnaie, y = Demande))+
+  geom_line(color="deeppink3", linewidth=1.1)+
+  ylab("Intérêt")+
+  geom_vline(xintercept = 10,linewidth=1.1)+
+  annotate("text", x=13, y=.9, label = "M", size = 8, family=local_family)+
+  custom_theme(font_size = 15)
+
+```
+
+---------
+
+Si le revenu nominal $\text{\$}Y$ augmente : 
+
+```{r}
+#| fig-align: "center"
+
+data_fin %>%
+  mutate(Demande2 = 2*Demande)%>%
+  ggplot(aes(x = Monnaie))+
+  geom_line(aes(y=Demande), color="deeppink3", linewidth=1.1)+
+  geom_line(aes(y=Demande2), color="deeppink4", linewidth=1.1)+
+  geom_vline(xintercept = 10,linewidth=1.1)+
+  annotate("text", x=13, y=.9, label = "M", size = 8, family=local_family)+
+  custom_theme(font_size = 15)+
+  ylab("Intérêt")+
+  ylim(0,0.9)
+```
+
+
+La demande de monnaie est trop importante pour l'économie : il faut que le taux d'intérêt augmente pour que le marché monétaire soit en équilibre. 
