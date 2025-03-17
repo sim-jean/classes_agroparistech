@@ -1,7 +1,23 @@
 ---
 title: "L'évaluation économique des biens environnementaux"
-subtitle: "Economie de l'Environnement et des Ressources Naturelles"
+subtitle: "UC3 - Economie de l'Environnement et des Ressources Naturelles"
 ---
+
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
+
 
 ```{r}
 
@@ -16,6 +32,10 @@ library(magrittr)
 library(ggplot2)
 library(here)
 source(here("utilities.R"))
+
+library(showtext)
+font_add_google("Roboto", "Roboto")
+showtext_auto()
 
 local_family="Roboto"
 ```

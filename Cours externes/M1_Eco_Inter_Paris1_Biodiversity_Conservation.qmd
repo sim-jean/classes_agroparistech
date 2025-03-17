@@ -13,7 +13,7 @@ subtitle: "Université Paris 1 Panthéon Sorbonne - M1 Economie Internationale -
 
 ## COP 16 and biodiversity conservation
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/COP%2016%20Rome.png){fig-align="center"}
+![](../images/ecol_econ/biodiv/COP%2016%20Rome.png){fig-align="center"}
 
 ::: notes
 -   COP16 in Cali Colombia : meant to bridge the finance gap for biodiversity conservation in the Conference of Parties to the Convention on Biological Diversity
@@ -83,7 +83,7 @@ Article 2, Convention on Biological Diversity, 1992
 :::::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/biodiv_illustration.jpg)
+![](../images/ecol_econ/biodiv/biodiv_illustration.jpg)
 :::
 :::::::
 
@@ -149,7 +149,7 @@ For an overview of measures used, see Marcon, 2018 [^1]
 
 ## C. A worldwide decline
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
 
 # 2. Rationales for biodiversity conservation
 
@@ -200,13 +200,13 @@ The concept of [total economic value]{.bg4} emerges from John Krutilla's work (1
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/NCPs2.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/NCPs2.jpg){fig-align="center"}
 
 ## C. Evaluating Ecosystem Services
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/costanza_1997.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/costanza_1997.jpg){fig-align="center"}
 :::
 
 :::: column
@@ -222,7 +222,7 @@ The concept of [total economic value]{.bg4} emerges from John Krutilla's work (1
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
+![](../images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -233,7 +233,7 @@ Eyal Frank, The economic impacts of ecosystem disruptions: Costs from substituti
 Causal study of the impact of the [onset of white nose syndrom in the US]{.bg4} using [staggered difference in difference]{.bg4} on pesticide use and infant health
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/1e_année/science.adg0344-fa.jpg)
+![](../images/1e_année/science.adg0344-fa.jpg)
 :::
 
 ::: incremental
@@ -488,11 +488,11 @@ data_ %>%
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive2.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive2.JPG){width="80%"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive3.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive3.JPG){width="80%"}
 
 ------------------------------------------------------------------------
 
@@ -528,14 +528,14 @@ Let :
 -   Average and marginal cost : $$CM = Cm = c$$
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top="75" left="600" width="550" height="600"}
+![](../images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top="75" left="600" width="550" height="600"}
 :::
 
 ------------------------------------------------------------------------
 
 #### Two fishing grounds
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive11.JPG){width="80%"}
 
 ------------------------------------------------------------------------
 
@@ -548,7 +548,7 @@ Let :
 :::
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){.absolute top="240" left="100" width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive11.JPG){.absolute top="240" left="100" width="790" height="500"}
 :::
 
 ------------------------------------------------------------------------
@@ -560,7 +560,7 @@ Let :
 :::
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive13.JPG){.absolute top="240" left="100" width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive13.JPG){.absolute top="240" left="100" width="790" height="500"}
 :::
 
 ------------------------------------------------------------------------
@@ -572,18 +572,18 @@ Let :
 :::
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive14.JPG){.absolute top="240" left="100" width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive14.JPG){.absolute top="240" left="100" width="790" height="500"}
 :::
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive15.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive15.JPG){width="80%"}
 
 ------------------------------------------------------------------------
 
 #### Open access equilibrium
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top="50" left="200" height="700"}
+![](../images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top="50" left="200" height="700"}
 
 ------------------------------------------------------------------------
 
@@ -772,14 +772,14 @@ data_fin %>%
 
 :::: column
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halibut.png){width="80%"}
+![](../images/Ressources_Nat/halibut.png){width="80%"}
 :::
 ::::
 :::::::
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/shiny_ex.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/shiny_ex.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -802,7 +802,7 @@ data_fin %>%
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE.JPG){width="80%" fig-align="center"} ![RÈGLEMENT (UE) 2025/219 DU CONSEIL du 30 janvier 2025](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE_jours.JPG){width="80%" fig-align="center"}
+![](../images/Ressources_Nat/peche_merlu_UE.JPG){width="80%" fig-align="center"} ![RÈGLEMENT (UE) 2025/219 DU CONSEIL du 30 janvier 2025](../images/Ressources_Nat/peche_merlu_UE_jours.JPG){width="80%" fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -821,7 +821,7 @@ data_fin %>%
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive18.jpg){width="80%" position="center"}
+![](../images/Ressources_Nat/Diapositive18.jpg){width="80%" position="center"}
 
 ------------------------------------------------------------------------
 
@@ -850,7 +850,7 @@ In real life, when [resources can be held in common]{.bg4} (implies low cost of 
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/alanya-fushery.jpg){width="80%" position="center"}
+![](../images/ecol_econ/biodiv/alanya-fushery.jpg){width="80%" position="center"}
 :::
 
 :::: column
@@ -890,7 +890,7 @@ In real life, when [resources can be held in common]{.bg4} (implies low cost of 
 
 #### Limits of single species approaches
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+![](../images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -908,7 +908,7 @@ FAO, 2003:
 
 [Tromeur et Doyen, 2018](https://link.springer.com/article/10.1007/s10666-018-9618-2)
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmsy.jpg){fig-align="center"}
+![](../images/Ressources_Nat/mmsy.jpg){fig-align="center"}
 
 ::: notes
 -   Les deux points de référence sont pas atteignables de facon conjointe, que ce soit le MSY ou le MEY
@@ -918,7 +918,7 @@ FAO, 2003:
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
+![](../images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
 
 ::: notes
 -   Dans l'étude de Tromeur et Doyen, en prenant en compte la structure des pêcheries de Guyane Française, avec 13 espèces représentant 90% des captures
@@ -964,7 +964,7 @@ p +
 
 #### EBFM today in world's fisheries
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width="80%" fig-align="center"}
+![](../images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width="80%" fig-align="center"}
 
 ::: notes
 -   Although EAFM has been formally adopted widely since the 1990s, little is currently known to what extent ecosystem drivers of fish stock productivity are actually implemented in fisheries management.
@@ -979,7 +979,7 @@ p +
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/sciadv.abm9982-f2.jpg)
+![](../images/ecol_econ/biodiv/sciadv.abm9982-f2.jpg)
 :::
 
 :::: column
@@ -1037,13 +1037,13 @@ That all depends on the relationship between land, yield and biodiversity :
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive1.jpg)
+![](../images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive1.jpg)
 
 ------------------------------------------------------------------------
 
 #### Sparing
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive2.jpg)
+![](../images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive2.jpg)
 
 ::: notes
 -   If increasing land yields drops yield
@@ -1056,7 +1056,7 @@ That all depends on the relationship between land, yield and biodiversity :
 
 #### Sharing
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive3.jpg)
+![](../images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive3.jpg)
 
 ::: notes
 -   If increasing land yields drops yield
@@ -1107,19 +1107,19 @@ That all depends on the relationship between land, yield and biodiversity :
 
 [V. Cocco et al. 2023, Relaxing the production-conservation trade-off: Biodiversity spillover in the bioeconomic performance of ecological networks, *Ecological Economics*](https://www.sciencedirect.com/science/article/pii/S092180092300229X)
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/model_structure_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/model_structure_cocco2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/spatial_framework_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/spatial_framework_cocco2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/results_performance_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/results_performance_cocco2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/performances_within_outside_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/performances_within_outside_cocco2023.jpg){fig-align="center"}
 
 ::: notes
 Look at various costs and losses (in the form of lost profit) of imposing land use types
@@ -1162,7 +1162,7 @@ Look at various costs and losses (in the form of lost profit) of imposing land u
 
 :::: column
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/vera_score.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/vera_score.jpg){fig-align="center"}
 :::
 ::::
 :::::::
@@ -1200,7 +1200,7 @@ T. West et al., Action needed to make carbon offsets from forest conservation wo
 
 :::: column
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/synthetic%20control.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/synthetic%20control.jpg){fig-align="center"}
 :::
 ::::
 :::::::
@@ -1221,7 +1221,7 @@ The seminal idea is basically : [how would you fill Noah's Ark?]{.bg4}
 
 :::::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/library_weitzman.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/library_weitzman.jpg){fig-align="center"}
 :::
 
 :::::: {.column width="60%"}
@@ -1309,7 +1309,7 @@ $$\begin{align*}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/global_hotspots.jpg)
+![](/images/ecol_econ/biodiv/global_hotspots.jpg)
 
 ------------------------------------------------------------------------
 
@@ -1356,7 +1356,7 @@ Their approach
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/blue_paradow.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/blue_paradow.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 

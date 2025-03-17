@@ -1,11 +1,26 @@
 ---
 title: "Institutions : s'échapper des dilemmes sociaux"
-subtitle : "Economie ecologique"
+subtitle: "UC6 - Economie ecologique"
 ---
+
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
 
 # Introduction à l'analyse institutionnelle
 
-----
+------------------------------------------------------------------------
 
 ### Définir les institutions
 
@@ -70,95 +85,105 @@ Comme la [théorie de la régulation]{.bg3}
 -   Les institutions influencent le comportement en fournissant des [schémas cognitifs]{.bg4} qui sont indispensables à l'action (ce qu'il faut faire et imaginer faire)
 :::
 
+## Des cadres théoriques complémentaires pour l'économie écologique
+
+::: incremental
+-   Economie institutionnaliste
+    -   Changement vient des institutions (croyances, valeurs, marchés, monnaies, concurrence, Etats)
+    -   Structures sociales et rapports de forces collectifs sont la clé du changement
+    -   Point faible: pas d’autonomie individuelle, ce sont les institutions sociales qui font tout
+-   Economie néo-institutionnaliste et conventionnaliste
+    -   Changement vient des structures de gouvernance (hiérarchiques, marchandes, communautaires)
+    -   La bonne coordination et les coûts de transaction sont la clé du changement
+    -   Point faible: la coordination ne dit pas grand chose sur la transition à proprement parler
+-   Economie systémique, interactionniste et co-évolutionniste
+    -   Changement vient des interactions entre acteurs, institutions, techniques, connaissances
+    -   Les innovations systémiques, ayant une cohérence d’ensemble, sont la clé du changement
+    -   Défaut: complexe à analyser, comprendre, et faire évoluer, notamment car concernent des évolutions multi-échelles
+:::
+
 ## A. Le jeu de l'eau
 
-::: incremental 
-
-- Vous êtes tous usagers d'une petite nappe phréatique de vallée, dans laquelle vous puisez de l'eau irriguer vos cultures
-- Depuis quelques années, vous vous êtes rendus compte que le niveau de la nappe est assez bas
-- La question se pose ainsi : comment allez vous gérer la nappe? 
-
+::: incremental
+-   Vous êtes tous usagers d'une petite nappe phréatique de vallée, dans laquelle vous puisez de l'eau irriguer vos cultures
+-   Depuis quelques années, vous vous êtes rendus compte que le niveau de la nappe est assez bas
+-   La question se pose ainsi : comment allez vous gérer la nappe?
 :::
 
-----------
+------------------------------------------------------------------------
 
-### Set up : 
+### Set up :
 
-::: incremental 
-
-- Formez (maximum) 15 groupes, qui seront l'unité de décision de la ressource en eau
-- Munissez vous d'un papier, sur lequel vous écrirez le nom de votre ferme
-- La quantité d'eau que vous utilisez vous permet d'avoir des gains agricoles, mesurés par la fonction suivante : 
-
+::: incremental
+-   Formez (maximum) 15 groupes, qui seront l'unité de décision de la ressource en eau
+-   Munissez vous d'un papier, sur lequel vous écrirez le nom de votre ferme
+-   La quantité d'eau que vous utilisez vous permet d'avoir des gains agricoles, mesurés par la fonction suivante :
 :::
 
-::: fragment 
-
+::: fragment
 $$U_i = 13W_i - 0.5W_i^2$$
-
-::: 
-
-::: incremental 
-- Pour gagner le jeu, il faut maximiser la production de sa ferme dans le temps
-- Ensuite, la nappe phréatique se régénère au taux de 30% par période
-
 :::
 
+::: incremental
+-   Pour gagner le jeu, il faut maximiser la production de sa ferme dans le temps
+-   Ensuite, la nappe phréatique se régénère au taux de 30% par période
+:::
 
---- 
+------------------------------------------------------------------------
 
 ### Gestion individualisée de la nappe
 
-::: incremental 
-- Dans cette première partie du jeu, c'est chacun pour sa peau : 
-  - Vous cherchez à maximiser vos rendements
-  - Et ne parlez pas à vos voisins
-- A chaque tour : 
-  - Vous écrivez votre pompage d'eau sur votre fiche *ferme*
-  - Je les collecte
-- L'allocation d'eau se fait : 
-  - Selon les demandes de pompage si le stock le permet
-  - A la façon proportionnelle aux demandes, si le stock restant ne permet pas de satisfaire toutes les tentatives de pompage
-    - S'il reste 10 unités, pour 5, 7 et 10 demandées, il y aura $\frac{5}{10 + 7 + 5}*10$ unités versées etc
-  - Le jeu s'arrête s'il n'y a plus d'eau
-- En fonction de l'allocation, vous réalisez vos gains
-- La ressource se régénère au taux de 30%
-- On joue 3 rounds
-- Si la nappe atteint 0, le jeu est fini
-
+::: incremental
+-   Dans cette première partie du jeu, c'est chacun pour sa peau :
+    -   Vous cherchez à maximiser vos rendements
+    -   Et ne parlez pas à vos voisins
+-   A chaque tour :
+    -   Vous écrivez votre pompage d'eau sur votre fiche *ferme*
+    -   Je les collecte
+-   L'allocation d'eau se fait :
+    -   Selon les demandes de pompage si le stock le permet
+    -   A la façon proportionnelle aux demandes, si le stock restant ne permet pas de satisfaire toutes les tentatives de pompage
+        -   S'il reste 10 unités, pour 5, 7 et 10 demandées, il y aura $\frac{5}{10 + 7 + 5}*10$ unités versées etc
+    -   Le jeu s'arrête s'il n'y a plus d'eau
+-   En fonction de l'allocation, vous réalisez vos gains
+-   La ressource se régénère au taux de 30%
+-   On joue 3 rounds
+-   Si la nappe atteint 0, le jeu est fini
 :::
 
-------
+------------------------------------------------------------------------
 
 ### Gestion collective de la nappe
 
 ::: incremental
+-   On va maintenant essayer de trouver les formes d'organisation collective qui permettent de conserver la ressource
 
-- On va maintenant essayer de trouver les formes d'organisation collective qui permettent de conserver la ressource
-- Des mécanismes vont être votés (majorité simple)
+-   Des mécanismes vont être votés (majorité simple)
 
-- Option 1: introduction de quotas individuels
-  - Sans surveillance
-- Option 2 : mise en place d'un système de surveillance de la ressource : on a les relevés hydrographiques clairs
-- Option 3 : mise en place d'un système de surveillance (2 joueurs) des joueurs
-  - Vérifient les extractions : si infraction, ils la dénoncent
-  - Les accusés peuvent contester 
-  - Dans ce cas, la communauté vote : si la majorité n'est pas atteinte, simple avertissement
+-   Option 1: introduction de quotas individuels
 
-- Option 4 : introduction d'un système d'amendes
-  - Introduction d'un système d'amendes : amende au carré du nombre d'infractions
+    -   Sans surveillance
 
+-   Option 2 : mise en place d'un système de surveillance de la ressource : on a les relevés hydrographiques clairs
+
+-   Option 3 : mise en place d'un système de surveillance (2 joueurs) des joueurs
+
+    -   Vérifient les extractions : si infraction, ils la dénoncent
+    -   Les accusés peuvent contester
+    -   Dans ce cas, la communauté vote : si la majorité n'est pas atteinte, simple avertissement
+
+-   Option 4 : introduction d'un système d'amendes
+
+    -   Introduction d'un système d'amendes : amende au carré du nombre d'infractions
 :::
-
-
 
 # I. Gestion des communs et néoinstitutionalisme rationnel : l'analyse d'Ostrom
 
------
+------------------------------------------------------------------------
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/ostrom.jpeg){width="70%"}
+![](../images/ecol_econ/institutions/ostrom.jpeg){width="70%"}
 :::
 
 :::: column
@@ -195,7 +220,7 @@ $$U_i = 13W_i - 0.5W_i^2$$
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/goods_ostrom.jpg){fig-align="center"}
+![](../images/ecol_econ/institutions/goods_ostrom.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -236,7 +261,7 @@ $$U_i = 13W_i - 0.5W_i^2$$
 :::
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/hardin_game.jpg){fig-align="center"}
+![](../images/ecol_econ/institutions/hardin_game.jpg){fig-align="center"}
 :::
 
 ------------------------------------------------------------------------
@@ -306,11 +331,11 @@ $$U_i = 13W_i - 0.5W_i^2$$
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/rules_in_action_situation.jpg){fig-align="center"}
+![](../images/ecol_econ/institutions/rules_in_action_situation.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/institutional_analysis_Ostrom_NP_lecture.jpg){fig-align="center"}
+![](../images/ecol_econ/institutions/institutional_analysis_Ostrom_NP_lecture.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -320,7 +345,7 @@ $$U_i = 13W_i - 0.5W_i^2$$
 
 ::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/institutions/torbel.jpg){fig-align="left"}
+![](../images/ecol_econ/institutions/torbel.jpg){fig-align="left"}
 :::
 
 ::: {.column width="60%"}
@@ -456,7 +481,7 @@ Norgaard, 1994
 
 :::: column
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_norgaard.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/coevolution_norgaard.jpg){fig-align="center"}
 :::
 ::::
 ::::::::
@@ -472,7 +497,7 @@ Norgaard, 1994
 
 ::: fragment
 | Mode occidental | Mode souhaitable |
-|----|----|
+|------------------------------------|------------------------------------|
 | Atomisme | Holisme méthodologique (prévalence du tout sur les parties) |
 | Mécanisme (prédictibilité) | Concept de système (accent sur l'imprévisibilité) |
 | Universalisme (tout, partout tout le temps, peut être expliqué par un nombre restreint de lois) | Contextualisme (les faits ne sont vrais que dans un certain contexte) |
@@ -512,7 +537,7 @@ Différentes applications :
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/acropole.webp){fig-align="center"}
+![](../images/ecol_econ/macro/acropole.webp){fig-align="center"}
 :::
 
 :::: column
@@ -558,7 +583,7 @@ Différentes applications :
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_kaalis2011.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/coevolution_kaalis2011.jpg){fig-align="center"}
 :::
 
 :::: column
@@ -643,7 +668,8 @@ Différentes applications :
     -   Pas de [dimension environnementale]{.bg3} au début
 :::
 
-## B. L'avènement d'une relation sociale à l'environnement 
+## B. L'avènement d'une relation sociale à l'environnement
+
 #### L. Cahen-Fourot, Contemporary capitalisms and their social relation to the environment, 2020, *Ecological Economics*
 
 ::: incremental
@@ -658,12 +684,12 @@ Différentes applications :
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/typologie_cahen_fourot_2020.jpg)
+![](../images/ecol_econ/macro/typologie_cahen_fourot_2020.jpg)
 
 ------------------------------------------------------------------------
 
 |   | Pays d'Europe du Nord | Europe Centrale du Sud | Pays du Anglosaxons et du Pacifique | Pays émergents | Deux géants |
-|----|----|----|----|----|----|
+|------------|------------|------------|------------|------------|------------|
 | Relation sociale à l'environnement | Matériellement offshore, distribution des actifs environnementaux la moins inégale et orientation politique prône à l'écologie | Matériellement offshore | Matériellement onshore pour l'énergie et le GHG, diversité des opinions politiques | Orientation socio politique adverse à l'écologie | Matériellement onshore, distribution des actifs environnementaux la plus inégale et anti écologie |
 
 ::: incremental
@@ -693,3 +719,16 @@ Différentes applications :
 :::
 
 ------------------------------------------------------------------------
+
+### L'analyse marxiste renouvelée : échappement des écosystèmes
+
+::: incremental
+-   Reprise des ruptures métaboliques et observartions sur l'agriculture industrielle pour parelr d'échappement métabolique
+
+-   Le capitalisme pousse à l'interruption des cycles naturels d'énergie et de matière : cycle du carbone, des nutriments, des forêts, de nos estomacs (J.B Foster)
+
+-   Ce faisant, il crée des conditions endogènes d'incompatibilité (James O'Connor)
+
+    -   Les conditions dégradées de production mènent à des crises de sous production et à l'augmentation des coûts
+    -   Qui rendent la permanence du capitalisme de moins en moins solide
+:::

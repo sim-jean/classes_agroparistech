@@ -1,13 +1,28 @@
 ---
 title: "Externalités et biens publics"
-subtitle: "UC1 Analyse Economique"
+subtitle: "UC1 - Analyse Economique"
 ---
+
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
 
 # Introduction
 
 ## Introduction
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/pollution industrielle.jpeg){fig-align="center"}
+![](../images/UC1/pollution%20industrielle.jpeg){fig-align="center"}
 
 ::: notes
 La pollution industrielle commence dans les années XX. Elle fait des ravages, et transforme tout en noir.
@@ -21,7 +36,7 @@ In Hard Times (1854), Dickens vividly describes the industrial town of "Coketown
 
 ## Introduction
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/piney_point.jpeg){fig-align="center"}
+![](../images/UC1/piney_point.jpeg){fig-align="center"}
 
 ::: notes
 -   En Floride, en 2021, une installation minière a causé le déversement de l'équivalent d'un an de phosphores en 10 jours, causant des dégats majeurs sur l'écosystème, notamment des "red tides"
@@ -33,7 +48,7 @@ In Hard Times (1854), Dickens vividly describes the industrial town of "Coketown
 
 ::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/pigou.png){fig-align="center"}
+![](../images/UC1/pigou.png){fig-align="center"}
 :::
 
 ::: {.column width="60%"}
@@ -166,7 +181,7 @@ data %>%
 
 ::::: r-stack
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/norme_re_2020.jpg){width="800"}
+![](../images/UC1/norme_re_2020.jpg){width="800"}
 :::
 
 ::: fragment
@@ -293,7 +308,7 @@ data %>%
 ## Solution monétaire
 
 ::: fragment
-![Ed Ruscha, *Twentysix Gasoline Stations*](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/Ed-Ruscha_essence.jpg){width="800"}
+![Ed Ruscha, *Twentysix Gasoline Stations*](../images/UC1/Ed-Ruscha_essence.jpg){width="800"}
 :::
 
 ::: notes
@@ -319,7 +334,7 @@ $$\begin{align}
 ## Les solutions monétaires
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/droits_polluer.png){width="800" fig-align="center"}
+![](../images/UC1/droits_polluer.png){width="800" fig-align="center"}
 :::
 
 ::: notes
@@ -554,7 +569,7 @@ kable(payoff_matrix, format = "html", escape = FALSE) %>%
 
 # Conclusion
 
--------
+------------------------------------------------------------------------
 
 ::: incremental
 -   Les **externalités** :

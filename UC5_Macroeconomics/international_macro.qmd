@@ -3,6 +3,22 @@ title: "Macroéconomie internationale"
 subtitle: "UC5 - Macroéconomie"
 
 ---
+
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
+
 ```{r}
 library(ggplot2)
 library(dplyr)
@@ -12,6 +28,10 @@ library(sysfonts)
 library(here)
 library(showtext)
 #font_add_google("Roboto", "roboto")
+
+font_add_google("Roboto", "Roboto")
+showtext_auto()
+
 library(extrafont)
 source(here("utilities.R"))
 
@@ -37,11 +57,11 @@ Comment expliquer l'évolution des [aggrégats macroéconomiques]{.bg3}?
 ## A. Ouverture des marchés de biens et services
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/trade-as-share-of-gdp.png){width="70%" fig-align="center"}
+![](../images/macro/trade-as-share-of-gdp.png){width="70%" fig-align="center"}
 
 ---------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/globalization-over-5-centuries.png){width="70%" fig-align="center"}
+![](../images/macro/globalization-over-5-centuries.png){width="70%" fig-align="center"}
 
 
 ::: notes
@@ -54,7 +74,7 @@ Comment expliquer l'évolution des [aggrégats macroéconomiques]{.bg3}?
 
 -------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/trade_war.jpg){width="70%" fig-align="center" }
+![](../images/macro/trade_war.jpg){width="70%" fig-align="center" }
 
 ----
 
@@ -70,7 +90,7 @@ Comment expliquer l'évolution des [aggrégats macroéconomiques]{.bg3}?
 
 ----
 
-![Capital Controls: Theory and Evidence, Erten et al, 2021](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/chinn_ito.jpg){fig-align="center" fig-cap=""}
+![Capital Controls: Theory and Evidence, Erten et al, 2021](../images/macro/chinn_ito.jpg){fig-align="center" fig-cap=""}
 
 ---
 
@@ -81,7 +101,7 @@ Comment expliquer l'évolution des [aggrégats macroéconomiques]{.bg3}?
 - Multinationales et usines dans de nombreux pays
 :::
 
-![INSEE,2022](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/délocalisations_insee.png){width="70%" fig-align="center"}
+![INSEE,2022](../images/macro/délocalisations_insee.png){width="70%" fig-align="center"}
 
 ------
 
@@ -565,7 +585,7 @@ data_is %>%
 ---
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/euro_dollar.jpg){width="70%" fig-align="center"}
+![](../images/macro/euro_dollar.jpg){width="70%" fig-align="center"}
 
 ::: notes 
 - Comment expliquer ces fluctuations? 
@@ -611,12 +631,12 @@ data_is %>%
 :::: columns
 
 ::: column
-![[Eurostat](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=International_trade_in_goods#Highest_share_for_intra-EU_trade_in_goods_in_Czechia.2C_Slovakia.2C_Estonia_and_Luxembourg)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Main_trading_partners_for_exports_of_goods,_EU,_2023.png){width="70%" fig-align="center"}
+![[Eurostat](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=International_trade_in_goods#Highest_share_for_intra-EU_trade_in_goods_in_Czechia.2C_Slovakia.2C_Estonia_and_Luxembourg)](../images/macro/Main_trading_partners_for_exports_of_goods,_EU,_2023.png){width="70%" fig-align="center"}
 
 :::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Main_trading_partners_for_imports_of_goods,_EU,_2023.png){width="70%" fig-align="center"}
+![](../images/macro/Main_trading_partners_for_imports_of_goods,_EU,_2023.png){width="70%" fig-align="center"}
 :::
 
 ::::
@@ -627,7 +647,7 @@ data_is %>%
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/fredgraph.png){width="70%" fig-align="center"}
+![](../images/macro/fredgraph.png){width="70%" fig-align="center"}
 
 
 
@@ -671,7 +691,7 @@ $$Y = C+G+I+EX-IM$$
   
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/crédit_débit.jpg){width="70%" fig-align="center"}
+![](../images/macro/crédit_débit.jpg){width="70%" fig-align="center"}
 
 ----
 
@@ -917,7 +937,7 @@ Un américain dépose 10,000$ à la banque à Londres :
 ----
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/arbitrage_actifs.jpg){width="70%" fig-align="center"}
+![](../images/macro/arbitrage_actifs.jpg){width="70%" fig-align="center"}
 
 --------
 
@@ -1450,7 +1470,7 @@ data_ %>%
 
 ### Exercice : la politique budgétaire dans des économies ouvertes de taille hétérogène
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/merchandise-imports-gdp-cepii.png){fig-align="center" width="80%"}
+![](../images/macro/merchandise-imports-gdp-cepii.png){fig-align="center" width="80%"}
 
 
 ---
@@ -1842,7 +1862,7 @@ Autres exemples :
 
 #### La fin de déficits courants 
 
-![OCDE](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/oecd_current_deficit_greece_italy_spain.png){fig-align="center"}
+![OCDE](../images/macro/oecd_current_deficit_greece_italy_spain.png){fig-align="center"}
 
 ::: notes
 Bleu foncé : l'Espagne
@@ -2361,7 +2381,7 @@ data_lm %>%
 
 -----
 
-![Nils Tycho - 2022](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Exchange_rate_arrangements_map.svg){fig-align="center"}
+![Nils Tycho - 2022](../images/macro/Exchange_rate_arrangements_map.svg){fig-align="center"}
 
 ------
 
@@ -2457,7 +2477,7 @@ $$ i_t = i_t^* + \frac{\bar{E}' - \bar{E}}{\bar{E}}$$
 
 ### Le triangle d'incompatibilité de Mundell
 
-![Wikipedia](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/Triangle_d'incompatibilité.svg){fig-align="center"}
+![Wikipedia](../images/macro/Triangle_d'incompatibilité.svg){fig-align="center"}
 
 ::: notes
 - Si l'on a de la mobilité des capitaux et un change fixe, alors on perd la politique monétaire comme levier, du fait de la parité des taux
@@ -2512,12 +2532,12 @@ Les [anticipations de dévaluations créent la dévaluation]{.bg4} : on peut att
 
 ### Crise du SME
 
-![Blanchard et Cohen](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/crise_sem1.jpg){fig-align="center" width=50%}
+![Blanchard et Cohen](../images/macro/crise_sem1.jpg){fig-align="center" width=50%}
 
 -----
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/macro/crise_sme2.jpg){fig-align="center"}
+![](../images/macro/crise_sme2.jpg){fig-align="center"}
 
 
 ----

@@ -3,6 +3,21 @@ title: "L'analyse métabolique"
 subtitle: "UC6 - Economie Ecologique"
 ---
 
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
+
 ```{r}
 library(tidyr)
 library(dplyr)
@@ -15,32 +30,37 @@ library(reshape2)
 #install.packages(c("sysfonts", "showtext"))
 library(sysfonts)
 library(showtext)
-
-#font_add_google("Roboto", "roboto")
+font_add_google("Roboto", "Roboto")
 showtext_auto()
 
 source(here("utilities.R"))
 
-local_family = "Roboto Light"
+local_family = "Roboto"
              
 
 ```
+
+
 
 # Introduction
 
 ## Le problème
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/cma-cgm-container-ship.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/cma-cgm-container-ship.jpg){fig-align="center"}
 
 ::: notes
 -   L'idée de l'économie traditionelle, c'est d'organiser l'allocation des ressources dans un grand bateau, de plus en plus grand
 -   Que se passe-t-il lorsque le bateau coule?
 :::
 
+## Questions : {.center} 
+
+Comment caractériser notre lien à la matière, et que nous dit ce lien à la matière, à plusieurs échelles, sur nos sociétés?
+
 ## Plan
 
-:::::::: columns
-::::: column
+::::::: columns
+:::: column
 ::: incremental
 1.  [Indicateurs de soutenabilité]{.fg}
     i)  Limites planétaires
@@ -48,36 +68,23 @@ local_family = "Roboto Light"
     iii) L'empreinte écologique
     iv) L'HANPP
 :::
+::::
 
+:::: column
 ::: incremental
 2.  [Métabolisme social : mesures et concepts aux]{.fg} [fondements de la macroéconomie écologique]{.fg}
     i)  Retour sur l'histoire du métabolisme
     ii) Métabolisme social contemporain
     iii) Les limites métaboliques à la croissance
 :::
-:::::
-
-:::: column
-::: incremental
-3.  [Vers une macroéconomie écologique]{.fg}
-    i)  Le travail du Club de Rome et le rapport Meadows
-    ii) La controverse néoclassique
-    iii) Exercice de modélisation macroéconomique sur `R`
-    iv) Courants modernes
-4.  [Par delà la croissance: technocritique, décroissance]{.fg} [et coévolution]{.fg}
-    i)  L'analyse de la décroissance: de l'écologie politique et la bioéconomie à la postgrowth
-    ii) Le codéveloppement: évolution des systèmes et relations homme nature
-    iii) L'approche par les besoins fondamentaux
-    iv) L'environnementalisme des pauvres de J. Martinez Allier
-:::
 ::::
-::::::::
+:::::::
 
 # 1. Indicateurs de soutenabilité
 
 ## Les limites planétaires
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/planetary_bounds.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/planetary_bounds.jpg){fig-align="center"}
 
 ::: notes
 -   Développé par Rockström et son équipe en 2009 (co-directeur du PIK)
@@ -128,6 +135,7 @@ Voir la métanalyse de [Haberl et al., 2020](https://iopscience.iop.org/article/
 ::: incremental
 -   Découplage [absolu]{.bg4} : le niveau de perturbation environnementale [baisse]{.bg3} dans l'absolu
     -   UE : Baisse des émissions de 9% malgré la croissance de 0.7% en 2022 (IAE)
+    -   Vogel and Hickel (2023) : 11 des 36 pays à haut revenu évalués ont réussi un découplage absolu des émissions de CO2 liées à la consommation par rapport au PIB entre 2013 et 2019
 -   Découplage [relatif]{.bg4} : le niveau de perturbation environnementale augmente [moins vite]{.bg3} que la croissance
     -   Plutôt le cas pour de nombreuses métriques
     -   Quelques analyses de la courbe de Kuznets environnementale pour le C02 (Stern, 2017)
@@ -157,65 +165,65 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_World.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_World.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_North_America.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_North_America.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Europe.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_Europe.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Africa.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_Africa.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/total_ecological_footprint.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/total_ecological_footprint.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/footprint_per_person.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/footprint_per_person.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/biocapacity_global.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/biocapacity_global.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/ecological_deficit_reserve_global.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/ecological_deficit_reserve_global.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_france.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_france.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_algeria.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_algeria.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_guyana.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_guyana.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_belgium.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_belgium.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_US.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_US.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_russia.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_russia.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_brazil.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_brazil.jpg){fig-align="center"}
 
 ## HANPP
 
@@ -226,12 +234,13 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
     -   Qui reste après avoir retranché la respiration des producteurs primaires (plantes)
     -   de la quantité totale d'énergie (solaire) fixée biologiquement
     -   Mesurée en carbone, énergie ou masse sèche
+-   Appropriation : prise en compte de la modification de l'usage des terres par rapport à un scénario de référence et de l'activité d'extraction
 -   HANPP élevée dans les économies dépendantes de la biomasse et stabilisation avec industrialisation
 :::
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/hanpp_jrc.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/hanpp_jrc.jpg){fig-align="center"}
 
 # 2. Métabolisme social : mesures et concepts au fondement de la macroéconomie écologique
 
@@ -256,7 +265,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ### Métabolisme : définitions
 
-::: {.incremental style="font-size:88%"}
+::: {.incremental style="font-size:80%"}
 -   En [biologie]{.bg3} :
     -   Processus chimique de [transformation]{.bg3} de la nourriture en briques énergétiques
     -   Par lequel les tissus et cellules sont créés
@@ -272,28 +281,46 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
     -   Transformation énergétique [exosomatique]{.bg3}
     -   Le niveau de production dépend des quantités de matériaux et d'énergie consommée, selon des [modalités]{.bg3} différentes
     -   Importance de la [modélisation]{.bg3}
+-   Tradition de long terme : des physiocrates à Podolinsky, puis les théoriciens de l'énergie comme [les frères Odum, Ayres et Kneese ou encore Nicolas Georgescu Roegen]{.bg4}
 :::
 
 ------------------------------------------------------------------------
 
-### Une tradition de long terme portée sur l'énergie
+### La rupture métabolique : l'approche issue de Marx
 
 ::: incremental
--   Tradition de long terme : des physiocrates à Podolinsky, puis les théoriciens de l'énergie comme [les frères Odum, Ayres et Kneese ou encore Nicolas Georgescu Roegen]{.bg4}
-
 -   [Liebig]{.bg4}, *La chimie agricole*, 1840:
-
     -   [«Loi de reconstitution»]{.bg3} : les produits de la terre doivent y retourner pour maintenir la fertilité des sols (idée de cycle des nutriments)
     -   [Rupture métabolique]{.bg3} avec les égouts (rupture du cycle : les nutriments vont dans l'eau)
-
--   [Marx]{.bg4} :
-
-    -   Rupture entre ville et campagne
-    -   [Au sein des pays]{.bg3} :
+-   [Marx]{.bg4} : le concept de rupture métabolique
+    -   Idée que le travail, qui transforme la matière, est un rapport social fondé sur la nature, qui est au coeur de la logique d'accumulation capitaliste
+    -   Il reprend les analyses de Liebig : l'appauvrissement des sols n'aura pas de solution chimique
+    -   Le capitalisme a créé une [rupture]{.bg4} : qui repose sur la [concentration de la classe ouvrière]{.bg3} dans les grandes villes et la nécessité émergente de [transporter constamment sa nourriture]{.bg3} depuis la campagne.
+        -   Rupture entre ville et campagne
+        -   [Au sein des pays]{.bg3} :
         -   Une division sociale du travail
-        -   Qui repose sur la concentration de la classe ouvrière dans les grandes villes
-        -   Et la nécessité émergente de transporter constamment sa nourriture depuis la campagne.
-    -   Entre pays : ["échange écologiquement inégal"]{.bg3}
+        -   Entre pays : ["échange écologiquement inégal"]{.bg3}
+    -   Quelles que soient les techniques de production, il y a une dépendance à la nature via un régime métabolique historiquement déterminé
+    -   Le socialisme doit pousser à la gestion rationelle du métabolisme
+:::
+
+------------------------------------------------------------------------
+
+:::{.incremental style="font-size:90%"}
+-   Selon Martinez Allier, Podolinsky :
+    -   est à la [source d'une lecture thermodynamique]{.bg4}, comme [fondateur de l'économie écologique]{.bg3}, pour une économie physique
+    -   eut un [rendez vous manqué avec Marx]{.bg3}, qui le repoussa, fermant la porte à une écologisation de la pensée marxiste
+-   Pour [Foster, Burket, 2004](https://www.jstor.org/stable/26162455) :
+    -   La théorie de Podolinsky ne pouvait [pas être si simplement liée à la théorie de la valeur travail]{.bg4} chez Marx:
+        -   Le [travail humain crée la valeur des choses]{.bg3}: il transforme la matière, et les valeurs n'existent que par les humains
+        -   Il est ainsi au coeur du [rapport social et de l'histoire]{.bg3} (formes d'extraction de la valeur et régimes d'accumulation)
+        -   [Réductionnisme énergétique]{.bg4} : seule l'énergie compte, pas les rapports sociaux de production, le travail n'est que transformateur, et l'on peut fonder toute la valeur dans la physique
+        -   [Pas de limites entropiques]{.bg4} à la création de valeur:
+            -   contrairement à l'[idée marxiste d'intégration dans la biosphère]{.bg3}
+            -   Podolinsky cherche à maximiser les stocks et flux d'une machine thermodynamique humaine plus ou moins séparée de ses impacts sur la nature
+        -   Incompatible avec la [détermination des valeurs dans des rapports sociaux]{.bg4}
+        -   Et donc une prise en compte des [modes d'accumulation et d'aliénation]{.bg4}, au coeur d'une analyse économique écologique
+        
 :::
 
 ------------------------------------------------------------------------
@@ -316,11 +343,11 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ::::: columns
 ::: {.column width="30%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/signs_odum_1967.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/signs_odum_1967.jpg){fig-align="center"}
 :::
 
 ::: {.column width="70%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/systems_odum_1967.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/systems_odum_1967.jpg){fig-align="center"}
 :::
 :::::
 
@@ -351,7 +378,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/ayres_kneese_1969.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/ayres_kneese_1969.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -359,25 +386,25 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ### La méthodologie Material and Energy Flow Accounting
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolism_fischer_kowalski_handbook_2015.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/metabolism_fischer_kowalski_handbook_2015.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
 ::: incremental
--   Extraction Intérieure (Domestic Extraction, DE) :
+-   [Extraction Intérieure (Domestic Extraction, DE)]{.bg4}:
     -   Quantité totale de matières premières extraites du territoire national pour être utilisées dans l'économie.
     -   Inclut les minéraux, la biomasse, les combustibles fossiles, etc.
--   Entrées Directes de Matières (Direct Material Input, DMI) :
+-   [Entrées Directes de Matières (Direct Material Input, DMI)]{.bg4} :
     -   Somme de l'extraction intérieure et des importations. - Mesure la quantité totale de matières entrant physiquement dans l'économie pour utilisation.
--   Consommation Intérieure de Matières (Domestic Material Consumption, DMC) :
+-   [Consommation Intérieure de Matières (Domestic Material Consumption, DMC)]{.bg4} :
     -   DMI moins les exportations. Représente la quantité totale de matières consommées dans le pays.
--   Consommation Matérielle Totale (Total Material Consumption, TMC) :
+-   [Consommation Matérielle Totale (Total Material Consumption, TMC)]{.bg4} :
     -   Inclut la DMC plus les flux cachés associés aux importations et à l'extraction intérieure.
     -   Mesure plus complète car prend en compte les "sacs à dos écologiques".
--   Besoin Total en Matières (Total Material Requirement, TMR) :
+-   [Besoin Total en Matières (Total Material Requirement, TMR)]{.bg4} :
     -   Somme des entrées directes de matières et des flux cachés associés (domestiques et importés).
     -   Indicateur le plus complet des besoins en ressources.
--   Balance Commerciale Physique (Physical Trade Balance, PTB) :
+-   [Balance Commerciale Physique (Physical Trade Balance, PTB)]{.bg4} :
     -   Différence entre les importations et les exportations en termes physiques.
     -   Positive lorsque les importations dépassent les exportations.
 :::
@@ -423,33 +450,39 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ### Tendances européennes
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_extraction_trade_UE2023.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_extraction_trade_UE2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_EU2023.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_material_consumption_EU2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_EU2023.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_EU2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_country_2023EU.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_country_2023EU.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Workshop
+
+On va passer au projet `intro_mfa`
 
 ------------------------------------------------------------------------
 
 ### Tendances mondiales
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/imports_exports_globaux_2010.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/imports_exports_globaux_2010.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/taux_métaboliques_kowalski.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/taux_métaboliques_kowalski.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-### Par delà la description : explications métaboliques dans le temps long
+### Transitions socio-métaboliques
 
 [Krausmann & Fischer Kowalski (2013)]{.bg4} reprennent les analyses de Seferle et identifient [trois phases métaboliques]{.bg4} à l'échelle globale:
 
@@ -461,7 +494,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolic_rates_regimes_fischer_kowalski_hadbook_2015.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/metabolic_rates_regimes_fischer_kowalski_hadbook_2015.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -495,7 +528,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 :::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/moulin.jpg){.absolute left="-100" top="100" width="600" height="450"}
+![](../images/ecol_econ/macro/moulin.jpg){.absolute left="-100" top="100" width="600" height="450"}
 :::
 
 :::: {.column width="60%"}
@@ -550,11 +583,7 @@ Des ailes et des roues. La place des moulins dans le système énergétique pari
 
 Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328136) : dépasser le MFA avec une analyse sociométabolique
 
-
-
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/material_flows_megalhes.jpg){fig-align="right"}
-
-
+![](../images/ecol_econ/macro/metabolisme/material_flows_megalhes.jpg){fig-align="right"}
 
 ------------------------------------------------------------------------
 
@@ -665,7 +694,7 @@ Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/chapelle_darblay.jpeg){.absolute top="100" left="-100" width="700" height="500"}
+![](../images/ecol_econ/macro/chapelle_darblay.jpeg){.absolute top="100" left="-100" width="700" height="500"}
 :::
 
 :::: column
@@ -713,7 +742,7 @@ Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328
 
 :::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/pluie_alexandrie.jpg){.absolute top="100" left="-100" width="500" height="400"}
+![](../images/ecol_econ/macro/pluie_alexandrie.jpg){.absolute top="100" left="-100" width="500" height="400"}
 :::
 
 :::: {.column width="60%"}
@@ -744,12 +773,12 @@ Pose toujours des problèmes de définition des limites du systèmes mais aux US
 :::
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/mean_eroi_hall_2014_energy_policy.jpg){fig-align="center" width="50%"}
+![](../images/ecol_econ/macro/eroi/mean_eroi_hall_2014_energy_policy.jpg){fig-align="center" width="50%"}
 :::
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/hall_2014_energypolicy.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/eroi/hall_2014_energypolicy.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -793,7 +822,7 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 #### Synthèse (un peu datée) des estimations de l'effet rebond direct
 
-![Sorell et al, 2009, Energy Policy](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_effect_aggregate_sorell_et_al_2009_energy_policy.jpg){fig-align="center"}
+![Sorell et al, 2009, Energy Policy](../images/ecol_econ/macro/rebond/rebound_effect_aggregate_sorell_et_al_2009_energy_policy.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -818,11 +847,11 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/image_rebond_marché_hegwood_NatureFood_2023.webp){fig-align="center"}
+![](../images/ecol_econ/macro/rebond/image_rebond_marché_hegwood_NatureFood_2023.webp){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_by_type_hegwood_NatureFood_2023.webp){fig-align="center"}
+![](../images/ecol_econ/macro/rebond/rebound_by_type_hegwood_NatureFood_2023.webp){fig-align="center"}
 
 # Annexes
 
@@ -848,13 +877,13 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 ## Doughnut economics {#sec_appendix_doughnut}
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/doughnut_image.png){fig-align="center"}
+![](../images/ecol_econ/macro/doughnut_image.png){fig-align="center"}
 
 [[Retour au cours](#sec_postgrowth)]{.button}
 
 ## Eurogreen structure {#sec_appendix_eurogreen}
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eurogreen_structure.webp){fig-align="center"}
+![](../images/ecol_econ/macro/eurogreen_structure.webp){fig-align="center"}
 
 Main causal relationships between heterogeneous household groups, industries, resources and assets in our model. Solid (dashed) arrows represent monetary (non-monetary) flows. Household consumption includes electricity and other energy products. The rest of the world (RoW) is included because the aggregate flows from (to) it are included as imports (exports), although the foreign sector is not defined in the model. HH, households; TPES, total primary energy supply.
 

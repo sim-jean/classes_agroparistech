@@ -1,8 +1,23 @@
 ---
 title: "Economie des ressources renouvelables"
-subtitle: "Economie de l'Environnement et des Ressources Naturelles"
+subtitle: "UC3 - Economie de l'Environnement et des Ressources Naturelles"
 
 ---
+
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
 
 ```{r}
 library(dplyr)
@@ -21,6 +36,10 @@ library(nleqslv)
 loadfonts(device = "win") 
 
 local_family = "Roboto Light"
+
+library(showtext)
+font_add_google("Roboto", "Roboto")
+showtext_auto()
 
 source(here("utilities.R"))
 ```
@@ -63,25 +82,25 @@ Pour creuser un peu plus les notions:
 
 ### Captures dans le temps
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capture.jpg){fig-align='center'}
+![](../images/Ressources_Nat/FAO_capture.jpg){fig-align='center'}
 
 
 ## Captures par zones 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capture_zone.jpg){fig-align='center'}
+![](../images/Ressources_Nat/FAO_capture_zone.jpg){fig-align='center'}
 
 ------
 
 ### Captures par espèces
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capture_species.jpg){fig-align='center'}
+![](../images/Ressources_Nat/FAO_capture_species.jpg){fig-align='center'}
 
 --------
 
 ### Poissons et pêcheries en eaux tempérées
 
 
-![Guide des espèces, [Institut Flamand de la mer](https://www.guidedesespeces.org/fr/techniques-de-peche-et-leurs-impacts-sur-lenvironnement)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat//Techniques de pêche répartition espèces.png){position="center"}
+![Guide des espèces, [Institut Flamand de la mer](https://www.guidedesespeces.org/fr/techniques-de-peche-et-leurs-impacts-sur-lenvironnement)](../images/Ressources_Nat//Techniques de pêche répartition espèces.png){position="center"}
 
 
 ::: notes 
@@ -98,7 +117,7 @@ Plutôt un gradient entre ces niveaux
 :::: columns
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/anchoveta.jpeg){width="120%"}
+![](../images/Ressources_Nat/anchoveta.jpeg){width="120%"}
 :::
 
 
@@ -127,7 +146,7 @@ Plutôt un gradient entre ces niveaux
 
 ::: column
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cod.png)
+![](../images/Ressources_Nat/cod.png)
 
 :::
 
@@ -150,43 +169,43 @@ Plutôt un gradient entre ces niveaux
 
 ### Captures par espèces pélagiques
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_by_pelagic_group.jpg){fig-align="center"}
+![](../images/Ressources_Nat/FAO_by_pelagic_group.jpg){fig-align="center"}
 
 -----
 
 ### Capture par pays
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_capturers.jpg){fig-align="center"}
+![](../images/Ressources_Nat/FAO_capturers.jpg){fig-align="center"}
 
 -----
 
 ### Importance économique : exports
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_exports_value.jpg){fig-align="center"}
+![](../images/Ressources_Nat/FAO_exports_value.jpg){fig-align="center"}
 
 -------
 
 ### Importance économique : emplois
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_aquaculture.jpg){fig-align="center"}
+![](../images/Ressources_Nat/FAO_aquaculture.jpg){fig-align="center"}
 
 ---
 
 ### Importance économique : contributions aux communautés locales
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/SSF.webp){fig-align="center"}
+![](../images/Ressources_Nat/SSF.webp){fig-align="center"}
 
 ## Etat du monde : constat écologique
 
 ### Surpêche
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/FAO_trends_fisheries.jpg){fig-align="center"}
+![](../images/Ressources_Nat/FAO_trends_fisheries.jpg){fig-align="center"}
 
 ---
 
 ### Structures des réseaux écologiques
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/fishing_down.jpg){fig-align="center"}
+![](../images/Ressources_Nat/fishing_down.jpg){fig-align="center"}
 
 
 ::: notes 
@@ -206,7 +225,7 @@ Plutôt un gradient entre ces niveaux
 --------
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/big_fish.jpg){fig-align="center"}
+![](../images/Ressources_Nat/big_fish.jpg){fig-align="center"}
 
 ::: notes 
 
@@ -228,7 +247,7 @@ Myer and Worms, 2003
 
 ### Effets de structure : cascade trophique
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+![](../images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
 
 ::: notes 
 -   Perte des grands prédateurs :
@@ -246,13 +265,13 @@ Myer and Worms, 2003
 
 ### Services écosystémiques 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/tromeur_ecosystem_services.jpg){fig-align="center"}
+![](../images/Ressources_Nat/tromeur_ecosystem_services.jpg){fig-align="center"}
 
 ---
 
 ### Déclin de la résilience
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/resilience_time.jpg){fig-align="center"}
+![](../images/Ressources_Nat/resilience_time.jpg){fig-align="center"}
 
 ::: notes
 
@@ -265,7 +284,7 @@ Britten et al. (2014) met en lumière que la disparition ou la réduction des po
 
 ### Regime shift
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/regime_shift.jpg){fig-align="center"}
+![](../images/Ressources_Nat/regime_shift.jpg){fig-align="center"}
 
 ::: notes
 
@@ -277,7 +296,7 @@ Gardmark et al. (2014), montrent que la surpêche dans cette région a contribu�
 
 ### Conséquences évolutionistes
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cod_size.jpg){fig-align="center"}
+![](../images/Ressources_Nat/cod_size.jpg){fig-align="center"}
 
 ## Les ressources : cadre général
 
@@ -363,7 +382,7 @@ store %>%
 
 
 
-# 1. Dynamique des populations {background-image="C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/atlantic_cod2.jpg" background-opacity="0.4" background-position="right" background-size="80%"}
+# 1. Dynamique des populations {background-image="../images/Ressources_Nat/atlantic_cod2.jpg" background-opacity="0.4" background-position="right" background-size="80%"}
 
 
 
@@ -695,7 +714,7 @@ data_ %>%
 
 
 
-# 2. La technologie d'extraction {background-image="C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat//commercial-fishing-hero.jpg" background-opacity="0.4"}
+# 2. La technologie d'extraction {background-image="../images/Ressources_Nat//commercial-fishing-hero.jpg" background-opacity="0.4"}
 
 
 
@@ -1042,17 +1061,17 @@ ggsave(here("images", "Ressources_Nat", "flipped_bioecon_basic_equilibrium.png")
 
 ```
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive1.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive1.JPG){width="80%"}
 
 ----
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive2.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive2.JPG){width="80%"}
 
 
 -----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive3.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive3.JPG){width="80%"}
 
 -----
     
@@ -1080,11 +1099,11 @@ On a un lien entre quantité pêchée en équilibre (biomasse) et l'effort de p�
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive4.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive4.JPG){width="80%"}
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive5.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive5.JPG){width="80%"}
 
 
 
@@ -1499,7 +1518,7 @@ ggsave(here("images", "Ressources_Nat", "MSY_MEY.png"),
 
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive9.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive9.JPG){width="80%"}
 
 ::: {.incremental style="font-size:80%"}
 
@@ -1529,7 +1548,7 @@ Le modèle de Gordon Schaeffer illustre la [tragédie des communs]{.bg3}, en con
 
 ::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/hardin.jpg)
+![](../images/Ressources_Nat/hardin.jpg)
 :::
 
 
@@ -1780,7 +1799,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top=75 left=600 width="550" height="600"}
+![](../images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top=75 left=600 width="550" height="600"}
 :::
 
 
@@ -1788,7 +1807,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ### Deux zones géographiques
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive11.JPG){width="80%"}
 
 --------
 
@@ -1806,7 +1825,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){.absolute top=240 left=100 width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive11.JPG){.absolute top=240 left=100 width="790" height="500"}
 
 :::
 --------
@@ -1825,7 +1844,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive13.JPG){.absolute top=240 left=100 width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive13.JPG){.absolute top=240 left=100 width="790" height="500"}
 
 :::
 
@@ -1844,7 +1863,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive14.JPG){.absolute top=240 left=100 width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive14.JPG){.absolute top=240 left=100 width="790" height="500"}
 
 :::
 
@@ -1852,14 +1871,14 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ### Deux zones géographiques de pêche
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive15.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive15.JPG){width="80%"}
 
 
 -----
 
 ### L'équilibre de libre accès
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top=50 left=200 height="700"}
+![](../images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top=50 left=200 height="700"}
 
 
 --------------
@@ -1955,7 +1974,7 @@ $$\begin{align*}
 
 #### Comparaison graphique
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive16.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive16.JPG){width="80%"}
 
 --------
 
@@ -2087,7 +2106,7 @@ Deux types de mesures
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive6.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive6.JPG){width="80%"}
 
 :::
 
@@ -2097,7 +2116,7 @@ Deux types de mesures
 En pratique, peu le cas, même si il existe pour [aider à l'administration]{.bg3}
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive17.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive17.JPG){width="80%"}
 
 
 ## D. Réglementations techniques
@@ -2106,7 +2125,7 @@ Quel est l'effet de l'arrivée de techniques de pêche plus performantes (motori
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive8.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive8.JPG){width="80%"}
 
 :::
 
@@ -2120,8 +2139,8 @@ $$Y = \bar{Y} = q E_t X_t$$
 
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE.JPG){width=80% fig-align="center"}
-![RÈGLEMENT (UE) 2025/219 DU CONSEIL du 30 janvier 2025](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/peche_merlu_UE_jours.JPG){width=80% fig-align="center"}
+![](../images/Ressources_Nat/peche_merlu_UE.JPG){width=80% fig-align="center"}
+![RÈGLEMENT (UE) 2025/219 DU CONSEIL du 30 janvier 2025](../images/Ressources_Nat/peche_merlu_UE_jours.JPG){width=80% fig-align="center"}
 
 
 -------
@@ -2152,7 +2171,7 @@ Fixation de la quantité de pêche totale $\bar{Y}$, mesurée au débarquement e
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halibut.png){width="80%"}
+![](../images/Ressources_Nat/halibut.png){width="80%"}
 
 :::
 
@@ -2208,7 +2227,7 @@ $$c'(Y) = p - \pi_y$$
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive18.jpg){width="80%" position="center"}
+![](../images/Ressources_Nat/Diapositive18.jpg){width="80%" position="center"}
 
 
 ----
@@ -2258,7 +2277,7 @@ Lire [A Cautionary Note on Individual Transferable Quotas, R. Sumaila, *Ecology 
 
 ## A. Les limites de l'approche basée sur une seule espèce
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+![](../images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
 
 ## B. Le management ecosystémique
 
@@ -2382,7 +2401,7 @@ $$
 -----
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmsy.jpg){fig-align="center"}
+![](../images/Ressources_Nat/mmsy.jpg){fig-align="center"}
 
 ::: notes
 
@@ -2397,7 +2416,7 @@ $$
 
 ---
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
+![](../images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
 
 ::: notes
 
@@ -2430,7 +2449,7 @@ SI = - sum u_i log(ui) avec ui = x_i/sum_i x_i
 
 ::: column
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/fpp.jpg){fig-align="center"}
+![](../images/Ressources_Nat/fpp.jpg){fig-align="center"}
 :::
 :::
 
@@ -2467,7 +2486,7 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 
 
-![Halpern et al, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halpern.jpg){fig-align="center"}
+![Halpern et al, 2016](../images/Ressources_Nat/halpern.jpg){fig-align="center"}
 
 ::: notes
 
@@ -2579,7 +2598,7 @@ Lire [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2
 :::: columns
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/contract_for_nature.webp){fig-align='center'}
+![](../images/Ressources_Nat/contract_for_nature.webp){fig-align='center'}
 :::
 
 ::: column
@@ -2608,7 +2627,7 @@ Lire [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2
 
 ## G. Bilan sur l'EBFM
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width=80% fig-align='center'}
+![](../images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width=80% fig-align='center'}
 
 ::: notes
 
@@ -2664,7 +2683,7 @@ Lire [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2
 ---------
 
 ### Modification des communautés
-![[Molinos et al., 2015, Nature Climate Change](https://www.nature.com/articles/nclimate2769)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/richness_biodiversity_climatechange_halpern_nature.webp){fig-align='center'}
+![[Molinos et al., 2015, Nature Climate Change](https://www.nature.com/articles/nclimate2769)](../images/Ressources_Nat/richness_biodiversity_climatechange_halpern_nature.webp){fig-align='center'}
 
 ::: notes
 
@@ -2688,7 +2707,7 @@ Lire [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2
 
 ### Changements de l'abondance 
 
-![[Bas et al. 2024, Science of the Total Environment](https://www.sciencedirect.com/science/article/pii/S0048969724049015)](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/habitat_suitability_bas_et_al_total_environment.jpg){fig-align='center'}
+![[Bas et al. 2024, Science of the Total Environment](https://www.sciencedirect.com/science/article/pii/S0048969724049015)](../images/Ressources_Nat/habitat_suitability_bas_et_al_total_environment.jpg){fig-align='center'}
 
 ::: notes
 
@@ -2878,11 +2897,11 @@ Lire [Crépin et al, IRERE, 2024](https://uu.diva-portal.org/smash/get/diva2:190
 :::: columns
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvestig1.jpg){fig-align='center'}
+![](../images/Ressources_Nat/harvestig1.jpg){fig-align='center'}
 :::
 
 ::: column 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvesting2.jpg){fig-align='center'}
+![](../images/Ressources_Nat/harvesting2.jpg){fig-align='center'}
 :::
 
 ::::
@@ -2892,11 +2911,11 @@ Lire [Crépin et al, IRERE, 2024](https://uu.diva-portal.org/smash/get/diva2:190
 :::: columns
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation3.jpg){fig-align='center'}
+![](../images/Ressources_Nat/conservation3.jpg){fig-align='center'}
 :::
 
 ::: column 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation4.jpg){fig-align='center'}
+![](../images/Ressources_Nat/conservation4.jpg){fig-align='center'}
 :::
 
 ::::

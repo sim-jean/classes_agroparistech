@@ -6,6 +6,8 @@ author:
 
 project: 
   output-dir: 'classes_compiled'
+  resources:
+    - "classes_agroparistech/images/"
 
 
 format: 

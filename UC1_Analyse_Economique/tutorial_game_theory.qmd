@@ -1,28 +1,22 @@
 ---
 title: "Théorie des jeux et économie industrielle"
-author:
-  - name: Simon Jean
-    orcid: 0000-0002-3965-8630
-    email: simon.jean@agroparistech.fr
-    affiliations: AgroParisTech - CIRED - PSAE
-
-format: 
-  revealjs:
-    theme: "C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
-    #"/Users/simonjean/Desktop/Travail/Enseignement/classes_agroparistech/_extensions/grantmcdermott/clean/clean.scss"
-    slideNumber: true
-    verticalSeparator: ''    # Creates vertical movement between main sections
-    #separator: '^##'
-    transition: fade
-    navigationMode: linear      # Allows both vertical and horizontal navigation
-    controls: false
-    self-contained: true
-    html-math-method: mathjax
-    always_allow_html: true
-
-    
-editor: visual
+subtitle: "UC1 - Analyse économique"
 ---
+
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
 
 # I. Rappel des concepts importants
 
@@ -171,10 +165,8 @@ payoff_matrix %>%
 
 L'équilibre de Nash est (i) unique, et (ii) optimal (le bien être collectif est maximal)
 
-:::{.fragment}
-
+::: fragment
 Ce n'est pas toujours le cas! Les équilibres sont souvent sous-optimaux.
-
 :::
 
 ## Accord environmental
@@ -277,8 +269,7 @@ Utilisez *l'induction à rebours* pour trouver les équilibre(s) parfait(s) en s
 ::: incremental
 -   Au round 3 : A choisira de miser *haut*, donc le payoff est de $(3,2)$
 -   Au round 2 : B peut choisir entre $(3,2)$ (en misant bas) et $(1,4)$ <br> [Il choisit donc $(1,4)$ et joue (haut)]{.fragment}
--   Au round 1 : A sait que B jouera (haut) donc il a le choix entre $(1,4)$ et $(4,1)$<br> 
-[Il choisit donc (haut)]{.fragment}
+-   Au round 1 : A sait que B jouera (haut) donc il a le choix entre $(1,4)$ et $(4,1)$<br> [Il choisit donc (haut)]{.fragment}
 -   L'équilibre parfait en sous jeux est *(haut, (haut,bas), (haut,bas))*
 :::
 
@@ -286,17 +277,15 @@ Utilisez *l'induction à rebours* pour trouver les équilibre(s) parfait(s) en s
 
 *Les équilibres parfaits en sous-jeux - et les équilibres de Nash*
 
-:::{.incremental}
+::: incremental
 -   On reprend le cadre du jeu des accords
--   On ne sait pas à quoi mènera l'équilibre de Nash. C'est embêtant. 
+-   On ne sait pas à quoi mènera l'équilibre de Nash. C'est embêtant.
 -   On voudrait pouvoir trouver un moyen de converger vers celui qui est le mieux
 -   Et on voudrait savoir si le **timing** des décisions peut aider
 -   Enfin, on illustre ici que les équilibres parfaits en sous-jeux sont des sous-ensembles des équilibres de Nash
-
 :::
 
 ## Jeux séquentiels 2 - Accord environnemental séquentiel
-
 
 ```{r}
 loc__ = F
@@ -343,9 +332,7 @@ rsvg_png(charToRaw(svg_code), file = 'images/extensive_form_accord.png')
 
 ```
 
-
 ![Forme extensive](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/extensive_form_accord.png)
-
 
 ## Jeux séquentiels 3 : entrée ou non
 
@@ -357,7 +344,6 @@ rsvg_png(charToRaw(svg_code), file = 'images/extensive_form_accord.png')
     -   Si la firme $A$ entre et que la firme $B$ ne fait rien : $(10,20)$
     -   Si la firme $A$ entre que la firme $B$ se venge : $(-10,10)$
 -   Ecrivez le jeu sous forme normale:
-
 :::
 
 ::: fragment
@@ -464,23 +450,17 @@ if(loc__ ){
 
 ```
 
-
 ![Forme extensive](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/extensive_form_entry.png)
-
-
 
 ## Jeux séquentiels 3 : entrée ou non?
 
-
-:::{.incremental}
+::: incremental
 -   Quels sont les équilibres parfaits en sous jeux
     -   Induction à rebours
     -   Si A entre, B n'a pas intérêt à réagir, donc le payoff est $(10,20)$
     -   Pour A, soit il reste dehors $(0,50)$, soit il entre sans réaction $(10,20)$
     -   L'équilibre parfait en sous jeu est donc *(entrée, pas de réaction)*
-
 :::
-
 
 ## Jeux séquentiels 4 - Les pirates
 
@@ -497,7 +477,6 @@ On va résoudre le **jeu des pirates** :
 -   On suppose qu'ils sont :
     -   **rationnels** : ils veulent maximiser leur nombre de pièces, et préfèrent être pauvres que morts
     -   **pas gratuitement cruels** : ils ne choisissent une alternative *que* si elle leur rapporte plus de pièces
-
 :::
 
 ## Jeux séquentiels 4 - Les pirates
@@ -527,12 +506,10 @@ On va résoudre le **jeu des pirates** :
     -   La voix de E coûte 1
     -   Il peut offrir une pièce à B et E et s'assurer de leurs voix
     -   La répartition est donc *(98,0,1,0,1)*
--   Résultat contre-intuitif : 
+-   Résultat contre-intuitif :
     -   La rationalité seule n'explique pas vos idées : les normes sociales aussi
     -   Il faut cependant la pousser pour comprendre le résultat!
-
 :::
-
 
 # Duopole
 

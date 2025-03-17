@@ -1,12 +1,26 @@
 ---
 title: "Concurrence Imparfaite 3 : Politiques de la Concurrence"
-subtitle: "UC1 Analyse Economique"
-
+subtitle: "UC1 - Analyse Economique"
 ---
+
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
 
 # Introduction {#sec-intro}
 
------
+------------------------------------------------------------------------
 
 ::: {.incremental style="font-size:80%"}
 -   En cas de *concurrence imparfaite*, il y a ce qu'on apelle des *défaillances de marché*
@@ -58,8 +72,9 @@ Ensemble des mesures et des lois visant à s'assurer que la concurrence sur un m
 ## Historique - USA
 
 ::: fragment
-![John D. Rockefeller](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/portrait_rockefeller.jpg){width="10cm"}
+![John D. Rockefeller](../images/UC1/portrait_rockefeller.jpg){width="10cm"}
 :::
+
 
 ## Historique - USA
 
@@ -116,7 +131,7 @@ Et autorités sectorielles (ARCEP, ARCOM, RTE)
 ::::::: columns
 :::: {.column width="60%"}
 ::: fragment
-![Le cartel des camions, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/cartel_camions.jpeg)
+![Le cartel des camions, 2016](../images/UC1/cartel_camions.jpeg)
 :::
 ::::
 
@@ -150,7 +165,7 @@ Et autorités sectorielles (ARCEP, ARCOM, RTE)
 ::::::: columns
 :::: {.column width="60%"}
 ::: fragment
-![Le cartel du change, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/cartel_banques.jpg)
+![Le cartel du change, 2016](../images/UC1/cartel_banques.jpg)
 :::
 ::::
 
@@ -175,7 +190,7 @@ Et autorités sectorielles (ARCEP, ARCOM, RTE)
 ::::::: columns
 :::: {.column width="50%"}
 ::: fragment
-![Google](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/Google_hq.jpg)
+![Google](../images/UC1/Google_hq.jpg)
 :::
 ::::
 
@@ -197,7 +212,7 @@ Et autorités sectorielles (ARCEP, ARCOM, RTE)
 ::::::: columns
 :::: {.column width="50%"}
 ::: fragment
-![Fiat](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/fiat.jpg)
+![Fiat](../images/UC1/fiat.jpg)
 :::
 ::::
 
@@ -220,7 +235,7 @@ Le **réglement n°139/2004** : donne le pouvoir à la commission d'examiner les
 ::::::: columns
 :::: {.column width="40%"}
 ::: fragment
-![Alstom/Siemens](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/UC1/train.jpg)
+![Alstom/Siemens](../images/UC1/train.jpg)
 :::
 ::::
 

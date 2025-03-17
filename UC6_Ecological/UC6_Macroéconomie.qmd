@@ -5,13 +5,85 @@ subtitle: "UC6 - Economie Ecologique"
 
 # Introduction
 
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(here)
+library(extrafont)
+library(reshape2)
+
+#install.packages(c("sysfonts", "showtext"))
+library(sysfonts)
+library(showtext)
+
+#font_add_google("Roboto", "roboto")
+showtext_auto()
+
+source(here("utilities.R"))
+
+local_family = "Roboto Light"
+             
+
+```
+
+## Questions {.center}
+
+::: incremental
+-   Compte tenu des limites planétaires, de l'empreinte matière des sociétés, comment envisager le devenir du système macroéconomique?
+
+-   Quelles solutions de politique économique apporter?
+:::
+
+------------------------------------------------------------------------
+
+## Plan
+
+::::::: columns
+:::: column
+::: incremental
+1.  [Vers une macroéconomie écologique]{.fg}
+    i)  Le travail du Club de Rome et le rapport Meadows
+    ii) La controverse néoclassique
+    iii) Exercice de modélisation macroéconomique sur `R`
+    iv) Courants modernes
+:::
+::::
+
+:::: column
+::: incremental
+2.  [Par delà la croissance: technocritique, décroissance]{.fg} [et coévolution]{.fg}
+    i)  L'analyse de la décroissance: de l'écologie politique et la bioéconomie à la postgrowth
+    ii) Le codéveloppement: évolution des systèmes et relations homme nature
+    iii) L'approche par les besoins fondamentaux
+    iv) L'environnementalisme des pauvres de J. Martinez Allier
+:::
+::::
+:::::::
+
 # I. Le travail du Club de Rome et le rapport Meadows
 
 ## A. Le Club de Rome
 
 :::::: columns
 ::: {.column width="30%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/meadows_forrester.png){fig-align="left" height="500"}
+![](../images/ecol_econ/macro/meadows_forrester.png){fig-align="left" height="500"}
 :::
 
 :::: {.column width="70%"}
@@ -30,11 +102,11 @@ subtitle: "UC6 - Economie Ecologique"
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/limits_to_growth.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth_systems.jpg){height="700" fig-align="center"}
+![](../images/ecol_econ/macro/limits_to_growth_systems.jpg){height="700" fig-align="center"}
 
 ::: notes
 -   Niveaux et quantités physiques mesurables par les rectanlges
@@ -65,13 +137,62 @@ subtitle: "UC6 - Economie Ecologique"
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/dynamics_world_3_small.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/dynamics_world_3_small.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth_results.jpg){fig-align="center"}
+### Expliquer la structure
+
+::: incremental
+-   Prenez quelques minutes pour aller voir la structure du modèle, pour vous rendre compte de la complexité du modèle :
+    -   [Simulation par Scott Fortmann-Roe](https://insightmaker.com/insight/2pCL5ePy8wWgr4SN8BQ4DD/The-World3-Model-Classic-World-Simulation)
+    -   Google : `"InsightMaker World3"`
+:::
 
 ------------------------------------------------------------------------
+
+### Fonctionnement
+
+-   Lien entre la capacité de charge de la terre et impact des systèmes humains
+    -   Si les limites croissent plus vite que les impacts, la population croît
+    -   Il est possible de croître et d'atterrir en douceur aux limites
+    -   Croissance forte, puis dépassement de la capacité de charge et stabilisation via oscillations
+    -   Croissance forte, puis dépasseement, puis effondrement
+
+------------------------------------------------------------------------
+
+### Les résultats principaux
+
+![](../images/ecol_econ/macro/limits_to_growth_results.jpg){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Les scénarios alternatifs
+
+-   [Scénarii de ressources et de technologie]{.bg4} :
+    -   [Accroissement des ressources]{.bg3} et de la technologie: ffondrement quand même, car la pollution explose, la fertilité agricole baisse, provoquant un déclin de la population et dérive du capital vers l'agricole
+    -   [Technique de dépollution]{.bg3} en 2002 : effondrement aussi
+    -   [Amélioration agricole]{.bg3} en 2002 : effondrement car crise de l'érosion, les terres sont dopées, même les moins productives, ce qui accroît la perte fertilité, et cause trop de capital dans l'agriculture, provoquant l'effondrement du reste
+    -   [Lutte contre l'érosion]{.bg3} : effondrement, car trop d'investissement dans les technologies de contrôle
+    -   [Meilleure efficience technologique des ressources]{.bg3} : effondrement car crise des coûts
+-   [Scénarii de modération]{.bg4} :
+    -   Seuls ceux qui mettent les améliorations technologiques et le contrôle des naissance
+    -   Ou limitent la production, les naissances et mettent en place des améliorations technologiques en 1982
+    -   Présentent des équilibres élevés soutenables
+
+------------------------------------------------------------------------
+
+### Essayer quelques scénarios :
+
+::: incremental
+-   Allez sur cette simulation réalisée en Java, par Brian Hayes, du journal *American Scientist* ([article qui accompagne la simulation](http://bit-player.org/2012/world3-the-public-beta))
+    -   `http://bit-player.org/extras/limits/ltg.html`
+-   Les contrôles:
+    -   *Model duration*: accroît la durée des simulations
+    -   *Time step*: contrôle le temps d'intégration (paramètre technique, pas très important pour aujourd'hui)
+    -   *Initial resources multiplier*: multiplicateur de ressources initiales
+    -   *Output consumed*: fraction de l'output de la production industrielle consommée, le reste étant investi : on a mieux fait de tout consommer parfois dans ce modèle
+:::
 
 ## B. La controverse néoclassique
 
@@ -81,7 +202,7 @@ subtitle: "UC6 - Economie Ecologique"
     -   [Estimations]{.bg3} des ressources non renouvelables un peu datées et [conservatrices]{.bg3} (ni des possibilités futures : sols océaniques etc)
     -   [Pollution proportionnelle]{.bg3} à l'usage du capital, qui croît avec l'extraction.
     -   Pas ou peu de [substitution]{.bg3} entre les facteurs : pas de possibilité de dépolluer, ou encore d'arrêter l'usage si trop cher
-    -   Pas de mécanisme d'allocation par les prix
+    -   Pas de mécanisme d'allocation par les prix qui permettrait un changement des règles de choix
 -   [Solow, en 1973](https://web.archive.org/web/20191116122343/https://www.minneapolisfed.org/publications/the-region/interview-with-robert-solow) :
 :::
 
@@ -121,6 +242,40 @@ En 1987, la publication du [rapport Brundtland]{.bg4} (WCED, 1987) a donné une 
     -   Règle d'[Hartwick Solow (1977, 1986)]{.bg4} et la [soutenabilité "faible"]{.bg4} : dans une économie avec des ressources non renouvelables, la [rente]{.bg3} dégagée de l'exploitation des ressources est le niveau d'investissement [requis pour maintenir une consommation constante]{.bg4} dans le temps
         -   Suppose que la [technologie]{.bg4} croîtra et les [ressources]{.bg4} sont substituables
 :::
+
+------------------------------------------------------------------------
+
+### La macroéconomie du climat moderne : Nordhaus et DICE
+
+Bill Nordhaus (Prix de la Banque de Suède en mémoire d'A. Nobel - 2018)
+
+::::::: columns
+:::: column
+::: incremental
+-   Modèle d'évaluation intégrée : [Dynamic Integrated Climate-Economy]{.bg4}
+-   Utilise un format [d'optimisation intertemporelle d'utilité actualisée]{.bg3}
+-   Avec une représentation simplifiée du [cycle du carbone et du lien avec l'activité économique]{.bg3}
+-   Permet de calculer le lien entre [une tonne de CO2 et le dommage économique]{.bg3}
+-   Avec l'idée de [coût social du carbone]{.bg3} : la taxe d'une tonne de carbone doit refléter les dommages intertemporels marginaux
+-   Et d'un [réchauffement optimal]{.bg3} :
+    -   Moins d'émissions = moins de consommation =\> baisse du bien être
+    -   Tradeoff
+:::
+::::
+
+:::: column
+[Problèmes illustrent les différences d'approche en économie écologique]{.fragment}
+
+::: incremental
+-   [Discounting]{.bg3} des générations [futures]{.bg3}
+-   [Substituabilité]{.bg3} des formes de capital
+-   Pas de prise en compte des [effets extrêmes]{.bg3} du changement climatique
+-   Sans place pour les [conséquences distributives]{.bg3} du changement climatique
+-   En supposant une [adpatation technologique]{.bg3}
+-   Sans prendre en compte les [écosystèmes et la biodiversité]{.bg3}
+:::
+::::
+:::::::
 
 ------------------------------------------------------------------------
 
@@ -566,39 +721,16 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 ## D. Courants modernes
 
-::: incremental
+::: {.incremental .center}
 -   Peut on avoir un état stationnaire dans une économie capitaliste?
-
--   Le système capitaliste ne contient pas de capacité autonome pour limiter les impacts environnementaux
-
+-   Si oui, comment?
+-   Le système capitaliste ne contient pas de capacité autonome pour limiter les impacts environnementaux: quelles dynamiques systémiques et institutionnelles mettre en oeuvre?
+-   On verra ça plus en détail dans la partie sur les institutions
 :::
-
-
-
-### L'analyse post-keynésienne : finance et environnement
-
-:::::: columns
-::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/stable_econ_Victor2008.jpg)
-:::
-
-:::: column
-::: {.incremental style="font-size:90%"}
--   Renversement du problème:
-    -   Respecter les objectifs de préservation
-    -   Sous contrainte de réalisation d'un état stationnaire: les travaux de Tim Jackson et de Peter Victor
--   Les résultats du modèle `LowGrow`au Canada : hypothèses d'un modèle de macroéconomie et dynamique des systèmes
-    -   Croissance plus lente des dépenses publiques, de l’investissement net et de la productivité
-    -   Un faible déclin de la balance commerciale nette,
-    -   Une croissance démographique nulle
-    -   Une réduction du temps de travail hebdomadaire
-    -   de l’instauration d’une taxe carbone à effet neutre et
-    -   Une augmentation des dépenses publique dans les domaines de l’alphabétisation des adultes, des soins de santé ou encore de la lutte contre la pauvreté.
-:::
-::::
-::::::
 
 ------------------------------------------------------------------------
+
+### L'analyse post-keynésienne : finance et environnement
 
 ::: incremental
 -   Pourquoi une autre macroéconomie: reprise des travaux de [Keynes relatifs à l'incertitude, la monnaie et la demande]{.bg4} couplée à la dynamique des systèmes
@@ -631,7 +763,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/financial_physical_risk_dafermos2024.jpg)
+![](../images/ecol_econ/macro/financial_physical_risk_dafermos2024.jpg)
 
 ::: notes
 -   Issu des derniers travaux de Dafermos, voici un diagramme des chaines causales que l'on pourriat observer avec le changement climatique, dans le cadre des risques physiques réels.
@@ -639,11 +771,62 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/financial_transition_risk_dafermos2024.jpg)
+![](../images/ecol_econ/macro/financial_transition_risk_dafermos2024.jpg)
 
 ::: notes
 -   Issu des derniers travaux de Dafermos, voici un diagramme des chaines causales que l'on pourriat observer avec le changement climatique, dans le cadre des risques de transitions réels
 -   Les risques et conséquences économiques ne sont pas les mêmes
+:::
+
+------------------------------------------------------------------------
+
+### Low Grow (Jackson, Victor) : pour une macroéconomie écologique, stationnaire
+
+:::::: columns
+::: column
+![](../images/ecol_econ/macro/lowgrow_structure.png)
+:::
+
+:::: column
+::: incremental
+-   Renversement du problème:
+    -   [Respecter les objectifs de préservation]{.bg3}
+    -   Sous contrainte de [réalisation d'un état stationnaire]{.bg3}
+-   Allons voir le modèle :
+    -   Google : `Low Grow Jackson IEEE`
+-   Modèle d'inspiration [post-keynésienne]{.bg3}:
+    -   Place faite à la demande
+    -   A la cohérence des revenus dans l'économie
+    -   Et au secteur financier
+    -   En se focalisant sur les investissements verts nécessaires
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+:::::: columns
+::: column
+![](../images/ecol_econ/macro/stable_econ_Victor2008.jpg)
+:::
+
+:::: column
+::: incremental
+-   Les résultats du modèle `LowGrow` au Canada : si l'on a
+    -   Croissance plus lente des dépenses publiques, de l’investissement net et de la productivité
+    -   Un faible déclin de la balance commerciale nette,
+    -   Une croissance démographique nulle
+    -   Une réduction du temps de travail hebdomadaire
+    -   de l’instauration d’une taxe carbone à effet neutre et
+    -   Une augmentation des dépenses publique dans les domaines de l’alphabétisation des adultes, des soins de santé ou encore de la lutte contre la pauvreté.
+-   Alors on peut [réduire la croissance, améliorer les performances environnementales et sociales]{.bg3}
+:::
+::::
+::::::
+
+::: notes
+-   EBI : environmental burden index (EBI) which describes the environmental performance of the model
+-   SPI : composite sustainable prosperity index (SPI) which is based on a weighted average of seven economic, social and environmental performance indicator
 :::
 
 ## Conclusion
@@ -686,7 +869,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 ::::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ellul.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ellul.jpg){fig-align="center"}
 :::
 ::::::
 
@@ -712,7 +895,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/gorz.png){fig-align="center"}
+![](../images/ecol_econ/macro/gorz.png){fig-align="center"}
 :::
 
 :::: column
@@ -744,7 +927,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 ::::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/illich.jpg){fig-align="center" width="30%"}
+![](../images/ecol_econ/macro/illich.jpg){fig-align="center" width="30%"}
 :::
 ::::::
 
@@ -802,7 +985,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 :::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/arne_naess.jpg){fig-align="right" width="200%"}
+![](../images/ecol_econ/macro/arne_naess.jpg){fig-align="right" width="200%"}
 :::
 
 :::: {.column width="60%"}
@@ -844,7 +1027,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 ::::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/Kubiszewski_GPI_capita_2013.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/Kubiszewski_GPI_capita_2013.jpg){fig-align="center"}
 
 [[Fig. 4.](https://www.sciencedirect.com/science/article/pii/S0921800913001584#f0020) GPI/capita. The GPI/capita for all 17 countries used in this. Estimates are from various sources noted in the text. All data are in 2005 US\$.]{style="font-size:50%"}
 :::
@@ -902,8 +1085,6 @@ Voir [Kallis et al, *The Lancet Planteray Health*, 2025](http://sciencedirect.co
         -   Utilisation des données input output : on renverse l'appropriation des matériaux du Sud vers le Nord, notamment via les transitions et politiques de réduction de la demande
 :::
 
-
-
 ## C. L'approche par les besoins fondamentaux et les capabilités
 
 ### Limites biophysiques et besoins
@@ -943,7 +1124,7 @@ Voir [Kallis et al, *The Lancet Planteray Health*, 2025](http://sciencedirect.co
 ------------------------------------------------------------------------
 
 | Besoins | Être (qualités) | Avoir (choses) | Faire (actions) | Interagir (environnement) |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | **Subsistance** | santé physique et mentale | nourriture, logement, travail | se nourrir, se vêtir, se reposer, travailler | environnement du lieu de vie, conditions sociales |
 | **Protection** | soin, adaptabilité, autonomie | sécurité sociale, systèmes de santé, travail | coopérer, faire des projets, prendre soin d'autrui, aider | environnement social, logement |
 | **Affection** | respect, sens de l'humour, générosité, sensualité | amitiés, famille, animaux de compagnie, relations avec la nature | partager, prendre soin d'autrui, exprimer des émotions | intimité, espaces intimes d'unité |
@@ -976,7 +1157,7 @@ Voir [Kallis et al, *The Lancet Planteray Health*, 2025](http://sciencedirect.co
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/loutre.webp){fig-align="center"}
+![](../images/ecol_econ/macro/loutre.webp){fig-align="center"}
 :::
 
 :::: column
@@ -997,7 +1178,7 @@ Voir [Kallis et al, *The Lancet Planteray Health*, 2025](http://sciencedirect.co
 
 :::::: columns
 ::: {.column width="30%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecologismo_pobres.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecologismo_pobres.jpg){fig-align="center"}
 :::
 
 :::: {.column width="70%"}
@@ -1046,4 +1227,3 @@ Lire [La dette écologique, un concept monayable?](La%20dette%20écologique,%20u
     -   Et des [réparations]{.bg3} pour la dynamique économique inégalitaire
 -   Ces problématiques s'étendent à [l'analyse du vivant]{.bg4} et de la biodiversité
 :::
-

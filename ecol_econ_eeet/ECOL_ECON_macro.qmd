@@ -3,6 +3,21 @@ title: "Macroéconomie écologique"
 subtitle: "Economie Ecologique"
 ---
 
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
+
 ```{r}
 library(tidyr)
 library(dplyr)
@@ -30,7 +45,7 @@ local_family = "Roboto Light"
 
 ## Le problème
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/cma-cgm-container-ship.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/cma-cgm-container-ship.jpg){fig-align="center"}
 
 ::: notes
 -   L'idée de l'économie traditionelle, c'est d'organiser l'allocation des ressources dans un grand bateau, de plus en plus grand
@@ -77,7 +92,7 @@ local_family = "Roboto Light"
 
 ## Les limites planétaires
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/planetary_bounds.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/planetary_bounds.jpg){fig-align="center"}
 
 ::: notes
 -   Développé par Rockström et son équipe en 2009 (co-directeur du PIK)
@@ -157,65 +172,65 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_World.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_World.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_North_America.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_North_America.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Europe.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_Europe.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/earth_footprint_Africa.jpeg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/earth_footprint_Africa.jpeg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/total_ecological_footprint.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/total_ecological_footprint.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/footprint_per_person.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/footprint_per_person.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/biocapacity_global.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/biocapacity_global.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/ecological_deficit_reserve_global.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/ecological_deficit_reserve_global.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_france.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_france.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_algeria.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_algeria.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_guyana.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_guyana.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_belgium.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_belgium.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_US.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_US.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_russia.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_russia.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/summary_brazil.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/summary_brazil.jpg){fig-align="center"}
 
 ## HANPP
 
@@ -231,7 +246,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecological_footprint/hanpp_jrc.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecological_footprint/hanpp_jrc.jpg){fig-align="center"}
 
 # 2. Métabolisme social : mesures et concepts au fondement de la macroéconomie écologique
 
@@ -316,11 +331,11 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ::::: columns
 ::: {.column width="30%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/signs_odum_1967.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/signs_odum_1967.jpg){fig-align="center"}
 :::
 
 ::: {.column width="70%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/systems_odum_1967.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/systems_odum_1967.jpg){fig-align="center"}
 :::
 :::::
 
@@ -351,7 +366,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/ayres_kneese_1969.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/ayres_kneese_1969.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -359,7 +374,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ### La méthodologie Material and Energy Flow Accounting
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolism_fischer_kowalski_handbook_2015.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/metabolism_fischer_kowalski_handbook_2015.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -402,29 +417,29 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ### Tendances européennes
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_extraction_trade_UE2023.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_extraction_trade_UE2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_EU2023.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_material_consumption_EU2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_EU2023.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_EU2023.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_country_2023EU.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/domestic_material_consumption_category_country_2023EU.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
 ### Tendances mondiales
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/imports_exports_globaux_2010.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/imports_exports_globaux_2010.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/taux_métaboliques_kowalski.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/taux_métaboliques_kowalski.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -440,7 +455,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/metabolic_rates_regimes_fischer_kowalski_hadbook_2015.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/metabolisme/metabolic_rates_regimes_fischer_kowalski_hadbook_2015.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -474,7 +489,7 @@ $$ \text{Impact} = \text{Population} \times \text{Affluence} \times \text{Intens
 
 :::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/moulin.jpg){.absolute left="-100" top="100" width="600" height="450"}
+![](../images/ecol_econ/macro/moulin.jpg){.absolute left="-100" top="100" width="600" height="450"}
 :::
 
 :::: {.column width="60%"}
@@ -539,7 +554,7 @@ Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328
 ::::
 
 ::: {.column width="70%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/metabolisme/material_flows_megalhes.jpg){fig-align="right"}
+![](../images/ecol_econ/macro/metabolisme/material_flows_megalhes.jpg){fig-align="right"}
 :::
 ::::::
 
@@ -652,7 +667,7 @@ Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/chapelle_darblay.jpeg){.absolute top="100" left="-100" width="700" height="500"}
+![](../images/ecol_econ/macro/chapelle_darblay.jpeg){.absolute top="100" left="-100" width="700" height="500"}
 :::
 
 :::: column
@@ -700,7 +715,7 @@ Issu des travaux de [Nelo Magalhães et al., 2019](https://hal.science/hal-03328
 
 :::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/pluie_alexandrie.jpg){.absolute top="100" left="-100" width="500" height="400"}
+![](../images/ecol_econ/macro/pluie_alexandrie.jpg){.absolute top="100" left="-100" width="500" height="400"}
 :::
 
 :::: {.column width="60%"}
@@ -731,12 +746,12 @@ Pose toujours des problèmes de définition des limites du systèmes mais aux US
 :::
 
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/mean_eroi_hall_2014_energy_policy.jpg){fig-align="center" width="50%"}
+![](../images/ecol_econ/macro/eroi/mean_eroi_hall_2014_energy_policy.jpg){fig-align="center" width="50%"}
 :::
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eroi/hall_2014_energypolicy.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/eroi/hall_2014_energypolicy.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -780,7 +795,7 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 #### Synthèse (un peu datée) des estimations de l'effet rebond direct
 
-![Sorell et al, 2009, Energy Policy](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_effect_aggregate_sorell_et_al_2009_energy_policy.jpg){fig-align="center"}
+![Sorell et al, 2009, Energy Policy](../images/ecol_econ/macro/rebond/rebound_effect_aggregate_sorell_et_al_2009_energy_policy.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -805,11 +820,11 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/image_rebond_marché_hegwood_NatureFood_2023.webp){fig-align="center"}
+![](../images/ecol_econ/macro/rebond/image_rebond_marché_hegwood_NatureFood_2023.webp){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/rebond/rebound_by_type_hegwood_NatureFood_2023.webp){fig-align="center"}
+![](../images/ecol_econ/macro/rebond/rebound_by_type_hegwood_NatureFood_2023.webp){fig-align="center"}
 
 # 3. Vers une macroéconomie écologique
 
@@ -819,7 +834,7 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 :::::: columns
 ::: {.column width="30%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/meadows_forrester.png){fig-align="left" height="500"}
+![](../images/ecol_econ/macro/meadows_forrester.png){fig-align="left" height="500"}
 :::
 
 :::: {.column width="70%"}
@@ -838,11 +853,11 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/limits_to_growth.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth_systems.jpg){height="700" fig-align="center"}
+![](../images/ecol_econ/macro/limits_to_growth_systems.jpg){height="700" fig-align="center"}
 
 ::: notes
 -   Niveaux et quantités physiques mesurables par les rectanlges
@@ -873,11 +888,11 @@ Voir *The Rebound Effect and Energy Efficiency Policy*, Gillingham et al., 2014
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/dynamics_world_3_small.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/dynamics_world_3_small.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/limits_to_growth_results.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/limits_to_growth_results.jpg){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -1422,12 +1437,12 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/typologie_cahen_fourot_2020.jpg)
+![](../images/ecol_econ/macro/typologie_cahen_fourot_2020.jpg)
 
 ------------------------------------------------------------------------
 
 |   | Pays d'Europe du Nord | Europe Centrale du Sud | Pays du Anglosaxons et du Pacifique | Pays émergents | Deux géants |
-|----|----|----|----|----|----|
+|------------|------------|------------|------------|------------|------------|
 | Relation sociale à l'environnement | Matériellement offshore, distribution des actifs environnementaux la moins inégale et orientation politique prône à l'écologie | Matériellement offshore | Matériellement onshore pour l'énergie et le GHG, diversité des opinions politiques | Orientation socio politique adverse à l'écologie | Matériellement onshore, distribution des actifs environnementaux la plus inégale et anti écologie |
 
 ::: incremental
@@ -1462,7 +1477,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/stable_econ_Victor2008.jpg)
+![](../images/ecol_econ/macro/stable_econ_Victor2008.jpg)
 :::
 
 :::: column
@@ -1514,7 +1529,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/financial_physical_risk_dafermos2024.jpg)
+![](../images/ecol_econ/macro/financial_physical_risk_dafermos2024.jpg)
 
 ::: notes
 -   Issu des derniers travaux de Dafermos, voici un diagramme des chaines causales que l'on pourriat observer avec le changement climatique, dans le cadre des risques physiques réels.
@@ -1522,7 +1537,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/financial_transition_risk_dafermos2024.jpg)
+![](../images/ecol_econ/macro/financial_transition_risk_dafermos2024.jpg)
 
 ::: notes
 -   Issu des derniers travaux de Dafermos, voici un diagramme des chaines causales que l'on pourriat observer avec le changement climatique, dans le cadre des risques de transitions réels
@@ -1569,7 +1584,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 ::::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ellul.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ellul.jpg){fig-align="center"}
 :::
 ::::::
 
@@ -1595,7 +1610,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/gorz.png){fig-align="center"}
+![](../images/ecol_econ/macro/gorz.png){fig-align="center"}
 :::
 
 :::: column
@@ -1627,7 +1642,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 ::::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/illich.jpg){fig-align="center" width="30%"}
+![](../images/ecol_econ/macro/illich.jpg){fig-align="center" width="30%"}
 :::
 ::::::
 
@@ -1685,7 +1700,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 
 :::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/arne_naess.jpg){fig-align="right" width="200%"}
+![](../images/ecol_econ/macro/arne_naess.jpg){fig-align="right" width="200%"}
 :::
 
 :::: {.column width="60%"}
@@ -1727,7 +1742,7 @@ ggplot(df_long, aes(x = Time, y = Value)) +
 ::::
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/Kubiszewski_GPI_capita_2013.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/Kubiszewski_GPI_capita_2013.jpg){fig-align="center"}
 
 [[Fig. 4.](https://www.sciencedirect.com/science/article/pii/S0921800913001584#f0020) GPI/capita. The GPI/capita for all 17 countries used in this. Estimates are from various sources noted in the text. All data are in 2005 US\$.]{style="font-size:50%"}
 :::
@@ -1835,7 +1850,7 @@ Norgaard, 1994
 
 :::: column
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_norgaard.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/coevolution_norgaard.jpg){fig-align="center"}
 :::
 ::::
 ::::::::
@@ -1851,7 +1866,7 @@ Norgaard, 1994
 
 ::: fragment
 | Mode occidental | Mode souhaitable |
-|----|----|
+|------------------------------------|------------------------------------|
 | Atomisme | Holisme méthodologique (prévalence du tout sur les parties) |
 | Mécanisme (prédictibilité) | Concept de système (accent sur l'imprévisibilité) |
 | Universalisme (tout, partout tout le temps, peut être expliqué par un nombre restreint de lois) | Contextualisme (les faits ne sont vrais que dans un certain contexte) |
@@ -1891,7 +1906,7 @@ Différentes applications :
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/acropole.webp){fig-align="center"}
+![](../images/ecol_econ/macro/acropole.webp){fig-align="center"}
 :::
 
 :::: column
@@ -1937,7 +1952,7 @@ Différentes applications :
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/coevolution_kaalis2011.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/coevolution_kaalis2011.jpg){fig-align="center"}
 :::
 
 :::: column
@@ -2037,7 +2052,7 @@ Différentes applications :
 ------------------------------------------------------------------------
 
 | Besoins | Être (qualités) | Avoir (choses) | Faire (actions) | Interagir (environnement) |
-|----|----|----|----|----|
+|---------------|---------------|---------------|---------------|---------------|
 | **Subsistance** | santé physique et mentale | nourriture, logement, travail | se nourrir, se vêtir, se reposer, travailler | environnement du lieu de vie, conditions sociales |
 | **Protection** | soin, adaptabilité, autonomie | sécurité sociale, systèmes de santé, travail | coopérer, faire des projets, prendre soin d'autrui, aider | environnement social, logement |
 | **Affection** | respect, sens de l'humour, générosité, sensualité | amitiés, famille, animaux de compagnie, relations avec la nature | partager, prendre soin d'autrui, exprimer des émotions | intimité, espaces intimes d'unité |
@@ -2070,7 +2085,7 @@ Différentes applications :
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/loutre.webp){fig-align="center"}
+![](../images/ecol_econ/macro/loutre.webp){fig-align="center"}
 :::
 
 :::: column
@@ -2091,7 +2106,7 @@ Différentes applications :
 
 :::::: columns
 ::: {.column width="30%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/ecologismo_pobres.jpg){fig-align="center"}
+![](../images/ecol_econ/macro/ecologismo_pobres.jpg){fig-align="center"}
 :::
 
 :::: {.column width="70%"}
@@ -2146,7 +2161,7 @@ Lire [La dette écologique, un concept monayable?](La%20dette%20écologique,%20u
 ## Taux de croissance moyens pour l'analyse de la France {#appendix_table_metabolism}
 
 |                              | 1830–1860 | 1860–1939 | 1948–1973 | 1980–2015    |
-|------------------------------|-----------|-----------|-----------|--------------|
+|----------------------|-------------|-------------|-------------|-------------|
 | **Population ag**            | 0.44      | 0.16      | 0.94      | 0.51         |
 | **GDP ag**                   | 1.74      | 1.41      | 5.47      | 1.52         |
 | **TPES ag**                  | 1.39      | 1.77      | 3.75      | 0.20 (2008)  |
@@ -2165,13 +2180,13 @@ Lire [La dette écologique, un concept monayable?](La%20dette%20écologique,%20u
 
 ## Doughnut economics {#sec_appendix_doughnut}
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/doughnut_image.png){fig-align="center"}
+![](../images/ecol_econ/macro/doughnut_image.png){fig-align="center"}
 
 [[Retour au cours](#sec_postgrowth)]{.button}
 
 ## Eurogreen structure {#sec_appendix_eurogreen}
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/macro/eurogreen_structure.webp){fig-align="center"}
+![](../images/ecol_econ/macro/eurogreen_structure.webp){fig-align="center"}
 
 Main causal relationships between heterogeneous household groups, industries, resources and assets in our model. Solid (dashed) arrows represent monetary (non-monetary) flows. Household consumption includes electricity and other energy products. The rest of the world (RoW) is included because the aggregate flows from (to) it are included as imports (exports), although the foreign sector is not defined in the model. HH, households; TPES, total primary energy supply.
 

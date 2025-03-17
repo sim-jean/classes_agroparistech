@@ -3,6 +3,21 @@ title: "Economie écologique de la biodiversité et des écosystèmes"
 subtitle: "Economie Ecologique"
 ---
 
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
+
 ```{r}
 library(tidyr)
 library(dplyr)
@@ -94,7 +109,7 @@ Article 2, Convention sur la Diversité Biologique, 1992
 
 ::: column
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/biodiv_illustration.jpg)
+![](../images/ecol_econ/biodiv/biodiv_illustration.jpg)
 
 :::
 
@@ -103,7 +118,7 @@ Article 2, Convention sur la Diversité Biologique, 1992
 ## B. Déclin anthropogénique
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
 
 # I. Valeurs, mesures et critères de décision en économie
 
@@ -145,11 +160,11 @@ Article 2, Convention sur la Diversité Biologique, 1992
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/typologie_valeurs_tromeur.jpg){align="center"}
+![](../images/Valuation/typologie_valeurs_tromeur.jpg){align="center"}
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/gila_monstre.webp){fig-align="center"}
+![](../images/ecol_econ/biodiv/gila_monstre.webp){fig-align="center"}
 
 ----
 
@@ -174,7 +189,7 @@ Mesurer une valeur économique nécessite de :
 :::{.column width="60%"}
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
+![](../images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
 :::
 :::
 
@@ -776,7 +791,7 @@ Définissons quatre critères principaux avec leur pondération :
 
 ::: column
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/biosciences.jpg){fig-align="left"}
+![](../images/ecol_econ/biodiv/biosciences.jpg){fig-align="left"}
 
 :::
 
@@ -810,7 +825,7 @@ Définissons quatre critères principaux avec leur pondération :
 
 ::: column
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/pearce.jpg){fig-align="left"}
+![](../images/ecol_econ/biodiv/pearce.jpg){fig-align="left"}
 
 :::
 
@@ -839,7 +854,7 @@ Définissons quatre critères principaux avec leur pondération :
 Voir l'article de [Gomez Baggethun et al. 2009, *Ecological Economics*](http://blogs.ubc.ca/apfnet04/files/2015/08/SUFES_05_Module-II_History-of-Ecosystem-Service-EconomicTheory-and-Practice.pdf)
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/ecologie_fonctionnelle.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/ecologie_fonctionnelle.jpg){fig-align="center"}
 
 :::{.fragment style="font-size:50%"}
 Tilman D., Downing J.A. (1994), Biodiversity and Stability in Grasslands, *Nature* 367: 363-365
@@ -862,7 +877,7 @@ Ensemble des processus d'un système écologique, qu'ils servent aux humains ou 
 
 #### Le capital naturel 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/capital_naturel.jpg){fig-align="left"}
+![](../images/ecol_econ/biodiv/capital_naturel.jpg){fig-align="left"}
 
 ::: notes
 
@@ -895,7 +910,7 @@ Ensemble des processus d'un système écologique, qu'ils servent aux humains ou 
 
 --------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/MA_conceptual_framework.png){fig-align="center"}
+![](../images/ecol_econ/biodiv/MA_conceptual_framework.png){fig-align="center"}
 
 --------
 
@@ -1080,7 +1095,7 @@ Ensemble des processus d'un système écologique, qu'ils servent aux humains ou 
 
 --------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/synthetic control.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/synthetic control.jpg){fig-align="center"}
 
 ::: notes
 
@@ -1129,7 +1144,7 @@ Voir [Diaz et al, 2015, *Science*](https://www.science.org/doi/10.1126/science.a
 
 ---
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/NCPs2.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/NCPs2.jpg){fig-align="center"}
 
 ---
 
@@ -1149,11 +1164,11 @@ Voir [Diaz et al, 2015, *Science*](https://www.science.org/doi/10.1126/science.a
 :::: columns
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvestig1.jpg){fig-align='center'}
+![](../images/Ressources_Nat/harvestig1.jpg){fig-align='center'}
 :::
 
 ::: column 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/harvesting2.jpg){fig-align='center'}
+![](../images/Ressources_Nat/harvesting2.jpg){fig-align='center'}
 :::
 
 ::::
@@ -1163,11 +1178,11 @@ Voir [Diaz et al, 2015, *Science*](https://www.science.org/doi/10.1126/science.a
 :::: columns
 
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation3.jpg){fig-align='center'}
+![](../images/Ressources_Nat/conservation3.jpg){fig-align='center'}
 :::
 
 ::: column 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/conservation4.jpg){fig-align='center'}
+![](../images/Ressources_Nat/conservation4.jpg){fig-align='center'}
 :::
 
 ::::  
@@ -1548,17 +1563,17 @@ ggsave(here("images", "Ressources_Nat", "flipped_bioecon_basic_equilibrium.png")
 
 ```
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive1.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive1.JPG){width="80%"}
 
 ----
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive2.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive2.JPG){width="80%"}
 
 
 -----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive3.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive3.JPG){width="80%"}
 
 -----
     
@@ -1583,11 +1598,11 @@ On a un lien entre quantité pêchée en équilibre (biomasse) et l'effort de p�
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive4.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive4.JPG){width="80%"}
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive5.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive5.JPG){width="80%"}
 
 ----
 
@@ -1901,7 +1916,7 @@ ggsave(here("images", "Ressources_Nat", "MSY_MEY.png"),
 
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive9.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive9.JPG){width="80%"}
 
 ::: {.incremental style="font-size:80%"}
 
@@ -1931,7 +1946,7 @@ Le modèle de Gordon Schaeffer illustre la [tragédie des communs]{.bg3}, en con
 
 ::::: columns
 ::: {.column width="40%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/hardin.jpg)
+![](../images/Ressources_Nat/hardin.jpg)
 :::
 
 
@@ -2134,7 +2149,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top=75 left=600 width="550" height="600"}
+![](../images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top=75 left=600 width="550" height="600"}
 :::
 
 
@@ -2142,7 +2157,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 #### Deux zones géographiques
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive11.JPG){width="80%"}
 
 --------
 
@@ -2158,7 +2173,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive11.JPG){.absolute top=240 left=100 width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive11.JPG){.absolute top=240 left=100 width="790" height="500"}
 
 :::
 
@@ -2176,7 +2191,7 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive13.JPG){.absolute top=240 left=100 width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive13.JPG){.absolute top=240 left=100 width="790" height="500"}
 
 :::
 
@@ -2193,21 +2208,21 @@ ggsave(here("images", "Ressources_Nat", "curve_to_lines_revenue_OA.jpg"),
 
 ::: fragment
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive14.JPG){.absolute top=240 left=100 width="790" height="500"}
+![](../images/Ressources_Nat/Diapositive14.JPG){.absolute top=240 left=100 width="790" height="500"}
 
 :::
 
 --------
 
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/Diapositive15.JPG){width="80%"}
+![](../images/Ressources_Nat/Diapositive15.JPG){width="80%"}
 
 
 -----
 
 #### d. L'équilibre de libre accès
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top=50 left=200 height="700"}
+![](../images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top=50 left=200 height="700"}
 
 
 --------------
@@ -2299,7 +2314,7 @@ Voici quelques idées d'exercices pour approfondir l'analyse de ce modèle en ut
 
 ### 1. Les limites de l'approche basée sur une seule espèce
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
+![](../images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
 
 ------ 
 
@@ -2330,7 +2345,7 @@ FAO, 2003:
 Modèle à deux espèces adapté de [Tromeur et Doyen, 2018](https://link.springer.com/article/10.1007/s10666-018-9618-2)
  
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmsy.jpg){fig-align="center"}
+![](../images/Ressources_Nat/mmsy.jpg){fig-align="center"}
 
 ::: notes
 
@@ -2344,7 +2359,7 @@ Modèle à deux espèces adapté de [Tromeur et Doyen, 2018](https://link.spring
 
 ---
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
+![](../images/Ressources_Nat/mmey_mmsy.jpg){fig-align="center"}
 
 ::: notes
 
@@ -2379,7 +2394,7 @@ SI = - sum u_i log(ui) avec ui = x_i/sum_i x_i
 
 ::: column
 ::: fragment
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/fpp.jpg){fig-align="center"}
+![](../images/Ressources_Nat/fpp.jpg){fig-align="center"}
 :::
 :::
 
@@ -2512,7 +2527,7 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 
 
-![Halpern et al, 2016](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/halpern.jpg){fig-align="center"}
+![Halpern et al, 2016](../images/Ressources_Nat/halpern.jpg){fig-align="center"}
 
 ::: notes
 
@@ -2528,7 +2543,7 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 ### 7. Bilan sur l'EBFM
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width=80% fig-align='center'}
+![](../images/Ressources_Nat/ebfm_in_tactical_fisheries_Skern_Mauritzen.jpg){width=80% fig-align='center'}
 
 ::: notes
 
@@ -2587,7 +2602,7 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/global_hotspots.jpg)
+![](../images/ecol_econ/biodiv/global_hotspots.jpg)
 
 ----
 
@@ -2634,7 +2649,7 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 ## B. Land sharing v. land sparing
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/land_sharing_land_sparing.jpg)
+![](../images/ecol_econ/biodiv/land_sharing_land_sparing.jpg)
 
 ::: notes
 - Une agriculture extensive, qui respecte mieux la biodiversité sur les terres cultivées ?
@@ -2662,19 +2677,19 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 -----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive1.jpg)
+![](../images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive1.jpg)
 
 -----
 
 #### Le cas du sparing
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive2.jpg)
+![](../images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive2.jpg)
 
 -----
 
 #### Le cas du sharing
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive3.jpg)
+![](../images/ecol_econ/biodiv/illu_sharing_sparing/Diapositive3.jpg)
 
 ----
 
@@ -2776,20 +2791,20 @@ Le Global Biodiversity Framework issu de la COP 15 (2021) est un cadre de politi
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/model_structure_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/model_structure_cocco2023.jpg){fig-align="center"}
 
 
 ------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/spatial_framework_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/spatial_framework_cocco2023.jpg){fig-align="center"}
 
 ----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/results_performance_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/results_performance_cocco2023.jpg){fig-align="center"}
 
 ------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/ecol_econ/biodiv/performances_within_outside_cocco2023.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/performances_within_outside_cocco2023.jpg){fig-align="center"}
 
 
 # Conclusion

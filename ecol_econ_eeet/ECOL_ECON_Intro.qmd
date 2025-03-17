@@ -3,6 +3,21 @@ title: "Introduction à l'économie écologique"
 subtitle: "Economie Ecologique"
 ---
 
+```{=html}
+<style>
+  body { display: none; }
+</style>
+<script>
+  var password = prompt("Enter password:");
+  if (password === "super_secret_password") {
+    document.body.style.display = "block";
+  } else {
+    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+    document.body.style.display = "block";
+  }
+</script>
+```
+
 ```{r}
 
 
@@ -19,7 +34,11 @@ source(here("utilities.R"))
 
 library(extrafont)
 #extrafont::font_import()  # This takes time the first time
-extrafont::loadfonts(device = "win")
+library(sysfonts)
+library(showtext)
+font_add_google("Roboto", "Roboto")
+showtext_auto()
+
 
 local_family="Roboto"
 
