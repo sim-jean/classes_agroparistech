@@ -7,7 +7,6 @@ subtitle: "UC6 - Economie écologique"
 protect=FALSE
 ```
 
-
 ```{=html}
 <style>
   body { display: none; }
@@ -27,7 +26,6 @@ protect=FALSE
     document.body.style.display = "block";
   }
 </script>
-
 ```
 
 ```{r}
@@ -55,7 +53,6 @@ local_family = "Roboto Light"
 
 # I. Introduction
 
-
 ![](../images/ecol_econ/biodiv/COP%2016%20Rome.png){fig-align="center"}
 
 ::: notes
@@ -64,13 +61,13 @@ local_family = "Roboto Light"
 -   Reconvened lately in Rome : agreed to a strategy to raise 200bn per year to finance the international policy goals regarding biodiversity conservation
 :::
 
-## Multilateral policy for biodiversity
+## Politiques multilatérales pour la biodiversité
 
 [Keunming-Montreal Global Biodiversity Framework]{.bg4}:
 
 ::: {.incremental style="font-size:90%"}
-- Fait suite à l’échec des objectifs d’[Aichi]{.bg3} à enrayer la perte de biodiversité
-- Structuré autour de 4 grands objectifs pour 2050 :
+-   Fait suite à l’échec des objectifs d’[Aichi]{.bg3} à enrayer la perte de biodiversité
+-   Structuré autour de 4 grands objectifs pour 2050 :
 :::
 
 ::::::: columns
@@ -90,9 +87,11 @@ local_family = "Roboto Light"
 :::::::
 
 ::: {.incremental style="font-size:90%"}
-- Et 23 cibles à atteindre d’ici 2030, dont la célèbre ["30 x 30" (cibles 2 et 3)]{.bg3}
-- Avec des indicateurs associés et un suivi régulier
+-   Et 23 cibles à atteindre d’ici 2030, dont la célèbre ["30 x 30" (cibles 2 et 3)]{.bg3}
+-   Avec des indicateurs associés et un suivi régulier
 :::
+
+-------
 
 ::: fragment
 Avec un appui scientifique de l'[IPBES]{.bg4}
@@ -153,12 +152,10 @@ Avec un appui scientifique de l'[IPBES]{.bg4}
     -   Il faut prendre en compte le [capital naturel]{.bg3} présent dans le capital productif
     -   On connaît très mal la productivité du [capital naturel]{.bg3} alors que c’est nécessaire pour comparer les productivités relatives des différents capitaux
     -   Le [capital naturel]{.bg3} a pour avantage de produire plusieurs B&S en même temps
--   A l’origine de la notion de SE comme flux lié au stock de capital naturel 
+-   A l’origine de la notion de SE comme flux lié au stock de capital naturel
 :::
 ::::
 ::::::
-
-
 
 ------------------------------------------------------------------------
 
@@ -209,9 +206,8 @@ Ensemble des processus d'un système écologique, qu'ils servent aux humains ou 
         -   Framework anthropocentré, qui place ceci dit la dépendance des sociétés humaines
     -   Création de [l'IPBES en 2012]{.bg3}
 -   Il acquiert une [valeur monétisée]{.bg4}, qui va mener à son appropriation et à son échange
-  - Notamment pour être protégé, puis pour entrer dans la comptabilité nationale comme mesure équivalente (Boyd and Banzhaf, 2007)
+-   Notamment pour être protégé, puis pour entrer dans la comptabilité nationale comme mesure équivalente (Boyd and Banzhaf, 2007)
 :::
-
 
 ------------------------------------------------------------------------
 
@@ -221,85 +217,80 @@ Ensemble des processus d'un système écologique, qu'ils servent aux humains ou 
 
 ## B. La mise en valeur des services écosystémiques
 
-### 1. Qu'est ce qu'une valeur? 
+### 1. Qu'est ce qu'une valeur?
 
 ::: incremental
+-   Mesure d'un [attribut quantifiable]{.bg4} :
 
-- Mesure d'un [attribut quantifiable]{.bg4} : 
-  - Diversité alpha d'un système alpin par exemple (i.e. quantité d'espèces)
-  - Quantité monétaire associée à une fonction écologique : valeur de la pollinisation par exemple
+    -   Diversité alpha d'un système alpin par exemple (i.e. quantité d'espèces)
+    -   Quantité monétaire associée à une fonction écologique : valeur de la pollinisation par exemple
 
-- [Préférence accordée]{.bg4} par les individus à des choses, états ou entités : préférence personnelle pour un type d'écosystèmes 
+-   [Préférence accordée]{.bg4} par les individus à des choses, états ou entités : préférence personnelle pour un type d'écosystèmes
 
-- [Référence à des éléments collectivement reconnus]{.bg4} qui génèrent des normes (politiques, morales, religieuses) : on les trouve dans la Déclaration des Droits de l'Homme, dna sles codes religieux
-  - "valeur intrinsèque de la diversité biologique"
-  
-- Avec la biodiversité, on parle souvent des trois, on y reviendra
+-   [Référence à des éléments collectivement reconnus]{.bg4} qui génèrent des normes (politiques, morales, religieuses) : on les trouve dans la Déclaration des Droits de l'Homme, dna sles codes religieux
 
+    -   "valeur intrinsèque de la diversité biologique"
+
+-   Avec la biodiversité, on parle souvent des trois, on y reviendra
 :::
 
------
+------------------------------------------------------------------------
 
 ### 2. Quelles valeurs mesure-t-on?
 
-
 ::: {.incremental style="font-size:90%"}
-- Le concept de [valeur économique totale]{.bg4} émerge des travaux de John Krutilla (1967, [Conservation Reconsidered](https://media.rff.org/archive/files/sharepoint/News/Features/Documents/071003%20Krutilla-ConservationReconsidered.pdf))
+-   Le concept de [valeur économique totale]{.bg4} émerge des travaux de John Krutilla (1967, [Conservation Reconsidered](https://media.rff.org/archive/files/sharepoint/News/Features/Documents/071003%20Krutilla-ConservationReconsidered.pdf))
 
-- Pour mesurer la valeur associée à la destruction d'une partie des écosystèmes, pas directement de la Nature, puisqu'il n'y a plus de valeurs sans elle
+-   Pour mesurer la valeur associée à la destruction d'une partie des écosystèmes, pas directement de la Nature, puisqu'il n'y a plus de valeurs sans elle
+
 -   La valeur [d'usage]{.bg4} qui peut être:
+
     -   [Directe]{.bg3}: les valeurs associées à la consommation directe de ressources issues de l'environnement (poisson, bois etc), c'est à dire aux services écosystémiques de [provision]{.fg} ou de contributions de la nature aux populations [matérielles]{.fg}
     -   [Indirecte]{.bg3}: les valeurs associées au fonctionnement des écosystèmes, qui donnent des services écosystémiques de [régulation]{.fg}, comme la séquestration du carbone, ou le filtrage de l'eau, ou de contributions de la nature aux populations [de régulation]{.fg}
     -   [d'option]{.bg3}: la possiblité d'utiliser dans le [futur]{.fg} à la fois pour la préservation et l'exploitation économiques des écosystèmes jusque là préservés, ou non utilisés
+
 -   La valeur de [non usage]{.bg4} :
+
     -   [de legs]{.bg3} : la valeur associée à la possibilité pour les générations [futures]{.fg} de bénéficier de la nature, au travers de contributions de la nature aux populations [matérielles et immatérielles]{.fg}
     -   [d'altruisme]{.bg3} : la valeur qui correspond à la volonté de préserver l'environnement au sein d'une [même génération]{.fg}
     -   [d'existence]{.bg3} : la valeur correspondant à la protection de l'environnement pour un motif intrinsèque, délié des considérations [anthropocentriques]{.fg}
-
 :::
 
-----
+------------------------------------------------------------------------
 
 ![](../images/Valuation/typologie_valeurs_tromeur.jpg){align="center"}
 
-----
+------------------------------------------------------------------------
 
 ![](../images/ecol_econ/biodiv/gila_monstre.webp){fig-align="center"}
 
-----
+------------------------------------------------------------------------
 
-### 3. Comment mesurer les services écosystémiques et leurs valeurs? 
-
-::: incremental 
-- On peut mesurer les aspects biophysiques des services écosystémiques : quantité de carbone stockée par une forêt par exemple
-- On peut ensuite essayer de leur donner une valeur économique. Cela nécessite de : 
-
-::: 
-
-:::: columns
-
-:::{.column width="60%"}
-::: fragment
-
-![](../images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
-:::
-:::
-
-:::{.column width="40%"}
+### 3. Comment mesurer les services écosystémiques et leurs valeurs?
 
 ::: incremental
-1.  [Identifier]{.bg4} clairement les éléments affectés, par une politique publique, un accident, bref, identifier une [chaîne causale]
+-   On peut mesurer les aspects biophysiques des services écosystémiques : quantité de carbone stockée par une forêt par exemple
+-   On peut ensuite essayer de leur donner une valeur économique. Cela nécessite de :
+:::
+
+::::::: columns
+:::: {.column width="60%"}
+::: fragment
+![](../images/ecol_econ/biodiv/valuation_chain.png){fig-align="center"}
+:::
+::::
+
+:::: {.column width="40%"}
+::: incremental
+1.  [Identifier]{.bg4} clairement les éléments affectés, par une politique publique, un accident, bref, identifier une \[chaîne causale\]
 2.  [Mesurer]{.bg4} la relation bio-physique entre un processus environnemental et les dommages causés aux éléments identifiés
 3.  [Estimer]{.bg4} les changements qu'opèrent les éléments affectés, pour absorber les conséquences des processus environnementaux
 4.  [Placer]{.bg4} une valeur monétaire sur les conséquences inabsorbées
-
 :::
-
-:::
-
 ::::
+:::::::
 
-------
+------------------------------------------------------------------------
 
 #### Toutes les mesures de valeurs se valent-elles?
 
@@ -316,7 +307,7 @@ Ensemble des processus d'un système écologique, qu'ils servent aux humains ou 
     -   Comment faire pour qu'elles aient une "épaisseur", une réalité, quand elles ne donneront pas lieu à des échanges économiques?
 :::
 
-----
+------------------------------------------------------------------------
 
 #### Panorama des méthodes
 
@@ -333,24 +324,20 @@ Ensemble des processus d'un système écologique, qu'ils servent aux humains ou 
 
 :::
 
-----
+------------------------------------------------------------------------
 
-
-### 4. Quelles valeurs aujourd'hui? 
+### 4. Quelles valeurs aujourd'hui?
 
 ::: incremental
--   [Costanza et al, 1997 dans Nature](https://www.nature.com/articles/387253a0), chiffrent le capital naturel et la valeur des services écosystémiques 
-  - En 1997 à plus de 30 trillions de dollars (base 1995), plus large que le PIB mondial aujourd'hui
-  - En 2014, a 125 trillions de dollars en utilisant les [mêmes méthodes](https://www.sciencedirect.com/science/article/abs/pii/S0959378014000685) 
+-   [Costanza et al, 1997 dans Nature](https://www.nature.com/articles/387253a0), chiffrent le capital naturel et la valeur des services écosystémiques
+-   En 1997 à plus de 30 trillions de dollars (base 1995), plus large que le PIB mondial aujourd'hui
+-   En 2014, a 125 trillions de dollars en utilisant les [mêmes méthodes](https://www.sciencedirect.com/science/article/abs/pii/S0959378014000685)
 -   Plus récemment, le programme [Efese]{.fg} lancé en 2012 a tenté d'évaluer une partie des services écosystémiques en France, aboutissant à une mesure de [50 milliards par an]{.fg}, soit 1.8% du PIB de 2023
 -   Le [Joint Reseach Committee]{.bg3} de l'Union Européenne, en évaluant 8 services écosystémiques, aboutit à un chiffre plus modeste, autour de [18 milliards d'euros]{.bg3}, soit 0.6% du PIB
     -   Tout deux évaluent la pollinisation, les usages récréatigs, la séquestration du carbone etc, à différentes échelles spatiales
-
 :::
 
-
-
-## C. Comment prendre des décisions à leur propos? 
+## C. Comment prendre des décisions à leur propos?
 
 ### Exemple : la création d'un parc naturel montagneux de 50,000 ha
 
@@ -684,20 +671,15 @@ Définissons quatre critères principaux avec leur pondération :
 ### Bilan des méthodes
 
 | Méthode | Forces | Faiblesses |
-|----------------|-------------------------|-------------------------------|
+|------------------------|------------------------|------------------------|
 | **Analyse Coûts-Bénéfices (ACB)** | \- Permet de comparer de façon objective les coûts et les bénéfices en termes monétaires.<br>- Favorise la transparence des choix par une approche quantitative. | \- Difficulté à monétiser certains coûts/bénéfices (environnementaux, sociaux).<br>- Sensible aux hypothèses de valorisation et aux incertitudes. |
 | **Analyse Coût-Efficacité (ACE)** | \- Idéale pour comparer des interventions produisant un même type de résultat.<br>- Plus simple à mettre en œuvre quand la mesure d'efficacité est claire et homogène. | \- Ne prend pas en compte l'ensemble des bénéfices si ceux-ci sont multiples ou de nature différente.<br>- Ne traduit pas toujours la valeur sociale globale d'une intervention. |
 | **Analyse Multicritère (AMC)** | \- Intègre de multiples dimensions (quantitatives et qualitatives).<br>- Permet la prise en compte de critères variés et de points de vue divers. | \- La pondération des critères peut être subjective.<br>- Complexité d'agrégation des résultats et interprétation parfois difficile. |
 | **Analyse Délibérative (AD)** | \- Favorise l'inclusion et la participation des parties prenantes.<br>- Encourage la discussion, la transparence et la légitimité des décisions. | \- Processus long et potentiellement coûteux en temps.<br>- Moins systématique et difficile à reproduire ou à quantifier objectivement. |
 
-
-
 ------------------------------------------------------------------------
 
 ![](../images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
-
-
-
 
 # III. L'usage raisonné
 
@@ -710,28 +692,24 @@ Définissons quatre critères principaux avec leur pondération :
 -   Schaefer, 1954, ["Some aspects of the dynamics of populations important to the managemet of the commercial marine fisheries", *Bulletin of the Inter American Tropical Tuna Commission*](https://www.iattc.org/GetAttachment/62d510ee-13d0-40f2-847b-0fde415476b8/Vol-1-No-2-1954-SCHAEFER,-MILNER-B-_Some-aspects-of-the-dynamics-of-populations-important-to-the-management-of-the-commercial-marine-fisheries.pdf)
 :::
 
-::: incremental 
-
-- On s'intéresse à l'équilibre de long terme d'une zone de pêche avec une seule espèce, où la qualité de l'habitat importe peu
-- Pour trouver un mode de gestion qui maximise le profit escompté de la pêche (analyse coûts bénéfices)
-- En prenant en compte les déterminants écologiques et économiques de la pêche
-
+::: incremental
+-   On s'intéresse à l'équilibre de long terme d'une zone de pêche avec une seule espèce, où la qualité de l'habitat importe peu
+-   Pour trouver un mode de gestion qui maximise le profit escompté de la pêche (analyse coûts bénéfices)
+-   En prenant en compte les déterminants écologiques et économiques de la pêche
 :::
 
------
+------------------------------------------------------------------------
 
-::: incremental 
-
-- La croissance de la population suit une loi logistique
-- L'équilibre de la population est le niveau de population où l'on aboutit lorsque la pêche est égale à la croissance :
-  - Si la pêche est supérieure à la croissance, le stock décroit dans le temps et peut s'éteindre
-  - Et inversement, il peut arriver à la capacité de charge de l'écosystème
-- Il existe à long terme une relation décroissante entre le niveau d'effort dans une pêcherie et la taille de la population 
-- On en déduit à l'équilibre : 
-  - Une relation logistique entre l'effort et la pêche
-  - Une relation décroissante entre la population et l'effort
-- Finalement, le profit d'un pêcheur est $\Pi = p.y(E,X) - cE$
-
+::: incremental
+-   La croissance de la population suit une loi logistique
+-   L'équilibre de la population est le niveau de population où l'on aboutit lorsque la pêche est égale à la croissance :
+    -   Si la pêche est supérieure à la croissance, le stock décroit dans le temps et peut s'éteindre
+    -   Et inversement, il peut arriver à la capacité de charge de l'écosystème
+-   Il existe à long terme une relation décroissante entre le niveau d'effort dans une pêcherie et la taille de la population
+-   On en déduit à l'équilibre :
+    -   Une relation logistique entre l'effort et la pêche
+    -   Une relation décroissante entre la population et l'effort
+-   Finalement, le profit d'un pêcheur est $\Pi = p.y(E,X) - cE$
 :::
 
 ------------------------------------------------------------------------
@@ -742,14 +720,15 @@ Définissons quatre critères principaux avec leur pondération :
 
 ![](../images/Ressources_Nat/Diapositive3.JPG){width="80%"}
 
------
-#### De retour à la surexploitation 
+---------
+
+#### De retour à la surexploitation
 
 ::: fragment
-![](../images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top="75" left="600" width="550" height="600"}
+![](../images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top="75" left="600" width="550" height="600"} 
+
 :::
 
-------------------------------------------------------------------------
 
 #### Deux zones de pêche
 
@@ -761,22 +740,20 @@ Définissons quatre critères principaux avec leur pondération :
 
 ![](../images/Ressources_Nat/curve_to_lines_revenue_OA.jpg){.absolute top="50" left="200" height="700"}
 
-
-## B. Quelles politiques mettre en oeuvre? 
+## B. Quelles politiques mettre en oeuvre?
 
 ::::::: columns
 :::: column
 ::: incremental
-- Que peut-on faire pour orienter l’OA vers le point de référence politique ?
-  - Agir sur les facteurs du [niveau d’effort de pêche]{.bg3} :
-    - Taxer les intrants
-    - Limiter le nombre total de jours en mer
-  - Introduire des réglementations techniques
-  - Agir sur les [captures]{.bg3} :
-    - Taxe sur les débarquements
-    - Fixer des quotas globaux de capture : cela peut provoquer des situations de course à la pêche
-- Pour explorer les différents leviers de politique dans le cadre du modèle de Gordon-Schaeffer, vous pouvez utiliser l’application suivante : `https://simon-jean.shinyapps.io/gordon_schaeffer/`
-
+-   Que peut-on faire pour orienter l’OA vers le point de référence politique ?
+    -   Agir sur les facteurs du [niveau d’effort de pêche]{.bg3} :
+        -   Taxer les intrants
+        -   Limiter le nombre total de jours en mer
+    -   Introduire des réglementations techniques
+    -   Agir sur les [captures]{.bg3} :
+        -   Taxe sur les débarquements
+        -   Fixer des quotas globaux de capture : cela peut provoquer des situations de course à la pêche
+-   Pour explorer les différents leviers de politique dans le cadre du modèle de Gordon-Schaeffer, vous pouvez utiliser l’application suivante : `https://simon-jean.shinyapps.io/gordon_schaeffer/`
 :::
 ::::
 
@@ -795,20 +772,19 @@ Définissons quatre critères principaux avec leur pondération :
 
 #### En pratiques dans l'Union Européenne
 
-:::{.incremental style="font-size:90%"}
-- En pratique, il est nécessaire de [combiner plusieurs approches en raison des difficultés de suivi et de mise en œuvre]{.bg3}
-- S’applique à [l’année](https://oceans-and-fisheries.ec.europa.eu/fisheries/rules/fishing-quotas_en)
-- Basé sur les évaluations de stocks
-- Négocié avec les pays non membres de l’UE pour les stocks partagés
-- [Réparti entre les États membres de l’UE]{.bg3} via des quotas nationaux définis dans le cadre de la Politique Commune de la Pêche
-- Accompagné du [débarquement obligatoire]{.bg4} :
-  - Obligation de débarquer toutes les captures, et de les comptabiliser par rapport au quota (y compris les prises accessoires ou les poissons trop petits)
-  - Valorisation dans d’autres filières (farine de poisson, etc.)
-  - Incitation : les captures d’aujourd’hui influencent les quotas de demain, ce qui permet un complément de quotas
-  - Cela favorise aussi le respect du système et l’amélioration des connaissances scientifiques
-  - Sinon, risque d’amende et de suspension de licence
-- Permet de [limiter les coûts administratifs, de préserver la rentabilité économique et de favoriser la conservation]{.bg3}
-
+::: {.incremental style="font-size:90%"}
+-   En pratique, il est nécessaire de [combiner plusieurs approches en raison des difficultés de suivi et de mise en œuvre]{.bg3}
+-   S’applique à [l’année](https://oceans-and-fisheries.ec.europa.eu/fisheries/rules/fishing-quotas_en)
+-   Basé sur les évaluations de stocks
+-   Négocié avec les pays non membres de l’UE pour les stocks partagés
+-   [Réparti entre les États membres de l’UE]{.bg3} via des quotas nationaux définis dans le cadre de la Politique Commune de la Pêche
+-   Accompagné du [débarquement obligatoire]{.bg4} :
+    -   Obligation de débarquer toutes les captures, et de les comptabiliser par rapport au quota (y compris les prises accessoires ou les poissons trop petits)
+    -   Valorisation dans d’autres filières (farine de poisson, etc.)
+    -   Incitation : les captures d’aujourd’hui influencent les quotas de demain, ce qui permet un complément de quotas
+    -   Cela favorise aussi le respect du système et l’amélioration des connaissances scientifiques
+    -   Sinon, risque d’amende et de suspension de licence
+-   Permet de [limiter les coûts administratifs, de préserver la rentabilité économique et de favoriser la conservation]{.bg3}
 :::
 
 ------------------------------------------------------------------------
@@ -820,14 +796,14 @@ Définissons quatre critères principaux avec leur pondération :
 #### Approches basées sur les droits (individuels)
 
 ::: incremental
-- L’[absence de droits de propriété clairement définis (ou de faisceaux de droits)]{.bg3} dans un contexte d’accès libre peut réduire les incitations à la conservation
-- L’idée est d’[attribuer des quotas individuels]{.bg4} aux pêcheurs, ou des droits d’accès géographiques
-- Afin que l’ensemble des bénéfices et des coûts revienne aux pêcheurs au fil du temps
-- Les droits devraient être [transférables pour des raisons d’efficacité]{.bg4} :
-  - Les pêcheries à faible productivité peuvent surexploiter
-  - Les pêcheries à forte productivité peuvent sous-exploiter
-  - La [transférabilité peut créer un marché]{.bg4} où les droits sont échangés de manière à égaliser les coûts marginaux : $c'(Y) = p - \pi_y$
-- On pourrait aussi envisager des [banques de conservation]{.bg4}, où des acteurs achètent des droits de pêche dans une optique de conservation (voir [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2021/09/Leonard-et-al-Science-Policy-Forum.pdf))
+-   L’[absence de droits de propriété clairement définis (ou de faisceaux de droits)]{.bg3} dans un contexte d’accès libre peut réduire les incitations à la conservation
+-   L’idée est d’[attribuer des quotas individuels]{.bg4} aux pêcheurs, ou des droits d’accès géographiques
+-   Afin que l’ensemble des bénéfices et des coûts revienne aux pêcheurs au fil du temps
+-   Les droits devraient être [transférables pour des raisons d’efficacité]{.bg4} :
+    -   Les pêcheries à faible productivité peuvent surexploiter
+    -   Les pêcheries à forte productivité peuvent sous-exploiter
+    -   La [transférabilité peut créer un marché]{.bg4} où les droits sont échangés de manière à égaliser les coûts marginaux : $c'(Y) = p - \pi_y$
+-   On pourrait aussi envisager des [banques de conservation]{.bg4}, où des acteurs achètent des droits de pêche dans une optique de conservation (voir [Leonard et al., *Science*, 2021](https://www.perc.org/wp-content/uploads/2021/09/Leonard-et-al-Science-Policy-Forum.pdf))
 :::
 
 ------------------------------------------------------------------------
@@ -841,16 +817,16 @@ Définissons quatre critères principaux avec leur pondération :
 Lire [A Cautionary Note on Individual Transferable Quotas, R. Sumaila, *Ecology and Society*, 2010](https://www.jstor.org/stable/26268177?seq=1)
 
 ::: incremental
-- Les [droits de propriété ainsi définis ne sont pas complets]{.bg3} :
-  - Durée limitée
-  - Risque de rejeter les poissons de faible valeur (low grading) et de rejets globalement
-  - Nécessitent un suivi et une application des règles
-  - Ne résout pas le [problème de l’actualisation dans la gestion des pêches]{.bg3} : si le taux de reproduction de la ressource est faible et que le taux d’actualisation est élevé, la conservation peut ne pas être jugée rentable
-- Les gains proviennent d’une [réduction de l’intensité de pêche]{.bg3} (donc une durée de campagne plus longue ou une baisse de l’emploi) ce qui peut entrer en conflit avec les besoins du secteur
-- Nécessite [de bonnes informations scientifiques]{.bg3}
-- [Problème d’allocation initiale]{.bg3} :
-  - Risque de concentration en raison des gains issus des échanges
-  - Peut entraîner des [comportements monopolistiques, des inégalités sociales ]{.bg3} et du [lobbying]{.bg3}
+-   Les [droits de propriété ainsi définis ne sont pas complets]{.bg3} :
+    -   Durée limitée
+    -   Risque de rejeter les poissons de faible valeur (low grading) et de rejets globalement
+    -   Nécessitent un suivi et une application des règles
+    -   Ne résout pas le [problème de l’actualisation dans la gestion des pêches]{.bg3} : si le taux de reproduction de la ressource est faible et que le taux d’actualisation est élevé, la conservation peut ne pas être jugée rentable
+-   Les gains proviennent d’une [réduction de l’intensité de pêche]{.bg3} (donc une durée de campagne plus longue ou une baisse de l’emploi) ce qui peut entrer en conflit avec les besoins du secteur
+-   Nécessite [de bonnes informations scientifiques]{.bg3}
+-   [Problème d’allocation initiale]{.bg3} :
+    -   Risque de concentration en raison des gains issus des échanges
+    -   Peut entraîner des [comportements monopolistiques, des inégalités sociales]{.bg3} et du [lobbying]{.bg3}
 :::
 
 ------------------------------------------------------------------------
@@ -859,26 +835,22 @@ Lire [A Cautionary Note on Individual Transferable Quotas, R. Sumaila, *Ecology 
 
 ![](../images/Ressources_Nat/cascade_trophique.jpg){fig-align="center"}
 
----------
+------------------------------------------------------------------------
 
 FAO, 2003:
 
 ::: fragment
 *Une approche écosystémique de la pêche tente de balancer différents objectifs sociaux, en prenant en compte les savoirs et les incertitudes à propos des facteurs biotiques, abiotiques et humains de l'écosystème ainsi que leur interadction, et l'application d'une gestion intégrée des pêcheries à l'intérieur des limites écologiques*
-
 :::
 
+[En pratique, cela veut dire :]{.fragment}
 
-[En pratique, cela veut dire : ]{.fragment}
-
-::: incremental 
-- Prendre en compte la diversité des espèces
-- Ainsi que des valeurs et fonctions de l'écosystèmes : rôles des espèces non commerciales, protection pour motif spirituel, changement de modèle économique
-
+::: incremental
+-   Prendre en compte la diversité des espèces
+-   Ainsi que des valeurs et fonctions de l'écosystèmes : rôles des espèces non commerciales, protection pour motif spirituel, changement de modèle économique
 :::
 
-----
-
+------------------------------------------------------------------------
 
 #### EBFM aujourd'hui
 
@@ -893,97 +865,79 @@ FAO, 2003:
 -   However, the diversity of ecosystem drivers implemented, and in the approaches taken, suggests that implementation is largely a bottom-up process driven by a few dedicated experts.
 :::
 
-
-
-# IV. Conservation de la biodiversité 
+# IV. Conservation de la biodiversité
 
 ## A. Conserver à tout prix : les aires protégées
 
 ### 1. Les biodiversity hotspots
 
-::: incremental 
-
-- Introduit par Norman Myers en 1988, le concept visait à identifier les régions 
-  - présentant une [richesse exceptionnelle en espèces endémiques]{.bg4}
-  - tout en étant [fortement menacées]{.bg4} par la dégradation des habitat (70% de perte)
-- Priorisation de la conservation : 
-  - focus les ressources sur des zones critiques 
-  - la stratégie des hotspots permet [d'optimiser les investissements]{.bg4} en 
-- Approche pourrait 
-  - [négliger d'autres écosystèmes]{.bg4} tout aussi importants, en concentrant excessivement l'attention et les financements sur un nombre restreint de zones.
-  -  intègre parfois insuffisamment les [savoirs, besoins et droits des communautés locales]{.bg4}, ce qui peut entraîner des conflits d'usage et réduire l'efficacité durable des stratégies de conservation.
-
+::: incremental
+-   Introduit par Norman Myers en 1988, le concept visait à identifier les régions
+    -   présentant une [richesse exceptionnelle en espèces endémiques]{.bg4}
+    -   tout en étant [fortement menacées]{.bg4} par la dégradation des habitat (70% de perte)
+-   Priorisation de la conservation :
+    -   focus les ressources sur des zones critiques
+    -   la stratégie des hotspots permet [d'optimiser les investissements]{.bg4} en
+-   Approche pourrait
+    -   [négliger d'autres écosystèmes]{.bg4} tout aussi importants, en concentrant excessivement l'attention et les financements sur un nombre restreint de zones.
+    -   intègre parfois insuffisamment les [savoirs, besoins et droits des communautés locales]{.bg4}, ce qui peut entraîner des conflits d'usage et réduire l'efficacité durable des stratégies de conservation.
 :::
 
-----
+------------------------------------------------------------------------
 
-![](../images/ecol_econ/biodiv/global_hotspots.jpg){fig-align=center}
+![](../images/ecol_econ/biodiv/global_hotspots.jpg){fig-align="center"}
 
-----
-
+------------------------------------------------------------------------
 
 ### 2. La conservation par aires protégées
 
-::: incremental 
-
-- On veut remplir [«l’Arche de Noé»]{.bg4} ([Weitzman, 1998](https://scholar.harvard.edu/files/weitzman/files/noahs_ark_problem.pdf)): comment faire?
-  - Il faut trouver les espèces qui [«rapportent» le plus]{.bg3} en termes de [sauvetage]{.bg3} : diversité spécifique, philogénétique etc
-
-- Utilisation de [l'incidence des espèces]{.bg4}, ainsi que des données de [prix sur les zones de conservation]{.bg4} (lire [Ando et al., Science, 1998](https://www.science.org/doi/full/10.1126/science.279.5359.2126))
-    - Différentes approches: 
-    - *Set coverage problem (SCP)* : minimiser une fonction de perte (nombre ou coût des réserves) sous contrainte de couverture des espèces
-    - *Maximal coverage problem (MCP)*: maximiser la couverture sous contrainte de budget
-
-- Pour le design de réserves optimales, avec le meilleur *bang for buck*
-
+::: incremental
+-   On veut remplir [«l’Arche de Noé»]{.bg4} ([Weitzman, 1998](https://scholar.harvard.edu/files/weitzman/files/noahs_ark_problem.pdf)): comment faire?
+    -   Il faut trouver les espèces qui [«rapportent» le plus]{.bg3} en termes de [sauvetage]{.bg3} : diversité spécifique, philogénétique etc
+-   Utilisation de [l'incidence des espèces]{.bg4}, ainsi que des données de [prix sur les zones de conservation]{.bg4} (lire [Ando et al., Science, 1998](https://www.science.org/doi/full/10.1126/science.279.5359.2126))
+    -   Différentes approches:
+    -   *Set coverage problem (SCP)* : minimiser une fonction de perte (nombre ou coût des réserves) sous contrainte de couverture des espèces
+    -   *Maximal coverage problem (MCP)*: maximiser la couverture sous contrainte de budget
+-   Pour le design de réserves optimales, avec le meilleur *bang for buck*
 :::
 
-
-----
-
-
+------------------------------------------------------------------------
 
 ### 3. La critique institutionelle des modes de gouvernance de la conservation
 
 ::: incremental
-
-- La [conservation]{.bg4} : 
-  - Les aires protégées se diffusent depuis les années 1970, avec le tourisme de masse
-  - Depuis les années 1980, différentes [modalités]{.bg3} se développent : du parc national aux aires "à gestion durable", intégrant les populations locales
-- La [priorisation doit encore faire ses preuves]{.bg4} (période 1995-2005):
-  - Pour répondre aux limites de l'extension pure des surfaces
-  - La majeure partie des zones dans les hotspots date d'avant la désignation en hotspots
-- [Face politique]{.bg4} : 
-  - Méthodes employées par des ONG puissantes qui canalisent les financements (Nature Conservancy, WWF et Global 200)
-  - Qui leur donne une [place centrale]{.bg3}
-  - Et crée une [concurrence]{.bg3} entre ONG, freinant la coordination efficace des projets
-  - Approche globalisée qui [affaiblit les gouvernements]{.bg3} nationaux et locaux
-
+-   La [conservation]{.bg4} :
+    -   Les aires protégées se diffusent depuis les années 1970, avec le tourisme de masse
+    -   Depuis les années 1980, différentes [modalités]{.bg3} se développent : du parc national aux aires "à gestion durable", intégrant les populations locales
+-   La [priorisation doit encore faire ses preuves]{.bg4} (période 1995-2005):
+    -   Pour répondre aux limites de l'extension pure des surfaces
+    -   La majeure partie des zones dans les hotspots date d'avant la désignation en hotspots
+-   [Face politique]{.bg4} :
+    -   Méthodes employées par des ONG puissantes qui canalisent les financements (Nature Conservancy, WWF et Global 200)
+    -   Qui leur donne une [place centrale]{.bg3}
+    -   Et crée une [concurrence]{.bg3} entre ONG, freinant la coordination efficace des projets
+    -   Approche globalisée qui [affaiblit les gouvernements]{.bg3} nationaux et locaux
 :::
 
------
+------------------------------------------------------------------------
 
-:::: columns
-
+:::::: columns
 ::: column
-
-![F.Coisy](../images/ecol_econ/biodiv/manche_mer_du_nord.jpg){fig-align=center}
+![F.Coisy](../images/ecol_econ/biodiv/manche_mer_du_nord.jpg){fig-align="center"}
 :::
 
-::: column
-::: incremental 
-
-- Des approches moins "naturalisantes" comme le [Conservatoire du Littoral]{.bg4}:  
-  - Fondé en 1975 et membre de l'IUCN, sous l'égide du Ministère de l'Environnement
-  - Rachète des terres (acquisition foncière) du littoral pour éviter le développement, les zones maritimes, les zones humides etc
-  - Occupe 13% des côtes pour 203 762 hectares
-  - Pour la préservation, le développement durable et l'éducation
-
-:::
+:::: column
+::: incremental
+-   Des approches moins "naturalisantes" comme le [Conservatoire du Littoral]{.bg4}:
+    -   Fondé en 1975 et membre de l'IUCN, sous l'égide du Ministère de l'Environnement
+    -   Rachète des terres (acquisition foncière) du littoral pour éviter le développement, les zones maritimes, les zones humides etc
+    -   Occupe 13% des côtes pour 203 762 hectares
+    -   Pour la préservation, le développement durable et l'éducation
 :::
 ::::
+::::::
 
------
+------------------------------------------------------------------------
 
 ### 4. Aux effets potentiellement limités
 
@@ -991,25 +945,21 @@ FAO, 2003:
 -   Au sein des aires protégées, [la richesse spécifique et l’abondance tendent à se rétablir]{.bg3}, aussi bien sur terre qu’en mer
 -   Ce n’est pas toujours le cas : [les zones protégées doivent avoir une forte valeur écologique]{.bg4}
 -   Résultats récents ([Grupp et al., 2024]{.fg}) concernant l’Union européenne, qui protège 26 % de son territoire terrestre, proche de l’objectif 30x30, notamment via Natura 2000
-    - Utilisation de la méthode de [différence en différences échelonnée]{.bg3} (Callaway & Sant’Anna, 2021)
-    - Montre que les [effets sur le couvert végétal et la pollution lumineuse nocturne sont proches de zéro]{.bg4}, quel que soit le moment de la mise en protection
-- Pour les [aires marines protégées]{.bg4} : 
-    - Lorsque la [surveillance et les sanctions sont bien en place]{.bg3}, [on voit moins de pêche dans les zones protégées]{.bg3} et une récupération écosystémique (voir [Sala and Giakoumi, 2018](https://academic.oup.com/icesjms/article/75/3/1166/4098821?login=false))
-    - Sinon, les résultats sont moins clairs
-
+    -   Utilisation de la méthode de [différence en différences échelonnée]{.bg3} (Callaway & Sant’Anna, 2021)
+    -   Montre que les [effets sur le couvert végétal et la pollution lumineuse nocturne sont proches de zéro]{.bg4}, quel que soit le moment de la mise en protection
+-   Pour les [aires marines protégées]{.bg4} :
+    -   Lorsque la [surveillance et les sanctions sont bien en place]{.bg3}, [on voit moins de pêche dans les zones protégées]{.bg3} et une récupération écosystémique (voir [Sala and Giakoumi, 2018](https://academic.oup.com/icesjms/article/75/3/1166/4098821?login=false))
+    -   Sinon, les résultats sont moins clairs
 :::
 
-------
+------------------------------------------------------------------------
 
-
-::: incremental 
-
-- En dehors de l'efficience du mécanisme, [l'économie politique des aires protégées joue un rôle]{.bg4} : le paradoxe [bleu ou vert]{.bg3}
-    - Annoncer une politique qui obligera les pêcheurs à réduire leurs captures à l’avenir entraîne un report de l’effort vers le présent, ce qui accroît la pression avant la mise en œuvre effective
-    - [McDermott, Meng et al., 2018](https://pubmed.ncbi.nlm.nih.gov/30150404/), étudient la Phoenix Islands Protected Area (Océan Pacifique), l’une des plus grandes aires protégées au monde
-    - Ils constatent que les pêcheurs ont doublé leur effort dès l’annonce du futur statut de protection
-    - Résultant en un point de départ appauvri, équivalent à 1,5 année de pêche interdite
-
+::: incremental
+-   En dehors de l'efficience du mécanisme, [l'économie politique des aires protégées joue un rôle]{.bg4} : le paradoxe [bleu ou vert]{.bg3}
+    -   Annoncer une politique qui obligera les pêcheurs à réduire leurs captures à l’avenir entraîne un report de l’effort vers le présent, ce qui accroît la pression avant la mise en œuvre effective
+    -   [McDermott, Meng et al., 2018](https://pubmed.ncbi.nlm.nih.gov/30150404/), étudient la Phoenix Islands Protected Area (Océan Pacifique), l’une des plus grandes aires protégées au monde
+    -   Ils constatent que les pêcheurs ont doublé leur effort dès l’annonce du futur statut de protection
+    -   Résultant en un point de départ appauvri, équivalent à 1,5 année de pêche interdite
 :::
 
 ------------------------------------------------------------------------
@@ -1027,19 +977,18 @@ FAO, 2003:
 
 :::: column
 ::: incremental
-- Sur terre, le changement d’usage des sols est la principale menace pour les espèces
-- Par ailleurs, conclure des contrats avec les propriétaires fonciers peut s’avérer une option plus satisfaisante dans un contexte variable et dynamique (tant que les coûts de transaction restent modérés)
+-   Sur terre, le changement d’usage des sols est la principale menace pour les espèces
+-   Par ailleurs, conclure des contrats avec les propriétaires fonciers peut s’avérer une option plus satisfaisante dans un contexte variable et dynamique (tant que les coûts de transaction restent modérés)
 :::
 ::::
 ::::::
 
-----
-
+------------------------------------------------------------------------
 
 ::::::::: columns
 ::::: column
 ::: fragment
-Est-ce qu'il vaut mieux un système agricole [intensif]{.bg4} (avec des rendements élevés) qui permet de mettre [plus de terre en conservation? ]{.bg4}
+Est-ce qu'il vaut mieux un système agricole [intensif]{.bg4} (avec des rendements élevés) qui permet de mettre [plus de terre en conservation?]{.bg4}
 :::
 
 ::: fragment
@@ -1060,13 +1009,12 @@ C'est le [land sharing]{.bg4}
 
 ::: fragment
 Tout cela dépend de la relation entre terre, rendement et biodiversité
-
 :::
 
 ::: incremental
 -   En sachant qu'accroître les terres cultivées fait baisser le rendement moyen
 -   Mais que moins de terres cultivées est bénéfique à la biodiversité
--   Que faire lorsque le lien entre rendement et biodiversité est : 
+-   Que faire lorsque le lien entre rendement et biodiversité est :
     -   Linéaire
     -   Convexe
     -   Concave
@@ -1104,113 +1052,90 @@ Tout cela dépend de la relation entre terre, rendement et biodiversité
 
 ------------------------------------------------------------------------
 
-### Controverse 
+### Controverse
 
 ::: incremental
+-   Le débat [bio/intensif pour nourrir l'humanité v. préserver la biodiv]{.bg4}
 
-- Le débat [bio/intensif pour nourrir l'humanité v. préserver la biodiv]{.bg4}
+-   Green et al. (2005), Phalan et al. (2011) : données empiriques disponibles : montrent une [relation convexe biodiversité /rendement]{.bg4} : en faveur d’une stratégie [de land sparing]{.bg4}
 
+-   Fischer et al. (2011), *Science.* & Tscharntke et al. (2012), *Biological Conservation.*
 
-- Green et al. (2005), Phalan et al. (2011) : données empiriques disponibles : montrent une [relation convexe biodiversité /rendement]{.bg4} : en faveur d’une stratégie [de land sparing]{.bg4}
-
-- Fischer et al. (2011), *Science.* & Tscharntke et al. (2012), *Biological Conservation.*
-  - [Difficultés à protéger]{.bg4} les espaces non cultivés.
-  - Effets négatifs sur l’environnement de l’agriculture intensive avec [produits agrochimiques]{.bg4} ; services écosystémiques associés à la biodiversité agricole
-  - Il peut y avoir [biodiversité et rendement élevés]{.bg4} (agroécologie)
-
+    -   [Difficultés à protéger]{.bg4} les espaces non cultivés.
+    -   Effets négatifs sur l’environnement de l’agriculture intensive avec [produits agrochimiques]{.bg4} ; services écosystémiques associés à la biodiversité agricole
+    -   Il peut y avoir [biodiversité et rendement élevés]{.bg4} (agroécologie)
 :::
 
------
+------------------------------------------------------------------------
 
 ::: incremental
-
-- [Sparing mieux que sharing]{.bg4} : 
-  - En particulier pour les [oiseaux et les insectes]{.bg3}, 
-  - tant dans les régions [tropicales]{.bg3} (Choco-Andes colombien, Ouganda) que dans les zones [tempérées]{.bg3} (Angleterre, Pologne).
-  - Résultats parfois différenciés en fonction des [espèces]{.bg3} (animaux larges préfèrent le *sparing*, les plus petit plutôt le *sharing*)
-  - Les approches [agroécologiques]{.bg4} et mélangeant les deux sont souvent mieux
-  - Tout cela dépend du [contexte local]{.bg3} : espèce, type de culture etc
-  - Voir: 
-    - [Edwards et al, *Current Biology*, 2021](https://www.sciencedirect.com/science/article/pii/S0960982220318820) pour la Colombie
-    - [Feniuk et al, *Proceedings of the Royal Academy of Britain*, 2019](https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2019.1483) pour l'Europe 
-
+-   [Sparing mieux que sharing]{.bg4} :
+    -   En particulier pour les [oiseaux et les insectes]{.bg3},
+    -   tant dans les régions [tropicales]{.bg3} (Choco-Andes colombien, Ouganda) que dans les zones [tempérées]{.bg3} (Angleterre, Pologne).
+    -   Résultats parfois différenciés en fonction des [espèces]{.bg3} (animaux larges préfèrent le *sparing*, les plus petit plutôt le *sharing*)
+    -   Les approches [agroécologiques]{.bg4} et mélangeant les deux sont souvent mieux
+    -   Tout cela dépend du [contexte local]{.bg3} : espèce, type de culture etc
+    -   Voir:
+        -   [Edwards et al, *Current Biology*, 2021](https://www.sciencedirect.com/science/article/pii/S0960982220318820) pour la Colombie
+        -   [Feniuk et al, *Proceedings of the Royal Academy of Britain*, 2019](https://royalsocietypublishing.org/doi/pdf/10.1098/rspb.2019.1483) pour l'Europe
 :::
 
 ## C. Politiques publiques obligatoires
 
 ### 1. Définition
 
-:::: columns
-
-::: column
-
-::: incremental 
-
-- [Définition d'un modèle]{.bg4} : 
-  - [Mécaniste]{.bg3}, basé sur des équations avec des variables identifiées
-  - Pour comprendre le lien entre scénarios et conséquences socio éconologiques
-  - Exclut les méthodes statistiques simplement corrélatives
-- [Une dynamique de population]{.bg4}
-  - D'une population [sauvage]{.bg3} ou faiblement anthropisée
-  - Exclut : l'agrobiodiversité, certaines forêts, et la pollution atmosphérique et des sols
-
-  
+::::::: columns
+:::: column
+::: incremental
+-   [Définition d'un modèle]{.bg4} :
+    -   [Mécaniste]{.bg3}, basé sur des équations avec des variables identifiées
+    -   Pour comprendre le lien entre scénarios et conséquences socio éconologiques
+    -   Exclut les méthodes statistiques simplement corrélatives
+-   [Une dynamique de population]{.bg4}
+    -   D'une population [sauvage]{.bg3} ou faiblement anthropisée
+    -   Exclut : l'agrobiodiversité, certaines forêts, et la pollution atmosphérique et des sols
 :::
-
-:::
-
-::: column
-
-:::{.incremental style="font-size:90%"}
-
-- Un [processus de décision]{.bg4} émergent de la théorie économique 
-  - Module de décision clairement exprimé et modélisable
-  - Admet plusieurs formulations :  une utilité, une fonction de profit ou des consensus d'agents différents par simulation
-
-- Un [lien entre les deux systèmes]{.bg4} : 
-  - l'économie influe la biodiversité
-  - Qui contraint ou influe sur l'économie
-- Permettent [d'intégrer différentes valeurs]{.bg4} : 
-  - D'usage 
-  - Mais également de participer à la délibération dans le cas de décisions liées aux valeurs de non usage (voir [Lopes & Atallah, REEP, 2021](https://link.springer.com/article/10.1007/s10640-020-00416-1) ainsi que [Armstrong et al, MRE, 2017](https://munin.uit.no/bitstream/handle/10037/19519/article.pdf?sequence=3), Armstrong et al, 2017,
-- [Tradition européenne riche]{.bg3}, beaucoup appliquée à l'agriculture européenne
-
-:::
-
-:::
-
 ::::
 
+:::: column
+::: {.incremental style="font-size:90%"}
+-   Un [processus de décision]{.bg4} émergent de la théorie économique
+    -   Module de décision clairement exprimé et modélisable
+    -   Admet plusieurs formulations : une utilité, une fonction de profit ou des consensus d'agents différents par simulation
+-   Un [lien entre les deux systèmes]{.bg4} :
+    -   l'économie influe la biodiversité
+    -   Qui contraint ou influe sur l'économie
+-   Permettent [d'intégrer différentes valeurs]{.bg4} :
+    -   D'usage
+    -   Mais également de participer à la délibération dans le cas de décisions liées aux valeurs de non usage (voir [Lopes & Atallah, REEP, 2021](https://link.springer.com/article/10.1007/s10640-020-00416-1) ainsi que [Armstrong et al, MRE, 2017](https://munin.uit.no/bitstream/handle/10037/19519/article.pdf?sequence=3), Armstrong et al, 2017,
+-   [Tradition européenne riche]{.bg3}, beaucoup appliquée à l'agriculture européenne
+:::
+::::
+:::::::
 
------
+------------------------------------------------------------------------
 
 ### 2. Un exemple contemporain : les réseaux écologiques
 
 [V. Cocco et al. 2023, Relaxing the production-conservation trade-off: Biodiversity spillover in the bioeconomic performance of ecological networks, *Ecological Economics*](https://www.sciencedirect.com/science/article/pii/S092180092300229X)
 
-
-----
+------------------------------------------------------------------------
 
 ![](../images/ecol_econ/biodiv/model_structure_cocco2023.jpg){fig-align="center"}
 
-
-------
+------------------------------------------------------------------------
 
 ![](../images/ecol_econ/biodiv/spatial_framework_cocco2023.jpg){fig-align="center"}
 
-----
+------------------------------------------------------------------------
 
 ![](../images/ecol_econ/biodiv/results_performance_cocco2023.jpg){fig-align="center"}
 
-------
+------------------------------------------------------------------------
 
 ![](../images/ecol_econ/biodiv/performances_within_outside_cocco2023.jpg){fig-align="center"}
 
-
-
 ## D. Les méthodes incitatives de compensation
-
-
 
 ### 1. Les formes de compensation
 
@@ -1223,32 +1148,28 @@ Tout cela dépend de la relation entre terre, rendement et biodiversité
 -   Premier du type au [Costa Rica]{.bg4} (1997) avec le *Pago Por Servicios Ambientales* à l'échelle nationale pour calmer la déforestation
 -   Au début des années 2000, il y en a plein en Amérique Latine
 -   On y reviendra dans les modalités pratiques de conservation : dans le monde, les [PES représentent 36-42 milliards de dollars de transactions par an]{.bg3} autour de l’eau, la forêt, la biodiversité
-
 :::
 
-
-
-----
+------------------------------------------------------------------------
 
 #### La compensation écologique
 
-::: incremental 
-- Existe depuis les années 1970, avec le recul de certaines lois fédérales de conservation aux Etats Unis, pour une mise en place plus tardive dans les zones humides
-- En France depuis 1976, puis en 2004 avec les directives européennes sur les pollueurs payeurs, elle a été renforcée notamment avec la loi biodiversité de 2016
-- Elle doit être prise comme l'aboutissement de la séquence "Eviter, Réduire, Compenser": 
-  - Les projets d'aménagement doivent éviter la destruction des milieux naturels, réduire leurs atteintes, et dans le pire des cas, compenser
-  - De façon à n'avoir aucune perte nette de biodiversité, voire des gains
-- En France, la Caisse des Dépôts et Consignations a une branche qui peut vendre des crédits de compensation à des maîtrises d'ouvrage avec 4 sites qui fournissent des crédits
-  - De façon générale, les banques de compensation détiennent des terres pour vendre des crédits de compensation écologique
-  
+::: incremental
+-   Existe depuis les années 1970, avec le recul de certaines lois fédérales de conservation aux Etats Unis, pour une mise en place plus tardive dans les zones humides
+-   En France depuis 1976, puis en 2004 avec les directives européennes sur les pollueurs payeurs, elle a été renforcée notamment avec la loi biodiversité de 2016
+-   Pour les projets soumis à une autorisation administrative préalable et à une étude d’impact
+-   Elle doit être prise comme l'aboutissement de la séquence "Eviter, Réduire, Compenser":
+    -   Les projets d'aménagement doivent éviter la destruction des milieux naturels, réduire leurs atteintes, et dans le pire des cas, compenser
+    -   De façon à n'avoir aucune perte nette de biodiversité, voire des gains
+-   En France, la Caisse des Dépôts et Consignations a une branche qui peut vendre des crédits de compensation à des maîtrises d'ouvrage avec 4 sites qui fournissent des crédits
+    -   De façon générale, les banques de compensation détiennent des terres pour vendre des crédits de compensation écologique
 :::
 
-
-----
+------------------------------------------------------------------------
 
 ![](../images/ecol_econ/biodiv/map_compensations_france_2024.png){fig-align="center"}
 
----
+------------------------------------------------------------------------
 
 ### 3. Critiques opérationnelles
 
@@ -1256,65 +1177,61 @@ Tout cela dépend de la relation entre terre, rendement et biodiversité
 
 [En l'absence d'intervention]{.bg4}, de paiement, [l'état de la nature aurait été dégradé]{.bg4} i.e. il aurait davantage souffert ou n'aurait pas pu se régénérer, donc l'intervention permet [l'absence de perte nette]{.bg4}
 
-::: incremental 
-- [Evaluations]{.bg3} : 
-  - ex-ante légères : facile de dire que c'est compensable
-  - ex post insuffisant : on vérifie peu (0.2% des cas vérifiés)
-- Pour la compensation écologique : [Moreno-Mateos *et al.*, 2012](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001247)
-  - Dans les sites restorés, en zone humide, après 100 ans
-  - Les structures biologiques et les fonctions biogéochimiques demeurant $\approx$ [25% moindres que dans les sites de références ]{.bg3}
-
+::: incremental
+-   [Evaluations]{.bg3} :
+    -   ex-ante légères : facile de dire que c'est compensable
+    -   ex post insuffisant : on vérifie peu (0.2% des cas vérifiés)
+-   Pour la compensation écologique : [Moreno-Mateos *et al.*, 2012](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001247)
+    -   Dans les sites restorés, en zone humide, après 100 ans
+    -   Les structures biologiques et les fonctions biogéochimiques demeurant $\approx$ [25% moindres que dans les sites de références]{.bg3}
 :::
 
----
+------------------------------------------------------------------------
 
 ::: incremental
-  
-- Comme le cas [Vera]{.bg4} : 
-  - Standard de compensation carbone parmi les plus reconnus au monde
-  - Présentée comme garantissant l’[additionnalité de la séquestration carbone]{.bg3} pour produire des crédits carbone
-     - Dans un scénario [contrefactuel]{.bg3}, une partie des terres aurait été déforestée
-     - Dans le scénario réel, grâce au paiement pour services environnementaux (PSE), ce n’est pas le cas
-  - La question principale est : à quel point le scénario [contrefactuel est-il robuste]{.bg3} ?
-     - C’est la [problématique centrale de l’inférence causale]{.bg3}
-     - En réalité : [la plupart des crédits n’étaient pas additionnels]{.bg4}
-
+-   Comme le cas [Vera]{.bg4} :
+    -   Standard de compensation carbone parmi les plus reconnus au monde
+    -   Présentée comme garantissant l’[additionnalité de la séquestration carbone]{.bg3} pour produire des crédits carbone
+        -   Dans un scénario [contrefactuel]{.bg3}, une partie des terres aurait été déforestée
+        -   Dans le scénario réel, grâce au paiement pour services environnementaux (PSE), ce n’est pas le cas
+    -   La question principale est : à quel point le scénario [contrefactuel est-il robuste]{.bg3} ?
+        -   C’est la [problématique centrale de l’inférence causale]{.bg3}
+        -   En réalité : [la plupart des crédits n’étaient pas additionnels]{.bg4}
 :::
 
-----
+------------------------------------------------------------------------
 
-::: incremental 
-- La question est : [comment estimer l’additionnalité des projets certifiés de séquestration carbone ?]{.bg3}
-- Plusieurs problèmes :
-  - [Pas d’observation du contrefactuel]{.bg3}
-  - On a [plusieurs projets avec des caractéristiques très spécifiques]{.bg3} : difficile de concevoir une étude avec groupe témoin/groupe traité
-  - [Peu d’unités statistiques]{.bg3}
-- Utiliser la [méthode du contrôle synthétique]{.bg4} (voir [Abadie, Journal of Economic Literature, 2021]((https://pubs.aeaweb.org/doi/pdfplus/10.1257/jel.20191450)))
-  - Permet de résoudre le problème du faible nombre d’unités dans les études observationnelles
-  - En utilisant un contrôle synthétique, c’est-à-dire :
-    - Trouver des pondérations qui [combinent des unités similaires]{.bg3}
-    - Pour [reproduire les tendances passées]{.bg3} de l’unité traitée avant traitement
-    - Et utiliser ces pondérations pour [simuler le contrefactuel post-traitement]{.bg3}
-
+::: incremental
+-   La question est : [comment estimer l’additionnalité des projets certifiés de séquestration carbone ?]{.bg3}
+-   Plusieurs problèmes :
+    -   [Pas d’observation du contrefactuel]{.bg3}
+    -   On a [plusieurs projets avec des caractéristiques très spécifiques]{.bg3} : difficile de concevoir une étude avec groupe témoin/groupe traité
+    -   [Peu d’unités statistiques]{.bg3}
+-   Utiliser la [méthode du contrôle synthétique]{.bg4} (voir [Abadie, Journal of Economic Literature, 2021]((https://pubs.aeaweb.org/doi/pdfplus/10.1257/jel.20191450)))
+    -   Permet de résoudre le problème du faible nombre d’unités dans les études observationnelles
+    -   En utilisant un contrôle synthétique, c’est-à-dire :
+        -   Trouver des pondérations qui [combinent des unités similaires]{.bg3}
+        -   Pour [reproduire les tendances passées]{.bg3} de l’unité traitée avant traitement
+        -   Et utiliser ces pondérations pour [simuler le contrefactuel post-traitement]{.bg3}
 :::
 
-----
+------------------------------------------------------------------------
 
 T. West et al., Action needed to make carbon offsets from forest conservation work for climate change mitigation, *Science*, 2023
 
 ::::::: columns
 :::: column
 ::: incremental
-- Évaluation de [26 programmes REDD+ dans 6 pays]{.bg3}
-  - [Réduction des Émissions issues de la Déforestation et de la Dégradation des forêts]{.bg3} : cadre développé dans le cadre de la Convention-cadre des Nations Unies sur les changements climatiques, lancé en 2008
-  - Vise à fournir des incitations via des mécanismes volontaires pour réduire la déforestation
-  - Le "+" intègre la conservation, la gestion durable et l’augmentation des stocks de carbone
+-   Évaluation de [26 programmes REDD+ dans 6 pays]{.bg3}
+    -   [Réduction des Émissions issues de la Déforestation et de la Dégradation des forêts]{.bg3} : cadre développé dans le cadre de la Convention-cadre des Nations Unies sur les changements climatiques, lancé en 2008
+    -   Vise à fournir des incitations via des mécanismes volontaires pour réduire la déforestation
+    -   Le "+" intègre la conservation, la gestion durable et l’augmentation des stocks de carbone
 :::
 ::::
 
 :::: column
 ::: fragment
-![](../images/ecol_econ/biodiv/synthetic control.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/synthetic%20control.jpg){fig-align="center"}
 :::
 ::::
 :::::::
@@ -1327,47 +1244,39 @@ T. West et al., Action needed to make carbon offsets from forest conservation wo
 -   Resulting in less additionality
 :::
 
+------------------------------------------------------------------------
 
-----
-
-#### Substituabilité : 
+#### Substituabilité :
 
 Caractère de [remplaçabilité]{.bg4} des écosystèmes détruits, à la foid naturel et social (voir [Devictor, 2018](https://hal.science/hal-01989814/document)
 
-::: incremental 
-- Dans le cas des PES pour du carbone : une tonne de carbone n'as pas les même impacts partout, mais elle peut être stockée de façon relativement homogène
-- [Pour la biodiversité : c'est plus compliqué: ]{.bg4}
-  - Une extinction locale n'a [pas des effets linéaires]{.bg3} : points de retournement
-  - Une biodiversité est le résultat de [contingences historiques]{.bg3} que l'on ne peut pas reproduire
-  - [Difficile de délimiter dans l'espace]{.bg3} le commencement d'une communauté, d'un écosystème : les spatialités de la compensation et de la nature ne sont pas les mêmes
-  - Destruction du [destructible et de l'invisible]{.bg3}, aussi important
-- Par ailleurs, les [bénéfices sociaux ne sont pas localisés]{.bg4}: 
-  - La compensation permet une solution win-win potentielle si les développeurs rénovent et compensent
-  - Mais c'est [souvent les personnes les plus pauvres]{.bg3} qui sont lésées: ["poor sell cheap",]{.bg3} on accorde peu de valeurs aux zones habitées par les pauvres
-  - Ce ne sont pas les mêmes personnes qui sont compensées de la perte de la nature (cf. [environnementalisme des pauvres]{.bg3})
-
+::: incremental
+-   Dans le cas des PES pour du carbone : une tonne de carbone n'as pas les même impacts partout, mais elle peut être stockée de façon relativement homogène
+-   [Pour la biodiversité : c'est plus compliqué:]{.bg4}
+    -   Une extinction locale n'a [pas des effets linéaires]{.bg3} : points de retournement
+    -   Une biodiversité est le résultat de [contingences historiques]{.bg3} que l'on ne peut pas reproduire
+    -   [Difficile de délimiter dans l'espace]{.bg3} le commencement d'une communauté, d'un écosystème : les spatialités de la compensation et de la nature ne sont pas les mêmes
+    -   Destruction du [destructible et de l'invisible]{.bg3}, aussi important
+-   Par ailleurs, les [bénéfices sociaux ne sont pas localisés]{.bg4}:
+    -   La compensation permet une solution win-win potentielle si les développeurs rénovent et compensent
+    -   Mais c'est [souvent les personnes les plus pauvres]{.bg3} qui sont lésées: ["poor sell cheap",]{.bg3} on accorde peu de valeurs aux zones habitées par les pauvres
+    -   Ce ne sont pas les mêmes personnes qui sont compensées de la perte de la nature (cf. [environnementalisme des pauvres]{.bg3})
 :::
 
-
-
------
+------------------------------------------------------------------------
 
 #### Le crowding out
 
-::: incremental 
-
-- Le paiement risque de [changer les motivations des gens]{.bg4}: 
-  - de [intrinsèques]{.bg3}, elles deviendraient [extrinsèques]{.bg3} : le rapport à la nature change, et diminue l'effort fourni pour préserver la nature 
-    - Par exemple, [Chervier et al. 2019](https://www.sciencedirect.com/science/article/pii/S0921800916302919), au Cambodge, montrent que post traitement, une part significative des traités arrêteraient la conservation
-  - [Ce n'est pas toujours le cas]{.bg4} : parfois, la reconnaissance des capacités des gens, de leurs techniques etc, les pousse à préserver encore mieux
-    - [Moros et al, 2023](https://www.sciencedirect.com/science/article/pii/S0921800922003135) montrent dans le cadre d'une expérience que le "crowding out" n'est pas présent, et il y aurat même du "crowding in", car l'effet de l'intervention dure après sa fin. 
-  - Les [conditions de mise en oeuvre]{.bg4} des PES et du contexte sont [clés]{.bg4} : *"communication and verbal rewards, inclusive and participatory decision-making, and monitoring and sanctioning procedures might harm or enhance intrinsic motivations"* ([Ezzine-de-Blas et al., 2019](https://www.sciencedirect.com/science/article/pii/S092180091831019X#s0015))
-
-
+::: incremental
+-   Le paiement risque de [changer les motivations des gens]{.bg4}:
+    -   de [intrinsèques]{.bg3}, elles deviendraient [extrinsèques]{.bg3} : le rapport à la nature change, et diminue l'effort fourni pour préserver la nature
+        -   Par exemple, [Chervier et al. 2019](https://www.sciencedirect.com/science/article/pii/S0921800916302919), au Cambodge, montrent que post traitement, une part significative des traités arrêteraient la conservation
+    -   [Ce n'est pas toujours le cas]{.bg4} : parfois, la reconnaissance des capacités des gens, de leurs techniques etc, les pousse à préserver encore mieux
+        -   [Moros et al, 2023](https://www.sciencedirect.com/science/article/pii/S0921800922003135) montrent dans le cadre d'une expérience que le "crowding out" n'est pas présent, et il y aurat même du "crowding in", car l'effet de l'intervention dure après sa fin.
+    -   Les [conditions de mise en oeuvre]{.bg4} des PES et du contexte sont [clés]{.bg4} : *"communication and verbal rewards, inclusive and participatory decision-making, and monitoring and sanctioning procedures might harm or enhance intrinsic motivations"* ([Ezzine-de-Blas et al., 2019](https://www.sciencedirect.com/science/article/pii/S092180091831019X#s0015))
 :::
 
-
------
+------------------------------------------------------------------------
 
 ### 4. Critiques conceptuelles
 
@@ -1375,7 +1284,6 @@ Caractère de [remplaçabilité]{.bg4} des écosystèmes détruits, à la foid n
 -   lire :
     -   [*De la Nature aux services écosystémiques : une commodification de la nature*](https://shs.cairn.info/revue-ecorev-2011-3-page-19?lang=fr), de Virginie Maris, 2011
     -   [*Misconceptions about the valuaton of ecosystem services*](https://www.sciencedirect.com/science/article/pii/S2212041624000743), Robert Costanza, 2024
-    
 :::
 
 ::: incremental
@@ -1391,16 +1299,16 @@ Caractère de [remplaçabilité]{.bg4} des écosystèmes détruits, à la foid n
 
 Processus de commodification chez Marx, selon lequel (schématiquement):
 
-::: incremental 
-- [Transformation en marchandise]{.bg4} : un objet devient produit pour son usage marchand
-- [Abstraction de la valeur d'usage]{.bg4} : la valeur d'usage devient secondaire, par rapport à la valeur d'échange
-- [Fétichisme de la marchandise]{.bg4} : les relations sociales entre producteurs se changent en relations entre objets. Les marchandises existent pour elles seules
-- [Universalisation de la forme marchande]{.bg4} : le capitalisme tend à transformer de plus en plus d'aspects de la vie en marchandises
+::: incremental
+-   [Transformation en marchandise]{.bg4} : un objet devient produit pour son usage marchand
+-   [Abstraction de la valeur d'usage]{.bg4} : la valeur d'usage devient secondaire, par rapport à la valeur d'échange
+-   [Fétichisme de la marchandise]{.bg4} : les relations sociales entre producteurs se changent en relations entre objets. Les marchandises existent pour elles seules
+-   [Universalisation de la forme marchande]{.bg4} : le capitalisme tend à transformer de plus en plus d'aspects de la vie en marchandises
 :::
 
------
+------------------------------------------------------------------------
 
-[Pour Maris : ]
+\[Pour Maris : \]
 
 ::: {.incremental style="font-size:90%"}
 -   La monétisation est le [premier pas vers la commodication,]{.bg4} par l'appropriation des services écosystémiques
@@ -1414,58 +1322,50 @@ Processus de commodification chez Marx, selon lequel (schématiquement):
         -   Compenser c'est risqué
         -   L'histoire écologique est clé, et difficilement reproductible
         -   Avec du capital matériel
-        
 :::
 
------
+------------------------------------------------------------------------
 
-::: incremental 
+::: incremental
 -   Dans la [pratique]{.bg4}:
     -   [Valorisation]{.bg3}
     -   [Assetization]{.bg3} : l’assetization qui est de considérer le capital naturel comme un actif ce qui constitue dès lors une forme de commodification - [l'écriture comptable est un moment clé]{.bg3}
         -   en enregistrant le capital au passif, on reconnait une obligation envers des entités non-humaines
     -   [Appropriation & privatisation]{.bg3}
     -   [Echange]{.bg3}
-    
 :::
 
 [Chez Costanza]{.fragment}
 
-::: incremental 
-
+::: incremental
 -   [L'évaluation est une commodication ou une privatisation]{.bg4}
     -   Mettre une valeur monétaire serait équivalent à mettre un prix, et créer une marchandise échangeable
     -   Mais les caractéristiques de plein de SE l'empêchent, en employant l'idée de bien commun (rivalité et exclusion)
     -   Les marchés de carbone ne reflètent pas la valeur de la séquestration
     -   Les PES n'utilisent [pas une valeur de marché]{.bg3} pour fixer les paiements : on prend le [coût d'opportunité]{.bg3} plutôt que la valeur des ES, reflétant le côté bien public
-    
 :::
 
-------
+------------------------------------------------------------------------
 
 ::: incremental
-
-- La possibilité de [financiariser]{.bg4} les crédits de biodiversité, de compensation ou de carbone 
-  - permet le [dépassement des limites physiques]{.bg4}
-  - en une [opportunité économique, en une nouvelle frontière d'accumulatioon]{.bg4}
-- Par de nombreux acteurs (Sullivan, 2018) 
-  - [Fonds d'investissement spécialisés]{.bg3}, avec des index financiers liés
-  - La nature étant un capital, il est normal qu'elle soit gérée comme un [compte en banque : CDC Biodiversité]{.bg4} etc
-  - [Produits dérivés]{.bg4} : les risques écologiques deviennent des actifs financiers échangeables (comme des produits dérivés d'assurance), invitant à la spéculation
-
+-   La possibilité de [financiariser]{.bg4} les crédits de biodiversité, de compensation ou de carbone
+    -   permet le [dépassement des limites physiques]{.bg4}
+    -   en une [opportunité économique, en une nouvelle frontière d'accumulatioon]{.bg4}
+-   Par de nombreux acteurs (Sullivan, 2018)
+    -   [Fonds d'investissement spécialisés]{.bg3}, avec des index financiers liés
+    -   La nature étant un capital, il est normal qu'elle soit gérée comme un [compte en banque : CDC Biodiversité]{.bg4} etc
+    -   [Produits dérivés]{.bg4} : les risques écologiques deviennent des actifs financiers échangeables (comme des produits dérivés d'assurance), invitant à la spéculation
 :::
 
------
+------------------------------------------------------------------------
 
-#### L'extension du marché? 
+#### L'extension du marché?
 
-::: incremental 
-
+::: incremental
 -   [L'économie est simplement le marché]{.bg4} - Costanza
     -   Pas de demande directe pour la plupart des services
     -   L'économie dépasse le marché: c'est une forme particulière institutionnelle pour les échanges
     -   L'évaluation des services écosystémiques nécessite de prendre en compte la soutenabilité, et la justice
-
 -   [L'expression de valeurs monétaires est fondée sur le marché]{.bg4} - Costanza
     -   Des méthodes basées sur les dommages évités ou le coût de remplacement n'utilisent pas les marchés
     -   Plusieurs méthodes pas basées sur des transactions réalisées
@@ -1473,10 +1373,9 @@ Processus de commodification chez Marx, selon lequel (schématiquement):
 -   [Dans un monde d'arbitrages, évaluer n'est pas un choix, cela arrive implicitement]{.bg4} - Costanza
     -   L'existence reconnue des ES implique leur valorisation dans des arbitrage
     -   Il faut des valeurs claires pour faire des choix explicites
-
 :::
 
------
+------------------------------------------------------------------------
 
 #### Approches par les droits et conservation
 
@@ -1486,7 +1385,6 @@ Processus de commodification chez Marx, selon lequel (schématiquement):
     -   Contribuant aux hommes, si les écosystèmes fonctionnent de façon intact
     -   Usage du concept de [Nature Contribution to People]{.bg3} pour avoir moins d'idée sémantique de [servitude]{.bg3} et reconnaître la dépendance humaine aux écosystèmes
     -   Défense d'une [interdépendance]{.bg3}, pas une approche anthropocentrique, entre espèces
-
 -   [Les valeurs intrinsèques sont à propos des droits, pas de la valorisation]{.bg4}
     -   Les mauvaises définitions de la valeur: la valeur mesure, et la valeur concept
     -   La valeur relative pour l'achèvement de fins, des valeurs instrumentales
@@ -1495,41 +1393,37 @@ Processus de commodification chez Marx, selon lequel (schématiquement):
     -   On doit éviter la commodification et la privatisation, pas l'évaluation
 :::
 
------
+------------------------------------------------------------------------
 
-:::: columns
-
+::::::: columns
 ::: column
 ![Wikipedia](../images/ecol_econ/biodiv/Magpie_river.jpg){fig-align="center"}
 :::
 
-::: column
+::::: column
+-   La rivière Magpie au Canada, a acquis des droits en tant que personne morale en 2021:
 
-- La rivière Magpie au Canada, a acquis des droits en tant que personne morale en 2021: 
-
-:::{.incremental style="font-size:80%"}
-  - le droit de vivre, d'exister et de couler ; 
-  - le droit au respect de ses cycles naturels ;
-  - le droit d'évoluer naturellement, d’être préservée et d’être protégée ;
-  - le droit de maintenir sa biodiversité naturelle ;
-  - le droit de maintenir son intégrité ;
-  - le droit de remplir des fonctions essentielles au sein de son écosystème ;
-  - le droit d'être à l'abri de la pollution ;
-  - le droit à la régénération et à la restauration ;
-  - le droit d’ester en justice ;
-
+::: {.incremental style="font-size:80%"}
+-   le droit de vivre, d'exister et de couler ;
+-   le droit au respect de ses cycles naturels ;
+-   le droit d'évoluer naturellement, d’être préservée et d’être protégée ;
+-   le droit de maintenir sa biodiversité naturelle ;
+-   le droit de maintenir son intégrité ;
+-   le droit de remplir des fonctions essentielles au sein de son écosystème ;
+-   le droit d'être à l'abri de la pollution ;
+-   le droit à la régénération et à la restauration ;
+-   le droit d’ester en justice ;
 :::
 
-::: incremental 
-- Sa protection est assurée par des Gardiens de la rivière nommés par la MRC de Minganie et la Première Nation des Innu de Ekuanitshit.
-- Des status similaires existent au Pérou
-- Des luttes existent pour étendre ce statut au fleuve Maroni par exemple, pour lutter contre l'orpaillage
+::: incremental
+-   Sa protection est assurée par des Gardiens de la rivière nommés par la MRC de Minganie et la Première Nation des Innu de Ekuanitshit.
+-   Des status similaires existent au Pérou
+-   Des luttes existent pour étendre ce statut au fleuve Maroni par exemple, pour lutter contre l'orpaillage
 :::
-:::
+:::::
+:::::::
 
-::::
-
------
+------------------------------------------------------------------------
 
 #### Simplification(s) et gouvernance - la critique de [Norgaard, 2011](https://www.uvm.edu/~jfarley/EEseminar/readings/ES%20metaphor.pdf)
 
@@ -1547,13 +1441,6 @@ Processus de commodification chez Marx, selon lequel (schématiquement):
     -   Et transitionner vers une [gouvernance mondiale équitable]{.bg3}, où l'on admet la surexploitation des pays du Nord de ces services
 :::
 
+# Conclusion
 
-# Conclusion 
-
-----
-
-
-
-
-
-
+------------------------------------------------------------------------

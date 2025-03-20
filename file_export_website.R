@@ -30,3 +30,10 @@ copy_files(here("classes_compiled", "ecol_econ_eeet"),
 # Teaching others
 copy_files(here('classes_compiled',"Cours externes" ),
            "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/other")
+
+# Teaching master agro
+
+copy_files(here('classes_compiled',"UC6_Ecological" ),
+           "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/2A")
+copy_files(here('classes_compiled',"UC5_Macroeconomics" ),
+           "C:/Users/jean/OneDrive/Desktop/Projects/Professional website/files/teaching/agro/2A")
