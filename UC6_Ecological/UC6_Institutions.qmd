@@ -3,16 +3,26 @@ title: "Institutions & transitions : des dilemmes sociaux aux dynamiques histori
 subtitle: "UC6 - Economie ecologique"
 ---
 
+```{r}
+protect=FALSE
+```
+
 ```{=html}
 <style>
   body { display: none; }
 </style>
+
 <script>
-  var password = prompt("Enter password:");
-  if (password === "super_secret_password") {
-    document.body.style.display = "block";
+  var protect = `r tolower(protect)`; // R injects TRUE/FALSE here
+  if (protect) {
+    var password = prompt("Enter password:");
+    if (password === "super_secret_password") {
+      document.body.style.display = "block";
+    } else {
+      document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
+      document.body.style.display = "block";
+    }
   } else {
-    document.body.innerHTML = "<h1>Access Denied</h1><p>Incorrect password.</p>";
     document.body.style.display = "block";
   }
 </script>
@@ -20,7 +30,8 @@ subtitle: "UC6 - Economie ecologique"
 
 # Introduction à l'analyse institutionnelle
 
-------------------------------------------------------------------------
+-----
+
 
 ### Définir les institutions
 
@@ -88,15 +99,15 @@ Comme la [théorie de la régulation]{.bg3}
 ## Des cadres théoriques complémentaires pour l'économie écologique
 
 ::: incremental
--   Economie institutionnaliste
+-   [Economie institutionnaliste]{.bg3}
     -   Changement vient des institutions (croyances, valeurs, marchés, monnaies, concurrence, Etats)
     -   Structures sociales et rapports de forces collectifs sont la clé du changement
     -   Point faible: pas d’autonomie individuelle, ce sont les institutions sociales qui font tout
--   Economie néo-institutionnaliste et conventionnaliste
+-   [Economie néo-institutionnaliste et conventionnaliste]{.bg3}
     -   Changement vient des structures de gouvernance (hiérarchiques, marchandes, communautaires)
     -   La bonne coordination et les coûts de transaction sont la clé du changement
     -   Point faible: la coordination ne dit pas grand chose sur la transition à proprement parler
--   Economie systémique, interactionniste et co-évolutionniste
+-   [Economie systémique, interactionniste et co-évolutionniste]{.bg3}
     -   Changement vient des interactions entre acteurs, institutions, techniques, connaissances
     -   Les innovations systémiques, ayant une cohérence d’ensemble, sont la clé du changement
     -   Défaut: complexe à analyser, comprendre, et faire évoluer, notamment car concernent des évolutions multi-échelles
@@ -157,23 +168,15 @@ $$U_i = 13W_i - 0.5W_i^2$$
 
 ::: incremental
 -   On va maintenant essayer de trouver les formes d'organisation collective qui permettent de conserver la ressource
-
 -   Des mécanismes vont être votés (majorité simple)
-
 -   Option 1: introduction de quotas individuels
-
     -   Sans surveillance
-
 -   Option 2 : mise en place d'un système de surveillance de la ressource : on a les relevés hydrographiques clairs
-
 -   Option 3 : mise en place d'un système de surveillance (2 joueurs) des joueurs
-
     -   Vérifient les extractions : si infraction, ils la dénoncent
     -   Les accusés peuvent contester
     -   Dans ce cas, la communauté vote : si la majorité n'est pas atteinte, simple avertissement
-
 -   Option 4 : introduction d'un système d'amendes
-
     -   Introduction d'un système d'amendes : amende au carré du nombre d'infractions
 :::
 
@@ -187,13 +190,13 @@ $$U_i = 13W_i - 0.5W_i^2$$
 :::
 
 :::: column
-::: incremental
+:::{.incremental style="font-size:90%"}
 -   Née en 1933 à Los Angeles, morte en 2012 à Bloomington
 -   Politiste à l'Université de l'Indiana
 -   Commence sa carrière en étudiant la gestion de l'eau et des services de police dans les métropoles américaines
 -   Pionnière de l'analyse des communs
 -   Avec une analyse méthodologique :
-    -   basée sur l'individualisme méthodologique
+    -   basée sur [l'individualisme méthodologique]{.bg3}
     -   l'analyse empirique (laboratoire et étude de cas)
     -   En prenant en compte les structures institutionnelles comme cadre d'analyse
     -   Via des cadres conceptuels forts comme le [Institutional Analysis and Development Framework]{.bg3} ou les [Social Ecological Systems]{.bg3}
@@ -261,7 +264,7 @@ $$U_i = 13W_i - 0.5W_i^2$$
 :::
 
 ::: fragment
-![](../images/ecol_econ/institutions/hardin_game.jpg){fig-align="center"}
+![](../images/ecol_econ/institutions/hardin_game.jpg){fig-align="center" width="40%"}
 :::
 
 ------------------------------------------------------------------------
@@ -388,15 +391,17 @@ $$U_i = 13W_i - 0.5W_i^2$$
 ::: incremental
 -   Larges communs dans des villages de zones montagnardes entre 1600 et 1867
 -   Produisent du bois de construction, de chauffage, de toiture etc, de la nourriture pour le bétail
--   Chaque village était gouverné par une assemblée, composée des chefs de famille
--   Un foyer ne pouvait pas se subdiviser sans la permission du conseil et les droits d'accès aux communs dépendaient du foyer et non des personnes
--   Chaque foyer avait un devoir de contribution aux travaux communs
--   Les codes pour chaque village impliquaient des sanctions graduées en cas de manquement : on embauchait un détective des communs, qui recevait pour son compte (au moins partiellement) saké et cash comme amende, de façon tout à fait acceptée
+-   Chaque village était [gouverné par une assemblée]{.bg3}, composée des chefs de famille
+-   Un foyer ne pouvait pas se subdiviser sans la permission du conseil et les [droits d'accès aux communs dépendaient du foyer]{.bg3} et non des personnes
+-   Chaque foyer avait un [devoir de contribution aux travaux communs]{.bg3}
+-   Les codes pour chaque village impliquaient des [sanctions graduées en cas de manquement :]{.bg3} on embauchait un détective des communs, qui recevait pour son compte (au moins partiellement) saké et cash comme amende, de façon tout à fait acceptée
 :::
 
-------------------------------------------------------------------------
+::: fragment
 
 ### Analyse répétées
+
+:::
 
 ::: incremental
 -   Analyses répétées de cas historiographiques pour la forêt et l'eau
@@ -431,7 +436,41 @@ Pour des CPR de petite taille avec [un seul pays]{.bg3} et [50 à 15,000]{.bg3} 
 
 ## Le passage à plus grande échelle : polycentrisme et changement climatique
 
+Voir [Oström, 2009, "A Polycentric Approach for Coping with Climate Change"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1494833)
+
+::: incremental 
+
+- Le changement climatique comme [problème d'action collective]{.bg4} et [risque de passager clandestin]{.bg4}
+  - La théorie classique prône une [approche centralisée]{.bg3} [type OME ]{.bg4}
+- Les [grandes négociations internationales ont pourtant échoué]{.bg4} à générer des actions rapides et contraignantes (Kyoto, Bali, REDD, plus tard Accords de Paris, Aichi etc)
+- Le [caractère global de la crise n'implique pas que les solutions doivent être uniquement globales]{.bg4}: on risque de rester inactif en attendant une improbable grande solution mondiale
+- Pour une [approche polycentrique]{.bg4} : multiplier les centres de décisions imbriqués, qui se surveillent mutuellement
+  - Encourager la prise de décision à tous les niveaux
+  - En lien avec les [bénéfices locaux]{.bg3} de la lutte contre le changement climatique
+  - Permettant des [expérimentations]{.bg3} multiples adaptées aux contextes
+  - En favorisant [confiance et responsabilités]{.bg3} mutuelles dans de plus petits systèmes
+
+
+:::
+
+----
+
+::: incremental 
+
+- [Risques]{.bg4} cependant :
+  - Fuites de carbone
+  - Incohérences entre niveaux
+  - Problèmes de surveillance
+- [Limites]{.bg4}: 
+  - Basé sur des expériences de petite échelle
+  - Avec des conséquences moindres
+  - Qui peuvent mieux s'abstraire des relations de pouvoir et d'asymétrie
+
+:::
+
 # II. Le codéveloppement: évolution des systèmes et relations hommes-nature
+
+Repenser les [dynamiques d'évolution]{.bg4} des socio-écosystèmes à différentes échelles
 
 ## 1. Le développement trahi
 
@@ -644,13 +683,36 @@ Différentes applications :
 
 ------------------------------------------------------------------------
 
-# III. Institutions dans le long terme et rapports de force : la théorie de la régulation
+# III. Institutions dans le long terme et rapports de force
 
-## A. Comprendre la théorie de la régulation
+## A. L'analyse marxiste renouvelée : échappement des écosystèmes
 
 ::: incremental
--   [Institutionalisme]{.bg4} : courant d'analyse qui pose la nécessité de penser le rôle des médiations entre structures sociales et comportements individuels
-    -   [Institutionnalisme historique ou régulationniste]{.bg3} : les acteurs agissent selon leurs intérêts politiques mais sont équipés de visions du mondes diverses selon les contextes sociaux
+-   Reprise des ruptures métaboliques et observartions sur l'agriculture industrielle pour parler [d'échappement métabolique]{.bg4}
+
+- [Capitalisme]{.bg4} = système économique basé sur la propriété privée des moyens de production (usines, machines, terres, etc.), où une classe sociale — la bourgeoisie — possède ces moyens et en tire du profit via un régime d'échange plus ou moins libéré
+
+-   Le capitalisme pousse à [l'interruption des cycles naturels d'énergie et de matière]{.bg4} : cycle du carbone, des nutriments, des forêts, de nos estomacs [(J.B Foster)]{.bg3}
+
+-   Ce faisant, il crée des [conditions endogènes d'incompatibilité (James O'Connor)]{.bg4}
+    -   Les conditions dégradées de production mènent à des crises de sous production et à l'augmentation des coûts
+    -   Qui rendent la [permanence du capitalisme de moins en moins solide]{.bg3}
+:::
+
+----
+
+## B. Les institutions comme régulation des conflits sociaux du capitalisme
+
+### 1. La théorie de la régulation
+
+Des auteurs clés comme : 
+- Robert Boyer (*Economie politique des capitalismes. Théorie de la régulation et des crises*, 2015)
+- Michel Aglietta  (*A Theory of Capitalist Regulation: The US Experience*, 2015)
+
+::: incremental
+-   [Institutionnalisme historique ou régulationniste]{.bg3} : 
+    - Pose la nécessité de penser le rôle des médiations entre structures sociales et comportements individuels  
+    - Les acteurs agissent selon leurs intérêts politiques mais sont équipés de visions du mondes diverses selon les contextes sociaux
     -   Les institutions émergent comme :
         -   une forme de [régulation des conflits]{.bg3} inhérents aux intérêts divergents et pouvoirs différents
         -   Permettant sa [reproduction]{.bg3} cohérente
@@ -658,23 +720,182 @@ Différentes applications :
 
 ------------------------------------------------------------------------
 
-::: incremental
--   Le capitalisme a connu plusieurs formes, et les [formes institutionnelles]{.bg4} constituent des [modes de régulation]{.bg4} spécifiques :
+::: incremental 
+
+- Le capitalismee est un [système d'organisation économique & des rapports sociaux]{.bg4}
+- Ces rapports sociaux sont [régulés]{.bg3}, c'est à dire qu'il existe des [compromis]{.bg3} socio-économiques [institutionnalisés]{.bg3}, entre des classes sociales différents
+- Ces compromis sont incarnés dans des [formes institutionnelles]{.bg4} structurantes
     -   [Régime monétaire]{.bg3} : basé sur la confiance, permet aux agents de régler des dettes, utiliser les marchés et lier productions de marché et de non marché
     -   [Régime salaire travail]{.bg3} : ensemble des conditions légales et institutionnelles qui gouvernent l’utilisation du salariat comme mode d’existence des travailleurs
     -   [La concurrence]{.bg3} : ensemble des règles des marchés et des chaines de valeurs (toutes les conventions qui forment les relations d’affaires entre producteurs)
     -   [L’état]{.bg3}
     -   L’insertion dans le [régime international]{.bg3} : règles organisant la cohabitation des états nations et des monnaies dans un système géopolitique mondial, avec le commerce international et les réseaux de flux de capitaux.
     -   Pas de [dimension environnementale]{.bg3} au début
+    
 :::
 
-## B. L'avènement d'une relation sociale à l'environnement
+--------
 
+::: incremental
+-   Se combinent en [modes de régulation]{.bg4}, qui permettent la [reproduction des intérêts économiques, en influant sur les comportements individuels et collectifs]{.bg3}
+-   Ces modes de régulation supportent des [modes d'accumulation]{.bg4} : 
+    - Un ensemble de régularités qui assurement le progrès de l'accumulation du capital, c'est à dire qui [permettent la résolution,]{.bg3} ou retardent, les [distorsions et déséquilibres auxquels le processus d'accumulation donne continuellement lieu]{.bg3}
+-   Ces régularités sont :  
+    - Une [forme de production spécifique]{.bg3} (le taylorisme)
+    - Des [principes de management]{.bg3} qui découlent des horizons temporels de la valorisation du capital productif (developpement industriel de long terme v. retours financiers immédiats)
+    - Des [distributions de revenus]{.bg3}, assurant la reproduction et le développement de différentes classes ou groupes sociaux
+    
+:::
+
+## B. Régimes métaboliques et transitions institutionnelles : expliquer le rôle socio-économique de la matière
+
+::: incremental
+
+- Permet d'analyser des [crises endogènes d'accumulation]{.bg4}
+- [Sans lien avec la matière]{.bg3} : 
+    - On ajoute le métabolisme et le MFA en intégrant les empreintes matières plutôt que DMC
+    - Qui ne dit pas grand chose sur les formes sociales
+    - Et les transitions entre les régimes
+- Pour un [nexus socio-métabolique]{.bg4} ([N. Magalhaes & L. Cahen Fourot, 2023](https://www.researchgate.net/publication/375745059_The_accumulation-metabolism_nexus_internationalization_labour-capital_relations_and_material_flows_of_French_capitalism_since_the_post-war_era)):
+  - L’ensemble des [régularités]{.bg4} qui assurent une [accumulation générale]{.bg3} et relaitvement cohérent du capital, et génèrent un [équilibre dynamique]{.bg3} dans les relations nature-société, ce qui permet la [provision continuelle de flux]{.bg3} biophysiques et une continuité de la [capacité à gérer les déchets et dégradations]{.bg3} environnementaux 
+  - [Evolue]{.bg4} quand les régularités dans l’accumulation du capital et les interactions nature-société sont contestées et [ne peuvent être remédiées par les institutions existantes]{.bg3}. 
+
+:::
+
+----
+
+
+### Deux régimes institutionnels et socio-métabolique en France
+
+:::: columns
+
+::: column
+
+::: incremental 
+
+- [Fordisme (après guerre - mid 70s)]{.bg4} : 
+    - Gains de productivité élevés
+    - Permettant un compromis social entre travail et capital en faveur du travail, particulièrement visible dans les industries lourdes
+    - Qui a résulté en un Etat social, une sécurité sociale, des emplois longs
+    - Avec un processus d'accumulation basé sur la demande
+    - Synchronisation domestique de la consommation et de la production
+    - Régime extensif energétique, à efficience décroissante
+    - Quantités croissantes de matériaux intégrés dans des modes de production
+
+:::
+
+:::
+
+::: column
+
+::: incremental 
+    
+- [Capitalisme financier (depuis mid 70s)]{.bg4} : 
+    - Démentèlement progressif et remplacement de l'état providence vers un état régulateur des marchés
+    - Flexibilisation des relations du travail et libéralisation des flux
+    - Essor de la finance comme secteur et motivation économique
+    - Croissance de l'efficience énergétique et croissance plus faible de l'empreinte matière
+    - Relocalisation énergétique à l'étranger
+    - Qui accompagnent la restauration de la part de la valeur ajoutée
+
+:::
+:::
+::::
+
+----
+
+### Comment expliquer la transition? 
+
+::: incremental 
+
+- Les [produits fossiles sont à la source du compromis fordiste]{.bg4} : 
+  - Des [gains importants de productivité]{.bg3}, au profit des salaires, sont la clé du compromis fordiste
+  - sont réalisés grâce à eux, du fait de leur prix bas, en provenance majoritairement des colonies 
+  - Dans l'industrie et l'agriculture (135 000 jobs perdus par année)
+  - D'autres matériaux clés, comme l'acier, sont clés dans la [production, et la consommation de masse]{.bg3}: la voiture
+- Le compromis fordiste est aussi construit sur [le compromis social]{.bg3} (Etat social etc) qui permet la consommation
+  - Jusqu'en 1963, le charbon domine le mixe énergétique et les mineurs sont nombreux
+  - Les ouvriers de l'industrie sont nombreux aussi
+  - [Rôle important via la CGT et le PC]{.bg3} dans la structuration du [partage de la valeur ajoutée]{.bg3} en faveur du travail
+
+:::
+
+---
+
+::: incremental 
+
+- Dans les années 1970, le [marché domestique devient saturé]{.bg3} : 
+  - On doit passer à un [régime d'export]{.bg3} pour avoir des rendements croissants
+  - Construit sur le modèle fordiste, en vendant [voitures et agriculture]{.bg3}
+- [Le pétrole déstabilise le compromis fordiste]{.bg4}
+  - Les mines ferment
+  - Peu cher et abondant, le [pétrole permet la production de masse]{.bg3} qui sous tend le régime fordiste
+  - Mais [change le compromis capital-travail]{.bg3} (la relation salariale), forme dominante du régime fordiste
+- [Le pétrole et l'internationalisation brisent la relation travail-salaire]{.bg4} : 
+  - Importance de la compétitivité prix au détriment du salaire
+  - Et [offshoring matériel]{.bg4}
+
+:::
+
+
+---
+
+::: incremental 
+
+- [A partir des années 1975, régime financier]{.bg4} : 
+  - Le taux de marge augmente, au profit des entreprises
+  - Qui n'investissent plus autant domestiquement, rendant la relation travail-salaire encore plus caduque
+  - Mais financiarisent : le revenu financier des firmes s'est accru pour les firmes non financières
+  - Avec une [croissance moindre des flux matériaux]{.bg3}
+- La [forme institutionnelle dominante devient l'insertion internationale]{.bg4}
+  - Globalisation des chaînes de valeur et baisse des coûts
+- Implique [l'augmentation de l'offshoring:]{.bg4}
+  - L'empreinte matérielle est plus faible que la consommation 
+  - Les matériaux invisibles s'accumulent dans les pays qui exportent les biens vers la France: pour une tonne de cuivre exportée du Chili, 25 tonnes de déchets subsistent chez eux
+
+:::
+
+---
+
+![](../images/ecol_econ/institutions/dmc_mf_Magalhaes_Cahen_2023.png){fig-align="center"
+
+---
+
+::: incremental 
+
+- [Mais pas la dématérialisation: ]{.bg4}
+  - Les consommations de matériaux nettes de matériaux demeurent positives
+  - "average annual net addition to material stocks in France since 2000 amounts to about 466 Mt"
+- [Menant à un changement dans les rapports de force entre capital et travail:]{.bg4} 
+  - Réduit la capacité des travailleurs à impacter la répartition de la valeur et leur agenda socio-politique
+  - "more than 100,000 workers in the steel sector in the Lorraine region alone in the 1960s, whereas there are less than 8,000 nowadays"
+  - Syndicalisation passe de 30% en 1949 à 17% en 1960-1975 et 11% en 2016
+  
+
+:::
+
+---
+
+![](../images/ecol_econ/institutions/résumé_nexus_Magalhaes_Cahen_2023.png){fig-align="center"}
+
+## C. L'avènement d'une relation sociale à l'environnement
+
+::: incremental 
+- Une relation sociale environnementale est elle constitutive des compromis du capitalisme? 
+- Identifier le lien entre les formes de capitalisme et le lien à l'environnement permet de trouver les modalités compatibles avec une réforme environnementaliste : 
+  - Identifier les features clés
+:::
+
+
+::: fragment
 #### L. Cahen-Fourot, Contemporary capitalisms and their social relation to the environment, 2020, *Ecological Economics*
+
+:::
+
 
 ::: incremental
 -   Analyse les groupes de pays que l'on peut voir au sein de l'OCDE et des BRICS, en prenant plein de données en compte pour mesurer ces formes :
-    -   Forme environnementale:
+    -   [Forme environnementale]{.bg4}:
         -   Intensité du PIB en GES, matériaux et énergie
         -   Matérialité offshore
         -   Distribution des émissions par quantiles (Piketty & Chancel, 2015)
@@ -702,33 +923,11 @@ Différentes applications :
 -   Mais les pays qui sont le plus ouverts à l'écologie sont aussi ceux qui ont le plus [déplacé leur impact]{.bg3} environnemental
     -   Explique aussi la [force relative]{.bg3} des politiques locales mais [l'absence de politique globale]{.bg3}, au sein d'une relation [complémentaire et exclusive]{.bg4} avec le capitalisme global
     -   Le capitalisme global ne peut [pas être un système écologique viable]{.bg4}
--   La notion de [relation sociale à l'environnement]{.bg4} se rapproche du métabolisme social
+
 :::
 
-------------------------------------------------------------------------
 
-#### Quelles formes désirables?
 
-::: incremental
--   Dietz et ONeill, 2013: cherchent les [formes nécessaires à une croissance nulle]{.bg3}
--   Focus sur le [régime monétaire]{.bg3} :
-    -   La monnaie en circulation est [créée]{.bg4} par des banques commerciales
-    -   Pour répondre aux besoins de financement des agents économiques, via des [crédits]{.bg4}
-    -   Ces crédits viennent avec un [taux d'intérêt]{.bg4} : remboursements plus larges que le principal
-    -   Il faut donc de la [croissance pour rembourser]{.bg4}
-:::
 
-------------------------------------------------------------------------
 
-### L'analyse marxiste renouvelée : échappement des écosystèmes
 
-::: incremental
--   Reprise des ruptures métaboliques et observartions sur l'agriculture industrielle pour parelr d'échappement métabolique
-
--   Le capitalisme pousse à l'interruption des cycles naturels d'énergie et de matière : cycle du carbone, des nutriments, des forêts, de nos estomacs (J.B Foster)
-
--   Ce faisant, il crée des conditions endogènes d'incompatibilité (James O'Connor)
-
-    -   Les conditions dégradées de production mènent à des crises de sous production et à l'augmentation des coûts
-    -   Qui rendent la permanence du capitalisme de moins en moins solide
-:::
