@@ -91,7 +91,7 @@ local_family = "Roboto Light"
 -   Avec des indicateurs associés et un suivi régulier
 :::
 
--------
+------------------------------------------------------------------------
 
 ::: fragment
 Avec un appui scientifique de l'[IPBES]{.bg4}
@@ -720,15 +720,13 @@ Définissons quatre critères principaux avec leur pondération :
 
 ![](../images/Ressources_Nat/Diapositive3.JPG){width="80%"}
 
----------
+------------------------------------------------------------------------
 
 #### De retour à la surexploitation
 
 ::: fragment
-![](../images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top="75" left="600" width="550" height="600"} 
-
+![](../images/Ressources_Nat/curve_to_lines_revenue.jpg){.absolute top="75" left="600" width="550" height="600"}
 :::
-
 
 #### Deux zones de pêche
 

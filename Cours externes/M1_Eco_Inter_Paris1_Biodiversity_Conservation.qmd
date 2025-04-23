@@ -1200,7 +1200,7 @@ T. West et al., Action needed to make carbon offsets from forest conservation wo
 
 :::: column
 ::: fragment
-![](../images/ecol_econ/biodiv/synthetic%20control.jpg){fig-align="center"}
+![](../images/ecol_econ/biodiv/synthetic control.jpg){fig-align="center"}
 :::
 ::::
 :::::::

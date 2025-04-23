@@ -144,10 +144,16 @@ $selection-bg: #26351c !default;
 
 }
 
+.gray-text {
+  color: gray;
+}
+
 .fg {
   color: $accent;
   font-weight: normal;
 }
+
+
 
 .bg {
   background-color: var(--col, #DD8693);

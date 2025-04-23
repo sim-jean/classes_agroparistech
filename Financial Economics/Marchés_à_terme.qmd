@@ -1,0 +1,562 @@
+---
+title: "Les marchés à terme de matières premières"
+subtitle: "Economie Financière"
+---
+
+## Introduction 
+
+:::: columns
+
+::: column
+
+![](../images/finance/champs_cereales_Thierry_Ryo.jpeg){width=80%}
+
+:::
+
+::: column
+
+::: fragment
+Un agriculteur de la Beauce veut se [prémunir]{.bg4} des variations de prix entre le moment où il sème et la récolte qu'il aura à vendre [l'année prochaine]{.bg3}
+
+:::
+:::
+
+::::
+
+::: fragment
+
+:::: columns
+
+::: column
+
+Un spéculateur à Paris veut [tirer profit]{.bg4} des variations de prix futures du blé, par exemple en l'achetant aujourd'hui et [espérant]{.bg4} une augmentation du prix [l'année prochaine]{.bg3}
+
+:::
+
+::: column
+
+![](../images/finance/stock_exchange_waldenuedu.jpeg)
+
+:::
+
+::::
+
+:::
+
+# I.  Des promesses sur l’avenir : pourquoi négocie-t-on le futur aujourd’hui ?
+
+## A. La notion de contrat à terme
+
+::: incremental 
+
+- [Contrats financiers]{.bg4} portant sur des [actifs physiques]{.bg4} (i.e. matières premières, actions, obligations etc)
+- à un [prix fixé aujourd'hui]{.fragment .bg4}
+- Pour un [paiement et une livraison]{.bg4} de l'actif dans le [futur]{.bg4}
+
+:::
+
+[On dira qu'un acteur est : ]{.fragment}
+
+:::: columns
+
+::: column
+::: incremental 
+
+- On est [short/court lorsque que l'on a promis de vendre]{.bg4}
+- On suppose que les prix directs (ou spot) vont [baisser]{.bg3}: demain, se procurer la marchandise se fera à prix cassé par rapport au contrat, on empoche la différence
+- On dit qu'on s'attend à un [marché "bear-ish" (baissier)]{.bg3} : la courbe des prix a le dos rond, comme un ours
+
+:::
+:::
+
+::: column
+::: incremental 
+- On est [long lorsque l'on a promis d'acheter]{.bg4}
+- On suppose quee les prix directs (ou spot) vont [augmenter:]{.bg3} demain, lorsque je vendrai à un prix élevé ce que j'ai acheté à un faible prix dans le contrat, je ferai un gain
+- On dit qu'on s'attend à un [marché "bull-ish" (haussier)]{.bg3} : la courbe des prix est convexe, comme les cornes d'un taureau
+:::
+:::
+ 
+::::
+
+## B. Pourquoi faire? 
+
+:::: columns
+
+:::{.column}
+
+Sans marché à terme : 
+
+::: incremental
+
+- Un spéculateur parie sur les cours du marché du blé, stocké à Rouen, à horizon décembre.
+- Il anticipe que les [cours vont augmenter]{.bg3} et achète sur le marché physique (ou spot) 100 tonnes à 250€ la tonne : aujourd'hui il [débourse donc 25,000€]{.bg3}
+- Par ailleurs, il devra payer des [frais de stockage, de l'ordre de 500€]{.bg3}
+- Si [le prix du blé atteint 260€]{.bg3} en décembre, il réalisera donc : 
+  - $\Pi= (260-250) \times 100 - 500 = 500$e de profit, 
+  - soit $\frac{500}{30000}\approx 1.7\%$ de profit
+- Si le prix ne monte pas au dessus de [255e la tonne, il réalise des pertes]{.bg3}
+
+:::
+:::
+
+
+::: column
+
+:::
+
+::::
+
+
+## B. Pourquoi faire ? {.unnumbered}
+
+:::: columns
+
+:::{.column .gray-text}
+
+Sans marché à terme : 
+
+- Un spéculateur parie sur les cours du marché du blé, stocké à Rouen, à horizon décembre.
+- Il anticipe que les cours vont augmenter et achète sur le marché physique (ou spot) 100 tonnes à 250€ la tonne : aujourd'hui il débourse donc 25,000€
+- Par ailleurs, il devra payer des frais de stockage, de l'ordre de 500e
+- Si le prix du blé atteint 260e en décembre, il réalisera donc : 
+  - $\Pi= (260-250) \times 100 - 500 = 500$e de profit, 
+  - soit $\frac{500}{30000}\approx 1.7\%$ de profit
+- Si le prix ne monte pas au dessus de 255€ la tonne, il réalise des pertes 
+
+
+:::
+
+
+
+::: column
+[Avec un marché à terme : ]{.fragment}
+
+::: incremental
+- Le spéculateur s'engage à acheter du blé à terme (il est long)
+- Pour cela, il [achète un contrat à terme]{.bg3}, où il s'engage à payer en décembre la somme de 250€/tonne.
+- Il donne une [faible garantie financière]{.bg3} à son partenaire, autour de [1000€ mais ne paie pas de stockage]{.bg3}
+- En décembre, si le prix atteint 260€: 
+  - $\Pi = (260-250) \times 10$ et il récupère sa mise, 
+  - le taux de profit est donc $\frac{1000}{1000}=100\%$
+- Si le prix ne monte [pas au dessus de 250€, il réalise des pertes]{.bg3}
+
+:::
+:::
+
+::::
+
+----
+
+### Débouclage de position
+
+::: incremental 
+
+- Le spéculateur s'est engagé à [acheter]{.bg3} du blé en décembre via un [contrat future à 250€/t]{.bg3}
+- Il veut cependant éviter de devoir gérer la livraison de la marchandise : il est spéculateur, pas logisticien
+- Pour ce faire, il peut fin novembre [vendre un contrat future ]{.bg3} pour décembre à 260€/t
+- On dit dans ce cas qu'il [déboucle sa position]{.bg4} : 
+  - La [position d'achat est compensée par une position de vente]{.bg4} : il ne détient plus de contrat et s'est libéré de ses obligations
+  - Le profit réalisé est : $\Pi = 260-250 = 10$€/t
+
+:::
+
+[Pour résumer]{.fragment}
+
+::: fragment
+
+
+| Date       | Action                         |Position | Prix (€ / tonne) |
+|------------|--------------------------------|---------|------------------|
+| Septembre  | Achat contrat future (déc.)    |    1    |    250€          |
+| Novembre   | Vente contrat future (déc.)    |   -1    |    270€          |
+| **Total**  |                                |    0    | **Gain : +20 €** |
+
+:::
+
+## C. Les acteurs : du producteur à l’arbitragiste
+
+On distingue souvent 3 motifs : 
+
+::: incremental 
+- [La couverture (ou hedging) :]{.bg4} 
+  - Pour un céréalier, la baisse des prix du blé implique une baisse de la valeur de son stock (sans flux financier associé nécessairement)
+  - Il s'agit ici de [limiter les variations de la valeur du stock]{.bg4}, en équilibrant une [position physique et une position financière]{.bg3}
+  - Une [couverture est parfaite]{.bg3} lorsque les variations (flux $F$) de la position physique sont parfaitement compensées par celles de la position financière : $F_{\text{physique},t} - F_{\text{financier, t}}=0$
+  - Ces opérations sont souvent faciles à construire sur des marchés liquides et bien régulés
+  
+:::
+
+----
+
+::: incremental 
+
+- [La spéculation : ]{.bg4}
+  - [Pari sur l'évolution des cours]{.bg3}
+  - Au delà d'une catégorie oisive, il s'agit d'une branche de l'économie financière dont le métier est de [traiter l'information]{.bg3} disponible pour en tirer profit. 
+- [L'arbitrage : ]{.bg4}
+  - Utilisent les [opportunités d'arbitrage]{.bg4}, des [différences "trop" larges de prix entre]{.bg3} [marchés physiques et financiers]{.bg3}
+  - On achète là où le produit est sous-côté pour le revendre là où il est sur-côté
+  - Ex : le prix du blé spot est de 200€/t, le coût de stockage jusque décembre est de 5€/t et le prix du future à échéance décembre est de 220€/t
+    - J'achète du blé aujourd'hui, vends un future et réalise : $\Pi = 220 - 200 - 5 = 15$ €/t de profit
+  - Ce faisant [les cours se rapprochent]{.bg3} par le jeu de l'offre et de la demande
+ 
+
+:::
+
+## D. Des rendements élevés à condition que ...
+
+Le premier constat : les marchés permettent de réaliser un [large profit avec un minimum de capitaux investis]{.bg4}
+
+::: {.callout-tip title="L'effet de levier"}
+
+Le levier est le ratio entre la valeur contrôlée et le capital investi : plus il est élevé, plus le taux de rendement peut varier, à la hausse comme à la baisse
+
+:::
+
+[Pour que le marché à terme soit pérenne, il faut contrôler plusieurs risques : ]{.fragment}
+
+::: incremental 
+
+- Le [risque de liquidité : ]{.bg4}
+  - Pour récupérer sa mise, l'actif acheté doit être liquide : le spéculateur doit [pouvoir revendre sur le même marché instantanément]{.bg3}
+  - Cela suppose un grand nombre d'acteurs
+  - Et des produits équivalents
+- Le [risque de contrepartie]{.bg4} : le spéculateur s'engage à payer ... mais il n'y a [pas de garantie réelle qu'il le fasse!]{.bg3}
+  - Cela suppose de pouvoir [éviter les pertes associées aux défauts]{.bg3} des parties prenantes
+
+:::
+
+---
+
+D'autres risques sont inhérents aux comportements sur les marchés : 
+
+::: incremental 
+
+- [Risque de marché]{.bg4} : les variations des prix des actifs sous jacents sont hors de contrôle
+- [Risque de levier]{.bg4} : si les leviers multiplient les gains, il peuvent aussi multiplier les pertes
+- [Risque de couverture (ou risque de base)]{.bg4} : les risques liés à la couverture ne sont pas entièrement couverts (on y reviendra)
+
+:::
+
+
+## E. Différents types de contrats : forward v. futures
+
+:::: columns
+
+::: column
+
+[Contrats forward]{.fragment .bg3}
+
+::: incremental 
+
+- Négociés entre deux parties et échangés de gré à gré
+- Pas standardisés
+- Livraison souvent physique
+- Liquidité faible à modérée
+
+:::
+
+:::
+
+::: column
+
+[Contrats futures]{.fragment .bg3}
+
+::: incremental 
+- Contrats standardisés et côtés sur un marché
+- Complètement standardisés
+- Livraison rare
+- Liquidité forte
+:::
+:::
+
+::::
+
+[On se concentrera sur les [futures]{.bg4} dans le cadre de ce cours]{.fragment} [car ils sont exceptionellement faciles à mettre en place, du fait de leur liquidité, leur standardisation, et les mécanismes de construction du marché]{.fragment} 
+
+
+
+----
+
+
+### Un exemple : le contrat Milling Wheat No2 sur Euronext
+
+![](../images/finance/milling_wheat1.png){fig-align="center"}
+
+---
+
+![](../images/finance/milling_wheat2.png){fig-align="center"}
+
+
+---
+
+![](../images/finance/milling_wheat3.png){fig-align="center"}
+
+---
+
+### Les grandes places de marché pour les matières premières
+
+
+Les places de marché sont des entreprises qui assurent la mise en relation entre acheteurs et vendeurs de produits financiers : 
+
+::: incremental 
+
+- USA - Chicago Mercantile Exchange Group: céréales, énergie, métaux
+  - 1860 : début du trading des futures au Chicago Board of Trade
+  - 2006 : fusion avec le Chicago Mercantile Exchange et le New York Mercantile Exchange
+  - Leader mondial : plusieurs milliards de contrats par an, toutes catégories confondues.
+- Chine : 
+  - Dalian Commodity Exchange : matières premières agricoles et industrielles.
+  - Shanghai Futures Exchange : métaux et énergie
+  - Leader régional et mondial en devenir
+- Royaume Uni - London Metal Exchange
+  - Métaux non ferreux
+  - Référence mondiale même si plus modeste en volume
+- Europe - Euronext Group
+  - Fusion des marchés britanniques, français, allemands
+  - Place de référence pour le trading de blé notamment
+
+:::
+  
+# II. Mécanique des marchés à terme : un jeu de règles strictes
+
+## A. La négociation du contrat entre parties prenantes
+
+::: incremental 
+- Les contrats, standardisés, sont conclus lorsqu'une [offre de vente à un prix minimum (un call)]{.bg4} rencontre [une offre d'achat à un prix maximal (un bid)]{.fragment .bg4}
+- Dans la pratique, de nombreux marchés utilisent un [limit order book ]{.bg4}: 
+  - Les offres d'achat et de vente sont stockées par [ordre d'arrivée]{.bg3}
+  - si les offres de vente à un prix minimum > offres d'achat à un prix maximal : pas de transaction
+  - Dans ce cas, l'un des côtés s'ajuste, pour conclure une transaction
+  - Et [définir ainsi à un moment donné le prix de marché]{.bg3}
+
+:::
+
+::: fragment
+
+![](../images/finance/prix_euronext_17avril.png){fig-align="center" width="50%"}
+
+:::
+
+
+## B. Le rôle de la chambre de compensation
+
+::: incremental 
+- Organisme privé qui permet de résoudre les [problèmes de risque de contrepartie et de défaut]{.bg3}
+- [Principe de novation]{.bg4} : la C.C s'interpose entre les acheteurs et les vendeurs : 
+  - Un contrat de vente est conclu avec l'acheteur
+  - Un contrat d'achat est conclu avec le vendeur
+  - Ainsi, les contrats sont détenus par la chambre de compensation : [si l'une des parties fait défaut, elle assurera la livraison]{.bg3}
+  - L'assurance de livraison est faite par les [dépôts initiaux, un fond de défaut et des capitaux propres]{.bg3}
+- [Principe de compensation]{.bg4} : au lieu de solder des dizaines de transactions (en monnaie et en titres) chaque jour entre parties, la chambre de compensation centralise les transactions
+
+:::
+
+---
+
+![Source : [Banque de France (2024)](https://www.banque-france.fr/fr/publications-et-statistiques/publications/les-chambres-de-compensation)](../images/finance/compensation_bdf.png){fig-align="center"}
+
+---
+
+## C. Le suivi des engagements financiers
+
+::: incremental 
+
+- Afin d'éviter le risque de défaut, les chambres de compensation font des [ajustements quotidiens des positions]{.bg4}
+- Ainsi, si la [promesse est à terme]{.bg3}, le contrat lui, donne lieu à des [flux financiers quotidiens]{.bg3}
+  - "A futures contract is, in effect, closed out and rewritten at a new price each day" John C. Hull
+- Au début du contrat, les parties prenantes font un [dépôt de marge initiale]{.bg3}
+- A la fin d'une journée d'échange, la chambre de compensation [fait les comptes]{.bg3} : 
+  - Une coopérative a vendu hier (short) un future sur le blé (horizon décembre) à 220€/tonne 
+  - que lui a acheté (long) un meunier qui se protège d'une hausse des prix
+  - Aujourd'hui, le cours est à 210€/tonne : 
+    - La coopérative avait prévu de vendre à 220€ : elle pourrait racheter aujourd'hui à 210, pour revendre à 220 : elle fait donc un bénéfice de 10€/tonne
+    - Le meunier aurait pu acheter à 210€ s'il n'avait pas le contrat : il perd 10€/tonne
+- La chambre de compensation effectue des [appels de marge]{.bg4} pour coller aux cours du marché [(mark to market):]{.bg4} 
+  - Afin de s'ajuster à la valeur de sa position, le meunier [doit déposer 10€/tonne]{.bg3} [supplémentaire sur son compte]{.bg3}
+  - Le compte de la coopérative est [crédité de 10€/tonne]{.bg3}
+  
+:::
+
+----
+
+Si le meunier ne [peut pas faire face à l'appel de marge : ]{.bg4}
+
+::: incremental 
+- Sa position est [liquidée]{.bg3} : il n'a plus de contrat
+- Elle est [assumée par la chambre de compensation]{.bg3}
+- Et il est [banni]{.bg3} du marché, peut être [poursuivi]{.bg3} en fonction de la taille du défaut
+
+:::
+
+[Les contrats futures donnent donc lieu à des flux financiers quotidiens : chaque jour, les appels de marge (coté acheteur)]{.fragment}
+[$$mc_{At} = (f_{t, T} - f_{t-1, T})q$$]{.fragment}
+
+::: incremental 
+
+- Le flux pour un contrat détenu jusqu'à une date $\tau$ est donc : 
+  - Pour un acheteur: $mc_A = \sum_{i = 1}^\tau mc_i = (f_{\tau, T} - f_{0, T})q$
+  - Pour un vendeur: $mc_V = - mc_A$
+
+- Une position [conservée jusqu'à échéance]{.bg3} donne ainsi : 
+  - $mc_A = (f_{T,T} - f_{0,T})q$ et $mc_V = (f_{0,T}-f_{T,T})q$
+  
+:::
+
+---
+
+::: incremental 
+  
+- Une [position débouclée avant échéance]{.bg4} à $\tau$ donne lieu à deux flux : 
+  - Un flux d'acheteur de 0 à T : $mc_A = \sum_{i=1}^T mc_i$
+  - Un flux inverse de vendeur de $\tau$ à $T$ : $mc_V = -\sum_{i=\tau}^T mc_i$
+  - La [position nette]{.bg3} est donc : $mc_A + mc_V = \sum_{i=1}^\tau mc_i$
+- En pratique, la C.C. ne réalise pas les flux passés le débouclage, mais solde les positions
+
+:::
+
+
+# III. Ce que disent les prix : entre réalité physique et pari financier
+
+## A. L'évolution conjointe du spot et des futures
+
+### La base 
+
+::: incremental 
+
+- On définit la [base]{.bg4} comme la différence entre le prix du future et le prix spot : $b_t=f_{t,T}-s_t$
+- Comment évoluent les prix spots et les prix des futures, c'est à dire comment évolue la base? 
+- A la toute fin du contrat: 
+  - Si $s_T < f_{T,T}$ : j'achète sur le marché physique et revends un contrat future pour un bénéfice
+  - Si $s_T > f_{T,T}$ : j'achète un future que je revends sur le marché spot
+  - Donc : $s_T = f_{T,T}$
+- Dans le temps, le lien est plus distendu, pour plusieurs raisons que l'on va analyser. 
+- De façon générale : 
+  - Si le prix du future est au dessus du prix spot, on dit que le marché est en [contango]{.bg4} : c'est une situation normale, où le contrat future implique des coûts
+  - Si le prix du future est au dessous du prix spot, on dit que le marché est en [backwardation]{.bg4} : il y a une prime à la détention de l'actif
+
+:::
+
+----
+
+### Les coûts de portage : stockage, prime de détention
+
+En équilibre, l'absence d'opportunités d'arbitrage implique que : 
+
+::: incremental 
+- Les coûts liés à la détention physique : 
+  - L'achat d'une marchandise et son stockage jusqu'à maturité: $S_0+C$
+  - Le coût d'opportunité de l'immobilisation de ces capitaux: placés à un taux d'intérêt sans risque $r$, ils rapporteraient $(1+r)^{T}$ ou de façon équivalente, $e^{rT}$
+- Soient égaux aux coûts de détention d'un actif financier : 
+  - Le prix du future : $F_0$
+- On a donc en équilibre, en supposant que le coût de stockage est exprimé comme une fraction du spot $u$: 
+  $S_0e^{(r+u)T}=F_0$
+- Exemple : 
+  - Une tonne de blé aujourd'hui coûte 200€, dont le coût de stockage est 2€/an (1%) et que le taux d'intérêt est de 3% : 
+  - Le prix d'un future est donc $F_0 = 200 e^{0.04}=208.16$
+  - On est en [contango]{.bg3}
+
+:::
+
+----
+
+::: incremental 
+
+- Supposons maintenant que l'actif n'a pas qu'une valeur en tant qu'actif financier, mais aussi en tant que [bien de consommation, d'usage]{.bg4}
+- Il peut y avoir une prime à la détention : anticipations de stocks mondiaux faibles, demande importante, nécessité dans un processus de production à temps $t$
+- Dans ce cas, on dit qu'il y a un [convenience yield]{.bg4} (i.e. un rendement de convenance)
+  - D'un côté, le coût de détention dans le temps de l'actif est mitigé par le rendement de convenance : $S_0e^{(r+u-y)T}$
+  - De l'autre le prix de l'actif : $F_0$
+- Le [coût de portage]{.bg3} est la somme des coûts de stockage et de rendements de convenance
+- Si le rendement de convenance est suffisament large, on peut être en [backwardation]{.bg3}
+
+:::
+
+## B. Des marchés de spéculation plus que de couverture ? 
+
+### A la recherche du hedge parfait ...
+
+Lorsqu'un fermier veut se prémunir des variations du prix, il s'engage dans un hedge :
+
+:::{.incremental style="font-size:90%"}
+
+- Il équilibre les variations du marché physique
+- Avec un engagement financier
+
+:::
+
+[Formellement, le revenu issu d'une opération de hedge sur deux périodes est:]{.fragment}
+
+::: fragment
+
+$$\begin{align*} 
+R &= f_{t0,T} + f_{T,T} - s_T\\
+R &= f_{t0,T} + b_T
+\end{align*}$$
+
+:::
+
+:::{.incremental style="font-size:90%"}
+
+- Si $T$ est l'échéance du hedge, alors le hedge peut être parfait : on détient le contrat jusqu'à maturité, de sorte que $s_T=f_{T,T}$
+  - Le revenu est connu à l'avance
+  - Les variations du prix spot sont complètement compensées par les flux engendrés par le future:
+    - La vente physique engendre un bénéfice de $s_T$€/t
+    - Je solde ma position sur le marché, et achète un contrat à $f_{T,T}$ : j'engrange $f_{t,0}-f_{T,T}$€/t
+    - Donc in fine, je récupère $f_{t,0}$€/t
+- En effet, lorsque je maintiens ma position, la base tend vers 0
+
+:::
+
+
+----
+
+### Sans échapper à la spéculation
+
+::: incremental 
+
+- Peu de hedges sont maintenus jusqu'à échéance : on peut vouloir vendre plus tôt que la livraison initialement prévue dans le cadre du contrat
+- Dès lors, si $\tau$ est maintenant la date de débouclage, il est probable que : $s_{\tau} \neq f_{\tau,T}$
+- On peut réécrire le revenu comme : 
+
+:::
+
+::: fragment
+$$\begin{align*} 
+R &= f_{t0,T} + b_\tau\\
+R & = s_{t0} + b_\tau - b_{t0}
+\end{align*}$$
+:::
+
+::: incremental 
+
+- Dans ce cas, le hedge est parfait si la base n'évolue pas dans le temps
+- Ceci est peu probable : quand on hedge, on spécule en fait sur l'évolution de cette base, pour en tirer profit
+
+:::
+
+
+# Conclusion
+
+---
+
+::: incremental 
+
+1. **Le marché à terme permet de négocier aujourd’hui un prix futur**  
+   - Des engagements fermes pour sécuriser un prix dans un contexte incertain.
+
+2. **Trois usages principaux des contrats à terme**  
+   - **Couverture**, **spéculation**, **arbitrage** : chaque acteur a sa logique.
+
+3. **Un marché sécurisé par la chambre de compensation**  
+   - Elle limite les risques de défaut grâce à la **novation** et aux **appels de marge**.
+
+4. **Un effet de levier puissant mais risqué**  
+   - Les **profits peuvent être élevés**, mais les **pertes aussi** : rigueur et liquidité indispensables.
+
+5. **Les prix à terme reflètent plus que le marché physique**  
+   - **Coûts de stockage, taux d’intérêt, rendement de convenance** : un prix qui intègre aussi la logique financière.
+   - **Le hedge "parfait" est rare :** il y a toujours une part de spéculation.
+
+:::
