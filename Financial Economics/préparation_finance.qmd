@@ -1,0 +1,64 @@
+---
+title: "Notes de préparation"
+---
+
+## Les marchés de capitaux 
+
+Ensemble des segments sur lesquels sont cotés des actifs financiers : 
+
+- Marché comptant : 
+  - Différents types de produits : actions, matières premières, instruments de taux d'intérêts (obligations...), devises...
+- Marchés de produits dérivés :
+  - Marché à terme: cf le cours sur les marchés à terme
+    - Le prix à terme est une variable clé dans le cadre des options
+    - Si le cours spot est à $X$, et le terme à $Y$, la base $b_t = Y-X$
+    - Le prix d'un contrat call (i.e. possibilité d'acheter) à même échéance au prix d'exercice $X$ est au moins la base $b_t$ car : 
+      - Sinon, j'achète un call, je vends un contrat à terme à $Y$
+      - A échéance, j'exerce le call, j'achète pour $X$ et livre
+      - Je réalise un profit de $Y-X=b_t$: je le fais tout le temps. 
+      - Pour qu'il y ait une absence d'arbitrage: il faut que le prix du call soit au moins de $b_t$
+  - Marché des swaps
+    - Echange de flux futurs entre deux contreparties individuelles
+  - Marché des options
+
+## Noeuds et rétroactions entre les différents marchés
+
+### Diffusion d'un choc sur le marché des options vers le marché des actifs sous-jacents et naissance d'une boucle de rétroaction
+
+4 juin 2023 : décision de réduction de la production de pétrole par les pays du Golfe
+
+
+- Anticipation des hausses de cours : que font les entreprises exposées? 
+  - Achètent des [calls]{.bg} à prix faible (70 dollars) à des banques, qui s'engagent à leur verser la différence avec le prix spot dans 3 mois si besoin. 
+  - Pourquoi les banques feraient cela? Pourquoi exposer ses fonds propres? 
+  - Les banques s'achètent des contrats à terme pour couvrir leurs positions
+- Cela a un effet de contagion: 
+  - le cours spot fait grimper l'encours de calls
+  - Qui sont couverts par des contrats à terme, dont le prix augmente
+  - Par arbitrage, cela fait grimper le prix du spot: 
+    - En effet, si le spot ne bouge pas, intérêt à acheter maintenant, à stocker et vendre un future
+- Ce mécanisme est amplifié: les options peuvent avoir tendance à amplifier la volatilité des cours spot
+  - Les banques accroissent leur position si le risque d'exercice des options s'accroît
+  - En faisant cela, elles font grimper le prix du spot
+  - A l'inverse, si les cours baissent, elles se déchargent de leurs positions, créant une baisse du spot plus large
+  
+## La relation entre marché comptant et marché à terme, et son impact sur l'évaluation des options
+
+- Un future à échéance T se vend à $Y$ pour un prix comptant $X$
+- On cherche la valeur d'une option call à échéance T avec un strike à $X$ qui est vendue à un prix $P$
+- Un arbitragiste peut : 
+  - Acheter un call à un prix $P$ lui permettant d'acheter à $X$ à T
+  - Vendre un future à $Y$
+  - Sa position nette est donc : $Y-X-P$
+  - Si $P$ est inférieur à $Y-X$, alors un arbitragiste continue longtemps, jusqu'à ce que $X$ augmnete et $Y$ baisse
+
+Prenons un exemple : 
+- Un fabricant de farine cherche à se couvrir contre un risque de hausse du blé et cherche une option call à 3 mois
+- Plusieurs options : 
+  - Acheter aujourd'hui, se faire livrer et stocker ainsi que payer le coût d'opportunité du financement
+  - Acheter demain
+- Relation entre future et spot :
+
+$$
+f_{t,T} = s_t(1+i(T-t))+\text{stockage}+\text{assurance}
+$$

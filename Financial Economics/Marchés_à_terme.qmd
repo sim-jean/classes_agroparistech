@@ -5,6 +5,11 @@ subtitle: "Economie Financière"
 
 ## Introduction 
 
+```{r, setup}
+library(here)
+source(here('utilities.R'))
+```
+
 :::: columns
 
 ::: column
@@ -433,7 +438,10 @@ Si le meunier ne [peut pas faire face à l'appel de marge : ]{.bg4}
   - Donc : $s_T = f_{T,T}$
 - Dans le temps, le lien est plus distendu, pour plusieurs raisons que l'on va analyser. 
 - De façon générale : 
-  - Si le prix du future est au dessus du prix spot, on dit que le marché est en [contango]{.bg4} : c'est une situation normale, où le contrat future implique des coûts
+  - Si le prix du future est au dessus du prix spot, on dit que le marché est en [contango]{.bg4} : 
+    - C'est une situation normale, où le contrat *future* implique des coûts
+    - Le cours à terme est par ailleurs croissant de la maturité
+    
   - Si le prix du future est au dessous du prix spot, on dit que le marché est en [backwardation]{.bg4} : il y a une prime à la détention de l'actif
 
 :::
@@ -464,12 +472,12 @@ En équilibre, l'absence d'opportunités d'arbitrage implique que :
 ::: incremental 
 
 - Supposons maintenant que l'actif n'a pas qu'une valeur en tant qu'actif financier, mais aussi en tant que [bien de consommation, d'usage]{.bg4}
-- Il peut y avoir une prime à la détention : anticipations de stocks mondiaux faibles, demande importante, nécessité dans un processus de production à temps $t$
+- Il peut y avoir une prime à la détention : anticipations de stocks mondiaux faibles/cours futurs hauts, demande importante, nécessité dans un processus de production à temps $t$
 - Dans ce cas, on dit qu'il y a un [convenience yield]{.bg4} (i.e. un rendement de convenance)
   - D'un côté, le coût de détention dans le temps de l'actif est mitigé par le rendement de convenance : $S_0e^{(r+u-y)T}$
   - De l'autre le prix de l'actif : $F_0$
 - Le [coût de portage]{.bg3} est la somme des coûts de stockage et de rendements de convenance
-- Si le rendement de convenance est suffisament large, on peut être en [backwardation]{.bg3}
+- Si le rendement de convenance est suffisament large, on peut être en [backwardation]{.bg3} : 
 
 :::
 
@@ -539,7 +547,8 @@ R & = s_{t0} + b_\tau - b_{t0}
 
 # Conclusion
 
----
+
+## Conclusion
 
 ::: incremental 
 

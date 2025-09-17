@@ -1,0 +1,551 @@
+---
+title: "Marchés de matières premières et options"
+subtitle: "Economie Financière"
+---
+
+```{r, setup}
+library(here)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+
+source(here('utilities.R'))
+library(showtext)
+
+# Ajouter spécifiquement Roboto Light
+font_add_google("Roboto", "roboto", regular.wt = 300)
+
+# Active le rendu avec showtext
+showtext_auto()
+
+local_family = "roboto"
+```
+
+# I. Les options : principes, histoire, marchés
+
+## Définition
+
+::: incremental 
+
+- Contrat [financier]{.bg4}
+- entre un émetteur et un détenteur (ou intermédié par une chambre de compensation cf. cours sur les marchés à terme) de l'option
+- Portant sur une possibilité : 
+  - D'acheter: [call]{.bg3}
+  - Ou de vendre: [put]{.bg3}
+- Moyennant le paiement d'un "prix" (plutôt qu'une prime, que l'on réservera à l'assurance)
+- Un actif dans le futur :
+  - Entre aujourd'hui et l'échéance : c'est une option américaine
+  - A l'échéance : une option européenne
+- A un prix fixé à l'avance : le strike
+- Ils peuvent être échangeables ou non
+
+:::
+
+::: fragment
+
+Ex: une coopérative anticipe une récolte exceptionnelle, ayant potentiellement pour effet une baisse de cours
+
+:::
+
+::: incremental 
+- Pour se protéger, elle achète une option européenne de vente à 210€/tonne à échéance octobre
+- En octobre, si les prix sont à 180€, elle exerce l'option et évite une perte : 
+  - L'émetteur lui vend achète physiquement à 210€/tonne 
+  - Elle revend l'option à l'émetteur, qui lui donne 30€/tonne, de sorte que le prix final est 180+30€=210€ 
+- Si les prix sont à 240€, elle ne l'exerce pas et vend sur le marché spot. 
+
+:::
+
+
+## Les options aujourd'hui
+
+::: incremental 
+
+- Besoin d'un petit historique sur l'émergence des options
+- 
+
+:::
+
+## Couverture et spéculation
+
+::: incremental 
+- Le précédent exemple illustre un exemple de couverture (hedging), où le risque de volatilité est transféré
+
+- Dans de nombreux cas, la détention d'une option repose sur un motif spéculatif : 
+  - Lorsque l'on émet une option de vente (put) : 
+    - On anticipe que l'on pourra se procurer l'actif dans le futur pour solder l'option
+    - On parie ainsi sur la baisse des cours
+  - Lorsque l'on émet une option d'achat (call): 
+    - On anticipe que l'on pourra vendre l'actif pour solder sa position
+    - On parie ainsi qsur la hausse des cours
+    
+- Les options permettent de faire de la "couverture spéculative" (Marteau, 2024) : on se couvre des risques, tout en pariant sur les situations avantageuses
+    
+    
+:::
+
+
+
+
+
+
+## Valeurs des options
+
+Avec une option: 
+- On a un prix d'exercice $K$
+- Associée à un prix de l'option $C$ pour un call ou $P$ pour un put
+- Le prix spot de l'actif sous-jacent $S_t$
+
+Dans le cas d'options américaines, on distingue deux valeurs : 
+- Valeur intrinsèque : égale au gain réalisé en cas d'exercice immédiat à $t$, peut être nulle
+  - Dans le cas d'un call : $V_I = \max(0, S_t - K)$
+  - Dans le cas d'un put : $V_I = \max(0,  K   - S_t)$
+  - Lorsque la valeur intrinsèque est positive, on est "in the money", sinon "at" ou "out of the money"
+
+- Valeur temps ou extrinsèque: valeur spéculative liée à l'évolution du cours spot, entrainant une augmentation de la valeur intrinsèque
+  - Dans le cas d'un call : $C-V_I$
+  - Dans le cas d'un put : $P-V_I$
+- Elle mesure ce que je paie pour jouer sur le futur
+  
+
+-> Il faudrait des exemples et des tableaux pour le call/put
+
+Pourquoi c'est important? 
+- Est ce que je fais un gain? 
+  - Une option in the money a une valeur intrinsèque positive : elle a un gain latent
+  - Une option out of the money n'a pas de gain: on a simplement un espoir qu'elle en ait un
+- Est ce que j'achète du temps? 
+  - At the money : souvent chère, même sans valeur intrinsèque, car on paie une possibilité de variation
+  - Out of the money : j'achète du temps, je parie. 
+- Est ce que je peux espérer un profit net? 
+  - On peut être in the money mais perdre de l'argent!
+
+# Exemples de stratégies classiques
+
+## Notation de base
+
+- $S_T$ : prix spot à maturité
+- $K$ : prix d'exercice (strike)
+- $C$, $P$ : Call, Put
+- $\pi$ : prime payée (achat) ou reçue (vente)
+
+---
+
+## Achat de Call
+
+$$
+\text{Payoff} = \max(S_T - K, 0) - \pi
+$$
+
+```{r}
+#| fig-align: "center"
+
+liner_ = .5
+
+S <- seq(50, 150, by = 1)
+K <- 100
+pi <- 5
+payoff_call_long <- pmax(S - K, 0) - pi
+df1 <- data.frame(S = S, payoff = payoff_call_long)
+
+ggplot(df1, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2) +
+  geom_hline(yintercept = 0) +
+  geom_hline(yintercept = -pi, linetype = "dotted", linewidth = liner_)+
+  geom_vline(xintercept = K+pi, linetype = "dotted", linewidth = liner_)+
+  labs(x = "Prix Spot à maturité (S_T)", y = "Gain net")+
+  annotate("rect", xmin = 100, xmax = 150, ymin = -2*pi, ymax = 45,
+           fill = "lightblue", alpha = 0.3)+
+  ylim(-10,45)+
+  xlim(50, 150)+
+  custom_theme()
+```
+
+---
+
+## Vente de Call
+
+$$
+\text{Payoff} = -\max(S_T - K, 0) + \pi
+$$
+
+```{r}
+
+#| fig-align: "center"
+
+payoff_call_short <- -pmax(S - K, 0) + pi
+df2 <- data.frame(S = S, payoff = payoff_call_short)
+
+ggplot(df2, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "red") +
+  geom_hline(yintercept = 0) +
+  geom_hline(yintercept = pi, linetype = "dotted", linewidth = liner_)+
+  geom_vline(xintercept = K+pi, linetype = "dotted", linewidth = liner_)+
+  labs(x = "Prix Spot à maturité (S_T)", y = "Gain net")+
+  custom_theme()
+
+```
+
+---
+
+## Achat de Put
+
+$$
+\text{Payoff} = \max(K - S_T, 0) - \pi
+$$
+
+```{r}
+#| fig-align: "center"
+
+payoff_put_long <- pmax(K - S, 0) - pi
+df3 <- data.frame(S = S, payoff = payoff_put_long)
+
+ggplot(df3, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "blue") +
+  geom_hline(yintercept = 0) +
+  geom_hline(yintercept = - pi, linetype = "dotted", linewidth = liner_) +
+  geom_vline(xintercept = K - pi, linetype = "dotted", linewidth = liner_) +  
+  labs(x = "Prix Spot à maturité (S_T)", y = "Gain net")+
+  custom_theme()
+
+```
+
+---
+
+## Vente de Put
+
+$$
+\text{Payoff} = -\max(K - S_T, 0) + \pi
+$$
+
+```{r}
+#| fig-align: "center"
+
+payoff_put_short <- -pmax(K - S, 0) + pi
+df4 <- data.frame(S = S, payoff = payoff_put_short)
+
+ggplot(df4, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "darkgreen") +
+  geom_hline(yintercept = + pi, linetype = "dotted", linewidth = liner_) +
+  geom_vline(xintercept = K - pi, linetype = "dotted", linewidth = liner_) +  
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(x = "Prix Spot à maturité (S_T)", y = "Gain net")+
+  custom_theme()
+```
+
+---
+
+## Récapitulatif
+
+| Opération       | Gain/Pert Net                        | Forme graphique       | Pertes | Gains |
+|-----------------|--------------------------------------|-----------------------|--------|-------|
+| Achat de Call    | $( \max(S_T - K, 0) - \pi$          | Coudée vers le haut   | Limitées | Illimités |
+| Émission de Call    | $( -\max(S_T - K, 0) + \pi$      | Coudée vers le bas    | Illimitées | Limités |
+| Achat de Put     | $( \max(K - S_T, 0) - \pi$          | Coudée vers le bas    | Limitées | Illimités |
+| Émission de Put     | $( -\max(K - S_T, 0) + \pi$$     | Coudée vers le haut   | Illimitées | Limités |
+
+---
+
+---
+
+## Pourquoi des stratégies croisées ?
+
+Les stratégies croisées permettent de :
+- Réduire le **coût initial** (en combinant achats et ventes)
+- Adapter la **zone de gain** à des scénarios plus ciblés
+- Mieux contrôler les risques extrêmes
+
+Elles sont **plus fines que futures** ou options simples, utiles pour :
+- Limiter les pertes
+- Profiter d’un scénario modéré (pas juste haussier ou baissier)
+- Transformer la volatilité en opportunité
+
+---
+
+## Bull Call Spread : Coopérative céréalière
+
+Une coopérative s'attend à une **hausse modérée** du prix du blé mais souhaite **limiter le coût de couverture**. Elle :
+
+::: incremental
+
+- Achète un call ($K$=200€/t, $\Pi$=10€/t)
+- Vend un call ($K$=230€/t, $\Pi$=5€/t)
+- Coût net : 5€/t.
+
+:::
+
+
+:::: columns
+
+::: column
+
+$$
+\text{Payoff} = \begin{cases}
+-5 & S_T \leq 200 \\
+S_T - 205 & 200 < S_T < 230 \\
+30 - 5 = 25 & S_T \geq 230
+\end{cases}
+$$
+
+
+:::
+
+::: column
+::: incremental
+
+- En dessous du strike du call qu'il a acheté
+  - Pas d'intérêt à acheter
+  - Mais il paie une prime nette de 5€
+- Au dessus du prix du call acheté (200€), il empoche la différence
+- Au dessus du strike du call vendu : 
+  - L'option est exercée, je dois vendre à 230€, et perds ($S$-230)
+  - Mais j'empoche sur le call que je détiens la différence entre ($S$-200)
+  - En net : $(S-200)-(S-230) = 30$
+  - Auquel je retranche les primes nettes des positions
+
+:::
+:::
+::::
+
+-----
+
+```{r}
+#| fig-align: "center"
+
+pi_combined = 
+
+S2 <- seq(150, 250, 1)
+payoff_bullspread <- pmin(pmax(S2 - 200, 0), 30) - 5
+df5 <- data.frame(S = S2, payoff = payoff_bullspread)
+
+ggplot(df5, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "purple") +
+  geom_hline(yintercept = -5, linetype = "dotted",  linewidth = liner_)+
+  geom_hline(yintercept = 25, linetype = "dotted",  linewidth = liner_)+
+  geom_vline(xintercept = 200, linetype = "dashed", linewidth = liner_)+
+  geom_vline(xintercept = 230, linetype = "dashed", linewidth = liner_)+
+  geom_hline(yintercept = 0) +
+  labs(title = "Bull Call Spread sur Blé", x = "Prix du blé à maturité (€/t)", y = "Gain net")+
+  custom_theme()
+```
+
+---
+
+## Bear Put Spread : Industriel agroalimentaire
+
+Un industriel veut se couvrir contre une **baisse modérée** du prix du blé, sans dépenser trop. Il :
+
+- Achète un put ($K$=220€, $\Pi$=8€)
+- Vend un put ($K$=190€, $\Pi$=3€)
+- Coût net : 5€/t.
+
+$$
+\text{Payoff} = \begin{cases}
+0 & S_T \geq 220 \\
+220 - S_T - 5 & 190 < S_T < 220 \\
+30 - 5 = 25 & S_T \leq 190
+\end{cases}
+$$
+
+```{r}
+#| fig-align: "center"
+
+payoff_bearspread <- pmin(pmax(220 - S2, 0), 30) - 5
+df6 <- data.frame(S = S2, payoff = payoff_bearspread)
+
+ggplot(df6, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "brown") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(title = "Bear Put Spread sur Blé", x = "Prix du blé à maturité (€/t)", y = "Gain net")+
+  custom_theme()
+```
+
+---
+
+## Straddle (long) : spéculation sur volatilité (trader)
+
+Un trader anticipe une **forte variation** du prix du blé liée:
+
+- aux aléas climatiques
+- à l'instabilité géopolitique
+
+sans savoir précisément la direction. Il veut : 
+
+::: incremental
+- Se prémunir contre les variations des prix
+- Essayer d'en tirer profit, à la différence d'une couverture par future
+- Avec une exposition financière limitée
+:::
+
+:::: columns
+
+::: column
+
+Pour cela il s'engage dans un straddle (ici long) : 
+
+::: incremental
+
+- Il achète autant d'option de vente (put) que d'achat (call) 
+- De même échéance 
+- Au même prix strike 
+
+:::
+:::
+
+::: column
+::: incremental 
+
+- Achète un call ($K$=210€, $\Pi$=9€)
+  - Il achète l'option d'acheter à prix $K$
+  - Il se prémunit contre [une hausse des prix]{.fragment}
+- Achète un put ($K$=210€, $\Pi$=7€)
+  - Il achète l'option de vendre à prix $K$
+  - Il se prémunit contre une [baisse des prix]{.fragment}
+- Coût : 16€.
+
+:::
+:::
+::::
+
+----
+
+$$
+\text{Payoff} = \max(S_T - 210, 0) + \max(210 - S_T, 0) - 16
+$$
+
+
+----
+
+```{r}
+#| fig-align: "center"
+
+
+payoff_straddle <- pmax(S2 - 210, 0) + pmax(210 - S2, 0) - 16
+df7 <- data.frame(S = S2, payoff = payoff_straddle)
+
+ggplot(df7, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "orange") +
+  geom_hline(yintercept = 0) +
+  geom_hline(yintercept = -16, linetype = "dotted", linewidth = liner_)+
+  geom_vline(xintercept = 210-16, linetype = "dashed", linewidth = liner_)+
+  geom_vline(xintercept = 210+16, linetype = "dashed", linewidth = liner_)+
+  labs(title = "Straddle sur Blé", x = "Prix à maturité (€/t)", y = "Gain net")+
+  custom_theme()
+```
+
+---
+
+## Covered Call : revenu sur stock physique (maïs)
+
+Un agriculteur **détient du maïs** et veut **générer un revenu complémentaire**. Il vend un call (K=240€, π=6€).
+
+$$
+\text{Payoff} = \min(S_T, 240) - 200 + 6
+$$
+
+→ Si le prix monte trop, le maïs est vendu à 240€. Sinon, il conserve son stock + la prime.
+
+```{r}
+#| fig-align: "center"
+
+payoff_coveredcall <- pmin(S2, 240) - 200 + 6
+df8 <- data.frame(S = S2, payoff = payoff_coveredcall)
+
+ggplot(df8, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "darkblue") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(title = "Covered Call sur Maïs", x = "Prix du maïs à maturité (€/t)", y = "Gain net")+
+  custom_theme()
+```
+
+---
+
+## Protective Put : assurance exportateur soja
+
+Un exportateur détient du soja et souhaite **se protéger contre une chute brutale** des prix. Il :
+- Achète un put ($K$=220€, $\Pi$=5€)
+
+$$
+\text{Payoff} = \max(S_T, 220) - 200 - 5
+$$
+
+- Protège le stock contre une baisse tout en gardant le potentiel de hausse.
+
+```{r}
+#| fig-align: "center"
+
+payoff_protectiveput <- pmax(S2, 220) - 200 - 5
+df9 <- data.frame(S = S2, payoff = payoff_protectiveput)
+
+ggplot(df9, aes(x = S, y = payoff)) +
+  geom_line(size = 1.2, color = "darkred") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_hline(yintercept = - pi)
+  labs(title = "Protective Put sur Soja", x = "Prix du soja à maturité (€/t)", y = "Gain net")+
+  custom_theme()
+```
+
+---
+
+## Conclusion
+
+Les options sont des outils **flexibles** et **puissants** pour gérer les risques sur les marchés agricoles.
+
+Les stratégies croisées permettent d’adapter précisément la couverture au scénario anticipé, avec un **contrôle fin des risques et des coûts**.
+
+
+
+
+
+
+
+## Mécanismes de base des options
+
+Plaçons nous du point de vue, en période $t$ :
+- d'un détenteur d'une option call à prix d'exercice $X_t$ pour un prix de $p_t$
+- Et d'un cours de marché spot à $s_t$
+
+::: incremental 
+
+- Si $s_t > X_t$, le détenteur est "in the money" en $t$
+  - Je dispose de la capacité de me procurer un actif à prix $X_t$, et peux le vendre à $s_t$, réalisant un profit
+- Si $s_t < X_t$, le détenteur est "out of the money" en $t$
+
+:::
+
+Dans le cas d'un détenteur d'option put à prix d'exercice $X_t$ pour un prix de $p_t$
+
+::: incremental
+- Si $X_t>s_t$, le détenteur est "in the money":
+  - Je dispose de la capacité de vendre un actif à prix $X_t$ plutôt que 
+- Si $X_t<s_t$, le détenteur est "out of the money"
+
+- Un acheteur d'une option choisit le prix d'exercice $x_T$ de l'option (le strike) à échéance $T$ qu'il achète à un prix $p_t$
+- Avec le prix du future à échéance $T$ - $f_{t, T}$ - cela définit des possibilités d'arbitrage
+- En effet, dans le cas d'un call:
+  - Je peux acheter une option $p_t$, qui me garantit de me procurer l'actif à prix $x_T$ en $T$
+  - En même temps, je peux vendre un future à prix $f_{t, T}$
+- Ma position est donc : 
+  - $- (p_t + x_T)$ en sortie
+  - $+f_{t,T}$ en entrée
+  - En net : $f_{t, T}-x_t-p_t$
+- Si le prix d'une option $p_t$ est inférieur à la différence entre le prix du future et le strike, alors je peux réaliser un gain sans risque
+- Dans ce cas, on dit que 
+
+- Le prix de l'option et le gain sans risque (arbitrage) définissent différents cas de figure : 
+
+
+:::
+
+
+## Notes à inclure
+
+
+## Bibliographie
+
+- Didier Marteau, *Les options*, La Découverte, 2024
+
+
+
+

@@ -1,0 +1,1668 @@
+---
+title: "Marchés et défaillances"
+subtitle: "EESE - Approche économique des enjeux environnementaux et stratégie environnementale"
+---
+
+```{r, chunk init}
+rm(list = ls())
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(here)
+#library(extrafont)
+library(reshape2)
+
+#install.packages(c("sysfonts", "showtext"))
+library(sysfonts)
+
+
+library(showtext)
+
+font_add_google("Roboto", "Roboto")
+showtext_auto()
+
+source(here("utilities.R"))
+
+local_family = "Roboto"
+
+```
+
+# I. Fonctionnement des marchés
+
+## A. Consommateurs et demande
+
+### 1. Qu'est ce que la demande?
+
+:::: {.callout-note title="Demande"}
+Fonction, ou graphique, montrant :
+
+::: incremental
+-   La [quantité]{.bg3} de bien que des acheteurs sont [prêts à acheter à un prix donné]{.bg3}
+:::
+::::
+
+::: fragment
+Soient $x$ et $y$ deux biens:
+:::
+
+::: incremental
+-   $U(x,y)$ la fonction d'utilité associée
+    -   Utilité marginale positive : $\frac{\partial U}{\partial x} \geq 0$ resp. $y$
+    -   Utilité marginale décroissante : $\frac{\partial^2 U}{\partial x^2}\leq 0$ resp. $y$
+-   $R$ le revenu (exogène), et $p$ le prix (relatif) du bien $x$ : quelle est la contrainte budgétaire?
+    -   $R\geq px + y$
+    -   Du coup, $R = px + y$
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Combien je suis prêt à payer en plus?
+-   Quelle est la [somme maximale que je suis prêt à sacrifier]{.bg3} pour obtenir plus de bien $x$ sans être moins bien qu'avant?
+:::
+
+[Mathématiquement :]{.fragment}
+
+::: fragment
+$$ dU(x,y)=0 \Rightarrow \frac{\partial U}{\partial x}dx + \frac{\partial U}{\partial y}dy = 0 $$
+:::
+
+::: fragment
+$$ \Rightarrow -\frac{dy}{dx} = \frac{\frac{\partial U}{\partial x}}{\frac{\partial U}{\partial y}}$$
+:::
+
+::: fragment
+Quelle quantité de bien $y$ dois-je sacrifier pour consommer une unité de $x$ sans perdre d'utilité?
+
+C'est ce qu'on appelle le [Taux Marginal de Substitution]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+### DMP & bénéfice marginal
+
+$$ \Rightarrow -\frac{dy}{dx} = \frac{\frac{\partial U}{\partial x}}{\frac{\partial U}{\partial y}}$$
+
+::: incremental
+-   Si on suppose que $y$ est juste le revenu, on peut appeler cela la [disposition marginale à payer]{.bg4} $DMP(x)$
+    -   Combien d'euros je suis prêt à sacrifier pour une unité de bien $x$
+    -   C'est le taux de rapport équitable entre revenu et quantité
+    -   C'est une valeur issue des préférences uniquement
+-   Si on le retourne :
+    -   La quantité que je suis prêt à sacrifier reflète ce que me [rapporte la dernière unité consommée]{.bg4}
+    -   C'est donc une mesure du [bénéfice marginal]{.bg4} retiré avec la consommation d'une unité de bien en termes monétaires
+:::
+
+------------------------------------------------------------------------
+
+### Comment évolue la DMP?
+
+```{r, indifference}
+
+#| fig-align: "center"
+#| fig-width: 6
+#| fig-height: 4
+
+# Fonction utilité implicite U(x,y)=200 (indifférence)
+df <- data.frame(x = seq(1,100)) %>%
+  mutate(y = 200/x)
+
+# Points pour les tangentes
+points <- tibble(x0 = c(5,30)) %>%
+  mutate(y0 = 200/x0,
+         slope = -200/x0^2)
+
+# Création des droites tangentes
+tangentes <- points %>%
+  rowwise() %>%
+  mutate(data = list(tibble(
+    x = seq(x0-30, x0+30, length.out=50),
+    y = y0 + slope*(x - x0)
+  ))) %>%
+  unnest(data)
+
+# Graphique
+ggplot(df, aes(x=x, y=y)) +
+  geom_line(size=1) +
+  geom_line(data=tangentes, aes(x=x, y=y, group=x0), linetype="dashed", color="red") +
+  #geom_point(data=points, aes(x=x0, y=y0), color="blue", size=3) +
+  custom_theme()+
+  ylim(0,100)
+
+```
+
+La valeur de la DMP [diminue]{.bg3} à mesure que l'on a plus de $x$ :
+
+::: incremental
+-   On consomme plus de bien $x$ : l'utilité marginale que l'on en retire est moidnre
+-   On consomme moins de bien $y$ : l'utilité marginale que l'on en retire est plus grande
+-   Le rapport des deux diminue
+:::
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Comment je maximise mon utilité avec mon buget?
+    -   On intègre la réalité du marché
+:::
+
+::::: fragment
+:::: {.callout-note title="\"Marché"}
+::: incremental
+-   Rassemblement des vendeurs et acheteurs, réels ou potentiels
+-   Dont les interactions déterminent [l'allocation i.e. la quantité et le prix]{.bg4} d'un bien ou d'un service
+-   A travers l'échange
+:::
+::::
+:::::
+
+::: incremental
+-   Maximiser $U(x,y)$ sous contrainte que $R = px + y$
+-   Quelles quantités consommer?
+    -   A l'optimum, quel est le rapport entre la dernière unité de bien et le prix qu'elle me coûte?
+:::
+
+::: fragment
+$$ \max U(x,y) \text{ s.c. } R=px+y $$
+:::
+
+::: fragment
+$$ \Rightarrow \max U(x, R-px)$$
+:::
+
+::: fragment
+$$\Rightarrow \frac{\partial U}{\partial x} - p \frac{\partial U}{\partial y}=0$$
+:::
+
+------------------------------------------------------------------------
+
+### Différentes vues de la demande
+
+$$ \Rightarrow \frac{\frac{\partial U}{\partial x}}{\frac{\partial U}{\partial y}} = p = DMP(x)$$
+
+::: incremental
+-   A l'optimum, la [disposition marginale à payer est égale au prix de marché]{.bg4}
+-   La relation $p=DMP(x)$ dans le plan $(x,p)$ se nomme la [demande inverse]{.bg4}
+    -   "Quel est le prix maximum que je suis prêt à payer pour $x$ unités?"
+    -   C'est mieux pour la représentation graphique - on y reviendra
+-   La relation $x = DMP^{-1}(p)$ dans le plan $(p,x)$ est la [demande standard]{.bg4}
+    -   Pour un prix donné, quelle quantité je suis prêt à payer?
+    -   C'est mieux pour les calculs
+:::
+
+----
+
+:::: {.callout-note title="Demande"}
+Fonction, ou graphique, montrant :
+
+::: incremental
+-   La [quantité]{.bg3} de bien que des acheteurs sont prêts à acheter à un prix donné
+-   C'est également la [disposition marginale à payer]{.bg3} pour un bien
+-   C'est aussi une mesure monétaire du [bénéfice marginal]{.bg3} lié à la consommation d'une unité supplémentaire
+:::
+::::
+
+
+------------------------------------------------------------------------
+
+### 2. Propriétés et interprétations de la demande
+
+```{r, demande}
+
+#| fig-align: "center"
+
+
+df <- data.frame(Quantité = seq(0,30)) %>%
+  mutate(Prix = 30 - Quantité)
+
+ggplot(df, aes(y=Prix, x=Quantité)) +
+  geom_line(color="firebrick", size=1) +
+  # Ligne verticale depuis x=15
+  geom_segment(aes(x=15, xend=15, y=0, yend=30-15), linetype="dashed", color="gray") +
+  # Ligne horizontale depuis y=15
+  geom_segment(aes(x=0, xend=30-15, y=15, yend=15), linetype="dashed", color="gray") +
+  # Point d’intersection
+  geom_point(aes(x=15, y=15), color="black", size=1) +
+  custom_theme()
+
+```
+
+::: incremental
+-   Horizontalement : si les acheteurs font face à un prix de 15€, ils achèteront 15 unités
+-   Verticalement : si les acheteurs achètent 15 unités, l'acheteur marginal est prêt à payer au maximum 15€.
+:::
+
+------------------------------------------------------------------------
+
+Pourquoi la demande est-elle décroissante i.e. décroît quand le prix augmente?
+
+::: incremental
+-   A mesure que le prix augmente, on choisit des produits substituables (si possible) qui coûtent relativement moins cher
+    -   C'est [l'effet de substitution]{.bg4}
+-   Par ailleurs, le pouvoir d'achat baisse : on ne peut pas en acheter autant
+    -   C'est [l'effet de revenu]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+### 3. De la demande individuelle à la demande collective
+
+La demande totale est la [somme des quantités demandées]{.bg3}:
+
+::: incremental
+-   Pour chaque prix, on additionne les quantités demandées
+-   On appelle cela une [somme horizontale]{.bg3}
+:::
+
+::: fragment
+Supposons que
+
+-   La demande du groupe A est $Q_A(p) = 100 - p$
+-   La demande du groupe B est $Q_B(p) = 50-p$
+
+:::
+
+
+::: fragment
+1.  Quelle est la demande agrégée?
+
+:::
+
+::: incremental
+-   $Q_T = 150 - 2p$?
+    -   Non!
+-   Pour $p=10$, $Q_T = 100-10 + 50- 10 = 130$
+    -   Mais pour $p=70$, $Q_T = 100 - 70 = 30 \neq 150 - 140 = 10$
+:::
+
+------------------------------------------------------------------------
+
+-   Il faut, pour chaque prix donné, sommer les quantités demandées en faisant attention aux intervalles de définition
+
+::: fragment
+$$
+Q_T=
+\begin{cases}
+150 - 2p \text{ si } p\leq 50\\
+100 - p \text{ si } p \in [50,100]\\
+0 \text{ autrement}
+\end{cases}
+$$
+:::
+
+------------------------------------------------------------------------
+
+```{r, demande totale}
+
+#| fig-align: "center"
+
+
+data = data.frame(Prix = seq(0,110))%>%
+  mutate(QA = pmax(100-Prix, 0),
+         QB = pmax(50-Prix, 0),
+         QT = QA+QB)%>%
+  pivot_longer(-Prix, 
+               names_to = "Demandes", 
+               values_to = "Quantité")
+
+data %>%
+  ggplot(aes(x = Prix, y = Quantité, color = Demandes))+
+  geom_line()+
+  custom_theme()
+
+
+```
+
+------------------------------------------------------------------------
+
+### 4. La notion de surplus
+
+:::{.callout-note title ="Surplus"}
+
+La somme des différences entre la somme payée et la disposition marginale à payer pour chaque unité
+
+C'est une mesure du gain net que procure la participation au marché
+
+:::
+
+::: incremental
+-   Quel repère utilise-t-on?
+    -   Le repère (quantité, prix)
+-   Comment le voir graphiquement?
+    -   C'est l'intégrale de la disposition marginale à payer
+    -   Diminué de ce qu'on a payé
+    
+:::
+
+::: fragment
+
+On peut définir le surplus comme : 
+
+$$ S_C = \int_0^Q D_T(x)dx - pQ_T$$
+
+:::
+
+------------------------------------------------------------------------
+
+```{r, demande totale 2}
+
+#| fig-align: "center"
+
+
+library(tidyverse)
+
+# Courbes de demande inverses individuelles et totale
+data <- tibble(Prix = seq(0, 110, by = 1)) %>%
+  mutate(
+    QA = pmax(100 - Prix, 0),
+    QB = pmax(50  - Prix, 0),
+    QT = QA + QB
+  ) %>%
+  pivot_longer(-Prix, names_to = "Demandes", values_to = "Quantité")
+
+# Extraire la courbe totale (QT)
+qt_df <- data %>% filter(Demandes == "QT") %>% arrange(Prix)
+
+# Prix de référence
+p_line <- 75
+
+# Quantité échangée à p = 75 (intersection avec QT)
+q_star <- qt_df %>%
+  filter(Prix == p_line) %>%
+  pull(Quantité)
+
+# (au cas où 75 ne tomberait pas pile sur la grille, on pourrait interpoler:)
+# q_star <- approx(x = qt_df$Prix, y = qt_df$Quantité, xout = p_line)$y
+
+# Prix d'étranglement (choke price) pour QT: plus petit Prix tel que Quantité == 0
+p_choke <- qt_df %>% filter(Quantité == 0) %>% summarise(p = min(Prix)) %>% pull(p)
+
+# Polygone du surplus: (0, p_line) -> (q_star, p_line) -> le long de QT jusqu'à (0, p_choke) -> retour (0, p_line)
+surplus_poly <- bind_rows(
+  tibble(Quantité = 0,      Prix = p_line),
+  tibble(Quantité = q_star, Prix = p_line),
+  qt_df %>%
+    filter(Prix >= p_line, Prix <= p_choke) %>%
+    arrange(Prix) %>%
+    select(Quantité, Prix),
+  tibble(Quantité = 0,      Prix = p_line)
+)
+
+# Graphique
+data %>%
+  subset(Quantité>0)%>%
+  ggplot(aes(x = Quantité, y = Prix, color = Demandes)) +
+  # Surplus (aire sous QT au-dessus de p = 75)
+  geom_polygon(data = surplus_poly, aes(x = Quantité, y = Prix),
+               inherit.aes = FALSE, fill = "lightblue", alpha = 0.35, color = NA) +
+  # Courbes de demande inverses
+  geom_line(size = 1) +
+  # Segment horizontal depuis l'ordonnée jusqu'à QT à p = 75
+  geom_segment(aes(x = 0, xend = q_star, y = p_line, yend = p_line),
+               inherit.aes = FALSE, linetype = "dashed", color = "black", linewidth= .2) +
+  # Point d'intersection (q*, p_line)
+  geom_point(data = tibble(Quantité = q_star, Prix = p_line),
+             aes(x = Quantité, y = Prix), inherit.aes = FALSE, size = 1, color = "black") +
+  # Optionnel: étiquettes
+  #annotate("text", x = q_star, y = p_line + 4, label = expression(paste("(", q^"*", ", 75)")), hjust = 0.5) +
+  #annotate("text", x = 1, y = p_line + 2, label = "Prix = 75", hjust = 0, vjust = 0.5) +
+  custom_theme()
+
+
+
+```
+
+------------------------------------------------------------------------
+
+```{r, demande totale 3}
+
+#| fig-align: "center"
+
+
+# Courbes de demande inverses individuelles et totale
+data <- tibble(Prix = seq(0, 110, by = 1)) %>%
+  mutate(
+    QA = pmax(100 - Prix, 0),
+    QB = pmax(50  - Prix, 0),
+    QT = QA + QB
+  ) %>%
+  pivot_longer(-Prix, names_to = "Demandes", values_to = "Quantité")
+
+# Extraire la courbe totale (QT)
+qt_df <- data %>% filter(Demandes == "QT") %>% arrange(Prix)
+
+# Prix de référence
+p_line <- 10 
+
+# Quantité échangée à p = 75 (intersection avec QT)
+q_star <- qt_df %>%
+  filter(Prix == p_line) %>%
+  pull(Quantité)
+
+# (au cas où 75 ne tomberait pas pile sur la grille, on pourrait interpoler:)
+# q_star <- approx(x = qt_df$Prix, y = qt_df$Quantité, xout = p_line)$y
+
+# Prix d'étranglement (choke price) pour QT: plus petit Prix tel que Quantité == 0
+p_choke <- qt_df %>% filter(Quantité == 0) %>% summarise(p = min(Prix)) %>% pull(p)
+
+# Polygone du surplus: (0, p_line) -> (q_star, p_line) -> le long de QT jusqu'à (0, p_choke) -> retour (0, p_line)
+surplus_poly <- bind_rows(
+  tibble(Quantité = 0,      Prix = p_line),
+  tibble(Quantité = q_star, Prix = p_line),
+  qt_df %>%
+    filter(Prix >= p_line, Prix <= p_choke) %>%
+    arrange(Prix) %>%
+    select(Quantité, Prix),
+  tibble(Quantité = 0,      Prix = p_line)
+)
+
+# Graphique
+data %>%
+  subset(Quantité>0)%>%
+  ggplot(aes(x = Quantité, y = Prix, color = Demandes)) +
+  # Surplus (aire sous QT au-dessus de p = 75)
+  geom_polygon(data = surplus_poly, aes(x = Quantité, y = Prix),
+               inherit.aes = FALSE, fill = "lightblue", alpha = 0.35, color = NA) +
+  # Courbes de demande inverses
+  geom_line(size = 1) +
+  # Segment horizontal depuis l'ordonnée jusqu'à QT à p = 75
+  geom_segment(aes(x = 0, xend = q_star, y = p_line, yend = p_line),
+               inherit.aes = FALSE, linetype = "dashed", color = "black", linewidth= .2) +
+  # Point d'intersection (q*, p_line)
+  geom_point(data = tibble(Quantité = q_star, Prix = p_line),
+             aes(x = Quantité, y = Prix), inherit.aes = FALSE, size = 1, color = "black") +
+  # Optionnel: étiquettes
+  #annotate("text", x = q_star, y = p_line + 4, label = expression(paste("(", q^"*", ", 75)")), hjust = 0.5) +
+  #annotate("text", x = 1, y = p_line + 2, label = "Prix = 75", hjust = 0, vjust = 0.5) +
+  custom_theme()
+
+
+```
+
+## B. Producteurs et offre
+
+### 1. Offre du producteur
+
+Un producteur cherche à [maximiser son profit:]{.bg3} c'est la différence entre
+
+::: incremental
+-   Ses recettes totales, déterminées par le prix de marché et les quantités vendues
+-   Ses coûts de production : on suppose que le [coût de production]{.bg3} est [croissant et convexe]{.bg3} :
+    -   Plus on produit, plus on doit utiliser des ressources rares, plus chères
+    -   Ou encore moins productives : ça vous rappelle quelqu'un?
+-   On fait l'hypothèse de [rendements décroissants]{.bg3}
+    -   C'est nécessaire pour que la fonction d'offre soit croissante
+    -   Mais ce n'est pas toujours le cas :
+        -   On peut avoir des rendements croissants en présence de coûts fixes : réseaux, infrastructures
+        -   Ou même constants
+:::
+
+::: fragment
+$$
+\max \pi(q) = \max (pq - C(q))
+$$
+:::
+
+------------------------------------------------------------------------
+
+$$
+\max \pi(q) \Rightarrow p - C'(q) = 0 \Rightarrow p = C'(q) 
+$$
+
+::: incremental
+-   C'est ce qu'on appelle la fonction d'offre d'un producteur :
+    -   Combien dois-je être payé au minimum pour produire une unité supplémentaire?
+-   Si $p<C'(q)$ :
+    -   Je produis $q$, mais la dernière unité me fait perdre de l'argent
+    -   Donc j'évite
+-   Si $p>C'(q)$
+    -   Je produis $q$, mais je gagne plus que ça me rapporte
+    -   Je produis plus
+:::
+
+------------------------------------------------------------------------
+
+### 2. Surplus du producteur
+
+::: {.callout-note title="Surplus du producteur"}
+Le surplus du producteur est la différence entre la recette et le coût marginal de production pour chaque unité
+
+[C'est son profit, mais aussi ]{.fragment} 
+
+::: fragment
+
+$$S_P = \pi =pQ - \int_0^Q P_s(q)dq $$
+
+:::
+:::
+
+----
+
+```{r, profit}
+
+#| fig-align: "center"
+#| fig-height: 6
+#| fig-width: 5
+
+# Données pour l'offre
+q_vals <- seq(0, 150, by = 0.1)
+df <- tibble(
+  Quantite = q_vals,
+  Prix_offre = 10 + q_vals
+)
+
+# Prix de marché
+p_star <- 70
+q_star <- p_star - 10
+
+# Polygone du surplus du producteur
+surplus_poly <- bind_rows(
+  tibble(Quantite = 0, Prix = p_star),
+  tibble(Quantite = q_star, Prix = p_star),
+  tibble(Quantite = q_star, Prix = 10 + q_star),
+  tibble(Quantite = 0, Prix = 10),
+  tibble(Quantite = 0, Prix = p_star)
+)
+
+# Graphique
+ggplot(df, aes(x = Quantite, y = Prix_offre)) +
+  geom_line(color = "firebrick", size = 1) +
+  # Surplus du producteur
+  geom_polygon(data = surplus_poly, aes(x = Quantite, y = Prix),
+               fill = "orange", alpha = 0.4, inherit.aes = FALSE) +
+  # Ligne de prix de marché
+  geom_hline(yintercept = p_star, linetype = "dashed") +
+  # Point d'équilibre
+  labs(x = "Quantité", y = "Prix / Coût marginal",
+       title = ) +
+  custom_theme()
+
+
+
+
+```
+
+
+
+## C. Equilibre de marché
+
+### 1. Marché et droits de propriété
+
+
+::: {.callout-note title="Marché"}
+Collection des acheteurs et vendeurs, réalisés ou potentiels, dont les interactions déterminent les allocations et prix des biens et services à travers un échange
+:::
+
+Sur un marché s'échangent donc des biens et services, dont les agents sont propriétaires, c'est à dire à minima ont des droits (faisceau):
+
+::: incremental
+-   [Exclusifs :]{.bg4} tous les coûts et bénéfices liées à la propriété et à l'usage de la ressources sont intégralement à la charge du propriétaire
+
+-   [Transférables : ]{.bg4}les droits peuvent être transmis par un échange volontaire
+
+-   [Exécutoires :]{.bg4} il existe une autorité pour les faire respecter
+:::
+
+------------------------------------------------------------------------
+
+### 2. Equilibre de marché
+
+:::: columns
+
+:::{.column width="30%"}
+
+::: incremental
+-   On définit [l'équilibre du marché]{.bg3} comme l'intersection entre [demande et offre]{.bg3}
+-   On suppose que les droits de propriété sont [bien définis]{.bg4}:
+    -   Exclusifs
+    -   Les bénéfices liés à la production et à la consommation sont pris en compte par les agents
+    -   De même façon que les coûts
+    
+:::
+
+::: 
+
+:::{.column width="70%"}
+
+::: fragment
+
+```{r, équilibre}
+#| fig-align: "center"
+#| fig-height: 6
+#| fig-width: 7
+
+# Parameters
+a <- 20  # demand intercept
+b <- 1   # demand slope
+c <- 2   # supply intercept
+d <- 0.5 # supply slope
+
+# Equilibrium
+q_star <- (a - c) / (b + d)
+p_star <- a - b * q_star
+
+# Data for curves
+q_vals <- seq(0, max(1.4*q_star, 20), length.out = 400)
+demand <- tibble(Quantite = q_vals, Prix = a - b*q_vals, Courbe = "Demande (MB)")
+supply <- tibble(Quantite = q_vals, Prix = c + d*q_vals, Courbe = "Offre (MC)")
+
+# Consumer surplus polygon (under demand, above p*)
+cs_poly <- tibble(
+  Quantite = c(0, q_star, q_star, 0),
+  Prix = c(p_star, p_star, a - b*q_star, a)
+)
+
+# Producer surplus polygon (above supply, below p*)
+ps_poly <- tibble(
+  Quantite = c(0, q_star, q_star, 0),
+  Prix = c(c, c + d*q_star, p_star, p_star)
+)
+
+# Graph
+ggplot() +
+  geom_line(data = demand, aes(x = Quantite, y = Prix, color = Courbe), size=1) +
+  geom_line(data = supply, aes(x = Quantite, y = Prix, color = Courbe), size=1) +
+  #geom_polygon(data = cs_poly, aes(x = Quantite, y = Prix), fill="lightblue", alpha=0.4) +
+  #geom_polygon(data = ps_poly, aes(x = Quantite, y = Prix), fill="orange", alpha=0.4) +
+  geom_point(aes(x = q_star, y = p_star), size=1, color="black") +
+  geom_vline(xintercept = q_star, linetype="dashed", linewidth = .4) +
+  geom_hline(yintercept = p_star, linetype="dashed", linewidth = .4) +
+  labs(
+    title = "",
+    x = "Quantité (q)",
+    y = "Prix (p)",
+    color = ""
+  ) +
+  custom_theme()
+
+```
+
+::: 
+
+:::
+
+::::
+
+----
+
+### 3. Efficiences
+
+Comment caractériser cette allocation telle que: 
+
+$$ O(Q) = D(Q)$$
+
+
+::: incremental 
+
+- L'équilibre implique $C'(Q) = DMP(Q)$ 
+  - La valeur attribuée à la dernière unité consommée est le coût pour la produire
+  - Si on s'arrêtait avant la valeur marginale serait plus large que le coût marginal de production 
+  - Le [surplus total est maximisé]{.bg3}
+
+:::
+
+::: fragment
+
+$$\begin{align*}
+&S_T = S_C + S_P = \int_0^Q D(x)dx - pQ + pQ - \int_0^Q O(x)dx\\
+&\Rightarrow \frac{dS_T}{dQ} = D(Q) -  O(Q) = 0 \\
+&\Rightarrow DMP(Q) = C'(Q)
+\end{align*}$$
+
+:::
+
+::: fragment
+
+- C'est [l'efficience allocative]{.bg4}
+
+
+:::
+
+------------------------------------------------------------------------
+
+```{r, optimalité}
+
+# Parameters
+a <- 20  # demand intercept
+b <- 1   # demand slope
+c <- 2   # supply intercept
+d <- 0.5 # supply slope
+
+# Equilibrium
+q_star <- (a - c) / (b + d)
+p_star <- a - b * q_star
+
+# Data for curves
+q_vals <- seq(0, max(1.4*q_star, 20), length.out = 400)
+demand <- tibble(Quantite = q_vals, Prix = a - b*q_vals, Courbe = "Demande (MB)")
+supply <- tibble(Quantite = q_vals, Prix = c + d*q_vals, Courbe = "Offre (MC)")
+
+# Consumer surplus polygon (under demand, above p*)
+cs_poly <- tibble(
+  Quantite = c(0, q_star, q_star, 0),
+  Prix = c(p_star, p_star, a - b*q_star, a)
+)
+
+# Producer surplus polygon (above supply, below p*)
+ps_poly <- tibble(
+  Quantite = c(0, q_star, q_star, 0),
+  Prix = c(c, c + d*q_star, p_star, p_star)
+)
+
+# Graph
+ggplot() +
+  geom_line(data = demand, aes(x = Quantite, y = Prix, color = Courbe), size=1) +
+  geom_line(data = supply, aes(x = Quantite, y = Prix, color = Courbe), size=1) +
+  geom_polygon(data = cs_poly, aes(x = Quantite, y = Prix), fill="lightblue", alpha=0.4) +
+  geom_polygon(data = ps_poly, aes(x = Quantite, y = Prix), fill="orange", alpha=0.4) +
+  geom_point(aes(x = q_star, y = p_star), size=1, color="black") +
+  geom_vline(xintercept = q_star, linetype="dashed", linewidth = .4) +
+  geom_hline(yintercept = p_star, linetype="dashed", linewidth = .4) +
+  labs(
+    title = "",
+    x = "Quantité (q)",
+    y = "Prix (p)",
+    color = ""
+  ) +
+  custom_theme()
+
+
+```
+
+::: notes
+Illustrer ce qui se passe quand on va au dessus, et en dessous
+:::
+
+
+----
+
+On a également la condition: 
+
+$$ p = Cm(q)$$
+
+::: incremental 
+
+- Cela veut dire que si on a plusieurs producteurs : $Cm_A(q) = p = Cm_B(q)$
+- Les coûts marginaux sont égalisés... [so what?]{.fragment}
+
+:::
+
+---
+
+Si on veut produire une quantité donnée, $Q$, on peut la [répartir de façon égalitaire]{.bg3} : 
+
+
+```{r, coûts marginaux}
+#| fig-align: "center"
+#| fig-height: 6
+#| fig-width: 5
+#| 
+# Packages
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(dplyr)
+})
+
+# Paramètres : mêmes intercepts, pentes différentes
+a  <- 2           # ordonnée à l'origine (identique)
+bL <- 0.5         # pente plus faible (courbe "basse")
+bH <- 1.2         # pente plus forte (courbe "haute")
+
+Q_bar <- 6        # quantité fixée pour la ligne verticale
+
+# Grille de quantités
+Qmax <- 10
+df <- tibble(
+  q   = seq(0, Qmax, length.out = 501),
+  MC_low  = a + bL*q,
+  MC_high = a + bH*q
+)
+
+# Données restreintes pour remplir jusqu'à Q_bar
+fill_df <- df |> filter(q <= Q_bar)
+fill_dfB <- df |> filter(q <= (6 -3/1.7))
+
+# Graphique
+ggplot(df, aes(x = q)) +
+  # Surcoût: entre MC_high et MC_low (jusqu'à Q_bar)
+  geom_ribbon(
+    data = fill_df,
+    aes(ymin = MC_low, ymax = MC_high, fill = "Coût élevé"),
+    alpha = 0.5
+  ) +
+  # Coût minimal: sous MC_low (jusqu'à Q_bar)
+  geom_ribbon(
+    data = fill_df,
+    aes(ymin = 0, ymax = MC_low, fill = "Coût faible"),
+    alpha = 0.5
+  ) +
+  # Courbes de coûts marginaux
+  geom_line(aes(y = MC_low), linewidth = 1, color = "#74add1") +
+  geom_line(aes(y = MC_high), linewidth = 1, color = "#f46d43") +
+  # Ligne verticale pointillée à Q_bar
+  geom_vline(xintercept = Q_bar, linetype = "dotted", linewidth = 0.9) +
+  # Repères visuels
+  # Axes et titres
+  labs(
+    title = "",
+    x = "Quantité q",
+    y = "Coût marginal",
+    fill = NULL
+  ) +
+  # Légende propre
+  scale_fill_manual(values = c( "#74add1", "#f46d43"
+  )) +
+  coord_cartesian(xlim = c(0, Qmax), ylim = c(0, a + bH*Qmax*1.05)) +
+  custom_theme()
+
+
+
+```
+
+
+
+
+
+---
+
+Ou alors la répartir de sorte que les coûts marginaux soient égaux: [on déplace de la production chez le producteur plus efficace]{.bg3 .fragment}
+
+[C'est l'efficience [productive]{.bg4}]{.fragment}
+
+
+```{r, coûts marginaux 3}
+
+#| fig-align: "center"
+#| fig-height: 6
+#| fig-width: 5
+
+# Packages
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(dplyr)
+})
+
+# Paramètres : mêmes intercepts, pentes différentes
+a  <- 2           # ordonnée à l'origine (identique)
+bL <- 0.5         # pente plus faible (courbe "basse")
+bH <- 1.2         # pente plus forte (courbe "haute")
+
+Q_bar <- 6        # quantité fixée pour la ligne verticale
+
+# Grille de quantités
+Qmax <- 10
+
+df <- tibble(
+  q   = seq(0, Qmax, length.out = 501),
+  MC_low  = a + bL*q,
+  MC_high = a + bH*q
+)
+
+# Données restreintes pour remplir jusqu'à Q_bar
+fill_dfA <- df |> filter(q <= 6/1.7)
+fill_dfB <- df |> filter(q <= (12 -6/1.7))
+fill_diff <- df %>%
+  subset(q <= Q_bar)%>%
+  subset(q >= 6/1.7)
+  
+# Graphique
+ggplot(df, aes(x = q)) +
+  # Surcoût: entre MC_high et MC_low (jusqu'à Q_bar)
+  geom_ribbon(
+    data = fill_dfA,
+    aes(ymin = MC_low, ymax = MC_high, fill = "Coût élevé"),
+    alpha = 0.5
+  ) +
+  # Coût minimal: sous MC_low (jusqu'à Q_bar)
+  geom_ribbon(
+    data = fill_dfB,
+    aes(ymin = 0, ymax = MC_low, fill = "Coût faible"),
+    alpha = 0.5
+  ) +
+  geom_ribbon(
+    data = fill_diff, 
+    aes(ymin = MC_low, ymax = MC_high, fill = "Différence de surplus"),
+    alpha = .5)+
+  
+  # Courbes de coûts marginaux
+  geom_line(aes(y = MC_low), linewidth = 1, color = "#74add1") +
+  geom_line(aes(y = MC_high), linewidth = 1, color = "#f46d43") +
+  # Ligne verticale pointillée à Q_bar
+  geom_vline(xintercept = Q_bar, linetype = "dotted", linewidth = 0.2) +
+  geom_vline(xintercept = 6/1.7, linetype = "dotted", linewidth = .4)+
+  geom_vline(xintercept = 12-6/1.7, linetype = "dotted", linewidth = .4)+
+  geom_hline(yintercept = a + bH*6/1.7, linetype = "dashed", linewidth = .4)+
+  # Repères visuels
+  # Axes et titres
+  labs(
+    title = " ",
+    x = "Quantité q",
+    y = "Coût marginal",
+    fill = NULL
+  ) +
+  # Légende propre
+  scale_fill_manual(values = c( "#f46d43","#74add1", "gray"
+  )) +
+  coord_cartesian(xlim = c(0, Qmax), ylim = c(0, a + bH*Qmax*1.05)) +
+  custom_theme()
+
+
+
+```
+
+
+
+---
+
+:::{.callout-note title="Critère de Pareto"}
+
+De l'économiste italien Vilfredo Pareto, une allocation est Pareto-efficiente si [l'on ne peut pas améliorer la situation de]{.bg4} [quelqu'un sans déteriorer celle d'un autre]{.bg4}
+
+:::
+
+::: incremental 
+
+- Permet de dire si une situation est [mutuellement désirable]{.bg3}, dès lors, il faut la rechercher
+- Le critère de Pareto est un critère d'efficacité, mais pas d'[équité]{.bg4} :
+    -   Elon Musk devient trilliardaire
+    -   Et qu'il n'y a pas de croissance
+-   C'est un équilibre de Pareto : on ne peut améliorer notre situation sans détériorer la sienne
+-   On utilisera d'autres outils pour cela
+
+:::
+
+
+
+------------------------------------------------------------------------
+
+### 4. Le premier théorème de l'économie du bien être
+
+*"Tout est pour le mieux dans le meilleur des mondes possibles"*, Voltaire, *Candide*, 1759 - une pique à Leibniz
+
+[Ce théorème montre que, si :]{.fragment}
+
+::: incremental
+-   Les marchés sont parfaitement concurrentiels
+-   L'information sur tous les biens et services est parfaite
+-   Il existe un marché pour tous les biens et services
+-   Les droits de propriété sont pleinement définis
+:::
+
+::: fragment
+
+::: quote 
+Alors l'allocation résultant du marché est efficiente (i.e. allocative, productive, au sens de Pareto)
+
+:::
+
+:::
+
+::: fragment
+
+Autrement dit :
+
+:::
+
+::: incremental
+-   Dans le meilleur des mondes possibles, les [marchés allouent les ressources de la meilleure façon i.e. efficiente]{.bg4}
+-   Mais dans quel monde est-ce réel?
+-   Est-ce la solution [la moins pire si elle n'est pas la meilleure?]{.bg3}
+:::
+
+::: notes
+
+Certes, le mal et les malheurs sont bien présents dans ce monde, mais en dépit de ces imperfections, ce monde choisi par ce grand architecte est bien le meilleur des mondes possibles. Ainsi, Leibniz à tous ceux qui se questionnent sur les malheurs qui s’abattent sur la terre, Leibniz répond que dans un autre monde, cela aurait été pire.
+
+:::
+
+[Lire [D. Fullerton and R. Stavins, How Economists See the Environment, *Nature*, 1998](https://scholar.harvard.edu/files/stavins/files/how_economists_see_the_environment.pdf)]{.fragment}
+
+------------------------------------------------------------------------
+
+![](../images/EESE/how_economists_see.png)
+
+::: fragment
+*Other economists, especially those in public policy schools, have a different approach to this theorem. By clarifying the conditions under which markets are efficient, the theorem also identifies the conditions under which they are not.*
+:::
+
+::: fragment
+*Private markets are perfectly efficient only if there are no public goods, no externalities, no monopoly buyers or sellers, no increasing returns to scale, no information problems, no transaction costs, no taxes*
+:::
+
+::: fragment
+*no common property and no other ‘distortions’ between the costs paid by buyers and the benefits received by sellers. Those conditions are obviously very restrictive, and they are usually not all satisfied simultaneously in the real world.*
+:::
+
+# II. Les défaillances de marché
+
+## A. Les externalités
+
+### 1. Définition
+
+::: {.callout-note title="Externalités"}
+Action d'un agent qui a des conséquences sur l'utilité ou le profit d'autres agents sans compensation monétaire
+:::
+
+::: incremental
+-   Un problème de **justice**
+    -   Les gens n'ont rien demandé et sont lésés
+-   Un problème d'**efficacité** :
+    -   Nuit aux efforts que les gens font pour maximiser leur bien être
+-   Le coût (ou bénéfice) **social** des actions diffère du coût (ou bénéfice) **privé**
+-   Empêche le mécanisme de marché d'allouer les ressources au mieux: - Il n'y a pas de marché pour cela
+-   Les droits de propriétés sur ces conséquences sont mal définis, pas exclusifs
+:::
+
+------------------------------------------------------------------------
+
+Plusieurs types:
+
+::: incremental
+-   Production
+-   Consommation
+-   Positive/négative :
+    -   La pollution impose des coûts sociaux
+    -   La vaccination offre des bénéfices sociaux
+:::
+
+------------------------------------------------------------------------
+
+### 2. Externalités négatives
+
+::::::: columns
+:::: {.column width="30%"}
+::: incremental
+-   Le [coût social]{.bg4} n'est pas bien pris en compte
+-   La courbe de [coût privé]{.bg4} dicte  l'équilibre
+:::
+::::
+
+:::: {.column width="70%"}
+
+::: fragment
+
+![](../images/EESE/pestiriv.png)
+
+:::
+::::
+:::::::
+
+::: notes
+Principaux résultats : lors des périodes d’épandages, les riverains d’exploitations connaissent une augmentation de la concentration urinaire de certains produits. Les résultats varient selon les substances, mais cette augmentation peut atteindre environ 60 % dans certains cas, selon les données présentées par l’Anses et SPF. Dans l’air ambiant, la concentration de certaines molécules peut être multipliée par un facteur 45, tandis que d’autres se retrouvent à des taux huit fois supérieurs dans les poussières prélevées au domicile.
+
+En période de traitements, la surexposition des enfants de 3 ans à 6 ans est supérieure à celle relevée pour les enfants de plus de 6 ans et les adultes. En cause : les plus jeunes passent plus de temps près du sol et portent plus fréquemment la main à la bouche.
+:::
+
+
+------------------------------------------------------------------------
+
+```{r, externalités 1}
+#| fig-align: center
+
+# ---- Paramètres ----
+A <- 40; B <- 0.5   # Demande (MB) : p = A - B q
+C <- 10; D <- 0.2   # Offre privée (PMC) : p = C + D q
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq)
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  geom_polygon(data = smc_poly, aes(x = q, y = p),
+               fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  geom_polygon(data = cs_poly, aes(x = q, y = p),
+               fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("steelblue", "red", "firebrick"))+
+  # Guides et points
+  geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  geom_vline(xintercept = q_soc, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .3) +
+  geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  
+  labs(
+    title = "",
+    x = "Quantité (q)",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+```
+
+::: notes
+
+- La présence d'externalités 
+
+:::
+
+------------------------------------------------------------------------
+
+### 3. Externalités positives
+
+::::::: columns
+:::: {.column width="30%"}
+::: incremental
+-   Le [bénéfice social]{.bg4} n'est pas bien pris en compte
+-   La courbe de [bénéfice privé]{.bg4} dicte l'équilibre
+:::
+::::
+
+:::: {.column width="70%"}
+::: fragment
+![](../images/EESE/florida.png)
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+```{r, externalités 2}
+
+
+# ---- Paramètres (linéaires) ----
+A <- 40; B <- 0.5   # SMP : p = A - B q  (bénéfice marginal privé)
+C <- 10; D <- 0.2   # SMC : p = C + D q  (coût marginal social)
+tau_b <- 8          # Externalité positive : SMB = SMP + tau_b
+
+# ---- Fonctions ----
+SMP <- function(q) A - B*q                # Private marginal benefit
+SMB <- function(q) A + tau_b - B*q        # Social marginal benefit (au-dessus de SMP)
+SMC <- function(q) C + D*q                # Social marginal cost
+
+# ---- Équilibres ----
+# Privé: SMP = SMC
+q_priv <- (A - C) / (B + D)
+p_priv <- SMP(q_priv)
+
+# Social: SMB = SMC
+q_soc  <- (A + tau_b - C) / (B + D)
+p_soc  <- SMB(q_soc)
+
+# ---- Domaine et données ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 600)
+df <- tibble(
+  q   = q_seq,
+  SMP = SMP(q_seq),
+  SMB = SMB(q_seq),
+  SMC = SMC(q_seq)
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill_priv <- q_seq[q_seq <= q_priv]
+q_fill_gap  <- q_seq[q_seq >= min(q_priv, q_soc) & q_seq <= max(q_priv, q_soc)]
+
+# Surplus du consommateur privé : entre SMP et p_priv, de 0 à q_priv
+cs_poly <- tibble(
+  q = c(q_fill_priv, rev(q_fill_priv)),
+  p = c(SMP(q_fill_priv), rep(p_priv, length(q_fill_priv)))
+)
+
+# "Deadweight loss" / gain manqué (externalité positive) : entre SMB et SMC, de q_priv à q_soc
+# (si q_soc > q_priv ; sinon l'inverse)
+if (q_soc >= q_priv) {
+  dwl_poly <- tibble(
+    q = c(q_fill_gap, rev(q_fill_gap)),
+    p = c(SMB(q_fill_gap), SMC(rev(q_fill_gap)))
+  )
+} else {
+  dwl_poly <- tibble(
+    q = c(q_fill_gap, rev(q_fill_gap)),
+    p = c(SMC(q_fill_gap), SMB(rev(q_fill_gap)))
+  )
+}
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_priv, q_soc),
+  p = c(p_priv, p_soc),
+  type = c("Équilibre privé", "Équilibre social")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Surplus du consommateur (privé)
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "lightblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Perte sèche / gain manqué (entre SMB et SMC entre q_P et q_S)
+  geom_polygon(data = dwl_poly, aes(x = q, y = p),
+               fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("SMP" = "steelblue", "SMB" = "royalblue", "SMC" = "firebrick")) +
+  # Guides et points
+  geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  geom_vline(xintercept = q_soc,  linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_soc,  linetype = "dashed", linewidth = .3) +
+  geom_point(data = eq_pts, aes(x = q, y = p), size = 1.8, color = "black") +
+  # Annotations (optionnelles)
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.12*q_priv, y = p_priv + 2, label = "Surplus\n(consommateur privé)", color = "steelblue4") +
+  #annotate("text", x = (q_priv+q_soc)/2, y = (SMB((q_priv+q_soc)/2)+SMC((q_priv+q_soc)/2))/2,
+  #         label = "Gain manqué\n(externalité positive)", color = "royalblue") +
+  labs(
+    title = " ",
+    x = "Quantité (q)",
+    y = "Prix / Bénéfice / Coût marginal",
+    color = ""
+  ) +
+  theme_minimal()
+
+
+
+```
+
+------------------------------------------------------------------------
+
+### 4. D'où viennent les externalités?
+
+1.  Les [droits de propriété sont mal définis]{.bg4}
+
+::: incremental
+-   Qui a "le droit" ?
+    -   Les agriculteurs qui épendent?
+    -   Les enfants qui rampent?
+-   Si les droits sont bien définis
+    -   Il peut y avoir un commerce entre les parties
+    -   Permettant d'aboutir à une situation mutuellement avantageuse
+    -   Au moins faiblement
+:::
+
+[2. Les coûts transactions doivent demeurer faibles]{.bg4 .fragment}
+
+::: incremental
+-   Qu'il soit simple de faire des transactions
+-   Notamment que les personnes concernées soient : 
+  - [en nombre limité]{.bg4} 
+  - [Pas trop dispersées]{.bg3}
+  - etc
+:::
+
+## B. Les biens publics ou communs
+
+### 1. Définition
+
+Les biens et services ne sont [pas toujours privés]{.bg3} :
+
+::: incremental
+-   [Rivalité]{.bg4} : on peut avoir une partie des bénéfices liés à un bien/service, sans que les autres paient
+-   [Excludabilité]{.bg4} : il est difficile d'exclure des gens de la consommation
+:::
+
+----
+
+```{r, grille}
+
+df <- expand_grid(
+  Exclusion = c("Facile (Excludable)", "Difficile (Non-excludable)"),
+  Rivalité  = c("Élevée (Soustractive)", "Faible (Non-soustractive)")
+) |>
+  mutate(
+    Type = c("Biens privés\n(Private goods)",
+             "Ressources communes\n(Common-pool resources)",
+             "Biens de club\n(Club/Toll goods)",
+             "Biens publics\n(Public goods)"),
+    Exemple = c("Nourriture, vêtements",
+                "Forêts, pêcheries",
+                "Autoroute à péage, cinéma",
+                "Défense nationale, air pur")
+  )
+
+# Graphique
+ggplot(df, aes(x = Exclusion, y = Rivalité, fill = Rivalité)) +
+  geom_tile(color = "white", alpha = 0.8) +
+  geom_text(aes(label = paste(Type, "\n", Exemple)),
+            size = 4, lineheight = 1, color = "black") +
+  scale_fill_manual(values = c("Élevée (Soustractive)" = "#e07b91",
+                               "Faible (Non-soustractive)" = "#91c3e0")) +
+  scale_y_discrete(limits = rev) +
+  labs(
+    title = "",
+    x = "Exclusion",
+    y = "Rivalité (Soustractibilité)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none",
+        plot.title = element_text(hjust = 0.5, face = "bold"))
+
+```
+
+----
+
+### 2. Provision des biens publics
+
+::: incremental
+-   [Combien de biens publics doivent-être produits?]{.bg4}
+    -   Quel est le niveau d'investissement dans l'éducation nationale, dans la santé, la préservation des rivières?
+-   La provision [optimale]{.bg4} est lorsque : [le coût marginal social de production est égal au bénéfice marginal social]{.fragment}
+    -   Qu'est ce que ça veut dire?
+-   La non rivalité implique que pplusieurs personnes peuvent utiliser la ême unité du même bien
+    -   Plusieurs personnes peuvent retirer des bénéfices avec la même unité
+    
+:::
+
+------------------------------------------------------------------------
+
+### Biens privés, biens publics
+
+::::::: columns
+:::: column
+[Biens privés]{.bg4} :
+
+::: incremental
+-   [Une personne uniquement]{.bg4} peut en consommer i.e. en retirer du bénéfice
+-   A un [prix donné,]{.bg3} on doit additionner ce que veulent consommer individuellement les gens
+-   On fait donc la [somme horizontale des demandes]{.bg4}
+:::
+::::
+
+:::: column
+[Biens publics :]{.bg4}
+
+::: incremental
+-   [Plusieurs personnes]{.bg3} peuvent en consommer i.e. en retirer du bénéfice
+-   A [chaque quantité,]{.bg3} le bénéfice marginal s'additionne
+-   On fait donc la [somme verticale des demandes]{.bg4}
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### Exemple
+
+Evaluation des bénéfices d'un parc, liés à l'hectare protégé :
+
+::: incremental
+-   Les randonneurs profitent de paysages pour randonner : $MB_r(Q) = 10 - Q$
+-   Les habitants d'une agglomération voisine retirent des bénéfices : $MB_h(Q) = 3 - 0.5Q$
+-   De façon plus lointaine, il y a une valeur d'existence : $MB_e(Q) = 2 - Q$
+:::
+
+::: fragment
+Pour chaque quantité on additionne le prix prêt à payer :
+
+$$
+SMB(Q)=
+\begin{cases}
+15 - 3.5Q \text{ pour } Q\leq2\\
+13 - 1.5Q \text{ pour } Q \in [2,6]\\
+10 - Q \text { pour } Q \in [6,10]\\
+0 \text{ pour } Q>10
+\end{cases}
+$$
+:::
+
+------------------------------------------------------------------------
+
+```{r, }
+# ---- Fonctions de MB par tête ----
+MB_r <- function(Q) 10 - Q       # Randonneurs
+MB_h <- function(Q) 3 - 0.5*Q    # Habitants
+MB_e <- function(Q) 2 - Q        # Existence
+
+# ---- Bénéfice marginal social (somme verticale) ----
+SMB <- function(Q) MB_r(Q) + MB_h(Q) + MB_e(Q)
+
+# ---- Domaine ----
+Qseq <- seq(0, 10, by = 0.1)   # borne haute choisie car au-delà, certaines MB deviennent négatives
+
+df <- tibble(
+  Q = Qseq,
+  Randonneurs = pmax(MB_r(Qseq),0),
+  Habitants   = pmax(MB_h(Qseq),0),
+  Existence   = pmax(MB_e(Qseq),0),
+  SMB         = pmax(Randonneurs + Habitants + Existence,0)
+) %>%
+  pivot_longer(-Q, names_to = "Courbe", values_to = "Valeur")
+
+# ---- Graphique ----
+ggplot(df, aes(x = Q, y = Valeur, color = Courbe)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = c(
+    "Randonneurs" = "forestgreen",
+    "Habitants"   = "steelblue",
+    "Existence"   = "purple",
+    "SMB"         = "firebrick"
+  )) +
+  labs(
+    #subtitle = "Bénéfices marginaux individuels & social ",
+    x = "Niveau de protection du parc Q",
+    y = "Bénéfice marginal (€/unité)",
+    color = ""
+  ) +
+  custom_theme()
+
+```
+
+------------------------------------------------------------------------
+
+Si le coût marginale de production est de $Cm(Q) = Q$, l'optimum est :
+
+::: fragment
+$$ Cm(Q) = SMB(Q) \Rightarrow Q = 13-1.5Q \Rightarrow Q = 5.2$$
+:::
+
+------------------------------------------------------------------------
+
+```{r, provision }
+
+# ---- Fonctions de MB par tête ----
+MB_r <- function(Q) 10 - Q       # Randonneurs
+MB_h <- function(Q) 3 - 0.5*Q    # Habitants
+MB_e <- function(Q) 2 - Q        # Existence
+
+# ---- Bénéfice marginal social (somme verticale) ----
+SMB <- function(Q) MB_r(Q) + MB_h(Q) + MB_e(Q)
+
+# ---- Domaine ----
+Qseq <- seq(0, 10, by = 0.1)   # borne haute choisie car au-delà, certaines MB deviennent négatives
+
+df <- tibble(
+  Q = Qseq,
+  Randonneurs = pmax(MB_r(Qseq),0),
+  Habitants   = pmax(MB_h(Qseq),0),
+  Existence   = pmax(MB_e(Qseq),0),
+  SMB         = pmax(Randonneurs + Habitants + Existence,0),
+  Cm          = Qseq
+) %>%
+  pivot_longer(-Q, names_to = "Courbe", values_to = "Valeur")
+
+# ---- Graphique ----
+ggplot(df, aes(x = Q, y = Valeur, color = Courbe)) +
+  geom_line(size = 1.2) +
+  scale_color_manual(values = c(
+    "Randonneurs" = "forestgreen",
+    "Habitants"   = "steelblue",
+    "Existence"   = "purple",
+    "SMB"         = "firebrick"
+  )) +
+  labs(
+    #subtitle = "Bénéfices marginaux individuels & social ",
+    x = "Niveau de protection du parc Q",
+    y = "Bénéfice marginal (€/unité)",
+    color = ""
+  ) +
+  custom_theme()
+```
+
+------------------------------------------------------------------------
+
+### 3. Comment financer les biens publics?
+
+::: incremental
+-   La provision optimale de biens publics est plus large que ce que chaque individu voudrait
+
+-   Ceci dit, il ne s'agit pas pour chaque groupe de payer plus qu'il voudrait!
+
+    -   Le coût est partagé
+    -   Idéalement, selon la [règle de Lindahl : à chaque groupe selon bénéfice marginal]{.bg4}
+
+-   Dans notre cas :
+
+    -   La Fédération Française de Randonnée paie : 4.8
+    -   Le comité des habitants locaux paie : 0.4
+    -   Les bénéficiaires de la valeur d'existence ne contribuent pas
+
+-   Le coût est couvert!
+:::
+
+------------------------------------------------------------------------
+
+Plusieurs problèmes se posent avec ce mécanisme :
+
+::: incremental
+-   
+
+    1.  Suppose une [information parfaite]{.bg4} de la part du législateur : ce n'est presque jamais le cas!
+
+-   
+
+    2.  Risque de [passager clandestin]{.bg4} :
+
+    -   Les bénéficiaires d'une ressource, d'un bien commun, ou des services communs ne veulent pas payer, ou sous paient
+    -   On sous déclare son groupe
+
+-   Des mécanismes d'enchères existent pour régler cela:
+
+    -   On appelle cela des mécanismes de financement ["incitation compatibles"]{.bg3}
+    -   [Vickrey - Clarke - Groves]{.bg3} : chaque individu paie l'externalité de sa présence, pas son bénéfice : si je fais changer la décision collective, je paie ce que ce montant change
+:::
+
+------------------------------------------------------------------------
+
+3.  Des problèmes d'[équité]{.bg4} se posent avec la mesure que l'on choisit dans une optique normative
+
+::: incremental
+-   On peut supposer que la [disposition à payer dépend des revenus]{.bg4}
+    -   Dans ce cas, on donne plus de poids dans la décision aux riches
+    -   La parole des pauvres est plus invisibilisée
+    -   Mais un mécanisme de Lindahl permet que [les riches paient plus, les pauvres moins]{.bg4}
+-   Si on découpe [l'analyse entre efficacité et distribution]{.bg3}, on évalue des {DMP qui dépendent seulement des préférences}{.bg3}
+    -   On compare les préférences sur une base commune, on neutralise l'effet de la richesse
+    -   La [quantité optimale de bien public dépend mieux des préférences]{.bg3}
+    -   Mais si on applique un pricing à la Lindahl :
+        -   [L'utilité marginale d'1€ pour un pauvre]{.bg3} est bien plus importante que pour quelqu'un de riche
+        -   Le [financement est inéquitable]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+### 4. Séparer l'efficacité de l'équité
+
+::: incremental
+-   Le [second théorème de l'économie du bien être]{.bg4} garantit que :
+    -   Tout optimum de Pareto
+    -   peut être atteint moyennant une redistribution initiale
+-   Il vaut donc mieux :
+    -   Trouver le moyen[ d'allouer efficacement les richesses]{.bg4}, de sorte à ce que les prix reflètent bien les effets des actions (biens publics, externalités)
+    -   Mais [corriger les inéquités liées aux financement par des transferts]{.bg4}
+:::
+
+# Conclusion
+
+------------------------------------------------------------------------
+
+::: incremental
+-   Sur un marché :
+    -   La demande reflète la disposition marginale à payer des individus, aggrégée, ainsi que le bénéfice marginal
+    -   L'offre, sur un marché concurrentiel, est reflétée par le coût marginal
+    -   Dans des conditions particulières, le tout marché est le meilleur allocateur de richesses
+      - Permet l'efficence allocative, productive et de Pareto
+-   Mais cela n'arrive jamais :
+    -   En économie de l'environnement, on se focalise sur les externalités et les biens publics : 
+      - Absence de prix, différence entre bénéfice/coût marginal privé et social 
+      - Types de propriétés particulières
+    -   Mais d'autres défaillances, que l'on verra dans d'autres cours, peuvent subvenir : information imparfaite, groupes qui peuvent contrôler les prix, des propriétés mal définies etc
+-   En mettant un prix sur ces éléments, on pourrait aboutir à des provisions optimales de biens publics/effets externes
+    -   Celles ci ne nous disent pas grand chose sur leur conséquence distributionnelles, ni sur leur équité
+    -   Allocation et équité sont mieux appréhendées avec des outils différents
+-   Enfin, l'économie de l'environnement, en ayant identifié ces défaillances, propose d'analyser les mécanismes de régulation disponibles :
+    -   Instruments monétaires : taxes, droits échangeables
+    -   Instruments réglementaires : normes, interdictions
+    -   Instruments hybrides : taxes, subventions, contrats, incitations comportementales
+    -   On verra le bon "policy mix" dans la session suivante!
+:::
+
+------------------------------------------------------------------------
+
+# Annexes : coûts bénéfices et différentes méthodes d'aggrégation
+
+Prenons un exemple :
+
+$$U_i(Q_i, y_i) = a_i ln(Q_i) + y_i$$
+
+C'est une fonction d'utilité dite "quasi-linéaire" : on neutralise l'effet du revenu
+
+::: fragment
+$$\frac{\partial U_i}{\partial y_i} = 1$$
+
+L'utilité marginale du revenu ne dépend pas de son niveau
+:::
+
+[1. Quelle est la DMP?]{.fragment}
+
+::: fragment
+$$dU_i = \frac{a_i}{Q_i}dQ_i + dy_i = 0 \Rightarrow DMP(Q_i) = \frac{a_i}{Q_i}$$
+:::
+
+[2. Quelle est la demande pour un consommateur $i$?]{.fragment}
+
+::: fragment
+$$DMP(Q_i) = p \Rightarrow \frac{a_i}{Q_i} = p \Rightarrow Q_i(p) = \frac{a_i}{p}$$
+:::

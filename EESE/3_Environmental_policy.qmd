@@ -1,0 +1,164 @@
+---
+title: "Politique économique environnementale"
+subtitle: "EESE - Approche économique des enjeux environnementaux et stratégie environnementale"
+---
+
+# I. Introduction
+
+---
+
+![](../images/EESE/eu_ets_IFP.png)
+
+![](../images/EESE/gj_fr24.jpg)
+
+---
+
+## A. Quel but pour la politique économique environnementale?
+
+
+::: incremental 
+
+- Efficacité : aboutir à la réduction des pollutions
+
+- Efficience : le faire à moindre coût, maximiser le surplus
+
+- Equité : justice dans la répartition des ressources : 
+  - Horizontale : traiter de la même façon les personnes placées dans la même situation
+    - A pollution égal, traitement égal
+    - Est-ce que tous les ménages pauvres bénéficient pareil d'une politique économique?
+  - Verticale : traiter différemment les personnes dans des situations différentes
+    - A capacité différente, effort différent
+    - Est-ce que les ménages pauvres sont plus perdants que les ménages riches du fait d'une politique économique?
+
+:::
+
+
+
+
+## B. Démarche du cours : comparer les instruments dans une population hétérogène
+
+On a notre disposition : 
+
+::: incremental
+
+-   Instruments réglementaires : normes technique, interdictions etc
+-   Instruments monétaires : taxes, droits échangeables
+-   Instruments hybrides : contrats, incitations comportementales, taxes et normes ensemble
+
+:::
+
+::: fragment
+
+On va voir ce qui se passe si on suppose que 
+
+
+:::
+
+::: incremental 
+
+- Certaines firmes ont plus de mal à réduire leur pollution que d'autres
+- Si certains groupes d'individus souffrent de façon disproportionnée des dommages
+
+:::
+
+
+
+# II . Les solutions réglementaires
+
+## A. Normes techniques
+
+
+## B. Normes administrative
+
+
+
+
+# III. Taxes et subventions
+
+# A. Le principe du pollueur payeur
+
+## A. Internaliser les externalités
+
+10 min
+
+## B. Le double dividende
+
+5 min
+
+## C. Efficicence
+
+
+
+## D. Une potentielle régressivité
+
+### 1. Progressivité/régressivité de l'impôt
+
+
+
+### 2. Incidence
+
+
+### 3. Dans les faits?
+
+15
+
+## D. Taxe carbone et gilets jaunes
+
+### 1. Panorama et évolution de la fiscalité carbone en France
+
+### 2. Effets distributifs des 
+
+Douenne, 2022, The vertical and horizontal 
+
+# III. Approches fondées sur le marché
+
+## A. Mécanisme
+
+## B. Conséquences distributives
+
+## C. EU ETS et CBAM
+
+- Parler EU et ETS
+- Quand ça marche pas en reprenant les vieux là, notamment si fraude ou monopolisation
+- Puis voir avec CBAM etc
+
+## D. Quand est-ce que ça marche pas? 
+
+- Dommages marginaux différents : l'équivalence des unités de pollution
+- Voir bien en détails le cours sur le marché, y'a des choses à prendre et non
+
+- Il faut regarder le lien, même graphique avec ce que ça implique, pour bien comprendre le lien avec les prix de marché. 
+
+- Je pense que l'on peut essayer cela : on fait un graphique évolution du surplus lié aux quantités de pollution 
+
+
+# IV. Quel mix de politiques publiques 
+
+# A. Pour garantir l'efficacité? 
+
+
+Chez Adrien Fabre
+
+Rational agents engage in the activity iff its private benefits exceed its total costs (private + social).
+This basic efficiency result rests on several assumptions, including:
+No other imperfection than the climate externality. In particular, optimal income distribution.
+Rational agents maximizig their consumption.
+In high- and upper-middle income countries, carbon-pricing alone is regressive.
+
+- Problème des taxes si bénéfices marginaux différents etc?
+
+# B. pour garantir l'acceptabilité? 
+
+Adrien
+
+https://adrien-fabre.com/Documents/carbon_tax_aversion.pdf
+
+Après les gilets jaunes, on a un peu créé la mort de la taxe carbone en france
+
+# Comment réguler? 
+
+Qui doit payer
+
+https://www.lemonde.fr/idees/article/2025/08/29/faire-croire-que-la-preservation-de-l-environnement-est-une-preoccupation-de-bobos-reveurs-c-est-abandonner-a-leur-sort-les-milieux-populaires_6637383_3232.html
+
+Quel climate policy mix en conclusion - 20 min

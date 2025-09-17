@@ -18,7 +18,6 @@ subtitle: "UC3 - Economie de l'Environnement et des Ressources Naturelles"
 </script>
 ```
 
-
 ```{r}
 
 
@@ -59,21 +58,20 @@ Costanza and Daly, 1987, ["Towards and Ecological Economics"](https://www.uvm.ed
 :::
 
 ::: incremental
--   Il s'agit d'intégrer la protection de l'environnement et de la biodiversitédans l'ordre d'un [calcul coûts bénéfices]{.bg4} pour guider [l'action publique]{.bg4}
+-   Il s'agit d'intégrer la protection de l'environnement et de la biodiversité dans l'ordre d'un [calcul coûts bénéfices]{.bg4} pour guider [l'action publique]{.bg4}
     -   Idée de [we protect what we value]{.bg3}
 -   Il s'agit aussi d'évaluer les [responsabilités juridiques]{.bg4} dans le cas des destructions environnementales
+
 :::
 
 ## Le préjudice écologique
 
 ::: incremental
 -   Né de la loi de 2016 pour "la reconquête de la biodiversité, de la nature et des paysages", le [préjudice écologique]{.bg4} (Article 1246).
-
     -   Il instaure l'obligation, pour les responsables, de réparer ce préjudice aux écosystèmes et services écosystémiques, notamment après les directives européennes de 2004 sur le sujet.
     -   Il devient nécessaire de [réparer l'environnement]{.bg4} en tant que tel, pas simplement pour les préjudices indirects que l'homme perçoit.
 
 -   En 1999, le tanker *Erika* fait naufrage dans le golfe de Gascogne
-
     -   déversant des dizaines de milliers de tonnes de fioul lourd, atteignant les côtes bretonnes.
     -   Des communes se constituent alors [parties civiles,]{.bg3} pour être dédommagées du préjudice subi, et seront finalement reconnues dans leur droit par un arrêt de la [Cour de Cassation en 2012](https://www.sciencespo.fr/ecole-droit/fr/actualites/le-prejudice-ecologique-en-france/)
     -   Une amende de 200 millions d'euros de réparations à payer par ... Total.
@@ -81,13 +79,20 @@ Costanza and Daly, 1987, ["Towards and Ecological Economics"](https://www.uvm.ed
 -   La réparation doit être [intégrale]{.bg4} après un chiffrage des dégâts, tout en visant une [restauration en nature.]{.bg4}
 
 -   Voir l'explication [vidéo du préjudice écologique en France des étudiants de Sciences Po Paris](https://www.sciencespo.fr/ecole-droit/fr/actualites/le-prejudice-ecologique-en-france/)
+
 :::
 
-## Quelles valeurs mesure-t-on?
+
+# I. Qu'est ce que la valeur?
+
+
+
+## De quelles valeurs parle-t-on?
 
 En économie, le concept de [valeur économique totale]{.bg4} émerge des travaux de John Krutilla (1967, [Conservation Reconsidered](https://media.rff.org/archive/files/sharepoint/News/Features/Documents/071003%20Krutilla-ConservationReconsidered.pdf)):
 
 ::: {.incremental style="font-size:90%"}
+
 -   La valeur [d'usage]{.bg4} qui peut être:
     -   [Directe]{.bg3}: les valeurs associées à la consommation directe de ressources issues de l'environnement (poisson, bois etc), c'est à dire aux services écosystémiques de [provision]{.fg} ou de contributions de la nature aux populations [matérielles]{.fg}
     -   [Indirecte]{.bg3}: les valeurs associées au fonctionnement des écosystèmes, qui donnent des services écosystémiques de [régulation]{.fg}, comme la séquestration du carbone, ou le filtrage de l'eau, ou de contributions de la nature aux populations [de régulation]{.fg}
@@ -100,7 +105,42 @@ En économie, le concept de [valeur économique totale]{.bg4} émerge des travau
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/typologie_valeurs_tromeur.jpg){align="center"}
+![](../images/Valuation/typologie_valeurs_tromeur.jpg){align="center"}
+
+## Biens marchands, non marchands, prix et valeurs
+
+:::: columns
+
+::: column
+
+Les biens et services peuvent être [marchands]{.bg4} : 
+
+::: incremental
+
+- *destinés normalement à être vendus sur le marché à un prix calculé pour couvrir leur coût de production. Sont marchands tous les biens et services produits par les branches d'activité marchande* [INSEE](https://www.insee.fr/fr/metadonnees/definition/c1234)
+- Ils ont donc un prix i.e. : 
+  - une valeur monétaire échangée contre un bien ou un service
+  - Résultant souvent de la confrontation entre offre et demande
+  
+:::
+
+:::
+
+::: column
+
+ou [non-marchands]{.bg4}
+
+::: incremental 
+
+- *production [...] livrée gratuitement ou à des prix économiquement non significatifs* [INSEE](https://www.insee.fr/fr/metadonnees/definition/c2249)
+- Ils n'ont pas directement de prix observé, mais une valeur : 
+  - Elle peut venir de différents fondements : travail (Marx, Ricardo etc) ou alors valeur subjective
+  - On dira ici que la valeur est le [changement de bien-être]{.bg4} lié à la consommation d'une unité de bien ou de service
+
+:::
+:::
+
+::::
 
 ## Quelles valeurs aujourd'hui?
 
@@ -113,78 +153,145 @@ En économie, le concept de [valeur économique totale]{.bg4} émerge des travau
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/evaluation_JRC_France_2018.jpg){.absolute top="10" right="300" width="600" height="700"}
+![](../images/Valuation/evaluation_JRC_France_2018.jpg){.absolute top="10" right="300" width="600" height="700"}
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/valeurs_de_référence_tromeur.jpg)
+![](../images/Valuation/valeurs_de_référence_tromeur.jpg)
 
 ------------------------------------------------------------------------
 
-## Comment arrive-t-on à ces mesures?
 
-Mesurer une valeur économique nécessite de :
+# II. Que cherche-t-on à mesurer?
 
-::: incremental
-1.  [Identifier]{.bg4} clairement les éléments affectés, par une politique publique, un accident, bref, identifier une [chaîne causale]{.fg}
-2.  [Mesurer]{.bg4} la relation bio-physique entre un processus environnemental et les dommages causés aux éléments identifiés
-3.  [Estimer]{.bg4} les changements qu'opèrent les éléments affectés, pour absorber les conséquences des processus environnementaux
-4.  [Placer]{.bg4} une valeur monétaire sur les conséquences inabsorbées
+## A. Fondations théoriques
+
+::: incremental 
+
+- La valeur totale liée à la fourniture d'un bien dans un cadre de marché est : 
+  - Le surplus des consommateurs : la différence entre leur demande inverse et le prix pour chaque unité
+  - Le surplus des producteurs : leurs recettes moins le coût i.e. le profit
+- En économie néoclassique : 
+  - On analyse tous les marchés
+  - On regarde les changements sur ces marchés
+  - L'évolution des surplus permet de faire l'évaluation du bien être : fondement théorique
 :::
 
-## Toutes les mesures de valeurs se valent-elles?
-
-::: incremental
--   Les valeurs les plus simples à mesurer sont celles [d'usage direct]{.bg4}
-    -   On a des [prix de marché]{.bg3} que l'on peut utiliser, qui font se rencontrer les préférences et la technologie : c'est le gold standard de l'évaluation
-    -   Ou encore des coûts de remplacement, plus ou moins explicites, bien qu'ils n'aient pas la partie "adaptation" dans les cas purement techniques
-        -   [*Wetlands, Flooding and the Clean Water Act*](https://media.rff.org/documents/Update_WP_21-26.pdf) de Drunkenmiller et al., 2022 : <br> En utilisant les données des programmes d'assurance, *"the average hectare of wetland lost between 2001 and 2016 cost society \$1,840 annually, and over \$8,000 in developed areas."*
--   Les valeurs [d'usage indirectes]{.bg4} n'ont bien souvent pas de prix de marché :
-    -   Le prix d'un écosystème, par ses fonctions diverses (de production, de régulation, culturelles) est difficile à déterminer
-    -   Mais certaines propriétés d'usages [concomittants]{.bg3} peuvent nous aider à les mesurer : des coûts d'évitement, des variations communes de prix, ou encore des proxies qui nous disent les choix
--   Les valeurs de [non usage]{.bg4} sont les plus difficiles à mesurer :
-    -   Quelle serait la valeur d'héritage, ou d'altruisme?
-    -   Comment faire pour qu'elles aient une "épaisseur", une réalité, quand elles ne donneront pas lieu à des échanges économiques?
-:::
-
-## Panorama des méthodes
-
-::: incremental
-1.  Les méthodes par [préférences (ou comportements) révélées]{.bg4}: sont basées sur les comportements des gens, sur les transactions véritablement réalisées, c'est le gold standard
-    -   Principalement utilisées pour les [valeurs d'usage]{.fg}
-2.  Les méthodes par [préférences (ou comportements) déclarées]{.bg4}: sont basées sur des comportements déclarés, où l'on pas réellement pu observer les comportements des gens
-    -   Principalement utilisées pour les [valeurs de non usage]{.fg}
-3.  La méthode des [transferts de bénéfices]{.bg4} : face à la difficulté de réaliser de nouvelles études, on utilise parfois les résultats d'études existantes dans un contexte différent pour connaître localement les valeurs
-4.  Des méthodes [composites]{.bg4} :
-    -   Utilisant des [modélisations intégrées]{.fg} des dommages bio-physiques avec des modèles de choix,
-    -   Des méthodes identifiant précisément les éléments affectés, les mécanismes biophysiques et leurs conséquences, et les changements opérés, en restant sur des métriques non-monétaires, notamment via de [l'inférence causale]{.fg}
-:::
-
-------------------------------------------------------------------------
-
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/méthodes_utilisées_monétaires_efese.jpg)
-
-# Que cherche-t-on à mesurer?
-
-## Bénéfices, consentement à payer et dommages
 
 ```{r}
 
-data_ = data.frame(q = seq(1:100))%>%
-  mutate(Demande = 100-q,
-         Offre = q)%>%
-  pivot_longer(-q)
+
+
+df <- data.frame(
+  q = seq(0, 100)
+) %>%
+  mutate(
+    demande = 100 - q,
+    offre = q
+  )
+
+# Trouver point d'intersection (approx)
+# On cherche q où demande = offre
+intersection <- df %>%
+  mutate(diff = demande - offre) %>%
+  filter(diff <= 0) %>%
+  slice(1)  # Premier point où demande <= offre
+
+q_star <- intersection$q
+prix_star <- intersection$demande
+
+# Créer un data frame pour l'aire à ombrer avant intersection (q < q_star)
+
+# Sous-ensemble avant q_star
+df_before <- df %>% filter(q <= q_star)
+
+# Préparer données pour ombrage demande (entre prix_star et demande)
+shade_demande <- df_before %>%
+  mutate(ymin = pmin(prix_star, demande),
+         ymax = pmax(prix_star, demande))
+
+# Préparer données pour ombrage offre (entre prix_star et offre)
+shade_offre <- df_before %>%
+  mutate(ymin = pmin(prix_star, offre),
+         ymax = pmax(prix_star, offre))
+
+# Plot
+ggplot(df, aes(x = q)) +
+  geom_line(aes(y = demande, color = "Demande"), size = 1) +
+  geom_line(aes(y = offre, color = "Offre"), size = 1) +
+
+  # Ombre entre prix_star et demande (zone grise claire)
+  geom_ribbon(data = shade_demande, aes(ymin = ymin, ymax = ymax), fill = "lightblue", alpha = 0.5) +
+
+  # Ombre entre prix_star et offre (zone grise foncée)
+  geom_ribbon(data = shade_offre, aes(ymin = ymin, ymax = ymax), fill = "firebrick", alpha = 0.5) +
+
+  # Point d'intersection
+  geom_point(aes(x = q_star, y = prix_star), size = 3, color = "black") +
+
+  scale_color_manual("", values = c("Demande" = "blue", "Offre" = "red")) +
+
+  labs(
+       x = "Quantité (q)",
+       y = "Prix") +
+
+  custom_theme()
 
 ```
 
-::: incremental
--   Pour avoir la valeur des biens, on voudrait avoir la mesure du [surplus]{.bg4} associé à un bien.
--   Ceci dit, il n'y a pas de marché pour l'environnement dans la majeure partie des cas
-    -   On ne peut pas directement utiliser les prix et les quantités échangées
--   On va se focaliser sur la [demande]{.bg4} plutôt que sur l'offre dans la plupart des cas
-    -   On veut comprendre la valeur que placent les consommateurs sur les biens environnementaux
-    -   On verra comment prendre en compte les côtés liés à [l'offre]{.fg}, pour avoir une [disposition marginale à payer nette]{.bg3}
+---
+
+### Mesurer la valeur des biens environnementaux
+
+Les biens environnementaux peuvent être de plusieurs catégories:
+
+::: incremental 
+
+- Biens finaux : 
+  - Les individus consomment ce bien pour lui même : de l'air pur, de la forêt etc
+  - dans ce cas, il n'y a ni courbe d'offre, ni marché : on va devoir utiliser les caractéristiques d'une demande fictive
+- Biens intermédiaires :
+  - Les processus environnementaux sont utiles à la production : populations d'abeilles et agriculture
+  - Dans ce cas, on peut mesurer le lien 
+  
 :::
+
+Dans le cas des biens et services environnementaux, il n'y a pas de producteur : on n'a pas de courbe d'offre
+::: incremental 
+
+- On n'a pas non plus de courbe de demande, car on n'a pas de marché!
+- On va essayer de comprendre comment on pourrait avoir une demande même fictive
+
+:::
+
+[On peut s'intéresser à plusieurs mesures :]{.incremental}
+
+
+::: incremental
+- Les biens environnementaux associés à des variations du bien être des consommateurs
+- Les biens environnementaux associés à des variations des coûts de production d'autres biens
+
+
+:::
+
+
+## Disposition à payer et à recevoir
+
+
+::: incremental 
+- Combien êtes vous prêts à payer au maximum pour une amélioration de la qualité de l'air? Pour éviter une dégradation?
+  - Cela reflète au maximum la variation de bien être (monétisé) associée
+  - On appelle cela une "disposition marginale à payer"
+  - Adapté lorsque l'on a pas déja ce bien
+- Combien êtes vous prêts à recevoir au minimum pour une détérioration de la qualité de l'air? Ou pour renoncer à une amélioration?  
+  - Cela reflète à minima la variation de bien être monétisé associée
+  - On appelle cela une "disposition marginale à recevoir"
+  - Adapté lorsque l'on a déja ce bien
+
+:::
+
+
+
 
 ------------------------------------------------------------------------
 
@@ -217,64 +324,420 @@ data.frame(Pollution = seq(0, 10))%>%
 ```
 :::
 
-## Mesurer des dispositions marginales à payer par des approches révélées
+-----
 
-::: incremental
--   L'idée de fond est de reconstruire cette courbe de disposition marginale à payer en utilisant des biens connexes
--   Rappel de micro :
-    -   Les agents maximisent leur utilité $U(\mathbf{x})$ où $\mathbf{x}\in \mathbb{R}^N$ est un panier de biens, sous contrainte de revenu
-    -   On en déduit des fonctions de demande $\mathbf{x}^*(\mathbf{p}, R)$ où $\mathbf{p}\in \mathbb{R}^N$ est le vecteur des prix
-    -   Supposons que l'on a $x$ un bien de consommation et $q$ un bien environnemental
-    -   Dans le cas des biens environnementaux, on n'aura pas de prix!
--   On pourra [observer]{.fg} ceci dit une relation $x(p_x, q)$ c'est à dire une quantité de bien de consommation consommée en fonction de son prix et de la qualité environnementale, que l'on nomme [demande restreinte]{.bg3}
-    -   On pourrait ensuite mesurer la [variation de la disposition à payer]{.bg3} rapportée
-    -   A la variation d'une quantité de bien environnemetal $$
-        \Delta DAP / \Delta q = f(p_x, q) = DMAP
-        $$
+### Approche microéconomique 
+
+Soit $U(R, q)$ l'utilité retirée d'une consommation monétaire et de la qualité environnementale
+
+A l'échelle infinitésimale : 
+
+::: incremental 
+- On a $TMS_{R,q} = - \frac{\partial U / \partial q}{\partial U / \partial R }$
+- A une échelle marginale : la quantité de revenu qu'il faut donner pour accepter/acheter une unité de bien environnemental est la même
+
 :::
 
-------------------------------------------------------------------------
+[En sortant de la limite :]{.incremental}
+
+::: incremental 
+
+- Disposition à payer pour éviter une perte : $U(R - DAP, q_0)\geq U(R, q_1)$ avec $q_0>q_1$
+- Disposition à accepter la perte : $U(R + DAA, q_1) \geq U(R, q_0)$
+
+:::
+
+-----
+
+### Disposition à payer pour éviter une dégradation
 
 ```{r}
-data.frame(q = seq(0,12))%>%
-  mutate("Demande avec q" = 10-.7*q,
-         "Demande avec q+eq" = 10-0.5*q)%>%
-  ggplot(aes(x=q))+
-  geom_line(aes(y=`Demande avec q`, color = "Demande avec q"), linewidth=1)+
-  geom_line(aes(y=`Demande avec q+eq`, color = "Demande avec q+eq"), linewidth=1)+
-  geom_ribbon(aes(ymin = `Demande avec q`, ymax = `Demande avec q+eq`), alpha=.2)+
-  geom_hline(yintercept = 5)+
-  annotate('text', x=1, y = 5.5, label= "Prix de marché", family=local_family)+
-  annotate('text', x=7, y = 6, label = 'DMAP', family=local_family)+
-  custom_theme()+
-  labs(color=' ')
+
+alpha <- 0.5
+
+# Utility levels
+U_levels <- c(8, 12)
+
+# Create a data frame of theta values
+theta_vals <- seq(0.1, 2, length.out = 200)  # Avoid zero to prevent division by zero
+
+# Create data frame for all utility levels
+df <- expand.grid(theta = theta_vals, U = U_levels) %>%
+  mutate(
+    R = (U / (theta^(1 - alpha)))^(1 / alpha)
+  )
+
+# Plot indifference curves
+df%>%
+  subset(R<=800)%>%
+ggplot(aes(x = theta, y = R, color = factor(U))) +
+  geom_line(size = 1) +
+  labs(
+    x = "q",
+    y = "R",
+    color = "Utility Level (U)"
+  ) +
+  scale_color_manual(values = c("dodgerblue", "firebrick"))+
+  geom_point(aes(x = 1, y = 140), size = 2, color = "firebrick")+
+  geom_point(aes(x = .45, y = 140), size = 2, color = "dodgerblue")+
+  geom_segment(aes(xend=.45, x= 1, y = 140, yend=140), linetype = "dotted", 
+               color = "black", linewidth = .3,
+               arrow = arrow(length = unit(.4, "cm")),
+)+
+  annotate("text", x = 1, y = 200, label = "U(R, q0)", size = 5, 
+           color = 'firebrick', family = local_family)+
+  annotate("text", x = 0.45, y = 50, label = "U(R, q1)", size = 5, 
+           color = 'dodgerblue', family = local_family)+
+  custom_theme()
 ```
 
-------------------------------------------------------------------------
+-----
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/question_methode.jpg)
+### Disposition à payer pour éviter une dégradation
 
-------------------------------------------------------------------------
+```{r}
+alpha <- 0.5
 
-## Consentement marginal à payer et consentement marginal à accepter
+# Utility levels
+U_levels <- c(8, 12)
+
+# Create a data frame of theta values
+theta_vals <- seq(0.1, 2, length.out = 200)  # Avoid zero to prevent division by zero
+
+# Create data frame for all utility levels
+df <- expand.grid(theta = theta_vals, U = U_levels) %>%
+  mutate(
+    R = (U / (theta^(1 - alpha)))^(1 / alpha)
+  )
+
+# Plot indifference curves
+df%>%
+  subset(R<=800)%>%
+ggplot(aes(x = theta, y = R, color = factor(U))) +
+  geom_line(size = 1) +
+  labs(
+    x = "q",
+    y = "R",
+    color = "Utility Level (U)"
+  ) +
+  scale_color_manual(values = c("dodgerblue", "firebrick"))+
+  geom_point(aes(x = 1, y = 140), size = 2, color = "firebrick")+
+  geom_point(aes(x = .45, y = 140), size = 2, color = "dodgerblue")+
+  geom_point(aes(x = 1, y = 75), size = 2, color = "royalblue")+
+  geom_segment(aes(x=.45, xend = 1, y = 140, yend=140), 
+               linetype = "dotted", color = "grey", linewidth = .3)+
+  geom_segment(aes(x= 1, xend = 1, y = 140, yend=75), 
+               color = "royalblue", linewidth = 1)+
+  annotate("text", x = 0.45, y = 50, label = "U(R, q1)", 
+           size = 5, color = 'dodgerblue', family = local_family)+
+  annotate("text", x = 1, y = 10, label = "U(R-DAP, q0)",
+           size = 5, color = 'royalblue',family = local_family)+
+
+  custom_theme()
+```
+
+
+-----
+
+### Disposition à accepter pour renoncer à une amélioration
+
+```{r}
+alpha <- 0.5
+
+# Utility levels
+U_levels <- c(8, 12)
+
+# Create a data frame of theta values
+theta_vals <- seq(0.1, 2, length.out = 200)  # Avoid zero to prevent division by zero
+
+# Create data frame for all utility levels
+df <- expand.grid(theta = theta_vals, U = U_levels) %>%
+  mutate(
+    R = (U / (theta^(1 - alpha)))^(1 / alpha)
+  )
+
+# Plot indifference curves
+df%>%
+  subset(R<=800)%>%
+ggplot(aes(x = theta, y = R, color = factor(U))) +
+  geom_line(size = 1) +
+  labs(
+    x = "q",
+    y = "R",
+    color = "Utility Level (U)"
+  ) +
+  scale_color_manual(values = c("dodgerblue", "firebrick"))+
+  geom_point(aes(x = 1, y = 140), size = 2, color = "firebrick")+
+  geom_point(aes(x = .45, y = 140), size = 2, color = "dodgerblue")+
+  geom_point(aes(x = 1, y = 75), size = 2, color = "royalblue")+
+  #geom_point(aes(x = .45, y = 320), size = 2, color = "red")+
+
+  geom_segment(aes(x=.45, xend = 1, y = 140, yend=140), 
+               linetype = "dotted", color = "grey", linewidth = .3, 
+               arrow = arrow(length = unit(0.4, "cm")),
+)+
+  geom_segment(aes(x= 1, xend = 1, y = 140, yend=75), 
+               color = "royalblue", linewidth = .5)+
+  annotate("text", x = 0.45, y = 80, label = "U(R, q1)", 
+           size = 5, color = 'dodgerblue', family = local_family)+
+  annotate("text", x = 1, y = 200, label = "U(R, q0)",
+          size = 5, color = 'firebrick',family = local_family)+
+
+  custom_theme()
+```
+
+
+-----
+
+### Disposition à accepter pour renoncer à une amélioration
+
+```{r}
+alpha <- 0.5
+
+# Utility levels
+U_levels <- c(8, 12)
+
+# Create a data frame of theta values
+theta_vals <- seq(0.1, 2, length.out = 200)  # Avoid zero to prevent division by zero
+
+# Create data frame for all utility levels
+df <- expand.grid(theta = theta_vals, U = U_levels) %>%
+  mutate(
+    R = (U / (theta^(1 - alpha)))^(1 / alpha)
+  )
+
+# Plot indifference curves
+df%>%
+  subset(R<=800)%>%
+ggplot(aes(x = theta, y = R, color = factor(U))) +
+  geom_line(size = 1) +
+  labs(
+    x = "q",
+    y = "R",
+    color = "Utility Level (U)"
+  ) +
+  scale_color_manual(values = c("dodgerblue", "firebrick"))+
+ 
+  geom_segment(aes(x= .45, xend = .45, y = 320, yend=140), 
+               color = "red", linewidth = .5)+
+
+  geom_segment(aes(x=.45, xend = 1, y = 140, yend=140), 
+               linetype = "dotted", color = "grey", linewidth = .3)+
+  geom_segment(aes(x= 1, xend = 1, y = 140, yend=75), 
+               color = "royalblue", linewidth = .5)+
+  annotate("text", x = 0.45, y = 80, label = "U(R, q1)", 
+           size = 5, color = 'dodgerblue', family = local_family)+
+  annotate("text", x = 1, y = 200, label = "U(R, q0)",
+          size = 5, color = 'firebrick',family = local_family)+
+   annotate("text", x = .65, y = 340, label = "U(R+DAA, q0)",
+          size = 5, color = 'red',family = local_family)+
+  geom_point(aes(x = 1, y = 140), size = 2, color = "firebrick")+
+  geom_point(aes(x = .45, y = 140), size = 2, color = "dodgerblue")+
+  geom_point(aes(x = 1, y = 75), size = 2, color = "royalblue")+
+  geom_point(aes(x = .45, y = 320), size = 2, color = "red")+
+  custom_theme()
+```
+
+
+
+
+
+-----
+
+### Conclusion
 
 On a dans les faits deux mesures:
 
 ::: incremental
--   [Disposition marginale à payer]{.bg4} :
-    -   A combien j'évalue quelque chose que je n'ai pas
-    -   Combien je suis prêt *au maximum* à payer pour l'avoir
-    -   Notion de variation équivalente
--   [Disposition marginale à accepter une compensation]{.bg4}:
-    -   A combien j'évalue quelque chose que j'ai
-    -   Combien je suis prêt *au minimum* à gagner pour le perdre
-    -   Notion de variation compensatrice
--   Pas exactement pareil, mais pour des changements [marginaux]{.bg3}, devraient être presque égale
+-   En théorie, $MDAA = MDAP$
+-   En pratique, lorsque l'on s'extrait de la limite : 
+  - Du fait de la convexité des préférences (i.e. courbure de la courbe d'indifférence)
+  - On va souvent avoir $DAA > DAP$
+-   Le rôle du revenu est asymétrique : 
+  - La DAP est limitée par le revenu : 
+    - Les personnes pauvres, mêmes si elles placent une haute valeur sur l'environnement, ne peuvent pas l'exprimer comme telle
+  - La DAA n'est pas limitée par le revenu : 
+    - Elle peut être arbitrairement haute 
+    - Même si elle permet de mesurer l'aversion à la perte (endowment effect, [Kahneman & Tversky, 1991](https://www.jstor.org/stable/2937956))
+- En pratique : 
+  - La DAP est plus utilisée : 
+    - Elle reflète plus les bénéfices d'une amélioration de la situation, utile à la politique publique
+    - Elle est moins variable que la DAA
+  - La DAA implique des droits forts sur l'environnement et peut être légitimée dans certains cas de justice environnementale et de compensation
+  - Leur différence peut être expliquée par des facteurs comportementaux et par la substituabilité entre le bien considéré et d'autres biens ([Hanneman, 1991](https://www.jstor.org/stable/2006525))
+  
+:::
+
+Il faut un tableau récapitulatif
+
+
+## Clarifier les idées 
+
+- Idéalement, on voudrait mesurer la WTP : on aurait alors une approche qui permet de comprendre l'évolution du welfare
+  - Il faudrait quand même savoir dans quel cas l'évaluation de la WTP suffit à avoir une évaluation du welfare
+- Ceci dit, on n'a pas toujours de bons estimates du WTP : on ne peut pas nécessairement dire si les choses sont améliorées ou non, on peut seulement illustrer des effets de politiques publiques etc, et essayer de dire comment les gens ont agi, mesurer une valeur. 
+
+
+Si les hypothèses du modèle de choix sont vérifiées
+Tu construis un modèle microéconomique dans lequel les individus arbitrent entre biens privés et biens environnementaux.
+Ex : un logement cher mais avec moins de pollution, ou l’inverse.
+
+Si toutes les conditions théoriques sont là :
+
+agents rationnels, informés, marchés complets ou quasi-complets, pas d’externalités non-internalisées, etc.
+
+et si tu observes bien ces arbitrages (e.g. variation compensatoire ou équivalente)
+
+👉 Alors, tu peux interpréter l’estimation comme une WTP :
+une mesure de valeur normative, i.e. combien les individus seraient prêts à sacrifier pour un environnement meilleur.
+Et donc, tu peux dire :
+
+“Une amélioration environnementale de ce type augmente le bien-être.”
+
+🔴 Si les hypothèses ne sont pas vérifiées
+Et c’est très souvent le cas dans la réalité.
+
+Tu observes des comportements dans un monde frictionnel :
+
+gens mal informés, contraints, hétérogènes,
+
+préférences non stables ou non révélées,
+
+biens environnementaux non pleinement perçus ou intégrés dans les choix,
+
+effets d'équilibre général ignorés.
+
+Ton estimation (e.g. modèle hédonique, diff-in-diff, forme réduite) mesure :
+
+une association, ou
+
+un effet causal partiel, ou
+
+un prix implicite conditionnel,
+
+👉 mais pas une WTP au sens normatif.
+
+Donc, tu ne peux pas conclure :
+
+“Il faut améliorer l’environnement car ça maximise le bien-être.”
+
+Tu peux dire, plus modestement :
+
+“Dans ce contexte, les gens ou les prix réagissent positivement à une amélioration environnementale, ce qui suggère une valeur locale positive associée à l’environnement.”
+
+⚖️ Synthèse
+Ce que tu fais	Ce que tu peux dire
+Modèle théorique + hypothèses fortes + données propres → WTP	"Améliorer l’environnement augmente le bien-être." ✅
+Estimation empirique avec hypothèses faibles (forme réduite, diff-in-diff, etc.)	"Il semble qu’on valorise localement plus d’environnement." ⚠️
+Estimation sans identification propre ou biaisée (endogénéité, omitted variables, etc.)	"On observe une corrélation entre environnement et valeur économique." ❌
+
+🧭 Ce que tu enseignes à tes étudiants alors :
+La valeur économique de l’environnement, ce n’est pas un chiffre absolu.
+
+C’est une construction modélisée, qui dépend :
+
+des hypothèses sur le comportement des agents,
+
+des données disponibles,
+
+des méthodes économétriques,
+
+et du niveau de confiance qu’on peut accorder à l’interprétation.
+
+Et donc :
+
+"On ne mesure pas la valeur de la nature.
+On mesure ce qu'on peut extraire comme signal de valeur dans un monde imparfait."
+
+
+
+Vous avez dit :
+Reprenons simplement le point où les hypothèses sont vérifiées : 
+1. Si je dis ok j'ai ma WTP, et le coût de fourniture du bien est inférieur à la WTP, alors on doit le faire : c'est bien ça la chaine causale? 
+
+
+
+Hypothèses bien vérifiées :
+Agents rationnels, informés, sans contraintes majeures ;
+
+Marchés (ou quasi-marchés) existent ou sont bien modélisés ;
+
+Biens environnementaux intégrés dans les préférences ;
+
+Estimation correcte des variations compensatoires ou équivalentes.
+
+Alors :
+Tu estimes une WTP (willingness to pay) pour une amélioration environnementale, par exemple une réduction de pollution de l’air.
+
+Tu estimes le coût social de cette amélioration (ex : coût d'une régulation, d’un filtre, d’une politique de verdissement).
+
+Si la WTP agrégée > coût social,
+alors la société gagne à mettre en œuvre cette amélioration.
+
+C’est le principe de l’optimum de Pareto-Kaldor-Hicks :
+
+Une politique est désirable si les gagnants pourraient compenser les perdants, même si cette compensation n’a pas lieu.
+
+Formulé autrement :
+WTP = bénéfice environnemental monétarisé (du point de vue des agents).
+
+Coût = ce qu’il faut sacrifier en ressources productives.
+
+Si bénéfice > coût, on a création nette de bien-être.
+
+# III. Comment faire? 
+
+## Comment arrive-t-on à ces mesures?
+
+Mesurer une valeur économique nécessite de :
+
+::: incremental
+1.  [Identifier]{.bg4} clairement les éléments affectés (groupes, individus etc), par une politique publique, un accident, bref, identifier une [chaîne causale]{.fg}
+2.  [Mesurer]{.bg4} la relation bio-physique entre un processus environnemental et les dommages causés aux éléments identifiés
+3.  [Estimer]{.bg4} les changements qu'opèrent les éléments affectés, pour absorber les conséquences des processus environnementaux
+4.  [Placer]{.bg4} une valeur monétaire sur les conséquences inabsorbées
+:::
+
+
+## Quelles méthodes adopter? 
+
+![](../images/Valuation/question_methode.jpg)
+
+---------
+
+::: incremental
+-   Les valeurs les plus simples à mesurer sont celles [d'usage direct]{.bg4}
+    -   On a des [prix de marché]{.bg3} que l'on peut utiliser, qui font se rencontrer les préférences et la technologie : c'est le gold standard de l'évaluation
+    -   Ou encore des coûts de remplacement, plus ou moins explicites, bien qu'ils n'aient pas la partie "adaptation" dans les cas purement techniques
+        -   [*Wetlands, Flooding and the Clean Water Act*](https://media.rff.org/documents/Update_WP_21-26.pdf) de Drunkenmiller et al., 2022 : <br> En utilisant les données des programmes d'assurance, *"the average hectare of wetland lost between 2001 and 2016 cost society \$1,840 annually, and over \$8,000 in developed areas."*
+-   Les valeurs [d'usage indirectes]{.bg4} n'ont bien souvent pas de prix de marché :
+    -   Le prix d'un écosystème, par ses fonctions diverses (de production, de régulation, culturelles) est difficile à déterminer
+    -   Mais certaines propriétés d'usages [concomittants]{.bg3} peuvent nous aider à les mesurer : des coûts d'évitement, des variations communes de prix, ou encore des proxies qui nous disent les choix
+-   Les valeurs de [non usage]{.bg4} sont les plus difficiles à mesurer :
+    -   Quelle serait la valeur d'héritage, ou d'altruisme?
+    -   Comment faire pour qu'elles aient une "épaisseur", une réalité, quand elles ne donneront pas lieu à des échanges économiques?
+:::
+
+## Panorama des méthodes
+
+::: incremental
+1.  Les méthodes par [préférences (ou comportements) révélées]{.bg4}: sont basées sur les comportements des gens, sur les transactions véritablement réalisées, c'est le gold standard
+    -   Principalement utilisées pour les [valeurs d'usage]{.fg}
+2.  Les méthodes par [préférences (ou comportements) déclarées]{.bg4}: sont basées sur des comportements déclarés, où l'on pas réellement pu observer les comportements des gens
+    -   Principalement utilisées pour les [valeurs de non usage]{.fg}
+3.  La méthode des [transferts de bénéfices]{.bg4} : face à la difficulté de réaliser de nouvelles études, on utilise parfois les résultats d'études existantes dans un contexte différent pour connaître localement les valeurs
+4.  Des méthodes [composites]{.bg4} :
+    -   Utilisant des [modélisations intégrées]{.fg} des dommages bio-physiques avec des modèles de choix,
+    -   Des méthodes identifiant précisément les éléments affectés, les mécanismes biophysiques et leurs conséquences, et les changements opérés, en restant sur des métriques non-monétaires, notamment via de [l'inférence causale]{.fg}
 :::
 
 ------------------------------------------------------------------------
 
-# L'approche par préférences révélées
+![](../images/Valuation/méthodes_utilisées_monétaires_efese.jpg)
+
+
+
+# IV. L'approche par préférences révélées
 
 On cherche à mesurer des [valeurs d'usage]{.bg3} et l'on dispose de données [transactionnelles]{.bg3} reliées aux enjeux environnementaux
 
@@ -331,7 +794,7 @@ L'idée est simple : mesurer à partir d'éléments économiques reliés de faç
 ::::
 :::::::
 
-## Coûts évités
+## A. Coûts évités
 
 ### Dépenses de défense
 
@@ -352,7 +815,7 @@ Zhang et Mu, [*Air Pollution and defensive expenditures: Evidence from particula
 
 :::::: columns
 ::: column
-![PM2 in 2014, October 10](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/china_pm2.png){align="left"})
+![PM2 in 2014, October 10](../images/Valuation/china_pm2.png){align="left"})
 :::
 
 :::: column
@@ -368,7 +831,7 @@ Zhang et Mu, [*Air Pollution and defensive expenditures: Evidence from particula
 ::::
 ::::::
 
-## Méthode : modèle d'utilité aléatoire {#sec_random_utility_main}
+### Méthode : modèle d'utilité aléatoire {#sec_random_utility_main}
 
 ::: fragment
 L'utilité associée à la consommation d'un bien $j$ est $$u_{ijt}= v(\mathbf{x}_{ijt}'\theta) + \epsilon_{ijt}$$ où $\mathbf{x}_{ijt}$ sont des caractéristiques observables déterminant l'achat (pollution, attributs des masques, caractéristiques individuelles) et une partie inobservable, $\epsilon_{ijt}$
@@ -434,11 +897,11 @@ $$ \log E(y|\mathbf{x}) =\mathbf{x}'\theta $$
     -   Substitution par des biens publics
 :::
 
-## Méthode des coûts de transport
+## B. Méthode des coûts de transport
 
 :::::: columns
 ::: {.column width="50%"}
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/grand_canyon.jpg){align="left" width="80%"}
+![](../images/Valuation/grand_canyon.jpg){align="left" width="80%"}
 :::
 
 :::: {.column width="50%"}
@@ -527,11 +990,11 @@ Gellman, Walls and Wibbenmeyer, [*Welfare Losses from Wildfire Smoke : Evidence 
 -   Possibilité de [substituer]{.bg4} : on surestime peut être
 :::
 
-## Méthode hédonique
+## C. Méthode hédonique
 
 :::::: columns
 ::: column
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/green_spaces.png){align="left" width="80%"}
+![](../images/Valuation/green_spaces.png){align="left" width="80%"}
 :::
 
 :::: column
@@ -564,7 +1027,9 @@ Gellman, Walls and Wibbenmeyer, [*Welfare Losses from Wildfire Smoke : Evidence 
     -   Le marché immobilier est [fixe]{.bg3} : nécessite une certaine analyse de court terme, pas d'anticipations non plus
 :::
 
-## Example
+--- 
+
+### Example
 
 Gopalakrishnan et al, [*The value of disappearing beaches: A hedonic pricing model with endogenous beach width*](https://www.sciencedirect.com/science/article/pii/S0095069610001221), Journal of Environmental Economics and Management, 2011
 
@@ -579,7 +1044,9 @@ Gopalakrishnan et al, [*The value of disappearing beaches: A hedonic pricing mod
     -   Les valeurs résidentielles peuvent \[chuter jusqu'à -52%\].{bg2}
 :::
 
-## Forces et limites {#sec_limits_hedonics}
+----
+
+### Forces et limites {#sec_limits_hedonics}
 
 ::: incremental
 -   Forces :
@@ -592,7 +1059,7 @@ Gopalakrishnan et al, [*The value of disappearing beaches: A hedonic pricing mod
 -   Utilisé pour la [[valeur statistique d la vie](#sec_vsl)]{.button}
 :::
 
-# Les préférences déclarées
+# V. Les préférences déclarées
 
 ## Introduction et contexte
 
@@ -628,7 +1095,7 @@ Gopalakrishnan et al, [*The value of disappearing beaches: A hedonic pricing mod
 ::::
 :::::::
 
-## L'évaluation contingente
+## A. L'évaluation contingente
 
 ::: incremental
 -   Questions posées sur la valeur déclarée par les gens notamment autour de la vie des animaux, ou de la restauration des écosystèmes : [combien paieriez vous pour ce bien?]{.bg4}
@@ -759,7 +1226,7 @@ print(paste("Consentement marginal moyen à payer est ", mean(WTP), " euros"))
 -   Demeure un outil clé
 :::
 
-## Expériences de choix discrets
+## B. Expériences de choix discrets
 
 ::: incremental
 -   Date des années 1980 en transports
@@ -779,7 +1246,7 @@ Chloé Beaudet (doctorante à PSAE) et al. [*Are citizens willing to accept chan
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/dce_beaudet.JPG){fig-align="center"}
+![](../images/Valuation/dce_beaudet.JPG){fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -810,7 +1277,9 @@ resultats %>%
 
 ```
 
-## Critique de la méthode
+-----
+
+### Critique de la méthode
 
 ::::::: columns
 :::: column
@@ -853,7 +1322,7 @@ Moins bien ?
 
 ------------------------------------------------------------------------
 
-![](C:/Users/jean/OneDrive/Desktop/Teaching/AgroParisTech/classes_agroparistech/images/Valuation/harrison_et_al_2018.jpg)
+![](../images/Valuation/harrison_et_al_2018.jpg)
 
 # Annexes
 

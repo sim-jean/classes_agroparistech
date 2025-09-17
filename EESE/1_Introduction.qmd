@@ -1,0 +1,1152 @@
+---
+title: "Introduction"
+subtitle: "EESE - Approche économique des enjeux environnementaux et stratégie environnementale"
+---
+
+```{r, chunk init}
+
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(here)
+#library(extrafont)
+library(reshape2)
+
+#install.packages(c("sysfonts", "showtext"))
+library(sysfonts)
+
+
+library(showtext)
+
+font_add_google("Roboto", "Roboto")
+showtext_auto()
+
+source(here("utilities.R"))
+
+local_family = "Roboto"
+
+```
+
+## Objectifs et notation du cours
+
+Ce cours est un cours **d'introduction à l'approche économique des enjeux environnementaux**.
+
+Il durera 10h30, et aura pour but de:
+
+::: incremental
+-   Comprendre les différentes approches économiques de l'environnement et de la pratique des économistes
+-   Vous familiariser avec les concepts de base de l'économie de l'environnement : externalités, biens publics...
+-   Comprendre les bases des recommendations de politique économique
+    -   A la fois théoriques
+    -   Et appliquées : marché du carbone, mise en marché des pesticides...
+-   Aborder l'analyse économique du climat et de la biodiversité
+:::
+
+------------------------------------------------------------------------
+
+Quelques ressources :
+
+::: incremental
+-   *L'économie de l'environnement*, P. Bontemps et G. Rotillon, 2013
+-   *Environmental and Natural Resource Economics*, 11th Edition, T.Tietenberg, L. Lewis : pas mal utilisé dans ce cours
+-   *Environmental and Natural Resource Economics: A Contemporary Approach*, 5th edition J.M.Harris, B.Roach : pour des sujets environnementaux précis
+-   *A course in Environmental Economics - Theory, Policy and Practice*, D.J.Phaneuf & T. Requate : manuel de PhD, plus avancé, si vous voulez approfondir
+-   Il y aura également des articles suggérés
+:::
+
+------------------------------------------------------------------------
+
+Par ailleurs, pour poursuivre:
+
+::: incremental
+-   [UC1 Analyse Economique]{.bg3}, avec J-C. Bureau, E. Veron, J. Wolfersberger, M. David :
+    -   Analyse du comportement des firmes : monopoles, oligopoles, pouvoir de marché
+    -   Etudes des externalités et financement des biens publics : quelle politique environnementale dans l'incertain?
+    -   Théorie des jeux : exemples canoniques et négociations climatiques
+-   [UC 3 : Economie de l'environnement et des ressources naturelles]{.bg3}, avec C. Orset, J. Wolfersberger, M. David, E. Veron
+    -   Approfondissement de ce cours
+    -   Evaluation monétaire de l'environnement
+    -   Economie des ressources renouvelables : la pêche
+-   [UC 6 : Economie ecologique]{.bg3}
+    -   Métabolisme social
+    -   Macroéconomie écologique
+    -   Biodiversité, services écosystémiques et compensation
+    -   De la tragédie aux communs
+:::
+
+------------------------------------------------------------------------
+
+![CGEDD](../images/EESE/9limites_CGDD.svg)
+
+::: notes
+-   CC : 1850 - 280 parties par millions, en 2023 - 425 ppm
+-   Erosion de la biodiversité :
+    -   100-1000 extinctions par an, 10 ans pour la limite
+    -   Risque d'extinction qui croît en France plus vite que dans l'UE (+ 99% entre 2000-22, 67% UE)
+-   Perturbation des cycles de l'azote et du phosphore :
+    -   Azote : 60-80 Mt pour limite, on est à 190 Mt/an en 2023
+    -   Phosphates que les cours d'eau déversent dans les océans autour de 22 Mt/an est dans la partie basse du seuil, 11-100Mt
+-   Changement d'usage des sols:
+    -   Seuls 60% des surfaces forestières d'avant 1700 sont boisées, la limite est à 75%
+    -   Augmentation en France, mais impact par les importations matières, et remise en question du ZAN
+-   Cycle de l'eau douce : limite franchie en 2022
+-   Introduction d'entités nouvelles dans la biosphère : plastiques, pesticides, ogm
+    -   350 000 produits, multiplié par 50 depuis 1950
+    -   OGM commerciaux interdits en France depuis 2008
+-   Acidification des océans
+-   Appauvrissement de la couche d'ozone
+:::
+
+------------------------------------------------------------------------
+
+![GIEC, 2023](../images/EESE/giecc_novethic.jpg)
+
+::: notes
+
+- Réchauffement observé, on est à +1,2C en France
+- Phénomène qui s'accentuer
+- Avec des scénarios différents d'évolution : c'est aussi ça la base de l'économie, on va le voir, les scénarii
+- 
+
+:::
+
+------------------------------------------------------------------------
+
+![IPBES, 2019](../images/EESE/IPBES.png)
+
+
+::: notes
+
+En France métropolitaine, 14% des mammifères, 24% des reptiles, 23% des amphibiens et 32% des oiseaux nicheurs sont menacés de disparition du territoire. Tout comme 19% des poissons d’eau douce et 28% des crustacés d’eau douce. Pour la flore, 15% des espèces d’orchidées sont menacées.
+
+:::
+
+## Quelles questions économiques?
+
+::::::: columns
+Différentes qualités (i.e. différents degré de perturbation par rapport à une situation d'origine) et quantités disponibles
+
+:::: column
+::: incremental
+-   De l'air
+-   De l'eau
+-   Des sols
+:::
+::::
+
+:::: column
+::: incremental
+-   Des forêts
+-   Des populations animales
+:::
+::::
+:::::::
+
+:::::::: columns
+::::: column
+[A différentes échelles]{.fragment}[spatiales]{.bg4 .fragment}:
+
+::: incremental
+-   Locales : pollution de l'air parisien
+-   Régionales : gestion des bassins versants
+-   Globales : changement climatique
+:::
+
+[Mais également]{.fragment}[temporelles]{.bg4 .fragment} :
+
+::: incremental
+-   Temporaire :
+-   Dynamique : le changement climatique
+:::
+:::::
+
+:::: column
+[Et différentes niveaux de]{.fragment}[complexité]{.bg4 .fragment} :
+
+::: incremental
+-   [Mobiles ou locales]{.bg3} : déplacement des [flux d'azote](https://www.lemonde.fr/planete/article/2020/08/21/la-pollution-a-l-ozone-en-hausse-dans-l-hemisphere-nord-malgre-des-reductions-locales-des-emissions_6049586_3244.html) v. artificialisation des sols
+-   [Prévisibles ou incertaines]{.bg3} : prévision climatique v. émergence de zoonose
+-   [Réversibles ou irréversibles]{.bg3} : pollution organique v. disparition d'espèces
+-   [Potentiellement non linéaires]{.bg3} : effets de seuils etc
+-   [Equitables]{.bg3} ou non dans les impacts, à la fois spatiaux et temporels
+:::
+::::
+::::::::
+
+# II. Qu'est-ce que l'économie des enjeux environnementaux?
+
+------------------------------------------------------------------------
+
+::::: columns
+::: column
+![Innondation au Nigeria](../images/EESE/innondaton_nigeria_lepoint.webp)
+:::
+
+::: column
+![Innondation au Nigeria](../images/EESE/incendies_LA_France_info.jpg)
+:::
+:::::
+
+::: notes
+-\> Chiffrer les dommages : incendies, pollution -\> Morts de la pollution -\>
+:::
+
+------------------------------------------------------------------------
+
+::::: columns
+::: column
+![IFP School](../images/EESE/eu_ets_IFP.png)
+:::
+
+::: column
+![France 24](../images/EESE/gj_fr24.jpg)
+:::
+:::::
+
+::: notes
+-\> Réguler : EU ETS + gilets jaunes
+:::
+
+------------------------------------------------------------------------
+
+![](../images/EESE/binet_libé.png)
+
+------------------------------------------------------------------------
+
+![](../images/EESE/bbq_nos_chersvoisins.jpg)
+
+::: notes
+-\> Documenter les différents comportements : Ondine Berland et Marion Leroutier
+
+Elle montre que les femmes émettent 26 % de CO2 en moins que les hommes dans les transports et l’alimentation, les deux secteurs les plus émetteurs en France, qui représentent 50 % de l’empreinte carbone nationale. Les premiers rejettent 5,3 tonnes équivalent CO2 (tCO2e) par an en moyenne, contre 3,9 tCO2e pour les secondes.
+
+« Ces écarts sont très significatifs, comparables avec la différence d’empreinte carbone entre les 50 % de Français les plus riches et les 50 % les plus pauvres »,
+:::
+
+## Différentes définitions
+
+::: incremental
+-   [Dictionnaire de l'académie française](https://www.dictionnaire-academie.fr/article/A9E0288) :
+
+:::
+
+::: fragment
+
+::: quote
+- "Art d'administrer un patrimoine, une entreprise, afin d'en tirer le meilleur parti"
+- "Ensemble des activités humaines et des ressources concourant à la production et à la répartition des richesses"
+
+::: 
+
+:::
+
+::: fragment
+
+- Bade and Parkin, 2002
+
+::: quote
+
+ "L'économie est la science sociale qui étudie les choix que font les individus, les entreprises, les gouvernements et les sociétés entières lorsqu'ils font face à la rareté"[^1] 
+
+:::
+
+:::
+
+[^1]: Pour plus de détails, je recommande la lecture de Bachouse et Medema, [Retrospectives : On the Definition of Economics, *JEP*, 2009](https://pubs.aeaweb.org/doi/pdfplus/10.1257/jep.23.1.221)
+
+## A. Approche historique des liens entre environnement et nature
+
+### 1. L'oïkonomia et la chrématistique
+
+:::::::: columns
+::: {.column width="40%"}
+![Aristote, IVe siècle av. JC](../images/ecol_econ/intro/aristote.jpg)
+:::
+
+:::::: {.column width="60%"}
+Principes de pensée suivant la :
+
+::: incremental
+-   [chrématistique]{.bg4} : l’art de l’acquisition des richesses
+-   [l'oikonomia]{.bg4}: bien administrer les ressources d’un foyer (oikos, "maison") en vue du bien-vivre
+:::
+
+::: fragment
+Que l'on retrouve dans l'histoire de la pensée économique :
+:::
+
+::: incremental
+-   Tradition [biophysique]{.bg4} : Une vision [matérialiste]{.bg3} des processus économiques comme des flux et des [stocks d'énergie et de matière]{.bg3}, soumis aux lois de l'entropie et aux sources de subsistance.
+
+-   Tradition [allocative]{.bg4} : étudie une relation de cause à effet avec les prix du marché, envisagée en termes de défaillances de marché, d’allocation efficace et d’un concept de l’utilité marginale orienté par la demande, [sans lien avec]{.bg3} [le monde physique]{.bg3}
+:::
+::::::
+::::::::
+
+------------------------------------------------------------------------
+
+### 2. Les classiques
+
+:::::: columns
+
+::: {.column width="30%"}
+![Adam Smith](../images/EESE/a_smith.jpeg){fig-align="left"}
+:::
+
+:::: {.column width="70%"}
+
+L'économie politique comme
+
+::: quote 
+ 
+"La branche de la science pour l'homme d'état ou le législateur"* [expliquant les fortunes relatives des différents pays, ainsi que les politiques qui pourraient] "enrichir à la fois le peuple et ses souverains" (Enquête sur la Nature et la Cause de la Richesse des Nations, 1776 (p.428, trad)
+
+:::
+::::
+::::::
+
+::: incremental
+-   Approche basée sur l'accroissement de la richesse
+-   La [terre est à la source de la valeur]{.bg3} dans les théories économiques du XVIIIe siècle, qu'elle soit d'*usage ou d'échange*
+-   Le [secteur agricole]{.bg3}, prédominant à l'époque, est au coeur des préoccupations : les disettes peuvent encore arriver
+-   Le rapport à la nature de l'économie se fait sous l'angle de la terre, ancrant une [tradition biophysique]{.bg4}
+:::
+
+::: fragment
+[Dans quelle mesure la terre, ses produits et leur répartition peut être un frein ou moteur à la croissance?]{.bg4}
+:::
+
+------------------------------------------------------------------------
+
+### Croissance et limites
+
+L'expansion de la population justifie la mise en culture de plus en plus de terres
+
+:::::: columns
+:::: column
+Chez [Robert Malthus]{.bg4} :
+
+::: incremental
+-   La croissance des rendements agricoles suit au mieux une loi [arithmétique]{.bg3}
+-   La croissance de la population, surtout celle des pauvres, est elle [géométrique]{.bg4}
+-   Il y aura mathématiquement des famines : il vaut mieux stériliser les pauvres, et ne pas les aider à se reproduire.
+:::
+::::
+
+::: column
+*Essai sur le principe de population*, 1798
+
+![](../images/ecol_econ/intro/Thomas_malthus.jpg){width="60%"}
+:::
+::::::
+
+------------------------------------------------------------------------
+
+::::::: fragment
+:::::: columns
+:::: column
+Chez [David Ricardo]{.bg4}:
+
+::: incremental
+-   Il faut permettre le commerce du grain en Europe après les guerres napoléoniennes
+    -   Afin d'éviter de mettre des terres en culture à coûts trop hauts, de moins en moins rentables
+    -   Pour maintenir les coûts de l'industrie, indexés sur le blé, relativement bas
+    -   Pour avoir de l'expansion
+-   Si l'on ne le fait pas :
+    -   Les prix des grains vont demeurer très haut
+    -   Et les propriétaires des terres les plus fertiles vont s'accaparer une [rente]{.bg4} inutile
+-   A terme, on risque de trouver une sorte [d'état stationnaire]{.bg3} : pas de croissance économique ni démographique
+:::
+::::
+
+::: column
+*Principes d’économie politique et de l’impôt*, 1817
+
+![](../images/ecol_econ/intro/ricardo.jpeg){width="70%"}
+:::
+::::::
+:::::::
+
+------------------------------------------------------------------------
+
+### 3. L'approche marxiste (simplifiée)
+
+:::::: columns
+
+::: {.column width="30%"}
+Karl Marx, *Le capital*, 1867
+
+![](../images/EESE/das_kapital.jpg)
+:::
+
+:::: {.column width="70%"}
+::: incremental
+-   Comme les "classiques", la valeur vient du travail des gens, vient de [l'effort incorporé]{.bg4}
+-   Cela dit, il rejette plusieurs notions :
+    -   [Rente/profit:]{.bg3} dépend pas de la nature, mais l'existence d'une classe de propriétaire qui [exploitent]{.bg3} le travail
+    -   Crises de population ne sont pas naturelles, mais viennent des [dynamiques d'accumulation]{.bg3}
+
+:::
+:::
+
+:::::: 
+s
+-----
+
+Relations économiques = [relations sociales de production]{.bg4} sous un régime particulier, celui du capitalisme, avec 3 grands prismes :
+
+::: incremental 
+
+- Le [matérialisme]{.bg4} : les sociétés sont déterminées non par les idées, mais par leur [rapport à la matière]{.bg3}, aux conditions dans lesquelles elles produisent leur vie matérielle
+- L'[histoire]{.bg4} : chaque mode de production (l'esclavage, le féodalisme, le capitalisme) possède ses règles, et ses [contradictions]{.bg3} en son sein, les rendant par nature [instable]{.bg3} : rien ne sera éternel
+- Les [relations de classe]{.bg4} : dans chaque système, il y a des groupes qui [contrôlent]{.bg3} la production (les maîtres, les seigneurs, les capitalistes), et d'autres qui travaillent (esclaes, paysans, ouvriers)
+
+:::
+
+
+------------------------------------------------------------------------
+
+::: notes
+
+
+- La nature n'a pas de valeur d'échange : il faut couper le bois pour qu'il ait une valeur
+- La machine accroit la productivité : elle permet d'utiliser moins de travail, mais ne rajoute pas de valeur
+- Le temps de travail socialement nécessaire chute avec l'arrivée des machines
+
+:::
+
+::::::: columns
+:::: column
+::: incremental
+-   Le travail change la [nature en objets]{.bg3}, en production, en [valeur]{.bg3} et c'est le seul capable de le faire.
+    -   Valeur [d'usage]{.bg3} et valeur [d'échange]{.bg3} : la quantité de travail incorporée fournit la valeur d'échange
+    -   Les salariés vendent leur [force de travail]{.bg3} pour un salaire
+    -   Les machines ne créent pas mais transfèrent de la valeur 
+    -   La valeur retirée est plus grande par les capitalistes : ils exploitent le travail et retirent une [plus-value]{.bg4}
+    
+:::
+::::
+
+:::: column
+::: incremental
+-   [Le capital n'est pas un stock, c'est un processus]{.bg4}, où l'argent crée l'argent :
+    -   En achetant des matières première et du travail, on fait produire des marchandises, que l'on revend plus chères
+    -   Le but est l'accumulation de ce capital, de continuer à le faire croître, mieux et plus vite que les autres
+    
+:::
+::::
+:::::::
+
+
+
+::: incremental
+-   A terme, la [sur-accumulation de capital]{.bg4} crée ainsi les conditions de la [déstabilisation ]{.bg4}
+    -   Il n'y a plus assez de travail employé pour créer de la valeur
+    -   Menant à de la [surcapitalisation]{.bg4}, à des crises etc : [c'est la 1e contradiction]{.fragment .bg4}
+    -   A des résistances des individus
+    -   A la destruction de la nature dont il a besoin : [[c'est la 2e contradiction, de J. O'Connor, 1991](https://libecolo.hypotheses.org/files/2020/01/OConnor-On-the-two-contradictions-of-capitalism.pdf))]{.framgent .bg4}
+      
+:::
+
+------------------------------------------------------------------------
+
+### Une place renouvelée à la nature chez Marx {#accumulation-primitive}
+
+::: incremental
+-   Le capitalisme crée des [ruptures métaboliques]{.bg3} :
+    -   Le cycle des nutriments dans les campagnes est détruit par l'exode rural
+-   La nature est utilisée comme un ["don gratuit"]{.bg3} :
+    -   Elle est prise dans le processus de production
+    -   Mais elle ne sont pas payées et sont par conséquent largement dégradées
+    -   Provoquant *de facto* une instabilité écologique
+-   [L'accumulation primitive,]{.bg3} sur lesquelles se sont basés les premiers systèmes d'exploitation (ch. 26-33 - voir [critiques](#slide-critique){.btn .btn-outline-primary})
+    -   Proviendrait d'une lente épargne des vertueux selon les classiques
+    -   Mais selon lui vient plutôt:
+        -   des [enclosures]{.bg3} : privatisation des communs, les gens sont libres mais sans travail
+        -   des [lois contre le vagabondage]{.bg3} etc
+        -   de la [colonisation]{.bg3} et de la traite
+        -   de la [privatisation]{.bg3} de la terre, changée en actif
+:::
+
+------------------------------------------------------------------------
+
+### 4. Le tournant marginaliste
+
+::::: columns
+::: {.column width="50%"}
+![](../images/EESE/jevons-menger-walras.png)
+:::
+
+::: {.column width="50%"}
+-   William Stanley Jevons, *The Theory of Political Economy*, 1871
+-   Carl Menger, *Principles of Economics*, 1871
+-   Léon Walras, *Éléments d’économie politique pure*, 1874-77
+:::
+:::::
+
+Les théories passées ne parviennent pas à résoudre le [paradoxe de la valeur]{.bg4} :
+
+::: incremental
+-   Problème [prix-utilité]{.bg3} : certains biens utiles ont un prix très bas, d'autres inutiles un prix très haut (eau v. diamants, chez [A. Smith, Livre 1, Ch4](https://geolib.com/smith.adam/won1-04.html?utm_source=chatgpt.com))
+-   Problème [travail-prix]{.bg3} : des biens incorporant beaucoup de travail ont des prix plus faibles que des perles trouvées
+:::
+
+------------------------------------------------------------------------
+
+L'approche [marginaliste]{.bg3} résoud ces problèmes :
+
+::: incremental
+-   avec un fondement [psychologique]{.bg4} à la valeur, ans une approche [individualiste et comportementale]{.bg4}
+-   où le but n'est plus tant l'accroissement mais [l'allocation efficace]{.bg4} qui [maximise le bien être collectif]{.bg4}
+-   et la matérialité disparaît petit à petit
+:::
+
+::::::: columns
+:::: {.column width="50%"}
+::: fragment
+```{r, chunk1}
+
+#| fig-align: "center"
+#| fig-height: 6
+#| fig-width: 5
+
+
+data.frame(Bien=seq(1,100))%>%
+  mutate(`Utilité`= 3*log(Bien))%>%
+  ggplot(aes(x=Bien,y=`Utilité`))+
+  geom_line()+
+  custom_theme()
+
+```
+:::
+::::
+
+:::: {.column width="50%"}
+::: incremental
+-   Ce n'est pas :
+    -   L'utilité totale qui détermine le prix
+    -   Ni la quantité de travail incorporé
+-   Mais de [l'utilité marginale de la dernière unité disponible]{.bg4}:
+    -   La satisfaction apportée par la dernière unité
+    -   Dans un contexte où les unités sont plus ou moins rares
+:::
+::::
+:::::::
+
+------------------------------------------------------------------------
+
+### 5. L'émergence de l'institutionalisme américain
+
+::: incremental
+-   Mouvement de pensée américain au tournant du XXe siècle
+-   Le rôle des [institutions sociales]{.bg4} est clé
+    -   dans l'explication des phénomènes économiques
+    -   dans la conduite de la politique économique
+-   La rareté [n'est plus qu'un problème technique, mais aussi institutionnel]{.bg3}
+:::
+
+------------------------------------------------------------------------
+
+:::::::: columns
+:::: {.column width="30%"}
+::: fragment
+John Commons (1862-1945)
+
+![](../images/EESE/JohnCommons.jpg)
+:::
+::::
+
+:::: {.column width="70%"}
+::: incremental
+-   L'économie est un [ensemble de transactions encadrées par des droits]{.bg4}
+    -   Le droit de propriété est un [faisceau de droits]{.bg4} : distribués entre individus et la société, publics et privés, partiels ou totaux
+    -   Qui "*évoluent, \[...\] diffèrent selon les peuples et les époques et elles ont une influence significative sur la production et la répartition des richesses"* (*The Distribution of Wealth*, 1893)
+-   Les institutions sont des [*"actions collectives qui contrôlent, libèrent et prolongent les actions individuelles"*]{.bg3} (Institutional Economics, *American Economic Review*, 1931)
+    -   Dépassant l'individualisme méthodologique
+-   Plaide pour un [capitalisme "raisonnable"]{.bg3}, où les intérêts des différents groupes sociaux puissent être représentés de façon démocratique
+    -   Assez contre le laissez-faire ambiant prônant un Etat interventionniste
+:::
+::::
+
+::: column
+:::
+::::::::
+
+------------------------------------------------------------------------
+
+### Conservationnisme v. préservationnisme
+
+:::::: columns
+::: {.column width="40%"}
+![Giford Pinchot](../images/ecol_econ/intro/pinchot.jpg){fig-align="left"}
+:::
+
+:::: {.column width="60%"}
+::: incremental
+-   Gifford Pinchot est le premier chef du USFS en 1905, service chapautant l'usage des ressources
+    -   Formé à l'école des forêts de Nancy!!
+    -   [“The greatest good for the greatest number]{.bg3} [in the long run”]{.bg3}
+-   [Conservationnisme]{.bg4} : courant de pensée visant à l'usage [raisonnés]{.bg3} des [ressources naturelles]{.bg3} contre l'usage illimité
+    -   la rareté est une réalité inflexible ; elle peut se révéler comme une disponibilité physique limitée au niveau régional voire mondial, à un instant donné ou dans le temps
+    -   sans une intervention publique suffisante les forces du marché libre intensifieraient la rareté et créeraient de grands monopoles dominant la propriété des ressources naturelles
+    -   Les institutions collectives sont centrales pour orienter l’usage des ressources.
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### 6. L'environnementalisme des années 1960-70 et la naissance de l'économie de l'environnement
+
+:::::: columns
+:::: column
+::: incremental
+-   Après une mise à l'agenda dans les 1960 :
+    -   *Silent Spring* de Rachel Carson qui dénonce l'impact des pesticides sur les oiseaux
+    -   Mouvements contestataires en Europe (1968) et aux Etats Unis
+-   Retour de la question environnementale dans les années 1970 :
+    -   1971 : Création du ministère de l'Environnement en France
+    -   1972 : Conférence des Nations Unies sur l'environnement à Stockholm, premier sommet mondial sur l'environnement
+    -   1973 : Premier choc pétrolier qui soulève la question de la dépendance aux énergies fossiles
+-   Travaux du Club de Rome (dont le fameux rapport Meadows)
+:::
+::::
+
+::: column
+![Robert Poujade, 1er Ministre délégué chargé de la Protection de la nature et de l'Environnement](../images/EESE/poujade.jpg){width="60%" fig-align="right"}
+:::
+::::::
+
+## B. Des approches concurrentes
+
+### 1. Les grands thèmes qui structurent l'analyse
+
+Des grands thèmes structurent l'analyse économique dans sa diversité :
+
+::: incremental
+-   [La rareté]{.bg4}: analyser la distribution et l'allocation de ressources rares
+    -   [Efficience]{.bg3} : situation où les ressources sont allouées de sorte à maximiser le bien être commun à moindre coût
+    -   [Distribution]{.bg3} des ressources
+-   [L'incertitude]{.bg4} : comprendre les croyances des individus, leurs attermoiements et leurs conséquences
+    -   [Risque v. incertitude]{.bg3}, F. Knight : on connaît une distribution de probabilité (lotterie) v. on ne sait pas ce qui va se passer
+-   [La domination]{.bg4} : les asymétries de pouvoir, notamment économiques, sont au coeur de la dynamique sociale
+    -   [Aliénation]{.bg3}
+    -   [Lutte des classes]{.bg3}
+    -   [Inégalités]{.bg3} de revenus, de genre, "ethnique"
+-   [Le changement]{.bg4} : l'évolution est la constante, l'analyse économique doit s'en préoccuper
+:::
+
+------------------------------------------------------------------------
+
+Avec des échelles différentes d'analyse pertinente :
+
+::: incremental
+-   L'[individu]{.bg3} : micro
+-   Les [groupes et institutions]{.bg3} : mezzo
+-   Les systèmes : macro
+:::
+
+[Et des postulats différents sur les déterminants des comportements:]{.fragment}
+
+::: incremental
+-   Un *homo oeconomicus* [rationnel et maximisateur]{.bg3}
+-   Des comportements dictés par [l'imitation grégaire]{.bg3}
+-   Des [biais et heuristiques]{.bg3} cognitifs
+-   Des [institutions]{.bg3} qui conditionnent les interactions
+-   Des [relations de genre]{.bg3}, d'ethnie etc
+:::
+
+------------------------------------------------------------------------
+
+### 2. Au sein d'approches complémentaires
+
+![Exploring Economics](../images/EESE/ecoles.png)
+
+------------------------------------------------------------------------
+
+### Economie écologique et économie de l'environnement
+
+Economie de l'environnement : émerge de l'école "néoclassique"
+
+::: incremental
+-   Produit de la fusion de la fusion des [théories de la valeur par Alfred Marshall]{.bg4} :
+    -   Les coûts de production déterminent l'offre
+    -   L'utilité marginale détermine la demande
+-   L'économie y est 
+
+:::
+
+::: fragment
+
+::: quote
+
+"the study of manking in the ordinary business of life, examines that part of individual and social action which is most closely connected with the attainment and with the use of material requisites of wellbeing" (*Principles of Economics*, 1920)
+ 
+:::
+
+:::
+
+::: incremental
+
+-   L'économie de l'environnement s'établit dans les années 1960-70, avec la  fondation du Journal of Environmental Economics and Management
+-   Son but : analyser l'environnement comme un bien, [l'allouer efficacement]{.bg4} [- qu'est-ce que ça veut dire?]{.fragment}
+    -   Comment expliquer la présence de trop de pollutions, trop d'exploitations d'espèces?
+    -   Comment agir pour empêcher cette surprésence, quels outils mettre en place?
+    -   Les dommages évités par les régulations sont-ils supérieurs aux coûts?
+    
+:::
+
+------------------------------------------------------------------------
+
+Emerge également une branche appelée [économie écologique]{.bg4} - voir UC 6
+
+::: incremental
+-   Avec des différences notables sur les méthodes, notamment l'usage de l'évaluation monétaire
+-   Qui se préoccupe de soutenabilité globale
+-   Et refuse l'idée d'une solution technophile
+:::
+
+------------------------------------------------------------------------
+
+![Harris & Roach, p. 13](../images/EESE/ecol_env_econs.png)
+
+# II. Méthodologie de l'économie de l'environnement
+
+------------------------------------------------------------------------
+
+::::::: columns
+:::: column
+En tant que discipline, l'économie de l'environnement (et plus largement l'économie) se fixe deux postures
+
+::: incremental
+-   [Positive]{.bg4}
+    -   Décrire correctement ce qui est
+    -   Et tester la théorie
+-   [Normative]{.bg4}
+    -   Enoncer un jugement sur une situation
+    -   Dire ce qui devrait être, sans pouvoir autant le tester
+:::
+::::
+
+:::: column
+[Et deux grandes méthodes :]{.fragment}
+
+::: incremental
+-   La [modélisation et le calcul]{.bg4}
+    -   Pour comprendre les mécanismes de l'action et anticiper des effets : la microéconomie basée sur [l'individualisme méthodologique]{.bg3}
+    -   Pour juger de l'opportunité d'une action : les critères de décision publique
+-   [Les statistiques appliquées à l'économie : l'économétrie]{.bg4}
+    -   Pour calibrer les mécanismes et anticiper des effets
+    -   Pour évaluer les coûts, dommages, bénéfices des actions afin de décider
+:::
+::::
+:::::::
+
+# III. Pourquoi protéger l'environnement?
+
+## A. Quelles valeurs lui sont associées?
+
+### 1. Typologie des valeurs
+
+John Krutilla, dans *Conservation Reconsidered*, 1967, identifie plusieurs valeurs associées, formant la valeur économique totale :
+
+::: {.incremental style="font-size:90%"}
+-   La valeur [d'usage]{.bg4} qui peut être:
+    -   [Directe]{.bg3}: les valeurs associées à la consommation directe de ressources issues de l'environnement (poisson, bois etc), c'est à dire aux services écosystémiques de [provision]{.fg} ou de contributions de la nature aux populations [matérielles]{.fg}
+    -   [Indirecte]{.bg3}: les valeurs associées au fonctionnement des écosystèmes, qui donnent des services écosystémiques de [régulation]{.fg}, comme la séquestration du carbone, ou le filtrage de l'eau, ou de contributions de la nature aux populations [de régulation]{.fg}
+    -   [d'option]{.bg3}: la possiblité d'utiliser dans le [futur]{.fg} à la fois pour la préservation et l'exploitation économiques des écosystèmes jusque là préservés, ou non utilisés
+-   La valeur de [non usage]{.bg4} :
+    -   [de legs]{.bg3} : la valeur associée à la possibilité pour les générations [futures]{.fg} de bénéficier de la nature, au travers de contributions de la nature aux populations [matérielles et immatérielles]{.fg}
+    -   [d'altruisme]{.bg3} : la valeur qui correspond à la volonté de préserver l'environnement au sein d'une [même génération]{.fg}
+    -   [d'existence]{.bg3} : la valeur correspondant à la protection de l'environnement pour un motif intrinsèque, délié des considérations [anthropocentriques]{.fg}
+:::
+
+------------------------------------------------------------------------
+
+### Biens marchands, non marchands, prix et valeurs
+
+::::::: columns
+:::: column
+Les biens et services peuvent être [marchands]{.bg4} :
+
+::: incremental
+-   *destinés normalement à être vendus sur le marché à un prix calculé pour couvrir leur coût de production. Sont marchands tous les biens et services produits par les branches d'activité marchande* [INSEE](https://www.insee.fr/fr/metadonnees/definition/c1234)
+-   Ils ont donc un prix i.e. :
+    -   une [valeur monétaire échangée]{.bg4} contre un bien ou un service
+    -   Résultant souvent de la confrontation entre offre et demande
+:::
+::::
+
+:::: column
+[ou [non-marchands]{.bg4}]{.fragment}
+
+::: incremental
+-   *production \[...\] livrée gratuitement ou à des prix économiquement non significatifs* [INSEE](https://www.insee.fr/fr/metadonnees/definition/c2249)
+-   Ils n'ont pas directement de prix observé, mais une valeur :
+    -   Elle peut venir de différents fondements : travail (Marx, Ricardo etc) ou alors valeur subjective
+    -   On dira ici que la [valeur]{.bg4} est le [changement de bien-être]{.bg4} lié à la consommation d'une unité de bien ou de service
+:::
+::::
+:::::::
+
+
+::: incremental
+- On a donc bien besoin d'un cadre avec la valeur d'usage et la valeur d'échange, sinon on passe à coté de la valeur économique!
+- On va devoir [modéliser la valeur, l'utilité, les choix]{.bg4} que les gens font pour pouvoir essayer de comprendre les actions et raisons de protéger
+
+:::
+
+::: notes
+
+
+:::
+
+------------------------------------------------------------------------
+
+### 2. Peut on les mesurer?
+
+::::::: columns
+:::: column
+Défis moraux :
+
+::: incremental
+-   Suppose une [substituabilité]{.bg3} entre nature et argent
+-   On met une valeur sur la nature qui aura un [impact pour les générations futures]{.bg3}, qui n'ont pas de voix
+-   Risque de favoriser une [compensation plutôt qu'une préservation]{.bg3}
+:::
+::::
+
+:::: column
+[Défis techniques :]{.fragment}
+
+::: incremental
+-   On [n'observe pas la plupart des valeurs sur un marché]{.bg3}, on n'a pas de données de prix
+-   Il est [difficile de séparer les éléments]{.bg3} : séparer les services du sol de ceux des arbres etc
+:::
+::::
+:::::::
+
+[On a plusieurs types de méthodes]{.fragment} [- rendez vous en UC3 - EERN!]{.fragment .bg3}
+
+::: incremental
+-   Les [préférences révélées]{.bg4} : à partir de données observées, on en déduit la valeur de l'environnement
+-   Les [préférences déclarées]{.bg4} : à partir de données de sondage, on en déduit la valeur de l'environnement
+:::
+
+------------------------------------------------------------------------
+
+### Exemple : quelle est la valeur d'une forêt?
+
+Plusieurs approches possibles :
+
+[Méthode du coût du voyage]{.bg3}: les dépenses que font les gens pour aller voir un site naturel reflètent la valeur: 
+
+::: incremental
+
+-   On observe la fréquentation d'un site selon la distance et donc le coût de déplacement
+-   Si plus on s'éloigne moins les viennent, on peut reconstruire une courbe de demande
+-   Et en déduire le surplus du consommateur, notion sur laquelle on reviendra
+-   **Critiques:**
+    -   Hypothèses fortes: on ne fait pas un road trip, on va seulement voir la nature
+    -   La valeur du temps est un choix fort
+    -   Les pauvres mettent moins de valeurs, car ils sont plus contraints
+    -   On n'a pas les valeurs d'option ni d'existence
+
+:::
+
+------------------------------------------------------------------------
+
+[Méthode d'évaluation contingente:]{.bg3} on demande aux gens combien ils seraient prêts à payer pour sauvegarder la forêt
+
+::: incremental
+
+-   "Seriez-vous prêts à payer X € par an, via un impôt spécial, pour financer la protection de la forêt ? »
+-   Permet de mesurer plein de valeurs
+-   **Critiques:**
+    -   Biais dans les réponses : on dira parfois "Oui, prêt à payer 1 million par an"
+    -   Limite des pauvres : leur consentement à payer est ex-post limité par le revenu
+    -   Plein d'autres biais.
+:::
+
+------------------------------------------------------------------------
+
+### A parte : l'économétrie moderne dépasse la valorisation
+
+En pratique, l'économie de l'environnement a dépassé la simple évaluation monétaire pour d'autres questions d'impact, suivant la [révolution de la crédibilité]{.bg4} :
+
+::: incremental
+-   Quel est l'effet du changement climatique sur la mortalité?
+-   La protection des forêts est-elle efficace contre la déforestation?
+-   Le remembrement agricole est-il le seul responsable de l'arrachage des haies?
+-   Les politiques de subvention changent-elles vraiment les comportements énergétiques?
+:::
+
+------------------------------------------------------------------------
+
+[Méthode des différences de différence]{.bg4}
+
+::: incremental
+-   On regarde l'évolution temporelle d'un groupe de contrôle
+-   Et celle d'un groupe traité
+-   On fait la différence
+-   [Hypothèse]{.bg4} : en l'absence de traitement, les traités auraient suivi la même progression que les contrôlés
+
+:::
+
+::: fragment
+
+```{r, did}
+#| fig-align: center
+#| out-width: "70%"
+
+suppressPackageStartupMessages({
+library(ggplot2)
+library(grid)
+})
+
+df <- data.frame(
+groupe = c("Contrôle","Contrôle","Traitement","Traitement"),
+periode = c("Avant","Après","Avant","Après"),
+y = c(5.0, 6.0, 5.5, 8.0)
+)
+
+
+# Ordre des périodes
+df$periode <- factor(df$periode, levels = c("Avant","Après"))
+
+
+# Calcul du DiD
+Delta_treat <- with(df, y[groupe=="Traitement" & periode=="Après"] - y[groupe=="Traitement" & periode=="Avant"])
+Delta_ctrl <- with(df, y[groupe=="Contrôle" & periode=="Après"] - y[groupe=="Contrôle" & periode=="Avant"])
+DiD <- as.numeric(Delta_treat - Delta_ctrl)
+
+
+# Niveau contre-factuel attendu pour le traité en "Après" (si même tendance que contrôle)
+cf_treat_after <- with(df, y[groupe=="Traitement" & periode=="Avant"]) + Delta_ctrl
+
+
+# Graphique
+ggplot(df, aes(x = periode, y = y, group = groupe, linetype = groupe, shape = groupe, color = groupe)) +
+geom_line(linewidth = 0.9) +
+geom_point(size = 3) +
+# Ligne contre-factuelle (tirets) pour le groupe traité
+annotate("segment", x = 1, xend = 2, y = df$y[df$groupe=="Traitement" & df$periode=="Avant"],
+yend = cf_treat_after, linetype = "dashed") +
+# Flèche verticale indiquant l'effet DiD à droite
+annotate("segment", x = 2, xend = 2, y = cf_treat_after, yend = df$y[df$groupe=="Traitement" & df$periode=="Après"]-.1,
+arrow = arrow(length = unit(0.25, "cm"))) +
+annotate("text", x = 2.05, y = (cf_treat_after + df$y[df$groupe=="Traitement" & df$periode=="Après"]) / 2,
+label = paste0("Effet DiD = ", round(DiD, 1)), hjust = 0, vjust = 0.5) +
+labs(
+title = " ",
+x = NULL,
+y = "Moyenne de l'issue (Y)",
+linetype = NULL,
+shape = NULL, 
+groupe = NULL
+) +
+  guides(shape = "none", 
+         linetype="none")+
+coord_cartesian(ylim = c(4.5, 8.5)) +
+  custom_theme()
+
+
+```
+
+:::
+
+----
+
+![](../images/EESE/valentin_JEEM.png){fig-align="center"}
+
+
+::: notes
+Valentin : Implementing a staggered difference-in-differences strategy on a longitudinal survey (1972–2010), we show that consolidation led to a significant reduction in hedgerow density of −14.3 m/ha (standard error: 2.33), accounting for 13.7 % of the overall decline observed in consolidated areas.
+:::
+
+------------------------------------------------------------------------
+
+[Méthode des discontinuités :]{.bg4}
+
+::: incremental
+-   On veut examiner des individus différents répartis autour d'un seuil : seuil de pollution, côté d'une frontière etc
+-   Le seuil n'est pas aléatoire, mais on suppose qu'on ne peut pas choisir intégralement de quel côté on est
+-   On compare ceux qui sont juste en dessous du seuil à ceux qui sont juste au dessus : 
+  - [Hypothèse]{.bg4} : il n'y a pas de vraie différence entre les deux à cet endroit
+:::
+
+
+
+
+::: fragment
+
+
+```{r, rdd}
+#| fig-align: center
+#| out-width: "70%"
+# Graphique simple pour illustrer un design de discontinuité de régression (RDD)
+# - Variable de forcing (score, âge, revenu...) sur l'axe X
+# - Résultat moyen (Y) sur l'axe Y
+# - Une coupure (threshold) introduit une discontinuité nette au point de coupure
+
+suppressPackageStartupMessages({
+  library(ggplot2)
+})
+
+set.seed(123)
+
+# Données simulées
+n <- 200
+x <- runif(n, -2, 2)
+# Y dépend linéairement de X avec un saut au seuil 0
+y <- 2 + 0.5*x + ifelse(x >= 0, 2, 0) + rnorm(n, 0, 0.3)
+
+df <- data.frame(x = x, y = y)
+
+# Graphique RDD
+p <- ggplot(df, aes(x, y)) +
+  geom_point(alpha = 0.6, size = 2) +
+  # Lignes de tendance estimées séparément avant et après le seuil
+  geom_smooth(data = subset(df, x < 0), method = "lm", se = FALSE, color = "blue") +
+  geom_smooth(data = subset(df, x >= 0), method = "lm", se = FALSE, color = "red") +
+  # Ligne verticale au seuil (cutoff)
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  annotate("text", x = 0, y = max(df$y)+0.3, label = "Seuil (cutoff)", vjust = -0.5, hjust = -0.1) +
+  labs(
+    title = " ",
+    x = "Variable de forcing",
+    y = "Résultat (Y)"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold")
+  )
+
+print(p)
+
+# Export si besoin
+# ggsave("rdd_simple_plot.png", p, width = 7, height = 5, dpi = 300)
+
+
+```
+
+:::
+
+-----
+
+![](../images/EESE/Neal_JEEM.png){fig-align="center"}
+
+
+::: notes
+Neal : This article uses satellite data to estimate the effectiveness of government protection on forested land across the globe over 2000–2022. Since deforestation can have significant negative externalities, measuring the effectiveness of protected areas is important for the future of conservation. It uses a regression discontinuity design at the boundaries of protected forest to counter the fact that protection is not randomly assigned. It estimates that protected areas are 30% effective on average, with significant heterogeneity between countries
+:::
+
+
+------------------------------------------------------------------------
+
+## B. Comment décider?
+
+[Méthode "analyse coûts bénéfices" :]{.bg4} doit on[ prendre une décision sur des outcomes prédéfinis?]{.bg3}
+
+::: incremental
+-   Si les coûts sont supérieurs aux bénéfices, on dit qu'il faut entreprendre une action
+-   Sinon, on ne le fait pas
+:::
+
+[Cela suppose vient avec de nombreux problèmes :]{.fragment}
+
+::: incremental
+-   Il faut réussir à monétiser, aujourd'hui et pour les effets futurs!
+-   On ne prend pas en compte la distribution des coûts et des bénéfices
+    -   Aujourd'hui
+    -   Et demain
+:::
+
+------------------------------------------------------------------------
+
+[D'autres méthodes sont possibles :]{.fragment}
+
+::: incremental
+-   On cherche les actions qui [maximisent le bénéfice-net aggrégé]{.bg4}:[ combien doit on faire?]{.bg3}
+    -   Si la valeur marginale d'une action est supérieure à son coût marginal, on continue
+    -   Si cette valeur est moindre, on enlève de la production
+    -   On cherche l'endroit où le coût marginal social et le bénéfice marginal social sont égaux
+    -   On cherche [l'efficience allocative]{.bg4} : $Bn = B - C \Rightarrow B' = C'$
+    -   [C'est le premier principe d'équimarginalité]{.bg4}
+    -   Oublie la distribution
+
+:::
+
+---
+
+::: incremental
+-   On cherche les [actions qui sont le plus coût efficace:]{.bg4} [comment faire le moins cher?]{.bg3}
+    -   Celles qui permettent d'aboutir à un but, fixé par les experts ou la science, pour le moins cher
+    -   Evite la monétisation de tout
+    -   Ex : option 1 évite 1t GHG / 1000 €, option 2 évite 2t GHG / 1000€
+-   Si on doit éviter 10t GHG :
+    -   On peut utiliser les deux technologies : $5\times 1000 + 2.5 \times 1000 = 7500$
+    -   Ou utiliser la moins chères : $5 \times 1000 = 5000$
+-   Le but est achevé à moindre coût, [l'efficience productive : 2e principe d'équimarginalité]{.bg4}
+    -   Avec des coûts marginaux constants, on n'utilise qu'une seule firme
+    -   Avec des coûts marginaux variables, on utilise les solutions jusqu'à ce que leurs coûts marginaux soit égaux
+-   Garantit pas l'efficacité, car la cible est fixée d'emblée
+
+:::
+
+
+# Conclusion
+
+----
+
+::: incremental
+-   L'économie se définit de façons multiples :
+    -   L'analyse des causes de la richesse nationale et de leur accroissement
+    -   L'analyse des processus matériels historiques et de la domination qui s'ensuit
+    -   La science des choix dans un contexte de rareté
+-   L'économie de l'environnement se base sur :
+    -   Une valeur psychologique et matérielle
+    -   Cherche à analyser les allocations optimales de biens environnementaux
+    -   En assignant des valeurs commensurables de l'environnement au reste
+    -   En utilisant des méthodes de modélisation des choix
+    -   Et d'analyse statistique
+-   Principes d'équimarginalité
+:::
+
+# Annexes
+
+## Critiques de l'accumulation primitive {#slide-critique}
+
+-   **Pas un moment unique** → processus **récurrent** d’expropriation (privatisations, dettes, crises) : *accumulation par dépossession*.\
+    *Harvey 2003; 2005.*
+
+-   **Poids des colonies remis en cause (Bairoch)** → la richesse des métropoles n’est **pas principalement** coloniale; au XIXᵉ, croissance souvent corrélée au **protectionnisme**.\
+    *Bairoch 1993; 1997.*
+
+-   **Profits de l’esclavage/Atlantique : contribution “limitée” (débat)** → chiffrages prudents sur l’industrialisation britannique.\
+    *Engerman 1972; O’Brien 1982.*
+
+-   **Origines “internes” agraires** → rapports de classe ruraux anglais \> simple essor commercial/colonial.\
+    *Brenner 1976; Wood 2002.*
+
+-   **Angle mort genre/reproduction** → violences de genre et **travail reproductif non payé** au cœur de la transition.\
+    *Federici 2004; Mies 1986.*
+
+-   **Nature/société** → dépasser le dualisme ; appropriation récurrente de **“natures bon marché”** (sols, énergie, travail non payé).\
+    *Moore 2015.*
+
+## Références (sélection, pour aller vite)
+
+-   **Bairoch, P.** *Economics and World History: Myths and Paradoxes* (1993); *Victoire et déboires* (1997).\
+-   **Brenner, R.** “Agrarian Class Structure and Economic Development in Pre Industrial Europe” (Past & Present, 1976).\
+-   **Engerman, S.** “The Slave Trade and British Capital Formation in the Eighteenth Century: A Comment on the Williams Thesis” (1972).\
+-   **Slavery and the British Industrial Revolution**, Heblich et al, NBER 2023
+-   **Harvey, D.** *The New Imperialism* (2003); *A Brief History of Neoliberalism* (2005).\
+-   **Mies, M.** *Patriarchy and Accumulation on a World Scale* (1986).\
+-   **Moore, J. W.** *Capitalism in the Web of Life* (2015).\
+-   **O’Brien, P.** (1982) travaux sur la contribution périphérique / commerce atlantique.\
+-   **Wood, E. M.** *The Origin of Capitalism* (2002).\
+-   **Federici, S.** *Caliban and the Witch* (2004).
+
+[⬅ Retour aux critiques](#accumulation-primitive)

@@ -5,7 +5,6 @@ subtitle: "UC6 - Economie Ecologique"
 
 # Introduction
 
-
 ```{r}
 protect=FALSE
 ```

@@ -364,3 +364,23 @@ $selection-bg: #26351c !default;
 .reveal .slides section .fragment.blur.visible {
   filter: none
 }
+
+.callout .callout-body {
+  font-size: 1.1em;
+}
+
+/* Agrandir tout le texte des callouts */
+.callout.callout-note.callout-titled.callout-style-default {
+  font-size: 1em;   /* ou 120%, ajuste à ta convenance */
+}
+
+.callout.callout-tip.callout-titled.callout-style-default {
+  font-size: 1em;   /* ou 120%, ajuste à ta convenance */
+}
+.quote {
+  font-style: italic;
+  text-align: justify;
+  margin: 0.5em auto;
+  width: 70%;
+}
+

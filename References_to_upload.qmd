@@ -5,31 +5,32 @@ format: html
 
 ## Ressources
 
-- Credit Markets, Property Rights and the Commons, Noack and Costello
+-   Credit Markets, Property Rights and the Commons, Noack and Costello
 
 ## Coûts sociaux des pesticides
 
-- Pollinator declines, international trade and global food security: Reassessing the global economic and nutritional impacts, Feuerbacher
+-   Pollinator declines, international trade and global food security: Reassessing the global economic and nutritional impacts, Feuerbacher
 
-## Ecological Economics 
+## Ecological Economics
 
-- Beyond the EKC: Economic development and environmental degradation in the US, Mutascu
-- Macroeconomic, sectoral and financial dynamics in energy transitions: A stock-flow consistent, input-output approach, Andrew Jackson and Tim Jackson
-- A Natural Resource Curse : the Unintended Effects of gold Mining on Malaria, J. Pagel, 2025
-- Carbon Giants: Exploring the Top 100 Industrial CO2 Emitters in the EU, Xenia Miklin et al, 2025
-- Blended academic insights for biodiversity and conservation finance, Fenichel et al, 2025
-- Banking on ecosystem services, Mundaca, 2024
-- The biodiversity premium, Coqueret, 2025
-- A comparative review of de- and post-growth modeling studies, Lauer, 2025
-- Varieties of capitalism and environmental performance, Jordan, 2025
-- Defining just transition, Galanis et al, 2025
-- Wealth inequality and carbon inequality, Apeti, 2025
-- Improving biodiversity resilience requires both public and private finance: A life-cycle analysis of biodiversity finance, Beverdam et al, 2025
-
+-   Beyond the EKC: Economic development and environmental degradation in the US, Mutascu
+-   Macroeconomic, sectoral and financial dynamics in energy transitions: A stock-flow consistent, input-output approach, Andrew Jackson and Tim Jackson
+-   A Natural Resource Curse : the Unintended Effects of gold Mining on Malaria, J. Pagel, 2025
+-   Carbon Giants: Exploring the Top 100 Industrial CO2 Emitters in the EU, Xenia Miklin et al, 2025
+-   Blended academic insights for biodiversity and conservation finance, Fenichel et al, 2025
+-   Banking on ecosystem services, Mundaca, 2024
+-   The biodiversity premium, Coqueret, 2025
+-   A comparative review of de- and post-growth modeling studies, Lauer, 2025
+-   Varieties of capitalism and environmental performance, Jordan, 2025
+-   Defining just transition, Galanis et al, 2025
+-   Wealth inequality and carbon inequality, Apeti, 2025
+-   Improving biodiversity resilience requires both public and private finance: A life-cycle analysis of biodiversity finance, Beverdam et al, 2025
 
 ## Conservation Economics
-- The Impact of Downgrading protected areas on Biodiversity, Yufei Li et al, 2025
-- Cost-effective policy instruments for biodiversity conservation under climate change – The need for flexibility, Gerling et al, 2025
+
+-   The Impact of Downgrading protected areas on Biodiversity, Yufei Li et al, 2025
+-   Cost-effective policy instruments for biodiversity conservation under climate change – The need for flexibility, Gerling et al, 2025
 
 ## Finance
-- A novel nature-based risk index: Application to acute risks and their financial materiality on corporate bonds, Cherief, 2025
+
+-   A novel nature-based risk index: Application to acute risks and their financial materiality on corporate bonds, Cherief, 2025
