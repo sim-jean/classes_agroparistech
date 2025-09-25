@@ -3,4 +3,614 @@ title: "De l'euro d'aujourd'hui au climat de demain"
 subtitle: "EESE - Approche économique des enjeux environnementaux et stratégie environnementale"
 ---
 
-Economist's guide to climate change
+# I. Introduction
+
+## Le temps : un enjeu central en économie de l'environnement
+
+::: incremental 
+
+- A la naissance de l'économie de l'environnement, les économistes se demandent: 
+  - "Combien de pétrole dois-je extraire aujourd'hui, et combien demain?"
+    - [Harold Hoteling, "The Economics of Exhaustible Resources", 1931, Journal of Political Economy](https://www.jstor.org/stable/1822328)
+  - "  until quite recently the central concerns have been associated with the question of the optimal intertemporal utilization of the fixed natural resource stocks", J. Krutilla, Conservation Reconsidered
+- La question de la dynamique, du temps est au coeur des enjeux environnementaux
+
+
+:::
+
+
+
+---
+
+## Le climat
+
+![GIEC, 2023](../images/EESE/giecc_novethic.jpg){fig-align="center"}
+
+---
+
+![Our World in Data, 2O25](../images/EESE/share-of-population.png){fig-align="center"}
+
+
+---
+
+![Our World in Data, 2025](../images/EESE/Growth-and-poverty.png){fig-align="center"}
+
+
+---
+
+![[Impact Lab](https://impactlab.org/map#usmeas=absolute&usyear=1986-2005&gyear=2040-2059&tab=global&gprob=0.5&grcp=rcp45&gvar=energy)](../images/EESE/impact_lab.png){fig-align="center"}
+
+::: notes
+
+- Dans le cadre du changement climatique: 
+  - Chaque tonne émise va avoir des impacts sur le forçage radiatif
+  - Au fil des années à venir
+  - Causant des coûts et des bénéfices différenciés dans le monde
+- Comment prend on des décisions là dessus?
+
+:::
+
+---
+
+# II. Faire un choix dans le temps
+
+## A. Le taux d'escompte
+
+
+::: incremental
+
+- Taux qui permet d'actualiser les valeurs du futur
+- Soit $r$ le taux, on a donc : 
+
+:::
+
+::: fragment
+
+$$
+X_{t+1} = (1+r)X_t \Rightarrow X_t = \frac{1}{1+r}X_{t+1}=\beta X_{t+1}
+$$
+
+:::
+
+::: incremental 
+
+- On calcule la valeur nette actualisée par :
+:::
+
+::: fragment
+
+$$
+PV_i = \sum_{t=0}^{T}\beta^t (B_t-C_t)
+$$
+
+:::
+
+----
+
+
+Soient deux projets : 
+
+```{r, table}
+
+library(kableExtra)
+library(tidyr)
+library(ggplot2)
+
+library(sysfonts)
+
+
+library(showtext)
+
+font_add_google("Roboto", "Roboto")
+showtext_auto()
+
+local_family = "Roboto"
+
+
+data <- data.frame(
+  Year = 0:3,
+  `Project A Cost`    = c(10000, 1000, 0, 0),
+  `Project A Benefit` = c(0, 4000, 4000, 4000),
+  `Project B Cost`    = c(6000, 0, 0, 0),
+  `Project B Benefit` = c(0, 1000, 3000, 3000)
+)
+
+data %>%
+  kbl(caption = "Coûts et bénéfices des projets A & B") %>%
+  kable_classic(full_width = FALSE, html_font = "Roboto")
+
+```
+
+Avec $r=5$%
+
+
+::: incremental
+
+- Le projet A a de plus grands coûts et bénéfices en termes nominaux
+
+:::
+
+::: fragment
+
+$$
+\begin{align*}
+PV_A &= -\frac{10 000}{1.05^0} + \frac{1}{1.05}(4000-1000) + \frac{1}{1.05^2}4000 + \frac{1}{1.05^3}4000 = ? \\
+PV_B &= -\frac{6000}{1.05^0}+ \frac{1000}{1.05^1} + \frac{3000}{1.05^2} + \frac{3000}{1.05^3} = ?
+\end{align*}
+$$
+
+:::
+
+----
+
+Soient deux projets : 
+
+```{r, table 2}
+
+library(kableExtra)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+
+library(sysfonts)
+library(showtext)
+
+font_add_google("Roboto", "Roboto")
+showtext_auto()
+local_family = "Roboto"
+
+custom_theme <- function(font_size = 10, 
+                         bg_color = "gray92",
+                         legend_position = 'bottom', 
+                         family_ = local_family) {
+  theme_light() +
+    theme(
+      text = element_text(family = family_, size = font_size),
+      plot.title = element_text(family = family_, size = 2*font_size, hjust = .5),
+      axis.title = element_text(family = family_, size = font_size),
+      legend.text = element_text(family = family_, size = .9*font_size),
+      legend.position = legend_position,
+      legend.title = element_text(family= family_, size = .9*font_size),
+      axis.text = element_text(family = family_, size = font_size),
+      strip.text = element_text(size = font_size),  # Set font size for facet labels
+      strip.background = element_rect(fill = bg_color, color = NA)  # Set background color for facet labels
+    )
+}
+
+data <- data.frame(
+  Year = 0:3,
+  `Project A Cost`    = c(10000, 1000, 0, 0),
+  `Project A Benefit` = c(0, 4000, 4000, 4000),
+  `Project B Cost`    = c(6000, 0, 0, 0),
+  `Project B Benefit` = c(0, 1000, 3000, 3000)
+)
+
+data %>%
+  kbl(caption = "Coûts et bénéfices des projets A & B") %>%
+  kable_classic(full_width = FALSE, html_font = "Roboto")
+
+```
+
+Avec $r=5%$
+
+::: incremental
+
+- Le projet A a de plus grands coûts et bénéfices en termes nominaux
+
+:::
+
+
+::: fragment
+
+Avec $r=5%$
+
+$$
+\begin{align*}
+PV_A &= -\frac{10 000}{1.05^0} + \frac{1}{1.05}(4000-1000) + \frac{1}{1.05^2}4000 + \frac{1}{1.05^3}4000 = -59.39 \\
+PV_B &= -\frac{6000}{1.05^0}+ \frac{1000}{1.05^1} + \frac{3000}{1.05^2} + \frac{3000}{1.05^3} = 264.98
+\end{align*}
+$$
+
+:::
+
+----
+
+Avec un taux d'escompte de 3% ceci dit : 
+
+::: fragment
+
+Avec $r=5%$
+
+$$
+\begin{align*}
+PV_A &= -\frac{10 000}{1.03^0} + \frac{1}{1.03}(4000-1000) + \frac{1}{1.03^2}4000 + \frac{1}{1.03^3}4000 = 343.57 \\
+PV_B &= -\frac{6000}{1.03^0}+ \frac{1000}{1.03^1} + \frac{3000}{1.03^2} + \frac{3000}{1.03^3} = 544.09
+\end{align*}
+$$
+
+:::
+
+
+::: incremental 
+
+- L'actualisation fait que nous plaçons moins de valeur sur les coûts et les bénéfices du futur
+- Ainsi, le timing des coûts et bénéfices des projets peuvent influer sur quel projet a la plus grande valeur`
+- En fonction du taux choisi, ces coûts et bénéfices peuvent avoir une influence considérable ou non
+
+:::
+
+----
+
+```{r, taux_escompte}
+
+data = data.frame(Temps = seq(0,100))%>%
+  mutate(PV5 = 100/(1.05)^Temps,
+         PV3 = 100/(1.03)^Temps,
+         PV1 = 100/(1.01)^Temps,
+         PV10 = 100/(1.1)^Temps)%>%
+  pivot_longer(-Temps, 
+               values_to = "Euros", 
+               names_to = "Taux")
+
+data %>%
+  ggplot(aes(x=Temps, y = Euros, color = Taux))+
+  geom_line()+
+  custom_theme()
+
+```
+
+---
+
+::: incremental 
+
+- 1 million de dommages dans 200 ans avec un taux $r=2%$ vaut 19,053 euros aujourd'hui
+- 1 million de dommages dans 200 ans avec un taux $r=8%$ vaut seulement 21 cents.
+- 5 ordres de magnitude de différence
+- Le choix de ce taux est donc central, et très débattu.
+
+:::
+
+----
+
+## B. Taux d'escompte et politique climatique
+
+Prenons un petit modèle d'action climatique : 
+
+::: incremental 
+
+- J'ai deux périodes, $t\in \{1,2\}$
+- Je peux réduire les émissions en chaque période : $a_t$ avec un coût $C(a_t)=\frac{c}{2}a_t^2$
+- Le stock de carbone demain détermine des dommages: $D_2 = \phi (E_1 - a_1 + E_2 - a_2)$
+- Un facteur d'escompte $\beta=\frac{1}{1+r}$
+- Quel est le problème du décideur? 
+
+:::
+
+::: fragment
+
+$$\min_{a_1, a_2} \frac{c}{2}a_1^2 + \beta\left( \frac{c}{2}a_2^2 + \phi(E_1 - a_1 + E_2 - a_2)\right)$$
+
+:::
+
+----
+
+L'action climatique optimale est donc : 
+
+::: fragment
+
+$$
+\begin{align*}
+a_1 &= \beta\frac{\phi}{c}\\
+a_2 &= \frac{\phi}{c}
+\end{align*}
+$$
+:::
+
+::: incremental
+
+- A mesure que le taux d'escompte augmente, $\beta\to 0$
+- Dans ce cas, [l'action climatique ne sera jamais faite tôt]{.bg3}
+- Les bénéfices évités dans le futur pèsent trop léger
+
+:::
+
+---
+
+![Rapport de la Cour des Comptes sur la transition écologique, 2025](../images/EESE/moscovici.jpeg){fig-align="center"}
+
+----
+
+## C. Comment choisir le taux? 
+
+[Option 1 : prendre le taux de marché ]{.bg4}
+
+::: incremental 
+- Le [taux d'intérêt réel payé sur certains investissements]{.bg4}
+- Il est sensé refléter la [productivité marginale du capital]{.bg3}, sur des marchés parfaits
+- Mais pourquoi ne voudrait on pas prendre cela? 
+  - Les taux de marché ne reflètent pas les [externalités]{.bg3}
+  - Le gouvernement se doit d'être [super responsable]{.bg4} : il représente les générations futures aussi
+
+:::
+
+
+::: fragment
+
+[Option 2 : actualisation sociale]{.bg4}
+
+:::
+
+::: incremental 
+- On prend un taux qui émane de [considérations économiques et morales]{.bg4}
+- Pourquoi actualiser?
+  - Le [temps]{.bg4} : les gens sont impatients
+  - Le lien [croissance inégalités]{.bg4} : si quelqu'un est plus riche dans 10 ans, un euro aujourd'hui vaudra plus que demain.
+- Avec un peu de mathématiques, on peut écrire le taux suivant la formule de Ramsey : 
+
+:::
+
+
+
+---
+
+### 1. Actualisation à la Ramsey
+
+::: fragment
+
+$$
+r = \delta + \eta \times g
+$$
+:::
+
+::: incremental 
+
+- $\delta$ s'appelle le [taux de préférence pure pour le temps]{.bg3}, ou le [taux d'actualisation de l'utilité]{.bg3} : comment est-ce qu'on valorise l'utilité future? 
+- $\eta$ est [l'élasticité de l'utilité marginale]{.bg3} : comment décroît l'utilité marginale (le bénéfice marginal) avec la consommation (i.e. à quel point l'utilité marginale est décroissante)
+- $g$ est le [taux de croissance]{.bg3} : à quelle vitesse croît la consommation dans le temps? 
+
+:::
+
+[Autrement dit : ]{.fragment}
+
+::: incremental 
+
+- $\delta$ : combien vaut une unité d'utilité demain? 
+- $\eta$ : comment évalue-t-on les générations riches/pauvres? 
+  - Si $\eta$ est plus grand, on est plus averse aux inégalités dans le temps
+- $g$ : à quel point les générations futures seront plus riches? 
+
+:::
+
+---
+
+### 2. Description v. prescription
+
+
+::: incremental 
+
+- [Approche descriptive : calibrer le modèle - entre 2 et 7%]{.bg4}
+  - $g$ : on le voit dans les data/forecasts - entre 1 et 3%
+  - $\eta$ : on peut observer cela aussi - souvent entre 1 & 4
+  - $\delta$ est choisi pour être pas trop loin de $r$ - 2-3%
+  - [Personne ne recommande trop cette vision]{.bg3}
+- [Approche prescriptive : ]{.bg4}
+  - Choix de $\delta$
+    - [Ramsey]{.bg4}, 1928 : mettre des poids différents à l'utilité des générations différentes est "éthiquement indéfendable"
+    - [Harrod]{.bg4}, 1948 : actualiser l'utilité représente une "expression polie pour la rapacité et la conquête de la raison par la passion"
+    - $\delta \to 0$
+  - et $\eta$ : choix éthiques, comment considérons nous la distribution des consommations dans le temps?
+    - $\eta = 0$ : la consommation dans le futur ne change pas notre volonté d'investir/épargner
+    - $\eta $ large : si il y a de la croissance, on va moins investir dans le futur
+  - $g$ on l'observe
+:::
+
+----
+
+### 3. Justices
+
+::: incremental 
+
+- John Rawls (1971) développe une [théorie de la justice distributive]{.bg4} : 
+  - [Liberté égales]{.bg3} : il faut les mêmes libertés pour tous
+  - [Principe de différence]{.bg3} : les inégalités sont acceptables seulement si elles profitent aux plus désavantagés [(maximin)]{.bg4}
+  - [Voile d'ignorance]{.bg3} : fiction méthodologique où les principes doivent être choisis selon un voile d'ignorance de ses propres positions sociales
+  - [Critique de l'utilitarisme]{.bg3} : on sacrifie les droits d'une minorité pour une richesse globale, il veut une justice qui protège les plus vulnérables. 
+  - Ce qui en résulte : justice pour tous
+    - $\delta =0$
+    - $\eta = \infty$ : l’utilité marginale chute rapidement quand la consommation augmente.
+        - Autrement dit, on accorde beaucoup plus de valeur à un euro chez quelqu’un de pauvre
+        - S'il y a de la croissance, ce n'est pas les générations riches qui vont décider, du fait du minimax.
+- Des perspectives plus [égalitaires]{.bg4} selon : 
+  - Le [temps]{.bg4} : donnent $\delta$ faible et $r$ aussi
+  - [L'inégalité intergénérationelle]{.bg4} : $\eta$ large et $r$ important si la croissance est positive
+  
+:::
+
+---
+
+### 4. Le rapport Stern, 2006
+
+Gros débat dans les années 2000 pour savoir où fixer ce taux d'actualisation : [le rapport Stern]{.bg4}
+
+::: incremental 
+
+- Préconise un [taux de préférence pour le présent de 0.1%]{.bg4}
+- Une [aversion à l'inégalité ]{.bg3} de $\eta=1$
+- Pour un [taux d'actualisation]{.bg3} de 1.4%
+- L'idée était de dire : 
+  - Les pertes estimées seront de 5% du PIB mondial par an, peut être plus avec les [fat-tailed risks]
+  - Les coûts sont seulement d'1% 
+- La politique climatique peut être
+  - une [assurance pour préserver la croissance]{.bg3}
+  - une [assurance contre les états catastrophiques]{.bg3}
+- Des critiques : Nordhaus par exemple : 
+  - Le taux d'escompte est trop faible et pas révélé par le marché.
+
+:::
+
+---
+
+# III. Le coût social du carbone
+
+---
+
+## A. Définition
+
+::: incremental 
+- On a parlé beaucoup de la taxe carbone, qui doit être égale au dommage marginal social
+
+- Comment calculer ce [dommage marginal social? ]{.bg4}
+
+- Une première approche est de dire : 
+  - Considérons tous les dommages que feront une unité émise aujourd'hui dans le temps
+  - Et actualisons la somme
+
+:::
+
+
+::: fragment
+
+$$
+SCC_t = \sum_{t=0}^\infty \frac{D_t}{(1+r)^t}
+$$
+
+Que met-on dans $D_t$?
+
+:::
+
+::: incremental 
+- Une augmentation des émissions change le climat, causant par exemple
+  - Des [dommages de marché ]{.bg4}: prix des biens agricoles plus chers, pertes d'infrastructures
+  - Des [dommages de non-marché ]{.bg4}: impacts sur la santé, perte de biodiversité etc
+  - Des [dommages issus de risques catastrophiques]{.bg4} : faible probabilité mais impact important
+
+:::
+
+----
+
+## B. Quantifier le coût social du carbone
+
+### 1. Quelles relations?
+
+La quantification s'avère difficile car il faut trouver plein de liens: 
+
+::: incremental 
+- Comment les émissions changent les concentrations atmosphériques de carbone? 
+  - Une relation sur le [cycle du carbone]{.bg3}
+- Comment ces concentrations changent le forçage radiatif? 
+  - Une relation relative à ce [forcage radiatif]{.bg3}
+- Comment le forçage change la température?
+  - Une relation du [climat]{.bg3}
+- Comment la température réduit la production? 
+  - Une relaiton de [dommage]{.bg3}
+- Comment cette réduction se transmet à la consommation? 
+  - Une relation [économie-consommation]{.bg3}
+- Comment cette consommation se change en utilité dans le temps? 
+  - Une relation [bien-être/discounting]{.bg3}
+
+:::
+
+----
+
+### 2. Les modèles d'évaluation intégrés
+
+::: incremental 
+- Ce sont des [modèles]{.bg3} avec plusieurs sous modèles qui intègrent les relations que l'on a décrite plus haut
+- Spécifiquement, il y a : 
+  - Des [chemins socio-économiques]{.bg4} : productivité, population, etc
+  - Un module sur le [cycle du carbone et le forçage]{.bg3}
+  - Une [réponse climatique]{.bg3} : souvent liée au niveau moyen de changement de température
+  - Une [fonction de dommages]{.bg3} : avec des réponses plus ou moins sectorielles et plus ou moins d'adaptation
+  - Et une fonction de [welfare sociale]{.bg3}
+  
+:::
+
+---
+
+![](../images/EESE/dice_structure.png){fig-align="center"}
+
+---
+
+Différents modèles existent - cf cours de M2 - voici les premiers : 
+
+::: incremental 
+- [ DICE, développé par W. Nordhaus (PN 2018) : modèle simple et global, pour l'optimisation]{.bg4}
+  - Approche : modèle global, “top-down”, un seul grand agrégat représentant l’économie mondiale.
+  - Fonctionnement : optimise le bien-être social intertemporel (croissance ↔ émissions ↔ climat ↔ dommages).
+  - Hypothèses clés : fonction de dommages simple (quadratique), une courbe de coûts d’abattement, un “backstop technology” (solution de long terme).
+  
+- [FUND (R. Tol) : modèle régional/sectoriel pour la distribution et l'adaptation]{.bg4}
+  - Approche : modèle régional et sectoriel (≈ 16 régions, plusieurs secteurs : agriculture, santé, énergie, inondations…).
+  - Fonctionnement : les dommages sont différenciés par région et secteur, certains peuvent même être positifs à faible réchauffement (ex. gains agricoles au Nord).
+  - Hypothèses clés : adaptation prise en compte, possibilité d’appliquer des pondérations d’équité entre régions.
+  - Utilisation : surtout pour étudier la distribution spatiale et sectorielle des coûts du changement climatique, ainsi que les questions d’équité.
+
+:::
+
+----
+
+::: incremental 
+  
+- [PAGE (Hope) : modèle probabiliste, pour prendre en compte incertitudes et risques extrêmes]{.bg4}
+  - Approche : modèle probabiliste, utilisé dans plusieurs rapports européens (ex. rapport Stern).
+  - Fonctionnement : calcule non pas un seul SCC, mais une distribution de valeurs (via Monte Carlo) en intégrant explicitement les incertitudes.
+  - Hypothèses clés : inclut des risques catastrophiques (tipping points), et applique par défaut des pondérations d’équité entre régions.
+  - Utilisation : pour mettre en avant la variabilité et l’incertitude des estimations du SCC, ainsi que les “queues épaisses” (risques extrêmes).
+:::
+
+----
+
+## C. Différentes valeurs du coût social du carbone
+
+### 1. Panorama des valeurs
+
+![[Tol, 2024](https://arxiv.org/pdf/2409.08158)](../images/EESE/Tol.png){fig-align="center"}
+
+---
+
+Un exemple aux Etats Unis, ou l'usage du SCC est obligatoire pour certaines analyse de coûts bénéfices d'une politique publique
+
+::: incremental 
+
+- Administration Obama: l'introduit et le fixe  autour de 51\$/t de CO2
+- Trump l'a diminuée autour de 5\$ en augmentant drastiquement le taux d'actualisation de référence qui doit être pris et en se focalisant sur les dommages US (pas mondiaux)
+- Biden l'a remise au niveau de 51\$/t de CO2 en proposant de la mettre autour de 190\$/t
+- En 2025, Trump arrête simplement de l'utiliser : à moins que la loi le requière
+
+:::
+
+---
+
+### 2. Pourquoi changent-elles?
+
+Souvent, le SCC augmente dans le temps (cf. taxe carbone en France)
+
+::: incremental 
+
+- Effets [non linéaires]{.bg4} : 
+  - les dommages liés à une tonne supplémentaire ne sont pas forcément linéaires
+  - Risques de catastrophe
+- [Croissance économique]{.bg4} : si l'économie croît, il y aura plus à préserver demain. Donc, on augmente le SCC
+
+:::
+
+---
+
+# Conclusion 
+
+--- 
+
+::: incremental 
+
+- Du fait de l'impact de nos décisions dans le futur, il faut trouver un moyen de le prendre en compte
+- Le discounting fait cela, avec des débats intenses à chaque fois, surtout en termes de politique climatique
+  - On s'accorde quand même pour ne pas trop discounter
+- Le [coût social du carbone]{.bg4} se fait avec des modèles complexes et intégrés appelés IAMs
+  - Avec des valeurs différentes, centrées autour de 200\$/t de CO2eq
+  - Même si l'administration Biden était à 80%
+  - Leur utilisation n'est pas seulement optimisatrice
+  - Elle sert aussi de base à l'évaluation de scénarios, centraux dans les travaux du GIEC
+
+
+:::
+

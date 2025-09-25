@@ -291,7 +291,10 @@ Q_T=
 $$
 :::
 
-------------------------------------------------------------------------
+-----------------
+
+### Pour les maths
+
 
 ```{r, demande totale}
 
@@ -309,6 +312,33 @@ data = data.frame(Prix = seq(0,110))%>%
 data %>%
   ggplot(aes(x = Prix, y = Quantité, color = Demandes))+
   geom_line()+
+  xlim(0.1,110)+
+  custom_theme()
+
+
+```
+
+------------------------------------------------------------------------
+
+### Somme horizontale: raisonnement graphique
+
+```{r, demande totale2}
+
+#| fig-align: "center"
+
+
+data = data.frame(Prix = seq(0,110))%>%
+  mutate(QA = pmax(100-Prix, 0),
+         QB = pmax(50-Prix, 0),
+         QT = QA+QB)%>%
+  pivot_longer(-Prix, 
+               names_to = "Demandes", 
+               values_to = "Quantité")
+
+data %>%
+  ggplot(aes(y = Prix, x = Quantité, color = Demandes))+
+  geom_line()+
+  xlim(0.1,110)+
   custom_theme()
 
 
@@ -523,7 +553,80 @@ $$
 
 ------------------------------------------------------------------------
 
-### 2. Surplus du producteur
+### 2. Offre individuelle, offre collective
+
+Pour un prix donné, on somme les quantités offertes : 
+
+
+```{r, offre collective}
+
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 1   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + 6/10*q
+
+PMC1 <- function(q) 6/4*q
+PMC2 <- function(q) 6/6*q
+
+
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+
+q1_inter = function(p) 4/6*p
+q2_inter = function(p) p
+
+#-----------------------------------
+
+df <- tibble(
+  q   = q_seq,
+  #MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  #SMC = SMC(q_seq), 
+  PMC1 = PMC1(q_seq),
+  PMC2 = PMC2(q_seq)
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  geom_hline(yintercept = 10)+
+  geom_segment(aes(x = q1_inter(10), xend = q1_inter(10), y=0, yend =10), linetype = "dotted")+
+  #annotate("label", x = q1_inter(10), y = -Inf, label = "N", vjust = -0.5)+
+  geom_segment(aes(x = q2_inter(10), xend = q2_inter(10), y=0, yend =10), linetype = "dotted")+
+  #annotate("label", x = q2_inter(10), y = Inf, label = "N", vjust = 1.1)+
+  geom_segment(aes(x = q2_inter(10)+q1_inter(10), xend=q2_inter(10)+q1_inter(10), y=0, yend=10), linetype="dotted")+
+  #coord_cartesian(clip = "off")+
+  ylim(0,40)+
+  custom_theme()
+
+```
+
+---
+
+### 3. Surplus du producteur
 
 ::: {.callout-note title="Surplus du producteur"}
 Le surplus du producteur est la différence entre la recette et le coût marginal de production pour chaque unité
@@ -754,8 +857,8 @@ ps_poly <- tibble(
 ggplot() +
   geom_line(data = demand, aes(x = Quantite, y = Prix, color = Courbe), size=1) +
   geom_line(data = supply, aes(x = Quantite, y = Prix, color = Courbe), size=1) +
-  geom_polygon(data = cs_poly, aes(x = Quantite, y = Prix), fill="lightblue", alpha=0.4) +
-  geom_polygon(data = ps_poly, aes(x = Quantite, y = Prix), fill="orange", alpha=0.4) +
+  geom_polygon(data = cs_poly, aes(x = Quantite, y = Prix), fill="orange", alpha=0.4) +
+  geom_polygon(data = ps_poly, aes(x = Quantite, y = Prix), fill="lightblue", alpha=0.4) +
   geom_point(aes(x = q_star, y = p_star), size=1, color="black") +
   geom_vline(xintercept = q_star, linetype="dashed", linewidth = .4) +
   geom_hline(yintercept = p_star, linetype="dashed", linewidth = .4) +
@@ -1040,6 +1143,20 @@ Certes, le mal et les malheurs sont bien présents dans ce monde, mais en dépit
 
 ### 1. Définition
 
+::::: columns
+::: {.column width="40%"}
+![](../images/UC1/pigou.png){fig-align="center"}
+:::
+
+::: {.column width="60%"}
+*"\[...\] one person A, in the course of rendering some service, for which payment is made, to a second person B, incidentally also renders services or disservices to other persons (not producers of like services), of such a sort that payment cannot be exacted from the benefited parties or compensation enforced on behalf of the injured parties"*
+
+Arthur Cecil Pigou, *The Economics of Welfare*, 1920
+:::
+:::::
+
+----
+
 ::: {.callout-note title="Externalités"}
 Action d'un agent qui a des conséquences sur l'utilité ou le profit d'autres agents sans compensation monétaire
 :::
@@ -1050,8 +1167,10 @@ Action d'un agent qui a des conséquences sur l'utilité ou le profit d'autres a
 -   Un problème d'**efficacité** :
     -   Nuit aux efforts que les gens font pour maximiser leur bien être
 -   Le coût (ou bénéfice) **social** des actions diffère du coût (ou bénéfice) **privé**
+    -   Il faut prendre ces fonctions dans l'analyse!
 -   Empêche le mécanisme de marché d'allouer les ressources au mieux: - Il n'y a pas de marché pour cela
 -   Les droits de propriétés sur ces conséquences sont mal définis, pas exclusifs
+
 :::
 
 ------------------------------------------------------------------------
@@ -1064,7 +1183,10 @@ Plusieurs types:
 -   Positive/négative :
     -   La pollution impose des coûts sociaux
     -   La vaccination offre des bénéfices sociaux
+    
 :::
+
+
 
 ------------------------------------------------------------------------
 
@@ -1072,6 +1194,7 @@ Plusieurs types:
 
 ::::::: columns
 :::: {.column width="30%"}
+
 ::: incremental
 -   Le [coût social]{.bg4} n'est pas bien pris en compte
 -   La courbe de [coût privé]{.bg4} dicte  l'équilibre
@@ -1096,6 +1219,21 @@ En période de traitements, la surexposition des enfants de 3 ans à 6 ans est s
 
 
 ------------------------------------------------------------------------
+
+Dans l'analyse, on intègre donc : 
+
+::: incremental 
+
+- Le bénéfice marginal social lié à une action i.e. qui échoit à d'autres que ses producteurs : $MB(Q)$
+- Le dommage marginal social lié à une action : $MD(Q)$
+
+:::
+
+$$
+S_T = \int_0^Q DMP(q) dq - \int_0^Q C'(q)dq + \int_0^Q MB(q)dq - \int_0^Q MD(q)dq 
+$$
+
+-----
 
 ```{r, externalités 1}
 #| fig-align: center
@@ -1492,7 +1630,7 @@ ggplot(df, aes(x = Q, y = Valeur, color = Courbe)) +
 
 ------------------------------------------------------------------------
 
-Si le coût marginale de production est de $Cm(Q) = Q$, l'optimum est :
+Si le coût marginal de production est de $Cm(Q) = Q$, l'optimum est :
 
 ::: fragment
 $$ Cm(Q) = SMB(Q) \Rightarrow Q = 13-1.5Q \Rightarrow Q = 5.2$$

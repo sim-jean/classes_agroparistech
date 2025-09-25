@@ -212,6 +212,7 @@ On va avoir recours à différents types d'instruments
 -   La norme : les normes ISO par exemple, qui limitent les rejets etc, sont obligatoires dans certains processus de production. RE 2020 est la nouvelle réglementation énergétique et environnementale de l’ensemble de la construction neuve. L’État, avec l’aide des acteurs du secteur, a lancé un projet inédit pour prendre en compte dans la réglementation non seulement les consommations d’énergie, mais aussi les émissions de carbone, y compris celles liées à la phase de construction du bâtiment. L’enjeu est donc de concevoir et construire les futurs lieux de vie des Français en poursuivant trois objectifs majeurs portés par le gouvernement :
 
 un objectif de sobriété énergétique et une décarbonation de l’énergie ; une diminution de l’impact carbone ; une garantie de confort en cas de forte chaleur.
+
 :::
 
 ## Les solutions monétaires

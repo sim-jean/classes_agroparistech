@@ -1,0 +1,191 @@
+---
+title: "Introduction à l'économie de la biodiversité"
+subtitle: "EESE - Approche économique des enjeux environnementaux et stratégie environnementale"
+---
+
+# Introduction 
+
+---
+
+
+::: incremental
+
+- En apparence, on peut faire un [SC du carbone]{.bg3} : 
+  - Le CO2 est un polluant global
+  - On peut essayer de faire un SCC mondial, en aggrégant les dommages locaux
+- C'est [plus difficile avec la biodiversité]{.bg4} : 
+  - Les pertes sont sur plusieurs éléments
+  - Assez hétérogènes
+  - Difficilement substituable
+
+:::
+
+# I. Les causes économiques du déclin de la biodiversité
+
+---
+
+![IPBES, 2019](../images/ecol_econ/biodiv/drivers_impact.jpg){fig-align="center"}
+
+---
+
+## A. Une approche par l'extinction des espèces
+
+Comment expliquer : 
+
+::: incremental 
+
+- La surexploitation? 
+- La perte d'habitat?
+
+:::
+
+::: fragment
+
+T. Swanson, [The Economics of Extinction Revisited and Revised, 1994, *Oxford Economic Papers*](https://www.researchgate.net/publication/5215355_The_Economics_of_Extinction_Revisited_and_Revised_A_Generalised_Framework_for_the_Analysis_of_the_Problems_of_Endangered_Species_and_Biodiversity_Losses)
+
+
+:::
+
+
+---
+
+
+::: incremental 
+
+- Les espèces sont souvent [mal appropriées : problème de droit de propriété]{.bg4}
+  - Il est facile d'aller dans l'océan pour pêcher
+  - Et faire une sorte de tragédie des communs
+- Menant à l'[extinction]{.bg4} 
+  - Si le prix des ressources est élevé
+  - Et leur taux de reproduction faible
+- Par ailleurs : 
+  - Les sociétés humaines gèrent des [porte-feuilles d'actifs]{.bg4} 
+  - Les [ressources sont allouées aux ressources les plus rentables]{.bg3}
+  - On [désinvestit]{.bg3} donc les habitats pour d'autres usages
+  - Perte d'habitat et extinction
+  
+:::
+
+
+# II. Comment la biodiversité change les perspectives classiques en économie de l'environnement?
+
+---
+
+## A. La biodiversité est plus que la collection des espèces
+
+
+![](../images/ecol_econ/biodiv/biodiv_illustration.jpg){fig-align="center"}
+
+---
+
+::: incremental 
+
+- De nombreuses études tendent à montrer que la préservation de la biodiversité et la nature est essentielle à
+  - L'économie mondiale
+  - La stabilité financière
+  
+:::
+
+----
+
+![](../images/EESE/risks.png){fig-align="center"}
+
+
+---
+
+![](../images/EESE/exposure.png){fig-align="center"}
+
+---
+
+## B. La biodiversité change l'analyse
+
+::: incremental 
+
+- [Non susbtituabilité : ]{.bg4}
+  - Les dommages climatiques, environnementaux, peuvent être modélisés comme [continus, et substituables avec de l'utilité]{.bg3}
+  - La perte de biodiversité implique [des seuils, de l'irréeversibilité]{.bg3}
+  - L'extinction ne se prête pas à [l'analyse marginale]{.bg3}
+
+- Ce qui crée des [biens publics mais relativement localisés]{.bg4} : 
+  - Les services écosystémiques sont locaux
+  - Mais aussi globaux
+  - [Externalités multi-scalaires]{.bg3}
+
+:::
+
+----
+
+::: incremental
+
+
+- [Hétérogénéité spatiale]{.bg4} : 
+  - Les dommages de la perte de biodiversité sont globaux
+  - Mais aussi locaux
+  - Et [extrêmement hétérogènes:]{.bg3} on va avoir du mal à faire un prix
+
+- Ne se prête pas forcément à la [modélisation coûts bénéfices]{.bg4} : 
+  - [Monétiser]{.bg3} la nature est éthiquement questionnables - bienvenue à l'atelier débat de l'UC 1
+  - Et encore plus difficile que certains éléments environnementaux
+  - On peut utiliser d'autres outils, qui ne font pas cela : certains scénarios de [modélisation dite "bioéconomique" ]{.bg4}- encore une fois, bienvenue en UC1!
+  
+- On n'a eu que récemment pas mal de [données]{.bg3}, même si il reste encore beaucoup de trous!
+
+:::
+
+# Conclusion générale
+
+---
+
+Que retenir à l'issue de ce cours? 
+
+::: incremental 
+- [L’économie de l’environnement]{.bg4} constitue un [champ particulier]{.bg3} de l’analyse économique qui vise à donner une [valeur — souvent monétaire]{.bg4} — aux aspects environnementaux, afin d’éclairer les choix de politiques publiques
+  - En oubliant parfois la {distribution ou les dominations}{.bg3}
+
+- Cette valorisation s’appuie sur une [théorie de la valeur ]{.bg4}: 
+  - La [valeur économique totale ]{.bg3}
+  - S'analyse via [bénéfices et coûts marginaux]{.bg3}
+  - C’est leur [comparaison]{.bg3} qui guide l’action [rationnelle.]{.bg3}
+
+
+:::
+
+-----
+
+::: incremental 
+
+
+- Lorsque le [coût marginal privé diffère du coût marginal social]{.bg4}
+  - des [défaillances]{.bg4} apparaissent (externalités négatives, biens publics)
+  - et justifient une [intervention publique]{.bg3} d'intensité variable
+
+- Les politiques environnementales: 
+  - [Taxes, normes, permis échangeables,]{.bg4} subventions visent à corriger ces défaillances
+  - mais elles sont confrontées aux enjeux [d’efficacité, d’efficience et d’équité.]{.bg4}
+
+- En théorie simple, [plusieurs instruments peuvent être équivalents. ]{.bg4}
+  - Mais dans la réalité, marquée par [l’hétérogénéité]{.bg4} des acteurs, des contextes et des impacts
+  - les [ choix d’instruments influent sur la répartition des coûts et bénéfices ]{.bg4}(cf. débats sur les gilets jaunes, ou sur les mécanismes mondiaux de tarification du carbone)
+  - Autant aujourd'hui que demain
+
+:::
+
+
+---
+
+::: incremental 
+
+- [Agir pour le futur est indispensable]{.bg4} pour limiter le changement climatique. 
+  - L’ampleur de l’action dépend cependant du [poids accordé aux générations futures]{.bg3}, 
+  - qui relève à la fois de [considérations éthiques]{.bg3} (choix du taux de préférence pour le présent) 
+  - et [techniques]{.bg3} (incertitudes sur la croissance, les dommages, les risques de catastrophes).   
+  - C’est ce que montre le [coût social du carbone]{.bg4}, outil central mais dépendant de ces hypothèses.
+
+- La [biodiversité]{.bg3}, elle, est essentielle au maintien des fonctions vitales des écosystèmes. Mais, à la différence du climat, elle soulève des défis particuliers :
+  - Elle est plus [spatialisée et hétérogène]{.bg4} (chaque habitat, chaque espèce compte différemment)
+  - Elle implique des [seuils et des irréversibilités]{.bg4} (extinction = perte définitive),
+  - Elle questionne la [substituabilité]{.bg4} (peut-on remplacer la perte d’espèces par plus de capital construit ?),
+
+
+
+:::

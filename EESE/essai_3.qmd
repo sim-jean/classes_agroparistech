@@ -1,0 +1,2367 @@
+---
+title: "Politique économique environnementale"
+subtitle: "EESE - Approche économique des enjeux environnementaux et stratégie environnementale"
+---
+
+
+```{r, chunk init}
+rm(list = ls())
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(magrittr)
+library(here)
+#library(extrafont)
+library(reshape2)
+
+#install.packages(c("sysfonts", "showtext"))
+library(sysfonts)
+
+
+library(showtext)
+
+font_add_google("Roboto", "Roboto")
+showtext_auto()
+
+source(here("utilities.R"))
+
+local_family = "Roboto"
+
+```
+
+# I. Introduction
+
+---
+
+![](../images/EESE/eu_ets_IFP.png){fig-align="center"}
+
+---
+
+![](../images/EESE/gj_fr24.jpg){fig-align="center"}
+
+::: notes
+
+- 3 millions de participants
+- 800 ronds points
+- 1 an
+- 2400 blessés, 23 éborgnés, 5 amputés etc
+
+:::
+
+---
+
+
+
+## A. Les effets d'une politique économique environnementale 
+
+Voir *The Economics of Inequality and the Environment*, Drupp et al, *Journal of Economic Perspectives*, 2025
+
+Supposons que l'on mette en place une taxe carbone, et considérons les effets sur un ménage dont la seule personne qui génère des revenus travaille comme artisan dans le bâtiment: 
+
+::: incremental 
+
+- [Bénéfices]{.bg4} environnementaux : 
+  - [Directs]{.bg3} : moins de coûts liés au climat (aujourd'hui ou dans le futur)
+  - [Indirects]{.bg3} : 
+    - *Par la consommation* : la productivité agricole est meilleure, les prix des biens consommés sont moins chers
+    - *Par la productivité* : il est moins difficile de travailler, il y a moins de fortes chaleurs
+
+:::
+
+---
+
+::: incremental
+
+- [Coûts de la taxe]{.bg4} : 
+  - Directs : le prix des biens polluants augmente
+  - Indirects : 
+    - Consommation : le prix des biens utilisant des produits polluants va également augmenter
+    - Par la productivité : les revenus issus du travail baissent du fait des consommations intermédiaires plus chères
+- [Utilisation de la taxe]{.bg4} : 
+  - Bénéfices potentiels si développement de services publics locaux, ou alors moins de taxes sur le reste, ou redistribution?
+
+:::
+
+
+
+## B. Comparer les instruments dans une population hétérogène
+
+On a notre disposition : 
+
+::: incremental
+
+-   Instruments [réglementaires]{.bg3} : normes technique, interdictions etc
+-   Instruments [monétaires]{.bg3} : taxes, droits échangeables
+-   Instruments [hybrides]{.bg3} : contrats, incitations comportementales, taxes et normes ensemble
+
+:::
+
+::: fragment
+
+On va voir ce qui se passe si on suppose que 
+
+:::
+
+::: incremental 
+
+- Certaines firmes ont [plus de mal à réduire]{.bg3} leur pollution que d'autres
+- Si certains [groupes d'individus]{.bg4}
+  - Souffrent de façon disproportionnée des dommages
+  - Ont des revenus différents
+
+:::
+
+
+## B. Quel but pour la politique économique environnementale?
+
+### 1. Shooting for the triangle
+
+
+![](../images/EESE/policy_triangle.png){fig-align="center"}
+
+---
+
+### 2. Equité
+
+L'équité peut être : 
+
+::: incremental 
+
+- [Horizontale]{.bg4} : traiter de la même façon les personnes placées dans la même situation
+  - A pollution égale, traitement égal
+  - Est-ce que tous les ménages pauvres bénéficient pareil d'une politique économique?
+- [Verticale]{.bg4} : traiter différemment les personnes dans des situations différentes
+  - A capacité différente, effort différent
+  - Est-ce que les ménages pauvres sont plus perdants que les ménages riches du fait d'une politique économique?
+
+:::
+
+[Cela dépend notamment de: ]{.fragment}
+
+::: incremental
+
+- L'[incidence]{.bg4} des politiques économiques, i.e. qui en porte les coûts
+- Des [variables]{.bg3} choisies et connues par le législateur pour le design des politiques: 
+  - On vise une [équité horizontale]{.bg3} : même taxes par type de revenu
+  - Mais on [oublie d'autres variables hétérogènes]{.bg3} : pas les mêmes types de maisons, de voitures etc
+
+:::
+
+
+----
+
+
+### 3. Tensions sur le triangle
+
+
+::: incremental 
+
+1. Dans des cas simples, on peut [maintenir le triangle parfaitement]{.bg4}
+  - On réduit les pollutions
+  - Au moindre coûts possible
+  - En évitant que les personnes au bas des distributions considérées n'en paient démesurément le prix
+
+2. [Dans les cas plus compliqués (hétérogènes)]{.bg4}, [maintenir le triangle est plus difficile]{.bg4} [avec une seule politique ]{.bg4}
+  - En ville, plus riches, la pollution est plus grave (plus de gens affectés) mais facile à éviter
+  - En campagne, plus pauvres, la pollution l'est moins (moins de gens affectés) mais difficile à éviter
+  - On veut réduire la pollution via une taxe uniforme sur les véhicules à moteur
+    - On peut aboutir à une réduction à la campagne et plus importante en ville, ce qui est efficient
+    - Au prix d'une rupture de l'équité, la taxe pesant plus sur les plus pauvres, menant à un refus
+
+3. On va devoir étudier un [policy mix]{.bg4}
+  - Efficacité & efficience
+  - Equité
+
+:::
+
+
+
+
+# II . Les solutions réglementaires
+
+## A. La pollution de l'air en Europe
+
+::: notes
+
+In the EU-27, transport was
+- the largest emitter of NOx in 2022, with a share of 56.5%. 
+- 29.3% of PM10 and PM2.5 in the EU-27 in 2022.
+- 26.3% of BC emissions, 19.2% of SOx emissions, 
+- 18.8% of CO emissions, 8.1% of the emissions of NMVOC,
+- 5.75% of N2O emissions and 1.4% of NH3 emissions in the EU-27 were due to transport in 2022. 
+
+:::
+
+![Sustainability of Europe's mobility systems, EEA, 2024](../images/EESE/EU-27_NOx .png){fig-align="center"}
+
+---
+
+
+![Sustainability of Europe's mobility systems, EEA, 2024](../images/EESE/EU-27_PM10.png){fig-align="center"}
+
+---
+
+![EEA, 2024, Harm to human health from air pollution in Europe: burden of disease status, 2024](../images/EESE/deaths_pollution_europe.png){fig-align="center"}
+
+
+## B. Les normes administratives et techniques : le cas des normes Euro
+
+::: incremental 
+- Normes européennes sur les moteurs à explosion depuis 1992
+- Ces normes se succèdent tous les 5 ans, rendues chaque année plus restrictives
+- Incluant progressivement les PM, notamment issues des freins, pneus etc
+- Qui ont été au coeur de scandales : le Diesel Gate de Volkswagen
+
+:::
+
+[On peut voir cela :]{.fragment}
+
+::: incremental 
+
+- Pour simplifier le propos, on va supposer que $Q=aE$
+  - Lien linéaire entre quantités et émissions
+  - Ce n'est pas toujours le cas : on peut changer de technique etc
+  - Mais c'est une bonne approximation
+- Tant qu'à faire : $a=1$
+
+:::
+
+---   
+
+::: incremental
+
+- On peut 
+  - [Identifier le dommage marginal]{.bg4} qui est lié à la pollution
+  - Le [bénéfice marginal]{.bg4} qui est lié aux voitures
+  - Et le [coût marginal de production]{.bg4}
+  - Puis on trouve la quantité optimale
+  - Et simplement, on dit, [impossible d'aller plus loin]{.bg4}
+:::
+
+
+
+## C. Efficacité et Efficience...?
+
+### 1. Théorie
+
+```{r, norms 1}
+
+#| fig-align: "center"
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 0.2   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  "SMC=PMC + MD" = SMC(q_seq)
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("steelblue", "red", "firebrick"))+
+  # Guides et points
+  geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .3) +
+  geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+```
+
+---
+
+Avec cette limite : 
+
+::: incremental 
+
+- On [obtient l'efficacité]{.bg4} : l'objectif environnemental est atteint
+- Et l'efficience : à moindre coût!
+- [Difficile de parler d'équité ]{.bg4} lorsque l'on a qu'un seul groupe
+
+:::
+
+[Supposons maintenant qu'on ait deux firmes, et que chacune a droit à $Q/2$ maximum : ]{.fragment}
+
+
+
+----
+
+```{r, heterogeneité norme}
+
+#| fig-align: "center"
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 6/10   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+PMC1 <- function(q) 6/4*q
+PMC2 <- function(q) 6/6*q
+
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  PMC1 = PMC1(q_seq),
+  PMC2 = PMC2(q_seq)
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# Coloriser:
+
+
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("gray", "gray","forestgreen", "goldenrod",  "gray"))+
+  # Guides et points
+  #geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  #geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .3) +
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  geom_vline(xintercept = q_soc/2, color = "black")+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  annotate("polygon", 
+           x=c(0,q_soc/2, q_soc/2, 0),
+           y=c(0,PMC1(q_soc/2), 0, 0),
+           alpha=.5,
+           fill="forestgreen")+
+  annotate("polygon", 
+           x=c(0,q_soc/2, q_soc/2, 0),
+           y=c(0,PMC2(q_soc/2), 0, 0),
+           alpha=.5,
+           fill="goldenrod")+
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+
+
+```
+
+---
+
+
+```{r, heterogeneité norme2}
+
+#| fig-align: "center"
+
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 6/10   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+PMC1 <- function(q) 6/4*q
+PMC2 <- function(q) 6/6*q
+
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  PMC1 = PMC1(q_seq),
+  PMC2 = PMC2(q_seq)
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# Coloriser:
+
+
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("gray", "gray","forestgreen", "goldenrod",  "gray"))+
+  # Guides et points
+  #geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  #geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .3) +
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  geom_vline(xintercept = q_soc/2, color = "black")+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  annotate("polygon", 
+           x=c(0,2/5*q_soc, 2/5*q_soc, 0),
+           y=c(0,PMC1(2/5*q_soc), 0, 0),
+           alpha=.5,
+           fill="forestgreen")+
+  annotate("polygon", 
+           x=c(0,3/5*q_soc, 3/5*q_soc, 0),
+           y=c(0,PMC2(3/5*q_soc), 0, 0),
+           alpha=.5,
+           fill="goldenrod")+
+  annotate("polygon",
+           x=c(2/5*q_soc,q_soc/2, q_soc/2, 2/5*q_soc),
+           y=c(PMC2(2/5*q_soc),PMC2(q_soc/2), PMC1(q_soc/2), PMC1(2/5*q_soc)),
+           fill="grey", 
+           alpha=.5)+
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+
+
+```
+
+
+----
+
+
+### 2. Quels risques? 
+
+::: incremental 
+
+- Dans la pratique, [les émissions ont réduit]{.bg4} (cf. Rapport d'Evaluation Euro 6): 
+  - 56% de réduction des NOX par véhicule régulé
+  - Ordre de grandeurs important pour autre polluants
+- Ceci dit, face à la régulation, les entreprises ont tendance à [choisir d'autres solutions ]{.bg4}
+  - Tricher : le Diesel Gate
+  - Changer la qualité des véhicules : les rendre plus petits etc
+  - Adopter la technologie
+- Par ailleurs, les [incitations dynamiques]{.bg4} sont faibles : 
+  - Une fois que l'on a atteint la cible, pourquoi faire mieux? 
+- Enfin, on risque de choisir les vainqueurs par la technologie : 
+  - En l'état, contrainte de moyen
+  - Mais risque de glisser vers les technologies qui la permettent
+  - Risque de ["capture de la régulation" (Stiegler, 1971)]{.bg3}
+
+:::
+
+
+# III. Taxes 
+
+## A. Internaliser les externalités : pollueur-payeur
+
+
+Le principe est simple : [on taxe ceux qui polluent]{.bg4}, pour qu'ils prennent en compte les conséquences de leurs actions. 
+
+Supposons qu'on est dans le cadre d'une entreprise polluante : 
+
+$$
+\pi(Q) = p q - C(q) - \tau q
+$$
+
+::: fragment
+
+La condition d'optimalité implique :
+
+$$
+\pi'(Q)=0\Rightarrow p - \tau - C'(q) = 0 \Rightarrow C'(q) + \tau = p
+$$
+
+$\Rightarrow$ L'entreprise arrête de produire lorsque le [coût marginal est égal au prix, diminué de la taxe: ]{.bg4}
+
+
+:::
+
+
+::: incremental 
+
+- Autrement dit, $\tau = p-C'(q)$ : elle s'arrête de produire lorsque son bénéfice net marginal lié à la pollution est égal à la taxe
+- Si il y avait un bénéfice net marginal positif, elle polluerait plus
+
+:::
+
+--- 
+
+## B. Taxation optimale :  et productive
+
+### 1. Efficience allocative
+
+Le problème pour le régulateur est de réaliser [l'efficience allocative]{.bg4}
+
+::: incremental 
+- [Allocative :  maximise le bien être net]{.bg4}
+:::
+
+::: fragment
+
+$$
+S_T = \int_0^Q DMP(q)dq - \int_0^Q C'(Q) - \int_0^Q MD(Q)
+$$
+
+:::
+
+
+::: fragment
+
+
+$$
+\frac{dS_T}{dQ} = DMP(q) = C'(Q) + MD(Q)
+$$
+Donc il faut qu'à l'équilibre, la demande soit égale au coût marginal et au dommage marginal.
+
+:::
+
+::: fragment
+
+Donc on fixe : 
+
+$$
+p = C'(Q) + MD(Q) = C'(Q) + \tau \Rightarrow \tau = MD(Q)
+$$
+
+Une taxation[ $\tau$ égale au dommage marginal social $MD(Q)$]{.bg4} [permet de maximiser le bien être total!]{.bg4}
+
+:::
+
+----
+
+```{r, efficience allocative taxe 1}
+
+#| fig-align: "center"
+
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 0.2   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  "PMC+t" = PMC + tau,
+  #MD = tau
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("steelblue", "red",  "coral", "coral"))+
+  # Guides et points
+  geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  #geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .5) +
+  geom_vline(xintercept = q_soc, linetype = "dashed", linewidth = .5) +
+
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  #scale_linetype_manual(values = c("dashed", "dashed" ,"dashed", "solid", "solid"))+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+
+```
+
+
+---
+
+### 2. Efficience productive
+
+Supposons que l'on ait deux entreprises, qui toutes les deux maximisent leurs profits moyennant une taxe sur les émissions : 
+
+$$
+\begin{cases}
+\Pi_A(Q) &= pq-\tau q - C_A(Q)\\
+\Pi_B(Q) &= pq - \tau q - C_B(Q)
+\end{cases}
+$$
+
+::: fragment
+
+La maximisation du profit implique : 
+
+$$
+\begin{cases}
+p- \tau &= C'_A(Q)\\
+p - \tau &= C'_B(Q)
+\end{cases}
+$$
+:::
+
+::: fragment
+
+Les coûts marginaux sont égalisés : on atteint [la manière de produire et réduire la moins chère, l'efficience productive]{.bg4}
+
+:::
+
+----
+
+
+```{r, optimal}
+
+#| fig-align: "center"
+
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 6/10   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+PMC1 <- function(q) 6/4*q
+PMC2 <- function(q) 6/6*q
+
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  #PMC1 = PMC1(q_seq),
+  #PMC2 = PMC2(q_seq),
+  PMC1_t = PMC1(q_seq)+tau,
+  PMC2_t = PMC2(q_seq)+tau
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# Coloriser:
+
+
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("gray", "gray", "limegreen", "gold", "gray"))+
+  # Guides et points
+  #geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  #geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .3) +
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  #geom_vline(xintercept = q_soc/2, color = "black")+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  annotate("polygon", 
+           x=c(0,2/5*q_soc, 2/5*q_soc, 0),
+           y=c(tau,PMC1(2/5*q_soc)+tau, 0, 0),
+           alpha=.5,
+           fill="forestgreen")+
+  annotate("polygon", 
+           x=c(0,3/5*q_soc, 3/5*q_soc, 0),
+           y=c(tau,PMC2(3/5*q_soc)+tau, 0, 0),
+           alpha=.5,
+           fill="goldenrod")+
+  #annotate("polygon",
+  #         x=c(2/5*q_soc,q_soc/2, q_soc/2, 2/5*q_soc),
+  #         y=c(PMC2(2/5*q_soc),PMC2(q_soc/2), PMC1(q_soc/2), PMC1(2/5*q_soc)),
+  #         fill="grey", 
+  #         alpha=.5)+
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+```
+
+
+----
+
+## B. Le double dividende
+
+```{r, efficience allocative taxe 2}
+
+#| fig-align: "center"
+
+
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 0.2   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  "PMC+t" = PMC + tau,
+  #MD = tau
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("steelblue", "firebrick", "coral", "coral"))+
+  # Guides et points
+  geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  #geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .5) +
+  geom_vline(xintercept = q_soc, linetype = "dashed", linewidth = .5) +
+
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  #scale_linetype_manual(values = c("dashed", "dashed" ,"dashed", "solid", "solid"))+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  annotate("polygon", 
+           x=c(0,q_soc, 0, 0),
+           y=c(0,PMC(q_soc), PMC(q_soc), 0),
+           alpha=.5,
+           fill="firebrick")+
+  annotate("polygon", 
+           x=c(0, q_soc, q_soc, 0),
+           y=c(PMC(q_soc),PMC(q_soc), PMC(q_soc)+tau, PMC(q_soc)+tau),
+           alpha=.5,
+           fill="grey")+
+  annotate("polygon", 
+           x=c(0, q_soc, 0, 0),
+           y=c(40,PMC(q_soc)+tau, PMC(q_soc)+tau, 40),
+           alpha=.5,
+           fill="lightblue")+
+  
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+
+```
+
+
+----
+
+:::{.callout-note title="Double dividence"}
+
+Une taxe environnementale a deux effets : 
+
+::: incremental 
+
+- Elle permet [d'internaliser les externalités]{.bg4}
+- Et de dégager des [revenus fiscaux]{.bg4}, pouvant être réutilisés
+  - Pour l'investissement public
+  - Pour pallier les potentielles conséquences distributives
+
+:::
+
+:::
+
+
+## D. Effets distributifs
+
+### 1. Incidence
+
+
+:::{.callout-note title="Incidence"}
+
+L'incidence désigne qui paie la taxe. On distingue : 
+
+::: incremental
+
+- [L'incidence légale]{.bg4} : qui remet les sous à l'Etat
+
+- [L'incidence économique]{.bg4} : de qui le surplus est il ponctionné pour payer la taxe?
+
+
+:::
+
+:::
+
+::: incremental
+
+- Bien que la taxe permette d'internaliser l'effet néfaste de la pollution
+  - Et d'améliorer le surplus
+  - Pas forcément au maximum ceci dit
+- Elle implique une réduction de la consommation/production
+- Celui qui en [pâtit le plus est celui qui est en le plus dépendant]{.bg4}
+
+:::
+
+----
+
+:::{.callout-note title="Elasticité Prix"}
+
+Pour une grandeur donnée : pour une variation de 1% des prix, combien de % de quantité en moins?
+
+$$
+\epsilon = \frac{\partial Q}{\partial P}\frac{P}{Q}
+$$
+
+:::
+
+::: incremental 
+- Celui qui en pâtit le plus est celui [dont le comportement est le moins élastique]{.bg4}
+  - Dans le plan (q,p), c'est les [courbes les plus verticales]{.bg3}
+- Si [l'offre a une élasticité plus grande que la demande]{.bg3}, alors les consommateurs en pâtissent plus
+- Si : 
+  - Une industrie polluante est taxée
+  - Mais que c'est un bien à faible élasticité i.e. un bien nécessaire
+  - Alors les consommateurs portent le gros du fardeau
+  - Malgré une amélioration du surplus liée à l'internalisation des taxes
+
+:::
+
+
+
+
+----
+
+```{r, efficience allocative taxe 3}
+
+#| fig-align: "center"
+
+
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 0.2   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  "PMC+t" = PMC + tau,
+  #MD = tau
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("steelblue", "red", "firebrick", "coral", "coral"))+
+  # Guides et points
+  geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  #geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .5) +
+  geom_vline(xintercept = q_soc, linetype = "dashed", linewidth = .5) +
+
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  #scale_linetype_manual(values = c("dashed", "dashed" ,"dashed", "solid", "solid"))+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  annotate("polygon", 
+           x=c(0,q_soc, 0, 0),
+           y=c(0,PMC(q_soc), PMC(q_soc), 0),
+           alpha=.5,
+           fill="firebrick")+
+  annotate("polygon", 
+           x=c(0, q_soc, q_soc, 0),
+           y=c(PMC(q_soc),PMC(q_soc), PMC(q_soc)+tau, PMC(q_soc)+tau),
+           alpha=.5,
+           fill="grey")+
+   annotate("polygon", 
+           x=c(0, q_soc, q_soc, 0),
+           y=c(PMC(q_priv),PMC(q_priv), PMC(q_soc), PMC(q_soc)),
+           alpha=.5,
+           fill="grey25")+
+  annotate("polygon", 
+           x=c(0, q_soc, 0, 0),
+           y=c(40,PMC(q_soc)+tau, PMC(q_soc)+tau, 40),
+           alpha=.5,
+           fill="lightblue")+
+  
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+
+```
+
+---
+
+```{r, efficience allocative taxe}
+
+#| fig-align: "center"
+
+
+
+# ---- Paramètres ----
+A <- 40
+B <- .06  # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 0.2   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  "PMC+t" = PMC + tau,
+  #MD = tau
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("steelblue", "red", "firebrick", "coral", "coral"))+
+  # Guides et points
+  geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  #geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .5) +
+  geom_vline(xintercept = q_soc, linetype = "dashed", linewidth = .5) +
+
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  #scale_linetype_manual(values = c("dashed", "dashed" ,"dashed", "solid", "solid"))+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  annotate("polygon", 
+           x=c(0,q_soc, 0, 0),
+           y=c(0,PMC(q_soc), PMC(q_soc), 0),
+           alpha=.5,
+           fill="firebrick")+
+  annotate("polygon", 
+           x=c(0, q_soc, q_soc, 0),
+           y=c(PMC(q_soc),PMC(q_soc), PMC(q_soc)+tau, PMC(q_soc)+tau),
+           alpha=.5,
+           fill="grey")+
+   annotate("polygon", 
+           x=c(0, q_soc, q_soc, 0),
+           y=c(PMC(q_priv),PMC(q_priv), PMC(q_soc), PMC(q_soc)),
+           alpha=.5,
+           fill="grey25")+
+  annotate("polygon", 
+           x=c(0, q_soc, 0, 0),
+           y=c(40,PMC(q_soc)+tau, PMC(q_soc)+tau, 40),
+           alpha=.5,
+           fill="lightblue")+
+  
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+
+```
+
+
+---
+
+### 2. Régressivité
+
+```{r, régressivité}
+
+#| fig-align: "center"
+
+
+data = data.frame(Prix = seq(0,110))%>%
+  mutate(QA = pmax(100-Prix, 0),
+         QB = pmax(50-Prix, 0),
+         QT = QA+QB)%>%
+  mutate(PMC_t = 2*Prix,
+         PMC = PMC_t+5*tau)
+
+eq_soc_price = data %>%
+  select(PMC, QT, Prix)%>%
+  mutate(find_ = (PMC-QT)^2)%>%
+  slice_min(find_, n= 1)%>%
+  select(Prix)%>%
+  pull()%>%
+  max()
+
+eq_priv_price = data %>%
+  select(PMC_t, QT, Prix)%>%
+  mutate(find_ = (PMC_t-QT)^2)%>%
+  slice_min(find_, n= 1)%>%
+  select(Prix)%>%
+  pull()%>%
+  max()
+
+qA_soc  = 100 - eq_soc_price
+qB_soc  = 50 - eq_soc_price
+qB_priv = 100 - eq_priv_price
+qA_priv = 50 - eq_priv_price
+
+data = data %>%
+  pivot_longer(-Prix, 
+               names_to = "Valeurs", 
+               values_to = "Quantité")
+
+data %>%
+  ggplot(aes(y = Prix, x = Quantité, color = Valeurs))+
+  geom_hline(yintercept = eq_soc_price, linetype = "dotted", linewidth = .4)+
+  geom_hline(yintercept = eq_priv_price, linetype = "dotted", linewidth = .4)+
+  annotate("segment",
+           x = qA_priv, xend = qA_priv,
+           y = 0, yend = eq_priv_price,
+           linetype = "dotted",
+           linewidth = .4)+
+  annotate("segment",
+           x = qB_priv, xend = qB_priv,
+           y = 0, yend = eq_priv_price,
+           linetype = "dotted",
+           linewidth = .4)+
+  geom_line()+
+  annotate("polygon", 
+           x=c(0.1, 
+               qB_priv, 
+               qB_priv, 
+               0.1),
+           y=c(eq_soc_price,
+               eq_soc_price,
+               eq_priv_price,
+               eq_priv_price),
+           alpha=.5 ,
+           fill="gray")+
+  annotate("polygon", 
+           x=c(0.1, 
+               qA_priv, 
+               qA_priv, 
+               0.1),
+           y=c(eq_soc_price,
+               eq_soc_price,
+               eq_priv_price,
+               eq_priv_price),
+           alpha=.5 ,
+           fill="gray50")+
+  xlim(0.1,110)+
+  custom_theme()
+
+
+```
+
+-----
+
+On voit dans le graphique précédent que $T_A = q_A \times \tau < T_B = q_B\times \tau$: 
+
+::: incremental 
+
+- Est-ce progressif pour autant? 
+- Non!
+- La progressivité désigne la [progression du taux d'impôt, pas sa valeur absolue]{.bg4}
+- Autrement dit, si 
+
+:::
+
+
+::: fragment
+
+$$
+\frac{T_A}{R_A}<\frac{T_B}{R_B} \iff \frac{R_B}{R_A}<\frac{T_A}{T_B}
+$$
+
+:::
+
+::: incremental 
+
+- De nombreuses études documentent la [régressivité des taxes carbone]{.bg4} : 
+  - Du fait d'une [plus faible élasticité]{.bg3} des ménages plus pauvre au prix des biens carbonés
+  - Et de leur [coefficient budgétaire plus élevé.]{.bg3} 
+  
+:::
+
+
+
+----
+
+## E. Subventions
+
+::: incremental
+
+- Dans la pratique, on peut
+  - Taxer les émissions pour internaliser les externalités négatives 
+  - Subventionner les activités génératrices d'externalités positives
+  - [Subventionner la réduction,]{.bg4} traitée comme une externalité positive
+  
+
+:::
+
+::: fragment
+
+$$
+\Pi = pq + s(q_0-q)-C(q) \Rightarrow p-s = C'(q)
+$$
+
+C'est optimal si $s=\tau=MD(q)$
+
+:::
+
+
+::: incremental
+  
+- On arrive au même résultat : 
+  - On réduit les émissions tant que ce qu'on y gagne est supérieur à ce qu'on y perd
+  - La taxe est égale au montant du dommage marginal que l'on fait peser
+  - La [subvention est égale à la réduction du dommage marginal]{.bg4} que l'on fait peser
+- Les [conséquences distribtives sont différentes][.bg3] cependant : 
+  - Il n'y a plus de rentrées fiscales
+  - Et il faut financer le mécanisme
+  
+:::
+
+---
+
+### MaPrimeRenov' et les émissions liées au bâtiment {#maprim}
+
+Voir la [Note n°81 du Conseil d'Analyse Economique - Efficacité énergétique des logements: rénover l'action publique](https://cae-eco.fr/static/pdf/cae081-renovation-230625.pdf)
+
+::: incremental 
+
+- Emissions de [CO2 liées au bâtiment sont de l'ordre de 20%]{.bg4} en France
+- [La [SNBC]{.bg4}](#/snbc) fixe des objectifs :
+  - 370 000 rénovations performantes par an
+  - Puis 700 000 à partir de 2030 pour généraliser le niveau "bâtiment basse consommation"
+- En France, [55% des logements sont rentables à rénover d'un point de vue social]{.bg3} : santé et environnement
+  - Permettrait de réduire les émissions de 70%.
+  - [5% des logements est rentable]{.bg3} à rénover du fait de nombreuses barrières à l'investissement
+  - En les levant, on peut arriver à 26%
+
+- Le budget annuel des aides est de [8 milliards d'euros en 2024]{.bg4}
+  - Des crédits d'impôts de 2005 à 2020, devenue MaPrimeRenov'
+  - Mais également des certificats d'économie d'énergie, des éco-prêts à taux zero etc
+  - Traitements informationnels avec l'obligation du DPE en 2007 
+
+
+:::
+
+
+## F. Difficultés pratiques?
+
+::: incremental 
+
+- La taxe carbone : 
+  - Doit être [administrée]{.bg3} : il faut une administration fiscale capable de :
+    - Mesurer les émissions
+    - Fixer le niveau correct d'une taxe
+    - Collecter les revenus associés
+  - Se heurte à des [problèmes de justice sociale/acceptabilité]{.bg3}
+    - Il faut mettre en place des [mécanismes correctifs]{.bg3} : [second théorème]{.bg3} de l'économie du bien-être
+- Les subventions : 
+  - Il faut [fixer une baseline]{.bg3} : comment bien fixer $q_0$
+  - Il faut [administrer]{.bg3} la taxe : 
+    - Observer les émissions
+    - Jauger de la validité des réductions : controle etc
+    - Débourser la subvention
+    - MaPrimeRenov' a été suspendue [à l'été 2025 pour des retards de traitement et beaucoup de demandes frauduleuses](https://www.lemonde.fr/economie/article/2025/06/25/maprimerenov-comment-l-etat-a-fragilise-le-dispositif-en-changeant-les-regles-et-en-reduisant-son-budget_6615874_3234.html)
+    
+:::
+
+
+## G. Le monde réel : Taxe carbone et gilets jaunes
+
+### 1. Panorama et évolution de la fiscalité carbone en France
+
+En France, on la [Taxe Intérieure de Consommation sur les Produits Energétiques]{.bg4} renommée depuis 2022 Accise sur les Energies : 
+
+::: incremental 
+
+- Accise sur les produits pétrolier, le gaz, le charbon et l'électricité
+  - Accise spécifique : répercutée entièrement sur les prix à la consommation
+- De l'ordre de :
+  - Environ [37% du prix à la pompe du gasole]{.bg3}
+  - Environ 39% du prix à la pompe du SP95
+  - [30,1Md d'euro en 2024 - 1% du PIB]{.bg4}
+- Composée depuis 2014 d'une [partie spécifique pour le carbone]{.bg3}, en euro par tonne de CO2 émise du fait de la combustion
+  - Elle commence à 7€/t en 2014
+  - Monte à 14,5€/t en 2015, 30€/t en 2017 et 44€/t
+  - Pour finir à 44,6€/t en 2018 [tiens tiens]{.fragment}
+  - Malgré une augmentation prévue à 100€/t en 2030
+  
+:::
+
+----
+
+### 2. Effets distributifs de la fiscalité carbone en France
+
+Douenne, 2020, [The vertical and horizontal distributive effects of energy taxes: a case study of a French policy, Energy Journal](https://extranet.parisschoolofeconomics.eu/docs/douenne-thomas/douenne--the-vertical-and-horizontal-distributive-effects-of-energy-taxes.pdf)
+
+
+
+::: incremental 
+- [Un modème statistique de demande]{.bg4}
+    - Permettant dans une population de retrouver les élasticités
+- Un [modèle de micro-simulation]{.bg4} nommé [TAXIPP](https://www.ipp.eu/methodes/taxipp-outils/)
+    - Fondé sur des données administratives de l'INSEE, de la DGFIP etc
+    - Pour simuler l'impact des transferts monétaires entre les ménages
+    - Et les quantités consommées à la suite des taxes avec les élasticités et les données de revenu fines
+- But : 
+  - [Comprendre l'impact de la dernière augmentation de la]{.bg3} [TICPE entre 2016 et 2018 sur les ménages]{.bg3}
+  
+:::
+
+----
+
+#### Effet sur les émissions
+
+![Douenne, 2020](../images/EESE/douenne2020Fig1.png){fig-align="center"}
+
+::: note
+
+- Slightly less than 0.7% of French total annual emissions, and around
+- Abstracting from efficiency gains due to higher incentives to invest in low-consumption technologies, the expected environmental impact of the policy is therefore rather limited
+:::
+
+
+----
+
+#### Equité verticale
+
+::: incremental 
+- Le ménage médian a une [élasticité de la demande de -0.45]{.bg3} pour les prix du carburant
+- Pour [l'élasticité-prix de la demande d'énergie dans le logement -0.2]{.bg3}
+- Ces réactions sont [plus importantes dans les ménages pauvres et dans les ménages ruraux]{.bg3}
+- Les [coefficients budgétaires]{.bg3} de ces mêmes ménages sont plus importants en énergie
+:::
+
+::: fragment
+
+A quoi peut-on s'attendre? 
+
+:::
+
+::: incremental 
+
+- Les ménages pauvres consomment plus d'énergie que les riches
+- Et en sont plus dépendants : [demande moins élastique]{.bg4}
+- Il risque donc d'y avoir de la [régressivité]{.bg4}
+  - Surtout si les chèques énergie ne sont pas assez larges
+  - Ce qui est le cas : tout le revenu de la taxe n'est pas redistribué
+
+:::
+
+----
+
+![Douenne, 2020](../images/EESE/douenne2020Fig2.png){fig-align="center"}
+
+----
+
+
+En simulant une redistribution: 
+
+::: incremental 
+- Complète
+- Uniforme
+
+:::
+
+::: fragment
+
+Douenne montre que l'on peut réparer la régressivité
+
+:::
+
+
+![](../images/EESE/douenne2020Fig3.png){fig-align="center"}
+
+
+
+----
+
+#### Equité horizontale
+
+::: incremental 
+
+- Bien que la politique soit progressive i.e. résultat net dégressif avec le revenu
+- Elle a des [effets différenciés au sein des groupes]{.bg4} : 
+  - Dans les 3 premiers déciles de la distribution, 1/3 des ménages perd du fait de leurs consommations et localisations
+  - Dans le 10e décile, 40% perdent aussi de la politique
+- La taxe a des [effets inéquitables d'un point de vue horizontal]{.bg4} : la géographie est un facteur important ([Labrousse, Perdreau, 2023](https://www.parisschoolofeconomics.eu/app/uploads/2023/12/geography-versus-income-the-heterogeneous-effects-of-carbon-taxation-pse.pdf))
+
+:::
+
+----
+
+### 3. Conséquences d'un mauvais design de politique publique en France
+
+Douenne, Fabre, [Yellow Vests, Pessimistic Beliefs and Carbon Tax Aversion, *American Economic Journal: Economic Policy*, 2022](https://adrien-fabre.com/Documents/carbon_tax_aversion.pdf)
+
+Méthode : 
+
+::: incremental 
+
+- Sondage aurpès de 3000 ménages représentatifs de la population française
+- A qui on propose un mécanisme "taxe et dividende": 
+  - Augmentation de la taxe carbone de 50€/t 
+  - Redistribution uniforme
+
+::: 
+
+----
+
+Résultats :
+
+::: incremental 
+
+- 70% des gens ne sont pas d'accord, 10% le sont
+- Les gens ont tendance à [surestimer largement l'incidence]{.bg4} sur leur foyer : 
+  - Bien que 70% des foyers en bénéficient, seuls 14% y croient
+  - 89% surestiment l'effet négatif sur le foyer
+- Une majorité des répondants ont tendance à penser que : 
+  - La politique sera régressive 
+  - Et n'aura pas d'effet sur le changement climatique
+  - Ceux qui sont le plus opposés sont ceux qui soutiennent les Gilets Jaunes, et ont tendance à surestimer leur pertes
+- On envoie aux répondants des informations sur le schéma pour leur expliquer: 
+  - Le traitement échoue généralement à changer les croyances pessimistes
+- Ils proposent également un [*tax and target*, où les redistributions dépendent des revenus]{.bg4}: les résultats montrent qu'un tel mécanisme serait [supporté par la majorité.]{.bg3}
+
+:::
+
+::: notes
+
+- L'échec de design d'une politique publique régressive
+- Et la gestion de la contestation
+- Résultent en : 
+  - Un mistrust sur la taxe carbone
+  - Une polarisation anti taxe
+  - Et mettent au rebut une idée de taxe carbone pour le futur
+- Bien que un *tax and target* ait le vent en poupe
+
+:::
+
+
+# V. Approches fondées sur le marché
+
+## A. Mécanisme
+
+::: incremental
+
+- Les externalités naissent de [l'absence de prix pour certaines actions]{.bg4}, qui ne peuvent pas être intégrées dans le calcul des agents rationnels
+- Il faut alors créer un prix : on l'a fait avec la taxe, mais quid d'un réel prix?
+- En creux :[ a-t-on vraiment besoin de l'action d'un Etat?]{.bg3}
+
+:::
+
+---
+
+### 1. La négociation coasienne
+
+:::: columns
+
+::: column
+
+![Ronald Coase (1910-2013)](../images/EESE/coase.jpeg){fig-align="center"}
+
+:::
+
+::: column
+
+::: incremental
+
+- ["The Problem of Social Cost", Journal of Law and Economics, 1960](https://www.sfu.ca/~wainwrig/Econ400/coase-socialcost.pdf)
+  - Approche juridico-économique du problème
+- Si on a une industrie qui crée de la pollution
+- Il faut aussi des gens pour la respirer
+- Afin d'avoir une externalité
+- [A qui donne-t-on le droit?]{.bg4} Qu'est ce qui a le plus de valeur dans la société?
+
+:::
+
+:::
+
+
+::::
+
+
+-----
+
+#### a. Le confiseur et le médecin
+
+Dans son article fondateur, Coase examine un cas juridique d'un confiseur et d'un médecin mitoyens : 
+
+::: incremental 
+
+- Le confiseur fait du bruit, ce qui gêne la pratique du médecin
+- S'il y a moins de bruit, on peut faire plus de médecine
+- Qui a le droit sur quoi? 
+  - Faut il faire le bruit qui convient au médecin? 
+  - Ou au confiseur?
+
+- Supposons que le confiseur ait les droits : 
+  - Il retire des [bénéfices marginaux]{.bg3} sur tout le bruit qu'il génère : $B(q)$
+  - Le médecin, lui souffre du bruit, et paie donc des [coûts marginaux]{.bg3} à chaque bruit: $C(q)$
+
+:::
+
+
+----
+
+```{r, coase 1}
+
+#| fig-align: "center"
+
+
+data = data.frame(Bruit = seq(0,100))%>%
+  mutate(Bm = 100 - Bruit,
+         Cm = 50)%>%
+  pivot_longer(-Bruit,
+               values_to = "Euros",
+               names_to="Courbe")
+
+data %>%
+  ggplot(aes(x = Bruit, y = Euros, color = Courbe))+
+  geom_line()+
+  geom_vline(xintercept = 100, linetype = "dashed", linewidth = .4)+
+  scale_color_manual(values = c("firebrick", "steelblue"))+
+  #annotate("polygon", 
+  #         x = c(0,100,100,0),
+  #         y = c(0, 0, 50, 50), 
+  #         fill = "steelblue", 
+  #         alpha = .3)+
+    annotate("polygon", 
+           x = c(50,100,100),
+           y = c(50, 0, 50), 
+           fill = "steelblue", 
+           alpha = .3)+ 
+  custom_theme()
+
+
+```
+
+
+----
+
+::: incremental 
+
+- Il existe des [opportunités mutuellement avantageuses]{.bg3} - i.e. des situations [Pareto-améliorantes]{.bg4} : 
+  - Le docteur est prêt à payer un peu au confiseur un prix pour réduire le bruit qu'il fait 
+  - Ceci est possible tant que ce qu'il gagne est au moins supérieur à ce que l'autre perd
+  - Son dommage marginal évité est supérieur au bénéfice marginal que le confiseur perd
+- On s'arrête au point où $Bm = Cm$ : 
+  - Le surplus total est maximisé
+  
+- Si le [médecin a tous les droits]{.bg3} maintenant : 
+  - On commencera sans bruit
+
+:::
+
+---
+
+
+```{r, coase 2}
+
+#| fig-align: "center"
+
+data = data.frame(Bruit = seq(0,100))%>%
+  mutate(Bm = 100 - Bruit,
+         Cm = 50)%>%
+  pivot_longer(-Bruit,
+               values_to = "Euros",
+               names_to="Courbe")
+
+data %>%
+  ggplot(aes(x = Bruit, y = Euros, color = Courbe))+
+  geom_line()+
+  geom_vline(xintercept = 0, linetype = "dashed", linewidth = .4)+
+  scale_color_manual(values = c("firebrick", "steelblue"))+
+  #annotate("polygon", 
+  #         x = c(0,100,100,0),
+  #         y = c(0, 0, 50, 50), 
+  #         fill = "steelblue", 
+  #         alpha = .3)+
+    annotate("polygon", 
+           x = c(0,0,50),
+           y = c(50, 100, 50), 
+           fill = "firebrick", 
+           alpha = .3)+ 
+  custom_theme()
+
+
+```
+
+
+----
+
+::: incremental 
+
+- Il existe des opportunités mutuellement avantageuses : 
+  - Le confiseur est prêt à payer le médecin
+  - Ceci est possible tant que ce qu'il gagne est au moins supérieur à ce que l'autre perd
+  - Son bénéfice marginal réalisé est supérieur au dommage marginal que le médecin perd
+- On s'arrête au point où $Bm = Cm$ : 
+  - Le surplus total est maximisé
+
+:::
+
+---
+
+#### b. Le théorème de Coase
+
+Dans un monde où: 
+
+::: incremental 
+- Les coûts de transaction sont nuls
+- Il n'y a pas d'effets de revenu sur la demande
+- Les droits de propriété sont bien définis
+
+:::
+
+::: fragment
+
+::: quote
+
+Le résultat de l'échange et de la négociation sera optimal, indépendamment de l'allocation initiale des droits de propriété
+
+:::
+
+:::
+
+-----
+
+### c. Les conditions 
+
+::: incremental 
+
+- Supposons qu'il y ait des [coûts de transaction,]{.bg4} comme c'est souvent le cas : 
+  - Mesurer le bruit etc
+  - Négociation
+  - Rédaction d'un contrat
+  - Engagement d'un avocat etc
+- Dans ce cas, ces [coûts de transaction viennent diminuer le gain à l'échange]{.bg3} : 
+  - Il n'est plus garantit qu'on y gagne tant, après avoir payé l'avocat
+  - Donc l'allocation n'est plus efficiente
+- [Effet de revenu]{.bg4} : si le confiseur devient plus riche et achète d'autres machines: 
+  - Le niveau de bénéfices pour un même niveau de bruit augmente, j'augmente donc le bruit
+  - Si on s'était mis d'accord sur la base du premier nombre de machines, alors on n'a plus d'efficience
+
+:::
+
+----
+
+### 2. Echange des permis et efficience
+
+:::{.callout-note title="Cap and trade"}
+
+Un système de *cap and trade* est un système où 
+- La puissance publique [détermine une quantité $\bar{Q}$ ]{.bg4}
+- Alloue aux agents [des droits de propriété]{.bg4} sur $\bar{Q}$ (i.e. $\bar{Q_i}$)
+  - Leur [allocation initiale n'ayant pas d'impact sur l'efficience *en théorie*]{.bg4}
+- Et laisse l'échange se faire permettant une allocation optimale
+
+:::
+
+---
+
+Suppons que l'on a deux firmes, A et B, chacune dotée d'une quantité de permis gratuit telle que $\bar{Q_A}+\bar{Q_B}=\bar{Q}$
+
+::: fragment
+
+$$
+\begin{cases}
+\Pi_A(Q_A) &= pQ_A - C_A(Q_A) - p_Q(Q_A - \bar{Q_A})\\
+\Pi_B(Q_B) &= pQ_B - C_B(Q_B) - p_Q(Q_B - \bar{Q_B})
+\end{cases}
+$$
+
+:::
+
+
+::: fragment
+
+$$
+\begin{cases}
+\Pi_A(Q_A) &=  C'_A(Q_A) = p - p_Q\\
+\Pi_B(Q_B) &= C'_B(Q_B) = p - p_Q
+\end{cases}
+$$
+On a donc [l'efficience productive]{.bg4} car les coût marginaux sont égalisés:
+
+:::
+
+::: incremental 
+
+- Les [réductions de pollution se feront au coût les plus faibles]{.bg4}
+
+:::
+
+## B. Conséquences distributives
+
+::: incremental 
+
+- La différence principale avec une taxe, c'est sur le [surplus]{.bg4} : 
+  - Pas de recette fiscale
+  - Mais des rentes aux entreprises
+- Cela rend typiquement [l'économie politique de l'instauration différente]{.bg4} : 
+  - Les entreprises vont y être plus favorables
+  - On aura potentiellement plus de réduction dans la vraie vie
+
+- Ces [gains dépendent de la manière d'allouer les droits au début : ]{.bg3}
+  - [Enchères]{.bg3} : les revenus peuvent être utilisés par le gouvernement, le prix se situera au niveau de la taxe pigouvienne
+  - [Lotterie]{.bg3}
+  - [Grandfathering]{.bg3} : droits en fonction des émissions passées
+
+:::
+
+----
+
+```{r, permis}
+
+#| fig-align: "center"
+
+
+# ---- Paramètres ----
+A <- 40
+B <- 0.5   # Demande (MB) : p = A - B q
+C <- 0
+
+D <- 6/10   # Offre privée (PMC) : p = C + D q
+
+tau <- 8            # Dommage marginal (SMC = PMC + tau)
+
+# ---- Fonctions ----
+MB  <- function(q) A - B*q
+PMC <- function(q) C + D*q
+SMC <- function(q) C + tau + D*q
+
+PMC1 <- function(q) 6/4*q
+PMC2 <- function(q) 6/6*q
+
+
+# ---- Équilibres ----
+q_priv <- (A - C) / (B + D)
+p_priv <- MB(q_priv)
+
+q_soc  <- (A - (C + tau)) / (B + D)
+p_soc  <- MB(q_soc)
+
+# ---- Données pour les courbes ----
+q_seq <- seq(0, max(q_priv, q_soc)*1.25, length.out = 500)
+df <- tibble(
+  q   = q_seq,
+  MB  = MB(q_seq),
+  PMC = PMC(q_seq),
+  SMC = SMC(q_seq),
+  PMC1 = PMC1(q_seq)+tau,
+  PMC2 = PMC2(q_seq)+tau,
+) |>
+  pivot_longer(-q, names_to = "Courbe", values_to = "p")
+
+# ---- Aires à colorier ----
+q_fill <- q_seq[q_seq <= q_priv]
+
+
+# Aire sous SMC (coût social total jusqu'à q_P)
+smc_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(SMC(q_fill), rep(0, length(q_fill)))
+)
+
+
+
+# Surplus du consommateur (entre MB et le prix p_P, de 0 à q_P)
+cs_poly <- tibble(
+  q = c(q_fill, rev(q_fill)),
+  p = c(MB(q_fill), rep(p_priv, length(q_fill)))
+)
+
+# Coloriser:
+
+
+
+# ---- Points d'équilibre ----
+eq_pts <- tibble(
+  q = c(q_soc, q_priv),
+  p = c(p_soc, p_priv),
+  type = c("Équilibre social", "Équilibre privé")
+)
+
+# ---- Graphique ----
+ggplot() +
+  # Aire sous SMC (coût social total à q_P)
+  #geom_polygon(data = smc_poly, aes(x = q, y = p),
+  #             fill = "red", alpha = 0.3, inherit.aes = FALSE) +
+  # Surplus du consommateur à q_P
+  #geom_polygon(data = cs_poly, aes(x = q, y = p),
+  #             fill = "steelblue", alpha = 0.35, inherit.aes = FALSE) +
+  # Courbes MB / PMC / SMC
+  geom_line(data = df, aes(x = q, y = p, color = Courbe), size = 1) +
+  scale_color_manual(values = c("gray", "gray","forestgreen", "goldenrod",  "gray"))+
+  # Guides et points
+  #geom_vline(xintercept = q_priv, linetype = "dashed", linewidth = .3) +
+  #geom_hline(yintercept = p_priv, linetype = "dashed", linewidth = .3) +
+  geom_vline(xintercept = q_soc, linewidth = .8) +
+  geom_hline(yintercept = p_soc, linetype = "dashed", linewidth = .3) +
+  #geom_point(data = eq_pts, aes(x = q, y = p), size = 1.5, color = "black") +
+  geom_vline(xintercept = q_soc/2, color = "black")+
+  # Annotations
+  #annotate("text", x = q_priv, y = p_priv + 1, label = "Privé (q_P, p_P)", hjust = 0.5) +
+  #annotate("text", x = q_soc,  y = p_soc  + 1, label = "Social (q_S, p_S)", hjust = 0.5) +
+  #annotate("text", x = 0.08*q_priv, y = p_priv + 2, label = "Surplus du consommateur", color = "steelblue4") +
+  #annotate("text", x = 0.6*q_priv,  y = 0.5*SMC(0.6*q_priv), label = "Coût social total\n(0 → q_P)", color = "firebrick") +
+  annotate("polygon", 
+           x=c(0,2/5*q_soc, 2/5*q_soc, 0),
+           y=c(tau,PMC1(2/5*q_soc)+tau, 0, 0),
+           alpha=.5,
+           fill="forestgreen")+
+  annotate("polygon", 
+           x=c(2/5*q_soc, q_soc/2, q_soc/2, 2/5*q_soc),
+           y=c(PMC1(2/5*q_soc), PMC1(2/5*q_soc), PMC1(2/5*q_soc)+tau,PMC1(2/5*q_soc)+tau),
+           alpha=.5,
+           fill="green")+
+  annotate("polygon", 
+           x=c(0,3/5*q_soc, 3/5*q_soc, 0),
+           y=c(tau,PMC2(3/5*q_soc)+tau, 0, 0),
+           alpha=.5,
+           fill="goldenrod")+
+    annotate("polygon", 
+           x=c(q_soc/2,3/5*q_soc, 3/5*q_soc, q_soc/2),
+           y=c(PMC2(3/5*q_soc), PMC2(3/5*q_soc), PMC2(3/5*q_soc)+tau, PMC2(3/5*q_soc)+tau),
+           alpha=.5,
+           fill="yellow")+
+  #annotate("polygon",
+  #         x=c(2/5*q_soc,q_soc/2, q_soc/2, 2/5*q_soc),
+  #         y=c(PMC2(2/5*q_soc)+tau,PMC2(q_soc/2)+tau, PMC1(q_soc/2)+tau, PMC1(2/5*q_soc)+tau),
+  #         fill="grey", 
+  #         alpha=.5)+
+  labs(
+    title = "",
+    x = "Emissions/quantités ",
+    y = "Prix / Coût marginal",
+    color = ""
+  ) +
+  custom_theme()
+
+
+
+```
+
+
+## C. L'équivalence prix/quantité
+
+On vient de prouver un résultat fondamental en économie de l'environnement. En matière de politique publique efficiente, i.e. qui réduit les émissions au moindre coût social :
+
+::: incremental 
+- Je peux [fixer une quantité $\bar{Q}$ et laisser le marché de permis d'émissions agir]{.bg4}, le prix des permis sera égal à une taxe pigouvienne optimale $\tau$
+- Je peux [fixer un prix $\tau$ aux unités de pollution et laisser les acteurs s'adapter]{.bg4}, ils convergeront vers $\bar{Q}$
+
+:::
+
+[Ceci dit]{.fragment}
+
+
+::: incremental 
+- Les [effets distributifs sont différents]{.bg4} : des recettes fiscales v. des rentes
+- Cette [équivalence ne tient plus dans certains contextes]{.bg4}, notamment lorsque l'on a de l'incertitude autour des dommages marginaux et des coûts marginaux de réduction de la pollution
+  - On y reviendra surement dans l'UC1!
+
+:::
+
+## D. Le monde réel : EU ETS et CBAM
+
+::: incremental
+- [European Emission Trading System ]{.bg4}: le système le plus large de cap and trade dans le monde, depuis 2005, pour le CO2 et autres gaz (en CO2 equivalent)
+- Couvre environ [40% des émissions de GHG]{.bg4} sur différents secteurs : 
+  - Génération d'énergie, industrie lourde (raffineries, acier, ciment, verre, papier, chimie) et aviation intra-européenne
+  - Le maritime arrive depuis 2024, avec de plus en plus d'émissions
+- Le passage à [l'ETS 2 devrait]{.bg4}  : 
+  - Le résidentiel, le transport routier et les petites industries, d'ici 2027
+  - Avec des permis alloués de façon payante
+- A aidé à l[a réduction de 47% des émissions des secteurs de l'énergie et de l'industrie depuis 2005]{.bg3}
+- Permis alloués par enchères et grandfathering du fait du [carbon leakage]{.bg4}
+- Les prix tournent entre 70 et 100€ la tonne, malgré un début catastrophique
+
+:::
+
+----
+
+### Carousel de la TVA
+
+
+:::: columns
+
+::: column
+
+Regardez la série *D'argent et de sang*, de X. Giannoli
+
+![Marco Mouly](../images/EESE/mouly.jpeg)
+
+:::
+
+::: column
+
+
+::: incremental 
+- Les permis d'émissions étaient sujet à de la TVA
+  - Du fait des règles du commerce intra-communautaire, les achats étaient exonérés
+  - L'entreprise revendait ensuite des quotas dans un autre pays de l'UE, en facturant la TVA
+  - Sans jamais la reverser au fisc
+  - On peut le faire beaucoup de fois : c'est le carousel
+- Jusqu'à [90% des flux d'échange en 2009]{.bg4}
+  - Et un vol de 5 milliards d'euros
+
+
+:::
+
+:::
+
+::::
+
+----
+
+### Lutte contre le changement climatique et bien public
+
+::: incremental 
+
+- Lutter contre le changement climatique est un [bien public]{.bg4}
+- Il occasionne des coûts et des problèmes de [free rider]{.bg4} : 
+  - Réduire les émissions coûte cher
+  - Certains délocalisent, ou perdent les marchés vers des concurrents qui n'ont pas les même contraintes
+  - La baisse du carbone européen coincide avec plus de carbone chez les voisins et une perte de compétitivité
+
+- Pour éviter cela, depuis 2023, un [mécanisme de correction aux frontière de l'UE existe]{.bg4}: c'est le [Carbon Border Adjustment Mechanism]{.bg4}
+  - On est dans la [phase de transition]{.bg3} : les importateurs doivent décrire les processus productifs de leurs imports, sans payer pour l'instant
+  - A partir de 2026, il faudra acheter des permis aussi, avec déduction d'une éventuelle taxe carbone
+  
+- Limité pour l'instant au [ciment, acier et fer, alumnium, feritlisants, electricité et hydrogène]{.bg3}
+
+:::
+
+
+----
+
+
+## E. Le marché n'est pas une panacée
+
+
+::: incremental 
+
+- Créer un marché vient avec un risque: celui qu'il ait des [défaillances]{.bg3}
+  - Peut-il y avoir des groupes contrôlant les prix du carbone? 
+  - Quelle est la qualité de l'information sur les prix et quantités? 
+  - Y a t il des coûts de transaction? 
+  - Est-il trop cher de mesurer les émissions? Quelles pénalités?
+- Il faut donc s'assurer de la [qualité lors du market design]{.bg3}
+- Par ailleurs, un des problèmes fondamentaux est [l'hétérogénéité des dommages marginaux]{.bg4}
+
+
+:::
+
+
+-----
+
+Supposons que deux entreprises polluent dans deux villes : 
+
+::: incremental 
+- Si les dommages occasionnés sont les mêmes entre les deux villes
+  - Un seul prix de marché au niveau du dommage marginal est posé 
+  - Règle le problème
+- Supposons maintenant que les inégalités environnementales sont importantes : 
+  - Les populations de la ville A souffrent de plus de dommages, car l'usine est plus sale
+  - Que ceux de la ville B
+- Dans ce cas, [un seul prix de marché ne peut pas être égal aux]{.bg4} [deux dommages marginaux différents]{.bg4}
+  - Le marché aide à réguler, c'est une amélioration au sens de Pareto
+  - Mais ne règle pas le problème
+- On peut parfois mettre en place des [ratios de trading]{.bg4} pour corriger. 
+
+:::
+
+----
+
+# IV. Conclusion : quel mix de politiques publiques pour lutter contre le changement climatique? 
+
+----
+
+::: incremental 
+- On vise [l'efficacité, l'efficience et l'équité]{.bg4} :  
+  - Pour garantir l'environnement
+  - Minimiser les coûts
+  - Garantir une justice sociale et acceptabilité
+- [Différents mécanismes sont proposés :]{.bg4} 
+  - Une norme
+  - Une taxe pollueur payeur
+  - Des marchés d'émission
+- Dans le [cadre le plus simple,]{.bg4} ces trois [instruments sont équivalents]{.bg4}, et mènent à une allocation efficace et efficiente
+- [L'hétérogénéité des coûts et des dommages marginaux change ce résultat]{.bg4}
+  - Les taxes sont plus efficientes que les normes
+  - Les marchés ne règlent pas toujours tout
+  - Les taxes tendent à être régressives
+- [La distribution change]{.bg4} entre ces différents mécanismes de politique publique
+  - Impliquant des équilibres politiques différents
+- Lutter contre le changement climatique est un bien public : 
+  - Free rider
+  - Et coalitions climatiques
+
+:::
+
+----
+
+Par exemple, le Global Climate Scheme ([Fabre, Douenne, Matausch, 2025](https://www.nature.com/articles/s41562-025-02175-9#Sec1))
+
+::: incremental 
+- Cap on carbon emissions
+- Les droits d'émissions sont vendus chaque année aux firmes polluantes
+- Le produit de ces ventes finance[ un revenu universel global pour lutter contre l'extrême pauvreté]{.bg3}
+- Et les droits sont alloués aux individus adultes, faisant de la redistribution des pays riches vers les pays pauvres
+
+:::
+
+----
+
+![Fabre et al, 2025](../images/EESE/fabre_nature.webp){fig-align="center"}
+
+
+# Annexe : la SNBC
+
+----
+
+## [SNBC](https://www.ecologie.gouv.fr/sites/default/files/documents/19092_strategie-carbone-FR_oct-20.pdf) {#snbc}
+
+::: incremental 
+
+- Introduite par la Loi de Transition Energétique pour une Croissance Verte
+- Feuille de route pour tous les secteurs pour aller vers une économie bas carbonne
+- But : neutralité carbone d'ici 2050
+- Outil : des bydgets carbones pour des périodes de 4 ans
+
+:::
+
+----
+
+![](../images/EESE/SNBC.png){fig-align="center"}
+
+
+[Retour](#/maprim)
+
